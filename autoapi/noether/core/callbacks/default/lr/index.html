@@ -813,26 +813,29 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.default.lr.LrCallback.should_log_after_update">
-<span class="sig-name descname"><span class="pre">should_log_after_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training_iteration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.lr.LrCallback.should_log_after_update" title="Link to this definition">¶</a></dt>
-<dd><p>Checks after every update if the <cite>PeriodicCallback</cite> should be invoked.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>training_iteration</strong> (<a class="reference internal" href="../../../utils/training/training_iteration/index.html#noether.core.utils.training.training_iteration.TrainingIteration" title="noether.core.utils.training.training_iteration.TrainingIteration"><em>noether.core.utils.training.training_iteration.TrainingIteration</em></a>) – TrainingIteration to check.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.default.lr.LrCallback._periodic_callback">
-<span class="sig-name descname"><span class="pre">_periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.lr.LrCallback._periodic_callback" title="Link to this definition">¶</a></dt>
-<dd><p>Method that is invoked periodically in the defined interval of the <cite>PeriodicCallback</cite>. Child classes should
-overwrite this method to calculate metrics periodically during training and log them.</p>
+<dt class="sig sig-object py" id="noether.core.callbacks.default.lr.LrCallback.periodic_callback">
+<span class="sig-name descname"><span class="pre">periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.lr.LrCallback.periodic_callback" title="Link to this definition">¶</a></dt>
+<dd><p>Hook called periodically based on the configured intervals.</p>
+<p>This method is the primary entry point for periodic actions in subclasses. It is
+triggered when any of the configured intervals (<code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">every_n_samples</span></code>) are reached.</p>
+<p>Subclasses should override this method to implement periodic logic such as:
+* Calculating and logging expensive validation metrics
+* Saving specific model checkpoints or artifacts
+* Visualizing training progress (e.g., plotting samples)
+* Adjusting training hyperparameters or model state</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interval_type</strong> – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
-<li><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p></li>
+<li><p><strong>update_counter</strong> – UpdateCounter instance providing details about the current
+training progress (epoch, update, sample counts).</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments passed from the triggering hook
+(e.g., from <code class="docutils literal notranslate"><span class="pre">after_epoch</span></code> or <code class="docutils literal notranslate"><span class="pre">after_update</span></code>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -911,8 +914,7 @@ overwrite this method to calculate metrics periodically during training and log 
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.callbacks.default.lr.LrCallback"><code class="docutils literal notranslate"><span class="pre">LrCallback</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.callbacks.default.lr.LrCallback.should_log_after_update"><code class="docutils literal notranslate"><span class="pre">LrCallback.should_log_after_update()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.default.lr.LrCallback._periodic_callback"><code class="docutils literal notranslate"><span class="pre">LrCallback._periodic_callback()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.default.lr.LrCallback.periodic_callback"><code class="docutils literal notranslate"><span class="pre">LrCallback.periodic_callback()</span></code></a></li>
 </ul>
 </li>
 </ul>

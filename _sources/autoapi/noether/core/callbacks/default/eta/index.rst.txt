@@ -20,7 +20,7 @@ Module Contents
    Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
 
 
-   Callback to print the progress and estimated duration until the `_periodic_callback` will be invoked. Also
+   Callback to print the progress and estimated duration until the `periodic_callback` will be invoked. Also
    counts up the current epoch/update/samples and provides the average update duration. Only used in "unmanaged" runs,
    i.e., it is not used when the run was started via SLURM.
 
@@ -81,38 +81,82 @@ Module Contents
    .. py:attribute:: handler
 
 
-   .. py:method:: _before_training(*, update_counter)
+   .. py:method:: before_training(*, update_counter)
 
-      Template method for `before_training`. Derived classes should overwrite this method to do something before
-      training starts. Implementing this method is optional.
+      Hook called once before the training loop starts.
+
+      This method is intended to be overridden by derived classes to perform initialization
+      tasks before training begins. Common use cases include:
+      * Initializing experiment tracking (e.g., logging hyperparameters)
+      * Printing model summaries or architecture details
+      * Initializing specific data structures or buffers needed during training
+      * Performing sanity checks on the data or configuration
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param update_counter: UpdateCounter instance to access current training progress.
 
 
 
-   .. py:method:: _track_after_update_step(*, update_counter, times)
+   .. py:method:: track_after_update_step(*, update_counter, times)
 
-      Invoked after every update step. May be used to track metrics.
+      Hook called after each optimizer update step.
+
+      This method is invoked after a successful optimizer step and parameter update.
+      It is typically used for tracking metrics that should be recorded once per update
+      cycle, such as:
+      * Latest loss values
+      * Learning rates
+      * Model parameter statistics (norms, etc.)
+      * Training throughput and timing measurements
+
+      Unlike ``periodic_callback``, this hook is called on every update step, making it
+      suitable for maintaining running averages or high-frequency telemetry.
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param update_counter: UpdateCounter instance to access current training progress.
-      :param times: Dictionary containing time measurements.
+      :param times: Dictionary containing time measurements for various parts of the training
+                    step (e.g., 'data_time', 'forward_time', 'backward_time', 'update_time').
 
 
 
-   .. py:method:: _periodic_callback(*, interval_type, **_)
+   .. py:method:: periodic_callback(*, interval_type, **_)
 
-      Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
-      overwrite this method to calculate metrics periodically during training and log them.
+      Hook called periodically based on the configured intervals.
+
+      This method is the primary entry point for periodic actions in subclasses. It is
+      triggered when any of the configured intervals (``every_n_epochs``, ``every_n_updates``,
+      or ``every_n_samples``) are reached.
+
+      Subclasses should override this method to implement periodic logic such as:
+      * Calculating and logging expensive validation metrics
+      * Saving specific model checkpoints or artifacts
+      * Visualizing training progress (e.g., plotting samples)
+      * Adjusting training hyperparameters or model state
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
-      :param update_counter: UpdateCounter instance to access current training progress.
+      :param update_counter: UpdateCounter instance providing details about the current
+                             training progress (epoch, update, sample counts).
+      :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
+                         (e.g., from ``after_epoch`` or ``after_update``).
 
 
 
-   .. py:method:: _after_training(**_)
+   .. py:method:: after_training(**_)
 
-      Template method for `after_training`. Derived classes should overwrite this method to do something after
-      training ends. Implementing this method is optional.
+      Hook called once after the training loop finishes.
+
+      This method is intended to be overridden by derived classes to perform cleanup or
+      final reporting tasks after training is complete. Common use cases include:
+      * Performing a final evaluation on the test set
+      * Saving final model weights or artifacts
+      * Sending notifications (e.g., via Slack or email) about the completed run
+      * Closing or finalizing experiment tracking sessions
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param update_counter: UpdateCounter instance to access current training progress.
 

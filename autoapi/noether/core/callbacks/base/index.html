@@ -795,7 +795,7 @@
 <dt class="sig sig-object py" id="noether.core.callbacks.base.CallbackBase">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.base.</span></span><span class="sig-name descname"><span class="pre">CallbackBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trainer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_property_provider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase" title="Link to this definition">¶</a></dt>
 <dd><p>Base class for callbacks that log something before/after training.</p>
-<p>Allows overwriting <cite>_before_training</cite> and <cite>_after_training</cite>.</p>
+<p>Allows overwriting <cite>before_training</cite> and <cite>after_training</cite>.</p>
 <p>If the callback is stateful (i.e., it tracks something across the training process that needs to be loaded if the
 run is resumed), there are two ways to implement loading the callback state:</p>
 <ul class="simple">
@@ -819,11 +819,11 @@ state from files on the disk.</p></li>
 <span class="p">)</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>As evaluations are pretty much always done in torch.no_grad() contexts, the hooks implemented by callbacks
-automatically apply the torch.no_grad() context. Therefore, the <cite>CallbackBase</cite> class makes use of the “template
-method” design pattern, where templates (e.g. <cite>before_training</cite>) implement the invariant behavior (e.g., applying
-torch.no_grad()). The template implementations start with an underscore (e.g., <cite>_before_training</cite>) and only these
-methods should be implemented by child classes. Templates (e.g., <cite>before_training</cite>) should not be overwritten.</p>
+are always executed within a torch.no_grad() context.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -947,8 +947,18 @@ file that was stored on the disk.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.base.CallbackBase.before_training">
-<span class="sig-name descname"><span class="pre">before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase.before_training" title="Link to this definition">¶</a></dt>
-<dd><p>Hook that is called before training starts. Applies <cite>torch.no_grad()</cite> context.</p>
+<span class="sig-name descname"><span class="pre">before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase.before_training" title="Link to this definition">¶</a></dt>
+<dd><p>Hook called once before the training loop starts.</p>
+<p>This method is intended to be overridden by derived classes to perform initialization
+tasks before training begins. Common use cases include:
+* Initializing experiment tracking (e.g., logging hyperparameters)
+* Printing model summaries or architecture details
+* Initializing specific data structures or buffers needed during training
+* Performing sanity checks on the data or configuration</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p>
@@ -961,38 +971,18 @@ file that was stored on the disk.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.base.CallbackBase.after_training">
-<span class="sig-name descname"><span class="pre">after_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase.after_training" title="Link to this definition">¶</a></dt>
-<dd><p>Hook that is called after training ends. Applies <cite>torch.no_grad()</cite> context.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.base.CallbackBase._before_training">
-<span class="sig-name descname"><span class="pre">_before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase._before_training" title="Link to this definition">¶</a></dt>
-<dd><p>Template method for <cite>before_training</cite>. Derived classes should overwrite this method to do something before
-training starts. Implementing this method is optional.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.base.CallbackBase._after_training">
-<span class="sig-name descname"><span class="pre">_after_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase._after_training" title="Link to this definition">¶</a></dt>
-<dd><p>Template method for <cite>after_training</cite>. Derived classes should overwrite this method to do something after
-training ends. Implementing this method is optional.</p>
+<span class="sig-name descname"><span class="pre">after_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase.after_training" title="Link to this definition">¶</a></dt>
+<dd><p>Hook called once after the training loop finishes.</p>
+<p>This method is intended to be overridden by derived classes to perform cleanup or
+final reporting tasks after training is complete. Common use cases include:
+* Performing a final evaluation on the test set
+* Saving final model weights or artifacts
+* Sending notifications (e.g., via Slack or email) about the completed run
+* Closing or finalizing experiment tracking sessions</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p>
@@ -1087,8 +1077,6 @@ training ends. Implementing this method is optional.</p>
 <li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.logger"><code class="docutils literal notranslate"><span class="pre">CallbackBase.logger</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.before_training"><code class="docutils literal notranslate"><span class="pre">CallbackBase.before_training()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.after_training"><code class="docutils literal notranslate"><span class="pre">CallbackBase.after_training()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase._before_training"><code class="docutils literal notranslate"><span class="pre">CallbackBase._before_training()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase._after_training"><code class="docutils literal notranslate"><span class="pre">CallbackBase._after_training()</span></code></a></li>
 </ul>
 </li>
 </ul>

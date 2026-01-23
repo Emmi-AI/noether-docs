@@ -811,10 +811,19 @@
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.default.dataset_stats.DatasetStatsCallback._before_training">
-<span class="sig-name descname"><span class="pre">_before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.dataset_stats.DatasetStatsCallback._before_training" title="Link to this definition">¶</a></dt>
-<dd><p>Template method for <cite>before_training</cite>. Derived classes should overwrite this method to do something before
-training starts. Implementing this method is optional.</p>
+<dt class="sig sig-object py" id="noether.core.callbacks.default.dataset_stats.DatasetStatsCallback.before_training">
+<span class="sig-name descname"><span class="pre">before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.dataset_stats.DatasetStatsCallback.before_training" title="Link to this definition">¶</a></dt>
+<dd><p>Hook called once before the training loop starts.</p>
+<p>This method is intended to be overridden by derived classes to perform initialization
+tasks before training begins. Common use cases include:
+* Initializing experiment tracking (e.g., logging hyperparameters)
+* Printing model summaries or architecture details
+* Initializing specific data structures or buffers needed during training
+* Performing sanity checks on the data or configuration</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p>
@@ -895,7 +904,7 @@ training starts. Implementing this method is optional.</p>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.callbacks.default.dataset_stats.DatasetStatsCallback"><code class="docutils literal notranslate"><span class="pre">DatasetStatsCallback</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.callbacks.default.dataset_stats.DatasetStatsCallback._before_training"><code class="docutils literal notranslate"><span class="pre">DatasetStatsCallback._before_training()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.default.dataset_stats.DatasetStatsCallback.before_training"><code class="docutils literal notranslate"><span class="pre">DatasetStatsCallback.before_training()</span></code></a></li>
 </ul>
 </li>
 </ul>

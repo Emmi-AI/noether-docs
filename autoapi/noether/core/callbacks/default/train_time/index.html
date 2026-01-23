@@ -823,14 +823,28 @@
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.default.train_time.TrainTimeCallback._track_after_update_step">
-<span class="sig-name descname"><span class="pre">_track_after_update_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.train_time.TrainTimeCallback._track_after_update_step" title="Link to this definition">¶</a></dt>
-<dd><p>Invoked after every update step. May be used to track metrics.</p>
+<dt class="sig sig-object py" id="noether.core.callbacks.default.train_time.TrainTimeCallback.track_after_update_step">
+<span class="sig-name descname"><span class="pre">track_after_update_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.train_time.TrainTimeCallback.track_after_update_step" title="Link to this definition">¶</a></dt>
+<dd><p>Hook called after each optimizer update step.</p>
+<p>This method is invoked after a successful optimizer step and parameter update.
+It is typically used for tracking metrics that should be recorded once per update
+cycle, such as:
+* Latest loss values
+* Learning rates
+* Model parameter statistics (norms, etc.)
+* Training throughput and timing measurements</p>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">periodic_callback</span></code>, this hook is called on every update step, making it
+suitable for maintaining running averages or high-frequency telemetry.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p></li>
-<li><p><strong>times</strong> – Dictionary containing time measurements.</p></li>
+<li><p><strong>times</strong> – Dictionary containing time measurements for various parts of the training
+step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_time’).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -840,15 +854,29 @@
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.default.train_time.TrainTimeCallback._periodic_callback">
-<span class="sig-name descname"><span class="pre">_periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.train_time.TrainTimeCallback._periodic_callback" title="Link to this definition">¶</a></dt>
-<dd><p>Method that is invoked periodically in the defined interval of the <cite>PeriodicCallback</cite>. Child classes should
-overwrite this method to calculate metrics periodically during training and log them.</p>
+<dt class="sig sig-object py" id="noether.core.callbacks.default.train_time.TrainTimeCallback.periodic_callback">
+<span class="sig-name descname"><span class="pre">periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.train_time.TrainTimeCallback.periodic_callback" title="Link to this definition">¶</a></dt>
+<dd><p>Hook called periodically based on the configured intervals.</p>
+<p>This method is the primary entry point for periodic actions in subclasses. It is
+triggered when any of the configured intervals (<code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">every_n_samples</span></code>) are reached.</p>
+<p>Subclasses should override this method to implement periodic logic such as:
+* Calculating and logging expensive validation metrics
+* Saving specific model checkpoints or artifacts
+* Visualizing training progress (e.g., plotting samples)
+* Adjusting training hyperparameters or model state</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interval_type</strong> – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
-<li><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p></li>
+<li><p><strong>update_counter</strong> – UpdateCounter instance providing details about the current
+training progress (epoch, update, sample counts).</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments passed from the triggering hook
+(e.g., from <code class="docutils literal notranslate"><span class="pre">after_epoch</span></code> or <code class="docutils literal notranslate"><span class="pre">after_update</span></code>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -858,10 +886,19 @@ overwrite this method to calculate metrics periodically during training and log 
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.default.train_time.TrainTimeCallback._after_training">
-<span class="sig-name descname"><span class="pre">_after_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.train_time.TrainTimeCallback._after_training" title="Link to this definition">¶</a></dt>
-<dd><p>Template method for <cite>after_training</cite>. Derived classes should overwrite this method to do something after
-training ends. Implementing this method is optional.</p>
+<dt class="sig sig-object py" id="noether.core.callbacks.default.train_time.TrainTimeCallback.after_training">
+<span class="sig-name descname"><span class="pre">after_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.train_time.TrainTimeCallback.after_training" title="Link to this definition">¶</a></dt>
+<dd><p>Hook called once after the training loop finishes.</p>
+<p>This method is intended to be overridden by derived classes to perform cleanup or
+final reporting tasks after training is complete. Common use cases include:
+* Performing a final evaluation on the test set
+* Saving final model weights or artifacts
+* Sending notifications (e.g., via Slack or email) about the completed run
+* Closing or finalizing experiment tracking sessions</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p>
@@ -944,9 +981,9 @@ training ends. Implementing this method is optional.</p>
 <li><a class="reference internal" href="#noether.core.callbacks.default.train_time.TrainTimeCallback"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.callbacks.default.train_time.TrainTimeCallback.train_data_times"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.train_data_times</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.default.train_time.TrainTimeCallback.total_train_data_time"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.total_train_data_time</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.default.train_time.TrainTimeCallback._track_after_update_step"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback._track_after_update_step()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.default.train_time.TrainTimeCallback._periodic_callback"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback._periodic_callback()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.default.train_time.TrainTimeCallback._after_training"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback._after_training()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.default.train_time.TrainTimeCallback.track_after_update_step"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.track_after_update_step()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.default.train_time.TrainTimeCallback.periodic_callback"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.periodic_callback()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.default.train_time.TrainTimeCallback.after_training"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.after_training()</span></code></a></li>
 </ul>
 </li>
 </ul>

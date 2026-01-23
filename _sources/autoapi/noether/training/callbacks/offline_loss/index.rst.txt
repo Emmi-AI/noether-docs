@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: OfflineLossCallback(callback_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicIteratorCallback`
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicDataIteratorCallback`
 
 
    A periodic Callback that is invoked at the end of each epoch to calculate and track the loss and a dataset.
@@ -33,12 +33,22 @@ Module Contents
    .. py:attribute:: output_patterns_to_log
 
 
-   .. py:method:: _forward(batch, *, trainer_model, **_)
+   .. py:method:: process_data(batch, *, trainer_model, **_)
 
       Template method that is called for each batch that is loaded from the dataset.
 
       :param batch: The loaded batch.
       :param trainer_model: Model of the current training run.
+
+
+
+   .. py:method:: process_results(results, **_)
+
+      Template method that is called with the collated results that were produced by `iterate_over_dataset`.
+
+      :param results: The collated results that were produced by `_iterate_over_dataset`.
+      :param interval_type: The type of interval that triggered this callback invocation.
+      :param update_counter: The current update counter.
 
 
 

@@ -31,10 +31,18 @@ Module Contents
    :param name: Name of the callback.
 
 
-   .. py:method:: _before_training(**_)
+   .. py:method:: before_training(**_)
 
-      Template method for `before_training`. Derived classes should overwrite this method to do something before
-      training starts. Implementing this method is optional.
+      Hook called once before the training loop starts.
+
+      This method is intended to be overridden by derived classes to perform initialization
+      tasks before training begins. Common use cases include:
+      * Initializing experiment tracking (e.g., logging hyperparameters)
+      * Printing model summaries or architecture details
+      * Initializing specific data structures or buffers needed during training
+      * Performing sanity checks on the data or configuration
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param update_counter: UpdateCounter instance to access current training progress.
 

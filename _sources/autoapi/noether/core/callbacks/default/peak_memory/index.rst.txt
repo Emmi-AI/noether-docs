@@ -35,13 +35,27 @@ Module Contents
    :param name: Name of the callback.
 
 
-   .. py:method:: _periodic_callback(**__)
+   .. py:method:: periodic_callback(**__)
 
-      Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
-      overwrite this method to calculate metrics periodically during training and log them.
+      Hook called periodically based on the configured intervals.
+
+      This method is the primary entry point for periodic actions in subclasses. It is
+      triggered when any of the configured intervals (``every_n_epochs``, ``every_n_updates``,
+      or ``every_n_samples``) are reached.
+
+      Subclasses should override this method to implement periodic logic such as:
+      * Calculating and logging expensive validation metrics
+      * Saving specific model checkpoints or artifacts
+      * Visualizing training progress (e.g., plotting samples)
+      * Adjusting training hyperparameters or model state
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
-      :param update_counter: UpdateCounter instance to access current training progress.
+      :param update_counter: UpdateCounter instance providing details about the current
+                             training progress (epoch, update, sample counts).
+      :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
+                         (e.g., from ``after_epoch`` or ``after_update``).
 
 
 

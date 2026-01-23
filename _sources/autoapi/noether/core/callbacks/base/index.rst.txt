@@ -19,7 +19,7 @@ Module Contents
 
    Base class for callbacks that log something before/after training.
 
-   Allows overwriting `_before_training` and `_after_training`.
+   Allows overwriting `before_training` and `after_training`.
 
    If the callback is stateful (i.e., it tracks something across the training process that needs to be loaded if the
    run is resumed), there are two ways to implement loading the callback state:
@@ -48,11 +48,10 @@ Module Contents
            format_str=".2f",
        )
 
-   As evaluations are pretty much always done in torch.no_grad() contexts, the hooks implemented by callbacks
-   automatically apply the torch.no_grad() context. Therefore, the `CallbackBase` class makes use of the "template
-   method" design pattern, where templates (e.g. `before_training`) implement the invariant behavior (e.g., applying
-   torch.no_grad()). The template implementations start with an underscore (e.g., `_before_training`) and only these
-   methods should be implemented by child classes. Templates (e.g., `before_training`) should not be overwritten.
+   .. note::
+
+      As evaluations are pretty much always done in torch.no_grad() contexts, the hooks implemented by callbacks
+      are always executed within a torch.no_grad() context.
 
    :param trainer: Trainer of the current run.
    :param model: Model of the current run.
@@ -146,35 +145,35 @@ Module Contents
       Logger for logging to stdout.
 
 
-   .. py:method:: before_training(update_counter)
+   .. py:method:: before_training(*, update_counter)
 
-      Hook that is called before training starts. Applies `torch.no_grad()` context.
+      Hook called once before the training loop starts.
 
-      :param update_counter: UpdateCounter instance to access current training progress.
+      This method is intended to be overridden by derived classes to perform initialization
+      tasks before training begins. Common use cases include:
+      * Initializing experiment tracking (e.g., logging hyperparameters)
+      * Printing model summaries or architecture details
+      * Initializing specific data structures or buffers needed during training
+      * Performing sanity checks on the data or configuration
 
-
-
-   .. py:method:: after_training(update_counter)
-
-      Hook that is called after training ends. Applies `torch.no_grad()` context.
-
-      :param update_counter: UpdateCounter instance to access current training progress.
-
-
-
-   .. py:method:: _before_training(*, update_counter)
-
-      Template method for `before_training`. Derived classes should overwrite this method to do something before
-      training starts. Implementing this method is optional.
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param update_counter: UpdateCounter instance to access current training progress.
 
 
 
-   .. py:method:: _after_training(*, update_counter)
+   .. py:method:: after_training(*, update_counter)
 
-      Template method for `after_training`. Derived classes should overwrite this method to do something after
-      training ends. Implementing this method is optional.
+      Hook called once after the training loop finishes.
+
+      This method is intended to be overridden by derived classes to perform cleanup or
+      final reporting tasks after training is complete. Common use cases include:
+      * Performing a final evaluation on the test set
+      * Saving final model weights or artifacts
+      * Sending notifications (e.g., via Slack or email) about the completed run
+      * Closing or finalizing experiment tracking sessions
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param update_counter: UpdateCounter instance to access current training progress.
 
