@@ -569,7 +569,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../point_cloud/index.html">noether.data.point_cloud</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../preprocessors/index.html">noether.data.preprocessors</a><input class="toctree-checkbox" id="toctree-checkbox-47" name="toctree-checkbox-47" role="switch" type="checkbox"/><label for="toctree-checkbox-47"><div class="visually-hidden">Toggle navigation of noether.data.preprocessors</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../preprocessors/base/index.html">noether.data.preprocessors.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../preprocessors/compose/index.html">noether.data.preprocessors.compose</a></li>
@@ -801,8 +800,11 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.data.tools.calculate_statistics.save_statistics_to_json" title="noether.data.tools.calculate_statistics.save_statistics_to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_statistics_to_json</span></code></a>(running_stats, output_path, ...)</p></td>
 <td><p>Save calculated statistics to a JSON file.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.tools.calculate_statistics.main" title="noether.data.tools.calculate_statistics.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>(dataset_kind, log_scale, exclude_attributes[, ...])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.tools.calculate_statistics.calculate_dataset_statistics" title="noether.data.tools.calculate_statistics.calculate_dataset_statistics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calculate_dataset_statistics</span></code></a>(dataset_kind, log_scale, ...)</p></td>
 <td><p>Main function to calculate and display dataset statistics.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.tools.calculate_statistics.main" title="noether.data.tools.calculate_statistics.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>()</p></td>
+<td><p>CLI entry point for calculating dataset statistics.</p></td>
 </tr>
 </tbody>
 </table>
@@ -916,8 +918,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="noether.data.tools.calculate_statistics.main">
-<span class="sig-prename descclassname"><span class="pre">noether.data.tools.calculate_statistics.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_attributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_json</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">dataset_constructor_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.tools.calculate_statistics.main" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.data.tools.calculate_statistics.calculate_dataset_statistics">
+<span class="sig-prename descclassname"><span class="pre">noether.data.tools.calculate_statistics.</span></span><span class="sig-name descname"><span class="pre">calculate_dataset_statistics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_attributes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_json</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">dataset_constructor_args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.tools.calculate_statistics.calculate_dataset_statistics" title="Link to this definition">¶</a></dt>
 <dd><p>Main function to calculate and display dataset statistics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -932,6 +934,17 @@
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.data.tools.calculate_statistics.main">
+<span class="sig-prename descclassname"><span class="pre">noether.data.tools.calculate_statistics.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.tools.calculate_statistics.main" title="Link to this definition">¶</a></dt>
+<dd><p>CLI entry point for calculating dataset statistics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1009,6 +1022,7 @@
 <li><a class="reference internal" href="#noether.data.tools.calculate_statistics.calculate_statistics"><code class="docutils literal notranslate"><span class="pre">calculate_statistics()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.tools.calculate_statistics.print_statistics"><code class="docutils literal notranslate"><span class="pre">print_statistics()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.tools.calculate_statistics.save_statistics_to_json"><code class="docutils literal notranslate"><span class="pre">save_statistics_to_json()</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.tools.calculate_statistics.calculate_dataset_statistics"><code class="docutils literal notranslate"><span class="pre">calculate_dataset_statistics()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.tools.calculate_statistics.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>
 </li>

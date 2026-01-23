@@ -15,6 +15,7 @@ Functions
    noether.data.tools.calculate_statistics.calculate_statistics
    noether.data.tools.calculate_statistics.print_statistics
    noether.data.tools.calculate_statistics.save_statistics_to_json
+   noether.data.tools.calculate_statistics.calculate_dataset_statistics
    noether.data.tools.calculate_statistics.main
 
 
@@ -79,7 +80,7 @@ Module Contents
    :param log_scale: Set of attributes processed in log scale
 
 
-.. py:function:: main(dataset_kind, log_scale, exclude_attributes, output_json = None, num_workers = 0, **dataset_constructor_args)
+.. py:function:: calculate_dataset_statistics(dataset_kind, log_scale, exclude_attributes, output_json = None, num_workers = 0, **dataset_constructor_args)
 
    Main function to calculate and display dataset statistics.
 
@@ -89,5 +90,10 @@ Module Contents
    :param output_json: Optional path to save statistics as JSON
    :param num_workers: Number of workers for data loading
    :param dataset_constructor_args: Additional arguments for dataset constructor
+
+
+.. py:function:: main()
+
+   CLI entry point for calculating dataset statistics.
 
 
