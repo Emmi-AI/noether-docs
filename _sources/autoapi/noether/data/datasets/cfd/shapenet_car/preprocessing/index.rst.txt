@@ -1,0 +1,211 @@
+noether.data.datasets.cfd.shapenet_car.preprocessing
+====================================================
+
+.. py:module:: noether.data.datasets.cfd.shapenet_car.preprocessing
+
+.. autoapi-nested-parse::
+
+   Preprocessing script for ShapeNet car CFD dataset.
+
+   This script processes raw VTK files containing CFD simulation data and extracts
+   surface and volume data for machine learning applications.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.shapenet_car.preprocessing.logger
+   noether.data.datasets.cfd.shapenet_car.preprocessing.EXPECTED_SIMULATION_COUNT
+   noether.data.datasets.cfd.shapenet_car.preprocessing.NUM_PARAM_FOLDERS
+   noether.data.datasets.cfd.shapenet_car.preprocessing.EPSILON
+   noether.data.datasets.cfd.shapenet_car.preprocessing.PRESSURE_SURFACE_FILE
+   noether.data.datasets.cfd.shapenet_car.preprocessing.VELOCITY_VOLUME_FILE
+   noether.data.datasets.cfd.shapenet_car.preprocessing.PRESSURE_ARRAY_FILE
+   noether.data.datasets.cfd.shapenet_car.preprocessing.EXPECTED_CELL_TYPE
+   noether.data.datasets.cfd.shapenet_car.preprocessing.EXCLUDED_SIMULATIONS
+   noether.data.datasets.cfd.shapenet_car.preprocessing.parser
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.shapenet_car.preprocessing.load_unstructured_grid_data
+   noether.data.datasets.cfd.shapenet_car.preprocessing.unstructured_grid_data_to_poly_data
+   noether.data.datasets.cfd.shapenet_car.preprocessing.get_sdf
+   noether.data.datasets.cfd.shapenet_car.preprocessing.get_normal
+   noether.data.datasets.cfd.shapenet_car.preprocessing.get_simulation_relative_paths
+   noether.data.datasets.cfd.shapenet_car.preprocessing.load_simulation_data
+   noether.data.datasets.cfd.shapenet_car.preprocessing.save_preprocessed_data
+   noether.data.datasets.cfd.shapenet_car.preprocessing.process_single_simulation
+   noether.data.datasets.cfd.shapenet_car.preprocessing.main
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:data:: EXPECTED_SIMULATION_COUNT
+   :value: 889
+
+
+.. py:data:: NUM_PARAM_FOLDERS
+   :value: 9
+
+
+.. py:data:: EPSILON
+   :value: 1e-08
+
+
+.. py:data:: PRESSURE_SURFACE_FILE
+   :value: 'quadpress_smpl.vtk'
+
+
+.. py:data:: VELOCITY_VOLUME_FILE
+   :value: 'hexvelo_smpl.vtk'
+
+
+.. py:data:: PRESSURE_ARRAY_FILE
+   :value: 'press.npy'
+
+
+.. py:data:: EXPECTED_CELL_TYPE
+   :value: 'quad'
+
+
+.. py:data:: EXCLUDED_SIMULATIONS
+
+.. py:function:: load_unstructured_grid_data(file_path)
+
+   Load unstructured grid data from a VTK file.
+
+   :param file_path: Path to the VTK file containing unstructured grid data
+
+   :returns: vtkUnstructuredGrid object containing the loaded data
+
+
+.. py:function:: unstructured_grid_data_to_poly_data(unstructured_grid_data)
+
+   Convert unstructured grid data to poly data by extracting the surface.
+
+   :param unstructured_grid_data: vtkUnstructuredGrid object to convert
+
+   :returns: vtkPolyData object representing the surface
+
+   .. note:: The surface_filter is kept alive to maintain VTK object references.
+
+
+.. py:function:: get_sdf(target_points, boundary_points)
+
+   Calculate signed distance field and normal directions from target points to boundary.
+
+   :param target_points: (N, 3) array of points where SDF is computed
+   :param boundary_points: (M, 3) array of boundary surface points
+
+   :returns:
+
+             - distances: (N,) array of distances to nearest boundary point
+             - directions: (N, 3) array of normalized direction vectors to nearest boundary point
+   :rtype: Tuple of (distances, directions) where
+
+
+.. py:function:: get_normal(unstructured_grid_data)
+
+   Compute normalized surface normals from unstructured grid data.
+
+   :param unstructured_grid_data: vtkUnstructuredGrid object containing the mesh
+
+   :returns: (N, 3) array of normalized normal vectors at each point
+
+   :raises RuntimeError: If NaN values are detected in the computed normals
+
+   .. note:: This function modifies the input unstructured_grid_data by setting cell normals.
+
+
+.. py:function:: get_simulation_relative_paths(root)
+
+   Get relative paths to all valid simulation directories in the dataset.
+
+   The dataset is organized into 9 parameter folders (param0-param8), each containing
+   multiple simulation subdirectories. Some simulations are excluded due to missing required files.
+
+   :param root: Path to the root directory containing param folders
+
+   :returns: List of Path objects representing relative paths to valid simulations
+
+   :raises ValueError: If the expected number of simulations is not found
+   :raises FileNotFoundError: If a parameter folder does not exist
+
+
+.. py:function:: load_simulation_data(root, simulation_relative_path)
+
+   Load and process data for a single simulation.
+
+   :param root: Root directory containing raw data
+   :param simulation_relative_path: Relative path to the simulation directory
+
+   :returns:
+
+             Tuple of (surface_pressure, surface_position, surface_normals, mask,
+                      exterior_points, exterior_velocity, exterior_sdf, exterior_normals)
+
+   :raises FileNotFoundError: If required files are missing
+   :raises ValueError: If data validation fails
+
+
+.. py:function:: save_preprocessed_data(save_path, surface_pressure, surface_position, surface_normals, mask, exterior_points, exterior_velocity, exterior_sdf, exterior_normals)
+
+   Save preprocessed simulation data to disk.
+
+   :param save_path: Directory where preprocessed data will be saved
+   :param surface_pressure: Surface pressure values
+   :param surface_position: Surface point positions
+   :param surface_normals: Surface normal vectors
+   :param mask: Boolean mask for valid surface points
+   :param exterior_points: Exterior (volume) point positions
+   :param exterior_velocity: Velocity at exterior points
+   :param exterior_sdf: Signed distance field at exterior points
+   :param exterior_normals: Normal vectors at exterior points
+
+
+.. py:function:: process_single_simulation(root, simulation_relative_path, output_dir)
+
+   Process a single simulation: load data, validate, and save.
+
+   :param root: Root directory containing raw data
+   :param simulation_relative_path: Relative path to the simulation
+   :param output_dir: Output directory for preprocessed data
+
+   :raises Various exceptions from data loading and validation:
+
+
+.. py:function:: main(root, output_dir, continue_on_error = False, dry_run = False, overwrite = False)
+
+   Preprocess ShapeNet car dataset.
+
+   :param root: Path to the root directory containing the raw data
+   :param output_dir: Path to the output directory where preprocessed data will be saved
+   :param continue_on_error: If True, continue processing on errors instead of stopping
+   :param dry_run: If True, only validate data without saving
+   :param overwrite: If True, allow overwriting existing output directory
+
+   :returns:
+
+             {
+                 'total': total simulations,
+                 'success': successfully processed,
+                 'failed': failed to process
+             }
+   :rtype: Dictionary with statistics
+
+   :raises FileNotFoundError: If root directory does not exist
+   :raises FileExistsError: If output directory exists and overwrite is False
+
+
+.. py:data:: parser
+

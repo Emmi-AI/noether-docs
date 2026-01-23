@@ -1,0 +1,97 @@
+noether.core.schemas.models.upt
+===============================
+
+.. py:module:: noether.core.schemas.models.upt
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.models.upt.UPTConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: UPTConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+
+
+   Configuration for a Transolver model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: num_heads
+      :type:  int
+      :value: None
+
+
+      Number of attention heads in the model.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the model.
+
+
+   .. py:attribute:: mlp_expansion_factor
+      :type:  int
+      :value: None
+
+
+      Expansion factor for the MLP of the FF layers.
+
+
+   .. py:attribute:: approximator_depth
+      :type:  int
+      :value: None
+
+
+      Number of approximator layers.
+
+
+   .. py:attribute:: use_rope
+      :type:  bool
+      :value: None
+
+
+
+   .. py:attribute:: supernode_pooling_config
+      :type:  noether.core.schemas.modules.SupernodePoolingConfig
+
+
+   .. py:attribute:: approximator_config
+      :type:  noether.core.schemas.modules.blocks.TransformerBlockConfig
+
+
+   .. py:attribute:: decoder_config
+      :type:  noether.core.schemas.modules.DeepPerceiverDecoderConfig
+
+
+   .. py:attribute:: bias_layers
+      :type:  bool
+      :value: None
+
+
+
+   .. py:attribute:: data_specs
+      :type:  noether.core.schemas.dataset.AeroDataSpecs
+
+

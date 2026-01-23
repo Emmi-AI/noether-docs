@@ -1,0 +1,51 @@
+noether.data.preprocessors.base
+===============================
+
+.. py:module:: noether.data.preprocessors.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.preprocessors.base.PreProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: PreProcessor(normalization_key)
+
+   Base class for all data preprocessors.
+   .. rubric:: Example
+
+   >>> class MyPreProcessor(PreProcessor):
+   >>>     def __init__(self, normalization_key: "image"):
+   >>>         super().__init__(normalization_key=normalization_key)
+   >>>     def __call__(self, x):
+   >>> # Example processing: normalize to [0, 1]
+   >>>         return x / 255.0
+   >>>     def denormalize(self, x):
+   >>> # Example denormalization: scale back to [0, 255]
+   >>>         return x * 255.0
+
+   :param normalization_key: key to identify on which getitem_ in the dataset/tensor the preprocessor is applied.
+
+   :raises TypeError: If normalization_key is not a string.
+
+
+   .. py:attribute:: normalization_key
+
+
+   .. py:method:: denormalize(x)
+      :abstractmethod:
+
+
+      Denormalizes the input data. This method should be overridden by subclasses if denormalization is supported.
+      If denormalization is not supported, it raises NotImplementedError or decide to implement the identity function.
+
+      :param x: The input tensor to denormalize.
+
+
+

@@ -1,0 +1,91 @@
+noether.core.scripts.validate_pytorch_compatibilities
+=====================================================
+
+.. py:module:: noether.core.scripts.validate_pytorch_compatibilities
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.scripts.validate_pytorch_compatibilities.StabilityTestModel
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.scripts.validate_pytorch_compatibilities.run_cuda_assertions
+   noether.core.scripts.validate_pytorch_compatibilities.generate_fake_data
+   noether.core.scripts.validate_pytorch_compatibilities.set_deterministic_mode
+   noether.core.scripts.validate_pytorch_compatibilities.main
+
+
+Module Contents
+---------------
+
+.. py:function:: run_cuda_assertions()
+
+   Strictly checks if CUDA is available and configured for all libraries.
+   Fails hard if any check fails.
+
+
+.. py:class:: StabilityTestModel(in_features, hidden_features, out_features, aggregation='mean')
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   A "kitchen sink" model designed to stress-test the exact kernels we use.
+   It uses:
+   - radius_graph (torch_geometric.nn.pool)
+   - knn_graph (torch_geometric.nn.pool)
+   - scatter (torch_scatter - for message passing)
+   - segment_csr (torch_scatter - for global pooling)
+
+   Initialize internal Module state, shared by both nn.Module and ScriptModule.
+
+
+   .. py:attribute:: aggregation
+      :value: 'mean'
+
+
+
+   .. py:attribute:: lin1
+
+
+   .. py:attribute:: lin2
+
+
+   .. py:attribute:: lin_out
+
+
+   .. py:attribute:: radius
+      :value: 1.0
+
+
+
+   .. py:attribute:: k
+      :value: 8
+
+
+
+   .. py:method:: forward(x, pos, batch)
+
+
+.. py:function:: generate_fake_data(num_graphs, nodes_per_graph, num_features, device)
+
+   Generates a batch of fake graph data directly on the GPU.
+
+
+.. py:function:: set_deterministic_mode(seed)
+
+   Sets PyTorch deterministic settings for reproducibility.
+
+
+.. py:function:: main()
+
+   Main stability test function.
+
+

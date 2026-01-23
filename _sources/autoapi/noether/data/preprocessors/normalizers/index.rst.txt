@@ -1,0 +1,109 @@
+noether.data.preprocessors.normalizers
+======================================
+
+.. py:module:: noether.data.preprocessors.normalizers
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer
+   noether.data.preprocessors.normalizers.MeanStdNormalization
+   noether.data.preprocessors.normalizers.PositionNormalizer
+
+
+Module Contents
+---------------
+
+.. py:class:: ShiftAndScaleNormalizer(normalizer_config, **kwargs)
+
+   Bases: :py:obj:`noether.data.preprocessors.PreProcessor`
+
+
+   Preprocessor that shifts and scales the input data, with (x + shift) * scale.
+
+   :param normalizer_config: Configuration containing shift and scale values.
+
+   :raises ValueError: If `shift` and `scale` do not have the same length.
+   :raises ValueError: If `logscale_shift` and `logscale_scale` do not have the same length when `logscale` is True.
+   :raises TypeError: If `shift`, `scale`, `logscale_shift`, or `logscale_scale` are not of type Sequence or torch.Tensor.
+   :raises ValueError: If `scale` contains zero values (to avoid division by zero).
+   :raises ValueError: If `scale` contains negative values.
+   :raises ValueError: If `shift` and `scale` are provided but not both.
+
+
+   .. py:attribute:: shift
+      :type:  torch.Tensor | None
+      :value: None
+
+
+
+   .. py:attribute:: scale
+      :type:  torch.Tensor | None
+      :value: None
+
+
+
+   .. py:attribute:: logscale
+
+
+   .. py:method:: denormalize(x)
+
+      Denormalizes the input data by applying the inverse operation of the normalization.
+
+      :param x: torch.Tensor: The input tensor to denormalize.
+
+
+
+.. py:class:: MeanStdNormalization(normalizer_config, **kwargs)
+
+   Bases: :py:obj:`ShiftAndScaleNormalizer`
+
+
+   Normalizes data using mean and standard deviation. It shifts the data by subtracting the mean and scales it by dividing by the standard deviation.
+
+   :param normalizer_config: Configuration containing mean and std values. Imports MeanStdNormalizerConfig.
+   :param \*\*kwargs: Additional arguments passed to the parent class.
+
+   :raises ValueError: If `mean` and `std` do not have the same length.
+   :raises ValueError: If any value in `std` is zero (to avoid division by zero).
+   :raises ValueError: If any value in `std` is negative.
+
+
+   .. py:attribute:: EPSILON
+      :value: 1e-06
+
+
+
+   .. py:attribute:: mean
+
+
+   .. py:attribute:: std
+
+
+.. py:class:: PositionNormalizer(normalizer_config, **kwargs)
+
+   Bases: :py:obj:`ShiftAndScaleNormalizer`
+
+
+   Normalizes position data to a range of [0, scale]. It inherits from ShiftAndScaleNormalizer and applies a shift and scale based on the provided raw position min and max values.
+
+   :param normalizer_config: Configuration containing raw position min, max, and scale values.
+   :param \*\*kwargs: Additional arguments passed to the parent class.
+
+   :raises ValueError: If `raw_pos_min` and `raw_pos_max` do not have the same length.
+   :raises ValueError: If `raw_pos_max` is equal to `raw_pos_min`.
+   :raises ValueError: If `scale` is not a positive number.
+
+
+   .. py:attribute:: raw_pos_min
+
+
+   .. py:attribute:: raw_pos_max
+
+
+   .. py:attribute:: resizing_scale
+
+

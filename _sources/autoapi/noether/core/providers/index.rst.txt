@@ -1,0 +1,16 @@
+noether.core.providers
+======================
+
+.. py:module:: noether.core.providers
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/providers/metric_property/index
+   /autoapi/noether/core/providers/path/index
+
+

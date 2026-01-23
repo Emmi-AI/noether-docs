@@ -1,0 +1,33 @@
+noether.modeling.modules.attention
+==================================
+
+.. py:module:: noether.modeling.modules.attention
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/modeling/modules/attention/anchor_attention/index
+   /autoapi/noether/modeling/modules/attention/dot_product/index
+   /autoapi/noether/modeling/modules/attention/perceiver/index
+   /autoapi/noether/modeling/modules/attention/transolver/index
+   /autoapi/noether/modeling/modules/attention/transolver_plusplus/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.modeling.modules.attention.ATTENTION_REGISTRY
+
+
+Package Contents
+----------------
+
+.. py:data:: ATTENTION_REGISTRY
+   :type:  dict[str, type[torch.nn.Module]]
+

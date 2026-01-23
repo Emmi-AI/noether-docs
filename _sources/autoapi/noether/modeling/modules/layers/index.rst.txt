@@ -1,0 +1,21 @@
+noether.modeling.modules.layers
+===============================
+
+.. py:module:: noether.modeling.modules.layers
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/modeling/modules/layers/continuous_sincos_embed/index
+   /autoapi/noether/modeling/modules/layers/drop_path/index
+   /autoapi/noether/modeling/modules/layers/layer_scale/index
+   /autoapi/noether/modeling/modules/layers/linear_projection/index
+   /autoapi/noether/modeling/modules/layers/rope_frequency/index
+   /autoapi/noether/modeling/modules/layers/scalar_conditioner/index
+   /autoapi/noether/modeling/modules/layers/transformer_batchnorm/index
+
+

@@ -1,0 +1,41 @@
+noether.core.utils.common.naming
+================================
+
+.. py:module:: noether.core.utils.common.naming
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.common.naming.pascal_to_snake
+   noether.core.utils.common.naming.lower_type_name
+   noether.core.utils.common.naming.snake_type_name
+
+
+Module Contents
+---------------
+
+.. py:function:: pascal_to_snake(pascal_case)
+
+   Convert pascal/camel to snake case using Regex.
+
+   Handles acronyms and numbers correctly.
+   .. rubric:: Example
+
+   XMLParser -> xml_parser
+   HTTPClient -> http_client
+   V2Model -> v2_model
+
+
+.. py:function:: lower_type_name(obj)
+
+   Return the type name of an object in lowercase.
+
+
+.. py:function:: snake_type_name(obj)
+
+   Return the type name of an object in snake case.
+
+

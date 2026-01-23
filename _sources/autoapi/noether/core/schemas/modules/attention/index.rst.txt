@@ -1,0 +1,409 @@
+noether.core.schemas.modules.attention
+======================================
+
+.. py:module:: noether.core.schemas.modules.attention
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.modules.attention.AttentionConfig
+   noether.core.schemas.modules.attention.DotProductAttentionConfig
+   noether.core.schemas.modules.attention.TransolverAttentionConfig
+   noether.core.schemas.modules.attention.TransolverPlusPlusAttentionConfig
+   noether.core.schemas.modules.attention.IrregularNatAttentionConfig
+   noether.core.schemas.modules.attention.PerceiverAttentionConfig
+   noether.core.schemas.modules.attention.MultiBranchAnchorAttentionConfig
+   noether.core.schemas.modules.attention.CrossAnchorAttentionConfig
+   noether.core.schemas.modules.attention.JointAnchorAttentionConfig
+   noether.core.schemas.modules.attention.TokenSpec
+   noether.core.schemas.modules.attention.AttentionPattern
+   noether.core.schemas.modules.attention.MixedAttentionConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: AttentionConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for an attention module.
+   Since we can have many different attention implementations, we allow extra fields.
+   such that we can use the same schema for all attention modules.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for an attention module.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the hidden features.
+
+
+   .. py:attribute:: num_heads
+      :type:  int
+      :value: None
+
+
+      Number of attention heads.
+
+
+   .. py:attribute:: use_rope
+      :type:  bool
+      :value: None
+
+
+      Whether to use Rotary Positional Embeddings (RoPE).
+
+
+   .. py:attribute:: dropout
+      :type:  float
+      :value: None
+
+
+      Dropout rate for the attention weights and output projection.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Weight initialization strategy.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias terms in linear layers.
+
+
+   .. py:attribute:: head_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimensionality of each attention head.
+
+
+   .. py:method:: validate_hidden_dim_and_num_heads()
+
+
+.. py:class:: DotProductAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for the Dot Product attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+.. py:class:: TransolverAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for the Transolver attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: num_slices
+      :type:  int
+      :value: None
+
+
+      Number of slices to project the input tokens to.
+
+
+.. py:class:: TransolverPlusPlusAttentionConfig(/, **data)
+
+   Bases: :py:obj:`TransolverAttentionConfig`
+
+
+   Configuration for the Transolver++ attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: use_overparameterization
+      :type:  bool
+      :value: None
+
+
+      Whether to use overparameterization for the slice projection.
+
+
+   .. py:attribute:: use_adaptive_temperature
+      :type:  bool
+      :value: None
+
+
+      Whether to use an adaptive temperature for the slice selection.
+
+
+   .. py:attribute:: temperature_activation
+      :type:  Literal['sigmoid', 'softplus', 'exp'] | None
+      :value: None
+
+
+      Activation function for the adaptive temperature.
+
+
+   .. py:attribute:: use_gumbel_softmax
+      :type:  bool
+      :value: None
+
+
+      Whether to use Gumbel-Softmax for the slice selection.
+
+
+.. py:class:: IrregularNatAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for the Irregular Neighbourhood Attention Transformer (NAT) attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the input features.
+
+
+   .. py:attribute:: radius
+      :type:  float
+      :value: None
+
+
+      Radius for the radius graph.
+
+
+   .. py:attribute:: max_degree
+      :type:  int
+      :value: None
+
+
+      Maximum number of neighbors per point.
+
+
+   .. py:attribute:: relpos_mlp_hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimensionality of the relative position bias MLP.
+
+
+   .. py:attribute:: relpos_mlp_dropout
+      :type:  float
+      :value: None
+
+
+      Dropout rate for the relative position bias MLP.
+
+
+.. py:class:: PerceiverAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for the Perceiver attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kv_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimensionality of the key/value features. If None, use hidden_dim.
+
+
+   .. py:method:: set_kv_dim()
+
+
+.. py:class:: MultiBranchAnchorAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for Multi-Branch Anchor Attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: branches
+      :type:  list[str]
+      :value: None
+
+
+
+   .. py:attribute:: anchor_suffix
+      :type:  str
+      :value: None
+
+
+
+.. py:class:: CrossAnchorAttentionConfig(/, **data)
+
+   Bases: :py:obj:`MultiBranchAnchorAttentionConfig`
+
+
+   Configuration for Cross Anchor Attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+.. py:class:: JointAnchorAttentionConfig(/, **data)
+
+   Bases: :py:obj:`MultiBranchAnchorAttentionConfig`
+
+
+   Configuration for Joint Anchor Attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+.. py:class:: TokenSpec(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Specification for a token type in the attention mechanism.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['surface_anchors', 'volume_anchors', 'surface_queries', 'volume_queries']
+
+
+   .. py:attribute:: size
+      :type:  int
+      :value: None
+
+
+
+   .. py:method:: from_dict(token_dict)
+      :classmethod:
+
+
+      Create TokenSpec from dictionary with single key-value pair.
+
+
+
+   .. py:method:: to_dict()
+
+      Convert TokenSpec to dictionary.
+
+
+
+.. py:class:: AttentionPattern(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Defines which tokens attend to which other tokens.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: query_tokens
+      :type:  collections.abc.Sequence[str]
+
+
+   .. py:attribute:: key_value_tokens
+      :type:  collections.abc.Sequence[str]
+
+
+.. py:class:: MixedAttentionConfig(/, **data)
+
+   Bases: :py:obj:`DotProductAttentionConfig`
+
+
+   Configuration for Mixed Attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+

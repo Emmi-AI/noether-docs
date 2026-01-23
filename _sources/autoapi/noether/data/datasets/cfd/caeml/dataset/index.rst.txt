@@ -1,0 +1,69 @@
+noether.data.datasets.cfd.caeml.dataset
+=======================================
+
+.. py:module:: noether.data.datasets.cfd.caeml.dataset
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.dataset.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.dataset.CAEMLDataset
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: CAEMLDataset(dataset_config, dataset_name, filemap=CAEML_FILEMAP)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.dataset.AeroDataset`
+
+
+   Dataset implementation for CAEML datasets AhmedML and DrivAerML.
+
+   :param dataset_config: Configuration for the dataset.
+   :param dataset_name: Name of the dataset.
+
+   :param dataset_config: Configuration for the dataset.
+   :param dataset_name: Name of the dataset.
+
+   :raises TypeError: If dataset_config is not ShapeNetDatasetConfig
+   :raises ValueError: If configuration is invalid or split is unknown
+   :raises FileNotFoundError: If data directory does not exist
+
+
+   .. py:attribute:: split
+
+
+   .. py:attribute:: source_root
+
+
+   .. py:property:: supported_splits
+      :type: set[str]
+
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+      :abstractmethod:
+
+
+
+   .. py:method:: sample_info(idx)
+
+      Get information about a sample such as its local path, run name, etc.
+
+
+

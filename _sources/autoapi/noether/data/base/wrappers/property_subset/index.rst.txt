@@ -1,0 +1,73 @@
+noether.data.base.wrappers.property_subset
+==========================================
+
+.. py:module:: noether.data.base.wrappers.property_subset
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.base.wrappers.property_subset.PropertySubsetWrapper
+
+
+Module Contents
+---------------
+
+.. py:class:: PropertySubsetWrapper(dataset, properties)
+
+   Bases: :py:obj:`noether.data.base.DatasetWrapper`
+
+
+   Wrapper around arbitrary noether.data.Dataset instances to make __getitem__ load the properties that are defined
+   in the `properties` attribute of this wrapper. For example, if we have a dataset that contains three kinds of items: "x", "y", and "z"
+   (i.e., the dataset implements `getitem_x`, `getitem_y`, and `getitem_z` methods), we can create a PropertySubsetWrapper around that dataset with `properties={"x", "y"}`.
+   to only load "x" and "y" when __getitem__ is called. This is useful to avoid loading unnecessary data from disk. For example, it might be that you need different items from the same dataset
+   during training and validation. During training, you might only need "x" and "y", while during validation you might need "x", "y", and "z".
+   By using a PropertySubsetWrapper, you can create two different datasets for training and validation that only load the necessary items.
+
+   .. rubric:: Example
+
+   >>> class DummyDataset(Dataset):
+   >>>     def __init__(self):
+   >>>         self.data  = torch.arange(10)
+   >>>     def getitem_x(self, idx):
+   >>>         return self.data[idx] * 2
+   >>>     def getitem_y(self, idx):
+   >>>         return self.data[idx] + 3
+   >>>     def getitem_z(self, idx):
+   >>>         return self.data[idx] - 5
+   >>>     def __len__(self):
+   >>>         return len(self.data)
+   >>> dataset = DummyDataset()
+   >>> wrapper = PropertySubsetWrapper(dataset=dataset, modes={"x", "y"})
+   >>> sample = wrapper[4]  # calls dataset.getitem_x(4) and dataset.getitem_y(4), getitem_z is not called
+   >>> sample  # {"x": 8, "y": 7}
+   >>> wrapper.properties  # {"x", "y"}
+
+   :param dataset: Base dataset to be wrapped.
+   :param properties: Which properties to load from the wrapped dataset when __getitem__ is called.
+
+   :raises TypeError: If modes is not a set.
+   :raises ValueError: If modes is empty or if any mode does not correspond to a getitem
+
+
+   .. py:attribute:: properties
+
+
+   .. py:method:: from_included_excluded(dataset, included_properties, excluded_properties)
+      :classmethod:
+
+
+      Creates a PropertySubsetWrapper from included and excluded properties.
+
+      :param dataset: Base dataset to be wrapped.
+      :param included_properties: If defined, only these properties are included.
+      :param excluded_properties: If defined, these properties are excluded.
+
+      :returns: The created PropertySubsetWrapper.
+      :rtype: PropertySubsetWrapper
+
+
+

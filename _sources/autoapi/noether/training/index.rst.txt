@@ -1,0 +1,18 @@
+noether.training
+================
+
+.. py:module:: noether.training
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/training/callbacks/index
+   /autoapi/noether/training/cli/index
+   /autoapi/noether/training/runners/index
+   /autoapi/noether/training/trainers/index
+
+

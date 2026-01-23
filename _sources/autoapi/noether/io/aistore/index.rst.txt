@@ -1,0 +1,26 @@
+noether.io.aistore
+==================
+
+.. py:module:: noether.io.aistore
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.aistore.group_data_by_paths
+
+
+Module Contents
+---------------
+
+.. py:function:: group_data_by_paths(samples)
+
+   Groups a list of all aistore objects by their path such that those in the same folder belong together.
+   :param samples: List of all aistore objects of type 'Object'.
+
+   :returns: A map from paths to grouped data, where grouped data is represented by a dictionary, mapping the filename
+             to the respective aistore object.
+
+

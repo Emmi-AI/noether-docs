@@ -1,0 +1,39 @@
+noether.modeling.modules.layers.layer_scale
+===========================================
+
+.. py:module:: noether.modeling.modules.layers.layer_scale
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.layers.layer_scale.LayerScale
+
+
+Module Contents
+---------------
+
+.. py:class:: LayerScale(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   LayerScale module scales the input tensor by a learnable parameter gamma.
+
+   Initialize the LayerScale module.
+   :param hidden_dim: Number of dimensions of the input tensor to be scaled.
+   :param init_scale: Initial gamme scale value. Defaults to 1e-5.
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the LayerScale module.
+
+      :param x: Input tensor to be scaled.
+
+      :returns: Tensor scaled by the gamma parameter.
+
+
+

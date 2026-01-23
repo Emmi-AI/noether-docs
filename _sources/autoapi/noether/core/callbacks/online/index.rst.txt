@@ -1,0 +1,16 @@
+noether.core.callbacks.online
+=============================
+
+.. py:module:: noether.core.callbacks.online
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/callbacks/online/best_metric/index
+   /autoapi/noether/core/callbacks/online/update_output/index
+
+

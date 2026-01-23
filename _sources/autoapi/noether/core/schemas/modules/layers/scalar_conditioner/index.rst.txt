@@ -1,0 +1,54 @@
+noether.core.schemas.modules.layers.scalar_conditioner
+======================================================
+
+.. py:module:: noether.core.schemas.modules.layers.scalar_conditioner
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.modules.layers.scalar_conditioner.ScalarsConditionerConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: ScalarsConditionerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimension for embedding the scalars and the per-scalar MLP.
+
+
+   .. py:attribute:: num_scalars
+      :type:  int
+      :value: None
+
+
+      How many scalars are embedded.
+
+
+   .. py:attribute:: condition_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimension of the final conditioning vector. Defaults to 4 * dim if condition_dim is None.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: 'truncnormal002'
+
+
+      Weight initialization for MLPs.
+
+

@@ -1,0 +1,18 @@
+noether.data.base
+=================
+
+.. py:module:: noether.data.base
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/data/base/dataset/index
+   /autoapi/noether/data/base/subset/index
+   /autoapi/noether/data/base/wrapper/index
+   /autoapi/noether/data/base/wrappers/index
+
+

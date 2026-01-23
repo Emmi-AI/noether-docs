@@ -1,0 +1,206 @@
+noether.core.models.base
+========================
+
+.. py:module:: noether.core.models.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.models.base.ModelBase
+
+
+Module Contents
+---------------
+
+.. py:class:: ModelBase(model_config, update_counter = None, path_provider = None, data_container = None, initializer_config = None, static_context = None)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Base class for all neural network modules.
+
+   Your models should also subclass this class.
+
+   Modules can also contain other Modules, allowing them to be nested in
+   a tree structure. You can assign the submodules as regular attributes::
+
+       import torch.nn as nn
+       import torch.nn.functional as F
+
+
+       class Model(nn.Module):
+           def __init__(self) -> None:
+               super().__init__()
+               self.conv1 = nn.Conv2d(1, 20, 5)
+               self.conv2 = nn.Conv2d(20, 20, 5)
+
+           def forward(self, x):
+               x = F.relu(self.conv1(x))
+               return F.relu(self.conv2(x))
+
+   Submodules assigned in this way will be registered, and will also have their
+   parameters converted when you call :meth:`to`, etc.
+
+   .. note::
+       As per the example above, an ``__init__()`` call to the parent class
+       must be made before assignment on the child.
+
+   :ivar training: Boolean represents whether this module is in training or
+                   evaluation mode.
+   :vartype training: bool
+
+   Base class for models that is used to define the interface for all models trainable by the trainers.
+
+   Provides methods to initialize the model weights and setup (model-specific) optimizers.
+
+   :param model_config: Model configuration.
+   :param update_counter: The update counter provided to the optimizer.
+   :param path_provider: A path provider used by the initializer to store or retrieve checkpoints.
+   :param data_container: The data container which includes the data and dataloader.
+                          This is currently unused but helpful for quick prototyping only, evaluating forward in debug mode, etc.
+   :param initializer_config: The initializer config used to initialize the model e.g. from a checkpoint.
+   :param static_context: The static context used to pass information between submodules, e.g. patch_size, latent_dim.
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: update_counter
+      :value: None
+
+
+
+   .. py:attribute:: path_provider
+      :value: None
+
+
+
+   .. py:attribute:: data_container
+      :value: None
+
+
+
+   .. py:attribute:: initializers
+      :type:  list[noether.core.initializers.InitializerBase]
+      :value: []
+
+
+
+   .. py:attribute:: static_context
+
+
+   .. py:attribute:: model_config
+
+
+   .. py:attribute:: is_initialized
+      :value: False
+
+
+
+   .. py:property:: optimizer
+      :type: noether.core.optimizer.OptimizerWrapper | None
+
+
+
+   .. py:property:: device
+      :type: torch.device
+
+      :abstractmethod:
+
+
+
+   .. py:property:: is_frozen
+      :type: bool
+
+      :abstractmethod:
+
+
+
+   .. py:property:: param_count
+      :type: int
+
+
+
+   .. py:property:: trainable_param_count
+      :type: int
+
+
+
+   .. py:property:: frozen_param_count
+      :type: int
+
+
+
+   .. py:property:: nograd_paramnames
+      :type: list[str]
+
+
+
+   .. py:method:: initialize()
+
+      Initializes weights and optimizer parameters of the model.
+
+
+
+   .. py:method:: get_named_models()
+      :abstractmethod:
+
+
+      Returns a dict of {model_name: model}, e.g., to log all learning rates of all models/submodels.
+
+
+
+   .. py:method:: initialize_weights()
+      :abstractmethod:
+
+
+      Initialize the weights of the model.
+
+
+
+   .. py:method:: apply_initializers()
+      :abstractmethod:
+
+
+      Apply the initializers to the model.
+
+
+
+   .. py:method:: initialize_optimizer()
+      :abstractmethod:
+
+
+      Initialize the optimizer of the model.
+
+
+
+   .. py:method:: optimizer_step(grad_scaler)
+      :abstractmethod:
+
+
+      Perform an optimization step.
+
+
+
+   .. py:method:: optimizer_schedule_step()
+      :abstractmethod:
+
+
+      Perform the optimizer learning rate scheduler step.
+
+
+
+   .. py:method:: optimizer_zero_grad(set_to_none = True)
+      :abstractmethod:
+
+
+      Zero the gradients of the optimizer.
+
+
+

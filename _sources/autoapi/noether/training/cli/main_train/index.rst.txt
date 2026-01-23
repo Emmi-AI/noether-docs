@@ -1,0 +1,19 @@
+noether.training.cli.main_train
+===============================
+
+.. py:module:: noether.training.cli.main_train
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.training.cli.main_train.main
+
+
+Module Contents
+---------------
+
+.. py:function:: main(config)
+

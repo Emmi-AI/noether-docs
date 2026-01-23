@@ -1,0 +1,44 @@
+noether.io.cli.cli_checkpoint
+=============================
+
+.. py:module:: noether.io.cli.cli_checkpoint
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_checkpoint.RICH_MARKUP_MODE
+   noether.io.cli.cli_checkpoint.CTX
+   noether.io.cli.cli_checkpoint.checkpoint_app
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_checkpoint.to_jsonable
+   noether.io.cli.cli_checkpoint.checkpoint_fetch
+   noether.io.cli.cli_checkpoint.checkpoint_verify
+
+
+Module Contents
+---------------
+
+.. py:data:: RICH_MARKUP_MODE
+   :type:  Literal['markdown', 'rich']
+   :value: 'rich'
+
+
+.. py:data:: CTX
+
+.. py:data:: checkpoint_app
+
+.. py:function:: to_jsonable(obj)
+
+.. py:function:: checkpoint_fetch(checkpoint = typer.Argument(..., help='URI or local path (hf://, s3://, file:// or plain path)'), cache_dir = typer.Option(Path.home() / '.cache' / 'emmi' / 'checkpoints', '--cache-dir'), expected_sha256 = typer.Option(None, '--sha256', help='Expected SHA-256 (hex)'), verify_load = typer.Option(None, '--verify-load', help='pt|ts|onnx'), min_free_mb = typer.Option(None, '--min-free-mb'))
+
+.. py:function:: checkpoint_verify(path = typer.Argument(..., exists=True), expected_sha256 = typer.Option(None, '--sha256'), verify_load = typer.Option(None, '--verify-load', help='pt|ts|onnx'))
+

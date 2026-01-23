@@ -1,0 +1,46 @@
+noether.data.datasets.cfd.caeml.drivaerml.dataset
+=================================================
+
+.. py:module:: noether.data.datasets.cfd.caeml.drivaerml.dataset
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.drivaerml.dataset.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.drivaerml.dataset.DrivAerMLDataset
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: DrivAerMLDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.caeml.dataset.CAEMLDataset`
+
+
+   Dataset implementation for DrivaerML CFD simulations.
+
+   :param dataset_config: Configuration for the dataset.
+
+   Initialize the DrivaerML dataset.
+
+   :param dataset_config: Configuration for the dataset.
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+

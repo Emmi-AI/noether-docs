@@ -1,0 +1,43 @@
+noether.io.checkpoint.iohash
+============================
+
+.. py:module:: noether.io.checkpoint.iohash
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.checkpoint.iohash.DEFAULT_CHUNK
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.checkpoint.iohash.atomic_write_and_hash
+
+
+Module Contents
+---------------
+
+.. py:data:: DEFAULT_CHUNK
+   :value: 1048576
+
+
+.. py:function:: atomic_write_and_hash(destination_path, chunks, *, compute_hash = True, progress = None)
+
+   Write bytes chunks to a temp file in the same directory as destination_path.
+   Additionally, updates SHA-256 while writing , then atomically replaces destination_path.
+
+   :param destination_path: Destination path.
+   :param chunks: Iterable of bytes to write.
+   :param compute_hash: Compute hash of chunks.
+   :param progress: Progress object or None for no progress. Expected to have .update(int) and .close() methods.
+
+   :returns: A hex digest.
+   :rtype: - str
+
+

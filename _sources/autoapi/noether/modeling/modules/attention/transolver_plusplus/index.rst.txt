@@ -1,0 +1,77 @@
+noether.modeling.modules.attention.transolver_plusplus
+======================================================
+
+.. py:module:: noether.modeling.modules.attention.transolver_plusplus
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention
+
+
+Module Contents
+---------------
+
+.. py:class:: TransolverPlusPlusAttention(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Transolver++ Attention module as implemented in https://github.com/thuml/Transolver_plus/blob/main/models/Transolver_plus.py
+
+   Initialize the TransolverPlusPlusAttention module.
+
+   :param config: Configuration object for the attention module.
+
+
+   .. py:attribute:: dim_head
+
+
+   .. py:attribute:: num_heads
+      :value: None
+
+
+
+   .. py:attribute:: scale
+
+
+   .. py:attribute:: softmax
+
+
+   .. py:attribute:: dropout
+      :value: None
+
+
+
+   .. py:attribute:: bias
+
+
+   .. py:attribute:: proj_temperature
+
+
+   .. py:attribute:: in_project_x
+
+
+   .. py:attribute:: in_project_slice
+
+
+   .. py:attribute:: qkv
+
+
+   .. py:attribute:: to_out
+
+
+   .. py:method:: forward(x, attn_mask = None)
+
+      Forward pass of the Transolver attention module.
+
+      :param x: Input tensor with shape (batch_size, seqlen, hidden_dim).
+      :param attn_mask: Attention mask tensor with shape (batch_size). Defaults to None.
+
+      :returns: Tensor after applying the transolver attention mechanism.
+
+
+

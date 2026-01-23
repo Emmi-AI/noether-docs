@@ -1,0 +1,51 @@
+noether.modeling.modules.decoders.deep_perceiver
+================================================
+
+.. py:module:: noether.modeling.modules.decoders.deep_perceiver
+
+.. autoapi-nested-parse::
+
+   Contains a PerceiverDecoder implementation.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.decoders.deep_perceiver.DeepPerceiverDecoder
+
+
+Module Contents
+---------------
+
+.. py:class:: DeepPerceiverDecoder(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   A deep Perceiver decoder module. Can be configured with different number of layers and hidden dimensions.
+   However, it should be noted that this layer is not a full-fledged Perceiver, since it only has a cross-attention mechanism.
+
+   Initialize the DeepPerceiverDecoder.
+
+   :param config: Configuration for the DeepPerceiverDecoder module.
+
+
+   .. py:attribute:: blocks
+
+
+   .. py:method:: forward(kv, queries, unbatch_mask = None, attn_kwargs = None, condition = None)
+
+      Forward pass of the model.
+
+      :param x: Latent tokens as dense tensor (batch_size, num_latent_tokens, dim).
+      :param pos: Query positions (batch_size, num_output_pos, pos_dim).
+      :param block_kwargs: Additional arguments for the block.
+      :param unbatch_mask: Unbatch mask.
+
+      :returns: The predictions as sparse tensor (batch_size * num_output_pos, num_out_values).
+
+
+

@@ -1,0 +1,76 @@
+noether.core.callbacks.checkpoint.checkpoint
+============================================
+
+.. py:module:: noether.core.callbacks.checkpoint.checkpoint
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.checkpoint.checkpoint.CheckpointCallback
+
+
+Module Contents
+---------------
+
+.. py:class:: CheckpointCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback to save the model and optimizer state periodically.
+
+   Initializes the CheckpointCallback.
+
+   :param callback_config: The configuration for the callback.
+   :param \*\*kwargs: additional arguments passed to the parent class.
+
+
+   .. py:attribute:: save_weights
+
+
+   .. py:attribute:: save_optim
+
+
+   .. py:attribute:: save_latest_weights
+
+
+   .. py:attribute:: save_latest_optim
+
+
+   .. py:attribute:: model_names
+      :value: []
+
+
+
+   .. py:method:: _before_training(*, update_counter, **kwargs)
+
+      Template method for `before_training`. Derived classes should overwrite this method to do something before
+      training starts. Implementing this method is optional.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+
+   .. py:method:: _periodic_callback(*, update_counter, **kwargs)
+
+      Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
+      overwrite this method to calculate metrics periodically during training and log them.
+
+      :param interval_type: "epoch", "update" or "sample" depending on if `every_n_epochs`, `every_n_updates` or
+                            `every_n_samples` is defined as field of the `PeriodicCallback`.
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+
+   .. py:method:: _after_training(**_)
+
+      Template method for `after_training`. Derived classes should overwrite this method to do something after
+      training ends. Implementing this method is optional.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+

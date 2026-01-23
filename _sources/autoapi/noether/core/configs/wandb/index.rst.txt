@@ -1,0 +1,129 @@
+noether.core.configs.wandb
+==========================
+
+.. py:module:: noether.core.configs.wandb
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.configs.wandb.WandBMode
+   noether.core.configs.wandb.WandBConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: WandBMode
+
+   Bases: :py:obj:`enum.StrEnum`
+
+
+   Enumeration of WandB run modes.
+
+   ONLINE: Normal WandB mode, logs are synced to the server in real-time.
+   OFFLINE: Logs are stored locally and can be synced later.
+   DISABLED : WandB is disabled entirely; no logs are created.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: ONLINE
+      :value: 'online'
+
+
+
+   .. py:attribute:: OFFLINE
+      :value: 'offline'
+
+
+
+   .. py:attribute:: DISABLED
+      :value: 'disabled'
+
+
+
+   .. py:property:: value
+      :type: Literal['online', 'offline', 'disabled']
+
+
+      Return the mode value as a Literal type for static type checkers.
+
+
+.. py:class:: WandBConfig
+
+   Immutable configuration object for a WandB run.
+
+   .. attribute:: mode
+
+      The WandB execution mode (ONLINE, OFFLINE, or DISABLED).
+
+   .. attribute:: host
+
+      The WandB server hostname (required unless DISABLED).
+
+   .. attribute:: entity
+
+      The WandB entity (user or team name) (required unless DISABLED).
+
+   .. attribute:: project
+
+      The WandB project name (required unless DISABLED).
+
+   This class enforces that `host`, `entity`, and `project` must be provided and must be valid strings unless
+   the mode is DISABLED.
+
+
+   .. py:attribute:: mode
+      :type:  WandBMode
+
+
+   .. py:attribute:: host
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: entity
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: project
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:property:: is_disabled
+      :type: bool
+
+
+      Return True if WandB mode is DISABLED.
+
+
+   .. py:property:: is_offline
+      :type: bool
+
+
+      Return True if WandB mode is OFFLINE.
+
+
+   .. py:property:: is_online
+      :type: bool
+
+
+      Return True if WandB mode is ONLINE.
+
+
+   .. py:method:: require_online()
+
+      Raise a RuntimeError if WandB is not in ONLINE mode.
+
+      Use this in code paths that require a live WandB connection.
+
+
+

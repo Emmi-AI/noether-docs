@@ -1,0 +1,47 @@
+noether.core.utils.training.schedule_wrapper
+============================================
+
+.. py:module:: noether.core.utils.training.schedule_wrapper
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.utils.training.schedule_wrapper.ScheduleWrapper
+
+
+Module Contents
+---------------
+
+.. py:class:: ScheduleWrapper(schedule, update_counter = None, interval = 'update')
+
+   Wrapper around a schedule that handles getting the value based on an UpdateCounter and whether the schedule is
+   based on updates or epochs.
+
+   :param schedule: The schedule to wrap.
+   :param update_counter: The UpdateCounter to use for getting the current step. If None, the schedule is assumed to
+                          be constant.
+   :param interval: Whether the schedule is based on updates or epochs. Interval should be either "update" or "epoch".
+
+
+   .. py:attribute:: schedule
+
+
+   .. py:attribute:: update_counter
+      :value: None
+
+
+
+   .. py:attribute:: interval
+      :value: 'update'
+
+
+
+   .. py:method:: get_value()
+
+      Get the current value of the schedule based on the current step in the UpdateCounter.
+
+
+

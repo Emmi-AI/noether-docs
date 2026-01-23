@@ -1,0 +1,23 @@
+noether.core.schedules
+======================
+
+.. py:module:: noether.core.schedules
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/schedules/base/index
+   /autoapi/noether/core/schedules/constant/index
+   /autoapi/noether/core/schedules/cosine/index
+   /autoapi/noether/core/schedules/custom/index
+   /autoapi/noether/core/schedules/functional/index
+   /autoapi/noether/core/schedules/linear/index
+   /autoapi/noether/core/schedules/linear_warmup_cosine_decay/index
+   /autoapi/noether/core/schedules/polynomial/index
+   /autoapi/noether/core/schedules/step/index
+
+

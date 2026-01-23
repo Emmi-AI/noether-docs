@@ -1,0 +1,53 @@
+noether.core.extractors.forward_hook
+====================================
+
+.. py:module:: noether.core.extractors.forward_hook
+
+
+Exceptions
+----------
+
+.. autoapisummary::
+
+   noether.core.extractors.forward_hook.StopForwardException
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.extractors.forward_hook.ForwardHook
+
+
+Module Contents
+---------------
+
+.. py:exception:: StopForwardException
+
+   Bases: :py:obj:`Exception`
+
+
+   Common base class for all non-exit exceptions.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+.. py:class:: ForwardHook(outputs, raise_exception = False, key = None)
+
+   .. py:attribute:: key
+
+
+   .. py:attribute:: outputs
+
+
+   .. py:attribute:: raise_exception
+      :value: False
+
+
+
+   .. py:attribute:: enabled
+      :value: True
+
+
+

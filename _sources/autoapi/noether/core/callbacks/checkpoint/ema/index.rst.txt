@@ -1,0 +1,109 @@
+noether.core.callbacks.checkpoint.ema
+=====================================
+
+.. py:module:: noether.core.callbacks.checkpoint.ema
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.checkpoint.ema.EmaCallback
+
+
+Module Contents
+---------------
+
+.. py:class:: EmaCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback for exponential moving average (EMA) of model weights.
+
+   Initializes the EmaCallback.
+
+   :param callback_config: configuration of the `EmaCallback`.
+   :param \*\*kwargs: additional arguments passed to the parent class.
+
+
+   .. py:attribute:: model_paths
+
+
+   .. py:attribute:: target_factors
+
+
+   .. py:attribute:: save_weights
+
+
+   .. py:attribute:: save_last_weights
+
+
+   .. py:attribute:: save_latest_weights
+
+
+   .. py:attribute:: parameters
+      :type:  dict[tuple[str | None, float], dict[str, torch.Tensor]]
+
+
+   .. py:attribute:: buffers
+      :type:  dict[str | None, dict[str, torch.Tensor]]
+
+
+   .. py:method:: resume_from_checkpoint(resumption_paths, model)
+
+      If a callback stores large files to disk and is stateful (e.g., an EMA of the model), it would be
+      unecessarily wasteful to also store the state in the callbacks `state_dict`. Therefore,
+      `resume_from_checkpoint` is called when resuming a run, which allows callbacks to load their state from any
+      file that was stored on the disk.
+
+      :param resumption_paths: PathProvider instance to access paths from the checkpoint to resume from.
+      :param model: model of the current training run.
+
+
+
+   .. py:method:: _before_training(**_)
+
+      Template method for `before_training`. Derived classes should overwrite this method to do something before
+      training starts. Implementing this method is optional.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+
+   .. py:method:: apply_ema(cur_model, model_path, target_factor)
+
+      fused in-place implementation
+
+
+
+   .. py:method:: _track_after_update_step(**_)
+
+      Invoked after every update step. May be used to track metrics.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+      :param times: Dictionary containing time measurements.
+
+
+
+   .. py:method:: _periodic_callback(*, update_counter, **_)
+
+      Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
+      overwrite this method to calculate metrics periodically during training and log them.
+
+      :param interval_type: "epoch", "update" or "sample" depending on if `every_n_epochs`, `every_n_updates` or
+                            `every_n_samples` is defined as field of the `PeriodicCallback`.
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+
+   .. py:method:: _after_training(**_)
+
+      Template method for `after_training`. Derived classes should overwrite this method to do something after
+      training ends. Implementing this method is optional.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+

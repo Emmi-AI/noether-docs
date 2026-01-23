@@ -1,0 +1,35 @@
+noether.core.schedules.functional
+=================================
+
+.. py:module:: noether.core.schedules.functional
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.schedules.functional.linear
+   noether.core.schedules.functional.cosine
+   noether.core.schedules.functional.polynomial
+
+
+Module Contents
+---------------
+
+.. py:function:: linear(step, total_steps)
+
+   linearly increasing from [0 to 1]
+
+
+.. py:function:: cosine(step, total_steps)
+
+   cosine schedule from [0 to 1]
+
+
+.. py:function:: polynomial(step, total_steps, power)
+
+   polynomial schedule from [0 to 1]
+   https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.PolynomialLR.html
+
+

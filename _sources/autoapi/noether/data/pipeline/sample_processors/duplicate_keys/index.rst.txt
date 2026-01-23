@@ -1,0 +1,32 @@
+noether.data.pipeline.sample_processors.duplicate_keys
+======================================================
+
+.. py:module:: noether.data.pipeline.sample_processors.duplicate_keys
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processors.duplicate_keys.DuplicateKeysSampleProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: DuplicateKeysSampleProcessor(key_map)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Utility processor that simply duplicates the dictionary keys in a batch.
+
+   :param key_map: Dict with source keys as keys and target keys as values. The source keys are duplicated
+                   in the samples and the target keys are created. The values of the source keys are used for the target
+                   keys.
+
+
+   .. py:attribute:: key_map
+
+

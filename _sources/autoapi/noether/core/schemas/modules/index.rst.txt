@@ -1,0 +1,20 @@
+noether.core.schemas.modules
+============================
+
+.. py:module:: noether.core.schemas.modules
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/schemas/modules/attention/index
+   /autoapi/noether/core/schemas/modules/blocks/index
+   /autoapi/noether/core/schemas/modules/decoders/index
+   /autoapi/noether/core/schemas/modules/encoders/index
+   /autoapi/noether/core/schemas/modules/layers/index
+   /autoapi/noether/core/schemas/modules/mlp/index
+
+

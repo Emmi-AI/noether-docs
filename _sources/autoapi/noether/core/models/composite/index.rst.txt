@@ -1,0 +1,135 @@
+noether.core.models.composite
+=============================
+
+.. py:module:: noether.core.models.composite
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.models.composite.CompositeModel
+
+
+Module Contents
+---------------
+
+.. py:class:: CompositeModel(model_config, update_counter = None, path_provider = None, data_container = None, static_context = None)
+
+   Bases: :py:obj:`noether.core.models.base.ModelBase`
+
+
+   Base class for all neural network modules.
+
+   Your models should also subclass this class.
+
+   Modules can also contain other Modules, allowing them to be nested in
+   a tree structure. You can assign the submodules as regular attributes::
+
+       import torch.nn as nn
+       import torch.nn.functional as F
+
+
+       class Model(nn.Module):
+           def __init__(self) -> None:
+               super().__init__()
+               self.conv1 = nn.Conv2d(1, 20, 5)
+               self.conv2 = nn.Conv2d(20, 20, 5)
+
+           def forward(self, x):
+               x = F.relu(self.conv1(x))
+               return F.relu(self.conv2(x))
+
+   Submodules assigned in this way will be registered, and will also have their
+   parameters converted when you call :meth:`to`, etc.
+
+   .. note::
+       As per the example above, an ``__init__()`` call to the parent class
+       must be made before assignment on the child.
+
+   :ivar training: Boolean represents whether this module is in training or
+                   evaluation mode.
+   :vartype training: bool
+
+   Base class for composite models, i.e. models that consist of multiple submodels of type Model.
+
+
+   .. py:property:: submodels
+      :type: dict[str, noether.core.models.base.ModelBase]
+
+      :abstractmethod:
+
+
+
+   .. py:method:: get_named_models()
+
+      Returns a dict of {model_name: model}, e.g., to log all learning rates of all models/submodels.
+
+
+
+   .. py:property:: device
+      :type: torch.device
+
+
+
+   .. py:method:: initialize_weights()
+
+      Initialize the weights of the model, calling the initializer of all submodules.
+
+
+
+   .. py:method:: apply_initializers()
+
+      Apply the initializers to the model, calling the initializer of all submodules.
+
+
+
+   .. py:method:: initialize_optimizer()
+
+      Initialize the optimizer of the model.
+
+
+
+   .. py:method:: optimizer_step(grad_scaler)
+
+      Perform an optimization step, calling all submodules' optimization steps.
+
+
+
+   .. py:method:: optimizer_schedule_step()
+
+      Perform the optimizer learning rate scheduler step, calling all submodules' scheduler steps.
+
+
+
+   .. py:method:: optimizer_zero_grad(set_to_none = True)
+
+      Zero the gradients of the optimizer, calling all submodules' zero_grad methods.
+
+
+
+   .. py:property:: is_frozen
+      :type: bool
+
+
+
+   .. py:method:: train(mode=True)
+
+      Set the model to train or eval mode.
+
+      Overwrites the nn.Module.train method to avoid setting the model to train mode if it is frozen
+      and to call all submodules' train methods.
+
+      :param mode: If True, set the model to train mode. If False, set the model to eval mode.
+
+
+
+   .. py:method:: to(device, *args, **kwargs)
+
+      Performs Tensor dtype and/or device conversion, calling all submodules' to methods.
+
+      :param device: The desired device of the tensor. Can be a string (e.g. "cuda:0") or "cpu".
+
+
+

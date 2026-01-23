@@ -1,0 +1,35 @@
+noether.data.preprocessors.numpy_to_torch_tensor
+================================================
+
+.. py:module:: noether.data.preprocessors.numpy_to_torch_tensor
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.preprocessors.numpy_to_torch_tensor.NumpyToTorchTensorPreProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: NumpyToTorchTensorPreProcessor(normalization_key)
+
+   Bases: :py:obj:`noether.data.preprocessors.PreProcessor`
+
+
+   Convert numpy arrays to PyTorch tensors.
+
+   :param normalization_key: key to identify on which getitem_ in the dataset/tensor the preprocessor is applied.
+
+   :raises TypeError: If normalization_key is not a string.
+
+
+   .. py:method:: denormalize(x)
+
+      Convert a PyTorch tensor back to a numpy array.
+
+
+

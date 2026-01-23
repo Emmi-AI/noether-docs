@@ -1,0 +1,35 @@
+noether.core.utils.seed
+=======================
+
+.. py:module:: noether.core.utils.seed
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.utils.seed.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.seed.set_seed
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: set_seed(seed)
+
+   Set the seed for random number generation for Python `random`, numpy,
+   torch and torch.cuda, if available.
+
+   :param seed: Seed value.
+
+

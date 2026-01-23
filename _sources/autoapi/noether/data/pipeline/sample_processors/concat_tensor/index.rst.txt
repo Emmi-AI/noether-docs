@@ -1,0 +1,40 @@
+noether.data.pipeline.sample_processors.concat_tensor
+=====================================================
+
+.. py:module:: noether.data.pipeline.sample_processors.concat_tensor
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processors.concat_tensor.ConcatTensorSampleProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: ConcatTensorSampleProcessor(items, target_key, dim = 0)
+
+   Bases: :py:obj:`noether.data.pipeline.SampleProcessor`
+
+
+   Concatenates multiple tensors into a single tensor.
+
+   :param items: A list of keys in the sample dict whose tensors should be concatenated.
+   :param target_key: The key in the sample dict where the concatenated tensor will be stored.
+   :param dim: The dimension along which to concatenate the tensors. Defaults to 0.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: target_key
+
+
+   .. py:attribute:: dim
+      :value: 0
+
+
+

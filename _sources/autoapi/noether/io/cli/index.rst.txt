@@ -1,0 +1,20 @@
+noether.io.cli
+==============
+
+.. py:module:: noether.io.cli
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/io/cli/cli/index
+   /autoapi/noether/io/cli/cli_aws/index
+   /autoapi/noether/io/cli/cli_checkpoint/index
+   /autoapi/noether/io/cli/cli_huggingface/index
+   /autoapi/noether/io/cli/cli_utils/index
+   /autoapi/noether/io/cli/cli_verification/index
+
+

@@ -1,0 +1,61 @@
+noether.core.callbacks.default.online_loss
+==========================================
+
+.. py:module:: noether.core.callbacks.default.online_loss
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.default.online_loss.OnlineLossCallback
+
+
+Module Contents
+---------------
+
+.. py:class:: OnlineLossCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback to track the loss of the model after every gradient accumulation step and log the average loss.
+
+   Initializes the OnlineLossCallback.
+
+   :param callback_config: The configuration for the callback.
+   :param \*\*kwargs: additional arguments passed to the parent class.
+
+
+   .. py:attribute:: verbose
+
+
+   .. py:attribute:: tracked_losses
+      :type:  collections.defaultdict[str, list[torch.Tensor]]
+
+
+   .. py:method:: _track_after_accumulation_step(*, losses, **_)
+
+      Invoked after every gradient accumulation step. May be used to track metrics.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+      :param batch: Current batch.
+      :param losses: Losses computed for the current batch.
+      :param update_outputs: Outputs of the model for the current batch.
+      :param accumulation_steps: Total number of accumulation steps.
+      :param accumulation_step: Current accumulation step.
+
+
+
+   .. py:method:: _periodic_callback(**_)
+
+      Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
+      overwrite this method to calculate metrics periodically during training and log them.
+
+      :param interval_type: "epoch", "update" or "sample" depending on if `every_n_epochs`, `every_n_updates` or
+                            `every_n_samples` is defined as field of the `PeriodicCallback`.
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+

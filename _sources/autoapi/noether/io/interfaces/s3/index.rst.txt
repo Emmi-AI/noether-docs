@@ -1,0 +1,188 @@
+noether.io.interfaces.s3
+========================
+
+.. py:module:: noether.io.interfaces.s3
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.interfaces.s3.AWSSecrets
+   noether.io.interfaces.s3.S3Object
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.interfaces.s3.get_s3_client
+   noether.io.interfaces.s3.list_s3_objects
+   noether.io.interfaces.s3.estimate_s3_size
+   noether.io.interfaces.s3.fetch_s3_file
+   noether.io.interfaces.s3.iter_s3_object_chunks
+   noether.io.interfaces.s3.head_s3_object
+   noether.io.interfaces.s3.fetch_s3_prefix
+
+
+Module Contents
+---------------
+
+.. py:class:: AWSSecrets
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: AWS_ACCESS_KEY_ID
+      :value: 'AWS_ACCESS_KEY_ID'
+
+
+
+   .. py:attribute:: AWS_SECRET_ACCESS_KEY
+      :value: 'AWS_SECRET_ACCESS_KEY'
+
+
+
+   .. py:attribute:: AWS_SESSION_TOKEN
+      :value: 'AWS_SESSION_TOKEN'
+
+
+
+   .. py:attribute:: AWS_REGION
+      :value: 'AWS_REGION'
+
+
+
+   .. py:attribute:: AWS_DEFAULT_REGION
+      :value: 'AWS_DEFAULT_REGION'
+
+
+
+   .. py:attribute:: AWS_ENDPOINT_URL
+      :value: 'AWS_ENDPOINT_URL'
+
+
+
+.. py:class:: S3Object
+
+   Bases: :py:obj:`TypedDict`
+
+
+   dict() -> new empty dictionary
+   dict(mapping) -> new dictionary initialized from a mapping object's
+       (key, value) pairs
+   dict(iterable) -> new dictionary initialized as if via:
+       d = {}
+       for k, v in iterable:
+           d[k] = v
+   dict(**kwargs) -> new dictionary initialized with the name=value pairs
+       in the keyword argument list.  For example:  dict(one=1, two=2)
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: key
+      :type:  str
+
+
+   .. py:attribute:: size
+      :type:  int
+
+
+   .. py:attribute:: etag
+      :type:  str | None
+
+
+.. py:function:: get_s3_client()
+
+   Construct an S3 client from managed credentials (env or config).
+   Expected keys (matching env names):
+     - AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
+     - optional AWS_SESSION_TOKEN
+     - AWS_DEFAULT_REGION or AWS_REGION
+     - optional AWS_ENDPOINT_URL (for MinIO / on‑prem / custom endpoints)
+
+   Falls back to unsigned access for public buckets when no non‑empty
+   credentials are provided.
+
+
+.. py:function:: list_s3_objects(bucket, prefix, extension = None)
+
+   List S3 objects under bucket/prefix with an optional extension filter. Skips directory placeholders (keys ending with '/') and normalizes quoted ETags.
+
+
+.. py:function:: estimate_s3_size(bucket, prefix, extension = None)
+
+   Estimate size of objects under bucket/prefix with an optional extension filter.
+
+   :param bucket: Name of the S3 bucket.
+   :param prefix: File prefix.
+   :param extension: Optional file extension. Defaults to None.
+
+   :returns:
+
+             - A tuple with estimated size in bytes and total number of objects.
+
+
+.. py:function:: fetch_s3_file(bucket, key, local_dir)
+
+   Download file from S3 bucket to local directory, preserving the key's subpath.
+
+   :param bucket: Name of the S3 bucket.
+   :param key: File key.
+   :param local_dir: Path to local directory.
+
+   :returns:
+
+             - Local file path.
+
+
+.. py:function:: iter_s3_object_chunks(bucket, key, *, chunk_size = 1024 * 1024)
+
+   Stream an S3 object as chunks of bytes. Intended to be used with higher-level atomic writers / hashing
+   in the CLI.
+
+   :param bucket: S3 bucket name.
+   :param key: S3 object key.
+   :param chunk_size: Size of chunks in bytes.
+
+   :Yields: Byte chunks from the object body.
+
+
+.. py:function:: head_s3_object(bucket, key)
+
+   Lightweight HEAD to retrieve content length and etag (if available).
+   :returns: (size_bytes, etag) with etag normalized (quotes stripped).
+
+
+.. py:function:: fetch_s3_prefix(bucket, prefix, local_dir, extension = None, max_workers = 8)
+
+   Download all objects under bucket/prefix with an optional extension filter into a local directory.
+
+   :param bucket: Name of the S3 bucket.
+   :param prefix: File prefix.
+   :param local_dir: Path to local directory.
+   :param extension: Optional file extension. Defaults to None.
+   :param max_workers: Number of workers to use for downloading. Defaults to 8.
+
+   :returns:
+
+             - A list of relative paths (keys) written.
+
+

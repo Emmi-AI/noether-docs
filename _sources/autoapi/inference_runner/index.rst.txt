@@ -1,0 +1,43 @@
+inference_runner
+================
+
+.. py:module:: inference_runner
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   inference_runner.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   inference_runner.InferenceRunner
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: InferenceRunner
+
+   Bases: :py:obj:`noether.training.runners.hydra_runner.HydraRunner`
+
+
+   Runs an inference experiment using @hydra.main as entry point.
+
+
+   .. py:method:: main(device, config)
+      :staticmethod:
+
+
+      Main method for inference.
+
+
+

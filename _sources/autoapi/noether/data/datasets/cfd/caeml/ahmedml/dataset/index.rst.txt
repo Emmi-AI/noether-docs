@@ -1,0 +1,46 @@
+noether.data.datasets.cfd.caeml.ahmedml.dataset
+===============================================
+
+.. py:module:: noether.data.datasets.cfd.caeml.ahmedml.dataset
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.ahmedml.dataset.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.ahmedml.dataset.AhmedMLDataset
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: AhmedMLDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.caeml.dataset.CAEMLDataset`
+
+
+   Dataset implementation for AhmedML CFD simulations.
+
+   :param dataset_config: Configuration for the dataset.
+
+   Initialize the AhmedML dataset.
+
+   :param dataset_config: Configuration for the dataset.
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+

@@ -1,0 +1,48 @@
+noether.io.checkpoint.resolver
+==============================
+
+.. py:module:: noether.io.checkpoint.resolver
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.checkpoint.resolver.PROVIDERS
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.checkpoint.resolver.resolve_checkpoint
+
+
+Module Contents
+---------------
+
+.. py:data:: PROVIDERS
+   :type:  list[noether.io.checkpoint.types.Provider]
+
+.. py:function:: resolve_checkpoint(uri_or_path, *, cache_dir = Path.home() / '.cache' / 'emmi' / 'checkpoints', expected_sha256 = None, verify_load = None, min_free_bytes = None, compute_hash = True)
+
+   Resolve a checkpoint reference (URI or local path) to a verified local file.
+
+   - Downloads to cache if remote (atomic write).
+   - Optional disk space check (estimate + min_free_bytes).
+   - Optional sha256 validation.
+   - Writes meta.json in the cache folder.
+   - [Optional] Load smoke-test (pt|ts|onnx).
+
+   :param uri_or_path: URI or local path.
+   :param cache_dir: Cache directory.
+   :param expected_sha256: Expected checksum.
+   :param verify_load: Whether to verify checkpoint loading of a specific type "pt" | "ts" | "onnx". Defaults to None.
+   :param min_free_bytes: Minimum free space. Defaults to None.
+   :param compute_hash: Whether to compute hash. Defaults to True.
+
+   :returns: An instance of `CheckpointMetadata`.
+
+

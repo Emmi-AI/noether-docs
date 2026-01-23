@@ -1,0 +1,100 @@
+noether.core.schemas.models.ab_upt
+==================================
+
+.. py:module:: noether.core.schemas.models.ab_upt
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: AnchorBranchedUPTConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: supernode_pooling_config
+      :type:  noether.core.schemas.modules.encoders.SupernodePoolingConfig
+
+
+   .. py:attribute:: transformer_block_config
+      :type:  noether.core.schemas.modules.blocks.TransformerBlockConfig
+
+
+   .. py:attribute:: geometry_depth
+      :type:  int
+      :value: None
+
+
+      Number of transformer blocks in the geometry encoder.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the model.
+
+
+   .. py:attribute:: physics_blocks
+      :type:  list[Literal['shared', 'cross', 'joint', 'perceiver']]
+
+      Types of physics blocks to use in the model.
+      Options are "shared", "cross", "joint", and "perceiver".
+      Shared: Self-attention within a branch (surface or volume). Attention blocks share weights between surface and volume.
+      Cross: Cross-attention between surface and volume branches. Weights are shared between surface and volume.
+      Joint: Joint attention over surface and volume points. I.e. full self-attention over both surface and volume points.
+      Perceiver: Perceiver-style attention blocks.
+
+
+   .. py:attribute:: num_surface_blocks
+      :type:  int
+      :value: None
+
+
+      Number of transformer blocks in the surface decoder. Weights are not shared with the volume decoder.
+
+
+   .. py:attribute:: num_volume_blocks
+      :type:  int
+      :value: None
+
+
+      Number of transformer blocks in the volume decoder. Weights are not shared with the surface decoder.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Weight initialization of linear layers. Defaults to "truncnormal002".
+
+
+   .. py:attribute:: drop_path_rate
+      :type:  float
+      :value: None
+
+
+      Drop path rate for stochastic depth. Defaults to 0.0 (no drop path).
+
+
+   .. py:attribute:: data_specs
+      :type:  noether.core.schemas.dataset.AeroDataSpecs
+
+      Data specifications for the model.
+
+

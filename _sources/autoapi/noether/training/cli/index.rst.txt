@@ -1,0 +1,28 @@
+noether.training.cli
+====================
+
+.. py:module:: noether.training.cli
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/training/cli/main_train/index
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.training.cli.setup_hydra
+
+
+Package Contents
+----------------
+
+.. py:function:: setup_hydra()
+

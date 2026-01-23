@@ -1,0 +1,55 @@
+noether.data.pipeline.sample_processor
+======================================
+
+.. py:module:: noether.data.pipeline.sample_processor
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processor.T
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processor.SampleProcessor
+
+
+Module Contents
+---------------
+
+.. py:data:: T
+
+.. py:class:: SampleProcessor
+
+   .. py:method:: inverse(key, value)
+      :abstractmethod:
+
+
+      Inverts the transformation from the __call__ method of a single item in the batch. Only should be implemented if the SampleProcessor is invertable or if the identity function is valid.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The (potentially) back-mapped name and the (potentially) denormalized value.
+      :rtype: (key, value)
+
+
+
+   .. py:method:: save_copy(obj)
+      :staticmethod:
+
+
+      Make a deep copy of an object to avoid modifying the original object.
+
+      :param obj: Any object that should be copied.
+
+      :returns: A deep copy of the input object.
+
+
+

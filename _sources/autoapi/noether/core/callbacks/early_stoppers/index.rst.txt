@@ -1,0 +1,17 @@
+noether.core.callbacks.early_stoppers
+=====================================
+
+.. py:module:: noether.core.callbacks.early_stoppers
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/callbacks/early_stoppers/base/index
+   /autoapi/noether/core/callbacks/early_stoppers/fixed/index
+   /autoapi/noether/core/callbacks/early_stoppers/metric/index
+
+

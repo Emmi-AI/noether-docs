@@ -1,0 +1,64 @@
+noether.core.schedules.polynomial
+=================================
+
+.. py:module:: noether.core.schedules.polynomial
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schedules.polynomial.PolynomialDecreasingSchedule
+   noether.core.schedules.polynomial.PolynomialIncreasingSchedule
+
+
+Module Contents
+---------------
+
+.. py:class:: PolynomialDecreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.DecreasingProgressSchedule`
+
+
+   A scheduler that decreases polynomially from the maximum to minimum value over the total number of steps.
+
+   Initialize the scheduler.
+
+   :param config: Configuration for the polynomial decreasing schedule.
+
+   .. rubric:: Example
+
+   >>> schedule_config:
+   >>>     kind: noether.core.schedules.PolynomialDecreasingSchedule
+   >>>     power: 2.0
+   >>>     start_value: ${model.optim.lr} # reference to the lr defined above
+   >>>     end_value: 1e-6
+
+
+   .. py:attribute:: power
+
+
+.. py:class:: PolynomialIncreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.IncreasingProgressSchedule`
+
+
+   A scheduler that increases polynomially from the minimum to maximum value over the total number of steps.
+
+   Initialize the scheduler.
+
+   :param config: Configuration for the polynomial increasing schedule.
+
+   .. rubric:: Example
+
+   >>> schedule_config:
+   >>>     kind: noether.core.schedules.PolynomialIncreasingSchedule
+   >>>     power: 2.0
+   >>>     start_value: 1e-6
+   >>>     max_value: ${model.optim.lr} # reference to the lr defined above
+
+
+   .. py:attribute:: power
+
+

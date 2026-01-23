@@ -1,0 +1,16 @@
+noether.data.datasets.cfd.emmi_wing
+===================================
+
+.. py:module:: noether.data.datasets.cfd.emmi_wing
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/data/datasets/cfd/emmi_wing/dataset/index
+   /autoapi/noether/data/datasets/cfd/emmi_wing/split/index
+
+

@@ -1,0 +1,45 @@
+noether.core.utils.platform.system
+==================================
+
+.. py:module:: noether.core.utils.platform.system
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.utils.platform.system.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.platform.system.get_cli_command
+   noether.core.utils.platform.system.get_installed_cuda_version
+   noether.core.utils.platform.system.log_system_info
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: get_cli_command()
+
+   Return the command with which the script was called.
+
+   Attention: This assumes the script was started with `python` (not `python3` or similar).
+
+   :returns: The command with which the script was called.
+
+
+.. py:function:: get_installed_cuda_version()
+
+.. py:function:: log_system_info()
+
+   Logs system information like OS, CUDA version, and Python version.
+
+

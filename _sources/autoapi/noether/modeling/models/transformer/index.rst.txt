@@ -1,0 +1,42 @@
+noether.modeling.models.transformer
+===================================
+
+.. py:module:: noether.modeling.models.transformer
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.models.transformer.Transformer
+
+
+Module Contents
+---------------
+
+.. py:class:: Transformer(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Implementation of a Transformer model.
+
+   :param config: Configuration of the Transformer model.
+
+
+   .. py:attribute:: blocks
+
+
+   .. py:method:: forward(x, attn_kwargs)
+
+      Forward pass of the Transformer model.
+
+      :param x: Input tensor of shape (batch_size, seq_len, hidden_dim).
+      :param attn_kwargs: Additional arguments for the attention mechanism.
+
+      :returns: Output tensor after processing through the Transformer model.
+      :rtype: torch.Tensor
+
+
+

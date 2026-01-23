@@ -1,0 +1,29 @@
+noether.core.distributed.run
+============================
+
+.. py:module:: noether.core.distributed.run
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/distributed/run/managed/index
+   /autoapi/noether/core/distributed/run/unmanaged/index
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.distributed.run.run
+
+
+Package Contents
+----------------
+
+.. py:function:: run(main, devices=None, accelerator='gpu', master_port=None)
+

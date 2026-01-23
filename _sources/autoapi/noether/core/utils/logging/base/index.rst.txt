@@ -1,0 +1,77 @@
+noether.core.utils.logging.base
+===============================
+
+.. py:module:: noether.core.utils.logging.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.utils.logging.base.MessageCounter
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.logging.base.log_from_all_ranks
+   noether.core.utils.logging.base.add_global_handlers
+
+
+Module Contents
+---------------
+
+.. py:function:: log_from_all_ranks()
+
+   ContextManager that changes the log level to Info for all ranks and resets it to CRITICAL for non-rank0 ranks.
+
+
+.. py:class:: MessageCounter
+
+   Bases: :py:obj:`logging.Handler`
+
+
+   A logging handler that counts the number of messages logged at each level starting from WARNING.
+
+   Initializes the instance - basically setting the formatter to None
+   and the filter list to empty.
+
+
+   .. py:attribute:: min_level
+      :value: 30
+
+
+
+   .. py:attribute:: counts
+      :type:  dict[int, int]
+
+
+   .. py:method:: emit(record)
+
+      Do whatever it takes to actually log the specified logging record.
+
+      This version is intended to be implemented by subclasses and so
+      raises a NotImplementedError.
+
+
+
+   .. py:method:: log()
+
+
+.. py:function:: add_global_handlers(log_file_uri = None, debug = False)
+
+   Set up `logging.getLogger()` to log to stdout and optionally to a file.
+
+   Sets up logging for distributed runs: only rank0 logs to console and file,
+   other ranks log only CRITICAL messages to suppress output.
+   This also adds a MessageCounter handler to count the number of messages logged at each level.
+
+   :param log_file_uri: The path to the log file. If None, no file logging is done.
+   :param debug: Whether to log debug messages to stdout.
+
+   :returns: The MessageCounter handler.
+
+

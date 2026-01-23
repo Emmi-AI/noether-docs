@@ -1,0 +1,99 @@
+noether.core.writers.log_writer
+===============================
+
+.. py:module:: noether.core.writers.log_writer
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.writers.log_writer.LogWriter
+
+
+Module Contents
+---------------
+
+.. py:class:: LogWriter(path_provider, update_counter, tracker)
+
+   Writes logs into a local file and (optionally) to an online webinterface (identified via the `tracker`).
+   All logs that should be written for a certain update in the training will be cached and written to the `tracker`
+   all at once. For writing the logs to disk, everything for the full training process is cached and only after
+   training finished, the logs are written to disk (writing repeatedly to disk takes a long time).
+
+   :param path_provider: Provides the path to store all logs to the disk after training.
+   :param update_counter: Provides the current training progress add the current epoch/update/sample to every log entry.
+                          This allows, e.g., changing the x-axis to "epoch" in online visiualization tools.
+   :param tracker: Provides an interface for logging to an online experiment tracking platform.
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: path_provider
+
+
+   .. py:attribute:: update_counter
+
+
+   .. py:attribute:: tracker
+
+
+   .. py:attribute:: log_entries
+      :type:  list[dict[str, Any]]
+      :value: []
+
+
+
+   .. py:attribute:: log_cache
+      :type:  dict[str, Any] | None
+      :value: None
+
+
+
+   .. py:attribute:: non_scalar_keys
+      :type:  set[str]
+
+
+   .. py:method:: get_all_metric_values(key)
+
+      Retrieves all values of a metric from all log entries. Used mainly for integration tests.
+
+      :param key: Identifier of the metric.
+
+      :returns: The values of the metric over the course of training. Log entries that do not contain the key are skipped.
+
+
+
+   .. py:method:: finish()
+
+      Stores all logs from the training to the disk.
+
+
+
+   .. py:method:: flush()
+
+      Composes a log entry with all metrics that were calculated for the current training state. This method is
+      called after every update and if no metrics were logged, it simply does nothing.
+
+
+
+   .. py:method:: add_scalar(key, value, logger = None, format_str = None)
+
+      Adds a scalar value to the log.
+      :param key: Metric identifier.
+      :param value: Scalar tensor or float with the value that should be logged.
+      :param logger: If defined, will log the value to stdout.
+      :param format_str: If defined, will alter the log to stdout to be in the provided format.
+
+
+
+   .. py:method:: add_nonscalar(key, value)
+
+      Adds a non-scalar value to the log.
+      :param key: Metric identifier.
+      :param value: Non-scalar value that should be logged (e.g., wandb.Image, wandb.Histogram, ...).
+
+
+

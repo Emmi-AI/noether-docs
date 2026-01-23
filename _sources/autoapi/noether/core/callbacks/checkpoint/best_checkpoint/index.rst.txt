@@ -1,0 +1,98 @@
+noether.core.callbacks.checkpoint.best_checkpoint
+=================================================
+
+.. py:module:: noether.core.callbacks.checkpoint.best_checkpoint
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback
+
+
+Module Contents
+---------------
+
+.. py:class:: BestCheckpointCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback to save the best model based on a metric.
+
+   Initializes the BestCheckpointCallback.
+
+   :param callback_config: The configuration for the callback.
+   :param \*\*kwargs: additional arguments passed to the parent class.
+
+
+   .. py:attribute:: metric_key
+
+
+   .. py:attribute:: model_names
+
+
+   .. py:attribute:: higher_is_better
+
+
+   .. py:attribute:: best_metric_value
+
+
+   .. py:attribute:: save_frozen_weights
+
+
+   .. py:attribute:: tolerances_is_exceeded
+
+
+   .. py:attribute:: tolerance_counter
+      :value: 0
+
+
+
+   .. py:attribute:: metric_at_exceeded_tolerance
+      :type:  dict[float, float]
+
+
+   .. py:method:: state_dict()
+
+      Returns the state of the callback.
+
+
+
+   .. py:method:: load_state_dict(state_dict)
+
+      Loads the state of the callback into the state_dict. Note that this modifies the input state_dict.
+
+
+
+   .. py:method:: _before_training(*, update_counter, **kwargs)
+
+      Template method for `before_training`. Derived classes should overwrite this method to do something before
+      training starts. Implementing this method is optional.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+
+   .. py:method:: _periodic_callback(**_)
+
+      Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
+      overwrite this method to calculate metrics periodically during training and log them.
+
+      :param interval_type: "epoch", "update" or "sample" depending on if `every_n_epochs`, `every_n_updates` or
+                            `every_n_samples` is defined as field of the `PeriodicCallback`.
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+
+   .. py:method:: _after_training(**kwargs)
+
+      Template method for `after_training`. Derived classes should overwrite this method to do something after
+      training ends. Implementing this method is optional.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+

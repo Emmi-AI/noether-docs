@@ -1,0 +1,45 @@
+noether.core.utils.platform.worker
+==================================
+
+.. py:module:: noether.core.utils.platform.worker
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.utils.platform.worker.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.platform.worker.get_fair_cpu_count
+   noether.core.utils.platform.worker.get_total_cpu_count
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: get_fair_cpu_count(reserve_for_main = 1)
+
+   Get the number of CPUs to use per device.
+
+   If SLURM is used, the number of CPUs per task is used.
+   Otherwise, CPUs are divided equally across devices (GPUs or a single CPU device).
+
+   :param reserve_for_main: CPUs to keep for the main / orchestration thread.
+
+   :returns: Number of CPUs to use per device.
+
+
+.. py:function:: get_total_cpu_count()
+
+   Get the total number of CPUs visible to this process.
+
+

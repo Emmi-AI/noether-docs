@@ -1,0 +1,246 @@
+noether.data.samplers.interleaved_sampler
+=========================================
+
+.. py:module:: noether.data.samplers.interleaved_sampler
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.samplers.interleaved_sampler.SamplerIntervalConfig
+   noether.data.samplers.interleaved_sampler.InterleavedSamplerConfig
+   noether.data.samplers.interleaved_sampler.InterleavedSampler
+
+
+Module Contents
+---------------
+
+.. py:class:: SamplerIntervalConfig
+
+   Configuration dataclass for setting up the dataloading pipeline, which is structured to load data from a "main"
+   dataset (i.e., the dataset used for training), which is interleaved by iterations over other datasets (e.g., a
+   test dataset to calculate a metric in a callback) in regular intervals.
+
+   :param sampler: Any sampler that would be used in `torch.utils.data.DataLoader(sampler=...)`.
+                   Examples: `RandomSampler` for a training dataset or `SequentialSampler` for evaluation.
+   :type sampler: SizedIterable
+   :param every_n_epochs: Epoch-based interval. Invokes the callback after every n epochs. Mutually
+                          exclusive with other intervals.
+   :type every_n_epochs: int | None
+   :param every_n_updates: Update-based interval. Invokes the callback after every n epochs. Mutually
+                           exclusive with other intervals.
+   :type every_n_updates: int | None
+   :param every_n_samples: Sample-based interval. Invokes the callback after every n epochs. Mutually
+                           exclusive with other intervals.
+   :type every_n_samples: int | None
+   :param pipeline: Any function that would be used in `torch.utils.data.DataLoader(collate_fn=...)`.
+   :type pipeline: Optional[callable]
+   :param batch_size: Batch size to use for this callback. Default: None (which will use the same batch_size
+                      as used for the "main" sampler, i.e., the one used for training).
+   :type batch_size: int | None
+
+
+   .. py:attribute:: sampler
+      :type:  noether.core.utils.common.SizedIterable
+
+
+   .. py:attribute:: pipeline
+      :type:  collections.abc.Callable | None
+
+
+   .. py:attribute:: every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: every_n_updates
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: every_n_samples
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: batch_size
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:method:: validate_frequency()
+
+      Ensures that exactly one frequency ('every_n_*') is specified and
+      that 'batch_size' is present if 'every_n_samples' is used.
+
+
+
+   .. py:method:: check_positive_values(v)
+      :classmethod:
+
+
+      Ensures that all integer-based frequency and batch size fields are positive.
+
+
+
+.. py:class:: InterleavedSamplerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: batch_size
+      :type:  int
+
+      batch_size to use for creating batches of the main_sampler indices.
+
+
+   .. py:attribute:: drop_last
+      :type:  bool
+      :value: True
+
+
+      Whether to drop the last non-full batch of the main_sampler.
+
+
+   .. py:attribute:: max_epochs
+      :type:  int | None
+      :value: None
+
+
+      How many epochs to sample at most from the main_sampler. Whatever limit is reached first (epochs/updates/samples) will stop the sampling.
+
+
+   .. py:attribute:: max_updates
+      :type:  int | None
+      :value: None
+
+
+      How many updates to sample at most from the main_sampler. Whatever limit is reached first (epochs/updates/samples) will stop the sampling.
+
+
+   .. py:attribute:: max_samples
+      :type:  int | None
+      :value: None
+
+
+      How many samples to sample at most from the main_sampler. Whatever limit is reached first (epochs/updates/samples) will stop the sampling.
+
+
+   .. py:attribute:: start_epoch
+      :type:  int | None
+      :value: None
+
+
+      At which epoch to start (used for resuming training). Mutually exclusive with `start_update` and `start_sample`.
+
+
+   .. py:attribute:: start_update
+      :type:  int | None
+      :value: None
+
+
+      At which update to start (used for resuming training). Mutually exclusive with `start_epoch` and `start_sample`.
+
+
+   .. py:attribute:: start_sample
+      :type:  int | None
+      :value: None
+
+
+      At which sample to start (used for resuming training). Mutually exclusive with `start_epoch` and `start_update`.
+
+
+   .. py:attribute:: evaluation
+      :type:  bool
+      :value: False
+
+
+      If True, the sampler is used for evaluation and will only iterate over the interleaved samplers once without iterating over the main sampler.
+
+
+   .. py:method:: check_positive_values(v)
+      :classmethod:
+
+
+      Ensures that all integer-based frequency and batch size fields are positive.
+
+
+
+   .. py:method:: validate_stop()
+
+      Ensures that at least one frequency ('*_n_*') is specified and
+
+
+
+   .. py:method:: validate_start()
+
+      Ensures that at least one start ('start_*') is specified
+
+
+
+.. py:class:: InterleavedSampler(train_sampler, config, train_collator = None, callback_samplers = None)
+
+   Sampler to allow efficient dataloading by using a single large dataset containing train/test/... datasets all at
+   once. The sampler will sample from different regionis in the dataset according to its specification. For example,
+   consider a training dataset of length 100 and a test dataset of length 10. If the sampler is configured with a
+   RandomSampler of the training dataset indices as main_sampler, it will repeatedly iterate over the training
+   dataset. If the test dataset is configured with a sequential sampler that should be invoked after every epoch, the
+   sampler will first return indices for the 100 training samples (randomly sampled) and then indices for the 10 test
+   samples (in sequential order).
+
+   :param train_sampler: Sampler that is invoked by default (e.g., randomly sample from the trainset)
+   :param config: Configuration for the InterleavedSampler.
+   :param train_collator: Collator used to collate samples from indices sampled from the train sampler.
+   :param callback_samplers: Configurations when the train_sampler should be paused and
+                             indices from other samplers (e.g., from a testset) should be returned. Also configures the interval and
+                             optionally a different batch_size to use for the interleaved batches.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: main_sampler
+
+
+   .. py:attribute:: extra_samplers
+      :value: []
+
+
+
+   .. py:attribute:: index_offsets
+
+
+   .. py:attribute:: dataset
+
+
+   .. py:attribute:: collator
+
+
+   .. py:attribute:: batch_sampler
+
+
+   .. py:attribute:: batch_size
+
+
+   .. py:method:: calculate_start(config, sampler_len)
+      :staticmethod:
+
+
+
+   .. py:method:: get_data_loader(num_workers = 0, pin_memory = False)
+
+      Creates the DataLoader that uses the InterleavedSampler with the accordingly configured dataset.
+
+      :param num_workers: Number of workers to use.
+      :param pin_memory: Whether to use pin memory.
+
+      :returns: DataLoader that uses the InterleavedSampler with the accordingly configured dataset.
+
+
+

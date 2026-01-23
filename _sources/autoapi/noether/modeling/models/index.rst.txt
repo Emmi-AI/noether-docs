@@ -1,0 +1,18 @@
+noether.modeling.models
+=======================
+
+.. py:module:: noether.modeling.models
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/modeling/models/ab_upt/index
+   /autoapi/noether/modeling/models/transformer/index
+   /autoapi/noether/modeling/models/transolver/index
+   /autoapi/noether/modeling/models/upt/index
+
+

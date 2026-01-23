@@ -1,0 +1,608 @@
+noether.core.schemas.schedules
+==============================
+
+.. py:module:: noether.core.schemas.schedules
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.schemas.schedules.AnyScheduleConfig
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.schedules.ScheduleBaseConfig
+   noether.core.schemas.schedules.ProgressScheduleConfig
+   noether.core.schemas.schedules.SchedulerConfig
+   noether.core.schemas.schedules.DecreasingProgressScheduleConfig
+   noether.core.schemas.schedules.IncreasingProgressScheduleConfig
+   noether.core.schemas.schedules.ConstantScheduleConfig
+   noether.core.schemas.schedules.CustomScheduleConfig
+   noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig
+   noether.core.schemas.schedules.LinearIncreasingScheduleConfig
+   noether.core.schemas.schedules.LinearDecreasingScheduleConfig
+   noether.core.schemas.schedules.PeriodicBoolScheduleConfig
+   noether.core.schemas.schedules.PolynomialDecreasingScheduleConfig
+   noether.core.schemas.schedules.PolynomialIncreasingScheduleConfig
+   noether.core.schemas.schedules.StepDecreasingScheduleConfig
+   noether.core.schemas.schedules.StepFixedScheduleConfig
+   noether.core.schemas.schedules.StepIntervalScheduleConfig
+   noether.core.schemas.schedules.CosineDecreasingScheduleConfig
+   noether.core.schemas.schedules.CosineIncreasingScheduleConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: ScheduleBaseConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: overhang_percent
+      :type:  float | None
+      :value: None
+
+
+      The percentage by which the schedule is artificially prolonged. Mutually exclusive with `overhang_steps`.
+
+
+   .. py:attribute:: overhang_steps
+      :type:  int | None
+      :value: None
+
+
+      The number of steps by which the schedule is artificially prolonged. Mutually exclusive with `overhang_percent`.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+
+   .. py:attribute:: end_value
+      :type:  float
+      :value: None
+
+
+
+   .. py:attribute:: weight_decay
+      :type:  float | None
+      :value: None
+
+
+
+   .. py:attribute:: start_percent
+      :type:  float | None
+      :value: None
+
+
+      The percentage of steps at which the schedule starts.
+
+
+   .. py:attribute:: end_percent
+      :type:  float | None
+      :value: None
+
+
+      The percentage of steps at which the schedule ends.
+
+
+   .. py:attribute:: start_step
+      :type:  int | None
+      :value: None
+
+
+      The step at which the schedule starts.
+
+
+   .. py:attribute:: end_step
+      :type:  int | None
+      :value: None
+
+
+      The step at which the schedule ends.
+
+
+   .. py:attribute:: interval
+      :type:  Literal['update', 'epoch']
+      :value: None
+
+
+      Whether the schedule is based on updates or epochs. Interval should be either "update" or "epoch". Default is "update". Under the hood steps is always used. However, when "epoch" is selected here, the step count is derived from epochs via the UpdateCounter.
+
+
+   .. py:method:: check_mutual_exclusion()
+
+      Ensures that 'overhang_percent' and 'overhang_steps' are mutually exclusive.
+
+
+
+   .. py:method:: validate_start_end_steps()
+
+
+   .. py:method:: validate_start_end_percents()
+
+
+.. py:class:: ProgressScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.ProgressSchedule']
+      :value: 'noether.core.schedules.ProgressSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: exclude_first
+      :type:  bool
+      :value: None
+
+
+      Whether to exclude the first value of the schedule.
+
+
+   .. py:attribute:: exclude_last
+      :type:  bool
+      :value: None
+
+
+      Whether to exclude the last value of the schedule.
+
+
+.. py:class:: SchedulerConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.scheduler.SchedulerConfig']
+      :value: 'noether.core.schedules.scheduler.SchedulerConfig'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: warmup_percent
+      :type:  float
+      :value: None
+
+
+
+   .. py:attribute:: end_value
+      :type:  float
+      :value: None
+
+
+
+.. py:class:: DecreasingProgressScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.DecreasingProgressSchedule']
+      :value: 'noether.core.schedules.DecreasingProgressSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: max_value
+      :type:  float
+      :value: None
+
+
+      Maximum (starting) value of the schedule.
+
+
+   .. py:attribute:: end_value
+      :type:  float
+      :value: None
+
+
+      Minimum (ending) value of the schedule.
+
+
+.. py:class:: IncreasingProgressScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.IncreasingProgressSchedule']
+      :value: 'noether.core.schedules.IncreasingProgressSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+
+   .. py:attribute:: max_value
+      :type:  float | None
+      :value: None
+
+
+      Minimum (starting) value of the schedule.
+
+
+.. py:class:: ConstantScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.ConstantSchedule']
+      :value: 'noether.core.schedules.ConstantSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: value
+      :type:  float
+
+      The constant value that will be returned for all steps. Value should be equal to the learning rate defined in the optimizer.
+
+
+.. py:class:: CustomScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.CustomSchedule']
+      :value: 'noether.core.schedules.CustomSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: values
+      :type:  list[float]
+
+      The list of values that will be returned for each step. Values show ben as long as the number of steps.
+
+
+.. py:class:: LinearWarmupCosineDecayScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.LinearWarmupCosineDecaySchedule']
+      :value: 'noether.core.schedules.LinearWarmupCosineDecaySchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: warmup_steps
+      :type:  int | None
+      :value: None
+
+
+      The number of steps to linearly increase the value from start to max.
+
+
+   .. py:attribute:: warmup_percent
+      :type:  float | None
+      :value: None
+
+
+      The percentage of steps to linearly increase the value from start to max.
+
+
+   .. py:attribute:: max_value
+      :type:  float
+      :value: None
+
+
+      The maximum value of the scheduler from which to start the cosine decay phase. This should be equal to the learning rate defined in the optimizer. I.e., max value is learning rate
+
+
+   .. py:method:: validate_warmup()
+
+      Ensures that exactly one of 'warmup_steps' or 'warmup_percent' is specified.
+
+
+
+.. py:class:: LinearIncreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`IncreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.LinearIncreasingSchedule']
+      :value: 'noether.core.schedules.LinearIncreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+.. py:class:: LinearDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.LinearDecreasingSchedule']
+      :value: 'noether.core.schedules.LinearDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+.. py:class:: PeriodicBoolScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.PeriodicBoolSchedule']
+      :value: 'noether.core.schedules.PeriodicBoolSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: initial_state
+      :type:  bool
+
+      The initial (boolean) state of the scheduler (on or off).
+
+
+   .. py:attribute:: off_value
+      :type:  float
+      :value: None
+
+
+      The value to return when the scheduler is in the off state.
+
+
+   .. py:attribute:: on_value
+      :type:  float
+      :value: None
+
+
+      The value to return when the scheduler is in the on state.
+
+
+   .. py:attribute:: off_duration
+      :type:  int
+      :value: None
+
+
+      The number of steps the scheduler is in the off state.
+
+
+   .. py:attribute:: on_duration
+      :type:  int
+      :value: None
+
+
+      The number of steps the scheduler is in the on state.
+
+
+   .. py:attribute:: invert
+      :type:  bool
+      :value: None
+
+
+      Whether to invert the scheduler, i.e. return off_value when on and vice versa.
+
+
+.. py:class:: PolynomialDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.PolynomialDecreasingSchedule']
+      :value: 'noether.core.schedules.PolynomialDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: power
+      :type:  float
+      :value: None
+
+
+      The power of the polynomial function.
+
+
+.. py:class:: PolynomialIncreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`IncreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.PolynomialIncreasingSchedule']
+      :value: 'noether.core.schedules.PolynomialIncreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: power
+      :type:  float
+      :value: None
+
+
+      The power of the polynomial function.
+
+
+.. py:class:: StepDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.StepDecreasingSchedule']
+      :value: 'noether.core.schedules.StepDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: factor
+      :type:  float
+      :value: None
+
+
+      The factor by which the value decreases.
+
+
+   .. py:attribute:: decreases_interval
+      :type:  float
+      :value: None
+
+
+      The interval in range [0, 1] at which the value decreases.
+
+
+   .. py:method:: check_interval()
+
+      Ensures that 'interval' is a float in the range (0, 1).
+
+
+
+.. py:class:: StepFixedScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.StepFixedSchedule']
+      :value: 'noether.core.schedules.StepFixedSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+      The initial value of the scheduler.
+
+
+   .. py:attribute:: factor
+      :type:  float
+      :value: None
+
+
+      The factor by which the value is multiplied after reaching the next step provided in steps.
+
+
+   .. py:attribute:: steps
+      :type:  list[float]
+      :value: None
+
+
+      The steps at which the value changes, must be a list of floats in the range (0, 1).
+
+
+   .. py:method:: validate_steps()
+
+      Ensures that 'steps' is a non-empty list of floats in the range (0, 1).
+
+
+
+.. py:class:: StepIntervalScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.StepIntervalSchedule']
+      :value: 'noether.core.schedules.StepIntervalSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+      The initial value of the scheduler. I.e, the learning rate at step 0.
+
+
+   .. py:attribute:: factor
+      :type:  float
+      :value: None
+
+
+      The factor by which the value is multiplied after reaching the next interval.
+
+
+   .. py:attribute:: update_interval
+      :type:  float
+      :value: None
+
+
+      The interval in range (0, 1) at which the value changes.
+
+
+   .. py:method:: check_update_interval(v)
+
+      Ensures that 'update_interval' is a float in the range (0, 1).
+
+
+
+.. py:class:: CosineDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.CosineDecreasingSchedule']
+      :value: 'noether.core.schedules.CosineDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+.. py:class:: CosineIncreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`IncreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.CosineIncreasingSchedule']
+      :value: 'noether.core.schedules.CosineIncreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+.. py:data:: AnyScheduleConfig
+

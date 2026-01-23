@@ -1,0 +1,20 @@
+noether.core.callbacks
+======================
+
+.. py:module:: noether.core.callbacks
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/callbacks/base/index
+   /autoapi/noether/core/callbacks/checkpoint/index
+   /autoapi/noether/core/callbacks/default/index
+   /autoapi/noether/core/callbacks/early_stoppers/index
+   /autoapi/noether/core/callbacks/online/index
+   /autoapi/noether/core/callbacks/periodic/index
+
+

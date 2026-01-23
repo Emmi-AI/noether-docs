@@ -1,0 +1,15 @@
+noether.modeling.modules.decoders
+=================================
+
+.. py:module:: noether.modeling.modules.decoders
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/modeling/modules/decoders/deep_perceiver/index
+
+

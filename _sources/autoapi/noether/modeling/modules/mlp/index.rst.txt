@@ -1,0 +1,16 @@
+noether.modeling.modules.mlp
+============================
+
+.. py:module:: noether.modeling.modules.mlp
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/modeling/modules/mlp/mlp/index
+   /autoapi/noether/modeling/modules/mlp/upactdown_mlp/index
+
+

@@ -1,0 +1,55 @@
+noether.io.logging_progress
+===========================
+
+.. py:module:: noether.io.logging_progress
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.logging_progress.LogProgress
+
+
+Module Contents
+---------------
+
+.. py:class:: LogProgress(*, label, total_bytes, mb_step = 32)
+
+   Percent-based progress logger.
+   - If total is known: log at N% steps (adaptive: 20% for small files, 10% for larger).
+   - If total unknown: log every `mb_step` MiB.
+
+   :param label: A label to use, e.g. a filename.
+   :param total_bytes: [Optional] The total number of bytes to log.
+   :param mb_step: [Optional] The number of MiB to log.
+
+
+   .. py:attribute:: label
+
+
+   .. py:attribute:: total
+
+
+   .. py:attribute:: step
+      :value: 20
+
+
+
+   .. py:attribute:: next_pct
+      :value: 20
+
+
+
+   .. py:attribute:: bytes_done
+      :value: 0
+
+
+
+   .. py:method:: update(delta)
+
+
+   .. py:method:: close()
+
+

@@ -1,0 +1,29 @@
+noether.core.distributed.run.unmanaged
+======================================
+
+.. py:module:: noether.core.distributed.run.unmanaged
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.distributed.run.unmanaged.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.distributed.run.unmanaged.run_unmanaged
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: run_unmanaged(main, devices, accelerator = 'gpu', master_port = None)
+

@@ -1,0 +1,15 @@
+noether.inference
+=================
+
+.. py:module:: noether.inference
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/inference/cli/index
+
+

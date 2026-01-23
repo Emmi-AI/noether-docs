@@ -1,0 +1,91 @@
+noether.core.types
+==================
+
+.. py:module:: noether.core.types
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.types.InitWeightsMode
+   noether.core.types.ActivationTypes
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.types.CheckpointKeys
+
+
+Module Contents
+---------------
+
+.. py:data:: InitWeightsMode
+
+.. py:data:: ActivationTypes
+
+.. py:class:: CheckpointKeys
+
+   Defines the standard, possible keys in the checkpoint dict.
+
+
+   .. py:attribute:: STATE_DICT
+      :value: 'state_dict'
+
+
+      The pytorch state dict of the model. I.e. the model weights/tensors/buffers.
+
+
+   .. py:attribute:: CHECKPOINT_TAG
+      :value: 'checkpoint_tag'
+
+
+      The checkpoint tag, e.g., "E10_U200_S800" or "latest".
+
+
+   .. py:attribute:: TRAINING_ITERATION
+      :value: 'training_iteration'
+
+
+      The detailed information about training iteration as a dict with keys 'epoch', 'update', and 'sample'.
+
+
+   .. py:attribute:: RUN_ID
+      :value: 'run_id'
+
+
+      The ID of the run from which this checkpoint was created.
+
+
+   .. py:attribute:: MODEL_CONFIG
+      :value: 'model_config'
+
+
+      The model configuration used to instantiate the model. A serialized dict of the pydantic model config.
+
+
+   .. py:attribute:: CONFIG_KIND
+      :value: 'config_kind'
+
+
+      The kind (i.e., class path) of the model configuration. Used to instantiate the correct model configuration.
+
+
+   .. py:attribute:: CALLBACK_STATE_DICT
+      :value: 'callback_state_dicts'
+
+
+      The state dicts of the callbacks.
+
+
+   .. py:attribute:: GRAD_SCALER
+      :value: 'grad_scaler'
+
+
+      The state dict of the grad scaler (if used).
+
+

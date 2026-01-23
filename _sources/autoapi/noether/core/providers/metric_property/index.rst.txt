@@ -1,0 +1,89 @@
+noether.core.providers.metric_property
+======================================
+
+.. py:module:: noether.core.providers.metric_property
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.providers.metric_property.Ordinality
+   noether.core.providers.metric_property.MetricPropertyProvider
+
+
+Module Contents
+---------------
+
+.. py:class:: Ordinality(*args, **kwds)
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   Defines the direction of improvement for a metric.
+
+
+   .. py:attribute:: HIGHER_IS_BETTER
+
+
+   .. py:attribute:: LOWER_IS_BETTER
+
+
+   .. py:attribute:: NEUTRAL
+
+
+.. py:class:: MetricPropertyProvider
+
+   Provider for properties about metrics, mainly the ordinality of a metric, i.e., is it better if it is higher
+   (e.g, accuracy of a classifier) or better if it is lower (e.g., a mean-squared error or any other loss).
+   Additionally, a concept of "neutral" metrics is introduced, which are things that are logged throughout training
+   but there is no concept of "best" metric (e.g., a learning rate that is scheduled, weight decay, ...).
+
+   By default, the following patterns are handled:
+   - "*loss*" (lower is better)
+   - "*error*" (lower is better)
+   - "*accuracy*" (higher is better)
+
+   Callbacks or trainers can freely add patterns if they introduce new metrics that are not handled.
+
+   The MetricPropertyProvider is used by the experiment tracker to automatically create summary values and log them
+   to the online interface/log files and also by early stopping mechanisms to enable flexible early stopping where
+   the early stopping criteria can use loss values, but also, e.g., validation accuracies.
+
+
+   .. py:method:: register_pattern(pattern, ordinality)
+      :staticmethod:
+
+
+      Allows users (Trainers/Callbacks) to add new patterns easily.
+
+
+
+   .. py:attribute:: logger
+
+
+   .. py:method:: get_ordinality(key)
+      :staticmethod:
+
+
+      Determines the ordinality of a metric key based on registered patterns.
+      The search is case-insensitive.
+
+
+
+   .. py:method:: is_neutral_key(key)
+
+      Returns True if the passed key is a neutral metric.
+
+
+
+   .. py:method:: higher_is_better(key)
+
+      Returns whether or not the passed key is better if the metric is higher.
+      Logs a warning if the key is unmatched.
+
+      :param key: The key to check.
+
+
+

@@ -1,0 +1,39 @@
+noether.core.factory.schedule
+=============================
+
+.. py:module:: noether.core.factory.schedule
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.factory.schedule.ScheduleFactory
+
+
+Module Contents
+---------------
+
+.. py:class:: ScheduleFactory(returns_partials = False)
+
+   Bases: :py:obj:`noether.core.factory.base.Factory`
+
+
+   Factory for creating schedules. Handles wrapping into ScheduleWrapper which handles update/epoch based
+   scheduling. Additionally, populates the `effective_batch_size` and `updates_per_epoch` to avoid specifying it
+   in the config.
+
+
+   .. py:method:: create(schedule_config, **kwargs)
+
+      Creates a schedule if the schedule is specified as dictionary. If the schedule was already instantiated, it
+      will simply return the existing schedule. If `obj_or_kwargs` is None, None is returned.
+
+      :param schedule_config: The schedule config or already instantiated schedule.
+      :param \*\*kwargs: Additional keyword arguments that are passed to the schedule constructor.
+
+      :returns: The instantiated schedule.
+
+
+

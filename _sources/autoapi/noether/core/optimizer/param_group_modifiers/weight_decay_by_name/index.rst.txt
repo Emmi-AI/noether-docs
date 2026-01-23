@@ -1,0 +1,57 @@
+noether.core.optimizer.param_group_modifiers.weight_decay_by_name
+=================================================================
+
+.. py:module:: noether.core.optimizer.param_group_modifiers.weight_decay_by_name
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.optimizer.param_group_modifiers.weight_decay_by_name.WeightDecayByNameModifier
+
+
+Module Contents
+---------------
+
+.. py:class:: WeightDecayByNameModifier(param_group_modifier_config)
+
+   Bases: :py:obj:`noether.core.optimizer.param_group_modifiers.base.ParamGroupModifierBase`
+
+
+   Changes the weight decay value for a single parameter. Use-cases:
+   - ViT exclude CLS token parameters
+   - Transformer learned positional embeddings
+   - Learnable query tokens for cross attention ("PerceiverPooling")
+
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: value
+
+
+   .. py:attribute:: param_was_found
+      :value: False
+
+
+
+   .. py:method:: get_properties(model, name, param)
+
+      This method is called with all items of `model.named_parameters()` to compose the parameter groups for the
+      whole model. If the desired parameter name is found, it returns a modifier that sets the weight decay.
+
+      :param model: Model from which the parameter originates from. Used to extract properties (e.g., number of layers
+                    for a layerwise learning rate decay).
+      :param name: Name of the parameter as stored inside the model.
+      :param param: The parameter tensor.
+
+
+
+   .. py:method:: was_applied_successfully()
+
+      Check if the parameter was found within the model.
+
+
+

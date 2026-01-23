@@ -1,0 +1,75 @@
+noether.core.utils.common.stopwatch
+===================================
+
+.. py:module:: noether.core.utils.common.stopwatch
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.utils.common.stopwatch.Stopwatch
+
+
+Module Contents
+---------------
+
+.. py:class:: Stopwatch
+
+   A stopwatch class to measure elapsed time.
+
+
+   .. py:method:: start()
+
+      Start the stopwatch.
+
+
+
+   .. py:method:: stop()
+
+      Stop the stopwatch and return the elapsed time since the last lap.
+
+
+
+   .. py:method:: lap()
+
+      Record a lap time and return the elapsed time since the last lap.
+
+
+
+   .. py:property:: last_lap_time
+      :type: float
+
+
+      Return the last lap time.
+
+
+   .. py:property:: lap_count
+      :type: int
+
+
+      Return the number of laps recorded.
+
+
+   .. py:property:: average_lap_time
+      :type: float
+
+
+      Return the average lap time.
+
+
+   .. py:property:: elapsed_seconds
+      :type: float
+
+
+      Return the total elapsed time since the stopwatch was started.
+
+
+   .. py:property:: elapsed_milliseconds
+      :type: float
+
+
+      Return the total elapsed time since the stopwatch was started in milliseconds.
+
+

@@ -1,0 +1,75 @@
+noether.core.schemas.models.transolver
+======================================
+
+.. py:module:: noether.core.schemas.models.transolver
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.models.transolver.TransolverConfig
+   noether.core.schemas.models.transolver.TransolverPlusPlusConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: TransolverConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.models.transformer.TransformerConfig`, :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+
+
+   Configuration for a Transolver model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: attention_constructor
+      :type:  Literal['transolver', 'transolver_plusplus']
+      :value: 'transolver'
+
+
+      Constructor of the attention module. Defaults to 'dot_product'.
+
+
+   .. py:attribute:: attention_arguments
+      :type:  dict
+
+      Additional arguments for the attention module that are only needed for a specific attention implementation.
+
+
+.. py:class:: TransolverPlusPlusConfig(/, **data)
+
+   Bases: :py:obj:`TransolverConfig`
+
+
+   Configuration for a Transolver++ model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: attention_constructor
+      :type:  Literal['transolver_plusplus']
+      :value: 'transolver_plusplus'
+
+
+      Constructor of the attention module. Defaults to 'dot_product'.
+
+

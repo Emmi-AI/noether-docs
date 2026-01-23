@@ -1,0 +1,251 @@
+noether.io.verification
+=======================
+
+.. py:module:: noether.io.verification
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.verification.HashType
+   noether.io.verification.T
+   noether.io.verification.R
+   noether.io.verification.Manifest
+
+
+Exceptions
+----------
+
+.. autoapisummary::
+
+   noether.io.verification.ParallelErrors
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.verification.FailAction
+   noether.io.verification.FileRecord
+   noether.io.verification.VerificationResult
+   noether.io.verification.VerificationType
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.verification.parallel_map_collect_errors
+   noether.io.verification.hash_file
+   noether.io.verification.build_manifest
+   noether.io.verification.save_manifest
+   noether.io.verification.load_manifest
+   noether.io.verification.verify_tree
+
+
+Module Contents
+---------------
+
+.. py:data:: HashType
+
+.. py:data:: T
+
+.. py:data:: R
+
+.. py:class:: FailAction
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: WARN
+      :value: 'warn'
+
+
+
+   .. py:attribute:: DELETE
+      :value: 'delete'
+
+
+
+   .. py:attribute:: REDOWNLOAD
+      :value: 'redownload'
+
+
+
+   .. py:attribute:: ABORT
+      :value: 'abort'
+
+
+
+   .. py:method:: describe()
+
+
+.. py:class:: FileRecord
+
+   .. py:attribute:: path
+      :type:  str
+
+
+   .. py:attribute:: size
+      :type:  int
+
+
+   .. py:attribute:: hash
+      :type:  str | None
+
+
+   .. py:attribute:: etag
+      :type:  str | None
+
+
+   .. py:attribute:: source
+      :type:  dict[str, Any] | None
+
+
+.. py:class:: VerificationResult
+
+   .. py:attribute:: ok
+      :type:  list[str]
+
+
+   .. py:attribute:: missing
+      :type:  list[str]
+
+
+   .. py:attribute:: extra
+      :type:  list[str]
+
+
+   .. py:attribute:: size_mismatch
+      :type:  list[str]
+
+
+   .. py:attribute:: hash_mismatch
+      :type:  list[str]
+
+
+.. py:class:: VerificationType
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: SIZE
+      :value: 'size'
+
+
+
+   .. py:attribute:: HASH
+      :value: 'hash'
+
+
+
+.. py:exception:: ParallelErrors(errors)
+
+   Bases: :py:obj:`Exception`
+
+
+   Common base class for all non-exit exceptions.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: errors
+
+
+.. py:data:: Manifest
+
+.. py:function:: parallel_map_collect_errors(fn, items, max_workers = 8)
+
+.. py:function:: hash_file(path, chunk_size_mb = 1)
+
+   Reads file bytes as chunks and hashes them.
+
+   :param path: Input file path.
+   :param chunk_size_mb: Chunk size in megabytes.
+
+   :returns:
+
+             - The hash of the file.
+
+
+.. py:function:: build_manifest(root, jobs = 4, include_hash = True)
+
+   Creates a manifest from the given root directory.
+
+   :param root: Input root directory.
+   :param jobs: A number of jobs to run in parallel.
+   :param include_hash: If True, include the hash of the file in the manifest. Defaults to True.
+
+   :returns:
+
+             - A dictionary containing the manifest.
+
+
+.. py:function:: save_manifest(manifest, path)
+
+   Saves the given manifest to the given path.
+
+   :param manifest: Input manifest to save.
+   :param path: Output file path.
+
+   :returns:
+
+             - None
+
+
+.. py:function:: load_manifest(path)
+
+   Loads the given manifest from the given path.
+   :param path: Input file path.
+
+   :returns:
+
+             - A dictionary containing the manifest.
+
+
+.. py:function:: verify_tree(root, manifest, jobs = 4, require_hash = True)
+
+   Verifies the given manifest against the given root directory.
+
+   :param root: Input root directory.
+   :param manifest: Input manifest to verify.
+   :param jobs: Number of jobs to run in parallel.
+   :param require_hash: If True, require hash of the file in the manifest. Defaults to True.
+
+   :returns:
+
+             - An instance of VerificationResult.
+
+

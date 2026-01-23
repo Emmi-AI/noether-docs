@@ -1,0 +1,31 @@
+noether.modeling.models.transolver
+==================================
+
+.. py:module:: noether.modeling.models.transolver
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.models.transolver.Transolver
+
+
+Module Contents
+---------------
+
+.. py:class:: Transolver(config)
+
+   Bases: :py:obj:`noether.modeling.models.Transformer`
+
+
+   Implementation of the Transolver model.
+   Reference code: https://github.com/thuml/Transolver/
+   Paper: https://arxiv.org/abs/2402.02366
+   Transolver is a Transformer with a special physics attention mechanism. Hence, we extend the Transformer class,
+   and configure it accordingly.
+
+   :param config: Configuration of the Transolver model.
+
+

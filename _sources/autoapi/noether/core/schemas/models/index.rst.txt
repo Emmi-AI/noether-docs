@@ -1,0 +1,19 @@
+noether.core.schemas.models
+===========================
+
+.. py:module:: noether.core.schemas.models
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/schemas/models/ab_upt/index
+   /autoapi/noether/core/schemas/models/base/index
+   /autoapi/noether/core/schemas/models/transformer/index
+   /autoapi/noether/core/schemas/models/transolver/index
+   /autoapi/noether/core/schemas/models/upt/index
+
+

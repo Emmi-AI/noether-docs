@@ -1,0 +1,22 @@
+noether.core.utils.torch.device
+===============================
+
+.. py:module:: noether.core.utils.torch.device
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.torch.device.move_items_to_device
+
+
+Module Contents
+---------------
+
+.. py:function:: move_items_to_device(device, batch)
+
+   Moves everything in the batch to the given device.
+
+

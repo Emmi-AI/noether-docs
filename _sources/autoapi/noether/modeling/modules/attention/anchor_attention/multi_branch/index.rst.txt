@@ -1,0 +1,91 @@
+noether.modeling.modules.attention.anchor_attention.multi_branch
+================================================================
+
+.. py:module:: noether.modeling.modules.attention.anchor_attention.multi_branch
+
+
+Exceptions
+----------
+
+.. autoapisummary::
+
+   noether.modeling.modules.attention.anchor_attention.multi_branch.MissingBranchTokensError
+   noether.modeling.modules.attention.anchor_attention.multi_branch.MissingAnchorTokenError
+   noether.modeling.modules.attention.anchor_attention.multi_branch.UnexpectedTokenError
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.attention.anchor_attention.multi_branch.MultiBranchAnchorAttention
+
+
+Module Contents
+---------------
+
+.. py:exception:: MissingBranchTokensError
+
+   Bases: :py:obj:`ValueError`
+
+
+   Raised when expected tokens for a configured branch are not present.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+.. py:exception:: MissingAnchorTokenError
+
+   Bases: :py:obj:`ValueError`
+
+
+   Raised when a required anchor token is not present.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+.. py:exception:: UnexpectedTokenError
+
+   Bases: :py:obj:`ValueError`
+
+
+   Raised when an unexpected token is present.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+.. py:class:: MultiBranchAnchorAttention(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   A base class for multi-branch anchor-based attention modules with shared parameters between branches.
+
+   Anchor attention limits the self-attention to anchor tokens while other tokens use cross-attention.
+   Multiple branches for different modalities use the same linear-projection parameters.
+   This base class provides a common constructor, validation logic, and forward method implementation.
+   Subclasses only need to implement `_create_attention_patterns` to define their specific attention patterns.
+
+   Initialize internal Module state, shared by both nn.Module and ScriptModule.
+
+
+   .. py:attribute:: mixed_attention
+
+
+   .. py:attribute:: branches
+      :value: None
+
+
+
+   .. py:attribute:: anchor_suffix
+      :value: None
+
+
+
+   .. py:method:: forward(x, token_specs, freqs = None)
+
+      Apply attention using the patterns defined by the subclass.
+
+
+

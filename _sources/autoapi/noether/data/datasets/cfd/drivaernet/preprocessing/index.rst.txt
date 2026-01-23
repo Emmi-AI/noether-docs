@@ -1,0 +1,79 @@
+noether.data.datasets.cfd.drivaernet.preprocessing
+==================================================
+
+.. py:module:: noether.data.datasets.cfd.drivaernet.preprocessing
+
+.. autoapi-nested-parse::
+
+   This script converts the vtk files from the DrivAerNet++ dataset to torch tensors.
+   It processes pressure and wall shear stress surface data, ensuring point order consistency,
+   and saves the processed data in a structured format.
+   Subsamples volume data for efficiency.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.drivaernet.preprocessing.seed_from
+   noether.data.datasets.cfd.drivaernet.preprocessing.get_vtk_files
+   noether.data.datasets.cfd.drivaernet.preprocessing.load_data
+   noether.data.datasets.cfd.drivaernet.preprocessing.reorder_data_via_position_map
+   noether.data.datasets.cfd.drivaernet.preprocessing.process_single_case
+   noether.data.datasets.cfd.drivaernet.preprocessing.main
+
+
+Module Contents
+---------------
+
+.. py:function:: seed_from(*args)
+
+   hashes any arguments to create a unique seed. This is useful for reproducibility,
+   e.g. when generating same data for different models (which increment the seed differently).
+   -------------
+   Example usage:
+   with local_seed(seed_from("train", 10)):
+       x = torch.randn(2)
+       y = np.random.randn(2)
+   z = torch.randn(2)  # here we have re-stored the "global" seed.
+
+
+.. py:function:: get_vtk_files(root)
+
+.. py:function:: load_data(file_path)
+
+   Loads position and field data from a VTK file into PyTorch tensors.
+
+
+.. py:function:: reorder_data_via_position_map(reference_data, data_to_reorder, rounding_precision = None)
+
+   Reorders tensors in 'data_to_reorder' to match the point order of 'reference_data'.
+
+   This function assumes that both datasets contain the exact same set of points, just in a different order.
+   The mapping is done using a dictionary lookup where point coordinates are the keys.
+
+   :param reference_data: The dictionary with the target ordering (your pressure_data).
+   :param data_to_reorder: The dictionary with the data to be reordered (your wallshear_data).
+
+   :returns: A new dictionary containing the data from 'data_to_reorder' sorted
+             according to the point order in 'reference_data'.
+
+
+.. py:function:: process_single_case(vtk_file, pressure_root, wallshear_root, output_root, volume_root, subsample_factor_volume = 10)
+
+   Loads, reorders, and saves data for a single simulation case.
+
+   :param vtk_file: The relative path of the vtk file (e.g., 'experiment/data.vtk').
+   :param pressure_root: The root directory for pressure data.
+   :param wallshear_root: The root directory for wall shear stress data.
+   :param output_root: The root directory to save the processed .pt files.
+   :param volume_root: The root directory for volume data.
+
+
+.. py:function:: main(unzipped_root, output_dir, subsample_factor_volume)
+
+   Main function to set up paths and process all files.
+
+

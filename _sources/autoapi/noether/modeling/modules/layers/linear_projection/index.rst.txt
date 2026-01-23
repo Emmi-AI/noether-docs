@@ -1,0 +1,57 @@
+noether.modeling.modules.layers.linear_projection
+=================================================
+
+.. py:module:: noether.modeling.modules.layers.linear_projection
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.layers.linear_projection.LinearProjection
+
+
+Module Contents
+---------------
+
+.. py:class:: LinearProjection(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   LinearProjection is a linear projection layer that can be used for 1D, 2D, and 3D data.
+
+   Initialize the LinearProjection.
+
+   :param config: The configuration of the LinearProjection.
+
+   :raises NotImplementedError: raises not implemented error if the number of dimensions of the input domain is bigger than 4.
+
+
+   .. py:attribute:: project
+      :type:  torch.nn.Module
+
+
+   .. py:attribute:: init_weights
+
+
+   .. py:method:: reset_parameters()
+
+      Reset the parameters of the MLP with a specific initialization. Options are "torch" (i.e., default) or
+          "truncnormal002".
+
+      :raises NotImplementedError: raised if the specified initialization is not implemented.
+
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the LinearProjection.
+
+      :param x: Input tensor to the LinearProjection.
+
+      :returns: Output tensor from the LinearProjection.
+
+
+

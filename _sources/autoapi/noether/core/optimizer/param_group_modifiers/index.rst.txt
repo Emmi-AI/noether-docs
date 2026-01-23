@@ -1,0 +1,17 @@
+noether.core.optimizer.param_group_modifiers
+============================================
+
+.. py:module:: noether.core.optimizer.param_group_modifiers
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/optimizer/param_group_modifiers/base/index
+   /autoapi/noether/core/optimizer/param_group_modifiers/lr_scale_by_name/index
+   /autoapi/noether/core/optimizer/param_group_modifiers/weight_decay_by_name/index
+
+

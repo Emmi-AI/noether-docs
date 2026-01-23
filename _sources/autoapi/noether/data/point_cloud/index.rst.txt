@@ -1,0 +1,66 @@
+noether.data.point_cloud
+========================
+
+.. py:module:: noether.data.point_cloud
+
+.. autoapi-nested-parse::
+
+   Contains point cloud utilities.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.point_cloud.PointCloudRegistration
+
+
+Module Contents
+---------------
+
+.. py:class:: PointCloudRegistration(center_shift = None, xyz_scale = None)
+
+   Class with the interface to register point clouds.
+
+   - The point clouds are registered by estimating the center shift and scaling of the source point cloud to the target point cloud.
+   - The source point cloud is transformed to the target point cloud using the estimated center shift and scaling.
+   - A center_shift or xyz_scale can be provided to transform the source point cloud to the target point cloud.
+
+
+   Initialize the PointCloudRegistration class.
+
+   :param center_shift: The center shift of the point cloud. Defaults to None.
+   :param xyz_scale: The scaling of the point cloud. Defaults to None.
+
+
+   .. py:attribute:: center_shift
+      :value: None
+
+
+
+   .. py:attribute:: xyz_scale
+      :value: None
+
+
+
+   .. py:method:: estimate_transforms(src_points, target_points)
+
+      Estimate the transformation parameters for registering the source point cloud to the target point cloud. Only 3D point clouds are supported.
+
+      :param src_points: The source point cloud. Only 3D point clouds are supported.
+      :param target_points: The target point cloud. Only 3D point clouds are supported.
+
+
+
+   .. py:method:: transform(src_points)
+
+      Transform the source point cloud to the target point cloud.
+
+      :param src_points: The source point cloud.
+
+      :returns: The transformed source point.
+
+
+

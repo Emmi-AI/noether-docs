@@ -1,0 +1,52 @@
+noether.data.pipeline.batch_processors.moment_normalization
+===========================================================
+
+.. py:module:: noether.data.pipeline.batch_processors.moment_normalization
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.batch_processors.moment_normalization.MomentNormalizationBatchProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: MomentNormalizationBatchProcessor(items, mean, std)
+
+   Bases: :py:obj:`noether.data.pipeline.batch_processor.BatchProcessor`
+
+
+   Normalizes a value with its mean and standard deviation (i.e., its moments).
+
+   Initializes the MomentNormalizationPostCollator
+
+   :param items: the position items to normalize.
+   :param mean: the mean of the value.
+   :param std: the standard deviation of the value.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: mean_tensor
+
+
+   .. py:attribute:: std_tensor
+
+
+   .. py:method:: denormalize(key, value)
+
+      Inverts the normalization from the __call__ method of a single item in the batch.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The same name and the denormalized value.
+      :rtype: (key, value)
+
+
+

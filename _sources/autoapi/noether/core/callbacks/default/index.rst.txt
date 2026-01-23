@@ -1,0 +1,22 @@
+noether.core.callbacks.default
+==============================
+
+.. py:module:: noether.core.callbacks.default
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/callbacks/default/dataset_stats/index
+   /autoapi/noether/core/callbacks/default/eta/index
+   /autoapi/noether/core/callbacks/default/lr/index
+   /autoapi/noether/core/callbacks/default/online_loss/index
+   /autoapi/noether/core/callbacks/default/param_count/index
+   /autoapi/noether/core/callbacks/default/peak_memory/index
+   /autoapi/noether/core/callbacks/default/progress/index
+   /autoapi/noether/core/callbacks/default/train_time/index
+
+

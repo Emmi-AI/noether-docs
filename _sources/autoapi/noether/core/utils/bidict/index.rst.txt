@@ -1,0 +1,81 @@
+noether.core.utils.bidict
+=========================
+
+.. py:module:: noether.core.utils.bidict
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.utils.bidict.KT
+   noether.core.utils.bidict.VT
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.utils.bidict.Bidict
+
+
+Module Contents
+---------------
+
+.. py:data:: KT
+
+.. py:data:: VT
+
+.. py:class:: Bidict(forward = None)
+
+   A bidirectional dictionary that allows for two-way lookups.
+
+   This dictionary allows you to get values by key and keys by value.
+
+   Create a new Bidict.
+
+   This constructor takes two optional dictionaries for forward and
+   backward mapping. At least one of them must be not None.
+
+   :param forward: A dictionary for forward mapping.
+   :param backward: A dictionary for backward mapping.
+
+
+   .. py:method:: to_forward()
+
+      Return the forward mapping as a dictionary.
+
+
+
+   .. py:method:: to_backward()
+
+      Return the backward mapping as a dictionary.
+
+
+
+   .. py:method:: get_value_by_key(key)
+
+      Get a value by key.
+
+      :param key: The key to look up.
+
+
+
+   .. py:method:: get_key_by_value(value)
+
+      Get a key by value.
+      :param key: The value to look up.
+
+
+
+   .. py:method:: set(key, value)
+
+      Add a new key-value pair.
+
+      :param key: The key to add.
+      :param value: The value to associate with the key.
+
+
+

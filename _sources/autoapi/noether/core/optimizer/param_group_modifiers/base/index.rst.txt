@@ -1,0 +1,44 @@
+noether.core.optimizer.param_group_modifiers.base
+=================================================
+
+.. py:module:: noether.core.optimizer.param_group_modifiers.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.optimizer.param_group_modifiers.base.ParamGroupModifierBase
+
+
+Module Contents
+---------------
+
+.. py:class:: ParamGroupModifierBase
+
+   Generic implementation to change properties of optimizer parameter groups.
+
+
+   .. py:method:: get_properties(model, name, param)
+      :abstractmethod:
+
+
+      Returns the modified properties for a given model parameter. This method is called with all items of
+      `model.named_parameters()` to compose the parameter groups for the whole model.
+
+      :param model: Model from which the parameter originates from. Used to extract properties (e.g., number of layers
+                    for a layerwise learning rate decay).
+      :param name: Name of the parameter as stored inside the model.
+      :param param: The parameter tensor.
+
+
+
+   .. py:method:: was_applied_successfully()
+      :abstractmethod:
+
+
+      Checks if the parameter group modifier was applied successfully.
+
+
+

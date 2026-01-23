@@ -1,0 +1,149 @@
+noether.core.schemas.normalizers
+================================
+
+.. py:module:: noether.core.schemas.normalizers
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.schemas.normalizers.TorchTensor
+   noether.core.schemas.normalizers.FloatOrArray
+   noether.core.schemas.normalizers.SequenceOrTensor
+   noether.core.schemas.normalizers.AnyNormalizer
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.normalizers.MeanStdNormalizerConfig
+   noether.core.schemas.normalizers.PositionNormalizerConfig
+   noether.core.schemas.normalizers.ShiftAndScaleNormalizerConfig
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.schemas.normalizers.validate_tensor
+
+
+Module Contents
+---------------
+
+.. py:function:: validate_tensor(v)
+
+.. py:data:: TorchTensor
+
+.. py:data:: FloatOrArray
+
+.. py:data:: SequenceOrTensor
+
+.. py:class:: MeanStdNormalizerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: mean
+      :type:  TorchTensor
+
+      mean to subtract from the input data. Can be a single value or a Sequence if we want to apply a different mean per dimension.
+
+
+   .. py:attribute:: std
+      :type:  TorchTensor
+
+      standard deviation to divide the input data by. Can be a single value or a Sequence if we want to apply a different std per dimension.
+
+
+   .. py:attribute:: logscale
+      :type:  bool
+      :value: False
+
+
+      If true, the input data is assumed to be in log scale.
+
+
+.. py:class:: PositionNormalizerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: raw_pos_min
+      :type:  TorchTensor
+
+      Minimum raw position values of the entire simulation mesh. Can be a single value or a sequence of values.
+
+
+   .. py:attribute:: raw_pos_max
+      :type:  TorchTensor
+
+      Maximum raw position values of the entire simulation mesh. Can be a single value or a sequence of values.
+
+
+   .. py:attribute:: scale
+      :type:  float
+      :value: None
+
+
+      Scaling factor, the coordinates will be scaled linearly between [0, scale]. Defaults to 1000.
+
+
+   .. py:method:: check_min_max()
+
+
+.. py:class:: ShiftAndScaleNormalizerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: shift
+      :type:  TorchTensor
+
+      Value to subtract from the input data. Can be a single value or a Sequence if we want to apply a different shift per dimension.
+      Assumed in log scale if logscale is True.
+
+
+   .. py:attribute:: scale
+      :type:  TorchTensor
+
+      Value to divide the input data by. Can be a single value or a Sequence if we want to apply a different scale per dimension.
+      Assumed in log scale if logscale is True.
+
+
+   .. py:attribute:: logscale
+      :type:  bool
+      :value: False
+
+
+      If true, the input data is assumed to be in log scale.
+
+
+   .. py:method:: check_shift_scale()
+
+
+.. py:data:: AnyNormalizer
+

@@ -1,0 +1,116 @@
+noether.core.providers.path
+===========================
+
+.. py:module:: noether.core.providers.path
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.providers.path.PathProvider
+
+
+Module Contents
+---------------
+
+.. py:class:: PathProvider(output_root_path, run_id, stage_name = None, debug = False)
+
+   Provider that defines at which locations things are stored on the disk. The basic layout is that every training
+   run is identified by a `stage_name` (e.g., "pretrain" or "finetune") and `run_id`,
+   a string that is unique for each training run. All outputs are stored in a directory defined in the configuration
+   that is located in `output_path`. The outputs of a single run will be stored in `output_path/stage_name/run_id`.
+
+   :param output_root_path: The base output directory where outputs should be stored (e.g., /save).
+   :param run_id: Unique identifier of the training run.
+   :param stage_name: Optional identifier for the training stage for easier categorization (e.g., "pretrain" or "finetune").
+   :param debug: If `True`, outputs are stored in a "debug" subfolder.
+
+
+   .. py:attribute:: output_root
+
+
+   .. py:attribute:: stage_name
+      :value: None
+
+
+
+   .. py:attribute:: run_id
+
+
+   .. py:attribute:: debug
+      :value: False
+
+
+
+   .. py:method:: with_run(run_id = None, stage_name = None)
+
+
+   .. py:property:: run_output_path
+      :type: pathlib.Path
+
+
+      Returns the output_path for a given `stage_name` and `run_id`.
+
+      :returns: The output path for the current run.
+
+
+   .. py:property:: logfile_uri
+      :type: pathlib.Path
+
+
+      Returns the URI where the logfile should be stored (the file where stdout messsage are stored).
+
+
+   .. py:property:: checkpoint_path
+      :type: pathlib.Path
+
+
+      Returns the checkpoint path of the current run.
+
+
+   .. py:property:: basetracker_config_uri
+      :type: pathlib.Path
+
+
+      Independent of whether or not (or which) online tracker is used, the log entries are also written to disk.
+      This property defines where the config is written to.
+
+
+   .. py:property:: basetracker_entries_uri
+      :type: pathlib.Path
+
+
+      Independent of whether or not (or which) online tracker is used, the log entries are also written to disk.
+      This property defines where the log entries are written to.
+
+
+   .. py:property:: basetracker_summary_uri
+      :type: pathlib.Path
+
+
+      Independent of whether or not (or which) online tracker is used, the log entries are also written to disk.
+      This property defines where the summary is written to.
+
+
+   .. py:method:: generate_run_id(seed=None)
+      :staticmethod:
+
+
+      Generate a random run ID.
+
+      :param seed: Optional seed for reproducibility.
+
+      :returns: A random run ID.
+
+
+
+   .. py:method:: link(ancestor)
+
+      Create a symlink from the current run output path to the target run output path for resuming.
+
+      :param target: The target PathProvider to link to.
+
+
+

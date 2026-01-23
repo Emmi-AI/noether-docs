@@ -1,0 +1,19 @@
+noether.data.preprocessors.types
+================================
+
+.. py:module:: noether.data.preprocessors.types
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.preprocessors.types.ScalarOrSequence
+
+
+Module Contents
+---------------
+
+.. py:data:: ScalarOrSequence
+

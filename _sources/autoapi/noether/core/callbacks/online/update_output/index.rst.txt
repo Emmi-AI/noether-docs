@@ -1,0 +1,84 @@
+noether.core.callbacks.online.update_output
+===========================================
+
+.. py:module:: noether.core.callbacks.online.update_output
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.online.update_output.UpdateOutputCallback
+
+
+Module Contents
+---------------
+
+.. py:class:: UpdateOutputCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback that is invoked during training after every gradient step to track certain outputs from the update step.
+
+   The provided `update_outputs` are assumed to be a dictionary and outputs that match keys or patterns are tracked.
+   An update output matches if either the key matches exactly, e.g. {"some_output": ...} and keys["some_output"];
+   or if one of the patterns is contained in the update key name, e.g. {"some_loss": ...} and patterns = ["loss"].
+
+   Initializes the UpdateOutputCallback class.
+
+   :param callback_config: The configuration for the callback.
+   :param \*\*kwargs: additional keyword arguments provided to the parent cla
+
+
+   .. py:attribute:: out
+      :type:  pathlib.Path | None
+
+
+   .. py:attribute:: patterns
+
+
+   .. py:attribute:: keys
+
+
+   .. py:attribute:: verbose
+
+
+   .. py:attribute:: tracked_values
+      :type:  collections.defaultdict[str, list]
+
+
+   .. py:attribute:: reduce
+
+
+   .. py:attribute:: log_output
+
+
+   .. py:attribute:: save_output
+
+
+   .. py:method:: _track_after_accumulation_step(*, update_counter, update_outputs, **_)
+
+      Invoked after every gradient accumulation step. May be used to track metrics.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+      :param batch: Current batch.
+      :param losses: Losses computed for the current batch.
+      :param update_outputs: Outputs of the model for the current batch.
+      :param accumulation_steps: Total number of accumulation steps.
+      :param accumulation_step: Current accumulation step.
+
+
+
+   .. py:method:: _periodic_callback(*, update_counter, **_)
+
+      Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
+      overwrite this method to calculate metrics periodically during training and log them.
+
+      :param interval_type: "epoch", "update" or "sample" depending on if `every_n_epochs`, `every_n_updates` or
+                            `every_n_samples` is defined as field of the `PeriodicCallback`.
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+

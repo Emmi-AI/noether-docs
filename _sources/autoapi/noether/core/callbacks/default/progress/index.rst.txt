@@ -1,0 +1,57 @@
+noether.core.callbacks.default.progress
+=======================================
+
+.. py:module:: noether.core.callbacks.default.progress
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.default.progress.ProgressCallback
+
+
+Module Contents
+---------------
+
+.. py:class:: ProgressCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback to print the progress of the training such as number of epochs and updates.
+
+   Initializes the `PeriodicCallback`.
+
+   :param callback_config: Configuration of the `PeriodicCallback`.
+   :param trainer: Trainer of the current run.
+   :param model: Model of the current run.
+   :param data_container: DataContainer instance that provides access to all datasets.
+   :param tracker: Tracker instance to log metrics to stdout/disk/online platform.
+   :param log_writer: LogWriter instance to log metrics.
+   :param checkpoint_writer: CheckpointWriter instance to save checkpoints.
+   :param metric_property_provider: MetricPropertyProvider instance to access properties of metrics.
+   :param name: Name of the callback.
+
+
+   .. py:method:: _before_training(**_)
+
+      Template method for `before_training`. Derived classes should overwrite this method to do something before
+      training starts. Implementing this method is optional.
+
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+
+   .. py:method:: _periodic_callback(*, interval_type, update_counter, **_)
+
+      Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
+      overwrite this method to calculate metrics periodically during training and log them.
+
+      :param interval_type: "epoch", "update" or "sample" depending on if `every_n_epochs`, `every_n_updates` or
+                            `every_n_samples` is defined as field of the `PeriodicCallback`.
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+

@@ -1,0 +1,66 @@
+noether.io.diskcache.cache_benchmark
+====================================
+
+.. py:module:: noether.io.diskcache.cache_benchmark
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.diskcache.cache_benchmark.USE_OCI
+   noether.io.diskcache.cache_benchmark.local
+   noether.io.diskcache.cache_benchmark.impls
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.diskcache.cache_benchmark.underlying_fs
+   noether.io.diskcache.cache_benchmark.naive_fs
+   noether.io.diskcache.cache_benchmark.naive_sqlite_fs
+   noether.io.diskcache.cache_benchmark.local_fs
+   noether.io.diskcache.cache_benchmark.initialize_worker
+   noether.io.diskcache.cache_benchmark.read_file
+   noether.io.diskcache.cache_benchmark.benchmark
+
+
+Module Contents
+---------------
+
+.. py:data:: USE_OCI
+   :value: False
+
+
+.. py:function:: underlying_fs(cache_size=0)
+
+   This function returns the underlying filesystem, either S3 or OCI, based on the USE_OCI flag.
+   1. If USE_OCI is False, it returns an S3 filesystem pointing to a MinIO server.
+   You have to run a local MinIO server for this to work from https://www.min.io/download?platform=linux&arch=amd64
+   then run `MINIO_BROWSER=off ./minio server --address ":9123" /mnt/localdisk/benchmark/minio`
+
+
+
+.. py:function:: naive_fs(cache_size)
+
+.. py:function:: naive_sqlite_fs(cache_size)
+
+.. py:function:: local_fs(cache_size)
+
+.. py:data:: local
+
+.. py:function:: initialize_worker(fs_factory)
+
+   This is the initializer function for each worker process.
+   It creates an instance of HeavyObject and assigns it to a global variable.
+
+
+.. py:function:: read_file(path)
+
+.. py:function:: benchmark(fs_factory, name, cache_size, num_workers, prefix, max_files=100, warmup_fraction=0.0, executor=ThreadPoolExecutor)
+
+.. py:data:: impls
+

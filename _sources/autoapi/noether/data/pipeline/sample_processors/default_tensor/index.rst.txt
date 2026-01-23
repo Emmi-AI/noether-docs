@@ -1,0 +1,52 @@
+noether.data.pipeline.sample_processors.default_tensor
+======================================================
+
+.. py:module:: noether.data.pipeline.sample_processors.default_tensor
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: DefaultTensorSampleProcessor(item_key_name, feature_dim, size = None, matching_item_key = None, default_value = 0.0)
+
+   Bases: :py:obj:`noether.data.pipeline.SampleProcessor`
+
+
+   Create a tensor with a fixed dummy value, with a specified size.
+
+   :param item_key_name: _description_
+   :param default_value: _description_
+   :param feature_dim: _description_
+   :param size: _description_
+   :param matching_item_key: _description_
+
+
+   .. py:attribute:: item_key_name
+
+
+   .. py:attribute:: feature_dim
+
+
+   .. py:attribute:: size
+      :value: None
+
+
+
+   .. py:attribute:: matching_item_key
+      :value: None
+
+
+
+   .. py:attribute:: default_value
+      :value: 0.0
+
+
+

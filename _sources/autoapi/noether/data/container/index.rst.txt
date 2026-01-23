@@ -1,0 +1,109 @@
+noether.data.container
+======================
+
+.. py:module:: noether.data.container
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.container.META_GETITEM_COLLATOR
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.container.DataContainer
+
+
+Module Contents
+---------------
+
+.. py:data:: META_GETITEM_COLLATOR
+   :value: '__meta_time_collate'
+
+
+.. py:class:: DataContainer(datasets, num_workers = None, pin_memory = True)
+
+   Container that holds datasets and provides utilities for datasets and data loading.
+
+   :param datasets: A dictionary with datasets for the training run.
+   :param num_workers: Number of data loading workers to use. If None, will use (#CPUs / #GPUs - 1) workers.
+                       The `-1` keeps 1 CPU free for the main process. Defaults to None.
+   :param pin_memory: Is passed as `pin_memory` to `torch.utils.data.DataLoader`. Defaults to True.
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: datasets
+
+
+   .. py:attribute:: num_workers
+      :value: None
+
+
+
+   .. py:attribute:: pin_memory
+      :value: True
+
+
+
+   .. py:method:: get_dataset(key = None, properties = None, max_size = None, shuffle_seed = None)
+
+      Returns the dataset identified by key (or the first dataset if no key is provided) with optional wrapping
+      into a :class:`ShuffleWrapper` (via `shuffle_seed`), a :class:`SubsetWrapper` (via `max_size`) or a
+      :class:`PropertySubsetWrapper`. Note that the wrappers can be used at once or individually, in case when all
+      arguments are provided the order will be:
+
+          Dataset -> ShuffleWrapper(Optional) -> SubsetWrapper(Optional) -> PropertySubsetWrapper(Optional)
+
+      :param key: Identifier of the dataset. If None, returns the first dataset of the `DataContainer`. Defaults to None.
+      :param properties: If defined, overrides the properties to load from the dataset. If not defined, uses the
+                         properties defined in the dataset itself or all properties if none are defined.
+      :param max_size: If defined, wraps the dataset into a SubsetWrapper with the specified `max_size`.
+                       Default: None (no wrapping)
+      :param shuffle_seed: If defined, wraps the dataset into a ShuffleWrapper with the specified
+                           `shuffle_seed`. Defaults to None (=no wrapping).
+
+      :returns: Dataset of the DataContainer optionally wrapped into dataset wrappers.
+      :rtype: Dataset
+
+
+
+   .. py:method:: get_main_sampler(train_dataset, shuffle = True)
+
+      Creates the `main_sampler` for data loading.
+
+      :param train_dataset: Dataset that is used for training.
+      :param shuffle: Either or not to randomly shuffle the sampled indices before every epoch. Defaults to True.
+
+      :returns: Sampler to be used for sampling indices of the `train_dataset`.
+      :rtype: Sampler
+
+
+
+   .. py:method:: get_data_loader(train_sampler, train_collator, batch_size, epochs, updates, samples, callback_samplers, start_epoch = None, evaluation = False)
+
+      Creates a `torch.utils.data.DataLoader` that can be used for efficient data loading by utilizing an
+      `InterleavedSampler` based on the `main_sampler`, `configs` and other arguments that are passed to this method.
+
+      :param train_sampler: Sampler to be used for the main dataset (i.e., training dataset).
+      :param train_collator: Collator to collate samples from the main dataset (i.e., training dataset).
+      :param batch_size: batch_size to use for training.
+      :param epochs: For how many epochs does the training last.
+      :param updates: For how many updates does the training last.
+      :param samples: For how many samples does the training last.
+      :param callback_samplers: List of SamplerIntervalConfigs to use for callback sampling.
+      :param start_epoch: At which epoch to start (used for resuming training). Mutually exclusive with `start_update`
+                          and `start_sample`.
+
+      :returns: Object from which data can be loaded according to the specified configuration.
+      :rtype: DataLoader
+
+
+

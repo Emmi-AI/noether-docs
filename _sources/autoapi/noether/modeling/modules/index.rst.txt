@@ -1,0 +1,21 @@
+noether.modeling.modules
+========================
+
+.. py:module:: noether.modeling.modules
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/modeling/modules/activations/index
+   /autoapi/noether/modeling/modules/attention/index
+   /autoapi/noether/modeling/modules/blocks/index
+   /autoapi/noether/modeling/modules/decoders/index
+   /autoapi/noether/modeling/modules/encoders/index
+   /autoapi/noether/modeling/modules/layers/index
+   /autoapi/noether/modeling/modules/mlp/index
+
+

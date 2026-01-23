@@ -1,0 +1,94 @@
+noether.modeling.modules.layers.scalar_conditioner
+==================================================
+
+.. py:module:: noether.modeling.modules.layers.scalar_conditioner
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.layers.scalar_conditioner.ScalarsConditioner
+
+
+Module Contents
+---------------
+
+.. py:class:: ScalarsConditioner(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Base class for all neural network modules.
+
+   Your models should also subclass this class.
+
+   Modules can also contain other Modules, allowing them to be nested in
+   a tree structure. You can assign the submodules as regular attributes::
+
+       import torch.nn as nn
+       import torch.nn.functional as F
+
+
+       class Model(nn.Module):
+           def __init__(self) -> None:
+               super().__init__()
+               self.conv1 = nn.Conv2d(1, 20, 5)
+               self.conv2 = nn.Conv2d(20, 20, 5)
+
+           def forward(self, x):
+               x = F.relu(self.conv1(x))
+               return F.relu(self.conv2(x))
+
+   Submodules assigned in this way will be registered, and will also have their
+   parameters converted when you call :meth:`to`, etc.
+
+   .. note::
+       As per the example above, an ``__init__()`` call to the parent class
+       must be made before assignment on the child.
+
+   :ivar training: Boolean represents whether this module is in training or
+                   evaluation mode.
+   :vartype training: bool
+
+   Embeds num_scalars scalars into a single conditioning vector via first encoding every scalar with
+   sine-cosine embeddings followed by a mlp (per scalar). These vectors are then concatenated and projected down
+   to condition_dim with an MLP.
+
+   :param hidden_dim: Dimension for embedding the scalars and the per-scalar MLP.
+   :param num_scalars: How many scalars are embedded.
+   :param condition_dim: Dimension of the final conditioning vector. Defaults to 4 * dim if condition_dim is None.
+   :param init_weights: Weight initialization for MLPs.
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: num_scalars
+
+
+   .. py:attribute:: condition_dim
+
+
+   .. py:attribute:: embed
+
+
+   .. py:attribute:: mlps
+
+
+   .. py:attribute:: shared_mlp
+
+
+   .. py:method:: forward(*args, **kwargs)
+
+      Embeds scalars into a single conditioning vector. Scalars can be passed as *args or as **kwargs. It is
+      recommended to use kwargs to avoid bugs that originate from passing scalars in a different order at two
+      locations in the code. Recommended usage: condition = conditioner(geometry_angle=75.3, friction_angle=24.6)
+      :param \*args: Scalars in tensor representation (batch_size,) or (batch_size, 1).
+      :param \*\*kwargs: Scalars in tensor representation (batch_size,) or (batch_size, 1).
+
+      :returns: Conditioning vector with shape (batch_size, condition_dim)
+
+
+

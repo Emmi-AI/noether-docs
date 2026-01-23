@@ -1,0 +1,62 @@
+noether.core.callbacks.online.best_metric
+=========================================
+
+.. py:module:: noether.core.callbacks.online.best_metric
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.online.best_metric.BestMetricCallback
+
+
+Module Contents
+---------------
+
+.. py:class:: BestMetricCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   A callback that keeps track of the best metric value over a training run. For example, track the test loss of
+   the epoch with the best validation loss to simulate early stopping.
+
+   Initializes the BestMetricCallback
+
+   :param callback_config: The configuration for the callback.
+   :param metric_property_provider: The metric property provider to determine whether higher values are better.
+   :param \*\*kwargs: additional keyword arguments provided to the parent class.
+
+
+   .. py:attribute:: source_metric_key
+
+
+   .. py:attribute:: target_metric_keys
+
+
+   .. py:attribute:: optional_target_metric_keys
+
+
+   .. py:attribute:: higher_is_better
+
+
+   .. py:attribute:: best_metric_value
+
+
+   .. py:attribute:: previous_log_values
+      :type:  dict[str, Any]
+
+
+   .. py:method:: _periodic_callback(**__)
+
+      Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
+      overwrite this method to calculate metrics periodically during training and log them.
+
+      :param interval_type: "epoch", "update" or "sample" depending on if `every_n_epochs`, `every_n_updates` or
+                            `every_n_samples` is defined as field of the `PeriodicCallback`.
+      :param update_counter: UpdateCounter instance to access current training progress.
+
+
+

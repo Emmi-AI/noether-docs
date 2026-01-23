@@ -1,0 +1,54 @@
+noether.core.initializers.previous_run
+======================================
+
+.. py:module:: noether.core.initializers.previous_run
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.initializers.previous_run.PreviousRunInitializer
+
+
+Module Contents
+---------------
+
+.. py:class:: PreviousRunInitializer(initializer_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.initializers.CheckpointInitializer`
+
+
+   Initializes a model from a checkpoint of a previous run (specified by the run_id), this initializers assumes that the previous run is over, and hence only loads model weights.
+   When a previous run should be resumed for further training, use ResumeInitializer instead.
+
+   :param initializer_config: Configuration for the initializer.
+   :param \*\*kwargs: additional arguments to pass to the parent class.
+
+   Initialize model from checkpoint.
+
+   :param initializer_config: configuration for the initializer.
+   :param \*\*kwargs: additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: keys_to_remove
+
+
+   .. py:attribute:: patterns_to_remove
+
+
+   .. py:attribute:: patterns_to_rename
+
+
+   .. py:attribute:: patterns_to_instantiate
+
+
+   .. py:method:: init_weights(model, model_name = None)
+
+      Initialize the model weights from the checkpoint.
+
+      :param model: the model to load the weights into.
+
+
+

@@ -1,0 +1,37 @@
+noether.io.cli.cli_utils
+========================
+
+.. py:module:: noether.io.cli.cli_utils
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_utils.resolve_dir
+   noether.io.cli.cli_utils.fmt_bytes
+   noether.io.cli.cli_utils.sanitize
+   noether.io.cli.cli_utils.run_cli
+
+
+Module Contents
+---------------
+
+.. py:function:: resolve_dir(path)
+
+.. py:function:: fmt_bytes(num)
+
+   Converts a number of bytes to a human-readable string.
+
+   :param num: Input number of bytes.
+
+   :returns:
+
+             - Human readable string with trailing storage units.
+
+
+.. py:function:: sanitize(msg)
+
+.. py:function:: run_cli(fn)
+

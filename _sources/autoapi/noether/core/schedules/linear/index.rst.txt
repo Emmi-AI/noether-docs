@@ -1,0 +1,52 @@
+noether.core.schedules.linear
+=============================
+
+.. py:module:: noether.core.schedules.linear
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schedules.linear.LinearDecreasingSchedule
+   noether.core.schedules.linear.LinearIncreasingSchedule
+
+
+Module Contents
+---------------
+
+.. py:class:: LinearDecreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.DecreasingProgressSchedule`
+
+
+   A scheduler that decreases linearly from the maximum to minimum value over the total number of steps.
+
+   .. rubric:: Example
+
+   >>> schedule_config:
+   >>>   kind: noether.core.schedules.LinearDecreasingSchedule
+   >>>   max_value: ${model.optim.lr}
+   >>>   end_value: 0.0
+
+   Initialize the scheduler.
+
+
+.. py:class:: LinearIncreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.IncreasingProgressSchedule`
+
+
+   A scheduler that increases linearly from the minimum to maximum value over the total number of steps.
+
+   .. rubric:: Example
+
+   >>> schedule_config:
+   >>>   kind: noether.core.schedules.LinearIncreasingSchedule
+   >>>   max_value: ${model.optim.lr}
+   >>>   start_value: 0.0
+
+   Initialize the scheduler.
+
+

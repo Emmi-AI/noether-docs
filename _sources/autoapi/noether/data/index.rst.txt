@@ -1,0 +1,23 @@
+noether.data
+============
+
+.. py:module:: noether.data
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/data/base/index
+   /autoapi/noether/data/container/index
+   /autoapi/noether/data/datasets/index
+   /autoapi/noether/data/pipeline/index
+   /autoapi/noether/data/point_cloud/index
+   /autoapi/noether/data/preprocessors/index
+   /autoapi/noether/data/samplers/index
+   /autoapi/noether/data/stats/index
+   /autoapi/noether/data/tools/index
+
+

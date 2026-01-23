@@ -1,0 +1,88 @@
+noether.io.interfaces.huggingface
+=================================
+
+.. py:module:: noether.io.interfaces.huggingface
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.interfaces.huggingface.HFRepoType
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.interfaces.huggingface.estimate_hf_repo_size
+   noether.io.interfaces.huggingface.fetch_huggingface_repo_snapshot
+   noether.io.interfaces.huggingface.fetch_huggingface_file
+   noether.io.interfaces.huggingface.fetch_huggingface_by_extension
+
+
+Module Contents
+---------------
+
+.. py:data:: HFRepoType
+
+.. py:function:: estimate_hf_repo_size(repo_id, repo_type = 'model', revision = 'main', extension = None)
+
+   Estimate total size (bytes) of all files in a HF repo (model or dataset),
+   optionally filtering by file-extension.
+
+   :param repo_id: HF repo ID, e.g. "bert-base-uncased" or "user/my-dataset"
+   :param repo_type: "model" or "dataset"
+   :param revision: branch/tag (default "main")
+   :param extension: if given (e.g. ".jsonl"), only count files ending with this
+
+   :returns:
+
+             - Integer value for the total size in bytes.
+
+
+.. py:function:: fetch_huggingface_repo_snapshot(repo_id, local_dir)
+
+   Downloads all content from the specific HuggingFace repository.
+
+   :param repo_id: ID of the HuggingFace repository.
+   :param local_dir: Local directory to download content to.
+
+   :returns:
+
+             - None
+
+
+.. py:function:: fetch_huggingface_file(repo_id, filename, local_dir, repo_type = 'model', revision = 'main')
+
+   Downloads a specific file from a HuggingFace repository into a local directory.
+
+   :param repo_id: ID of the HuggingFace repository.
+   :param filename: Filename to download.
+   :param local_dir: Local directory to download the file to.
+   :param repo_type: Repo type, either "model" or "dataset". Defaults to "model".
+   :param revision: Revision of the repository. Defaults to "main".
+
+   :returns:
+
+             - None
+
+
+.. py:function:: fetch_huggingface_by_extension(repo_id, extension, local_dir, revision = 'main', repo_type = 'dataset', max_workers = 8)
+
+   Downloads specific files from a HuggingFace repository with given extension.
+
+   :param repo_id: ID of the HuggingFace repository.
+   :param extension: File extension to download.
+   :param local_dir: Local directory to download the file to.
+   :param revision: Revision of the repository. Defaults to "main".
+   :param repo_type: Repo type, either "model" or "dataset". Defaults to "dataset".
+   :param max_workers: Maximum number of workers to use for downloading.
+
+   :returns:
+
+             - A list of downloaded files.
+
+

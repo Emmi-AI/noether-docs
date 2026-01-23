@@ -1,0 +1,169 @@
+noether.data.stats
+==================
+
+.. py:module:: noether.data.stats
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.stats.RunningMoments
+   noether.data.stats.RunningStats
+
+
+Module Contents
+---------------
+
+.. py:class:: RunningMoments(log_scale = False)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Calculates running moments of data (mean, variance, min, max) for data normalization purposes.
+
+   This class implements Welford's online algorithm for computing mean and variance
+   in a single pass, making it memory-efficient for large datasets.
+
+   Initialize a RunningMoments instance.
+
+   :param log_scale: Whether to apply log scaling to the data before calculating moments.
+                     This affects all operations unless overridden.
+
+
+   .. py:attribute:: log_scale
+      :value: False
+
+
+
+   .. py:method:: push_tensor(x, dim = 1, log_scale = None)
+
+      Add a tensor to the moment calculation. Calculations are carried out in float64 to avoid numerical
+      imprecisions.
+
+      :param x: Tensor to push. Shape should be compatible with dim parameter.
+      :param dim: Which dimension contains the feature dimension. For example:
+                  - In a pointcloud (N, 3), dim=1 calculates statistics per coordinate (x, y, z)
+                  - In an RGB image (B, C, H, W), dim=1 calculates per-channel statistics
+      :param log_scale: Whether to apply log scaling to this tensor. If None, uses the class default.
+
+      :raises ValueError: If tensor has invalid dimensions or is incompatible with previous data
+
+
+
+   .. py:method:: push_scalar(x, log_scale = None)
+
+      Add a scalar to the moment calculation. Calculations are carried out in float64.
+
+      :param x: Scalar value to add to the moment calculations.
+      :param log_scale: Whether to apply log scaling to this scalar. If None, uses the class default.
+
+      :raises TypeError: If x is not a Python float
+
+
+
+   .. py:property:: mean
+      :type: Union[float, torch.Tensor]
+
+
+
+   .. py:property:: var
+      :type: Union[float, torch.Tensor]
+
+
+
+   .. py:property:: std
+      :type: Union[float, torch.Tensor]
+
+
+
+   .. py:property:: min
+      :type: Union[float, torch.Tensor]
+
+
+
+   .. py:property:: max
+      :type: Union[float, torch.Tensor]
+
+
+
+   .. py:property:: count
+      :type: int
+
+
+
+   .. py:method:: print()
+
+      Print the calculated statistics in a readable format.
+
+
+
+   .. py:method:: dump()
+
+
+   .. py:method:: reset()
+
+      Reset the statistics, clearing all accumulated data.
+
+
+
+   .. py:method:: is_empty()
+
+
+.. py:class:: RunningStats(name = None)
+
+   Calculates statistics of data (min, max, mean and variance) for data normalization purposes.
+
+
+   .. py:attribute:: name
+      :value: None
+
+
+
+   .. py:method:: push_tensor(x, dim = 1)
+
+      Add a tensor to the statistics. Calculations are carried out in float64 to avoid numerical imprecision.
+
+
+
+   .. py:property:: min
+      :type: torch.Tensor
+
+
+
+   .. py:property:: max
+      :type: torch.Tensor
+
+
+
+   .. py:property:: mean
+      :type: torch.Tensor
+
+
+
+   .. py:property:: var
+      :type: torch.Tensor
+
+
+
+   .. py:property:: std
+      :type: torch.Tensor
+
+
+
+   .. py:property:: logmean
+      :type: torch.Tensor
+
+
+
+   .. py:property:: logvar
+      :type: torch.Tensor
+
+
+
+   .. py:property:: logstd
+      :type: torch.Tensor
+
+
+

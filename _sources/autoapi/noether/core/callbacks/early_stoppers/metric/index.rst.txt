@@ -1,0 +1,49 @@
+noether.core.callbacks.early_stoppers.metric
+============================================
+
+.. py:module:: noether.core.callbacks.early_stoppers.metric
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.early_stoppers.metric.MetricEarlyStopper
+
+
+Module Contents
+---------------
+
+.. py:class:: MetricEarlyStopper(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.early_stoppers.base.EarlyStopperBase`
+
+
+   Early stopper (training) based on a metric value to be monitored.
+
+   Initialize the early stopper.
+
+   :param metric_key: The key of the metric to monitor.
+   :param tolerance: The number of times the metric can stagnate before stopping training.
+   :param metric_property_provider: The metric property provider to use.
+   :param \*\*kwargs: Additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: metric_key
+
+
+   .. py:attribute:: higher_is_better
+
+
+   .. py:attribute:: tolerance
+
+
+   .. py:attribute:: tolerance_counter
+      :value: 0
+
+
+
+   .. py:attribute:: best_metric
+
+

@@ -1,0 +1,66 @@
+noether.io.checkpoint.providers.file_provider
+=============================================
+
+.. py:module:: noether.io.checkpoint.providers.file_provider
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.checkpoint.providers.file_provider.FileProvider
+
+
+Module Contents
+---------------
+
+.. py:class:: FileProvider
+
+   Bases: :py:obj:`noether.io.checkpoint.types.Provider`
+
+
+   Local filesystem (supports file:// and plain paths).
+
+
+   .. py:attribute:: scheme
+      :value: 'file'
+
+
+
+   .. py:method:: can_handle(uri)
+
+      Returns True if the URI points to a local file.
+
+      :param uri: Input URI where the file is located.
+
+      :returns: Whether the URI is a local file or not.
+      :rtype: - bool
+
+
+
+   .. py:method:: estimate_size(uri)
+
+      Estimate the size of a local file.
+
+      :param uri: Input URI where the file is located.
+
+      :returns: Estimated size of the local file.
+                - None: If no size is available.
+      :rtype: - int
+
+
+
+   .. py:method:: fetch(uri, destination_dir, *, compute_hash = True)
+
+      Returns a tuple with a local file path for a given URI and a corresponding hash (if possible to create).
+
+      :param uri: Input URI where the file is located.
+      :param destination_dir: Destination directory where the file need to be located.
+      :param compute_hash: Compute the hash of the file on the local file system.
+
+      :returns: Local file path and an option hash value.
+      :rtype: - tuple[Path, str | None]
+
+
+

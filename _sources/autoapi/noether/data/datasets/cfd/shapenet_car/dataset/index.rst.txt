@@ -1,0 +1,121 @@
+noether.data.datasets.cfd.shapenet_car.dataset
+==============================================
+
+.. py:module:: noether.data.datasets.cfd.shapenet_car.dataset
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.shapenet_car.dataset.logger
+   noether.data.datasets.cfd.shapenet_car.dataset.NUM_PARAM_FOLDERS
+   noether.data.datasets.cfd.shapenet_car.dataset.PREPROCESSED_FOLDER_NAME
+   noether.data.datasets.cfd.shapenet_car.dataset.TEST_PARAM_INDEX
+   noether.data.datasets.cfd.shapenet_car.dataset.SUPPORTED_SPLITS
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:data:: NUM_PARAM_FOLDERS
+   :value: 9
+
+
+.. py:data:: PREPROCESSED_FOLDER_NAME
+   :value: 'preprocessed'
+
+
+.. py:data:: TEST_PARAM_INDEX
+   :value: 0
+
+
+.. py:data:: SUPPORTED_SPLITS
+
+.. py:class:: ShapeNetCarDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.dataset.AeroDataset`
+
+
+   Dataset implementation for ShapeNet Car CFD simulations.
+
+   This dataset provides access to:
+   - Surface properties: positions, pressure, normals
+   - Volume properties: positions, velocity, normals, signed distance field (SDF)
+
+   The dataset is split by parameter configurations:
+   - Test: param0 (100 samples)
+   - Validation: no validation split defined
+   - Train: param1-8 (789 samples)
+
+   Download link to the raw dataset: http://www.nobuyuki-umetani.com/publication/mlcfd_data.zip
+
+   Expected directory structure:
+       root/
+           preprocessed/
+               param0/
+                   <simulation_id>/
+                       surface_points.pt
+                       surface_pressure.pt
+                       surface_normals.pt
+                       volume_velocity.pt
+                       volume_points.pt
+                       volume_sdf.pt
+                       volume_normals.pt
+               param1/
+                   ...
+               ...
+               param8/
+
+   :param dataset_config: Configuration object containing root path, split, and scaling parameters
+
+   .. attribute:: split
+
+      One of 'train', 'test', or 'valid'
+
+   .. attribute:: source_root
+
+      Path to preprocessed data directory
+
+   .. attribute:: uris
+
+      List of paths to individual simulation samples
+
+   Initialize the ShapeNet Car dataset.
+
+   :param dataset_config: Configuration for the dataset.
+
+   :raises TypeError: If dataset_config is not ShapeNetDatasetConfig
+   :raises ValueError: If configuration is invalid or split is unknown
+   :raises FileNotFoundError: If data directory does not exist
+
+
+   .. py:attribute:: split
+
+
+   .. py:attribute:: source_root
+      :type:  pathlib.Path
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+
+   .. py:method:: sample_info(idx)
+
+      Get information about a sample such as its local path, run name, etc.
+
+
+

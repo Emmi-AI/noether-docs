@@ -1,0 +1,19 @@
+noether.data.datasets.cfd.caeml.filemap
+=======================================
+
+.. py:module:: noether.data.datasets.cfd.caeml.filemap
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.filemap.CAEML_FILEMAP
+
+
+Module Contents
+---------------
+
+.. py:data:: CAEML_FILEMAP
+

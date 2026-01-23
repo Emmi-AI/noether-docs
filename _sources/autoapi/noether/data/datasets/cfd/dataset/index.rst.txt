@@ -1,0 +1,116 @@
+noether.data.datasets.cfd.dataset
+=================================
+
+.. py:module:: noether.data.datasets.cfd.dataset
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.dataset.AeroDataset
+
+
+Module Contents
+---------------
+
+.. py:class:: AeroDataset(dataset_config, filemap)
+
+   Bases: :py:obj:`noether.data.Dataset`
+
+
+   Dataset implementation for aerodynamic datasets with volume and surface fields.
+
+   This unified dataset class provides an interface for aerodynamics dataset with volume and surface fields.
+   The dataset behavior such as the dataset choice, train/val/test split IDs, etc.
+   is configured through constructor parameters, allowing for easy extension to new datasets.
+
+   :param dataset_config: Configuration for the dataset.
+
+   Args:
+   dataset_config_provider: Optional provider for dataset configuration.
+   dataset_normalizers: A dictionary that contains normalization ComposePreProcess(ers) for each data type. The key for each normalizer can be used in the with_normalizers decorator.
+
+
+   .. py:attribute:: filemap
+
+
+   .. py:method:: getitem_surface_position(idx)
+
+      Retrieves surface positions (num_surface_points, 3)
+
+
+
+   .. py:method:: getitem_surface_pressure(idx)
+
+      Retrieves surface pressures (num_surface_points, 1)
+
+
+
+   .. py:method:: getitem_surface_friction(idx)
+
+      Retrieves surface friction (=wallshearstress) (num_surface_points, 3)
+
+
+
+   .. py:method:: getitem_volume_position(idx)
+
+      Retrieves volume position (num_volume_points, 3)
+
+
+
+   .. py:method:: getitem_volume_pressure(idx)
+
+      Retrieves volume pressures (num_volume_points, 1)
+
+
+
+   .. py:method:: getitem_volume_velocity(idx)
+
+      Retrieves volume velocity (num_volume_points, 3)
+
+
+
+   .. py:method:: getitem_volume_vorticity(idx)
+
+      Retrieves volume vorticity (num_volume_points, 3)
+
+
+
+   .. py:method:: getitem_volume_sdf(idx)
+
+      Retrieve signed distance field at volume points.
+
+      The SDF is computed with respect to the car body surface.
+
+      :param idx: Sample index
+
+      :returns: Tensor of shape (num_volume_points, 1) containing SDF values
+
+
+
+   .. py:method:: getitem_volume_normals(idx)
+
+      Retrieve normal vectors at volume points.
+
+      Note: Volume normals are already normalized (unit vectors) and point towards the car body.
+
+      :param idx: Sample index
+
+      :returns: Tensor of shape (num_volume_points, 3) containing unit normal vectors
+
+
+
+   .. py:method:: getitem_surface_normals(idx)
+
+      Retrieve surface normal vectors.
+
+      Note: Surface normals are already normalized (unit vectors).
+
+      :param idx: Sample index
+
+      :returns: Tensor of shape (num_surface_points, 3) containing unit normal vectors
+
+
+

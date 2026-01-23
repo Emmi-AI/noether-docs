@@ -1,0 +1,394 @@
+noether.core.schemas.dataset
+============================
+
+.. py:module:: noether.core.schemas.dataset
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.schemas.dataset.DatasetWrappers
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.dataset.DatasetWrapperConfig
+   noether.core.schemas.dataset.RepeatWrapperConfig
+   noether.core.schemas.dataset.ShuffleWrapperConfig
+   noether.core.schemas.dataset.SubsetWrapperConfig
+   noether.core.schemas.dataset.DatasetBaseConfig
+   noether.core.schemas.dataset.DatasetSplitIDs
+   noether.core.schemas.dataset.FieldDimSpec
+   noether.core.schemas.dataset.AeroDataSpecs
+
+
+Module Contents
+---------------
+
+.. py:class:: DatasetWrapperConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+
+
+.. py:class:: RepeatWrapperConfig(/, **data)
+
+   Bases: :py:obj:`DatasetWrapperConfig`
+
+
+   .. py:attribute:: repetitions
+      :type:  int
+      :value: None
+
+
+      The number of times to repeat the dataset.
+
+
+.. py:class:: ShuffleWrapperConfig(/, **data)
+
+   Bases: :py:obj:`DatasetWrapperConfig`
+
+
+   .. py:attribute:: seed
+      :type:  int | None
+      :value: None
+
+
+      Random seed for shuffling. If None, a random seed is used.
+
+
+.. py:class:: SubsetWrapperConfig(/, **data)
+
+   Bases: :py:obj:`DatasetWrapperConfig`
+
+
+   .. py:attribute:: indices
+      :type:  collections.abc.Sequence | None
+      :value: None
+
+
+
+   .. py:attribute:: start_index
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: end_index
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: start_percent
+      :type:  float | None
+      :value: None
+
+
+
+   .. py:attribute:: end_percent
+      :type:  float | None
+      :value: None
+
+
+
+.. py:data:: DatasetWrappers
+
+.. py:class:: DatasetBaseConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+
+      Kind of dataset to use.
+
+
+   .. py:attribute:: root
+      :type:  str | None
+      :value: None
+
+
+      Root directory of the dataset. If None, data is not loaded from disk, but somehow generated in memory.
+
+
+   .. py:attribute:: pipeline
+      :type:  Any | None
+      :value: None
+
+
+      Config of the pipeline to use for the dataset.
+
+
+   .. py:attribute:: split
+      :type:  Literal['train', 'val', 'test']
+
+
+   .. py:attribute:: dataset_normalizers
+      :type:  dict[str, list[noether.core.schemas.normalizers.AnyNormalizer]] | None
+      :value: None
+
+
+      List of normalizers to apply to the dataset. The key is the data source name.
+
+
+   .. py:attribute:: dataset_wrappers
+      :type:  list[DatasetWrappers] | None
+      :value: None
+
+
+
+   .. py:attribute:: included_properties
+      :type:  set[str] | None
+      :value: None
+
+
+      Set of properties of this dataset that will be loaded, if not set all properties are loaded
+
+
+   .. py:attribute:: excluded_properties
+      :type:  set[str] | None
+      :value: None
+
+
+      Set of properties of this dataset that will NOT be loaded, even if they are present in the included list
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+.. py:class:: DatasetSplitIDs(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`, :py:obj:`abc.ABC`
+
+
+   Base class for dataset split ID validation with overlap checking.
+
+   This base class provides:
+   1. Automatic validation that train/val/test splits don't have overlapping IDs
+   2. Optional size validation for datasets that have expected split sizes
+
+   Subclasses can optionally define class variables for size validation:
+   - EXPECTED_TRAIN_SIZE: Expected number of training samples
+   - EXPECTED_VAL_SIZE: Expected number of validation samples
+   - EXPECTED_TEST_SIZE: Expected number of test samples
+   - DATASET_NAME: Name of the dataset for error messages
+
+   If these are not defined, only overlap checking will be performed.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: EXPECTED_TRAIN_SIZE
+      :type:  ClassVar[int | None]
+      :value: None
+
+
+
+   .. py:attribute:: EXPECTED_VAL_SIZE
+      :type:  ClassVar[int | None]
+      :value: None
+
+
+
+   .. py:attribute:: EXPECTED_TEST_SIZE
+      :type:  ClassVar[int | None]
+      :value: None
+
+
+
+   .. py:attribute:: EXPECTED_HIDDEN_TEST_SIZE
+      :type:  ClassVar[int | None]
+      :value: None
+
+
+
+   .. py:attribute:: DATASET_NAME
+      :type:  ClassVar[str | None]
+      :value: None
+
+
+
+   .. py:attribute:: train
+      :type:  set[int]
+
+
+   .. py:attribute:: val
+      :type:  set[int]
+
+
+   .. py:attribute:: test
+      :type:  set[int]
+
+
+   .. py:attribute:: extrap
+      :type:  set[int]
+
+
+   .. py:attribute:: interp
+      :type:  set[int]
+
+
+   .. py:attribute:: train_subset
+      :type:  set[int]
+
+
+   .. py:method:: validate_splits()
+
+      Validate splits and check for overlaps.
+
+
+
+.. py:class:: FieldDimSpec
+
+   Bases: :py:obj:`pydantic.RootModel`\ [\ :py:obj:`dict`\ [\ :py:obj:`str`\ , :py:obj:`int`\ ]\ ]
+
+
+   A specification for a group of named data fields and their dimensions.
+
+
+   .. py:property:: field_slices
+      :type: dict[str, slice]
+
+
+      Calculates slice indices for each field in concatenation order.
+
+
+   .. py:property:: total_dim
+      :type: int
+
+
+      Calculates the total dimension of all fields combined.
+
+
+   .. py:method:: keys()
+
+
+   .. py:method:: values()
+
+
+   .. py:method:: items()
+
+
+.. py:class:: AeroDataSpecs(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Defines the complete data specification for a surrogate model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: position_dim
+      :type:  int
+      :value: None
+
+
+      Dimension of the input position vectors.
+
+
+   .. py:attribute:: surface_feature_dim
+      :type:  FieldDimSpec | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_feature_dim
+      :type:  FieldDimSpec | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_output_dims
+      :type:  FieldDimSpec
+
+
+   .. py:attribute:: volume_output_dims
+      :type:  FieldDimSpec | None
+      :value: None
+
+
+
+   .. py:attribute:: conditioning_dims
+      :type:  FieldDimSpec | None
+      :value: None
+
+
+
+   .. py:attribute:: use_physics_features
+      :type:  bool
+      :value: False
+
+
+
+   .. py:property:: surface_feature_dim_total
+      :type: int
+
+
+      Calculates the total surface feature dimension.
+
+
+   .. py:property:: volume_feature_dim_total
+      :type: int
+
+
+      Calculates the total volume feature dimension.
+
+
+   .. py:property:: total_output_dim
+      :type: int
+
+
+      Calculates the total output dimension by summing surface and volume output dimensions.
+
+
+   .. py:property:: volume_targets
+      :type: set[str]
+
+
+      Returns the list of volume target field names.
+
+
+   .. py:property:: surface_targets
+      :type: set[str]
+
+
+      Returns the list of surface target field names.
+
+
+   .. py:property:: surface_features
+      :type: set[str]
+
+
+      Returns the list of surface feature field names.
+
+
+   .. py:property:: volume_features
+      :type: set[str]
+
+
+      Returns the list of volume feature field names.
+
+

@@ -1,0 +1,19 @@
+noether.modeling.modules.attention.anchor_attention
+===================================================
+
+.. py:module:: noether.modeling.modules.attention.anchor_attention
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/modeling/modules/attention/anchor_attention/cross/index
+   /autoapi/noether/modeling/modules/attention/anchor_attention/joint/index
+   /autoapi/noether/modeling/modules/attention/anchor_attention/mixed/index
+   /autoapi/noether/modeling/modules/attention/anchor_attention/multi_branch/index
+   /autoapi/noether/modeling/modules/attention/anchor_attention/self_anchor/index
+
+

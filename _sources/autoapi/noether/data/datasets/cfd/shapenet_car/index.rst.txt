@@ -1,0 +1,18 @@
+noether.data.datasets.cfd.shapenet_car
+======================================
+
+.. py:module:: noether.data.datasets.cfd.shapenet_car
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index
+   /autoapi/noether/data/datasets/cfd/shapenet_car/filemap/index
+   /autoapi/noether/data/datasets/cfd/shapenet_car/preprocessing/index
+   /autoapi/noether/data/datasets/cfd/shapenet_car/split/index
+
+

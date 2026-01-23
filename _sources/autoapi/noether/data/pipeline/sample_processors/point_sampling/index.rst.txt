@@ -1,0 +1,45 @@
+noether.data.pipeline.sample_processors.point_sampling
+======================================================
+
+.. py:module:: noether.data.pipeline.sample_processors.point_sampling
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processors.point_sampling.PointSamplingSampleProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: PointSamplingSampleProcessor(items, num_points, seed = None)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Randomly subsamples points from a pointcloud.
+
+   :param items: Which pointcloud items should be subsampled (e.g., input_position, output_position, ...). If multiple
+   :param items are present:
+   :param the subsampling will use identical indices for all items (e.g.:
+   :param to downsample:
+   :param output_position and output_pressure with the same subsampling).:
+   :param num_points: Number of points to sample.
+   :param seed: Random seed for deterministic sampling for evaluation. Default None (i.e., no seed). If not None,
+                requires sample index to be present in batch.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: num_points
+
+
+   .. py:attribute:: seed
+      :value: None
+
+
+

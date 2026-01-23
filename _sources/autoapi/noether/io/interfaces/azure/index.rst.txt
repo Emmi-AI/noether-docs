@@ -1,0 +1,6 @@
+noether.io.interfaces.azure
+===========================
+
+.. py:module:: noether.io.interfaces.azure
+
+

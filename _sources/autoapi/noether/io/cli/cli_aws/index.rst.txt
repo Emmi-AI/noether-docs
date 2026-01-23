@@ -1,0 +1,95 @@
+noether.io.cli.cli_aws
+======================
+
+.. py:module:: noether.io.cli.cli_aws
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_aws.RICH_MARKUP_MODE
+   noether.io.cli.cli_aws.CLI_HELP_MARKDOWN
+   noether.io.cli.cli_aws.CTX
+   noether.io.cli.cli_aws.aws_s3_app
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_aws.docs
+   noether.io.cli.cli_aws.aws_estimate
+   noether.io.cli.cli_aws.aws_file
+   noether.io.cli.cli_aws.aws_fetch
+
+
+Module Contents
+---------------
+
+.. py:data:: RICH_MARKUP_MODE
+   :type:  Literal['markdown', 'rich']
+   :value: 'rich'
+
+
+.. py:data:: CLI_HELP_MARKDOWN
+   :value: Multiline-String
+
+   .. raw:: html
+
+      <details><summary>Show Value</summary>
+
+   .. code-block:: python
+
+      """
+          AWS S3 commands
+      
+          **Examples**
+          ```
+          # estimate bytes under a prefix
+          emmi-data aws estimate my-bucket data/prefix/ --extension .pt
+      
+          # download a single object
+          emmi-data aws file my-bucket data/prefix/file.pt ./data
+      
+          # download a prefix (parallel) and write a provenance manifest with hashes
+          emmi-data aws fetch my-bucket data/prefix/ ./data       --extension .pt       --jobs 16       --manifest-out ./s3-manifest.json       --hash --hash-jobs 8 --hash-chunk-mb 8
+          ```
+          """
+
+   .. raw:: html
+
+      </details>
+
+
+
+.. py:data:: CTX
+
+.. py:data:: aws_s3_app
+
+.. py:function:: docs()
+
+   AWS S3 commands
+
+   Examples
+   --------
+   .. code-block:: bash
+
+      # estimate bytes under a prefix
+      emmi-data aws estimate my-bucket data/prefix/ --extension .pt
+
+      # download a single object
+      emmi-data aws file my-bucket data/prefix/file.pt ./data
+
+      # download a prefix (parallel) and write a provenance manifest with hashes
+      emmi-data aws fetch my-bucket data/prefix/ ./data          --extension .pt          --jobs 16          --manifest-out ./s3-manifest.json          --hash --hash-jobs 8 --hash-chunk-mb 8
+
+
+.. py:function:: aws_estimate(bucket = typer.Argument(..., help='S3 bucket name'), prefix = typer.Argument(..., help='S3 key prefix'), extension = typer.Option(None, '--extension', '-e', help='Filter by extension'))
+
+.. py:function:: aws_file(bucket = typer.Argument(..., help='S3 bucket'), key = typer.Argument(..., help='S3 object key'), local_dir = typer.Argument(..., dir_okay=True, file_okay=False, help='Destination directory'))
+
+.. py:function:: aws_fetch(bucket = typer.Argument(..., help='S3 bucket'), prefix = typer.Argument(..., help='S3 key prefix'), local_dir = typer.Argument(..., dir_okay=True, file_okay=False, help='Destination directory'), extension = typer.Option(None, '--extension', '-e', help='Filter by extension'), jobs = typer.Option(8, '--jobs', '-j', help='Parallel downloads'), manifest_out = typer.Option(None, '--manifest-out', '-m', help='Write a provenance manifest JSON'), hash_after = typer.Option(True, '--hash/--no-hash', help='Compute SHA-256 for manifest entries'), hash_jobs = typer.Option(8, '--hash-jobs', help='Parallel hash workers'), hash_chunk_mb = typer.Option(8, '--hash-chunk-mb', help='Hash chunk size (MiB)'), dry_run = typer.Option(False, '--dry-run', help='Only report counts/size; do not download'), strip_prefix = typer.Option(False, '--strip-prefix/--no-strip-prefix', help='Save keys relative to the provided prefix'), flatten = typer.Option(False, '--flatten', help='Save by basename only; error on collisions'), strict_hash = typer.Option(False, '--strict-hash/--no-strict-hash', help='Exit non-zero if any hash fails'))
+

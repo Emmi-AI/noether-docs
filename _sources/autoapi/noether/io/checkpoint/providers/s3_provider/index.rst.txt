@@ -1,0 +1,39 @@
+noether.io.checkpoint.providers.s3_provider
+===========================================
+
+.. py:module:: noether.io.checkpoint.providers.s3_provider
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.checkpoint.providers.s3_provider.S3Provider
+
+
+Module Contents
+---------------
+
+.. py:class:: S3Provider
+
+   Bases: :py:obj:`noether.io.checkpoint.types.Provider`
+
+
+   Simple provider interface for checkpoint fetching (URI -> local path).
+
+
+   .. py:attribute:: scheme
+      :value: 's3'
+
+
+
+   .. py:method:: can_handle(uri)
+
+
+   .. py:method:: estimate_size(uri)
+
+
+   .. py:method:: fetch(uri, destination_dir, *, compute_hash = True)
+
+

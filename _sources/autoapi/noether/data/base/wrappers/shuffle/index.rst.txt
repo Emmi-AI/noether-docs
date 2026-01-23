@@ -1,0 +1,32 @@
+noether.data.base.wrappers.shuffle
+==================================
+
+.. py:module:: noether.data.base.wrappers.shuffle
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.base.wrappers.shuffle.ShuffleWrapper
+
+
+Module Contents
+---------------
+
+.. py:class:: ShuffleWrapper(dataset, config)
+
+   Bases: :py:obj:`noether.data.base.Subset`
+
+
+   Shuffles the dataset, optionally with seed.
+
+   :param dataset: The dataset to shuffle.
+
+   :raises ValueError: If the dataset is not an instance of noether.data.Dataset, or if the seed is not an integer or None.
+
+
+   .. py:attribute:: seed
+
+

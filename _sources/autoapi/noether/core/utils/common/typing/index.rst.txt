@@ -1,0 +1,25 @@
+noether.core.utils.common.typing
+================================
+
+.. py:module:: noether.core.utils.common.typing
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.utils.common.typing.SizedIterable
+
+
+Module Contents
+---------------
+
+.. py:class:: SizedIterable
+
+   Bases: :py:obj:`Protocol`
+
+
+   Sampler needs to implement __len__ and be iterable such that the type checking doesn't complain.
+
+

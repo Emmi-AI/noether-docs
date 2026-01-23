@@ -1,0 +1,15 @@
+noether.core.scripts
+====================
+
+.. py:module:: noether.core.scripts
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/scripts/validate_pytorch_compatibilities/index
+
+

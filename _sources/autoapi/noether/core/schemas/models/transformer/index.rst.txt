@@ -1,0 +1,54 @@
+noether.core.schemas.models.transformer
+=======================================
+
+.. py:module:: noether.core.schemas.models.transformer
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.models.transformer.TransformerConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: TransformerConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.modules.blocks.TransformerBlockConfig`, :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+
+
+   Configuration for a Transformer model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: depth
+      :type:  int
+
+      Number of transformer blocks in the model.
+
+
+   .. py:attribute:: mlp_expansion_factor
+      :type:  int
+      :value: 4
+
+
+      Expansion factor for the MLP hidden dimension relative to the hidden dimension. If 'mlp_hidden_dim' is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.
+
+
+   .. py:method:: set_mlp_hidden_dim()
+
+

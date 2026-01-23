@@ -1,0 +1,57 @@
+noether.io.checkpoint.types
+===========================
+
+.. py:module:: noether.io.checkpoint.types
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.checkpoint.types.CheckpointMetadata
+   noether.io.checkpoint.types.Provider
+
+
+Module Contents
+---------------
+
+.. py:class:: CheckpointMetadata
+
+   .. py:attribute:: uri
+      :type:  str
+
+
+   .. py:attribute:: local_path
+      :type:  pathlib.Path
+
+
+   .. py:attribute:: sha256
+      :type:  str | None
+
+
+   .. py:attribute:: size
+      :type:  int | None
+
+
+.. py:class:: Provider
+
+   Bases: :py:obj:`Protocol`
+
+
+   Simple provider interface for checkpoint fetching (URI -> local path).
+
+
+   .. py:attribute:: scheme
+      :type:  str
+
+
+   .. py:method:: can_handle(uri)
+
+
+   .. py:method:: estimate_size(uri)
+
+
+   .. py:method:: fetch(uri, destination_dir, *, compute_hash = True)
+
+

@@ -1,0 +1,38 @@
+noether.core.callbacks.early_stoppers.fixed
+===========================================
+
+.. py:module:: noether.core.callbacks.early_stoppers.fixed
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.early_stoppers.fixed.FixedEarlyStopper
+
+
+Module Contents
+---------------
+
+.. py:class:: FixedEarlyStopper(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.early_stoppers.base.EarlyStopperBase`
+
+
+   Early stopper (training) based on a fixed number of epochs, updates, or samples.
+
+   Initialize the early stopper.
+
+   :param \*\*kwargs: Additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: stop_at_sample
+
+
+   .. py:attribute:: stop_at_update
+
+
+   .. py:attribute:: stop_at_epoch
+
+

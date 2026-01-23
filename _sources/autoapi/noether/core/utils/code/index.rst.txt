@@ -1,0 +1,22 @@
+noether.core.utils.code
+=======================
+
+.. py:module:: noether.core.utils.code
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.code.store_code_archive
+
+
+Module Contents
+---------------
+
+.. py:function:: store_code_archive(code_path, output_path)
+
+   Store a copy of the code in the output directory for reproducibility.
+
+

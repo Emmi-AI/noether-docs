@@ -1,0 +1,52 @@
+noether.data.pipeline.sample_processors.supernode_sampling
+==========================================================
+
+.. py:module:: noether.data.pipeline.sample_processors.supernode_sampling
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processors.supernode_sampling.SupernodeSamplingSampleProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: SupernodeSamplingSampleProcessor(item, num_supernodes, supernode_idx_key = 'supernode_idx', items_at_supernodes = None, seed = None)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Randomly samples supernodes from a pointcloud.
+
+   :param item: Which pointcloud item is used to sample supernodes.
+   :param num_supernodes: How many supernodes to sample.
+   :param items_at_supernodes: Selects items at the supernodes (e.g., pressure at supernodes). Defaults to None.
+   :param seed: Random seed for deterministic sampling for evaluation. Default None (i.e., no seed). If not None,
+                requires sample index to be present in batch.
+
+
+   .. py:attribute:: item
+
+
+   .. py:attribute:: num_supernodes
+
+
+   .. py:attribute:: supernode_idx_key
+      :value: 'supernode_idx'
+
+
+
+   .. py:attribute:: items_at_supernodes
+      :value: None
+
+
+
+   .. py:attribute:: seed
+      :value: None
+
+
+

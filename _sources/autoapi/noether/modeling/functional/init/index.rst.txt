@@ -1,0 +1,56 @@
+noether.modeling.functional.init
+================================
+
+.. py:module:: noether.modeling.functional.init
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.modeling.functional.init.ALL_CONVS
+   noether.modeling.functional.init.ALL_LAYERS
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.modeling.functional.init.init_bias_to_zero
+   noether.modeling.functional.init.init_trunc_normal_zero_bias
+   noether.modeling.functional.init.apply_init_method
+
+
+Module Contents
+---------------
+
+.. py:data:: ALL_CONVS
+
+.. py:data:: ALL_LAYERS
+
+.. py:function:: init_bias_to_zero(layer_module)
+
+   Initialize the bias tensor of a nn.Module instance to zero.
+
+   :param layer_module: An nn.Module instance, either a Linear or Conv layer.
+
+
+.. py:function:: init_trunc_normal_zero_bias(layer_module, std = 0.02)
+
+   Initialize the weight tensor of a nn.Module instance using the truncated normal initialization with a zero bias
+   vector.
+
+   :param layer_module: An nn.Module instance, either a Linear or Conv layer.
+   :param std: Standard Deviation value of the normal distribution to sample weights from. Defaults to 0.02.
+
+
+.. py:function:: apply_init_method(module, proj_weight, init_method)
+
+   Apply an initialization function to all applicable sub-modules of a given module.
+
+   :param module: The nn.Module instance to initialize.
+   :param init_fn: The initialization function to apply to each sub-module.
+
+

@@ -1,0 +1,48 @@
+noether.data.datasets.cfd.drivaernet.dataset
+============================================
+
+.. py:module:: noether.data.datasets.cfd.drivaernet.dataset
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.drivaernet.dataset.VALID_CATEGORIES
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.drivaernet.dataset.DrivAerNetDataset
+
+
+Module Contents
+---------------
+
+.. py:data:: VALID_CATEGORIES
+
+.. py:class:: DrivAerNetDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.dataset.AeroDataset`
+
+
+   Dataset implementation for DrivAerNet and DrivAerNet++ dataset.
+
+   Args:
+   dataset_config_provider: Optional provider for dataset configuration.
+   dataset_normalizers: A dictionary that contains normalization ComposePreProcess(ers) for each data type. The key for each normalizer can be used in the with_normalizers decorator.
+
+
+   .. py:attribute:: FILEMAP
+
+
+   .. py:attribute:: source_root
+
+
+   .. py:attribute:: design_ids
+
+

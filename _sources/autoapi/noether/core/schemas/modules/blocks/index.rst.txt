@@ -1,0 +1,173 @@
+noether.core.schemas.modules.blocks
+===================================
+
+.. py:module:: noether.core.schemas.modules.blocks
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.modules.blocks.TransformerBlockConfig
+   noether.core.schemas.modules.blocks.PerceiverBlockConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: TransformerBlockConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for a transformer block.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden Dimension of the transformer block.
+
+
+   .. py:attribute:: num_heads
+      :type:  int
+      :value: None
+
+
+      Number of attention heads.
+
+
+   .. py:attribute:: mlp_hidden_dim
+      :type:  int | None
+      :value: None
+
+
+      Hidden dimension of the MLP layer. If set to None, the mlp_hidden dim is set to hidden_dim * mlp_expansion_factor in the TransformerConfig. If both are None, an error is raised.
+
+
+   .. py:attribute:: mlp_expansion_factor
+      :type:  int | None
+      :value: None
+
+
+      Expansion factor for the MLP hidden dimension relative to the hidden dimension. If 'mlp_hidden_dim' is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.
+
+
+   .. py:attribute:: drop_path
+      :type:  float
+      :value: None
+
+
+      Probability to drop the attention or MLP module. Defaults to 0.0.
+
+
+   .. py:attribute:: normalization_constructor
+      :type:  type
+
+      Constructor for the normalization layer.
+
+
+   .. py:attribute:: attention_constructor
+      :type:  Literal['dot_product', 'perceiver', 'transolver', 'transolver_plusplus']
+      :value: 'dot_product'
+
+
+      Constructor of the attention module. Defaults to 'dot_product'.
+
+
+   .. py:attribute:: layerscale
+      :type:  float | None
+      :value: None
+
+
+      Init scale value to scale layer activations. Defaults to None.
+
+
+   .. py:attribute:: condition_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimension of the conditioning vector. If none, no conditioning is applied. If provided, the transformer block will turn into a Diffusion Transformer (DiT) block.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use biases in norm/projections. Defaults to True.
+
+
+   .. py:attribute:: eps
+      :type:  float
+      :value: None
+
+
+      Epsilon Value for the layer nornalization. Defaults to 1e-6.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Initialization method for the weight matrices of the network. Defaults to "truncnormal002
+
+
+   .. py:attribute:: use_rope
+      :type:  bool
+      :value: None
+
+
+      Whether to use Rotary Positional Embeddings (RoPE).
+
+
+   .. py:attribute:: attention_arguments
+      :type:  dict
+
+      Additional arguments for the attention module that are only needed for a specific attention implementation.
+
+
+   .. py:method:: set_mlp_hidden_dim()
+
+
+.. py:class:: PerceiverBlockConfig(/, **data)
+
+   Bases: :py:obj:`TransformerBlockConfig`
+
+
+   Configuration for the PerceiverBlock module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kv_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimensionality of the key and value representations. Defaults to None. If None, hidden_dim is used.
+
+
+   .. py:method:: set_kv_dim()
+
+      Set kv_dim to hidden_dim if not provided.
+
+
+

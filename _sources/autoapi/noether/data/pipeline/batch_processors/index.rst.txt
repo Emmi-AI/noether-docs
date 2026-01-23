@@ -1,0 +1,17 @@
+noether.data.pipeline.batch_processors
+======================================
+
+.. py:module:: noether.data.pipeline.batch_processors
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/data/pipeline/batch_processors/moment_normalization/index
+   /autoapi/noether/data/pipeline/batch_processors/position_normalization/index
+   /autoapi/noether/data/pipeline/batch_processors/rename_keys/index
+
+

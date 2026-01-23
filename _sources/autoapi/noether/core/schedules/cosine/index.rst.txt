@@ -1,0 +1,52 @@
+noether.core.schedules.cosine
+=============================
+
+.. py:module:: noether.core.schedules.cosine
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schedules.cosine.CosineDecreasingSchedule
+   noether.core.schedules.cosine.CosineIncreasingSchedule
+
+
+Module Contents
+---------------
+
+.. py:class:: CosineDecreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.DecreasingProgressSchedule`
+
+
+   Cosine annealing scheduler with decreasing values.
+
+   .. rubric:: Example
+
+   >>> schedule_config:
+   >>>   kind: noether.core.schedules.CosineDecreasingSchedule
+   >>>   max_value: ${model.optim.lr}
+   >>>   end_value: 0.0
+
+   Initialize the scheduler.
+
+
+.. py:class:: CosineIncreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.IncreasingProgressSchedule`
+
+
+   Cosine annealing scheduler with increasing values.
+
+   .. rubric:: Example
+
+   >>> schedule_config:
+   >>>   kind: noether.core.schedules.CosineIncreasingSchedule
+   >>>   max_value: ${model.optim.lr}
+   >>>   start_value: 0.0
+
+   Initialize the scheduler.
+
+

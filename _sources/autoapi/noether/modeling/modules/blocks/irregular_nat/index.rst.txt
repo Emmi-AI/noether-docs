@@ -1,0 +1,72 @@
+noether.modeling.modules.blocks.irregular_nat
+=============================================
+
+.. py:module:: noether.modeling.modules.blocks.irregular_nat
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.blocks.irregular_nat.IrregularNatBlock
+
+
+Module Contents
+---------------
+
+.. py:class:: IrregularNatBlock(dim, num_heads, attn_ctor, mlp_hidden_dim = None, drop_path = 0.0, norm_ctor = nn.LayerNorm, layerscale = None, eps = 1e-06, init_weights = 'truncnormal002')
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Neighbourhood Attention Transformer (NAT) block for irregular grids. Consists of a single NAT attention layer and a feedforward layer.
+
+   Initializes a NAT block for irregular grids.
+
+   :param dim: Hidden dimension of the NAT attention block.
+   :param num_heads: Number of attention heads.
+   :param attn_ctor: Constructor of the attention module. Why this this not Nat Attention by default?
+   :param mlp_hidden_dim: Hidden dimension of the FF MLP modules. Defaults to None.
+   :param drop_path: Probability to drop a path (i.e, attention/FF module) during training. Defaults to 0.0.
+   :param norm_ctor: Constructor of the activation normalization. Defaults to nn.LayerNorm.
+   :param layerscale: Initial value of the layer scale module. Defaults to None.
+   :param eps: Epsilon value for the LayerNorm module. Defaults to 1e-6.
+   :param init_weights: Initialization method for the weight parameters. Defaults to "truncnormal002".
+
+
+   .. py:attribute:: norm1
+
+
+   .. py:attribute:: attn
+
+
+   .. py:attribute:: ls1
+
+
+   .. py:attribute:: drop_path1
+
+
+   .. py:attribute:: norm2
+
+
+   .. py:attribute:: mlp
+
+
+   .. py:attribute:: ls2
+
+
+   .. py:attribute:: drop_path2
+
+
+   .. py:method:: forward(x, pos)
+
+      _summary_
+
+      :param x: _description_
+      :param pos: _description_
+
+      :returns: _description_
+
+
+

@@ -1,0 +1,42 @@
+noether.data.base.wrappers.timing
+=================================
+
+.. py:module:: noether.data.base.wrappers.timing
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.base.wrappers.timing.META_GETITEM_TIME
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.base.wrappers.timing.TimingWrapper
+
+
+Module Contents
+---------------
+
+.. py:data:: META_GETITEM_TIME
+   :value: '__meta_time_getitem'
+
+
+.. py:class:: TimingWrapper(dataset)
+
+   Bases: :py:obj:`torch.utils.data.Dataset`
+
+
+   Wrapper that times __getitem__ calls and returns both the item and the time taken.
+
+   :param dataset: The dataset to wrap
+
+
+   .. py:attribute:: dataset
+
+

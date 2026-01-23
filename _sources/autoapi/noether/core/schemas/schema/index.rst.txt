@@ -1,0 +1,312 @@
+noether.core.schemas.schema
+===========================
+
+.. py:module:: noether.core.schemas.schema
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.schema.StaticConfigSchema
+   noether.core.schemas.schema.ConfigSchema
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.schemas.schema.master_port_from_env
+
+
+Module Contents
+---------------
+
+.. py:class:: StaticConfigSchema(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: output_path
+      :type:  str
+
+      Path to store all outputs of the run, including logs, checkpoints, etc.
+
+
+   .. py:attribute:: default_cudnn_benchmark
+      :type:  bool
+      :value: True
+
+
+      Whether to enable cudnn benchmark mode by default.
+
+
+   .. py:attribute:: default_cudnn_deterministic
+      :type:  bool | None
+      :value: False
+
+
+      Whether to enable cudnn deterministic mode by default.
+
+
+   .. py:attribute:: master_port
+      :type:  int | None
+      :value: None
+
+
+      Port for distributed master node. If None, will be set from environment variable MASTER_PORT if available.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:method:: from_uri(uri)
+      :staticmethod:
+
+
+      Load static config from a given URI (file path).
+
+
+
+.. py:function:: master_port_from_env()
+
+   Gets the master port from the environment variable if available.
+
+
+.. py:class:: ConfigSchema(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Main configuration schema for experiments.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  str | None
+      :value: None
+
+
+      Name of the experiment.
+
+
+   .. py:attribute:: accelerator
+      :type:  Literal['cpu', 'gpu', 'mps']
+      :value: 'gpu'
+
+
+      Type of accelerator to use.
+
+
+   .. py:attribute:: stage_name
+      :type:  str | None
+      :value: None
+
+
+      Name of the current stage. I.e., train, finetune, test, etc
+
+
+   .. py:attribute:: dataset_kind
+      :type:  str | None
+      :value: None
+
+
+      Kind of dataset to use i.e., class path.
+
+
+   .. py:attribute:: dataset_root
+      :type:  str | None
+      :value: None
+
+
+      Root directory of the dataset.
+
+
+   .. py:attribute:: resume_run_id
+      :type:  str | None
+      :value: None
+
+
+      Run ID to resume from. If None, start a new run. This can be used to resume training from the last checkpoint of a previous run when training was interrupted/failed.
+
+
+   .. py:attribute:: resume_stage_name
+      :type:  str | None
+      :value: None
+
+
+      Stage name to resume from. If None, resume from the default stage.
+
+
+   .. py:attribute:: resume_checkpoint
+      :type:  str | None
+      :value: None
+
+
+      Path to checkpoint to resume from. If None, start from scratch.
+
+
+   .. py:attribute:: seed
+      :type:  int
+      :value: None
+
+
+      Random seed for reproducibility.
+
+
+   .. py:attribute:: dataset_statistics
+      :type:  dict[str, list[float | int]] | None
+      :value: None
+
+
+      Pre-computed dataset statistics, e.g., mean and std for normalization. Since some tensors are multi-dimensional, the statistics are stored as lists.
+
+
+   .. py:attribute:: dataset_normalizer
+      :type:  dict[str, list[noether.core.schemas.normalizers.AnyNormalizer]] | None
+      :value: None
+
+
+      List of normalizers to apply to the dataset. The key is the data source name.
+
+
+   .. py:attribute:: tracker
+      :type:  noether.core.schemas.trackers.WandBTrackerSchema | None
+      :value: None
+
+
+      Configuration for experiment tracking. If None, no tracking is used. If "disabled", tracking is explicitly disabled.  WandB is currently the only supported tracker.
+
+
+   .. py:attribute:: run_id
+      :type:  str | None
+      :value: None
+
+
+      Unique identifier for the run. If None, a new ID will be generated.
+
+
+   .. py:attribute:: devices
+      :type:  str | None
+      :value: None
+
+
+      Comma-separated list of device IDs to use. If None, all available devices will be used.
+
+
+   .. py:attribute:: num_workers
+      :type:  int | None
+      :value: None
+
+
+      Number of worker threads for data loading. If None,  will use (#CPUs / #GPUs - 1) workers
+
+
+   .. py:attribute:: cudnn_benchmark
+      :type:  bool
+      :value: True
+
+
+      Whether to enable cudnn benchmark mode for this run.
+
+
+   .. py:attribute:: cudnn_deterministic
+      :type:  bool
+      :value: False
+
+
+      Whether to enable cudnn deterministic mode for this run.
+
+
+   .. py:attribute:: datasets
+      :type:  dict[str, noether.core.schemas.dataset.DatasetBaseConfig]
+      :value: None
+
+
+
+   .. py:attribute:: model
+      :type:  noether.core.schemas.models.ModelBaseConfig
+      :value: None
+
+
+
+   .. py:attribute:: trainer
+      :type:  noether.core.schemas.trainers.BaseTrainerConfig
+      :value: None
+
+
+
+   .. py:attribute:: debug
+      :type:  bool
+      :value: False
+
+
+      If True, enables debug mode with more verbose logging, no WandB logging and output written to debug directory.
+
+
+   .. py:attribute:: store_code_in_output
+      :type:  bool
+      :value: True
+
+
+      If True, store a copy of the current code in the output directory for reproducibility.
+
+
+   .. py:attribute:: output_path
+      :type:  pathlib.Path
+
+      Path to output directory.
+
+
+   .. py:attribute:: master_port
+      :type:  int
+      :value: None
+
+
+      Port for distributed master node. If None, will be set from environment variable MASTER_PORT if available.
+
+
+   .. py:method:: empty_dict_is_none(v)
+      :classmethod:
+
+
+      Pre-processes tracker input before validation.
+
+
+
+   .. py:method:: validate_output_path(value)
+      :classmethod:
+
+
+      Validates that the output path is valid.
+
+
+
+   .. py:method:: serialize_output_path(value)
+
+
+   .. py:method:: get_env_master_port(value)
+      :classmethod:
+
+
+      Sets master_port from environment variable if available.
+
+
+
+   .. py:property:: config_schema_kind
+      :type: str
+
+
+      The fully qualified import path for the configuration class.
+
+

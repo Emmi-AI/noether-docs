@@ -1,0 +1,198 @@
+noether.core.schemas.initializers
+=================================
+
+.. py:module:: noether.core.schemas.initializers
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.schemas.initializers.AnyInitializer
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.initializers.InitializerConfig
+   noether.core.schemas.initializers.CheckpointInitializerConfig
+   noether.core.schemas.initializers.ResumeInitializerConfig
+   noether.core.schemas.initializers.PreviousRunInitializerConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: InitializerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+      :value: None
+
+
+
+   .. py:attribute:: kwargs
+      :type:  dict[str, Any] | None
+      :value: None
+
+
+      Additional keyword arguments to pass to the initializer.
+
+
+   .. py:attribute:: run_id
+      :type:  str
+
+      A unique identifier for the training stage. This is used to find the correct checkpoint.
+
+
+   .. py:attribute:: stage_name
+      :type:  str | None
+      :value: None
+
+
+      The name of the stage training stage if defined. When training, the stage name is usually "train".
+
+
+   .. py:attribute:: model_name
+      :type:  str | None
+      :value: None
+
+
+      The name of the model to load. This is the model_name used in CheckpointCallback.
+
+
+   .. py:attribute:: model_info
+      :type:  str | None
+      :value: None
+
+
+      Optional string that is used as suffix in the checkpoint filename.
+
+
+   .. py:attribute:: checkpoint
+      :type:  str | None | dict
+      :value: None
+
+
+      Which checkpoint to load.
+      Checkpoint is usually "latest" or "best_loss", depending on which checkpoint you want to load.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+.. py:class:: CheckpointInitializerConfig(/, **data)
+
+   Bases: :py:obj:`InitializerConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.initializers.CheckpointInitializer']
+      :value: None
+
+
+
+   .. py:attribute:: load_optim
+      :type:  bool
+      :value: None
+
+
+      Whether or not to load the optimizer state from the checkpoint. Default is True, as this is usually used to resume a training run
+
+
+   .. py:attribute:: pop_ckpt_kwargs_keys
+      :type:  list[str] | None
+      :value: None
+
+
+      which checkpoint to load. If a string is provided, must be one of ("latest", "best_loss"). If a dictionary is provided, must contain keys "epoch", "update", "sample" to identify the checkpoint.
+
+
+.. py:class:: ResumeInitializerConfig(/, **data)
+
+   Bases: :py:obj:`CheckpointInitializerConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.initializers.ResumeInitializer']
+      :value: None
+
+
+
+   .. py:attribute:: load_optim
+      :type:  bool
+      :value: None
+
+
+      Whether or not to load the optimizer state from the checkpoint. Default is True, as this is usually used to resume a training run
+
+
+   .. py:attribute:: model_name
+      :type:  str
+      :value: None
+
+
+      The name of the model to load. This is the model_name used in CheckpointCallback.
+
+
+.. py:class:: PreviousRunInitializerConfig(/, **data)
+
+   Bases: :py:obj:`CheckpointInitializerConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.initializers.PreviousRunInitializer']
+      :value: None
+
+
+
+   .. py:attribute:: load_optim
+      :type:  bool
+      :value: None
+
+
+      Whether or not to load the optimizer state from the checkpoint. Default is True, as this is usually used to resume a training run
+
+
+   .. py:attribute:: keys_to_remove
+      :type:  list[str] | None
+      :value: None
+
+
+      List of keys to remove from the checkpoint.
+
+
+   .. py:attribute:: patterns_to_remove
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to remove from the checkpoint.
+
+
+   .. py:attribute:: patterns_to_rename
+      :type:  list[dict] | None
+      :value: None
+
+
+      List of patterns to rename in the checkpoint.
+
+
+   .. py:attribute:: patterns_to_instantiate
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to instantiate in the checkpoint.
+
+
+.. py:data:: AnyInitializer
+

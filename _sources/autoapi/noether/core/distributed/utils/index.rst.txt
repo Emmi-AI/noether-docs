@@ -1,0 +1,41 @@
+noether.core.distributed.utils
+==============================
+
+.. py:module:: noether.core.distributed.utils
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.distributed.utils.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.distributed.utils.check_single_device_visible
+   noether.core.distributed.utils.get_backend
+   noether.core.distributed.utils.accelerator_to_device
+   noether.core.distributed.utils.parse_devices
+   noether.core.distributed.utils.log_device_info
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: check_single_device_visible(accelerator)
+
+.. py:function:: get_backend(accelerator, device_ids=None)
+
+.. py:function:: accelerator_to_device(accelerator)
+
+.. py:function:: parse_devices(accelerator, devices)
+
+.. py:function:: log_device_info(accelerator, device_ids)
+

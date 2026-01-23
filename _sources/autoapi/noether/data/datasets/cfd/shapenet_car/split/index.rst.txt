@@ -1,0 +1,69 @@
+noether.data.datasets.cfd.shapenet_car.split
+============================================
+
+.. py:module:: noether.data.datasets.cfd.shapenet_car.split
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.shapenet_car.split.ShapeNetCarDefaultSplitIDs
+
+
+Module Contents
+---------------
+
+.. py:class:: ShapeNetCarDefaultSplitIDs(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+
+
+   Default split IDs for ShapeNet Car dataset with validation.
+
+   Following the Transolver paper convention:
+       - param0 is used for test/validation set
+       - param1-8 are used for training set
+
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: EXPECTED_TRAIN_SIZE
+      :value: 789
+
+
+
+   .. py:attribute:: EXPECTED_VAL_SIZE
+      :value: 0
+
+
+
+   .. py:attribute:: EXPECTED_TEST_SIZE
+      :value: 100
+
+
+
+   .. py:attribute:: DATASET_NAME
+      :value: 'ShapeNet-Car'
+
+
+
+   .. py:attribute:: train
+      :type:  set[str]
+
+
+   .. py:attribute:: val
+      :type:  set[str]
+
+
+   .. py:attribute:: test
+      :type:  set[str]
+
+

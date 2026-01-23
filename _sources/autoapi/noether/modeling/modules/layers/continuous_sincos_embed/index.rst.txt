@@ -1,0 +1,62 @@
+noether.modeling.modules.layers.continuous_sincos_embed
+=======================================================
+
+.. py:module:: noether.modeling.modules.layers.continuous_sincos_embed
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbed
+
+
+Module Contents
+---------------
+
+.. py:class:: ContinuousSincosEmbed(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Embedding layer for continuous coordinates using sine and cosine functions.
+   The original implementation from the Attenion is All You Need paper, deals with descrete 1D cordinates (i.e., a sequence).
+   Howerver, this implementation is able to deal with 2D and 3D coordinate systems as well.
+
+
+   Initialize the ContinuousSincosEmbed layer.
+
+   :param config: Instance of `ContinuousSincosEmbeddingConfig`.
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: input_dim
+
+
+   .. py:attribute:: ndim_padding
+
+
+   .. py:attribute:: sincos_padding
+
+
+   .. py:attribute:: max_wavelength
+
+
+   .. py:attribute:: padding
+
+
+   .. py:method:: forward(coords)
+
+      Forward method of the ContinuousSincosEmbed layer.
+
+      :param coords: Tensor of coordinates. The shape of the tensor should be [batch size, number of points, coordinate dimension] or [number of points, coordinate dimension].
+
+      :raises NotImplementedError: Only supports sparse (i.e. [number of points, coordinate dimension]) or dense (i.e. [batch size, number of points, coordinate dimension]) coordinates systems.
+
+      :returns: Tensor with embedded coordinates.
+
+
+

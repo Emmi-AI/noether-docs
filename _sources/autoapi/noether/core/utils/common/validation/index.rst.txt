@@ -1,0 +1,52 @@
+noether.core.utils.common.validation
+====================================
+
+.. py:module:: noether.core.utils.common.validation
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.common.validation.float_to_integer_exact
+   noether.core.utils.common.validation.check_exclusive
+   noether.core.utils.common.validation.check_inclusive
+   noether.core.utils.common.validation.check_at_least_one
+   noether.core.utils.common.validation.check_at_most_one
+   noether.core.utils.common.validation.check_all_none
+
+
+Module Contents
+---------------
+
+.. py:function:: float_to_integer_exact(f)
+
+   Converts floats without decimals to int.
+
+
+.. py:function:: check_exclusive(*args)
+
+   Checks if exactly one of the arguments is not None.
+
+
+.. py:function:: check_inclusive(*args)
+
+   Checks if either all arguments are not None or if all are None.
+
+
+.. py:function:: check_at_least_one(*args)
+
+   Checks if at least one of the arguments is not None.
+
+
+.. py:function:: check_at_most_one(*args)
+
+   Checks if at most one of the arguments is not None.
+
+
+.. py:function:: check_all_none(*args)
+
+   Checks if all arguments are None.
+
+

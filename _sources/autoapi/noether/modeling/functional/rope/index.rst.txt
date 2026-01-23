@@ -1,0 +1,36 @@
+noether.modeling.functional.rope
+================================
+
+.. py:module:: noether.modeling.functional.rope
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.modeling.functional.rope.rope
+
+
+Module Contents
+---------------
+
+.. py:function:: rope(x, freqs)
+
+   Applies Rotary Position Embeddings (RoPE)
+
+   :param x: Vector to rotate (e.g., queries or keys of a transformer). Shape=(batch_size, num_heads, seqlen, head_dim).
+   :param freqs: Complex tensor of frequencies for rotating x.
+   :type freqs: torch.Tensor
+   :param freqs: Sine/cosine frequencies for rotating x. For 1D, freqs is a tuple with length 1 with shape
+   :type freqs: tuple
+   :param (batch_size:
+   :param num_heads:
+   :param num_dim_to_rotate) where num_dim_to_rotate is the number of dimensions to rotate.:
+   :param If positions are higher dimensional:
+   :type If positions are higher dimensional: e.g., 2D or 3D), freqs has multiple items (i.e., 2 or 3
+   :param corresponds to frequencies of the nth axis for rotation.:
+
+   :returns: Rotated x.
+
+

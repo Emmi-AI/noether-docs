@@ -1,0 +1,61 @@
+noether.data.pipeline.batch_processors.position_normalization
+=============================================================
+
+.. py:module:: noether.data.pipeline.batch_processors.position_normalization
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.batch_processors.position_normalization.PositionNormalizationBatchProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: PositionNormalizationBatchProcessor(items, raw_pos_min, raw_pos_max, scale = 1000)
+
+   Bases: :py:obj:`noether.data.pipeline.batch_processor.BatchProcessor`
+
+
+   Post-processes data on a batch-level to normalize positions.
+
+   Initializes the PositionNormalizationPostCollator
+
+   :param items: The position items to normalize.
+   :param raw_pos_min: The minimum position in the source domain.
+   :param raw_pos_max: The maximum position in the source domain.
+   :param scale: The maximum value of the position. Defaults to 1000.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: scale
+      :value: 1000
+
+
+
+   .. py:attribute:: raw_pos_min_tensor
+
+
+   .. py:attribute:: raw_pos_max_tensor
+
+
+   .. py:attribute:: raw_size
+
+
+   .. py:method:: denormalize(key, value)
+
+      Inverts the normalization from the __call__ method of a single item in the batch.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The same name and the denormalized value.
+      :rtype: (key, value)
+
+
+

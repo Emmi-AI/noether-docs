@@ -1,0 +1,29 @@
+noether.core.distributed.run.managed
+====================================
+
+.. py:module:: noether.core.distributed.run.managed
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.distributed.run.managed.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.distributed.run.managed.run_managed
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: run_managed(main, accelerator='gpu', devices=None)
+

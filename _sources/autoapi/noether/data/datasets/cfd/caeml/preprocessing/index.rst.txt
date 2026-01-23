@@ -1,0 +1,113 @@
+noether.data.datasets.cfd.caeml.preprocessing
+=============================================
+
+.. py:module:: noether.data.datasets.cfd.caeml.preprocessing
+
+.. autoapi-nested-parse::
+
+   Converts raw DrivAerML or AhmedML dataset into subsampled pytorch files
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.preprocessing.dataset_keymaps
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.preprocessing.DataFieldKeyMap
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.preprocessing.parse_args
+   noether.data.datasets.cfd.caeml.preprocessing.assert_same_length
+   noether.data.datasets.cfd.caeml.preprocessing.time_block
+   noether.data.datasets.cfd.caeml.preprocessing.merge_vtu_parts
+   noether.data.datasets.cfd.caeml.preprocessing.process_run
+   noether.data.datasets.cfd.caeml.preprocessing.main
+
+
+Module Contents
+---------------
+
+.. py:class:: DataFieldKeyMap
+
+   .. py:attribute:: stl_prefix
+      :type:  str
+
+
+   .. py:attribute:: vtp_pressure
+      :type:  str
+
+
+   .. py:attribute:: vtp_wallshearstress
+      :type:  str
+
+
+   .. py:attribute:: vtu_pressure
+      :type:  str
+
+
+   .. py:attribute:: vtu_velocity
+      :type:  str
+
+
+   .. py:attribute:: vtu_totalp
+      :type:  str
+
+
+   .. py:attribute:: vtu_vorticity
+      :type:  str | None
+
+
+.. py:data:: dataset_keymaps
+
+.. py:function:: parse_args()
+
+.. py:function:: assert_same_length(*arrays)
+
+   Checks that all arrays have the same length.
+
+   :param \*arrays: any number of arrays.
+
+
+.. py:function:: time_block(run_folder, label)
+
+   A context manager to measure execution time of a code block.
+
+   :param run_folder: The name of the run folder. Will be printed.
+   :param label: The name of the process/algorithm/code executed within the with block. Will be printed.
+
+   Usage:
+       with time_block("some task"):
+           # code
+
+
+.. py:function:: merge_vtu_parts(folder)
+
+   Merge .part VTU fragments into a full .vtu file in the specified folder.
+
+   This function is required for DrivAerML on Huggingface, where the volume data is split into two .part files.
+   See files in https://huggingface.co/datasets/neashton/drivaerml/tree/main/run_1.
+
+   :param folder: Path to the run_i directory containing .part files.
+   :type folder: str | Path
+
+   :raises NotADirectoryError: If the provided folder path is not a directory.
+
+
+.. py:function:: process_run(run_folder, root, output_dir, data_field_keymap, subsample_factor, compute_surface_distance_via_trimesh)
+
+.. py:function:: main(dataset, root, output_dir, subsample_factor, compute_surface_distance_via_trimesh, num_workers)
+

@@ -1,0 +1,42 @@
+noether.data.base.subset
+========================
+
+.. py:module:: noether.data.base.subset
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.base.subset.Subset
+
+
+Module Contents
+---------------
+
+.. py:class:: Subset(dataset, indices)
+
+   Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapper`
+
+
+   Wrapper around arbitrary noether.data.Dataset instances to only use a subset of the samples, similar to
+   torch.utils.Subset, but with support for individual getitem_* methods instead of the __getitem__ method.
+
+   .. rubric:: Example
+
+   >>> from noether.data import SubsetWrapper, Dataset
+   >>> len(dataset)  # 10
+   >>> subset = SubsetWrapper(dataset=dataset, indices=[0, 2, 5, 7])
+   >>> len(subset)  # 4
+   >>> subset[4]  # returns dataset[7]
+
+   Initializes the Subset wrapper.
+
+   :param dataset: The base dataset to be wrapped
+   :param indices: valid indices of the wrapped dataset (list, tuple, or numpy array)
+
+
+   .. py:attribute:: indices
+
+

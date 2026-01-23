@@ -1,0 +1,27 @@
+noether.data.preprocessors.utils
+================================
+
+.. py:module:: noether.data.preprocessors.utils
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.preprocessors.utils.to_tensor
+
+
+Module Contents
+---------------
+
+.. py:function:: to_tensor(data)
+
+   Helper function to convert input data to a PyTorch tensor if it is not already one.
+
+   :param data: The input data to convert. Can be a sequence of floats, a torch.Tensor, or None.
+
+   Returns: The input data as a torch.Tensor if it was a sequence, the original tensor if it was already a torch.Tensor, or None if the input was None.
+   :raises TypeError: If the input data is of an unsupported type.
+
+

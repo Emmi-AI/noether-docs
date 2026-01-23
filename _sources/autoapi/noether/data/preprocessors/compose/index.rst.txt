@@ -1,0 +1,52 @@
+noether.data.preprocessors.compose
+==================================
+
+.. py:module:: noether.data.preprocessors.compose
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.preprocessors.compose.ComposePreProcess
+
+
+Module Contents
+---------------
+
+.. py:class:: ComposePreProcess(normalization_key, preprocessors)
+
+   Compose multiple transforms and support inversion by reversing the sequence and inverting each transform.
+   .. rubric:: Example
+
+   >>> normalizer = ComposePreProcess(
+   >>>     normalization_key="image",
+   >>>     preprocessors=[
+   >>>         MyPreProcessor1(),
+   >>>         MyPreProcessor2(),
+   >>>     ]
+   >>> )
+   >>> processed_data = normalizer(input_data)
+   >>> original_data = normalizer.inverse(processed_data)
+
+   :param normalization_key: key to identify on which getitem_ in the dataset/tensor the preprocessor is applied.
+   :param preprocessors: list of PreProcessor instances to compose.
+
+   :raises TypeError: If preprocessors is not a list or if any item in the list is not an instance of PreProcessor.
+   :raises ValueError: If the preprocessors list is empty.
+
+
+   .. py:attribute:: normalization_key
+
+
+   .. py:attribute:: transforms
+
+
+   .. py:method:: inverse(x)
+
+      Return a transform that applies the inverse transformations in reverse order.
+      :param x: The input to be denormalized.
+
+
+

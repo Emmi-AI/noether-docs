@@ -1,0 +1,42 @@
+noether.core.schedules.custom
+=============================
+
+.. py:module:: noether.core.schedules.custom
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schedules.custom.CustomSchedule
+
+
+Module Contents
+---------------
+
+.. py:class:: CustomSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.ScheduleBase`
+
+
+   Custom schedule that simply returns the values provided in the constructor.
+
+   .. rubric:: Example
+
+   >>> schedule_config:
+   >>>   kind: noether.core.schedules.CustomSLchedule
+   >>>   values:
+   >>>     - 1.0e-3
+   >>>     - 5.0e-4
+   >>>     - 1.0e-4
+
+   Initialize the scheduler.
+
+   :param overhang_percent: The percentage by which the schedule is artificially prolonged.
+   :param overhang_steps: The number of steps by which the schedule is artificially prolonged.
+
+
+   .. py:attribute:: values
+
+

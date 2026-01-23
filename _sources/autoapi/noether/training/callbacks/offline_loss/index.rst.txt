@@ -1,0 +1,44 @@
+noether.training.callbacks.offline_loss
+=======================================
+
+.. py:module:: noether.training.callbacks.offline_loss
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.training.callbacks.offline_loss.OfflineLossCallback
+
+
+Module Contents
+---------------
+
+.. py:class:: OfflineLossCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicIteratorCallback`
+
+
+   A periodic Callback that is invoked at the end of each epoch to calculate and track the loss and a dataset.
+
+   Initializes the OfflineLossCallback.
+
+   :param callback_config: configuration of the OfflineLossCallback.
+
+
+   .. py:attribute:: dataset_key
+
+
+   .. py:attribute:: output_patterns_to_log
+
+
+   .. py:method:: _forward(batch, *, trainer_model, **_)
+
+      Template method that is called for each batch that is loaded from the dataset.
+
+      :param batch: The loaded batch.
+      :param trainer_model: Model of the current training run.
+
+
+

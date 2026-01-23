@@ -1,0 +1,70 @@
+noether.core.initializers.resume
+================================
+
+.. py:module:: noether.core.initializers.resume
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.initializers.resume.ResumeInitializer
+
+
+Module Contents
+---------------
+
+.. py:class:: ResumeInitializer(initializer_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.initializers.checkpoint.CheckpointInitializer`
+
+
+   Initializes models/optimizers from a checkpoint ready for resuming training
+
+   :param initializer_config: configuration for the initializer.
+   :param \*\*kwargs: additional arguments to pass to the parent class.
+
+
+   .. py:method:: init_weights(model)
+
+      Initialize the model weights from the checkpoint.
+
+      :param model: the model to load the weights into.
+
+
+
+   .. py:method:: init_optimizer(model)
+
+      Initialize the optimizer for the model.
+
+      :param model: a model to initialize the optimizer for.
+
+
+
+   .. py:method:: start_checkpoint()
+
+      Get the start checkpoint for the model.
+
+      :returns: the start checkpoint for the model.
+      :rtype: checkpoint
+
+
+
+   .. py:method:: init_trainer(trainer)
+
+      Initialize the trainer from the checkpoint.
+
+      :param trainer: the trainer to initialize.
+
+
+
+   .. py:method:: init_callbacks(callbacks, model)
+
+      Initialize the callbacks from the checkpoint.
+
+      :param callbacks: the callbacks to initialize.
+      :param model: the model to initialize the callbacks for.
+
+
+

@@ -1,0 +1,114 @@
+noether.io.interfaces.s3_uploader
+=================================
+
+.. py:module:: noether.io.interfaces.s3_uploader
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.interfaces.s3_uploader.S3FileUploader
+
+
+Module Contents
+---------------
+
+.. py:class:: S3FileUploader(local_root, s3_path, workers = 4, max_inflight = 256)
+
+   Asynchronously uploads existing local files to an S3 path.
+
+   This class uses a thread pool to upload multiple files in parallel.
+   It's designed to run *after* a process (like AsyncWriter)
+   has finished writing files to a local directory.
+
+   Its API mirrors AsyncWriter, but `write()` takes a local file path.
+
+   .. attribute:: local_root
+
+      The root directory of the local files.
+      Used to calculate the relative path for S3 keys.
+
+      :type: Path
+
+   .. attribute:: bucket
+
+      The name of the S3 bucket.
+
+      :type: str
+
+   .. attribute:: prefix
+
+      The key prefix (folder) within the S3 bucket.
+
+      :type: str
+
+   :raises ValueError: If `s3_path` doesn't start with 's3://'.
+   :raises ValueError: If local path is not inside a local directory.
+   :raises ImportError: If `rich` is not installed and `show_progress` is not True.
+
+   :param local_root: The local root directory (e.g., './my_local_results').
+   :param s3_path: The full S3 destination path (e.g., 's3://my-bucket/results/').
+   :param workers: Thread-pool size for parallel uploads.
+   :param max_inflight: Max number of files to upload in parallel before blocking the main thread.
+
+
+   .. py:attribute:: local_root
+
+
+   .. py:attribute:: bucket
+
+
+   .. py:attribute:: prefix
+
+
+   .. py:attribute:: max_inflight
+      :value: 256
+
+
+
+   .. py:attribute:: pool
+
+
+   .. py:attribute:: s3_client
+
+
+   .. py:method:: write(local_file)
+
+      Schedules a single local file for upload.
+
+      The S3 key is automatically determined from the file's path relative to the `local_root` given
+      at initialization.
+
+      .. rubric:: Example
+
+      .. code-block:: python
+
+          local_root = "/tmp/results"
+          S3FileUploader.write("/tmp/results/subdir/file.pt")
+          # Uploads to: s3://[bucket]/[prefix]/subdir/file.pt
+
+      :param local_file: The path to the local file to upload.
+
+
+
+   .. py:method:: close()
+
+      Waits for all in-flight uploads to complete and shuts down the thread pool.
+
+      Propagates any exceptions raised by background upload tasks.
+
+
+
+   .. py:method:: upload_all(remove_source = False, show_progress = True)
+
+      A high-level helper to find all files in 'local_root', upload them, and optionally remove the local files.
+
+      This is a class-based alternative to the `aws s3 sync` command.
+
+      :param remove_source: If True, deletes the entire `local_root` directory after all uploads are successful.
+      :param show_progress: If True, shows a progress bar. Requires `rich` to be installed.
+
+
+

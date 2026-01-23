@@ -1,0 +1,39 @@
+noether.core.utils.model
+========================
+
+.. py:module:: noether.core.utils.model
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.model.copy_params
+   noether.core.utils.model.compute_model_norm
+   noether.core.utils.model.update_ema
+
+
+Module Contents
+---------------
+
+.. py:function:: copy_params(source_model, target_model)
+
+   Copy parameters and buffers from source_model to target_model.
+
+
+.. py:function:: compute_model_norm(module)
+
+   Norm of all weights of a module (useful for init sanity checks).
+
+
+.. py:function:: update_ema(source_model, target_model, target_factor, copy_buffers = False)
+
+   Update the target model with an exponential moving average of the source model.
+
+   :param source_model: The source model to copy parameters from.
+   :param target_model: The target model to update.
+   :param target_factor: The factor to use for the exponential moving average.
+   :param copy_buffers: Whether to copy buffers as well. Defaults to False.
+
+

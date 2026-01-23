@@ -1,0 +1,25 @@
+noether.modeling.functional.geometric
+=====================================
+
+.. py:module:: noether.modeling.functional.geometric
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.modeling.functional.geometric.radius
+   noether.modeling.functional.geometric.knn
+   noether.modeling.functional.geometric.segment_csr
+
+
+Module Contents
+---------------
+
+.. py:function:: radius(x, y, r, max_num_neighbors, batch_x, batch_y)
+
+.. py:function:: knn(x, y, k, batch_x=None, batch_y=None)
+
+.. py:function:: segment_csr(src, indptr, reduce)
+

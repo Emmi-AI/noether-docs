@@ -1,0 +1,42 @@
+noether.core.utils.common.path
+==============================
+
+.. py:module:: noether.core.utils.common.path
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.common.path.validate_path
+   noether.core.utils.common.path.select_with_path
+
+
+Module Contents
+---------------
+
+.. py:function:: validate_path(path, exists = 'must', suffix = None, mkdir = False)
+
+   Converts a string to a Path, validates it, and optionally creates it.
+
+   :param path: The path string to validate.
+   :param exists:
+                  - "must": Raises FileNotFoundError if the path doesn't exist.
+                  - "must_not": Raises FileExistsError if the path already exists.
+                  - "any": Performs no existence check.
+   :param suffix: If provided, checks if the path ends with this suffix.
+   :param mkdir: If True, creates the directory path (like mkdir -p).
+
+   :returns: The validated path.
+   :rtype: Path
+
+
+.. py:function:: select_with_path(obj, path)
+
+   Access values of an object, a list or a dictionary using a string path.
+
+   :param obj: The object to access.
+   :param path: The path to the value, e.g. "a.b.c" or "a[0].b.c".
+
+

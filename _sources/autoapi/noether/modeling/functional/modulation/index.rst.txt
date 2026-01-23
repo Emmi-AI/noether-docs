@@ -1,0 +1,36 @@
+noether.modeling.functional.modulation
+======================================
+
+.. py:module:: noether.modeling.functional.modulation
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.modeling.functional.modulation.modulate_scale_shift
+   noether.modeling.functional.modulation.modulate_gate
+
+
+Module Contents
+---------------
+
+.. py:function:: modulate_scale_shift(x, scale, shift)
+
+   Scales and shifts the input x featurewise with scale and shift. Scale is 1 by default and the scale tensor is
+   the offset from the default, i.e., if scale == 0 and shift == 0 this method is equivalent to the identity.
+
+   :param x: Input tensor (e.g., input to a transformer block with shape (batch_size, sequence_length, dim)).
+   :param scale: Scale tensor with shape (batch_size, dim) or (batch_size, 1 dim).
+   :param shift: Shift tensor with shape (batch_size, dim) or (batch_size, 1 dim).
+
+
+.. py:function:: modulate_gate(x, gate)
+
+   Gates the input x feature-wise with gate.
+
+   :param x: Input tensor (e.g., input to a transformer block with shape (batch_size, sequence_length, dim)).
+   :param gate: Gate tensor with shape (batch_size, dim) or (batch_size, 1 dim).
+
+

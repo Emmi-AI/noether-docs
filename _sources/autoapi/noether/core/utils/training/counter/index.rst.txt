@@ -1,0 +1,107 @@
+noether.core.utils.training.counter
+===================================
+
+.. py:module:: noether.core.utils.training.counter
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.utils.training.counter.UpdateCounter
+
+
+Module Contents
+---------------
+
+.. py:class:: UpdateCounter(start_iteration, end_iteration, updates_per_epoch, effective_batch_size)
+
+   UpdateCounter is used to track the current update, epoch, and sample
+   number during training.
+
+   Initializes UpdateCounter.
+
+   :param start_iteration: The iteration (measured in either epochs, updates, or samples) at which the training
+                           will start. If the training is resumed the values will be updated accordingly.
+   :param end_iteration: The iteration (measured in either epochs, updates, or samples) at which the training will
+                         end.
+   :param updates_per_epoch: Number of updates per epoch.
+   :param effective_batch_size: Effective batch size.
+
+
+   .. py:attribute:: updates_per_epoch
+
+
+   .. py:attribute:: start_iteration
+
+
+   .. py:attribute:: end_iteration
+
+
+   .. py:attribute:: cur_iteration
+
+
+   .. py:attribute:: effective_batch_size
+
+
+   .. py:property:: is_full_epoch
+      :type: bool
+
+
+      Returns True if the current update is a full epoch.
+
+
+   .. py:property:: epoch_as_float
+      :type: float
+
+
+      Returns the current epoch as a float value.
+
+
+   .. py:property:: epoch
+      :type: int | None
+
+
+      Returns the current epoch.
+
+
+   .. py:property:: update
+      :type: int | None
+
+
+      Returns the current update.
+
+
+   .. py:property:: sample
+      :type: int | None
+
+
+      Returns the current sample.
+
+
+   .. py:property:: is_finished
+      :type: bool
+
+
+      Returns True if the end checkpoint is reached.
+
+
+   .. py:method:: next_epoch()
+
+      Increments the current epoch by 1.
+
+
+
+   .. py:method:: next_update()
+
+      Increments the current update by 1.
+
+
+
+   .. py:method:: add_samples(num_samples)
+
+      Adds samples to the current sample count.
+
+
+

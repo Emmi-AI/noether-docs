@@ -1,0 +1,72 @@
+noether.data.pipeline.sample_processors.moment_normalization
+============================================================
+
+.. py:module:: noether.data.pipeline.sample_processors.moment_normalization
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processors.moment_normalization.MomentNormalizationSampleProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: MomentNormalizationSampleProcessor(item, mean = None, std = None, logmean = None, logstd = None, logscale = False)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Normalizes a value with its mean and standard deviation (i.e., its moments).
+
+   :param item: The item to normalize.
+   :param mean: The mean of the value. Mandatory if logscale=False.
+   :param std: The standard deviation of the value. Mandatory if logscale=False.
+   :param logmean: The mean of the value in logscale. Mandatory if logscale=True.
+   :param logstd: The standard deviation of the value in logscale. Mandatory if logscale=True.
+   :param logscale: Whether to convert the value to logscale before normalization.
+
+
+   .. py:attribute:: item
+
+
+   .. py:attribute:: mean_tensor
+      :value: None
+
+
+
+   .. py:attribute:: std_tensor
+      :value: None
+
+
+
+   .. py:attribute:: logmean_tensor
+      :value: None
+
+
+
+   .. py:attribute:: logstd_tensor
+      :value: None
+
+
+
+   .. py:attribute:: logscale
+      :value: False
+
+
+
+   .. py:method:: inverse(key, value)
+
+      Inverts the normalization from the __call__ method of a single item in the batch.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The same name and the denormalized value.
+      :rtype: (key, value)
+
+
+

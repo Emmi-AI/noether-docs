@@ -1,0 +1,61 @@
+noether.modeling.modules.mlp.upactdown_mlp
+==========================================
+
+.. py:module:: noether.modeling.modules.mlp.upactdown_mlp
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.mlp.upactdown_mlp.UpActDownMlp
+
+
+Module Contents
+---------------
+
+.. py:class:: UpActDownMlp(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   UpActDownMlp is a vanilla MLP with an up-projection followed by an GELU activation function and a
+   down-projection to the original input dim.
+
+   Initialize the UpActDownMlp.
+
+   :param config: The configuration of the UpActDownMlp.
+
+
+   .. py:attribute:: init_weights
+
+
+   .. py:attribute:: fc1
+
+
+   .. py:attribute:: act
+
+
+   .. py:attribute:: fc2
+
+
+   .. py:method:: reset_parameters()
+
+      Reset the parameters of the MLP with a specific initialization. Options are "torch" (i.e., default), or
+          "truncnormal002".
+
+      :raises NotImplementedError: raised if the specified initialization is not implemented.
+
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the UpActDownMlp.
+
+      :param x: Input tensor to the MLP.
+
+      :returns: Output tensor from the MLP.
+
+
+

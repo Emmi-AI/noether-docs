@@ -1,0 +1,490 @@
+noether.core.schemas.callbacks
+==============================
+
+.. py:module:: noether.core.schemas.callbacks
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.schemas.callbacks.CallbacksConfig
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.callbacks.CallBackBaseConfig
+   noether.core.schemas.callbacks.BestCheckpointCallbackConfig
+   noether.core.schemas.callbacks.CheckpointCallbackConfig
+   noether.core.schemas.callbacks.EmaCallbackConfig
+   noether.core.schemas.callbacks.OnlineLossCallbackConfig
+   noether.core.schemas.callbacks.BestMetricCallbackConfig
+   noether.core.schemas.callbacks.UpdateOutputCallbackConfig
+   noether.core.schemas.callbacks.OfflineLossCallbackConfig
+   noether.core.schemas.callbacks.MetricEarlyStopperConfig
+   noether.core.schemas.callbacks.FixedEarlyStopperConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: CallBackBaseConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: name
+      :type:  str
+      :value: None
+
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+      Epoch-based interval. Invokes the callback after every n epochs. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: every_n_updates
+      :type:  int | None
+      :value: None
+
+
+      Update-based interval. Invokes the callback after every n updates. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: every_n_samples
+      :type:  int | None
+      :value: None
+
+
+      Sample-based interval. Invokes the callback after every n samples. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: batch_size
+      :type:  int | None
+      :value: None
+
+
+      None (use the same batch_size as for training).
+
+      :type: Batch size to use for this callback. Default
+
+
+   .. py:attribute:: evaluation
+      :type:  bool
+      :value: None
+
+
+      Whether to run this callback during evaluation.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one frequency ('every_n_*') is specified and
+      that 'batch_size' is present if 'every_n_samples' is used.
+
+
+
+   .. py:method:: check_positive_values(v)
+      :classmethod:
+
+
+      Ensures that all integer-based frequency and batch size fields are positive.
+
+
+
+   .. py:method:: check_kind_is_not_empty(v)
+      :classmethod:
+
+
+      Ensures the 'kind' field is a non-empty string.
+
+
+
+.. py:class:: BestCheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['BestCheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+      :value: None
+
+
+      "The key of the metric to be used for checking the best model.
+
+
+   .. py:attribute:: save_frozen_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to also save the frozen weights of the model.
+
+
+   .. py:attribute:: tolerances
+      :type:  list[int] | None
+      :value: None
+
+
+      "If provided, this callback will produce multiple best models which differ in the amount of intervals they allow the metric to not improve. For example, tolerance=[5] with every_n_epochs=1 will store a checkpoint where at most 5 epochs have passed until the metric improved. Additionally, the best checkpoint over the whole training will always be stored (i.e., tolerance=infinite). When setting different tolerances, one can evaluate different early stopping configurations with one training run.
+
+
+   .. py:attribute:: model_name
+      :type:  str | None
+      :value: None
+
+
+      Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name='encoder' here).
+
+
+   .. py:attribute:: model_names
+      :type:  list[str] | None
+      :value: None
+
+
+      Same as `model_name` but allows passing multiple `model_names`.
+
+
+.. py:class:: CheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['CheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: save_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the weights of the model.
+
+
+   .. py:attribute:: save_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the optimizer state.
+
+
+   .. py:attribute:: save_latest_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest weights of the model. Note that the latest weights are always overwritten on the next invocation of this callback.
+
+
+   .. py:attribute:: save_latest_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest optimizer state. Note that the latest optimizer state is always overwritten on the next invocation of this callback
+
+
+   .. py:attribute:: model_name
+      :type:  str | None
+      :value: None
+
+
+      The name of the model to save. If None, all models are saved.
+
+
+.. py:class:: EmaCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['EmaCallback']
+      :value: None
+
+
+
+   .. py:attribute:: target_factors
+      :type:  list[float]
+      :value: None
+
+
+      The factors for the EMA.
+
+
+   .. py:attribute:: model_paths
+      :type:  list[str | None] | None
+      :value: None
+
+
+      The paths to the models to apply the EMA to (i.e., composite_model.encoder/composite_model.decoder, path of the PyTorch nn.Modules in the checkpoint). If None, the EMA is applied to the whole model. When training with a CompositeModel, the paths on the submodules (i.e., 'encoder', 'decoder', etc.) should be provided via this field, otherwise the EMA will be applied to the CompositeModel as a whole which is not possible to restore later on.
+
+
+   .. py:attribute:: save_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the EMA weights.
+
+
+   .. py:attribute:: save_last_weights
+      :type:  bool
+      :value: None
+
+
+      Save the weights of the model when training is over (i.e., at the end of training, save the EMA weights).
+
+
+   .. py:attribute:: save_latest_weights
+      :type:  bool
+      :value: None
+
+
+      Save the latest EMA weights. Note that the latest weights are always overwritten on the next invocation of this callback.
+
+
+.. py:class:: OnlineLossCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['OnlineLossCallback']
+      :value: None
+
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      Whether to log the loss.
+
+
+.. py:class:: BestMetricCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['BestMetricCallback']
+      :value: None
+
+
+      The metric to use to dermine whether the current model obtained a new best (e.g., loss/valid/total)
+
+
+   .. py:attribute:: source_metric_key
+      :type:  str
+      :value: None
+
+
+      The metrics to keep track of (e.g., loss/test/total)
+
+
+   .. py:attribute:: target_metric_keys
+      :type:  list[str] | None
+      :value: None
+
+
+      The metrics to keep track of if they are present (useful when different model configurations log different evaluation metrics to avoid reconfiguring the callback).
+
+
+   .. py:attribute:: optional_target_metric_keys
+      :type:  list[str] | None
+      :value: None
+
+
+
+.. py:class:: UpdateOutputCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['UpdateOutputCallback']
+      :value: None
+
+
+
+   .. py:attribute:: keys
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to track. Matched if it is contained in one of the update_outputs keys.
+
+
+   .. py:attribute:: patterns
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to track. Matched if it is contained in one of the update_outputs keys.
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      If True uses the logger to print the tracked values otherwise uses no logger.
+
+
+   .. py:attribute:: reduce
+      :type:  Literal['mean', 'last']
+      :value: None
+
+
+      The reduction method to be applied to the tracked values to reduce to scalar. Currently supports 'mean' and 'last'.
+
+
+   .. py:attribute:: log_output
+      :type:  bool
+      :value: None
+
+
+      Whether to log the tracked scalar values.
+
+
+   .. py:attribute:: save_output
+      :type:  bool
+      :value: None
+
+
+      Whether to save the tracked scalar values to disk.
+
+
+.. py:class:: OfflineLossCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['OfflineLossCallback']
+      :value: None
+
+
+
+   .. py:attribute:: dataset_key
+      :type:  str
+      :value: None
+
+
+      The key of the dataset to be used for the loss calculation. Can be any key that is registered in the `DataContainer`.
+
+
+   .. py:attribute:: output_patterns_to_log
+      :type:  list[str] | None
+      :value: None
+
+
+      additional arguments passed to the parent class.
+
+      :type: For instance, if the output key is 'some_loss' and the pattern is ['loss'].  **kwargs
+
+
+.. py:class:: MetricEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['MetricEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+
+      The key of the metric to monitor
+
+
+   .. py:attribute:: tolerance
+      :type:  int
+
+      The number of times the metric can stagnate before stopping training
+
+
+   .. py:method:: check_tolerance_positive(v)
+      :classmethod:
+
+
+      Ensures that tolerance is at least 1.
+
+
+
+.. py:class:: FixedEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: name
+      :type:  Literal['FixedEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_sample
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_update
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_epoch
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one stop ('stop_at_*') is specified
+
+
+
+.. py:data:: CallbacksConfig
+

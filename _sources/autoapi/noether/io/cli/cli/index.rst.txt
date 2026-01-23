@@ -1,0 +1,38 @@
+noether.io.cli.cli
+==================
+
+.. py:module:: noether.io.cli.cli
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.cli.cli.RICH_MARKUP_MODE
+   noether.io.cli.cli.CTX
+   noether.io.cli.cli.app
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.cli.cli.main
+
+
+Module Contents
+---------------
+
+.. py:data:: RICH_MARKUP_MODE
+   :type:  Literal['markdown', 'rich']
+   :value: 'rich'
+
+
+.. py:data:: CTX
+
+.. py:data:: app
+
+.. py:function:: main(debug = typer.Option(False, help='Enable debug logging'))
+

@@ -1,0 +1,99 @@
+noether.core.factory.base
+=========================
+
+.. py:module:: noether.core.factory.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.factory.base.Factory
+
+
+Module Contents
+---------------
+
+.. py:class:: Factory(returns_partials = False)
+
+   Base factory. Implements base structures for creating a single object, a list of objects and a dict
+   of objects. The main difference between these methods are the default return values. As python does not like using
+   an empty list/dict as default value for an argument, arguments are by default often None. By differentiating
+   between these three types, one avoids none checks whenever the factory is called.
+   - create: creates an object.
+   - create_list: creates a list of objects.
+   - create_dict: creates a dict of objects.
+
+   For example, creating a list
+   ```
+   class Example:
+       def __init__(self, callbacks: list[Callback] | None = None)
+           # automatic none check in create_list (this is how FactoryBase is implemented)
+           self.callbacks = create_list(callbacks)
+           # required none check after creating the list (this is how one could implement it without create_list)
+           self.callbacks = create(callbacks) or []
+   ```
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: returns_partials
+      :value: False
+
+
+
+   .. py:method:: create(obj_or_kwargs, **kwargs)
+
+      Creates an object if the object is specified as dictionary. If the object was already instantiated, it will
+      simply return the existing object. If `obj_or_kwargs` is None, None is returned.
+
+      :param obj_or_kwargs: Either an existing object (Any) or a description of how an object should be instantiated
+                            (dict[str, Any]).
+      :param kwargs: Further kwargs that are passed when creating the object. These are often dependencies such as
+                     `UpdateCounter`, `PathProvider`, `MetricPropertyProvider`, ...
+
+      :returns: The instantiated object.
+
+
+
+   .. py:method:: create_list(collection, **kwargs)
+
+      Creates a list of object by calling the `create` function for every item in the collection. If `collection`
+      is None, an empty list is returned.
+
+      :param collection: Either a list of configs how the objects should be instantiated.)
+      :param kwargs: Further kwargs that are passed to all object instantiations. These are often dependencies such as
+                     `UpdateCounter`, `PathProvider`, `MetricPropertyProvider`, ...
+
+      :returns: The instantiated list of objects or an empty list.
+
+
+
+   .. py:method:: create_dict(collection, **kwargs)
+
+      Creates a dict of object by calling the `create` function for every item in the collection. If `collection`
+      is None, an empty dictionary is returned.
+
+      :param collection: Either a dict of existing objects (dict[str, Any]) or a dict of descriptions how the objects
+                         should be instantiated and what their identifier in the dict is (dict[str, dict[str, Any]]).
+      :param kwargs: Further kwargs that are passed to all object instantiations. These are often dependencies such as
+                     `UpdateCounter`, `PathProvider`, `MetricPropertyProvider`, ...
+
+      :returns: The instantiated dict of objects or an empty dict.
+
+
+
+   .. py:method:: instantiate(object_config = None, **kwargs)
+
+      Instantiates an object based on its fully specified classpath.
+
+      :param object_config: Fully specified type of the object. For example: `"torch.optim.SGD"` or
+                            `"noether.core.callbacks.CheckpointCallback"`.
+      :param kwargs: kwargs passed to the type when instantiating the object.
+
+      :returns: The instantiated object.
+
+
+

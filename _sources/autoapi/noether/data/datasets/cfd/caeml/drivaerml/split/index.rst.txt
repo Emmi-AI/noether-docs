@@ -1,0 +1,81 @@
+noether.data.datasets.cfd.caeml.drivaerml.split
+===============================================
+
+.. py:module:: noether.data.datasets.cfd.caeml.drivaerml.split
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.drivaerml.split.DrivAerMLDefaultSplitIDs
+
+
+Module Contents
+---------------
+
+.. py:class:: DrivAerMLDefaultSplitIDs(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+
+
+   Default split IDs for DrivAerML dataset with validation.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: EXPECTED_TRAIN_SIZE
+      :value: 400
+
+
+
+   .. py:attribute:: EXPECTED_VAL_SIZE
+      :value: 34
+
+
+
+   .. py:attribute:: EXPECTED_TEST_SIZE
+      :value: 50
+
+
+
+   .. py:attribute:: EXPECTED_HIDDEN_TEST_SIZE
+      :value: 16
+
+
+
+   .. py:attribute:: DATASET_NAME
+      :value: 'DrivAerML'
+
+
+
+   .. py:attribute:: train
+      :type:  set[int]
+
+
+   .. py:attribute:: val
+      :type:  set[int]
+
+
+   .. py:attribute:: test
+      :type:  set[int]
+
+
+   .. py:attribute:: hidden_test
+      :type:  set[int]
+
+
+   .. py:method:: create_split()
+      :staticmethod:
+
+
+      A helper function to create a random split of the dataset. The default indices were created with seed=42.
+
+
+

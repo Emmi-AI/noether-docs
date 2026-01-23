@@ -1,0 +1,19 @@
+noether.core.factory
+====================
+
+.. py:module:: noether.core.factory
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/factory/base/index
+   /autoapi/noether/core/factory/dataset/index
+   /autoapi/noether/core/factory/optimizer/index
+   /autoapi/noether/core/factory/schedule/index
+   /autoapi/noether/core/factory/utils/index
+
+

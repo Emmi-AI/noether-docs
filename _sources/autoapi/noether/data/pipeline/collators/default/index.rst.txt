@@ -1,0 +1,37 @@
+noether.data.pipeline.collators.default
+=======================================
+
+.. py:module:: noether.data.pipeline.collators.default
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.collators.default.DefaultCollator
+
+
+Module Contents
+---------------
+
+.. py:class:: DefaultCollator(items = None, optional_items = None)
+
+   Applies `torch.utils.data.default_collate` to the specified items.
+
+   Initializes the DefaultCollator.
+
+   :param items: Items to apply `default_collate` to.
+   :param optional_items: Items to apply `default_collate` to if they are present.
+
+
+   .. py:attribute:: items
+      :value: None
+
+
+
+   .. py:attribute:: optional_items
+      :value: None
+
+
+

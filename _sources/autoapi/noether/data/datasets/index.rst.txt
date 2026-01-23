@@ -1,0 +1,15 @@
+noether.data.datasets
+=====================
+
+.. py:module:: noether.data.datasets
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/data/datasets/cfd/index
+
+

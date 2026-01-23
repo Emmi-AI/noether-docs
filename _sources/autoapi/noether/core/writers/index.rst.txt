@@ -1,0 +1,16 @@
+noether.core.writers
+====================
+
+.. py:module:: noether.core.writers
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/writers/checkpoint_writer/index
+   /autoapi/noether/core/writers/log_writer/index
+
+

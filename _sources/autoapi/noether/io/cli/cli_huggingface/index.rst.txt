@@ -1,0 +1,105 @@
+noether.io.cli.cli_huggingface
+==============================
+
+.. py:module:: noether.io.cli.cli_huggingface
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_huggingface.RICH_MARKUP_MODE
+   noether.io.cli.cli_huggingface.CTX
+   noether.io.cli.cli_huggingface.hf_app
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_huggingface.HuggingFaceRepoType
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_huggingface.hf_docs
+   noether.io.cli.cli_huggingface.hf_snapshot
+   noether.io.cli.cli_huggingface.hf_file
+   noether.io.cli.cli_huggingface.hf_ext
+   noether.io.cli.cli_huggingface.hf_estimate
+
+
+Module Contents
+---------------
+
+.. py:data:: RICH_MARKUP_MODE
+   :type:  Literal['markdown', 'rich']
+   :value: 'rich'
+
+
+.. py:data:: CTX
+
+.. py:data:: hf_app
+
+.. py:class:: HuggingFaceRepoType
+
+   Bases: :py:obj:`str`, :py:obj:`enum.Enum`
+
+
+   str(object='') -> str
+   str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+   Create a new string object from the given object. If encoding or
+   errors is specified, then the object must expose a data buffer
+   that will be decoded using the given encoding and error handler.
+   Otherwise, returns the result of object.__str__() (if defined)
+   or repr(object).
+   encoding defaults to sys.getdefaultencoding().
+   errors defaults to 'strict'.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: MODEL
+      :value: 'model'
+
+
+
+   .. py:attribute:: DATASET
+      :value: 'dataset'
+
+
+
+.. py:function:: hf_docs()
+
+   **HuggingFace commands**
+
+   **Examples**
+   ```
+   # snapshot whole repo
+   emmi-data huggingface snapshot user/dataset ./data
+
+   # single file from a dataset repo
+   emmi-data huggingface file user/dataset data.hd5 ./data --type dataset
+
+   # all *.jsonl from a dataset
+   emmi-data huggingface ext user/model .th ./data
+
+   # size estimate (uses HEAD fallback for LFS files)
+   emmi-data huggingface estimate EmmiAI/AB-UPT
+   ```
+
+
+.. py:function:: hf_snapshot(repo_id = typer.Argument(..., help='Repo ID, e.g. user/dataset'), local_dir = typer.Argument(..., help='Destination directory', dir_okay=True, file_okay=False), verify = typer.Option(False, '--verify', help='Run checksum verification'))
+
+.. py:function:: hf_file(repo_id = typer.Argument(..., help='Repo ID'), filename = typer.Argument(..., help='Exact path in repo'), local_dir = typer.Argument(..., help='Destination directory', dir_okay=True, file_okay=False), repo_type = typer.Option(HuggingFaceRepoType.MODEL, '--type', '-t', case_sensitive=False, help='model|dataset', show_default=True), revision = typer.Option('main', '--revision', '-r', help='branch|tag|SHA', show_default=True))
+
+.. py:function:: hf_ext(repo_id = typer.Argument(..., help='Dataset repo ID'), extension = typer.Argument(..., help='e.g. .jsonl, .csv, .parquet'), local_dir = typer.Argument(..., help='Destination directory', dir_okay=True, file_okay=False), revision = typer.Option('main', '--revision', '-r', help='branch|tag|SHA', show_default=True), repo_type = typer.Option(HuggingFaceRepoType.DATASET, '--type', '-t', case_sensitive=False), jobs = typer.Option(8, '--jobs', '-j', help='Parallel downloads'), verify = typer.Option(False, '--verify', help='Verify files after download using a manifest'), manifest = typer.Option(None, '--manifest', '-m', help='Path to manifest.json'), manifest_out = typer.Option(None, '--manifest-out', '-mo', help='Path to provenance manifest'), on_fail = typer.Option(FailAction.WARN, '--action', '-a', case_sensitive=False, help='Action on verification failures'))
+
+.. py:function:: hf_estimate(repo_id = typer.Argument(..., help='Repo ID'), repo_type = typer.Option(HuggingFaceRepoType.MODEL, '--type', '-t', case_sensitive=False, help='model|dataset', show_default=True), extension = typer.Option(None, '--extension', '-e', help='Filter by extension'), revision = typer.Option('main', '--revision', '-r', help='branch|tag|SHA', show_default=True))
+

@@ -1,0 +1,40 @@
+noether.data.pipeline.collators.field_decoder
+=============================================
+
+.. py:module:: noether.data.pipeline.collators.field_decoder
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.collators.field_decoder.FieldDecoderCollator
+
+
+Module Contents
+---------------
+
+.. py:class:: FieldDecoderCollator(position_item, target_items)
+
+   Collates a field to be used in a UPT-style decoder. It requires:
+   - Positions as dense tensor (used as query for the Perceiver decoder)
+   - Targets as sparse tensor (e.g., used for calculating a loss)
+   - Unbatch mask to convert the dense output of the Perceiver decoder into a sparse tensor to compare it to the
+       targets (i.e., calculate a loss)
+
+
+   Initializes the FieldDecoderCollator.
+
+   :param position_item: Identifier for the position.
+   :param target_items: Identifiers for the position, can use multiple target_items if multiple values are predicted with
+   :param the same decoder:
+   :type the same decoder: e.g., predict surface pressure and surface wall shear stress
+
+
+   .. py:attribute:: position_item
+
+
+   .. py:attribute:: target_items
+
+

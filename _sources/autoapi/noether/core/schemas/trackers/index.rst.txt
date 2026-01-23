@@ -1,0 +1,52 @@
+noether.core.schemas.trackers
+=============================
+
+.. py:module:: noether.core.schemas.trackers
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.trackers.WandBTrackerSchema
+
+
+Module Contents
+---------------
+
+.. py:class:: WandBTrackerSchema(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+      :value: None
+
+
+
+   .. py:attribute:: entity
+      :type:  str | None
+      :value: None
+
+
+      The entity name for the W&B project.
+
+
+   .. py:attribute:: project
+      :type:  str | None
+      :value: None
+
+
+      The project name for the W&B project.
+
+
+   .. py:attribute:: mode
+      :type:  Literal['disabled', 'online', 'offline'] | None
+      :value: None
+
+
+      he mode of W&B. Can be 'disabled', 'online', or 'offline'.
+
+

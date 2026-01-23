@@ -1,0 +1,226 @@
+noether.io.diskcache.lru_cache
+==============================
+
+.. py:module:: noether.io.diskcache.lru_cache
+
+.. autoapi-nested-parse::
+
+   LRU cache filesystem implementations with size management and cleanup.
+
+   This module provides filesystem cache implementations that wrap other filesystems
+   (local or remote) and maintain a local cache of accessed files. The cache is
+   managed using a Least Recently Used (LRU) eviction policy to stay within
+   configurable size limits.
+
+   The module includes:
+       - LRUCacheFileSystem: A basic LRU cache implementation using filesystem metadata.
+       - SqliteLRUCacheFileSystem: An enhanced LRU cache using SQLite for metadata tracking,
+         suitable for concurrent access scenarios.
+
+   Key Features:
+       - Automatic cache size management with configurable watermarks
+       - Thread-safe file locking to prevent race conditions
+       - LRU-based eviction of cached files when size limits are exceeded
+       - Support for any fsspec-compatible filesystem as the backing store
+       - SQLite-based metadata tracking for improved concurrency
+
+   .. rubric:: Example
+
+   Basic usage with an S3 filesystem::
+
+
+       fs = LRUCacheFileSystem(
+           cache_size=10**9,  # 1 GB limit
+
+       with fs.open("s3://my-bucket/data.csv", "rb") as f:
+           data = f.read() # standard file-like object
+
+   .. note::
+
+      The LRU tracking updates file access times on every read, which may impact
+      performance on some filesystems. The SqliteLRUCacheFileSystem is recommended
+      for multi-threaded or concurrent access patterns.
+
+   .. attribute:: LOCK_FILE_MODE
+
+      Default file mode for lock files (0o660).
+
+      :type: int
+
+   .. attribute:: LOCK_FILE_SUFFIX
+
+      Suffix appended to cached file paths for lock files.
+
+      :type: str
+
+   .. attribute:: CLEANUP_LOCK_FILE
+
+      Name of the global cleanup lock file.
+
+      :type: str
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.diskcache.lru_cache.logger
+   noether.io.diskcache.lru_cache.LOCK_FILE_MODE
+   noether.io.diskcache.lru_cache.LOCK_FILE_SUFFIX
+   noether.io.diskcache.lru_cache.CLEANUP_LOCK_FILE
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.diskcache.lru_cache.LRUCacheFileSystem
+   noether.io.diskcache.lru_cache.SqliteLRUCacheFileSystem
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:data:: LOCK_FILE_MODE
+   :value: 432
+
+
+.. py:data:: LOCK_FILE_SUFFIX
+   :value: '.lock'
+
+
+.. py:data:: CLEANUP_LOCK_FILE
+   :value: '.cleanup_lock'
+
+
+.. py:class:: LRUCacheFileSystem(storage, cache_size, target_protocol = None, target_options = None, fs = None, cache_storage_dmode=504, cache_storage_mode=432, enforce_size_every_seconds=2, cache_cleanup_high_watermark=0.95, cache_cleanup_low_watermark=0.8, **kwargs)
+
+   Bases: :py:obj:`fsspec.implementations.cached.CachingFileSystem`
+
+
+   Caches whole remote files on first access, with LRU cache eviction.
+   This class is intended as a layer over any other file system, and
+   will make a local copy of each file accessed, so that all subsequent
+   reads are local. This implementation only copies whole files.
+
+   The cache is kept within a specified size limit by removing the least
+   recently used files when the limit is exceeded. File access times
+   are updated on each access to ensure accurate LRU tracking.
+   **NOTE** every file access requires a write to the filesystem to
+   update the access time, which may lead to performance issues on
+   some filesystems.
+   See `fsspec.implementations.cached.SimpleCacheFileSystem` for a simpler implementation that
+   does not delete old files.
+
+   .. rubric:: Examples
+
+   .. code-block:: python
+
+       import fsspec
+       from noether.io.diskcache.lru_cache import LRUCacheFileSystem
+
+       fs = LRUCacheFileSystem(
+           fs=fsspec.filesystem("s3"),
+           storage="/tmp/cache",
+           cache_storage_size=10**9,  # 1 GB
+       )
+       with fs.open("s3://my-bucket/my-large-file.dat", "rb") as f:
+           data = f.read()
+
+   :param fs: The target filesystem to wrap with caching.
+   :param storage: Path to the local directory where cached files will be stored.
+   :param cache_size: Maximum size of the cache in bytes. If None, no size limit is enforced.
+   :param cache_storage_dmode: Directory permissions mode for the cache storage directory.
+   :param cache_storage_mode: File permissions mode for cached files.
+   :param enforce_size_every_seconds: Minimum time in seconds between cache size enforcement checks.
+   :param cache_cleanup_high_watermark: Fraction of cache_size at which cleanup is triggered.
+   :param cache_cleanup_low_watermark: Target fraction of cache_size to reduce to during cleanup.
+
+
+   .. py:attribute:: protocol
+      :value: 'lrucache'
+
+
+
+   .. py:attribute:: local_file
+      :value: True
+
+
+
+   .. py:attribute:: fs
+
+
+   .. py:attribute:: storage
+
+
+   .. py:attribute:: cache_storage_size
+
+
+   .. py:attribute:: cache_storage_mode
+      :value: 432
+
+
+
+   .. py:attribute:: enforce_size_every_seconds
+      :value: 2
+
+
+
+   .. py:attribute:: cache_cleanup_high_watermark
+      :value: 0.95
+
+
+
+   .. py:attribute:: cache_cleanup_low_watermark
+      :value: 0.8
+
+
+
+   .. py:method:: cat_ranges(paths, starts, ends, max_gap=None, on_error='return', **kwargs)
+
+      Get the contents of byte ranges from one or more files
+
+      Parameters
+      ----------
+      paths: list
+          A list of of filepaths on this filesystems
+      starts, ends: int or list
+          Bytes limits of the read. If using a single int, the same value will be
+          used to read all the specified files.
+
+
+
+.. py:class:: SqliteLRUCacheFileSystem(*args, **kwargs)
+
+   Bases: :py:obj:`LRUCacheFileSystem`
+
+
+   Caches whole remote files on first access, with SQLite metadata
+
+   This class is intended as a layer over any other file system, and
+   will make a local copy of each file accessed, so that all subsequent
+   reads are local. This implementation only copies whole files, and
+   keeps metadata about the download time and file details in a SQLite
+   database. It is therefore safer to use in multi-threaded/concurrent
+   situations.
+
+   :param fs: The target filesystem to wrap with caching.
+   :param storage: Path to the local directory where cached files will be stored.
+   :param cache_size: Maximum size of the cache in bytes. If None, no size limit is enforced.
+   :param cache_storage_dmode: Directory permissions mode for the cache storage directory.
+   :param cache_storage_mode: File permissions mode for cached files.
+   :param enforce_size_every_seconds: Minimum time in seconds between cache size enforcement checks.
+   :param cache_cleanup_high_watermark: Fraction of cache_size at which cleanup is triggered.
+   :param cache_cleanup_low_watermark: Target fraction of cache_size to reduce to during cleanup.
+
+
+   .. py:attribute:: protocol
+      :value: 'sqlitecache'
+
+
+

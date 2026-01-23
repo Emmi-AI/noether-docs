@@ -1,0 +1,18 @@
+noether.data.pipeline.collators
+===============================
+
+.. py:module:: noether.data.pipeline.collators
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/data/pipeline/collators/concat_sparse_tensor/index
+   /autoapi/noether/data/pipeline/collators/default/index
+   /autoapi/noether/data/pipeline/collators/field_decoder/index
+   /autoapi/noether/data/pipeline/collators/sparse_tensor_offset/index
+
+

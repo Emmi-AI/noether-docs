@@ -1,0 +1,93 @@
+noether.data.tools.calculate_statistics
+=======================================
+
+.. py:module:: noether.data.tools.calculate_statistics
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.tools.calculate_statistics.parse_args
+   noether.data.tools.calculate_statistics.parse_dataset_args
+   noether.data.tools.calculate_statistics.get_dataset_attributes
+   noether.data.tools.calculate_statistics.calculate_statistics
+   noether.data.tools.calculate_statistics.print_statistics
+   noether.data.tools.calculate_statistics.save_statistics_to_json
+   noether.data.tools.calculate_statistics.main
+
+
+Module Contents
+---------------
+
+.. py:function:: parse_args()
+
+   Parse command line arguments for dataset statistics calculation.
+
+   :returns: Dictionary containing all parsed arguments
+   :rtype: dict[str, Any]
+
+
+.. py:function:: parse_dataset_args(args)
+
+   Parse additional arguments for dataset constructor.
+
+   :param args: List of unparsed command-line arguments
+
+   :returns: Dictionary of parsed dataset constructor arguments
+   :rtype: Dict[str, Any]
+
+
+.. py:function:: get_dataset_attributes(dataset)
+
+   Extract all available attributes from the dataset that have getitem methods.
+
+   :param dataset: The dataset object
+
+   :returns: Set of attribute names
+   :rtype: Set[str]
+
+
+.. py:function:: calculate_statistics(dataset, dataset_attributes, log_scale, num_workers = 0)
+
+   Calculate statistics for all dataset attributes.
+
+   :param dataset: The dataset object
+   :param dataset_attributes: Set of attribute names to process
+   :param log_scale: Set of attributes to process in log scale
+   :param num_workers: Number of workers for data loading
+
+   :returns: Dictionary mapping attribute names to their statistics
+   :rtype: Dict[str, RunningMoments]
+
+
+.. py:function:: print_statistics(running_stats, log_scale)
+
+   Print calculated statistics for each attribute.
+
+   :param running_stats: Dictionary mapping attribute names to their statistics
+   :param log_scale: Set of attributes processed in log scale
+
+
+.. py:function:: save_statistics_to_json(running_stats, output_path, log_scale)
+
+   Save calculated statistics to a JSON file.
+
+   :param running_stats: Dictionary mapping attribute names to their statistics
+   :param output_path: Path where the JSON file will be saved
+   :param log_scale: Set of attributes processed in log scale
+
+
+.. py:function:: main(dataset_kind, log_scale, exclude_attributes, output_json = None, num_workers = 0, **dataset_constructor_args)
+
+   Main function to calculate and display dataset statistics.
+
+   :param dataset_kind: Class path of the dataset
+   :param log_scale: Set of attributes to process in log scale
+   :param exclude_attributes: Set of attributes to exclude from calculation
+   :param output_json: Optional path to save statistics as JSON
+   :param num_workers: Number of workers for data loading
+   :param dataset_constructor_args: Additional arguments for dataset constructor
+
+

@@ -1,0 +1,34 @@
+noether.data.pipeline.batch_processor
+=====================================
+
+.. py:module:: noether.data.pipeline.batch_processor
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.batch_processor.BatchProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: BatchProcessor
+
+   .. py:method:: denormalize(key, value)
+      :abstractmethod:
+
+
+      Inverts the normalization from the __call__ method of a single item in the batch. If nothing needs to be
+      done for the denormalization, this method should simply return the passed key/value.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The (potentially) back-mapped name and the (potentially) denormalized value.
+      :rtype: (key, value)
+
+
+

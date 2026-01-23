@@ -1,0 +1,57 @@
+noether.modeling.modules.mlp.mlp
+================================
+
+.. py:module:: noether.modeling.modules.mlp.mlp
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.mlp.mlp.MLP
+
+
+Module Contents
+---------------
+
+.. py:class:: MLP(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Implements a Multi-Layer Perceptron (MLP) with configurable number of layers, hidden dimension activation functions and weight initialization methods.
+   Only one hidden dimension is supported for simplicity, i.e., all hidden layers have the same dimension.
+   The MLP will always have one input layer and one output layer. When num_layers=0, the MLP is a two layer network with one non-linearity in between.
+   When num_layers>=1, the MLP has additional hidden layers, etc.
+
+   Initialize the MLP.
+
+   :param config: Configuration object for the MLP.
+
+
+   .. py:attribute:: init_weights
+
+
+   .. py:attribute:: mlp
+
+
+   .. py:method:: reset_parameters()
+
+      Reset the parameters of the MLP with a specific initialization. Options are "torch" (i.e., default), or
+          "truncnormal002".
+
+      :raises NotImplementedError: raised if the specified initialization is not implemented.
+
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the MLP.
+
+      :param x: Input tensor to the MLP.
+
+      :returns: Output tensor from the MLP.
+
+
+

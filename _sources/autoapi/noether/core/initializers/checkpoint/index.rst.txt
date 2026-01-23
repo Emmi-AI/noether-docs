@@ -1,0 +1,68 @@
+noether.core.initializers.checkpoint
+====================================
+
+.. py:module:: noether.core.initializers.checkpoint
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.initializers.checkpoint.CheckpointInitializer
+
+
+Module Contents
+---------------
+
+.. py:class:: CheckpointInitializer(initializer_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.initializers.base.InitializerBase`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+   Initialize model from checkpoint.
+
+   :param initializer_config: configuration for the initializer.
+   :param \*\*kwargs: additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: checkpoint
+      :type:  str | noether.core.utils.training.training_iteration.TrainingIteration
+
+
+   .. py:attribute:: run_id
+
+
+   .. py:attribute:: model_name
+
+
+   .. py:attribute:: load_optim
+
+
+   .. py:attribute:: model_info
+
+
+   .. py:attribute:: pop_ckpt_kwargs_keys
+
+
+   .. py:attribute:: stage_name
+
+
+   .. py:attribute:: init_run_path_provider
+
+
+   .. py:method:: init_optimizer(model)
+
+      Initialize the optimizer for the model if it is derived from Model.
+
+      If model is a `CompositeModel`, nothing happens. This is expected as CompositeModels can be arbitrarily nested
+      and do not have an optimizer. Instead, a CompositeModel calls `init_optim` with all its submodels which can be
+      of type `Model` or a nested `CompositeModel`.
+
+      :param model: a model to initialize the optimizer for. Assumes the model has an attribute optim.
+
+
+

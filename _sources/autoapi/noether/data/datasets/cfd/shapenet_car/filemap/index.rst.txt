@@ -1,0 +1,54 @@
+noether.data.datasets.cfd.shapenet_car.filemap
+==============================================
+
+.. py:module:: noether.data.datasets.cfd.shapenet_car.filemap
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.shapenet_car.filemap.SURFACE_POINTS_FILE
+   noether.data.datasets.cfd.shapenet_car.filemap.SURFACE_PRESSURE_FILE
+   noether.data.datasets.cfd.shapenet_car.filemap.SURFACE_NORMALS_FILE
+   noether.data.datasets.cfd.shapenet_car.filemap.VOLUME_VELOCITY_FILE
+   noether.data.datasets.cfd.shapenet_car.filemap.VOLUME_POINTS_FILE
+   noether.data.datasets.cfd.shapenet_car.filemap.VOLUME_SDF_FILE
+   noether.data.datasets.cfd.shapenet_car.filemap.VOLUME_NORMALS_FILE
+   noether.data.datasets.cfd.shapenet_car.filemap.SHAPENET_CAR_FILEMAP
+
+
+Module Contents
+---------------
+
+.. py:data:: SURFACE_POINTS_FILE
+   :value: 'surface_points.pt'
+
+
+.. py:data:: SURFACE_PRESSURE_FILE
+   :value: 'surface_pressure.pt'
+
+
+.. py:data:: SURFACE_NORMALS_FILE
+   :value: 'surface_normals.pt'
+
+
+.. py:data:: VOLUME_VELOCITY_FILE
+   :value: 'volume_velocity.pt'
+
+
+.. py:data:: VOLUME_POINTS_FILE
+   :value: 'volume_points.pt'
+
+
+.. py:data:: VOLUME_SDF_FILE
+   :value: 'volume_sdf.pt'
+
+
+.. py:data:: VOLUME_NORMALS_FILE
+   :value: 'volume_normals.pt'
+
+
+.. py:data:: SHAPENET_CAR_FILEMAP
+

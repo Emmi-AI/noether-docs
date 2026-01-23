@@ -1,0 +1,67 @@
+noether.training.runners.hydra_runner
+=====================================
+
+.. py:module:: noether.training.runners.hydra_runner
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.training.runners.hydra_runner.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.training.runners.hydra_runner.HydraRunner
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: HydraRunner
+
+   Runs an experiment using @hydra.main as entry point.
+
+
+   .. py:method:: run(hydra_config)
+
+      Runs an experiment. Given CLI args which contain a path to a hyperparameter file.
+
+      :param config: hydra config as a YAML.
+
+
+
+   .. py:method:: derive_run_name(name)
+      :staticmethod:
+
+
+      Derives a run name by appending hydra overrides to the given name.
+
+
+
+   .. py:method:: main(device, config)
+      :staticmethod:
+
+
+      Main method called from each GPU main process after being spawned and initialized for communication.
+
+      :param device: device of the current process.
+      :param config: configuration of the experiment.
+
+
+
+   .. py:method:: setup_experiment(device, config, initializer_config_class = ResumeInitializerConfig)
+      :staticmethod:
+
+
+      Sets up the experiment objects (datasets, trainer, model, etc.).
+
+
+

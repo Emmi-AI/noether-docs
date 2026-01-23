@@ -1,0 +1,31 @@
+noether.core.trackers.noop
+==========================
+
+.. py:module:: noether.core.trackers.noop
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.trackers.noop.NoopTracker
+
+
+Module Contents
+---------------
+
+.. py:class:: NoopTracker(metric_property_provider, path_provider)
+
+   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+
+
+   Dummy tracker that does nothing.
+
+   Initialize the BaseTracker.
+
+   :param metric_property_provider: The metric property provider gives additional information such
+                                    as whether higher values are better.
+   :param path_provider: Gives access to paths (e.g., output_path: where checkpoints/logs are stored).
+
+

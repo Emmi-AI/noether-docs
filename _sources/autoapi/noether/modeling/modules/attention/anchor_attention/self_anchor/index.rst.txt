@@ -1,0 +1,36 @@
+noether.modeling.modules.attention.anchor_attention.self_anchor
+===============================================================
+
+.. py:module:: noether.modeling.modules.attention.anchor_attention.self_anchor
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.attention.anchor_attention.self_anchor.SelfAnchorAttention
+
+
+Module Contents
+---------------
+
+.. py:class:: SelfAnchorAttention(config)
+
+   Bases: :py:obj:`noether.modeling.modules.attention.anchor_attention.multi_branch.MultiBranchAnchorAttention`
+
+
+   Anchor attention within branches: each configured branch attends to its own anchors independently.
+
+   For a list of branches (e.g., A, B, C), this creates a pattern where A tokens attend to A_anchors,
+   B tokens attend to B_anchors, and C tokens attend to C_anchors.
+   It requires all configured branches and their anchors to be present in the input.
+
+   Example: surface tokens attend to surface_anchors and volume tokens attend to volume_anchors.
+   This is achieved via the following attention patterns:
+       AttentionPattern(query_tokens=["surface_anchors", "surface_queries"], key_value_tokens=["surface_anchors"])
+       AttentionPattern(query_tokens=["volume_anchors", "volume_queries"], key_value_tokens=["volume_anchors"])
+
+   Initialize internal Module state, shared by both nn.Module and ScriptModule.
+
+

@@ -1,0 +1,37 @@
+noether.modeling.functional.logscale
+====================================
+
+.. py:module:: noether.modeling.functional.logscale
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.modeling.functional.logscale.to_logscale
+   noether.modeling.functional.logscale.from_logscale
+
+
+Module Contents
+---------------
+
+.. py:function:: to_logscale(x)
+
+   Turns a tensor into log scale. Log is the natural logarithm of x + 1 .
+
+   :param x: Tensor to be transformed
+
+   :returns: Tensor in log scale
+
+
+.. py:function:: from_logscale(x)
+
+   Turns a tensor from log scale into orginal scale.
+       x = from_logscale(to_logscale(x))
+
+   :param x: Tensor to be de-transformed from log scale. Expected to be in natural logarithm + 1.
+
+   :returns: Tensor in orginal scale
+
+

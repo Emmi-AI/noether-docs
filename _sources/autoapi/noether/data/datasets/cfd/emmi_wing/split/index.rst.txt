@@ -1,0 +1,56 @@
+noether.data.datasets.cfd.emmi_wing.split
+=========================================
+
+.. py:module:: noether.data.datasets.cfd.emmi_wing.split
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.emmi_wing.split.WingParametricSplitIDs
+
+
+Module Contents
+---------------
+
+.. py:class:: WingParametricSplitIDs(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+
+
+   Wing dataset split with OOD interpolation and extrapolation sets, 1500 inflow design parameter variations.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: train
+      :type:  set[int]
+
+
+   .. py:attribute:: val
+      :type:  set[int]
+
+
+   .. py:attribute:: test
+      :type:  set[int]
+
+
+   .. py:attribute:: test_extrapol
+      :type:  set[int]
+
+
+   .. py:attribute:: test_interpol
+      :type:  set[int]
+
+
+   .. py:attribute:: train_subset
+      :type:  set[int]
+
+

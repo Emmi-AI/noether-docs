@@ -1,0 +1,105 @@
+noether.core.distributed.config
+===============================
+
+.. py:module:: noether.core.distributed.config
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.distributed.config.DistributedConfig
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.distributed.config.set_config
+   noether.core.distributed.config.is_managed
+   noether.core.distributed.config.get_local_rank
+   noether.core.distributed.config.get_num_nodes
+   noether.core.distributed.config.get_managed_world_size
+   noether.core.distributed.config.get_managed_rank
+   noether.core.distributed.config.is_distributed
+   noether.core.distributed.config.get_rank
+   noether.core.distributed.config.get_world_size
+   noether.core.distributed.config.is_data_rank0
+   noether.core.distributed.config.is_rank0
+   noether.core.distributed.config.is_local_rank0
+   noether.core.distributed.config.barrier
+
+
+Module Contents
+---------------
+
+.. py:class:: DistributedConfig
+
+   .. py:method:: is_managed()
+      :staticmethod:
+
+
+
+   .. py:method:: get_local_rank()
+
+
+   .. py:method:: get_num_nodes()
+
+
+   .. py:method:: get_managed_world_size()
+
+
+   .. py:method:: get_managed_rank()
+
+
+   .. py:method:: is_distributed()
+      :staticmethod:
+
+
+
+   .. py:method:: get_rank()
+
+
+   .. py:method:: get_world_size()
+
+
+   .. py:method:: is_data_rank0()
+
+
+   .. py:method:: is_rank0()
+
+
+   .. py:method:: is_local_rank0()
+
+
+   .. py:method:: barrier()
+
+
+.. py:function:: set_config(new_config)
+
+.. py:function:: is_managed()
+
+.. py:function:: get_local_rank()
+
+.. py:function:: get_num_nodes()
+
+.. py:function:: get_managed_world_size()
+
+.. py:function:: get_managed_rank()
+
+.. py:function:: is_distributed()
+
+.. py:function:: get_rank()
+
+.. py:function:: get_world_size()
+
+.. py:function:: is_data_rank0()
+
+.. py:function:: is_rank0()
+
+.. py:function:: is_local_rank0()
+
+.. py:function:: barrier()
+

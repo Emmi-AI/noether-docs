@@ -1,0 +1,46 @@
+noether.data.pipeline.collators.concat_sparse_tensor
+====================================================
+
+.. py:module:: noether.data.pipeline.collators.concat_sparse_tensor
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.collators.concat_sparse_tensor.ConcatSparseTensorCollator
+
+
+Module Contents
+---------------
+
+.. py:class:: ConcatSparseTensorCollator(items, create_batch_idx = False, batch_idx_key = 'batch_idx')
+
+   Concatenates a sparse tensor along its first axis. Additionally, creates the batch_idx tensor which maps samples
+   to their respective index in a batch.
+
+   Initializes the ConcatSparseTensorCollator.
+
+   :param items: Which pointcloud items should be collated.
+   :param create_batch_idx: If true, creates a batch_idx tensor that maps samples to their index in the batch.
+                            Defaults to False.
+   :param batch_idx_key: How the generated batch_idx tensor should be called. Defaults to "batch_idx". If multiple
+                         `batch_idx` tensors are generated, this needs to be set to distinguish between them. For example,
+                         if a subsampled pointcloud is loaded and also the raw pointcloud without subsampling one could use
+                         `batch_idx` for the subsampled pointcloud and `batch_idx_raw` for the raw pointcloud.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: create_batch_idx
+      :value: False
+
+
+
+   .. py:attribute:: batch_idx_key
+      :value: 'batch_idx'
+
+
+

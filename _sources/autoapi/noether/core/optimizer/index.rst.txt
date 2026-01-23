@@ -1,0 +1,17 @@
+noether.core.optimizer
+======================
+
+.. py:module:: noether.core.optimizer
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/optimizer/lion/index
+   /autoapi/noether/core/optimizer/optimizer_wrapper/index
+   /autoapi/noether/core/optimizer/param_group_modifiers/index
+
+

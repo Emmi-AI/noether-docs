@@ -1,0 +1,82 @@
+noether.io.checkpoint.providers.huggingface_provider
+====================================================
+
+.. py:module:: noether.io.checkpoint.providers.huggingface_provider
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.io.checkpoint.providers.huggingface_provider.HFProvider
+
+
+Module Contents
+---------------
+
+.. py:class:: HFProvider
+
+   Bases: :py:obj:`noether.io.checkpoint.types.Provider`
+
+
+   Provides a minimalistic interface to fetch a checkpoint file from Huggingface.
+
+   .. rubric:: Examples
+
+   .. code-block:: console
+
+       hf://org/name@rev?filename=model.pt
+       hf://org/name?filename=model.pt
+
+   Where:
+     - ``rev`` is optional (tag/branch/commit after ``@``)
+     - ``filename`` is required (query parameter ``?filename=...``)
+
+
+   .. py:attribute:: scheme
+      :value: 'hf'
+
+
+
+   .. py:method:: can_handle(uri)
+
+
+   .. py:method:: parse_uri(uri)
+      :staticmethod:
+
+
+      Extracts repo name, revision and filename from HF URI.
+
+      :param uri: Input URI as: 'hf://org/name?filename=MODEL_FILENAME'.
+
+      :returns: Repository name, filename and revision.
+      :rtype: - tuple[str, str, Optional[str]]
+
+
+
+   .. py:method:: estimate_size(uri)
+
+      Extracts an approximate size of a file from HF URI.
+
+      :param uri: Input URI as: 'hf://org/name[@rev]?filename=MODEL_FILENAME'.
+
+      :returns: Estimated size of the remote file.
+                - None: If no size is available.
+      :rtype: - int
+
+
+
+   .. py:method:: fetch(uri, destination_dir, *, compute_hash = True)
+
+      Returns a local file path for the given HF URI after downloading from the HF hub.
+
+      :param uri: Input URI where the file is located.
+      :param destination_dir: Destination directory where the file need to be located.
+      :param compute_hash: Compute the hash of the file on the local file system.
+
+      :returns: Local file path.
+      :rtype: - Path
+
+
+

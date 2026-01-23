@@ -1,0 +1,16 @@
+noether.core.utils.torch
+========================
+
+.. py:module:: noether.core.utils.torch
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/utils/torch/amp/index
+   /autoapi/noether/core/utils/torch/device/index
+
+

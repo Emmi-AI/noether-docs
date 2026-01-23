@@ -1,0 +1,51 @@
+noether.modeling.modules.layers.rope_frequency
+==============================================
+
+.. py:module:: noether.modeling.modules.layers.rope_frequency
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.layers.rope_frequency.RopeFrequency
+
+
+Module Contents
+---------------
+
+.. py:class:: RopeFrequency(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Creates frequencies for rotary embeddings (RoPE) from https://arxiv.org/abs/2104.09864 for variable positions.
+
+   :param config: Configuration for RoPE frequency settings.
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: input_dim
+
+
+   .. py:attribute:: implementation
+
+
+   .. py:attribute:: ndim_padding
+
+
+   .. py:attribute:: sincos_padding
+
+
+   .. py:attribute:: max_wavelength
+
+
+   .. py:attribute:: padding
+
+
+   .. py:method:: forward(coords)
+
+

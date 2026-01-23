@@ -1,0 +1,88 @@
+noether.core.initializers.base
+==============================
+
+.. py:module:: noether.core.initializers.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.initializers.base.InitializerBase
+
+
+Module Contents
+---------------
+
+.. py:class:: InitializerBase(path_provider)
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+   Base class for model initializers.
+
+   :param path_provider: PathProvider instance to access paths to load models from.
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: path_provider
+
+
+   .. py:method:: init_weights(model)
+      :abstractmethod:
+
+
+      Initialize the model weights from the checkpoint.
+
+      :param model: the model to load the weights into.
+
+
+
+   .. py:method:: init_optimizer(model)
+      :abstractmethod:
+
+
+      Initialize the optimizer for the model.
+
+      :param model: a model to initialize the optimizer for. Assumes the model has an attribute optim.
+
+
+
+   .. py:method:: init_trainer(trainer)
+
+      Initialize the trainer from the checkpoint.
+
+      By default, does nothing. Can be overridden by child classes.
+
+      :param trainer: the trainer to initialize.
+
+
+
+   .. py:method:: init_callbacks(callbacks, model)
+
+      Initialize the callbacks from the checkpoint.
+
+      By default, does nothing. Can be overridden by child classes.
+
+      :param callbacks: the list of callbacks to initialize.
+      :param model: the model associated with the callbacks.
+
+
+
+   .. py:method:: start_checkpoint()
+
+      Get the start checkpoint for the model.
+
+      By default , returns a TrainingIteration starting from zero.
+
+      :returns: the start checkpoint for the model.
+      :rtype: checkpoint
+
+
+

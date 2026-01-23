@@ -1,0 +1,36 @@
+noether.modeling.modules.attention.anchor_attention.cross
+=========================================================
+
+.. py:module:: noether.modeling.modules.attention.anchor_attention.cross
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.attention.anchor_attention.cross.CrossAnchorAttention
+
+
+Module Contents
+---------------
+
+.. py:class:: CrossAnchorAttention(config)
+
+   Bases: :py:obj:`noether.modeling.modules.attention.anchor_attention.multi_branch.MultiBranchAnchorAttention`
+
+
+   Anchor attention across branches: each configured branch attends to the anchors of all other branches.
+
+   For a list of branches (e.g., A, B, C), this creates a pattern,
+   where A attends to (B_anchors + C_anchors), B attends to (A_anchors + C_anchors), etc.
+   It requires all configured branches and their anchors to be present in the input.
+
+   Example: all surface tokens attend to volume_anchors and all volume tokens attend to surface_anchors.
+   This is achieved via the following attention patterns:
+       AttentionPattern(query_tokens=["surface_anchors", "surface_queries"], key_value_tokens=["volume_anchors"])
+       AttentionPattern(query_tokens=["volume_anchors", "volume_queries"], key_value_tokens=["surface_anchors"])
+
+   Initialize internal Module state, shared by both nn.Module and ScriptModule.
+
+

@@ -1,0 +1,18 @@
+noether.core.initializers
+=========================
+
+.. py:module:: noether.core.initializers
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/initializers/base/index
+   /autoapi/noether/core/initializers/checkpoint/index
+   /autoapi/noether/core/initializers/previous_run/index
+   /autoapi/noether/core/initializers/resume/index
+
+

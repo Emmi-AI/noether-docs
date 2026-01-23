@@ -1,0 +1,44 @@
+noether.data.pipeline.batch_processors.rename_keys
+==================================================
+
+.. py:module:: noether.data.pipeline.batch_processors.rename_keys
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.batch_processors.rename_keys.RenameKeysBatchProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: RenameKeysBatchProcessor(key_map)
+
+   Bases: :py:obj:`noether.data.pipeline.batch_processor.BatchProcessor`
+
+
+   Utility processor that simply renames the dictionary keys in a batch.
+
+   Initializes the RenameKeysPostCollator
+
+   :param key_map: dict with source keys as keys and target keys as values. The source keys are renamed target keys.
+
+
+   .. py:attribute:: key_map
+
+
+   .. py:method:: denormalize(key, value)
+
+      Inverts the key mapping from the __call__ method.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The (potentially) remapped name and the unchanged value.
+      :rtype: (key, value)
+
+
+

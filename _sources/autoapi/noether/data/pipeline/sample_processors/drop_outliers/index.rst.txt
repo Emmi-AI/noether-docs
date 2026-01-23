@@ -1,0 +1,60 @@
+noether.data.pipeline.sample_processors.drop_outliers
+=====================================================
+
+.. py:module:: noether.data.pipeline.sample_processors.drop_outliers
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processors.drop_outliers.DropOutliersSampleProcessor
+
+
+Module Contents
+---------------
+
+.. py:class:: DropOutliersSampleProcessor(item, affected_items = None, min_value = None, max_value = None, min_quantile = None, max_quantile = None)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Drops all outliers from fields in a batch.
+
+   :param item: The item to drop outliers from.
+   :param affected_items: List of item (keys) that is also affected by outlier removal. Defaults to None.
+   :param min_value: Drop outliers below min_value. Defaults to None.
+   :param max_value: Drop outliers above max_value. Defaults to None.
+   :param min_quantile: Drop outliers in/below min_quantile. Defaults to None.
+   :param max_quantile: Drop outliers in/above max_value. Defaults to None.
+
+
+   .. py:attribute:: item
+
+
+   .. py:attribute:: affected_items
+      :value: None
+
+
+
+   .. py:attribute:: min_value
+      :value: None
+
+
+
+   .. py:attribute:: max_value
+      :value: None
+
+
+
+   .. py:attribute:: min_quantile
+      :value: None
+
+
+
+   .. py:attribute:: max_quantile
+      :value: None
+
+
+

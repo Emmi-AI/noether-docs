@@ -1,0 +1,116 @@
+noether.core.schemas.modules.mlp
+================================
+
+.. py:module:: noether.core.schemas.modules.mlp
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.modules.mlp.MLPConfig
+   noether.core.schemas.modules.mlp.UpActDownMLPConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: MLPConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the MLP.
+
+
+   .. py:attribute:: output_dim
+      :type:  int
+      :value: None
+
+
+      Output dimension of the MLP.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension for each layer.
+
+
+   .. py:attribute:: num_layers
+      :type:  int
+      :value: 0
+
+
+      Number of hidden layers in the MLP. If 0, the MLP is a two linear layer MLP from input_dim, hidden_dim, activation to output_dim.
+
+
+   .. py:attribute:: activation
+      :type:  str
+      :value: 'GELU'
+
+
+      Activation function to use between layers.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: 'truncnormal002'
+
+
+      Weight initialization method.
+
+
+.. py:class:: UpActDownMLPConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the MLP.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the MLP.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias in the MLP.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Initialization method of the weights of the MLP. Options are  "torch" (i.e., similar to the module) or  'truncnormal002'. Defaults to 'truncnormal002'.
+
+
+   .. py:method:: check_dims()
+
+      Validator to check that hidden_dim is greater than input_dim.
+
+      :raises ValueError: raised if hidden_dim is not greater than input_dim.
+
+
+

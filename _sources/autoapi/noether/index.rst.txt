@@ -1,0 +1,20 @@
+noether
+=======
+
+.. py:module:: noether
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/index
+   /autoapi/noether/data/index
+   /autoapi/noether/inference/index
+   /autoapi/noether/io/index
+   /autoapi/noether/modeling/index
+   /autoapi/noether/training/index
+
+

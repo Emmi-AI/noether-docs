@@ -1,0 +1,176 @@
+noether.core.schedules.base
+===========================
+
+.. py:module:: noether.core.schedules.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schedules.base.ScheduleBase
+   noether.core.schedules.base.ProgressSchedule
+   noether.core.schedules.base.DecreasingProgressSchedule
+   noether.core.schedules.base.IncreasingProgressSchedule
+   noether.core.schedules.base.SequentialPercentScheduleConfig
+   noether.core.schedules.base.SequentialPercentSchedule
+   noether.core.schedules.base.SequentialStepScheduleConfig
+   noether.core.schedules.base.SequentialStepSchedule
+
+
+Module Contents
+---------------
+
+.. py:class:: ScheduleBase(overhang_percent = None, overhang_steps = None)
+
+   Base class for schedules.
+
+   Initialize the scheduler.
+
+   :param overhang_percent: The percentage by which the schedule is artificially prolonged.
+   :param overhang_steps: The number of steps by which the schedule is artificially prolonged.
+
+
+   .. py:attribute:: overhang_percent
+      :value: None
+
+
+
+   .. py:attribute:: overhang_steps
+      :value: None
+
+
+
+   .. py:method:: get_value(step, total_steps)
+
+      Get the value of the schedule at a given step.
+
+      This function includes the correction for overhangs in percent or steps and then calls the _get_value method.
+      Therefore, it should not be overwritten by subclasses. Instead, the _get_value method should be implemented.
+
+      :param step: The step for which to get the scheduler value.
+      :param total_steps: The total number of steps.
+
+
+
+.. py:class:: ProgressSchedule(config, start_value, delta)
+
+   Bases: :py:obj:`ScheduleBase`
+
+
+   Base class for schedules that progress monotonically in value over time.
+
+   Initialize the scheduler.
+
+   :param config: Configuration for the progress schedule.
+   :param start_value: The initial value of the scheduler.
+   :param delta: The total change in value over the schedule.
+
+
+   .. py:attribute:: start_value
+
+
+   .. py:attribute:: delta
+
+
+   .. py:attribute:: exclude_first
+
+
+   .. py:attribute:: exclude_last
+
+
+.. py:class:: DecreasingProgressSchedule(config)
+
+   Bases: :py:obj:`ProgressSchedule`
+
+
+   Base class for schedules that monotonically decrease in value over time.
+
+   Initialize the scheduler.
+
+
+.. py:class:: IncreasingProgressSchedule(config)
+
+   Bases: :py:obj:`ProgressSchedule`
+
+
+   Base class for schedules that monotonically increase in value over time.
+
+   Initialize the scheduler.
+
+
+.. py:class:: SequentialPercentScheduleConfig
+
+   .. py:attribute:: schedule
+      :type:  ScheduleBase
+
+
+   .. py:attribute:: start_percent
+      :type:  float | None
+      :value: None
+
+
+
+   .. py:attribute:: end_percent
+      :type:  float | None
+      :value: None
+
+
+
+.. py:class:: SequentialPercentSchedule(schedule_configs)
+
+   Bases: :py:obj:`ScheduleBase`
+
+
+   A scheduler that switches between multiple schedules based on the percentage of steps completed.
+
+   Initialize the scheduler.
+
+   :param schedule_configs: A list of schedule configurations.
+   :param \*\*kwargs: Additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: schedule_configs
+
+
+   .. py:method:: get_sequential_schedule_config(step, total_steps)
+
+
+.. py:class:: SequentialStepScheduleConfig
+
+   .. py:attribute:: schedule
+      :type:  ScheduleBase
+
+
+   .. py:attribute:: start_step
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: end_step
+      :type:  int | None
+      :value: None
+
+
+
+.. py:class:: SequentialStepSchedule(schedule_configs, **kwargs)
+
+   Bases: :py:obj:`ScheduleBase`
+
+
+   A scheduler that switches between multiple schedules based on the step number.
+
+   Initialize the scheduler.
+
+   :param schedule_configs: A list of schedule configurations.
+   :param \*\*kwargs: Additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: schedule_configs
+
+
+   .. py:method:: get_sequential_schedule_config(step)
+
+

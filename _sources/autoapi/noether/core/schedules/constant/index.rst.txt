@@ -1,0 +1,38 @@
+noether.core.schedules.constant
+===============================
+
+.. py:module:: noether.core.schedules.constant
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schedules.constant.ConstantSchedule
+
+
+Module Contents
+---------------
+
+.. py:class:: ConstantSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.ScheduleBase`
+
+
+   Constant value schedule that returns the same value for all steps.
+
+   .. rubric:: Example
+
+   >>> schedule_config:
+   >>>   kind: noether.core.schedules.ConstantSchedule
+   >>>   value : ${model.optim.lr}
+
+   Initialize the scheduler.
+
+   :param scheduler_config: Configuration of the constant schedule.
+
+
+   .. py:attribute:: value
+
+

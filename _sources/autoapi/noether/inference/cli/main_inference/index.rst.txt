@@ -1,0 +1,19 @@
+noether.inference.cli.main_inference
+====================================
+
+.. py:module:: noether.inference.cli.main_inference
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.inference.cli.main_inference.main
+
+
+Module Contents
+---------------
+
+.. py:function:: main(inference_config)
+

@@ -1,0 +1,43 @@
+noether.core.trackers.wandb
+===========================
+
+.. py:module:: noether.core.trackers.wandb
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.trackers.wandb.WandBTracker
+
+
+Module Contents
+---------------
+
+.. py:class:: WandBTracker(tracker_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+
+
+   Weights and Biases tracker.
+
+   Initialize the WandBTracker.
+   :param tracker_config: Configuration for the WandBTracker. Implements the `WandBTrackerSchema`.
+   :param \*\*kwargs: Additional keyword arguments passed to the parent class.
+
+
+   .. py:attribute:: MODES
+      :value: ['disabled', 'online', 'offline']
+
+
+
+   .. py:attribute:: mode
+
+
+   .. py:attribute:: entity
+
+
+   .. py:attribute:: project
+
+

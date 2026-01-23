@@ -1,0 +1,67 @@
+noether.core.schemas.modules.layers.rope_frequency
+==================================================
+
+.. py:module:: noether.core.schemas.modules.layers.rope_frequency
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.modules.layers.rope_frequency.RopeFrequencyConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: RopeFrequencyConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for RoPE frequency settings.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of frequencies (in transformers this should be the head dimension).
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the coordinates (e.g., 2 for 2D coordinates, 3 for 3D coordinates).
+
+
+   .. py:attribute:: max_wavelength
+      :type:  int
+      :value: None
+
+
+      10000.0
+
+      :type: Theta parameter for the transformer sine/cosine embedding. Default
+
+
+   .. py:attribute:: implementation
+      :type:  Literal['real', 'complex']
+      :value: None
+
+
+      "real" -> basic implementation using real coordinates (this is slow and only here for backward compatibility).
+      "complex" -> fast implementation of rotation via complex multiplication. Default: "real".
+
+

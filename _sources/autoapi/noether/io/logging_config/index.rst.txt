@@ -1,0 +1,27 @@
+noether.io.logging_config
+=========================
+
+.. py:module:: noether.io.logging_config
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.logging_config.configure_logging
+
+
+Module Contents
+---------------
+
+.. py:function:: configure_logging(debug = False)
+
+   Configure loguru logging format.
+
+   :param debug: Include caller details if True, keep minimal format otherwise. Defaults to False.
+
+   Returns:
+
+
+

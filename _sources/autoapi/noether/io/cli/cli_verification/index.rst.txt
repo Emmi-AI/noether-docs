@@ -1,0 +1,41 @@
+noether.io.cli.cli_verification
+===============================
+
+.. py:module:: noether.io.cli.cli_verification
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_verification.RICH_MARKUP_MODE
+   noether.io.cli.cli_verification.CTX
+   noether.io.cli.cli_verification.verification_app
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.io.cli.cli_verification.verify_build
+   noether.io.cli.cli_verification.verify_check
+
+
+Module Contents
+---------------
+
+.. py:data:: RICH_MARKUP_MODE
+   :type:  Literal['markdown', 'rich']
+   :value: 'rich'
+
+
+.. py:data:: CTX
+
+.. py:data:: verification_app
+
+.. py:function:: verify_build(root = typer.Option(..., '--root', '-r', help='Directory to scan', dir_okay=True, file_okay=False), manifest = typer.Option(..., '--manifest', '-m', help='JSON manifest to save'), jobs = typer.Option(8, '--jobs', '-j', help='Number of jobs to run', show_default=True), include_hash = typer.Option(True, '--hash/--no-hash', help='Include SHA-256 in manifest'))
+
+.. py:function:: verify_check(root = typer.Option(..., '--root', '-r', help='Directory to check', dir_okay=True, file_okay=False), manifest = typer.Option(..., '--manifest', '-m', help='Path to manifest.json'), jobs = typer.Option(8, '--jobs', '-j', help='Hash workers', show_default=True), require_hash = typer.Option(True, '--require-hash/--no-require-hash', show_default=True), on_fail = typer.Option(FailAction.WARN, '--action', '-a', case_sensitive=False))
+

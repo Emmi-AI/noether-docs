@@ -1,0 +1,32 @@
+noether.data.pipeline.collators.sparse_tensor_offset
+====================================================
+
+.. py:module:: noether.data.pipeline.collators.sparse_tensor_offset
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.collators.sparse_tensor_offset.SparseTensorOffsetCollator
+
+
+Module Contents
+---------------
+
+.. py:class:: SparseTensorOffsetCollator(item, offset_key)
+
+   Bases: :py:obj:`noether.data.pipeline.collator.Collator`
+
+
+   Collates sparse tensors by concatenating them along the first axis and creating an offset tensor that maps
+   each sample to its respective index in the batch.
+
+
+   .. py:attribute:: item
+
+
+   .. py:attribute:: offset_key
+
+

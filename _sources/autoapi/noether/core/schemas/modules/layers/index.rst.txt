@@ -1,0 +1,20 @@
+noether.core.schemas.modules.layers
+===================================
+
+.. py:module:: noether.core.schemas.modules.layers
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/schemas/modules/layers/continuous_sincos_embedding/index
+   /autoapi/noether/core/schemas/modules/layers/drop_path/index
+   /autoapi/noether/core/schemas/modules/layers/layer_scale/index
+   /autoapi/noether/core/schemas/modules/layers/linear_projection/index
+   /autoapi/noether/core/schemas/modules/layers/rope_frequency/index
+   /autoapi/noether/core/schemas/modules/layers/scalar_conditioner/index
+
+

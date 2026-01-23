@@ -1,0 +1,65 @@
+noether.core.optimizer.lion
+===========================
+
+.. py:module:: noether.core.optimizer.lion
+
+.. autoapi-nested-parse::
+
+   Lion Optimizer
+   Paper: `Symbolic Discovery of Optimization Algorithms` - https://arxiv.org/abs/2302.06675
+   Original Impl: https://github.com/google/automl/tree/master/lion
+   This implementation is adapted from timm:
+   https://github.com/huggingface/pytorch-image-models/blob/e44f14d7d2f557b9f3add82ee4f1ed2beefbb30d/timm/optim/lion.py
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.optimizer.lion.Lion
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.optimizer.lion.lion
+
+
+Module Contents
+---------------
+
+.. py:class:: Lion(params, lr, betas = (0.9, 0.99), weight_decay = 0.0, caution = False, maximize = False, foreach = None)
+
+   Bases: :py:obj:`torch.optim.optimizer.Optimizer`
+
+
+   Implements Lion algorithm.
+
+   Initialize the hyperparameters.
+
+   :param params: iterable of parameters to optimize or dicts defining parameter groups
+   :param lr: learning rate
+   :param betas: coefficients used for computing running averages of gradient and its square
+   :param weight_decay: weight decay coefficient
+   :param caution: apply caution
+
+
+   .. py:method:: step(closure=None)
+
+      Performs a single optimization step.
+
+      :param closure: A closure that reevaluates the model and returns the loss.
+
+      :returns: the loss.
+
+
+
+.. py:function:: lion(params, grads, exp_avgs, maximize = False, foreach = None, *, beta1, beta2, lr, weight_decay, caution)
+
+   Functional API that performs Lion algorithm computation.
+
+

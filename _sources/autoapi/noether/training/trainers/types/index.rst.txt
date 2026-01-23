@@ -1,0 +1,45 @@
+noether.training.trainers.types
+===============================
+
+.. py:module:: noether.training.trainers.types
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.training.trainers.types.LossResult
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.training.trainers.types.TrainerResult
+
+
+Module Contents
+---------------
+
+.. py:class:: TrainerResult
+
+   .. py:attribute:: total_loss
+      :type:  torch.Tensor
+
+
+   .. py:attribute:: losses_to_log
+      :type:  dict[str, torch.Tensor] | None
+      :value: None
+
+
+
+   .. py:attribute:: additional_outputs
+      :type:  dict[str, torch.Tensor] | None
+      :value: None
+
+
+
+.. py:data:: LossResult
+
