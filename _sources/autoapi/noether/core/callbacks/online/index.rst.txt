@@ -11,6 +11,6 @@ Submodules
    :maxdepth: 1
 
    /autoapi/noether/core/callbacks/online/best_metric/index
-   /autoapi/noether/core/callbacks/online/update_output/index
+   /autoapi/noether/core/callbacks/online/track_outputs/index
 
 

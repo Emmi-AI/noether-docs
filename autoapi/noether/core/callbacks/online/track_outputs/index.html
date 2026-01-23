@@ -7,7 +7,7 @@
         <link rel="prefetch" href="../../../../../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>noether.core.callbacks.online.update_output - Noether Framework documentation</title>
+        <title>noether.core.callbacks.online.track_outputs - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../../../../../_static/graphviz.css?v=4ae1632d" />
@@ -310,7 +310,7 @@
 </li>
 <li class="toctree-l4 current has-children"><a class="reference internal" href="../index.html">noether.core.callbacks.online</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.online</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l5"><a class="reference internal" href="../best_metric/index.html">noether.core.callbacks.online.best_metric</a></li>
-<li class="toctree-l5 current current-page"><a class="current reference internal" href="#">noether.core.callbacks.online.update_output</a></li>
+<li class="toctree-l5 current current-page"><a class="current reference internal" href="#">noether.core.callbacks.online.track_outputs</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../periodic/index.html">noether.core.callbacks.periodic</a></li>
@@ -752,12 +752,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/autoapi/noether/core/callbacks/online/update_output/index.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/autoapi/noether/core/callbacks/online/track_outputs/index.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/autoapi/noether/core/callbacks/online/update_output/index.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/autoapi/noether/core/callbacks/online/track_outputs/index.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -776,14 +776,14 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="module-noether.core.callbacks.online.update_output">
-<span id="noether-core-callbacks-online-update-output"></span><h1>noether.core.callbacks.online.update_output<a class="headerlink" href="#module-noether.core.callbacks.online.update_output" title="Link to this heading">¶</a></h1>
+          <section id="module-noether.core.callbacks.online.track_outputs">
+<span id="noether-core-callbacks-online-track-outputs"></span><h1>noether.core.callbacks.online.track_outputs<a class="headerlink" href="#module-noether.core.callbacks.online.track_outputs" title="Link to this heading">¶</a></h1>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback" title="noether.core.callbacks.online.update_output.UpdateOutputCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UpdateOutputCallback</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback" title="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback</span></code></a></p></td>
 <td><p>Callback that is invoked during training after every gradient step to track certain outputs from the update step.</p></td>
 </tr>
 </tbody>
@@ -793,65 +793,65 @@
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.online.update_output.</span></span><span class="sig-name descname"><span class="pre">UpdateOutputCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.online.track_outputs.</span></span><span class="sig-name descname"><span class="pre">TrackAdditionalOutputsCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a></p>
 <p>Callback that is invoked during training after every gradient step to track certain outputs from the update step.</p>
 <p>The provided <cite>update_outputs</cite> are assumed to be a dictionary and outputs that match keys or patterns are tracked.
 An update output matches if either the key matches exactly, e.g. {“some_output”: …} and keys[“some_output”];
 or if one of the patterns is contained in the update key name, e.g. {“some_loss”: …} and patterns = [“loss”].</p>
-<p>Initializes the UpdateOutputCallback class.</p>
+<p>Initializes the TrackAdditionalOutputsCallback class.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.UpdateOutputCallbackConfig" title="noether.core.schemas.callbacks.UpdateOutputCallbackConfig"><em>noether.core.schemas.callbacks.UpdateOutputCallbackConfig</em></a>) – The configuration for the callback.</p></li>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig"><em>noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig</em></a>) – The configuration for the callback.</p></li>
 <li><p><strong>**kwargs</strong> – additional keyword arguments provided to the parent cla</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback.out">
-<span class="sig-name descname"><span class="pre">out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">pathlib.Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.out" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.out">
+<span class="sig-name descname"><span class="pre">out</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">pathlib.Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.out" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback.patterns">
-<span class="sig-name descname"><span class="pre">patterns</span></span><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.patterns" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.patterns">
+<span class="sig-name descname"><span class="pre">patterns</span></span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.patterns" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback.keys">
-<span class="sig-name descname"><span class="pre">keys</span></span><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.keys" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.keys" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback.verbose">
-<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.verbose" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.verbose" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback.tracked_values">
-<span class="sig-name descname"><span class="pre">tracked_values</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.defaultdict" title="(in Python v3.14)"><span class="pre">collections.defaultdict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.tracked_values" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.tracked_values">
+<span class="sig-name descname"><span class="pre">tracked_values</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.defaultdict" title="(in Python v3.14)"><span class="pre">collections.defaultdict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.tracked_values" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback.reduce">
-<span class="sig-name descname"><span class="pre">reduce</span></span><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.reduce" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.reduce">
+<span class="sig-name descname"><span class="pre">reduce</span></span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.reduce" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback.log_output">
-<span class="sig-name descname"><span class="pre">log_output</span></span><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.log_output" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.log_output">
+<span class="sig-name descname"><span class="pre">log_output</span></span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.log_output" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback.save_output">
-<span class="sig-name descname"><span class="pre">save_output</span></span><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.save_output" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.save_output">
+<span class="sig-name descname"><span class="pre">save_output</span></span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.save_output" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback._track_after_accumulation_step">
-<span class="sig-name descname"><span class="pre">_track_after_accumulation_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_outputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback._track_after_accumulation_step" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback._track_after_accumulation_step">
+<span class="sig-name descname"><span class="pre">_track_after_accumulation_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_outputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback._track_after_accumulation_step" title="Link to this definition">¶</a></dt>
 <dd><p>Invoked after every gradient accumulation step. May be used to track metrics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -871,15 +871,14 @@ or if one of the patterns is contained in the update key name, e.g. {“some_los
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.online.update_output.UpdateOutputCallback._periodic_callback">
-<span class="sig-name descname"><span class="pre">_periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback._periodic_callback" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback._periodic_callback">
+<span class="sig-name descname"><span class="pre">_periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback._periodic_callback" title="Link to this definition">¶</a></dt>
 <dd><p>Method that is invoked periodically in the defined interval of the <cite>PeriodicCallback</cite>. Child classes should
 overwrite this method to calculate metrics periodically during training and log them.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>interval_type</strong> – “epoch”, “update” or “sample” depending on if <cite>every_n_epochs</cite>, <cite>every_n_updates</cite> or
-<cite>every_n_samples</cite> is defined as field of the <cite>PeriodicCallback</cite>.</p></li>
+<li><p><strong>interval_type</strong> – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
 <li><p><strong>update_counter</strong> (<em>noether.core.utils.training.UpdateCounter</em>) – UpdateCounter instance to access current training progress.</p></li>
 </ul>
 </dd>
@@ -955,20 +954,20 @@ overwrite this method to calculate metrics periodically during training and log 
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">noether.core.callbacks.online.update_output</a><ul>
+<li><a class="reference internal" href="#">noether.core.callbacks.online.track_outputs</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.out"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback.out</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.patterns"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback.patterns</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.keys"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback.keys</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.verbose"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback.verbose</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.tracked_values"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback.tracked_values</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.reduce"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback.reduce</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.log_output"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback.log_output</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback.save_output"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback.save_output</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback._track_after_accumulation_step"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback._track_after_accumulation_step()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.online.update_output.UpdateOutputCallback._periodic_callback"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallback._periodic_callback()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.out"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback.out</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.patterns"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback.patterns</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.keys"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback.keys</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.verbose"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback.verbose</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.tracked_values"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback.tracked_values</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.reduce"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback.reduce</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.log_output"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback.log_output</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.save_output"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback.save_output</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback._track_after_accumulation_step"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback._track_after_accumulation_step()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback._periodic_callback"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallback._periodic_callback()</span></code></a></li>
 </ul>
 </li>
 </ul>

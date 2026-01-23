@@ -23,7 +23,7 @@ Classes
    noether.core.schemas.callbacks.EmaCallbackConfig
    noether.core.schemas.callbacks.OnlineLossCallbackConfig
    noether.core.schemas.callbacks.BestMetricCallbackConfig
-   noether.core.schemas.callbacks.UpdateOutputCallbackConfig
+   noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig
    noether.core.schemas.callbacks.OfflineLossCallbackConfig
    noether.core.schemas.callbacks.MetricEarlyStopperConfig
    noether.core.schemas.callbacks.FixedEarlyStopperConfig
@@ -81,14 +81,6 @@ Module Contents
       None (use the same batch_size as for training).
 
       :type: Batch size to use for this callback. Default
-
-
-   .. py:attribute:: evaluation
-      :type:  bool
-      :value: None
-
-
-      Whether to run this callback during evaluation.
 
 
    .. py:attribute:: model_config
@@ -326,13 +318,13 @@ Module Contents
 
 
 
-.. py:class:: UpdateOutputCallbackConfig(/, **data)
+.. py:class:: TrackAdditionalOutputsCallbackConfig(/, **data)
 
    Bases: :py:obj:`CallBackBaseConfig`
 
 
    .. py:attribute:: name
-      :type:  Literal['UpdateOutputCallback']
+      :type:  Literal['TrackAdditionalOutputsCallback']
       :value: None
 
 

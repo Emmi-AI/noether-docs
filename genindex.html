@@ -308,7 +308,7 @@
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="autoapi/noether/core/callbacks/online/index.html">noether.core.callbacks.online</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.online</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/callbacks/online/best_metric/index.html">noether.core.callbacks.online.best_metric</a></li>
-<li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/callbacks/online/update_output/index.html">noether.core.callbacks.online.update_output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/callbacks/online/track_outputs/index.html">noether.core.callbacks.online.track_outputs</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/callbacks/periodic/index.html">noether.core.callbacks.periodic</a></li>
@@ -838,7 +838,7 @@
 </li>
           <li><a href="autoapi/noether/core/callbacks/online/best_metric/index.html#noether.core.callbacks.online.best_metric.BestMetricCallback._periodic_callback">(noether.core.callbacks.online.best_metric.BestMetricCallback method)</a>
 </li>
-          <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback._periodic_callback">(noether.core.callbacks.online.update_output.UpdateOutputCallback method)</a>
+          <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback._periodic_callback">(noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback._periodic_callback">(noether.core.callbacks.periodic.PeriodicCallback method)</a>
 </li>
@@ -856,7 +856,7 @@
         <li><a href="autoapi/noether/core/callbacks/default/online_loss/index.html#noether.core.callbacks.default.online_loss.OnlineLossCallback._track_after_accumulation_step">_track_after_accumulation_step() (noether.core.callbacks.default.online_loss.OnlineLossCallback method)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback._track_after_accumulation_step">(noether.core.callbacks.online.update_output.UpdateOutputCallback method)</a>
+          <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback._track_after_accumulation_step">(noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback._track_after_accumulation_step">(noether.core.callbacks.periodic.PeriodicCallback method)</a>
 </li>
@@ -969,10 +969,10 @@
           <li><a href="autoapi/noether/modeling/modules/attention/anchor_attention/multi_branch/index.html#noether.modeling.modules.attention.anchor_attention.multi_branch.MultiBranchAnchorAttention.anchor_suffix">(noether.modeling.modules.attention.anchor_attention.multi_branch.MultiBranchAnchorAttention attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/models/ab_upt/index.html#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig (class in noether.core.schemas.models.ab_upt)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT">AnchoredBranchedUPT (class in noether.modeling.models.ab_upt)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/initializers/index.html#noether.core.schemas.initializers.AnyInitializer">AnyInitializer (in module noether.core.schemas.initializers)</a>
@@ -1004,6 +1004,8 @@
         <li><a href="autoapi/noether/core/schemas/models/upt/index.html#noether.core.schemas.models.upt.UPTConfig.approximator_depth">approximator_depth (noether.core.schemas.models.upt.UPTConfig attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/datasets/cfd/caeml/preprocessing/index.html#noether.data.datasets.cfd.caeml.preprocessing.assert_same_length">assert_same_length() (in module noether.data.datasets.cfd.caeml.preprocessing)</a>
+</li>
+        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.at_eval">at_eval() (noether.core.callbacks.periodic.PeriodicCallback method)</a>
 </li>
         <li><a href="autoapi/noether/io/checkpoint/iohash/index.html#noether.io.checkpoint.iohash.atomic_write_and_hash">atomic_write_and_hash() (in module noether.io.checkpoint.iohash)</a>
 </li>
@@ -1865,14 +1867,8 @@
         </ul></li>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.eval">eval() (noether.training.trainers.base.BaseTrainer method)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id4">evaluation (noether.core.callbacks.periodic.PeriodicCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.evaluation">[1]</a>
-
-        <ul>
-          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig.evaluation">(noether.core.schemas.callbacks.CallBackBaseConfig attribute)</a>
+        <li><a href="autoapi/noether/data/samplers/interleaved_sampler/index.html#noether.data.samplers.interleaved_sampler.InterleavedSamplerConfig.evaluation">evaluation (noether.data.samplers.interleaved_sampler.InterleavedSamplerConfig attribute)</a>
 </li>
-          <li><a href="autoapi/noether/data/samplers/interleaved_sampler/index.html#noether.data.samplers.interleaved_sampler.InterleavedSamplerConfig.evaluation">(noether.data.samplers.interleaved_sampler.InterleavedSamplerConfig attribute)</a>
-</li>
-        </ul></li>
         <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id0">every_n_epochs (noether.core.callbacks.periodic.PeriodicCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.every_n_epochs">[1]</a>
 
         <ul>
@@ -2860,10 +2856,10 @@
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionPattern.key_value_tokens">key_value_tokens (noether.core.schemas.modules.attention.AttentionPattern attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback.keys">keys (noether.core.callbacks.online.update_output.UpdateOutputCallback attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.keys">keys (noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.keys">(noether.core.schemas.callbacks.UpdateOutputCallbackConfig attribute)</a>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.keys">(noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.FieldDimSpec.keys">keys() (noether.core.schemas.dataset.FieldDimSpec method)</a>
@@ -3082,10 +3078,10 @@
 </li>
         <li><a href="autoapi/noether/core/utils/logging/base/index.html#noether.core.utils.logging.base.log_from_all_ranks">log_from_all_ranks() (in module noether.core.utils.logging.base)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback.log_output">log_output (noether.core.callbacks.online.update_output.UpdateOutputCallback attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.log_output">log_output (noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.log_output">(noether.core.schemas.callbacks.UpdateOutputCallbackConfig attribute)</a>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.log_output">(noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/data/stats/index.html#noether.data.stats.RunningMoments.log_scale">log_scale (noether.data.stats.RunningMoments attribute)</a>
@@ -3570,7 +3566,7 @@
 </li>
           <li><a href="autoapi/noether/core/callbacks/online/best_metric/index.html#module-noether.core.callbacks.online.best_metric">noether.core.callbacks.online.best_metric</a>
 </li>
-          <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#module-noether.core.callbacks.online.update_output">noether.core.callbacks.online.update_output</a>
+          <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#module-noether.core.callbacks.online.track_outputs">noether.core.callbacks.online.track_outputs</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/periodic/index.html#module-noether.core.callbacks.periodic">noether.core.callbacks.periodic</a>
 </li>
@@ -4188,7 +4184,7 @@
 </li>
           <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.OnlineLossCallbackConfig.name">(noether.core.schemas.callbacks.OnlineLossCallbackConfig attribute)</a>
 </li>
-          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.name">(noether.core.schemas.callbacks.UpdateOutputCallbackConfig attribute)</a>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.name">(noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/models/base/index.html#noether.core.schemas.models.base.ModelBaseConfig.name">(noether.core.schemas.models.base.ModelBaseConfig attribute)</a>
 </li>
@@ -4379,10 +4375,10 @@
 </li>
         </ul></li>
         <li>
-    noether.core.callbacks.online.update_output
+    noether.core.callbacks.online.track_outputs
 
         <ul>
-          <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#module-noether.core.callbacks.online.update_output">module</a>
+          <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#module-noether.core.callbacks.online.track_outputs">module</a>
 </li>
         </ul></li>
         <li>
@@ -6472,6 +6468,12 @@
 </li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.VerificationResult.ok">ok (noether.io.verification.VerificationResult attribute)</a>
 </li>
+        <li><a href="autoapi/noether/modeling/modules/layers/continuous_sincos_embed/index.html#noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbed.omega">omega (noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbed attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/rope_frequency/index.html#noether.modeling.modules.layers.rope_frequency.RopeFrequency.omega">(noether.modeling.modules.layers.rope_frequency.RopeFrequency attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.PeriodicBoolScheduleConfig.on_duration">on_duration (noether.core.schemas.schedules.PeriodicBoolScheduleConfig attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.PeriodicBoolScheduleConfig.on_value">on_value (noether.core.schemas.schedules.PeriodicBoolScheduleConfig attribute)</a>
@@ -6532,7 +6534,7 @@
         </ul></li>
         <li><a href="autoapi/noether/core/providers/metric_property/index.html#noether.core.providers.metric_property.Ordinality">Ordinality (class in noether.core.providers.metric_property)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback.out">out (noether.core.callbacks.online.update_output.UpdateOutputCallback attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.out">out (noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/modules/layers/linear_projection/index.html#noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig.output_dim">output_dim (noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig attribute)</a>
 
@@ -6584,6 +6586,8 @@
           <li><a href="autoapi/noether/modeling/modules/layers/rope_frequency/index.html#noether.modeling.modules.layers.rope_frequency.RopeFrequency.padding">(noether.modeling.modules.layers.rope_frequency.RopeFrequency attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/modeling/modules/layers/continuous_sincos_embed/index.html#noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbed.padding_tensor">padding_tensor (noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbed attribute)</a>
+</li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.parallel_map_collect_errors">parallel_map_collect_errors() (in module noether.io.verification)</a>
 </li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.ParallelErrors">ParallelErrors</a>
@@ -6642,10 +6646,10 @@
         </ul></li>
         <li><a href="autoapi/noether/core/providers/path/index.html#noether.core.providers.path.PathProvider">PathProvider (class in noether.core.providers.path)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback.patterns">patterns (noether.core.callbacks.online.update_output.UpdateOutputCallback attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.patterns">patterns (noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.patterns">(noether.core.schemas.callbacks.UpdateOutputCallbackConfig attribute)</a>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.patterns">(noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/initializers/previous_run/index.html#noether.core.initializers.previous_run.PreviousRunInitializer.patterns_to_instantiate">patterns_to_instantiate (noether.core.initializers.previous_run.PreviousRunInitializer attribute)</a>
@@ -6950,10 +6954,10 @@
 </li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.FailAction.REDOWNLOAD">REDOWNLOAD (noether.io.verification.FailAction attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback.reduce">reduce (noether.core.callbacks.online.update_output.UpdateOutputCallback attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.reduce">reduce (noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.reduce">(noether.core.schemas.callbacks.UpdateOutputCallbackConfig attribute)</a>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.reduce">(noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/providers/metric_property/index.html#noether.core.providers.metric_property.MetricPropertyProvider.register_pattern">register_pattern() (noether.core.providers.metric_property.MetricPropertyProvider static method)</a>
@@ -7168,10 +7172,10 @@
           <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.CheckpointCallbackConfig.save_optim">(noether.core.schemas.callbacks.CheckpointCallbackConfig attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback.save_output">save_output (noether.core.callbacks.online.update_output.UpdateOutputCallback attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.save_output">save_output (noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.save_output">(noether.core.schemas.callbacks.UpdateOutputCallbackConfig attribute)</a>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.save_output">(noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/preprocessing/index.html#noether.data.datasets.cfd.shapenet_car.preprocessing.save_preprocessed_data">save_preprocessed_data() (in module noether.data.datasets.cfd.shapenet_car.preprocessing)</a>
@@ -7818,16 +7822,16 @@
 </li>
         <li><a href="autoapi/noether/io/logging_progress/index.html#noether.io.logging_progress.LogProgress.total">total (noether.io.logging_progress.LogProgress attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id5">total_data_time (noether.core.callbacks.periodic.PeriodicIteratorCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicIteratorCallback.total_data_time">[1]</a>
+        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id4">total_data_time (noether.core.callbacks.periodic.PeriodicIteratorCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicIteratorCallback.total_data_time">[1]</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.FieldDimSpec.total_dim">total_dim (noether.core.schemas.dataset.FieldDimSpec property)</a>
 </li>
         <li><a href="autoapi/noether/training/trainers/types/index.html#noether.training.trainers.types.TrainerResult.total_loss">total_loss (noether.training.trainers.types.TrainerResult attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.total_output_dim">total_output_dim (noether.core.schemas.dataset.AeroDataSpecs property)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/default/eta/index.html#noether.core.callbacks.default.eta.EtaCallback.total_time">total_time (noether.core.callbacks.default.eta.EtaCallback attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/default/train_time/index.html#noether.core.callbacks.default.train_time.TrainTimeCallback.total_train_data_time">total_train_data_time (noether.core.callbacks.default.train_time.TrainTimeCallback attribute)</a>
@@ -7842,13 +7846,17 @@
 </li>
         <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.track_every_n_updates">track_every_n_updates (noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
 </li>
+        <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback">TrackAdditionalOutputsCallback (class in noether.core.callbacks.online.track_outputs)</a>
+</li>
+        <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig">TrackAdditionalOutputsCallbackConfig (class in noether.core.schemas.callbacks)</a>
+</li>
         <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.tracked_coverages">tracked_coverages (noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback attribute)</a>
 </li>
         <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.tracked_degrees">tracked_degrees (noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/default/online_loss/index.html#noether.core.callbacks.default.online_loss.OnlineLossCallback.tracked_losses">tracked_losses (noether.core.callbacks.default.online_loss.OnlineLossCallback attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback.tracked_values">tracked_values (noether.core.callbacks.online.update_output.UpdateOutputCallback attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.tracked_values">tracked_values (noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/base/index.html#noether.core.callbacks.base.CallbackBase.tracker">tracker (noether.core.callbacks.base.CallbackBase attribute)</a>
 
@@ -8008,15 +8016,11 @@
           <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.StepIntervalScheduleConfig.update_interval">(noether.core.schemas.schedules.StepIntervalScheduleConfig attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/trackers/base/index.html#noether.core.trackers.base.BaseTracker.update_summary">update_summary() (noether.core.trackers.base.BaseTracker method)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/trackers/base/index.html#noether.core.trackers.base.BaseTracker.update_summary">update_summary() (noether.core.trackers.base.BaseTracker method)</a>
+</li>
         <li><a href="autoapi/noether/core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter">UpdateCounter (class in noether.core.utils.training.counter)</a>
-</li>
-        <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback">UpdateOutputCallback (class in noether.core.callbacks.online.update_output)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.UpdateOutputCallbackConfig">UpdateOutputCallbackConfig (class in noether.core.schemas.callbacks)</a>
 </li>
         <li><a href="autoapi/noether/core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter.updates_per_epoch">updates_per_epoch (noether.core.utils.training.counter.UpdateCounter attribute)</a>
 
@@ -8155,11 +8159,11 @@
         <li><a href="autoapi/noether/core/callbacks/default/online_loss/index.html#noether.core.callbacks.default.online_loss.OnlineLossCallback.verbose">verbose (noether.core.callbacks.default.online_loss.OnlineLossCallback attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/callbacks/online/update_output/index.html#noether.core.callbacks.online.update_output.UpdateOutputCallback.verbose">(noether.core.callbacks.online.update_output.UpdateOutputCallback attribute)</a>
+          <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.verbose">(noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.OnlineLossCallbackConfig.verbose">(noether.core.schemas.callbacks.OnlineLossCallbackConfig attribute)</a>
 </li>
-          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.verbose">(noether.core.schemas.callbacks.UpdateOutputCallbackConfig attribute)</a>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.verbose">(noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/io/cli/cli_verification/index.html#noether.io.cli.cli_verification.verification_app">verification_app (in module noether.io.cli.cli_verification)</a>

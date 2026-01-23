@@ -310,7 +310,7 @@
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../callbacks/online/index.html">noether.core.callbacks.online</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.online</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../callbacks/online/best_metric/index.html">noether.core.callbacks.online.best_metric</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../callbacks/online/update_output/index.html">noether.core.callbacks.online.update_output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../callbacks/online/track_outputs/index.html">noether.core.callbacks.online.track_outputs</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../callbacks/periodic/index.html">noether.core.callbacks.periodic</a></li>
@@ -813,7 +813,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.BestMetricCallbackConfig" title="noether.core.schemas.callbacks.BestMetricCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestMetricCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig" title="noether.core.schemas.callbacks.UpdateOutputCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UpdateOutputCallbackConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig" title="noether.core.schemas.callbacks.OfflineLossCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code></a></p></td>
@@ -877,12 +877,6 @@
 <dd class="field-odd"><p>Batch size to use for this callback. Default</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.CallBackBaseConfig.evaluation">
-<span class="sig-name descname"><span class="pre">evaluation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.CallBackBaseConfig.evaluation" title="Link to this definition">¶</a></dt>
-<dd><p>Whether to run this callback during evaluation.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1128,8 +1122,8 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.UpdateOutputCallbackConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">UpdateOutputCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">TrackAdditionalOutputsCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1137,43 +1131,43 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.UpdateOutputCallbackConfig.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'UpdateOutputCallback'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.name" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'TrackAdditionalOutputsCallback'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.UpdateOutputCallbackConfig.keys">
-<span class="sig-name descname"><span class="pre">keys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.keys" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.keys" title="Link to this definition">¶</a></dt>
 <dd><p>List of patterns to track. Matched if it is contained in one of the update_outputs keys.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.UpdateOutputCallbackConfig.patterns">
-<span class="sig-name descname"><span class="pre">patterns</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.patterns" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.patterns">
+<span class="sig-name descname"><span class="pre">patterns</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.patterns" title="Link to this definition">¶</a></dt>
 <dd><p>List of patterns to track. Matched if it is contained in one of the update_outputs keys.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.UpdateOutputCallbackConfig.verbose">
-<span class="sig-name descname"><span class="pre">verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.verbose" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.verbose" title="Link to this definition">¶</a></dt>
 <dd><p>If True uses the logger to print the tracked values otherwise uses no logger.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.UpdateOutputCallbackConfig.reduce">
-<span class="sig-name descname"><span class="pre">reduce</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'mean'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'last'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.reduce" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.reduce">
+<span class="sig-name descname"><span class="pre">reduce</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'mean'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'last'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.reduce" title="Link to this definition">¶</a></dt>
 <dd><p>The reduction method to be applied to the tracked values to reduce to scalar. Currently supports ‘mean’ and ‘last’.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.UpdateOutputCallbackConfig.log_output">
-<span class="sig-name descname"><span class="pre">log_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.log_output" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.log_output">
+<span class="sig-name descname"><span class="pre">log_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.log_output" title="Link to this definition">¶</a></dt>
 <dd><p>Whether to log the tracked scalar values.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.UpdateOutputCallbackConfig.save_output">
-<span class="sig-name descname"><span class="pre">save_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.save_output" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.save_output">
+<span class="sig-name descname"><span class="pre">save_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.save_output" title="Link to this definition">¶</a></dt>
 <dd><p>Whether to save the tracked scalar values to disk.</p>
 </dd></dl>
 
@@ -1381,7 +1375,6 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.every_n_updates"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.every_n_updates</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.every_n_samples"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.every_n_samples</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.batch_size"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.batch_size</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.evaluation"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.evaluation</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.model_config"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.model_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.validate_callback_frequency"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.validate_callback_frequency()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.check_positive_values"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.check_positive_values()</span></code></a></li>
@@ -1427,14 +1420,14 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.BestMetricCallbackConfig.optional_target_metric_keys"><code class="docutils literal notranslate"><span class="pre">BestMetricCallbackConfig.optional_target_metric_keys</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallbackConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallbackConfig.name</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.keys"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallbackConfig.keys</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.patterns"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallbackConfig.patterns</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.verbose"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallbackConfig.verbose</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.reduce"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallbackConfig.reduce</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.log_output"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallbackConfig.log_output</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.UpdateOutputCallbackConfig.save_output"><code class="docutils literal notranslate"><span class="pre">UpdateOutputCallbackConfig.save_output</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.keys"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig.keys</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.patterns"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig.patterns</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.verbose"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig.verbose</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.reduce"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig.reduce</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.log_output"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig.log_output</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.save_output"><code class="docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig.save_output</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code></a><ul>

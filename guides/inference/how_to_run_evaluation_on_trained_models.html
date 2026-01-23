@@ -310,7 +310,7 @@
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../autoapi/noether/core/callbacks/online/index.html">noether.core.callbacks.online</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.online</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../autoapi/noether/core/callbacks/online/best_metric/index.html">noether.core.callbacks.online.best_metric</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../autoapi/noether/core/callbacks/online/update_output/index.html">noether.core.callbacks.online.update_output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../autoapi/noether/core/callbacks/online/track_outputs/index.html">noether.core.callbacks.online.track_outputs</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html">noether.core.callbacks.periodic</a></li>
@@ -793,14 +793,20 @@
 <p>The command is installed via the <code class="docutils literal notranslate"><span class="pre">noether</span></code> package. It utilizes Hydra for configuration management and supports merging multiple YAML files or command-line overrides.</p>
 <section id="required-arguments">
 <h3>Required Arguments<a class="headerlink" href="#required-arguments" title="Link to this heading">¶</a></h3>
-<p>The script is also using Hydra. Config can be provided via the <code class="docutils literal notranslate"><span class="pre">--hp</span></code> flag or directly as CLI arguments. The following argument is required:</p>
+<p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> is also using Hydra. Config can be provided via the <code class="docutils literal notranslate"><span class="pre">--hp</span></code> flag or directly as CLI arguments. The following argument is required:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">input_dir</span></code>: The absolute or relative path to the directory of the training run you wish to evaluate. This directory must contain a <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code> file.</p></li>
 </ul>
 </section>
+<section id="supported-callbacks">
+<h3>Supported Callbacks<a class="headerlink" href="#supported-callbacks" title="Link to this heading">¶</a></h3>
+<p>All callbacks that are compatible with evaluation mode can be used here. This includes metric computation callbacks, visualization callbacks, and any custom callbacks you may have implemented.</p>
+<p>Not all callbacks are suitable for evaluation, for example the checkpoint saving callbacks are not relevant during evaluation and will be ignored.</p>
+<p>Callbacks can check whether they are running in evaluation mode by checking <code class="docutils literal notranslate"><span class="pre">interval_type</span> <span class="pre">==</span> <span class="pre">&quot;eval&quot;</span></code> in the <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback._periodic_callback" title="noether.core.callbacks.periodic.PeriodicCallback._periodic_callback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">_periodic_callback()</span></code></a> method. More details on how to implement custom callbacks can be found in <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a> and <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicIteratorCallback" title="noether.core.callbacks.periodic.PeriodicIteratorCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicIteratorCallback</span></code></a>.</p>
+</section>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h3>
-<p>Basic evaluation using the latest checkpoint. This runs the same evaluation callbacks as configured during training:</p>
+<p>Basic evaluation using the latest checkpoint. This runs the same callbacks as configured during training:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs/2026-01-10/10-00-00
 </pre></div>
 </div>
@@ -825,9 +831,11 @@
 </section>
 <section id="configuration-merging">
 <h2>Configuration Merging<a class="headerlink" href="#configuration-merging" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">`noether-eval`</span></code> performs a deep merge of configurations:
-1. <strong>Base</strong>: The stored config from the <code class="docutils literal notranslate"><span class="pre">input_dir</span></code> (looked up from``hp_resolved.yaml``)
-2. <strong>Override</strong>: The configuration provided via <code class="docutils literal notranslate"><span class="pre">--hp</span></code> or direct CLI arguments.</p>
+<p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> performs a deep merge of configurations:</p>
+<ol class="arabic simple">
+<li><p><strong>Base</strong>: The stored config from the <code class="docutils literal notranslate"><span class="pre">input_dir</span></code> (looked up from``hp_resolved.yaml``)</p></li>
+<li><p><strong>Override</strong>: The configuration provided via <code class="docutils literal notranslate"><span class="pre">--hp</span></code> or direct CLI arguments.</p></li>
+</ol>
 <p>This allows you to easily switch datasets, modify callback parameters, or change evaluation settings while keeping the model architecture and other training-time settings intact.</p>
 </section>
 <section id="inference-runner">
@@ -840,7 +848,7 @@
 </section>
 <section id="trainer-evaluation-mode">
 <h2>Trainer Evaluation Mode<a class="headerlink" href="#trainer-evaluation-mode" title="Link to this heading">¶</a></h2>
-<p>All evaluation mode is doing is executing the configured callbacks on the saved model weights.</p>
+<p>All evaluation mode is doing, is executing the configured callbacks on the saved model weights.</p>
 <p>This way we can reuse the same callback implementations for both training and evaluation, ensuring consistency in metrics computation and visualization generation.</p>
 <p>By default the same callbacks used during training are also used during evaluation.
 However, you can customize this by modifying the configuration passed to <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> to include different or additional callbacks as needed.
@@ -913,6 +921,7 @@ This way you can, for example, add extra visualization callbacks or change metri
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#the-cli-noether-eval">The CLI: <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code></a><ul>
 <li><a class="reference internal" href="#required-arguments">Required Arguments</a></li>
+<li><a class="reference internal" href="#supported-callbacks">Supported Callbacks</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>

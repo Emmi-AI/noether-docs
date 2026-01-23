@@ -20,7 +20,7 @@ Module Contents
    Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
 
 
-   Callback to log the time spent on dataloading during training.
+   Callback to log the time spent on dataloading.
 
    Initializes the `PeriodicCallback`.
 
@@ -60,8 +60,7 @@ Module Contents
       Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
       overwrite this method to calculate metrics periodically during training and log them.
 
-      :param interval_type: "epoch", "update" or "sample" depending on if `every_n_epochs`, `every_n_updates` or
-                            `every_n_samples` is defined as field of the `PeriodicCallback`.
+      :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
       :param update_counter: UpdateCounter instance to access current training progress.
 
 

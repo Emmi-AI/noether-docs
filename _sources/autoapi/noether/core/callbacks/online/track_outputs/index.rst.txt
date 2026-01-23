@@ -1,7 +1,7 @@
-noether.core.callbacks.online.update_output
+noether.core.callbacks.online.track_outputs
 ===========================================
 
-.. py:module:: noether.core.callbacks.online.update_output
+.. py:module:: noether.core.callbacks.online.track_outputs
 
 
 Classes
@@ -9,13 +9,13 @@ Classes
 
 .. autoapisummary::
 
-   noether.core.callbacks.online.update_output.UpdateOutputCallback
+   noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback
 
 
 Module Contents
 ---------------
 
-.. py:class:: UpdateOutputCallback(callback_config, **kwargs)
+.. py:class:: TrackAdditionalOutputsCallback(callback_config, **kwargs)
 
    Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
 
@@ -26,7 +26,7 @@ Module Contents
    An update output matches if either the key matches exactly, e.g. {"some_output": ...} and keys["some_output"];
    or if one of the patterns is contained in the update key name, e.g. {"some_loss": ...} and patterns = ["loss"].
 
-   Initializes the UpdateOutputCallback class.
+   Initializes the TrackAdditionalOutputsCallback class.
 
    :param callback_config: The configuration for the callback.
    :param \*\*kwargs: additional keyword arguments provided to the parent cla
@@ -76,8 +76,7 @@ Module Contents
       Method that is invoked periodically in the defined interval of the `PeriodicCallback`. Child classes should
       overwrite this method to calculate metrics periodically during training and log them.
 
-      :param interval_type: "epoch", "update" or "sample" depending on if `every_n_epochs`, `every_n_updates` or
-                            `every_n_samples` is defined as field of the `PeriodicCallback`.
+      :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
       :param update_counter: UpdateCounter instance to access current training progress.
 
 

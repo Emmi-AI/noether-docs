@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" /><link rel="next" title="noether.core.configs" href="../../configs/index.html" /><link rel="prev" title="noether.core.callbacks.online.update_output" href="../online/update_output/index.html" />
+<link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" /><link rel="next" title="noether.core.configs" href="../../configs/index.html" /><link rel="prev" title="noether.core.callbacks.online.track_outputs" href="../online/track_outputs/index.html" />
         <link rel="prefetch" href="../../../../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
@@ -310,7 +310,7 @@
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../online/index.html">noether.core.callbacks.online</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.online</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../online/best_metric/index.html">noether.core.callbacks.online.best_metric</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../online/update_output/index.html">noether.core.callbacks.online.update_output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../online/track_outputs/index.html">noether.core.callbacks.online.track_outputs</a></li>
 </ul>
 </li>
 <li class="toctree-l4 current current-page"><a class="current reference internal" href="#">noether.core.callbacks.periodic</a></li>
@@ -814,7 +814,8 @@
 <p>Defines the unit of training progress used to trigger periodic callbacks:
 * “epoch”: Callback is triggered based on completed epochs
 * “update”: Callback is triggered based on optimizer update steps
-* “sample”: Callback is triggered based on number of samples processed</p>
+* “sample”: Callback is triggered based on number of samples processed
+* “eval”: Callback is triggered independ of schedule for post-training evaluation</p>
 </dd></dl>
 
 <dl class="py class">
@@ -921,12 +922,6 @@ expensive operations like evaluation or checkpointing.</p></li>
 <dd><p>Batch size used during training.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.evaluation">
-<span class="sig-name descname"><span class="pre">evaluation</span></span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.evaluation" title="Link to this definition">¶</a></dt>
-<dd><p>Evaluation configuration.</p>
-</dd></dl>
-
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Child classes should NOT override the public methods (<cite>after_update</cite>, <cite>after_epoch</cite>,
@@ -967,11 +962,6 @@ with underscore (<cite>_periodic_callback</cite>, <cite>_track_after_update_step
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id3">
 <span class="sig-name descname"><span class="pre">batch_size</span></span><a class="headerlink" href="#id3" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">evaluation</span></span><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1066,8 +1056,7 @@ overwrite this method to calculate metrics periodically during training and log 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>interval_type</strong> (<em>IntervalType</em>) – “epoch”, “update” or “sample” depending on if <cite>every_n_epochs</cite>, <cite>every_n_updates</cite> or
-<cite>every_n_samples</cite> is defined as field of the <cite>PeriodicCallback</cite>.</p></li>
+<li><p><strong>interval_type</strong> (<em>IntervalType</em>) – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
 <li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p></li>
 </ul>
 </dd>
@@ -1136,6 +1125,19 @@ overwrite this method to calculate metrics periodically during training and log 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.at_eval">
+<span class="sig-name descname"><span class="pre">at_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.at_eval" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -1354,8 +1356,8 @@ efficient data loading.</p></li>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id5">
-<span class="sig-name descname"><span class="pre">total_data_time</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">total_data_time</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1425,8 +1427,7 @@ overwrite this method to calculate metrics periodically during training and log 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>interval_type</strong> (<em>IntervalType</em>) – “epoch”, “update” or “sample” depending on if <cite>every_n_epochs</cite>, <cite>every_n_updates</cite> or
-<cite>every_n_samples</cite> is defined as field of the <cite>PeriodicCallback</cite>.</p></li>
+<li><p><strong>interval_type</strong> (<em>IntervalType</em>) – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
 <li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p></li>
 <li><p><strong>data_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator" title="(in Python v3.14)"><em>collections.abc.Iterator</em></a>)</p></li>
 <li><p><strong>batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
@@ -1472,14 +1473,14 @@ training ends. Implementing this method is optional.</p>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../online/update_output/index.html">
+          <a class="prev-page" href="../online/track_outputs/index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">noether.core.callbacks.online.update_output</div>
+                <div class="title">noether.core.callbacks.online.track_outputs</div>
                 
               </div>
             </a>
@@ -1529,12 +1530,10 @@ training ends. Implementing this method is optional.</p>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.every_n_updates"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.every_n_updates</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.every_n_samples"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.every_n_samples</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.batch_size"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.batch_size</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.evaluation"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.evaluation</span></code></a></li>
 <li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.every_n_epochs</span></code></a></li>
 <li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.every_n_updates</span></code></a></li>
 <li><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.every_n_samples</span></code></a></li>
 <li><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.batch_size</span></code></a></li>
-<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.evaluation</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.should_log_after_epoch"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.should_log_after_epoch()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.should_log_after_update"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.should_log_after_update()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.should_log_after_sample"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.should_log_after_sample()</span></code></a></li>
@@ -1545,6 +1544,7 @@ training ends. Implementing this method is optional.</p>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.track_after_update_step"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.track_after_update_step()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.after_epoch"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.after_epoch()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.after_update"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.after_update()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.at_eval"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.at_eval()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_till_next_log"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.updates_till_next_log()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_per_log_interval"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.updates_per_log_interval()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.get_interval_string_verbose"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.get_interval_string_verbose()</span></code></a></li>
@@ -1554,7 +1554,7 @@ training ends. Implementing this method is optional.</p>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicIteratorCallback"><code class="docutils literal notranslate"><span class="pre">PeriodicIteratorCallback</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicIteratorCallback._sampler_config"><code class="docutils literal notranslate"><span class="pre">PeriodicIteratorCallback._sampler_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicIteratorCallback.total_data_time"><code class="docutils literal notranslate"><span class="pre">PeriodicIteratorCallback.total_data_time</span></code></a></li>
-<li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">PeriodicIteratorCallback.total_data_time</span></code></a></li>
+<li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">PeriodicIteratorCallback.total_data_time</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicIteratorCallback._sampler_config_from_key"><code class="docutils literal notranslate"><span class="pre">PeriodicIteratorCallback._sampler_config_from_key()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicIteratorCallback.register_sampler_config"><code class="docutils literal notranslate"><span class="pre">PeriodicIteratorCallback.register_sampler_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicIteratorCallback._forward"><code class="docutils literal notranslate"><span class="pre">PeriodicIteratorCallback._forward()</span></code></a></li>

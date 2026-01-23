@@ -30,7 +30,7 @@ Module Contents
 
 
    .. py:attribute:: project
-      :type:  torch.nn.Module
+      :type:  torch.nn.Linear | torch.nn.Conv1d | torch.nn.Conv2d | torch.nn.Conv3d | torch.nn.Identity
 
 
    .. py:attribute:: init_weights

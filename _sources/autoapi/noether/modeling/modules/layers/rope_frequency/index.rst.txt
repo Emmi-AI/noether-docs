@@ -25,6 +25,10 @@ Module Contents
    :param config: Configuration for RoPE frequency settings.
 
 
+   .. py:attribute:: omega
+      :type:  torch.Tensor
+
+
    .. py:attribute:: hidden_dim
 
 

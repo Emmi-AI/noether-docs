@@ -310,7 +310,7 @@
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../online/index.html">noether.core.callbacks.online</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.online</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../online/best_metric/index.html">noether.core.callbacks.online.best_metric</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../online/update_output/index.html">noether.core.callbacks.online.update_output</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../online/track_outputs/index.html">noether.core.callbacks.online.track_outputs</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../periodic/index.html">noether.core.callbacks.periodic</a></li>
@@ -832,8 +832,7 @@ overwrite this method to calculate metrics periodically during training and log 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>interval_type</strong> – “epoch”, “update” or “sample” depending on if <cite>every_n_epochs</cite>, <cite>every_n_updates</cite> or
-<cite>every_n_samples</cite> is defined as field of the <cite>PeriodicCallback</cite>.</p></li>
+<li><p><strong>interval_type</strong> – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
 <li><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p></li>
 </ul>
 </dd>
