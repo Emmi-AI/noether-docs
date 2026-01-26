@@ -7,7 +7,7 @@
         <link rel="prefetch" href="../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>How to Write Your Own Data Preprocessors - Noether Framework documentation</title>
+        <title>How to Implement a Custom Model - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -257,26 +257,36 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+  <p class="caption" role="heading"><span class="caption-text">The Noether Framework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../noether/introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../noether/design_principles_and_limitations.html">Design Principles and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../noether/key_concepts.html">Key Concepts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/prerequisites.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/getting_started_install_and_verify.html">Getting Started: Install &amp; Verify</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/training_first_model_with_configs.html">Training First Model (with Configs)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/training_first_model_with_code.html">Training First Model (with Code)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/full_code_tutorial.html">Full Code Walkthrough Tutorial</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../hardware_setup.html">Hardware Allocation &amp; Training Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linux_cuda_setup.html">Advanced Linux &amp; NVIDIA Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_cli.html">Working with the CLI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_callbacks.html">How to Use Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../explanation/introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../explanation/design_principles_and_limitations.html">Design Principles and Limitations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../explanation/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zoo/dataset_zoo.html">Noether Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zoo/model_zoo.html">Noether Model Zoo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
@@ -751,12 +761,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/guides/data/how_to_write_data_preprocessors.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/guides/training/implement_a_custom_model.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/guides/data/how_to_write_data_preprocessors.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/guides/training/implement_a_custom_model.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -775,11 +785,59 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="how-to-write-your-own-data-preprocessors">
-<h1>How to Write Your Own Data Preprocessors<a class="headerlink" href="#how-to-write-your-own-data-preprocessors" title="Link to this heading">¶</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The information below is incomplete and requires extra work. Use it at your own risk!</p>
+          <section id="how-to-implement-a-custom-model">
+<h1>How to Implement a Custom Model<a class="headerlink" href="#how-to-implement-a-custom-model" title="Link to this heading">¶</a></h1>
+<p>You have to extend the <code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code> class and implement the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">noether.core.models.Model.forward()</span></code> methods
+Additionally, you will need to create a corresponding model configuration class that extends <code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.schemas.models.ModelBaseConfig</span></code> to define the model-specific parameters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBaseConfig</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomModelConfig</span><span class="p">(</span><span class="n">ModelBaseConfig</span><span class="p">):</span>
+    <span class="n">input_dim</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">output_dim</span><span class="p">:</span> <span class="nb">int</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_config</span><span class="p">:</span> <span class="n">CustomModelConfig</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># the model config needs to be passed to the parent Model class</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">model_config</span><span class="o">=</span><span class="n">model_config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">model_config</span>
+
+        <span class="c1"># Define your model layers here</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">model_config</span><span class="o">.</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">model_config</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">model_config</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">model_config</span><span class="o">.</span><span class="n">output_dim</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_tensor</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Forward pass of the model.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            input_tensor: torch tensor with data</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Dictionary containing model outputs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Example: extract inputs from batch</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">input_tensor</span>
+
+        <span class="c1"># Forward pass</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">hidden</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;output&#39;</span><span class="p">:</span><span class="n">output</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>An example configuration for this custom model in YAML format would look like this:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path.to.CustomModel</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom_model</span>
+<span class="nt">input_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="nt">hidden_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="nt">output_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">optimizer_config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${optimizer}</span><span class="w">  </span><span class="c1"># Reference to optimizer defined elsewhere</span>
+<span class="nt">forward_properties</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">input_tensor</span>
+</pre></div>
 </div>
 </section>
 

@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="How to Implement a Custom Trainer" href="../training/implement_a_custom_trainer.html" /><link rel="prev" title="How to Implement a Custom Dataset" href="how_to_make_a_custom_dataset.html" />
         <link rel="prefetch" href="../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>How to Write Custom Loss or Metrics - Noether Framework documentation</title>
+        <title>How to Implement a Custom Multistage Pipeline - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -257,26 +257,36 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+  <p class="caption" role="heading"><span class="caption-text">The Noether Framework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../noether/introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../noether/design_principles_and_limitations.html">Design Principles and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../noether/key_concepts.html">Key Concepts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/prerequisites.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/getting_started_install_and_verify.html">Getting Started: Install &amp; Verify</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/training_first_model_with_configs.html">Training First Model (with Configs)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/training_first_model_with_code.html">Training First Model (with Code)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/full_code_tutorial.html">Full Code Walkthrough Tutorial</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hardware_setup.html">Hardware Allocation &amp; Training Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linux_cuda_setup.html">Advanced Linux &amp; NVIDIA Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_cli.html">Working with the CLI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">How to Implement a Custom Multistage Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/use_callbacks.html">How to Use Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../explanation/introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../explanation/design_principles_and_limitations.html">Design Principles and Limitations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../explanation/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zoo/dataset_zoo.html">Noether Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zoo/model_zoo.html">Noether Model Zoo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
@@ -751,12 +761,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/guides/training/how_to_write_custom_loss_or_metric.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/guides/data/how_to_write_a_multistage_pipeline.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/guides/training/how_to_write_custom_loss_or_metric.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/guides/data/how_to_write_a_multistage_pipeline.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -775,11 +785,36 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="how-to-write-custom-loss-or-metrics">
-<h1>How to Write Custom Loss or Metrics<a class="headerlink" href="#how-to-write-custom-loss-or-metrics" title="Link to this heading">¶</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The information below is incomplete and requires extra work. Use it at your own risk!</p>
+          <section id="how-to-implement-a-custom-multistage-pipeline">
+<h1>How to Implement a Custom Multistage Pipeline<a class="headerlink" href="#how-to-implement-a-custom-multistage-pipeline" title="Link to this heading">¶</a></h1>
+<p>Within the <strong>Noether Framework</strong>, data samples loaded by the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> are processed through a Multistage Pipeline that consists of three stages: sample preprocessors, collators, and batch postprocessors.
+To create your own Multistage Pipeline, you need to extend the base <code class="xref py py-class docutils literal notranslate"><span class="pre">MultiStagePipeline</span></code> class and provide your custom processors and collators in the constructor.</p>
+<p>You have to provide three lists to the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> of the parent class: one for sample preprocessors, one for collators, and one for batch postprocessors.
+In the preprocessors list, instances of <a class="reference internal" href="../../autoapi/noether/data/pipeline/sample_processor/index.html#noether.data.pipeline.sample_processor.SampleProcessor" title="noether.data.pipeline.sample_processor.SampleProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">SampleProcessor</span></code></a> classes are included that process individual data samples.
+In the collators list, instances of <a class="reference internal" href="../../autoapi/noether/data/pipeline/collator/index.html#noether.data.pipeline.collator.Collator" title="noether.data.pipeline.collator.Collator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Collator</span></code></a> classes are included that collate the list of samples into batches.
+In the postprocessors list, <a class="reference internal" href="../../autoapi/noether/data/pipeline/batch_processor/index.html#noether.data.pipeline.batch_processor.BatchProcessor" title="noether.data.pipeline.batch_processor.BatchProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchProcessor</span></code></a> classes are included that process the entire batch after collation.
+Those lists can also be empty if you do not wish to include any processors or collators in that stage.</p>
+<p>Below we provide a minimal (dummy code) example of how to create a custom Multistage Pipeline by extending the base <code class="xref py py-class docutils literal notranslate"><span class="pre">MultiStagePipeline</span></code> class.
+The sample processors we implemented do not take a config object as input, but can accept arbitrary keyword arguments in their constructor.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.data.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">MultiStagePipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">own_project.data.pipeline.sample_processors</span><span class="w"> </span><span class="kn">import</span> <span class="n">SampleProcessorA</span><span class="p">,</span> <span class="n">SampleProcessorB</span><span class="p">,</span> <span class="n">SampleProcessorC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">own_project.data.pipeline.batch_processors</span><span class="w"> </span><span class="kn">import</span> <span class="n">BatchProcessor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.data.pipeline.collators</span><span class="w"> </span><span class="kn">import</span>  <span class="n">DefaultCollator</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomMultiStagePipeline</span><span class="p">(</span><span class="n">MultiStagePipeline</span><span class="p">):</span>
+   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pipeline_config</span><span class="p">:</span> <span class="n">CustomMultiStagePipelineConfig</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+         <span class="n">preprocessors</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">SampleProcessorA</span><span class="p">(</span><span class="o">**</span><span class="n">pipeline_config</span><span class="o">.</span><span class="n">sample_processor_a_config</span><span class="p">),</span>
+            <span class="n">SampleProcessorB</span><span class="p">(</span><span class="o">**</span><span class="n">pipeline_config</span><span class="o">.</span><span class="n">sample_processor_b_config</span><span class="p">),</span>
+            <span class="n">SampleProcessorC</span><span class="p">(</span><span class="o">**</span><span class="n">pipeline_config</span><span class="o">.</span><span class="n">sample_processor_c_config</span><span class="p">)</span>
+         <span class="p">],</span>
+         <span class="n">collators</span><span class="o">=</span><span class="p">[</span><span class="n">DefaultCollator</span><span class="p">(</span><span class="o">**</span><span class="n">pipeline_config</span><span class="o">.</span><span class="n">default_collator_config</span><span class="p">),</span> <span class="n">CustomCollator</span><span class="p">(</span><span class="o">**</span><span class="n">pipeline_config</span><span class="o">.</span><span class="n">custom_collator_config</span><span class="p">)],</span>
+         <span class="n">postprocessors</span><span class="o">=</span><span class="p">[</span><span class="n">BatchProcessor</span><span class="p">(</span><span class="o">**</span><span class="n">pipeline_config</span><span class="o">.</span><span class="n">batch_processor_config</span><span class="p">)],</span>
+         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+      <span class="p">)</span>
+</pre></div>
 </div>
 </section>
 
@@ -788,8 +823,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../training/implement_a_custom_trainer.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">How to Implement a Custom Trainer</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="how_to_make_a_custom_dataset.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">How to Implement a Custom Dataset</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">

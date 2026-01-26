@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="How to Implement a Custom Multistage Pipeline" href="how_to_write_a_multistage_pipeline.html" /><link rel="prev" title="How to Use Private Data Source" href="how_to_use_private_data_source.html" />
         <link rel="prefetch" href="../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>How to Configure All Training Options - Noether Framework documentation</title>
+        <title>How to Implement a Custom Dataset - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -257,26 +257,36 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+  <p class="caption" role="heading"><span class="caption-text">The Noether Framework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../noether/introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../noether/design_principles_and_limitations.html">Design Principles and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../noether/key_concepts.html">Key Concepts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/prerequisites.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/getting_started_install_and_verify.html">Getting Started: Install &amp; Verify</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/training_first_model_with_configs.html">Training First Model (with Configs)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/training_first_model_with_code.html">Training First Model (with Code)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/full_code_tutorial.html">Full Code Walkthrough Tutorial</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../hardware_setup.html">Hardware Allocation &amp; Training Configurations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../linux_cuda_setup.html">Advanced Linux &amp; NVIDIA Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_cli.html">Working with the CLI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">How to Implement a Custom Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training/use_callbacks.html">How to Use Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../explanation/introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../explanation/design_principles_and_limitations.html">Design Principles and Limitations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../explanation/key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zoo/dataset_zoo.html">Noether Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zoo/model_zoo.html">Noether Model Zoo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
@@ -751,12 +761,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/guides/training/how_to_configure_all_training_options.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/guides/data/how_to_make_a_custom_dataset.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/guides/training/how_to_configure_all_training_options.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/guides/data/how_to_make_a_custom_dataset.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -775,11 +785,76 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="how-to-configure-all-training-options">
-<h1>How to Configure All Training Options<a class="headerlink" href="#how-to-configure-all-training-options" title="Link to this heading">¶</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The information below is incomplete and requires extra work. Use it at your own risk!</p>
+          <section id="how-to-implement-a-custom-dataset">
+<h1>How to Implement a Custom Dataset<a class="headerlink" href="#how-to-implement-a-custom-dataset" title="Link to this heading">¶</a></h1>
+<p>Below we provide a minimal (dummy code) example of how to create a custom dataset by extending the base <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code> class.
+Every single tensor that belongs to a ‘data sample’ must have its own <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> method, with a unique suffix.
+By default, all <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> will be called when fetching a data sample, unless specified otherwise in the configuration file (by configuring <code class="docutils literal notranslate"><span class="pre">excluded_properties</span></code>).
+To apply data normalization, the <code class="docutils literal notranslate"><span class="pre">&#64;with_normalizers</span></code> decorator must be used on each <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> method.
+The key provided to the decorator must match the key of the configured normalizer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">with_normalizers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetBaseConfig</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyCustomDatasetConfig</span><span class="p">(</span><span class="n">DatasetBaseConfig</span><span class="p">):</span>
+    <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;path.to.MyCustomDataset&quot;</span>
+    <span class="c1"># Add any custom configuration fields here</span>
+    <span class="n">data_paths</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyCustomDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">MyCustomDatasetConfig</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_paths</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">data_paths</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">root</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Return the length of your dataset</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_paths</span><span class="p">)</span>
+
+    <span class="nd">@with_normalizers</span><span class="p">(</span><span class="s2">&quot;tensor_x&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getitem_tensor_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+        <span class="c1"># Load and return the data sample and its corresponding label as tensors</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_paths</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span> <span class="n">weights_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@with_normalizers</span><span class="p">(</span><span class="s2">&quot;tensor_y&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getitem_tensor_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+        <span class="c1"># Load and return the data sample and its corresponding label as tensors</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_paths</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span> <span class="n">weights_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">datasets</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">custom_dataset</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path.to.MyCustomDataset</span>
+<span class="w">        </span><span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/data</span>
+<span class="w">        </span><span class="nt">data_paths</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_0.pt</span>
+<span class="w">            </span><span class="nt">1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_1.pt</span>
+<span class="w">            </span><span class="nt">2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_2.pt</span>
+<span class="w">            </span><span class="c1"># Add more data paths as needed</span>
+<span class="w">        </span><span class="nt">excluded_properties</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w">  </span><span class="c1"># Optionally exclude certain getitem_* methods</span>
+</pre></div>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tensor_x</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.data.preprocessors.normalizers.MeanStdNormalization</span>
+<span class="w">      </span><span class="nt">mean</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="w">      </span><span class="nt">std</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="nt">tensor_y</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.data.preprocessors.normalizers.MeanStdNormalization</span>
+<span class="w">      </span><span class="nt">mean</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
+<span class="w">      </span><span class="nt">std</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+</pre></div>
+</div>
+<p>Let’s say we run a training pipeline with the above dataset configuration and a batch size of 4.
+Then the output will be a list of 4 dictionaries (a batch), where each dictionary has the following structure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;tensor_x&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">tensor_x_sample_0</span><span class="o">&gt;</span><span class="p">,</span>
+        <span class="s2">&quot;tensor_y&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">tensor_y_sample_0</span><span class="o">&gt;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="c1"># ... (3 more samples)</span>
+<span class="p">]</span>
+</pre></div>
 </div>
 </section>
 
@@ -788,8 +863,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="how_to_write_a_multistage_pipeline.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">How to Implement a Custom Multistage Pipeline</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="how_to_use_private_data_source.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">How to Use Private Data Source</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">

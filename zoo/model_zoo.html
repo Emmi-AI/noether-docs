@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Design Principles and Limitations" href="design_principles_and_limitations.html" /><link rel="prev" title="How to Run Evaluation on Trained Models" href="../guides/inference/how_to_run_evaluation_on_trained_models.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Disk Caching" href="../noether/io/caching.html" /><link rel="prev" title="Noether Dataset Zoo" href="dataset_zoo.html" />
         <link rel="prefetch" href="../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>Introduction to Noether Framework - Noether Framework documentation</title>
+        <title>Noether Model Zoo - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -236,7 +236,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -257,12 +257,19 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+  <p class="caption" role="heading"><span class="caption-text">The Noether Framework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../noether/introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../noether/design_principles_and_limitations.html">Design Principles and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../noether/key_concepts.html">Key Concepts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/prerequisites.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started_install_and_verify.html">Getting Started: Install &amp; Verify</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/training_first_model_with_configs.html">Training First Model (with Configs)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/training_first_model_with_code.html">Training First Model (with Code)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/full_code_tutorial.html">Full Code Walkthrough Tutorial</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
@@ -270,13 +277,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../guides/linux_cuda_setup.html">Advanced Linux &amp; NVIDIA Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/working_with_cli.html">Working with the CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/data/how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/training/use_callbacks.html">How to Use Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
+<p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
 <ul class="current">
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Introduction to Noether Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="design_principles_and_limitations.html">Design Principles and Limitations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataset_zoo.html">Noether Dataset Zoo</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Noether Model Zoo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
@@ -751,12 +761,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/explanation/introduction_to_noether_framework.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/zoo/model_zoo.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/explanation/introduction_to_noether_framework.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/zoo/model_zoo.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -769,56 +779,59 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="introduction-to-noether-framework">
-<h1>Introduction to Noether Framework<a class="headerlink" href="#introduction-to-noether-framework" title="Link to this heading">¶</a></h1>
-<section id="main-components">
-<h2>Main Components<a class="headerlink" href="#main-components" title="Link to this heading">¶</a></h2>
-<p>The <strong>Noether Framework</strong> is organized into the following submodules:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">core</span></code> - low-level components responsible for the heavy-lifting of the framework</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> - data serving utilities (e.g., datasets, preprocessors, utils, etc.)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">io</span></code> - data fetching and storage utilities</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">inference</span></code> - utilities for CLI/tooling to run inference pipeline</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">modeling</span></code> - model building blocks and some of the SOTA architectures</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">training</span></code> - trainers, callbacks, and CLI/tooling to run the training pipeline</p></li>
-</ul>
-<figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="../_images/noether_architecture.png"><img alt="Noether Architecture" src="../_images/noether_architecture.png" style="width: 600px;" />
-</a>
-<figcaption>
-<p><span class="caption-text">Core layering of the submodules</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="how-do-they-interact">
-<h2>How Do They Interact<a class="headerlink" href="#how-do-they-interact" title="Link to this heading">¶</a></h2>
-<p>The interaction between existing modules is better described using a typical workflow. Let’s say, a user wants
-to train a model, like <a class="reference external" href="https://arxiv.org/abs/2502.09692">AB-UPT</a>, to do so they have two options:</p>
-<ol class="arabic simple">
-<li><p>Use configuration files to set up an experiment</p></li>
-<li><p>Use code and tailor it to specific needs</p></li>
-</ol>
-<p>In either case, the same underlying shared codebase is used to ensure consistent behavior.</p>
-<p>Our main buildings blocks are located in <code class="docutils literal notranslate"><span class="pre">core</span></code>. It takes care of things like object factories, callbacks, trackers,
-schemas, etc. All of which have <strong>Base</strong> classes that can be used as abstract classes to create custom variations,
-as well as ready-to-use implementations with clearly defined usage patterns. Those are usually located next to their
-typical application, e.g. training callbacks will be in the <code class="docutils literal notranslate"><span class="pre">training</span></code> submodule, and so on.</p>
-<p>To account for various levels of expertise (e.g. a seasoned ML engineer, a MSc/PhD student, a CFD expert, etc.)
-we provide multiple abstraction levels. The higher-level modules, like <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">modeling</span></code>, etc., give a list of
-convenient and frequently used blocks to get things going. They fully rely on <code class="docutils literal notranslate"><span class="pre">core</span></code> and are ready to be extended
-with some custom logic when necessary. In most cases it is recommended to extend those modules first rather than diving
-directly into the <code class="docutils literal notranslate"><span class="pre">core</span></code> itself.</p>
-<p>For example, both <code class="docutils literal notranslate"><span class="pre">inference</span></code> and <code class="docutils literal notranslate"><span class="pre">training</span></code> rely on the <code class="docutils literal notranslate"><span class="pre">modeling</span></code> submodule as it provides the architectures
-for model initialization. <code class="docutils literal notranslate"><span class="pre">io</span></code> on the other hand is pretty much standalone and mainly depends on the third-party
-packages. Currently it supports data fetching and validation from HuggingFace and AWS S3. By sharing feedback
-about your preferred way of storing and accessing data, you can help us prioritize future features.</p>
-</section>
+          <section id="noether-model-zoo">
+<h1>Noether Model Zoo<a class="headerlink" href="#noether-model-zoo" title="Link to this heading">¶</a></h1>
+<p>The Noether Framework includes base implementations for several state-of-the-art models:</p>
+<div class="table-wrapper colwidths-given docutils container">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 20.0%" />
+<col style="width: 30.0%" />
+<col style="width: 35.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Paper</p></th>
+<th class="head"><p>Implementation</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>AB-UPT</strong></p></td>
+<td><p><a class="reference external" href="https://arxiv.org/abs/2502.09692">arXiv:2502.09692</a></p></td>
+<td><p><a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/src/noether/modeling/models/ab_upt.py">ab_upt.py</a></p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Transformer</strong></p></td>
+<td><p>-</p></td>
+<td><p><a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/src/noether/modeling/models/transformer.py">transformer.py</a></p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Transolver</strong></p></td>
+<td><p><a class="reference external" href="https://arxiv.org/abs/2402.02366">arXiv:2402.02366</a></p></td>
+<td><p><a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/src/noether/modeling/models/transolver.py">transolver.py</a></p></td>
+<td><p>Transolver is a Transformer with a different attention <a class="reference external" href="https://github.com/Emmi-AI/noether/tree/main/src/noether/core/schemas/models/transolver.py">config</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Transolver++</strong></p></td>
+<td><p><a class="reference external" href="https://arxiv.org/abs/2502.02414">arXiv:2502.02414</a></p></td>
+<td><p>Schema only: <a class="reference external" href="https://github.com/Emmi-AI/noether/tree/main/src/noether/core/schemas/models/transolver.py#21">transolver.py</a></p></td>
+<td><p>Transolver++ is a Transolver with a different attention config</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>UPT</strong></p></td>
+<td><p><a class="reference external" href="https://arxiv.org/abs/2402.12365">arXiv:2402.12365</a></p></td>
+<td><p><a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/src/noether/modeling/models/upt.py">upt.py</a></p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 
         </article>
@@ -826,23 +839,23 @@ about your preferred way of storing and accessing data, you can help us prioriti
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="design_principles_and_limitations.html">
+          <a class="next-page" href="../noether/io/caching.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Design Principles and Limitations</div>
+                <div class="title">Disk Caching</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../guides/inference/how_to_run_evaluation_on_trained_models.html">
+          <a class="prev-page" href="dataset_zoo.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">How to Run Evaluation on Trained Models</div>
+                <div class="title">Noether Dataset Zoo</div>
                 
               </div>
             </a>
@@ -870,28 +883,8 @@ about your preferred way of storing and accessing data, you can help us prioriti
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Introduction to Noether Framework</a><ul>
-<li><a class="reference internal" href="#main-components">Main Components</a></li>
-<li><a class="reference internal" href="#how-do-they-interact">How Do They Interact</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

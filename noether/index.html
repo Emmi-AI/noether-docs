@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Key Concepts" href="key_concepts.html" /><link rel="prev" title="Introduction to Noether Framework" href="introduction_to_noether_framework.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
         <link rel="prefetch" href="../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>Design Principles and Limitations - Noether Framework documentation</title>
+        <title>The Noether Framework - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -236,7 +236,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -257,12 +257,19 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+  <p class="caption" role="heading"><span class="caption-text">The Noether Framework</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_principles_and_limitations.html">Design Principles and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/prerequisites.html">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started_install_and_verify.html">Getting Started: Install &amp; Verify</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/training_first_model_with_configs.html">Training First Model (with Configs)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/training_first_model_with_code.html">Training First Model (with Code)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/full_code_tutorial.html">Full Code Walkthrough Tutorial</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">How-to Guides</span></p>
 <ul>
@@ -270,17 +277,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../guides/linux_cuda_setup.html">Advanced Linux &amp; NVIDIA Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/working_with_cli.html">Working with the CLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/data/how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/training/use_callbacks.html">How to Use Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Explanation</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Design Principles and Limitations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+<p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../zoo/dataset_zoo.html">Noether Dataset Zoo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zoo/model_zoo.html">Noether Model Zoo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../noether/io/caching.html">Disk Caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io/caching.html">Disk Caching</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../autoapi/noether/index.html">noether</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of noether</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/noether/core/index.html">noether.core</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of noether.core</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/noether/core/callbacks/index.html">noether.core.callbacks</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of noether.core.callbacks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -751,12 +761,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/explanation/design_principles_and_limitations.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/noether/index.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/explanation/design_principles_and_limitations.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/noether/index.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -769,120 +779,21 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="design-principles-and-limitations">
-<h1>Design Principles and Limitations<a class="headerlink" href="#design-principles-and-limitations" title="Link to this heading">¶</a></h1>
-<p>This document outlines the core design principles, architectural patterns, and known limitations of the Noether
-Framework. It serves as a guide for developers to understand the “why” behind the code structure.</p>
-<section id="design-principles">
-<h2>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">¶</a></h2>
-<p>The framework is built upon five major pillars aimed at robustness, reproducibility, and clear separation of concerns.</p>
-<section id="configuration-driven-development-cdd">
-<h3>1. Configuration-Driven Development (CDD)<a class="headerlink" href="#configuration-driven-development-cdd" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Behavior is strictly separated from implementation.</p>
-<p>Almost every component in the system (Datasets, Models, Layers) is instantiated via a specific <strong>Configuration Object</strong>
-rather than raw arguments.</p>
-<p><strong>Implementation:</strong>
-We rely heavily on Pydantic models (e.g., <code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code>, <code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig</span></code>) to define the expected
-inputs. Components are rarely instantiated directly; instead, they are built by passing a config object
-to a constructor or factory.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example: A TransformerBlock receives a full config object, not individual args.</span>
-<span class="n">block</span> <span class="o">=</span> <span class="n">TransformerBlock</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">my_block_config</span><span class="p">)</span>
-</pre></div>
+          <section id="the-noether-framework">
+<h1>The Noether Framework<a class="headerlink" href="#the-noether-framework" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_principles_and_limitations.html">Design Principles and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
+</ul>
 </div>
-</section>
-<section id="factory-pattern-dynamic-instantiation">
-<h3>2. Factory Pattern &amp; Dynamic Instantiation<a class="headerlink" href="#factory-pattern-dynamic-instantiation" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Decoupling configuration from import logic.</p>
-<p>The framework uses a centralized “Factory” mechanism to build objects. It relies on <strong>Class Paths</strong> (strings)
-to resolve classes at runtime, avoiding heavy import chains at the top level.</p>
-<p><strong>Implementation:</strong>
-The <code class="docutils literal notranslate"><span class="pre">Factory.instantiate</span></code> method uses the <code class="docutils literal notranslate"><span class="pre">kind</span></code> field in configurations to locate the correct class constructor.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Config:</span>
-<span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;noether.core.callbacks.checkpoint.CheckpointCallback&quot;</span>
-
-<span class="c1"># Factory logic:</span>
-<span class="n">class_constructor</span> <span class="o">=</span> <span class="n">class_constructor_from_class_path</span><span class="p">(</span><span class="n">kind</span><span class="p">)</span>
-<span class="n">instance</span> <span class="o">=</span> <span class="n">class_constructor</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="strict-type-safety-runtime-validation">
-<h3>3. Strict Type Safety &amp; Runtime Validation<a class="headerlink" href="#strict-type-safety-runtime-validation" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Catch errors at initialization, not during training.</p>
-<p>We aggressively use Python type hints (<code class="docutils literal notranslate"><span class="pre">list[torch.Tensor]</span></code>, <code class="docutils literal notranslate"><span class="pre">Literal</span></code>) and Pydantic validators to ensure invalid
-states are impossible to represent.</p>
-<p><strong>Implementation:</strong></p>
-<ul class="simple">
-<li><p><strong>Pydantic Validators:</strong> <code class="docutils literal notranslate"><span class="pre">&#64;model_validator(mode=&quot;after&quot;)</span></code> ensures fields like <code class="docutils literal notranslate"><span class="pre">ndim</span></code> are valid (e.g., only 1, 2,</p></li>
-</ul>
-<p>or 3).
-- <strong>Type Guards:</strong> Utility functions like <code class="docutils literal notranslate"><span class="pre">validate_path</span></code> allow strictly typed filesystem operations.</p>
-</section>
-<section id="defensive-programming">
-<h3>4. Defensive Programming<a class="headerlink" href="#defensive-programming" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Do not trust the input.</p>
-<p>The code frequently asserts state validity and checks types explicitly at runtime, even when type hints are present,
-to prevent silent failures in complex pipelines.</p>
-<p><strong>Implementation:</strong></p>
-<ul class="simple">
-<li><p>Explicit <code class="docutils literal notranslate"><span class="pre">isinstance</span></code> checks in factories.</p></li>
-<li><p>State guards (e.g., <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">self._stats</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code>) in stateful classes like <code class="docutils literal notranslate"><span class="pre">RunningMoments</span></code>.</p></li>
-</ul>
-</section>
-<section id="composition-over-inheritance">
-<h3>5. Composition over Inheritance<a class="headerlink" href="#composition-over-inheritance" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Complex behaviors are built by wrapping simple objects.
-We avoid deep inheritance trees. Instead, we use wrappers and composition to add functionality like caching,
-normalization, or logging.</p>
-<p><strong>Implementation:</strong>
-The <code class="docutils literal notranslate"><span class="pre">DatasetFactory</span></code> does not subclass datasets to add features; it wraps a base dataset with a list of
-<code class="docutils literal notranslate"><span class="pre">dataset_wrappers</span></code> (e.g., normalizers).</p>
-</section>
-<section id="limitations-trade-offs">
-<h3>Limitations &amp; Trade-offs<a class="headerlink" href="#limitations-trade-offs" title="Link to this heading">¶</a></h3>
-<p>While the architecture ensures robustness, it introduces specific trade-offs that developers must be aware of.</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt><strong>Tight Coupling of Configs to Code:</strong></dt><dd><p>Many classes accept a single <code class="docutils literal notranslate"><span class="pre">config</span></code> object in their <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. This makes it difficult to use these modules
-“standalone” (e.g., in a notebook) without first constructing the specific Pydantic configuration object they
-expect.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>Circular Dependency Risks:</strong></dt><dd><p>Configuration schemas need to know about classes (for validation), and classes need to know about schemas
-(for typing). This occasionally forces the use of string-based class resolution instead of direct imports to avoid
-cycles.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>“Stringly” Typed Architecture:</strong></dt><dd><p>The reliance on string paths (e.g., <code class="docutils literal notranslate"><span class="pre">kind=&quot;torch.optim.SGD&quot;</span></code>) for instantiation means that automated
-refactoring tools (like “Rename Class” in IDEs) may miss references in YAML or Config files.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>Factory Indirection:</strong></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">Factory.instantiate</span></code> method contains implicit logic (e.g., checking kwargs for “kind” if the config is None).
-This “magic” can sometimes obscure how exactly an object is being created during debugging.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>Boilerplate Overhead:</strong></dt><dd><p>Adding a simple new feature often requires modifying three distinct files: the <strong>Implementation Class</strong>,
-the <strong>Configuration Schema</strong>, and the <strong>Factory</strong> logic. This favors stability over rapid prototyping speed.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</section>
-</section>
 </section>
 
         </article>
@@ -890,26 +801,8 @@ the <strong>Configuration Schema</strong>, and the <strong>Factory</strong> logi
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="key_concepts.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Key Concepts</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="introduction_to_noether_framework.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Introduction to Noether Framework</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -934,35 +827,8 @@ the <strong>Configuration Schema</strong>, and the <strong>Factory</strong> logi
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Design Principles and Limitations</a><ul>
-<li><a class="reference internal" href="#design-principles">Design Principles</a><ul>
-<li><a class="reference internal" href="#configuration-driven-development-cdd">1. Configuration-Driven Development (CDD)</a></li>
-<li><a class="reference internal" href="#factory-pattern-dynamic-instantiation">2. Factory Pattern &amp; Dynamic Instantiation</a></li>
-<li><a class="reference internal" href="#strict-type-safety-runtime-validation">3. Strict Type Safety &amp; Runtime Validation</a></li>
-<li><a class="reference internal" href="#defensive-programming">4. Defensive Programming</a></li>
-<li><a class="reference internal" href="#composition-over-inheritance">5. Composition over Inheritance</a></li>
-<li><a class="reference internal" href="#limitations-trade-offs">Limitations &amp; Trade-offs</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
