@@ -101,11 +101,11 @@ Module Contents
 
 
    .. py:attribute:: accelerator
-      :type:  Literal['cpu', 'gpu', 'mps']
-      :value: 'gpu'
+      :type:  Literal['cpu', 'gpu', 'mps'] | None
+      :value: None
 
 
-      Type of accelerator to use.
+      Type of accelerator to use. Default is None, which lets the system choose the best available accelerator. GPU > MPS > CPU.
 
 
    .. py:attribute:: stage_name
@@ -308,5 +308,11 @@ Module Contents
 
 
       The fully qualified import path for the configuration class.
+
+
+   .. py:method:: set_accelerator_if_unset()
+
+      Sets the accelerator if it is not already set.
+
 
 
