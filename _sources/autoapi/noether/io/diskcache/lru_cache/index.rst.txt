@@ -183,17 +183,6 @@ Module Contents
 
    .. py:method:: cat_ranges(paths, starts, ends, max_gap=None, on_error='return', **kwargs)
 
-      Get the contents of byte ranges from one or more files
-
-      Parameters
-      ----------
-      paths: list
-          A list of of filepaths on this filesystems
-      starts, ends: int or list
-          Bytes limits of the read. If using a single int, the same value will be
-          used to read all the specified files.
-
-
 
 .. py:class:: SqliteLRUCacheFileSystem(*args, **kwargs)
 

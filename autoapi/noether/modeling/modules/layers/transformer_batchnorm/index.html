@@ -808,7 +808,6 @@
 <p>Wrapper around <cite>torch.nn.BatchNorm1d</cite> that considers all tokens of a single sample as the full batch.
 Additionally remaps <cite>affine</cite> to <cite>elementwise_affine</cite> and supports disabling bias to comply with the
 <cite>torch.nn.LayerNorm</cite> interface. Does not use any nn.BatchNorm1d modules to avoid errors with nn.SyncBatchnorm.</p>
-<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

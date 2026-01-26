@@ -105,8 +105,6 @@ Module Contents
 
 
    .. py:attribute:: precision
-      :value: Ellipsis
-
 
 
    .. py:attribute:: updates_per_epoch

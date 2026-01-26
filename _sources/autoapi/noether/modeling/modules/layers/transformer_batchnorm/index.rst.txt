@@ -24,8 +24,6 @@ Module Contents
    Additionally remaps `affine` to `elementwise_affine` and supports disabling bias to comply with the
    `torch.nn.LayerNorm` interface. Does not use any nn.BatchNorm1d modules to avoid errors with nn.SyncBatchnorm.
 
-   Initialize internal Module state, shared by both nn.Module and ScriptModule.
-
 
    .. py:attribute:: num_features
 

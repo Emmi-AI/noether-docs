@@ -44,8 +44,6 @@ Module Contents
    - scatter (torch_scatter - for message passing)
    - segment_csr (torch_scatter - for global pooling)
 
-   Initialize internal Module state, shared by both nn.Module and ScriptModule.
-
 
    .. py:attribute:: aggregation
       :value: 'mean'

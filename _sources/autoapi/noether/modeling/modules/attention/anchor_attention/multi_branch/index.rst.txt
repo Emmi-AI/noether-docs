@@ -67,8 +67,6 @@ Module Contents
    This base class provides a common constructor, validation logic, and forward method implementation.
    Subclasses only need to implement `_create_attention_patterns` to define their specific attention patterns.
 
-   Initialize internal Module state, shared by both nn.Module and ScriptModule.
-
 
    .. py:attribute:: mixed_attention
 

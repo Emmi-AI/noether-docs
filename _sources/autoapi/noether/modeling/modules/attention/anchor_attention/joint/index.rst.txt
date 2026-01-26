@@ -33,6 +33,4 @@ Module Contents
            key_value_tokens=["surface_anchors", "volume_anchors"]
        )
 
-   Initialize internal Module state, shared by both nn.Module and ScriptModule.
-
 

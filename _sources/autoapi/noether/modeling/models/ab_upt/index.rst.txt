@@ -22,8 +22,6 @@ Module Contents
 
    Implementation of the Anchored Branched UPT model.
 
-   Initialize internal Module state, shared by both nn.Module and ScriptModule.
-
 
    .. py:attribute:: data_specs
 
