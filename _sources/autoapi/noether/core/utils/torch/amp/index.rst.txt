@@ -107,7 +107,7 @@ Module Contents
    A no-operation context manager that does nothing.
 
 
-.. py:class:: NoopGradScaler(device = 'cuda', init_scale = 2.0**16, growth_factor = 2.0, backoff_factor = 0.5, growth_interval = 2000, enabled = True)
+.. py:class:: NoopGradScaler
 
    Bases: :py:obj:`torch.amp.grad_scaler.GradScaler`
 
