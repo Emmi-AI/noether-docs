@@ -10,9 +10,7 @@ Submodules
 .. toctree::
    :maxdepth: 1
 
-   /autoapi/noether/modeling/modules/blocks/irregular_nat/index
    /autoapi/noether/modeling/modules/blocks/perceiver/index
-   /autoapi/noether/modeling/modules/blocks/perceiver_transformer/index
    /autoapi/noether/modeling/modules/blocks/transformer/index
 
 
