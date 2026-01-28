@@ -791,7 +791,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.training.cli.main_train.main" title="noether.training.cli.main_train.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>(config)</p></td>
-<td><p></p></td>
+<td><p>Main entry point for training.</p></td>
 </tr>
 </tbody>
 </table>
@@ -802,7 +802,14 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.training.cli.main_train.main">
 <span class="sig-prename descclassname"><span class="pre">noether.training.cli.main_train.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.cli.main_train.main" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Main entry point for training.</p>
+<p>This script is wrapped in a hydra function to allow for easy configuration.
+It supports passing the configuration file as a positional argument or via the –hp flag.</p>
+<p class="rubric">Example</p>
+<p>python main_train.py configs/my_experiment.yaml
+python main_train.py –hp configs/my_experiment.yaml
+python main_train.py configs/my_experiment.yaml trainer.max_epochs=10</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>config</strong> (<em>omegaconf.DictConfig</em>)</p>
 </dd>

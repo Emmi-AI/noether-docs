@@ -17,3 +17,15 @@ Module Contents
 
 .. py:function:: main(config)
 
+   Main entry point for training.
+
+   This script is wrapped in a hydra function to allow for easy configuration.
+   It supports passing the configuration file as a positional argument or via the --hp flag.
+
+   .. rubric:: Example
+
+   python main_train.py configs/my_experiment.yaml
+   python main_train.py --hp configs/my_experiment.yaml
+   python main_train.py configs/my_experiment.yaml trainer.max_epochs=10
+
+

@@ -810,18 +810,11 @@ setups <code class="docutils literal notranslate"><span class="pre">uv</span></c
 </section>
 <section id="verifying-the-installation">
 <h2>Verifying the Installation<a class="headerlink" href="#verifying-the-installation" title="Link to this heading">¶</a></h2>
-<p>See if the installation was successful by running the tests:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-q<span class="w"> </span>tests/
+<p>See if the installation was successful by running the <code class="docutils literal notranslate"><span class="pre">noether-train</span></code> :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;uv run noether-train --help&quot;</span>
 </pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>The information below is for reference only as the CLI is not final yet.</p>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import importlib.metadata as m; print(m.version(&#39;noether&#39;))&quot;</span>
-<span class="c1"># 1.0.0</span>
-</pre></div>
-</div>
+<p>You should see the help message printed in your terminal.</p>
 </section>
 </section>
 
