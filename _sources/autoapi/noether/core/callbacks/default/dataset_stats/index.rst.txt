@@ -20,14 +20,15 @@ Module Contents
    Bases: :py:obj:`noether.core.callbacks.base.CallbackBase`
 
 
-   A callback that logs the length of each dataset in the data container.
+   A callback that logs the length of each dataset in the data container. Is initialized by the :class:`~noether.training.trainers.BaseTrainer` and should not be added manually to the trainer's callbacks.
 
    :param trainer: Trainer of the current run.
    :param model: Model of the current run.
-   :param data_container: DataContainer instance that provides access to all datasets.
-   :param tracker: Tracker instance to log metrics to stdout/disk/online platform.
-   :param log_writer: LogWriter instance to log metrics to stdout/disk/online platform.
-   :param metric_property_provider: MetricPropertyProvider instance to access properties of metrics.
+   :param data_container: :class:`~noether.data.container.DataContainer` instance that provides access to all datasets.
+   :param tracker: :class:`~noether.core.trackers.BaseTracker` instance to log metrics to stdout/disk/online platform.
+   :param log_writer: :class:`~noether.core.writers.LogWriter` instance to log metrics to stdout/disk/online platform.
+   :param checkpoint_writer: :class:`~noether.core.writers.CheckpointWriter` instance to save checkpoints during training.
+   :param metric_property_provider: :class:`~noether.core.providers.MetricPropertyProvider` instance to access properties of metrics.
    :param name: Name of the callback.
 
 
@@ -37,6 +38,7 @@ Module Contents
 
       This method is intended to be overridden by derived classes to perform initialization
       tasks before training begins. Common use cases include:
+
       * Initializing experiment tracking (e.g., logging hyperparameters)
       * Printing model summaries or architecture details
       * Initializing specific data structures or buffers needed during training
@@ -44,7 +46,7 @@ Module Contents
 
       .. note:: This method is executed within a ``torch.no_grad()`` context.
 
-      :param update_counter: UpdateCounter instance to access current training progress.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
 
 
 

@@ -280,7 +280,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -804,15 +804,21 @@
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.early_stoppers.metric.</span></span><span class="sig-name descname"><span class="pre">MetricEarlyStopper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.early_stoppers.metric.MetricEarlyStopper" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.callbacks.early_stoppers.base.EarlyStopperBase" title="noether.core.callbacks.early_stoppers.base.EarlyStopperBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.early_stoppers.base.EarlyStopperBase</span></code></a></p>
 <p>Early stopper (training) based on a metric value to be monitored.</p>
-<p>Initialize the early stopper.</p>
+<p>Example config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.callbacks.MetricEarlyStopper</span>
+<span class="w">  </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">metric_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loss/val/total</span>
+<span class="w">  </span><span class="nt">tolerance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.10</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MetricEarlyStopper</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>metric_key</strong> – The key of the metric to monitor.</p></li>
-<li><p><strong>tolerance</strong> – The number of times the metric can stagnate before stopping training.</p></li>
-<li><p><strong>metric_property_provider</strong> – The metric property provider to use.</p></li>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.MetricEarlyStopperConfig" title="noether.core.schemas.callbacks.MetricEarlyStopperConfig"><em>noether.core.schemas.callbacks.MetricEarlyStopperConfig</em></a>) – Configuration for the callback. See
+<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.MetricEarlyStopperConfig" title="noether.core.schemas.callbacks.MetricEarlyStopperConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig</span></code></a>
+for available options including metric key and tolerance.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments to pass to the parent class.</p></li>
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.MetricEarlyStopperConfig" title="noether.core.schemas.callbacks.MetricEarlyStopperConfig"><em>noether.core.schemas.callbacks.MetricEarlyStopperConfig</em></a>)</p></li>
 </ul>
 </dd>
 </dl>

@@ -22,10 +22,14 @@ Module Contents
 
    Callback to track the loss of the model after every gradient accumulation step and log the average loss.
 
-   Initializes the OnlineLossCallback.
+   This callback is initialized by the :class:`~noether.training.trainers.BaseTrainer` and should not be added manually to the trainer's callbacks.
 
-   :param callback_config: The configuration for the callback.
-   :param \*\*kwargs: additional arguments passed to the parent class.
+   Initialize the OnlineLossCallback.
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.OnlineLossCallbackConfig`
+                           for available options.
+   :param \*\*kwargs: Additional arguments passed to the parent class.
 
 
    .. py:attribute:: verbose
@@ -45,6 +49,7 @@ Module Contents
       across accumulation steps.
 
       Common use cases include:
+
       * Logging per-batch losses for high-frequency monitoring
       * Accumulating statistics across batches before an optimizer update
       * Implementing custom logging that needs access to individual batch data
@@ -54,7 +59,7 @@ Module Contents
          This method is generally intended to be called within a ``torch.no_grad()`` context
          by the trainer to ensure no gradients are tracked during logging operations.
 
-      :param update_counter: UpdateCounter instance to access current training progress.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
       :param batch: The current data batch processed in this accumulation step.
       :param losses: Dictionary of computed losses for the current batch.
       :param update_outputs: Optional dictionary of model outputs for the current batch.
@@ -72,6 +77,7 @@ Module Contents
       or ``every_n_samples``) are reached.
 
       Subclasses should override this method to implement periodic logic such as:
+
       * Calculating and logging expensive validation metrics
       * Saving specific model checkpoints or artifacts
       * Visualizing training progress (e.g., plotting samples)
@@ -80,10 +86,10 @@ Module Contents
       .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
-      :param update_counter: UpdateCounter instance providing details about the current
-                             training progress (epoch, update, sample counts).
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance providing details about
+                             the current training progress (epoch, update, sample counts).
       :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
-                         (e.g., from ``after_epoch`` or ``after_update``).
+                         (e.g., from :meth:`after_epoch` or :meth:`after_update`).
 
 
 

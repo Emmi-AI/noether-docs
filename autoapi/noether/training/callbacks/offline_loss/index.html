@@ -280,7 +280,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -824,6 +824,7 @@
 <dt class="sig sig-object py" id="noether.training.callbacks.offline_loss.OfflineLossCallback.process_data">
 <span class="sig-name descname"><span class="pre">process_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainer_model</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.callbacks.offline_loss.OfflineLossCallback.process_data" title="Link to this definition">¶</a></dt>
 <dd><p>Template method that is called for each batch that is loaded from the dataset.</p>
+<p>This method should process a single batch and return results that will be collated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -831,19 +832,25 @@
 <li><p><strong>trainer_model</strong> – Model of the current training run.</p></li>
 </ul>
 </dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Processed results for this batch. Can be a tensor, dict of tensors, list, or tuple.</p>
+</dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.training.callbacks.offline_loss.OfflineLossCallback.process_results">
 <span class="sig-name descname"><span class="pre">process_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.callbacks.offline_loss.OfflineLossCallback.process_results" title="Link to this definition">¶</a></dt>
-<dd><p>Template method that is called with the collated results that were produced by <cite>iterate_over_dataset</cite>.</p>
+<dd><p>Template method that is called with the collated results from dataset iteration.</p>
+<p>For example, metrics can be computed from the results for the entire test/validation dataset and logged.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>results</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>torch.Tensor</em><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>torch.Tensor</em><em>]</em><em>]</em>) – The collated results that were produced by <cite>_iterate_over_dataset</cite>.</p></li>
+<li><p><strong>results</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>torch.Tensor</em><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>torch.Tensor</em><em>]</em><em>]</em>) – The collated results that were produced by <code class="xref py py-meth docutils literal notranslate"><span class="pre">_iterate_over_dataset()</span></code> and the individual
+<a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallback.process_data" title="noether.training.callbacks.offline_loss.OfflineLossCallback.process_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_data()</span></code></a> calls.</p></li>
 <li><p><strong>interval_type</strong> – The type of interval that triggered this callback invocation.</p></li>
-<li><p><strong>update_counter</strong> – The current update counter.</p></li>
+<li><p><strong>update_counter</strong> – <a class="reference internal" href="../../../core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> with the current training state.</p></li>
+<li><p><strong>**_</strong> – Additional unused keyword arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>

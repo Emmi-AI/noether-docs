@@ -280,7 +280,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -804,15 +804,25 @@
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.online.track_outputs.</span></span><span class="sig-name descname"><span class="pre">TrackAdditionalOutputsCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a></p>
 <p>Callback that is invoked during training after every gradient step to track certain outputs from the update step.</p>
-<p>The provided <cite>update_outputs</cite> are assumed to be a dictionary and outputs that match keys or patterns are tracked.
+<p>The update_outputs that are provided in the track_after_accumulation_step method are the additional_outputs field from the TrainerResult returned by the trainer’s update step.</p>
+<p>The provided <code class="docutils literal notranslate"><span class="pre">update_outputs</span></code> are assumed to be a dictionary and outputs that match keys or patterns are tracked.
 An update output matches if either the key matches exactly, e.g. {“some_output”: …} and keys[“some_output”];
 or if one of the patterns is contained in the update key name, e.g. {“some_loss”: …} and patterns = [“loss”].</p>
-<p>Initializes the TrackAdditionalOutputsCallback class.</p>
+<p>Example config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.callbacks.TrackAdditionalOutputsCallback</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TrackAdditionalOutputsCallback</span>
+<span class="w">  </span><span class="nt">every_n_updates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">keys</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;surface_pressure_loss&quot;</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig"><em>noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig</em></a>) – The configuration for the callback.</p></li>
-<li><p><strong>**kwargs</strong> – additional keyword arguments provided to the parent cla</p></li>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig"><em>noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig</em></a>) – Configuration for the callback. See
+<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig</span></code></a>
+for available options including keys and patterns to track.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments provided to the parent class.</p></li>
 </ul>
 </dd>
 </dl>
@@ -859,29 +869,16 @@ or if one of the patterns is contained in the update key name, e.g. {“some_los
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.track_after_accumulation_step">
 <span class="sig-name descname"><span class="pre">track_after_accumulation_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_outputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.track_after_accumulation_step" title="Link to this definition">¶</a></dt>
-<dd><p>Hook called after each individual gradient accumulation step.</p>
-<p>This method is invoked for every batch processed during training, regardless of whether
-an optimizer update is performed in that step (i.e., when <code class="docutils literal notranslate"><span class="pre">accumulation_steps</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>).
-It is primarily used for tracking metrics that should be averaged or aggregated
-across accumulation steps.</p>
-<p>Common use cases include:
-* Logging per-batch losses for high-frequency monitoring
-* Accumulating statistics across batches before an optimizer update
-* Implementing custom logging that needs access to individual batch data</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This method is generally intended to be called within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context
-by the trainer to ensure no gradients are tracked during logging operations.</p>
-</div>
+<dd><p>Track the specified outputs after each accumulation step.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p></li>
-<li><p><strong>batch</strong> – The current data batch processed in this accumulation step.</p></li>
-<li><p><strong>losses</strong> – Dictionary of computed losses for the current batch.</p></li>
-<li><p><strong>update_outputs</strong> – Optional dictionary of model outputs for the current batch.</p></li>
-<li><p><strong>accumulation_steps</strong> – Total number of accumulation steps before an optimizer update.</p></li>
-<li><p><strong>accumulation_step</strong> – The current accumulation step index (0-indexed).</p></li>
+<li><p><strong>update_counter</strong> – <a class="reference internal" href="../../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> object to track the number of updates.</p></li>
+<li><p><strong>update_outputs</strong> – The additional_outputs field from the TrainerResult returned by the trainer’s update step.
+Note that the base train_step method in the base trainer does not provide any additional outputs by
+default, and hence this callback can only be used if the train_step is modified to provide additional
+outputs.</p></li>
+<li><p><strong>**_</strong> – Additional unused keyword arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -897,11 +894,13 @@ by the trainer to ensure no gradients are tracked during logging operations.</p>
 <p>This method is the primary entry point for periodic actions in subclasses. It is
 triggered when any of the configured intervals (<code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code>,
 or <code class="docutils literal notranslate"><span class="pre">every_n_samples</span></code>) are reached.</p>
-<p>Subclasses should override this method to implement periodic logic such as:
-* Calculating and logging expensive validation metrics
-* Saving specific model checkpoints or artifacts
-* Visualizing training progress (e.g., plotting samples)
-* Adjusting training hyperparameters or model state</p>
+<p>Subclasses should override this method to implement periodic logic such as:</p>
+<ul class="simple">
+<li><p>Calculating and logging expensive validation metrics</p></li>
+<li><p>Saving specific model checkpoints or artifacts</p></li>
+<li><p>Visualizing training progress (e.g., plotting samples)</p></li>
+<li><p>Adjusting training hyperparameters or model state</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
@@ -910,10 +909,10 @@ or <code class="docutils literal notranslate"><span class="pre">every_n_samples<
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interval_type</strong> – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
-<li><p><strong>update_counter</strong> (<em>noether.core.utils.training.UpdateCounter</em>) – UpdateCounter instance providing details about the current
-training progress (epoch, update, sample counts).</p></li>
+<li><p><strong>update_counter</strong> (<em>noether.core.utils.training.UpdateCounter</em>) – <a class="reference internal" href="../../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance providing details about
+the current training progress (epoch, update, sample counts).</p></li>
 <li><p><strong>**kwargs</strong> – Additional keyword arguments passed from the triggering hook
-(e.g., from <code class="docutils literal notranslate"><span class="pre">after_epoch</span></code> or <code class="docutils literal notranslate"><span class="pre">after_update</span></code>).</p></li>
+(e.g., from <code class="xref py py-meth docutils literal notranslate"><span class="pre">after_epoch()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">after_update()</span></code>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>

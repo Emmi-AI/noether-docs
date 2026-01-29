@@ -210,7 +210,10 @@ Module Contents
       :param forward_output: Output of the model after the forward pass.
       :param targets: Dict with target tensors needed to compute the loss for this trainer.
 
-      :returns: A dict with the (weighted) sub-losses to log.
+      :returns: A dict with the (weighted) sub-losses to log. Or a tuple of (losses, additional_outputs) where additional_outputs is
+                a dict with additional information about the model forward pass that is passed to the track_after_accumulation_step method of the callbacks, e.g., the logits and targets to calculate a training accuracy in a callback).
+
+      Note: If a tuple is returned, the second element will be passed as additional_outputs in the TrainerResult returned by the train_step method.
 
 
 

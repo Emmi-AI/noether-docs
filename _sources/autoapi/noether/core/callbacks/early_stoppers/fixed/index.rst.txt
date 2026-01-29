@@ -22,8 +22,17 @@ Module Contents
 
    Early stopper (training) based on a fixed number of epochs, updates, or samples.
 
-   Initialize the early stopper.
+   Example config:
 
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.FixedEarlyStopper
+         stop_at_epoch: 10
+         name: FixedEarlyStopper
+
+   :param callback_config: The configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.FixedEarlyStopperConfig`
+                           for available options.
    :param \*\*kwargs: Additional arguments to pass to the parent class.
 
 

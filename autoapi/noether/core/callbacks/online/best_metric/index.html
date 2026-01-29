@@ -280,7 +280,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -791,7 +791,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.online.best_metric.BestMetricCallback" title="noether.core.callbacks.online.best_metric.BestMetricCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestMetricCallback</span></code></a></p></td>
-<td><p>A callback that keeps track of the best metric value over a training run. For example, track the test loss of</p></td>
+<td><p>A callback that keeps track of the best metric value over a training run for a certain metric (i.e., source_metric_key) while also logging one or more target metrics.</p></td>
 </tr>
 </tbody>
 </table>
@@ -803,15 +803,24 @@
 <dt class="sig sig-object py" id="noether.core.callbacks.online.best_metric.BestMetricCallback">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.online.best_metric.</span></span><span class="sig-name descname"><span class="pre">BestMetricCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.online.best_metric.BestMetricCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a></p>
-<p>A callback that keeps track of the best metric value over a training run. For example, track the test loss of
-the epoch with the best validation loss to simulate early stopping.</p>
-<p>Initializes the BestMetricCallback</p>
+<p>A callback that keeps track of the best metric value over a training run for a certain metric (i.e., source_metric_key) while also logging one or more target metrics.</p>
+<p>For example, track the test loss the epoch with the best validation loss to simulate early stopping.</p>
+<p>Example config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.callbacks.BestMetricCallback</span>
+<span class="w">  </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">source_metric_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loss/val/total</span>
+<span class="w">  </span><span class="nt">target_metric_keys</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">loss/test/total</span>
+</pre></div>
+</div>
+<p>In this example, whenever a new best validation loss is found, the corresponding test loss is logged under the key <code class="docutils literal notranslate"><span class="pre">loss/test/total/at_best/loss/val/total</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.BestMetricCallbackConfig" title="noether.core.schemas.callbacks.BestMetricCallbackConfig"><em>noether.core.schemas.callbacks.BestMetricCallbackConfig</em></a>) – The configuration for the callback.</p></li>
-<li><p><strong>metric_property_provider</strong> – The metric property provider to determine whether higher values are better.</p></li>
-<li><p><strong>**kwargs</strong> – additional keyword arguments provided to the parent class.</p></li>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.BestMetricCallbackConfig" title="noether.core.schemas.callbacks.BestMetricCallbackConfig"><em>noether.core.schemas.callbacks.BestMetricCallbackConfig</em></a>) – Configuration for the callback. See
+<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.BestMetricCallbackConfig" title="noether.core.schemas.callbacks.BestMetricCallbackConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BestMetricCallbackConfig</span></code></a>
+for available options including source and target metric keys.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments provided to the parent class.</p></li>
 </ul>
 </dd>
 </dl>
@@ -852,11 +861,13 @@ the epoch with the best validation loss to simulate early stopping.</p>
 <p>This method is the primary entry point for periodic actions in subclasses. It is
 triggered when any of the configured intervals (<code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code>,
 or <code class="docutils literal notranslate"><span class="pre">every_n_samples</span></code>) are reached.</p>
-<p>Subclasses should override this method to implement periodic logic such as:
-* Calculating and logging expensive validation metrics
-* Saving specific model checkpoints or artifacts
-* Visualizing training progress (e.g., plotting samples)
-* Adjusting training hyperparameters or model state</p>
+<p>Subclasses should override this method to implement periodic logic such as:</p>
+<ul class="simple">
+<li><p>Calculating and logging expensive validation metrics</p></li>
+<li><p>Saving specific model checkpoints or artifacts</p></li>
+<li><p>Visualizing training progress (e.g., plotting samples)</p></li>
+<li><p>Adjusting training hyperparameters or model state</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
@@ -865,10 +876,10 @@ or <code class="docutils literal notranslate"><span class="pre">every_n_samples<
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interval_type</strong> – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
-<li><p><strong>update_counter</strong> – UpdateCounter instance providing details about the current
-training progress (epoch, update, sample counts).</p></li>
+<li><p><strong>update_counter</strong> – <a class="reference internal" href="../../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance providing details about
+the current training progress (epoch, update, sample counts).</p></li>
 <li><p><strong>**kwargs</strong> – Additional keyword arguments passed from the triggering hook
-(e.g., from <code class="docutils literal notranslate"><span class="pre">after_epoch</span></code> or <code class="docutils literal notranslate"><span class="pre">after_update</span></code>).</p></li>
+(e.g., from <code class="xref py py-meth docutils literal notranslate"><span class="pre">after_epoch()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">after_update()</span></code>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>

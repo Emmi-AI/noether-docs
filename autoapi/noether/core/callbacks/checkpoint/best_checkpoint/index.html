@@ -280,7 +280,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -804,12 +804,25 @@
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.checkpoint.best_checkpoint.</span></span><span class="sig-name descname"><span class="pre">BestCheckpointCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a></p>
 <p>Callback to save the best model based on a metric.</p>
-<p>Initializes the BestCheckpointCallback.</p>
+<p>This callback monitors a specified metric and saves the model checkpoint whenever
+a new best value is achieved. It supports storing different model components when using a composite model and can save checkpoints at different tolerance thresholds.</p>
+<p>Example config:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">callbacks</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.callbacks.BestCheckpointCallback</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BestCheckpointCallback</span>
+<span class="w">    </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">metric_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loss/val/total</span>
+<span class="w">    </span><span class="nt">model_names</span><span class="p">:</span><span class="w">  </span><span class="c1"># only applies when training a CompositeModel</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">encoder</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="noether.core.schemas.callbacks.BestCheckpointCallbackConfig"><em>noether.core.schemas.callbacks.BestCheckpointCallbackConfig</em></a>) – The configuration for the callback.</p></li>
-<li><p><strong>**kwargs</strong> – additional arguments passed to the parent class.</p></li>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="noether.core.schemas.callbacks.BestCheckpointCallbackConfig"><em>noether.core.schemas.callbacks.BestCheckpointCallbackConfig</em></a>) – Configuration for the callback. See
+<a class="reference internal" href="../../../schemas/callbacks/index.html#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="noether.core.schemas.callbacks.BestCheckpointCallbackConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig</span></code></a>
+for available options including metric key, model names, and tolerance settings.</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
 </dd>
 </dl>
@@ -856,10 +869,14 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.state_dict">
 <span class="sig-name descname"><span class="pre">state_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.state_dict" title="Link to this definition">¶</a></dt>
-<dd><p>Returns the state of the callback.</p>
+<dd><p>Return the state of the callback for checkpointing.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any]</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary containing the best metric value, tolerance tracking state,
+and counter information.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -867,10 +884,14 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.load_state_dict">
 <span class="sig-name descname"><span class="pre">load_state_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.load_state_dict" title="Link to this definition">¶</a></dt>
-<dd><p>Loads the state of the callback into the state_dict. Note that this modifies the input state_dict.</p>
+<dd><p>Load the callback state from a checkpoint.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This modifies the input state_dict in place.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>state_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>]</em>)</p>
+<dd class="field-odd"><p><strong>state_dict</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>]</em>) – Dictionary containing the saved callback state.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -881,23 +902,16 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.before_training">
 <span class="sig-name descname"><span class="pre">before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.before_training" title="Link to this definition">¶</a></dt>
-<dd><p>Hook called once before the training loop starts.</p>
-<p>This method is intended to be overridden by derived classes to perform initialization
-tasks before training begins. Common use cases include:
-* Initializing experiment tracking (e.g., logging hyperparameters)
-* Printing model summaries or architecture details
-* Initializing specific data structures or buffers needed during training
-* Performing sanity checks on the data or configuration</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
-</div>
+<dd><p>Validate callback configuration before training starts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p>
+<dd class="field-odd"><p><strong>update_counter</strong> – The training update counter.</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.14)"><strong>NotImplementedError</strong></a> – If resuming training with tolerances is attempted.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -905,28 +919,13 @@ tasks before training begins. Common use cases include:
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.periodic_callback">
 <span class="sig-name descname"><span class="pre">periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.periodic_callback" title="Link to this definition">¶</a></dt>
-<dd><p>Hook called periodically based on the configured intervals.</p>
-<p>This method is the primary entry point for periodic actions in subclasses. It is
-triggered when any of the configured intervals (<code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code>,
-or <code class="docutils literal notranslate"><span class="pre">every_n_samples</span></code>) are reached.</p>
-<p>Subclasses should override this method to implement periodic logic such as:
-* Calculating and logging expensive validation metrics
-* Saving specific model checkpoints or artifacts
-* Visualizing training progress (e.g., plotting samples)
-* Adjusting training hyperparameters or model state</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
-</div>
+<dd><p>Execute the periodic callback to check and save best model.</p>
+<p>This method is called at the configured frequency (e.g., every N epochs).
+It checks if the current metric value is better than the previous best,
+and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>interval_type</strong> – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
-<li><p><strong>update_counter</strong> – UpdateCounter instance providing details about the current
-training progress (epoch, update, sample counts).</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments passed from the triggering hook
-(e.g., from <code class="docutils literal notranslate"><span class="pre">after_epoch</span></code> or <code class="docutils literal notranslate"><span class="pre">after_update</span></code>).</p></li>
-</ul>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> – If the log cache is empty or the metric key is not found.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -937,20 +936,10 @@ training progress (epoch, update, sample counts).</p></li>
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.after_training">
 <span class="sig-name descname"><span class="pre">after_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.after_training" title="Link to this definition">¶</a></dt>
-<dd><p>Hook called once after the training loop finishes.</p>
-<p>This method is intended to be overridden by derived classes to perform cleanup or
-final reporting tasks after training is complete. Common use cases include:
-* Performing a final evaluation on the test set
-* Saving final model weights or artifacts
-* Sending notifications (e.g., via Slack or email) about the completed run
-* Closing or finalizing experiment tracking sessions</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
-</div>
+<dd><p>Log the best metric values at different tolerance thresholds after training completes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p>
+<dd class="field-odd"><p><strong>**kwargs</strong> – Additional keyword arguments (unused).</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>

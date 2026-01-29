@@ -22,11 +22,19 @@ Module Contents
 
    Early stopper (training) based on a metric value to be monitored.
 
-   Initialize the early stopper.
+   Example config:
 
-   :param metric_key: The key of the metric to monitor.
-   :param tolerance: The number of times the metric can stagnate before stopping training.
-   :param metric_property_provider: The metric property provider to use.
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.MetricEarlyStopper
+         every_n_epochs: 1
+         metric_key: loss/val/total
+         tolerance: 0.10
+         name: MetricEarlyStopper
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.MetricEarlyStopperConfig`
+                           for available options including metric key and tolerance.
    :param \*\*kwargs: Additional arguments to pass to the parent class.
 
 

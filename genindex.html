@@ -278,7 +278,7 @@
 <li class="toctree-l1"><a class="reference internal" href="guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guides/training/use_callbacks.html">How to Use Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -1448,9 +1448,11 @@
         </ul></li>
         <li><a href="autoapi/noether/io/cli/cli_huggingface/index.html#noether.io.cli.cli_huggingface.HuggingFaceRepoType.DATASET">DATASET (noether.io.cli.cli_huggingface.HuggingFaceRepoType attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.OfflineLossCallbackConfig.dataset_key">dataset_key (noether.core.schemas.callbacks.OfflineLossCallbackConfig attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.dataset_key">dataset_key (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>
 
         <ul>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig.dataset_key">(noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig attribute)</a>
+</li>
           <li><a href="autoapi/noether/training/callbacks/offline_loss/index.html#noether.training.callbacks.offline_loss.OfflineLossCallback.dataset_key">(noether.training.callbacks.offline_loss.OfflineLossCallback attribute)</a>
 </li>
         </ul></li>
@@ -1536,10 +1538,10 @@
 </li>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/default_tensor/index.html#noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor.default_value">default_value (noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor attribute)</a>
 </li>
-        <li><a href="autoapi/noether/data/pipeline/collators/default/index.html#noether.data.pipeline.collators.default.DefaultCollator">DefaultCollator (class in noether.data.pipeline.collators.default)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/data/pipeline/collators/default/index.html#noether.data.pipeline.collators.default.DefaultCollator">DefaultCollator (class in noether.data.pipeline.collators.default)</a>
+</li>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/default_tensor/index.html#noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor">DefaultTensorSampleProcessor (class in noether.data.pipeline.sample_processors.default_tensor)</a>
 </li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.FailAction.DELETE">DELETE (noether.io.verification.FailAction attribute)</a>
@@ -4099,6 +4101,8 @@
 </li>
           <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.OnlineLossCallbackConfig.name">(noether.core.schemas.callbacks.OnlineLossCallbackConfig attribute)</a>
 </li>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig.name">(noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.name">(noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/models/base/index.html#noether.core.schemas.models.base.ModelBaseConfig.name">(noether.core.schemas.models.base.ModelBaseConfig attribute)</a>
@@ -6608,6 +6612,8 @@
 </li>
         <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback">PeriodicDataIteratorCallback (class in noether.core.callbacks.periodic)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig">PeriodicDataIteratorCallbackConfig (class in noether.core.schemas.callbacks)</a>
+</li>
         <li><a href="autoapi/noether/core/schemas/models/ab_upt/index.html#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.physics_blocks">physics_blocks (noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig attribute)</a>
 
         <ul>
@@ -6888,8 +6894,6 @@
         </ul></li>
         <li><a href="autoapi/noether/core/providers/metric_property/index.html#noether.core.providers.metric_property.MetricPropertyProvider.register_pattern">register_pattern() (noether.core.providers.metric_property.MetricPropertyProvider static method)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.register_sampler_config">register_sampler_config() (noether.core.callbacks.periodic.PeriodicDataIteratorCallback method)</a>
-</li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.IrregularNatAttentionConfig.relpos_mlp_dropout">relpos_mlp_dropout (noether.core.schemas.modules.attention.IrregularNatAttentionConfig attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.IrregularNatAttentionConfig.relpos_mlp_hidden_dim">relpos_mlp_hidden_dim (noether.core.schemas.modules.attention.IrregularNatAttentionConfig attribute)</a>
@@ -6916,10 +6920,10 @@
 </li>
         <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.require_online">require_online() (noether.core.configs.wandb.WandBConfig method)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/logging/formatting/index.html#noether.core.utils.logging.formatting.CustomFormatter.RESET">RESET (noether.core.utils.logging.formatting.CustomFormatter attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/stats/index.html#noether.data.stats.RunningMoments.reset">reset() (noether.data.stats.RunningMoments method)</a>
 </li>
         <li><a href="autoapi/noether/modeling/modules/layers/linear_projection/index.html#noether.modeling.modules.layers.linear_projection.LinearProjection.reset_parameters">reset_parameters() (noether.modeling.modules.layers.linear_projection.LinearProjection method)</a>
@@ -7049,6 +7053,8 @@
         <li><a href="autoapi/noether/data/pipeline/multistage/index.html#noether.data.pipeline.multistage.SampleProcessorType">SampleProcessorType (in module noether.data.pipeline.multistage)</a>
 </li>
         <li><a href="autoapi/noether/data/samplers/interleaved_sampler/index.html#noether.data.samplers.interleaved_sampler.SamplerIntervalConfig.sampler">sampler (noether.data.samplers.interleaved_sampler.SamplerIntervalConfig attribute)</a>
+</li>
+        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.sampler_config">sampler_config (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/samplers/interleaved_sampler/index.html#noether.data.samplers.interleaved_sampler.SamplerIntervalConfig">SamplerIntervalConfig (class in noether.data.samplers.interleaved_sampler)</a>
 </li>
@@ -7314,10 +7320,10 @@
 </li>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.skip_nan_loss_counter">skip_nan_loss_counter (noether.training.trainers.base.BaseTrainer attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.skip_nan_loss_max_count">skip_nan_loss_max_count (noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.skip_nan_loss_max_count">skip_nan_loss_max_count (noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
+</li>
         <li><a href="autoapi/noether/core/utils/common/naming/index.html#noether.core.utils.common.naming.snake_type_name">snake_type_name() (in module noether.core.utils.common.naming)</a>
 </li>
         <li><a href="autoapi/noether/modeling/modules/attention/transolver_plusplus/index.html#noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention.softmax">softmax (noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention attribute)</a>

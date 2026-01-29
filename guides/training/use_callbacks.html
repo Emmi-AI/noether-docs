@@ -7,7 +7,7 @@
         <link rel="prefetch" href="../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>How to Use Callbacks - Noether Framework documentation</title>
+        <title>How to Use and Implement Callbacks - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -280,7 +280,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">How to Use Callbacks</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">How to Use and Implement Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -783,12 +783,12 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="how-to-use-callbacks">
-<h1>How to Use Callbacks<a class="headerlink" href="#how-to-use-callbacks" title="Link to this heading">¶</a></h1>
+          <section id="how-to-use-and-implement-callbacks">
+<h1>How to Use and Implement Callbacks<a class="headerlink" href="#how-to-use-and-implement-callbacks" title="Link to this heading">¶</a></h1>
 <p>Callbacks are the primary mechanism in the <strong>Noether Framework</strong> that allow you to inject custom logic into various stages of the training process. They are primarily used for monitoring, checkpointing, evaluation, and experiment tracking.</p>
 <section id="what-are-callbacks">
 <h2>What are Callbacks?<a class="headerlink" href="#what-are-callbacks" title="Link to this heading">¶</a></h2>
-<p>In Noether, a callback is a class that inherits from <a class="reference internal" href="../../autoapi/noether/core/callbacks/base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.base.CallbackBase</span></code></a>. These objects provide hooks that the trainer calls at specific points:</p>
+<p>In Noether, a callback is a class that inherits from <a class="reference internal" href="../../autoapi/noether/core/callbacks/base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallbackBase</span></code></a>. These objects provide hooks that the trainer calls at specific points:</p>
 <ul class="simple">
 <li><p><strong>Before training starts</strong>: Initialization, logging hyperparameters, or printing model summaries.</p></li>
 <li><p><strong>After each accumulation step</strong>: Tracking metrics across multiple batches.</p></li>
@@ -803,11 +803,11 @@
 <p>Noether provides several base classes and a wide range of built-in callbacks.</p>
 <section id="pre-post-training-callbacks">
 <h3>Pre/Post Training Callbacks<a class="headerlink" href="#pre-post-training-callbacks" title="Link to this heading">¶</a></h3>
-<p>These callbacks inherit directly from <a class="reference internal" href="../../autoapi/noether/core/callbacks/base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.base.CallbackBase</span></code></a> and are designed to run logic only once at the start or end of training. Examples include logging hyperparameters before training or saving final results after training.</p>
+<p>These callbacks inherit directly from <a class="reference internal" href="../../autoapi/noether/core/callbacks/base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallbackBase</span></code></a> and are designed to run logic only once at the start or end of training. Examples include logging hyperparameters before training or saving final results after training.</p>
 </section>
 <section id="periodic-callbacks">
 <h3>Periodic Callbacks<a class="headerlink" href="#periodic-callbacks" title="Link to this heading">¶</a></h3>
-<p>Most callbacks during training are <strong>periodic</strong>. Inheriting from <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a> allows you to configure how often a callback should run using one of the following intervals:</p>
+<p>Most callbacks during training are <strong>periodic</strong>. Inheriting from <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicCallback</span></code></a> allows you to configure how often a callback should run using one of the following intervals:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code>: Runs after every $N$ epochs.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code>: Runs after every $N$ optimizer steps.</p></li>
@@ -816,11 +816,13 @@
 </section>
 <section id="periodic-data-iterator-callbacks">
 <h3>Periodic Data Iterator Callbacks<a class="headerlink" href="#periodic-data-iterator-callbacks" title="Link to this heading">¶</a></h3>
-<p>For tasks that require iterating over an entire dataset (like validation or computing complex metrics on a test set), Noether provides <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicDataIteratorCallback</span></code></a>.</p>
-<p>This class handles:
-*   Distributed data sampling across multiple GPUs.
-*   Automatic collation of results from different ranks.
-*   Integration with the training data pipeline.</p>
+<p>For tasks that require iterating over an entire dataset (like validation or computing complex metrics on a test set), Noether provides <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback</span></code></a>.</p>
+<p>This class handles:</p>
+<ul class="simple">
+<li><p>Distributed data sampling across multiple GPUs.</p></li>
+<li><p>Automatic collation of results from different ranks.</p></li>
+<li><p>Integration with the training data pipeline.</p></li>
+</ul>
 </section>
 </section>
 <section id="commonly-used-callbacks">
@@ -839,16 +841,16 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Monitoring</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Progress</span></code>, <code class="docutils literal notranslate"><span class="pre">ETA</span></code>, <code class="docutils literal notranslate"><span class="pre">LR</span></code>, <code class="docutils literal notranslate"><span class="pre">PeakMemory</span></code>, <code class="docutils literal notranslate"><span class="pre">OnlineLoss</span></code>. Used for real-time tracking of training progress and hardware usage.</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ProgressCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetStatsCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">LrCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">PeakMemoryCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">OnlineLossCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ParamCountCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">EtaCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TrainTimeCallback</span></code>. Used for real-time tracking of training progress and hardware usage. These callbacks are all initialized by default by the <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrainer</span></code>, the user does not need to add them manually.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Checkpointing</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">CheckpointCallback</span></code>, <code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback</span></code>, <code class="docutils literal notranslate"><span class="pre">EMACallback</span></code>. Used to save model weights periodically or when a new best metric is achieved.</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">BestCheckpointCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">CheckpointCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">EMACallback</span></code>. Used to save model weights periodically or when a new best metric is achieved.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Early Stopping</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopping</span></code>, <code class="docutils literal notranslate"><span class="pre">FixedUpdateEarlyStopping</span></code>. Used to stop training automatically if progress plateaus.</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricEarlyStopping</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FixedUpdateEarlyStopping</span></code>. Used to stop training automatically if progress plateaus.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Evaluation</strong></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">BestMetricCallback</span></code>, <code class="docutils literal notranslate"><span class="pre">TrackOutputsCallback</span></code>. Specialized monitoring for tracked metrics.</p></td>
+<td><p><code class="xref py py-class docutils literal notranslate"><span class="pre">BestMetricCallback</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TrackOutputsCallback</span></code>. Specialized monitoring for tracked metrics.</p></td>
 </tr>
 </tbody>
 </table>
@@ -858,9 +860,9 @@
 <h2>When to Use What?<a class="headerlink" href="#when-to-use-what" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Use existing callbacks</strong> for standard tasks like logging, checkpointing, and validation. These are highly configurable via YAML.</p></li>
-<li><p><strong>Inherit from ``PeriodicCallback``</strong> if you need to perform an action at regular intervals (e.g., logging a custom internal state of the model).</p></li>
-<li><p><strong>Inherit from ``PeriodicDataIteratorCallback``</strong> if you need to run inference on a specific dataset and aggregate the results to compute a metric.</p></li>
-<li><p><strong>Inherit from ``CallbackBase``</strong> if your logic only needs to run once at the very beginning or end of training.</p></li>
+<li><p><strong>Inherit from</strong> <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicCallback</span></code></a> if you need to perform an action at regular intervals (e.g., logging a custom internal state of the model).</p></li>
+<li><p><strong>Inherit from</strong> <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback</span></code></a> if you need to run inference on a specific dataset and aggregate the results to compute a metric. Those callbacks need to configure a dataset key to specify which dataset to run on.</p></li>
+<li><p><strong>Inherit from</strong> <a class="reference internal" href="../../autoapi/noether/core/callbacks/base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallbackBase</span></code></a> if your logic only needs to run once at the very beginning or end of training.</p></li>
 </ol>
 </section>
 <section id="how-to-configure-callbacks">
@@ -868,13 +870,46 @@
 <p>Callbacks are usually defined in your experiment configuration under the <code class="docutils literal notranslate"><span class="pre">callbacks</span></code> key. Each callback requires the fully qualified class name  (e.g., <code class="docutils literal notranslate"><span class="pre">noether.core.callbacks.progress.Progress</span></code>) as the <code class="docutils literal notranslate"><span class="pre">kind</span></code>, exactly one frequency setting (<code class="docutils literal notranslate"><span class="pre">every_n_*</span></code>) and any additional parameters specific to that callback.</p>
 <p>Example YAML configuration:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">callbacks</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.callbacks.ProgressCallback</span>
-<span class="w">    </span><span class="nt">every_n_updates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.callbacks.BestMetricCallback</span>
-<span class="w">    </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">    </span><span class="nt">metric_key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;val/accuracy&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.callbacks.LrCallback</span>
-<span class="w">    </span><span class="nt">every_n_updates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w"> </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.callbacks.CallbackClassName</span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CallbackInstanceName</span>
+<span class="w">   </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">   </span><span class="c1"># or every_n_updates: 1</span>
+<span class="w">   </span><span class="c1"># additional_param: value</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-implement-custom-callbacks">
+<h2>How to Implement Custom Callbacks<a class="headerlink" href="#how-to-implement-custom-callbacks" title="Link to this heading">¶</a></h2>
+<p>To create a custom callback, define a new class that inherits from one of the base callback classes. Override the relevant methods to inject your logic at the desired points in the training process.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="n">PeriodicDataIteratorCallbackConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.callbacks.periodic</span><span class="w"> </span><span class="kn">import</span> <span class="n">PeriodicCallback</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.data.samplers</span><span class="w"> </span><span class="kn">import</span> <span class="n">SamplerIntervalConfig</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomCallbackConfig</span><span class="p">(</span><span class="n">PeriodicDataIteratorCallbackConfig</span><span class="p">):</span>
+    <span class="c1"># Define any configuration parameters your callback needs</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyCustomCallback</span><span class="p">(</span><span class="n">PeriodicCallback</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback_config</span><span class="p">:</span> <span class="n">CustomCallbackConfig</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">callback_config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">register_sampler_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SamplerIntervalConfig</span><span class="p">:</span>
+        <span class="c1"># Define how to sample data for this callback. By default, this method takes</span>
+        <span class="c1"># the sampler config by using the dataset_key from the callback config.</span>
+        <span class="c1"># If you need custom sampling logic, override this method.</span>
+        <span class="k">return</span> <span class="n">SamplerIntervalConfig</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="o">**</span><span class="n">_</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+        <span class="n">model_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">batch</span><span class="p">)</span>
+        <span class="c1"># some more custom logic</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;custom_output&quot;</span><span class="p">:</span> <span class="n">model_output</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="o">**</span><span class="n">_</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># this method gets the aggregated results of the process_data method across the dataset</span>
+        <span class="c1"># do something with the results</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">add_scalar</span><span class="p">(</span><span class="s2">&quot;custom_metric&quot;</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;custom_output&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 </pre></div>
 </div>
 </section>
@@ -941,7 +976,7 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">How to Use Callbacks</a><ul>
+<li><a class="reference internal" href="#">How to Use and Implement Callbacks</a><ul>
 <li><a class="reference internal" href="#what-are-callbacks">What are Callbacks?</a></li>
 <li><a class="reference internal" href="#types-of-callbacks">Types of Callbacks</a><ul>
 <li><a class="reference internal" href="#pre-post-training-callbacks">Pre/Post Training Callbacks</a></li>
@@ -952,6 +987,7 @@
 <li><a class="reference internal" href="#commonly-used-callbacks">Commonly Used Callbacks</a></li>
 <li><a class="reference internal" href="#when-to-use-what">When to Use What?</a></li>
 <li><a class="reference internal" href="#how-to-configure-callbacks">How to Configure Callbacks</a></li>
+<li><a class="reference internal" href="#how-to-implement-custom-callbacks">How to Implement Custom Callbacks</a></li>
 </ul>
 </li>
 </ul>

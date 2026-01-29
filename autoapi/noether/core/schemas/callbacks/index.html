@@ -280,7 +280,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -805,31 +805,34 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="noether.core.schemas.callbacks.BestCheckpointCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig" title="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.CheckpointCallbackConfig" title="noether.core.schemas.callbacks.CheckpointCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CheckpointCallbackConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="noether.core.schemas.callbacks.BestCheckpointCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.EmaCallbackConfig" title="noether.core.schemas.callbacks.EmaCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmaCallbackConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.CheckpointCallbackConfig" title="noether.core.schemas.callbacks.CheckpointCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CheckpointCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.OnlineLossCallbackConfig" title="noether.core.schemas.callbacks.OnlineLossCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OnlineLossCallbackConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.EmaCallbackConfig" title="noether.core.schemas.callbacks.EmaCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmaCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.BestMetricCallbackConfig" title="noether.core.schemas.callbacks.BestMetricCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestMetricCallbackConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.OnlineLossCallbackConfig" title="noether.core.schemas.callbacks.OnlineLossCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OnlineLossCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.BestMetricCallbackConfig" title="noether.core.schemas.callbacks.BestMetricCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestMetricCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig" title="noether.core.schemas.callbacks.OfflineLossCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.MetricEarlyStopperConfig" title="noether.core.schemas.callbacks.MetricEarlyStopperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig" title="noether.core.schemas.callbacks.OfflineLossCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.FixedEarlyStopperConfig" title="noether.core.schemas.callbacks.FixedEarlyStopperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.MetricEarlyStopperConfig" title="noether.core.schemas.callbacks.MetricEarlyStopperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.FixedEarlyStopperConfig" title="noether.core.schemas.callbacks.FixedEarlyStopperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -849,7 +852,7 @@
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.CallBackBaseConfig.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.CallBackBaseConfig.name" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.callbacks.CallBackBaseConfig.name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -935,6 +938,28 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">PeriodicDataIteratorCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig.dataset_key">
+<span class="sig-name descname"><span class="pre">dataset_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig.dataset_key" title="Link to this definition">¶</a></dt>
+<dd><p>The key of the dataset to be used for the loss calculation. Can be any key that is registered in the <cite>DataContainer</cite>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.BestCheckpointCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">BestCheckpointCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
@@ -969,13 +994,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.BestCheckpointCallbackConfig.model_name">
 <span class="sig-name descname"><span class="pre">model_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig.model_name" title="Link to this definition">¶</a></dt>
-<dd><p>Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name=’encoder’ here).</p>
+<dd><p>The name of the model to save. If None, all models are saved.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.BestCheckpointCallbackConfig.model_names">
 <span class="sig-name descname"><span class="pre">model_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig.model_names" title="Link to this definition">¶</a></dt>
-<dd><p>Same as <cite>model_name</cite> but allows passing multiple <cite>model_names</cite>.</p>
+<dd><p>Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name=’encoder’ here). This only applies when training a CompositeModel. If None, all models are saved.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1145,13 +1170,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.keys">
 <span class="sig-name descname"><span class="pre">keys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.keys" title="Link to this definition">¶</a></dt>
-<dd><p>List of patterns to track. Matched if it is contained in one of the update_outputs keys.</p>
+<dd><p>List of keys to track in the additional_outputs of the TrainerResult returned by the trainer’s update step.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.patterns">
 <span class="sig-name descname"><span class="pre">patterns</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.patterns" title="Link to this definition">¶</a></dt>
-<dd><p>List of patterns to track. Matched if it is contained in one of the update_outputs keys.</p>
+<dd><p>List of patterns to track in the additional_outputs of the TrainerResult returned by the trainer’s update step. Matched if it is contained in one of the update_outputs keys.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1183,7 +1208,7 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.OfflineLossCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">OfflineLossCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig" title="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallbackConfig</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1193,12 +1218,6 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.OfflineLossCallbackConfig.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'OfflineLossCallback'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig.name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.OfflineLossCallbackConfig.dataset_key">
-<span class="sig-name descname"><span class="pre">dataset_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig.dataset_key" title="Link to this definition">¶</a></dt>
-<dd><p>The key of the dataset to be used for the loss calculation. Can be any key that is registered in the <cite>DataContainer</cite>.</p>
-</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.OfflineLossCallbackConfig.output_patterns_to_log">
@@ -1388,6 +1407,11 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.check_kind_is_not_empty"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.check_kind_is_not_empty()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallbackConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallbackConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig.dataset_key"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallbackConfig.dataset_key</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.name</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig.metric_key"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.metric_key</span></code></a></li>
@@ -1439,7 +1463,6 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig.name</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig.dataset_key"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig.dataset_key</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig.output_patterns_to_log"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig.output_patterns_to_log</span></code></a></li>
 </ul>
 </li>

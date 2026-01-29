@@ -37,18 +37,26 @@ Module Contents
 
       Template method that is called for each batch that is loaded from the dataset.
 
+      This method should process a single batch and return results that will be collated.
+
       :param batch: The loaded batch.
       :param trainer_model: Model of the current training run.
+
+      :returns: Processed results for this batch. Can be a tensor, dict of tensors, list, or tuple.
 
 
 
    .. py:method:: process_results(results, **_)
 
-      Template method that is called with the collated results that were produced by `iterate_over_dataset`.
+      Template method that is called with the collated results from dataset iteration.
 
-      :param results: The collated results that were produced by `_iterate_over_dataset`.
+      For example, metrics can be computed from the results for the entire test/validation dataset and logged.
+
+      :param results: The collated results that were produced by :meth:`_iterate_over_dataset` and the individual
+                      :meth:`process_data` calls.
       :param interval_type: The type of interval that triggered this callback invocation.
-      :param update_counter: The current update counter.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` with the current training state.
+      :param \*\*_: Additional unused keyword arguments.
 
 
 

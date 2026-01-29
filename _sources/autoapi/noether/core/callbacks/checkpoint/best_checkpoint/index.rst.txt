@@ -22,10 +22,25 @@ Module Contents
 
    Callback to save the best model based on a metric.
 
-   Initializes the BestCheckpointCallback.
+   This callback monitors a specified metric and saves the model checkpoint whenever
+   a new best value is achieved. It supports storing different model components when using a composite model and can save checkpoints at different tolerance thresholds.
 
-   :param callback_config: The configuration for the callback.
-   :param \*\*kwargs: additional arguments passed to the parent class.
+   Example config:
+
+   .. code-block:: yaml
+
+       callbacks:
+         - kind: noether.core.callbacks.BestCheckpointCallback
+           name: BestCheckpointCallback
+           every_n_epochs: 1
+           metric_key: loss/val/total
+           model_names:  # only applies when training a CompositeModel
+             - encoder
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.BestCheckpointCallbackConfig`
+                           for available options including metric key, model names, and tolerance settings.
+   :param \*\*kwargs: Additional arguments passed to the parent class.
 
 
    .. py:attribute:: metric_key
@@ -57,71 +72,50 @@ Module Contents
 
    .. py:method:: state_dict()
 
-      Returns the state of the callback.
+      Return the state of the callback for checkpointing.
+
+      :returns: Dictionary containing the best metric value, tolerance tracking state,
+                and counter information.
 
 
 
    .. py:method:: load_state_dict(state_dict)
 
-      Loads the state of the callback into the state_dict. Note that this modifies the input state_dict.
+      Load the callback state from a checkpoint.
+
+      .. note:: This modifies the input state_dict in place.
+
+      :param state_dict: Dictionary containing the saved callback state.
 
 
 
    .. py:method:: before_training(*, update_counter)
 
-      Hook called once before the training loop starts.
+      Validate callback configuration before training starts.
 
-      This method is intended to be overridden by derived classes to perform initialization
-      tasks before training begins. Common use cases include:
-      * Initializing experiment tracking (e.g., logging hyperparameters)
-      * Printing model summaries or architecture details
-      * Initializing specific data structures or buffers needed during training
-      * Performing sanity checks on the data or configuration
+      :param update_counter: The training update counter.
 
-      .. note:: This method is executed within a ``torch.no_grad()`` context.
-
-      :param update_counter: UpdateCounter instance to access current training progress.
+      :raises NotImplementedError: If resuming training with tolerances is attempted.
 
 
 
    .. py:method:: periodic_callback(**_)
 
-      Hook called periodically based on the configured intervals.
+      Execute the periodic callback to check and save best model.
 
-      This method is the primary entry point for periodic actions in subclasses. It is
-      triggered when any of the configured intervals (``every_n_epochs``, ``every_n_updates``,
-      or ``every_n_samples``) are reached.
+      This method is called at the configured frequency (e.g., every N epochs).
+      It checks if the current metric value is better than the previous best,
+      and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.
 
-      Subclasses should override this method to implement periodic logic such as:
-      * Calculating and logging expensive validation metrics
-      * Saving specific model checkpoints or artifacts
-      * Visualizing training progress (e.g., plotting samples)
-      * Adjusting training hyperparameters or model state
-
-      .. note:: This method is executed within a ``torch.no_grad()`` context.
-
-      :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
-      :param update_counter: UpdateCounter instance providing details about the current
-                             training progress (epoch, update, sample counts).
-      :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
-                         (e.g., from ``after_epoch`` or ``after_update``).
+      :raises KeyError: If the log cache is empty or the metric key is not found.
 
 
 
    .. py:method:: after_training(**kwargs)
 
-      Hook called once after the training loop finishes.
+      Log the best metric values at different tolerance thresholds after training completes.
 
-      This method is intended to be overridden by derived classes to perform cleanup or
-      final reporting tasks after training is complete. Common use cases include:
-      * Performing a final evaluation on the test set
-      * Saving final model weights or artifacts
-      * Sending notifications (e.g., via Slack or email) about the completed run
-      * Closing or finalizing experiment tracking sessions
-
-      .. note:: This method is executed within a ``torch.no_grad()`` context.
-
-      :param update_counter: UpdateCounter instance to access current training progress.
+      :param \*\*kwargs: Additional keyword arguments (unused).
 
 
 

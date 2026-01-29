@@ -280,7 +280,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -830,26 +830,26 @@
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.periodic.</span></span><span class="sig-name descname"><span class="pre">PeriodicCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_property_provider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.base.CallbackBase</span></code></a></p>
 <p>Base class for callbacks that are invoked periodically during training.</p>
-<p>PeriodicCallback extends CallbackBase to support periodic execution based on training progress. Callbacks can be
-configured to run at regular intervals defined by epochs, updates (optimizer steps), or samples (data points
-processed). This class implements the infrastructure for periodic invocation while child classes define the actual
-behavior via the <cite>periodic_callback</cite> method.</p>
-<dl>
-<dt>Interval Configuration:</dt><dd><p>Callbacks can be configured to run periodically using one or more of:
-* <cite>every_n_epochs</cite>: Execute callback every N epochs
-* <cite>every_n_updates</cite>: Execute callback every N optimizer updates
-* <cite>every_n_samples</cite>: Execute callback every N samples processed</p>
+<p>PeriodicCallback extends <a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallbackBase</span></code></a> to support periodic execution based on
+training progress. Callbacks can be configured to run at regular intervals defined by epochs, updates (optimizer
+steps), or samples (data points processed). This class implements the infrastructure for periodic invocation while
+child classes define the actual behavior via the <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.periodic_callback" title="noether.core.callbacks.periodic.PeriodicCallback.periodic_callback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">periodic_callback()</span></code></a> method.</p>
+<dl class="simple">
+<dt>Interval Configuration:</dt><dd><p>Callbacks can be configured to run periodically using one or more of:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code>: Execute callback every N epochs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code>: Execute callback every N optimizer updates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">every_n_samples</span></code>: Execute callback every N samples processed</p></li>
+</ul>
 </dd>
-<dt>Tracking vs. Periodic Execution:</dt><dd><p>The class provides two types of hooks:
-* Tracking hooks (<cite>track_after_accumulation_step</cite>, <cite>track_after_update_step</cite>): Called on every</p>
-<blockquote>
-<div><p>accumulation/update step to track metrics continuously (e.g., for running averages).
+<dt>Tracking vs. Periodic Execution:</dt><dd><p>The class provides two types of hooks:</p>
+<ul class="simple">
+<li><p>Tracking hooks (<a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.track_after_accumulation_step" title="noether.core.callbacks.periodic.PeriodicCallback.track_after_accumulation_step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">track_after_accumulation_step()</span></code></a>, <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.track_after_update_step" title="noether.core.callbacks.periodic.PeriodicCallback.track_after_update_step"><code class="xref py py-meth docutils literal notranslate"><span class="pre">track_after_update_step()</span></code></a>): Called on every
+accumulation/update step to track metrics continuously (e.g., for running averages).
 I.e., if you want to log an exponential moving average of the loss every epoch,
 the logging is done in the periodic callback;
-however, the tracking of the loss values for computing the moving average is done in the tracking hook.</p>
-</div></blockquote>
-<ul class="simple">
-<li><p>Periodic hook (<cite>periodic_callback</cite>): Called only when the configured interval is reached, typically for
+however, the tracking of the loss values for computing the moving average is done in the tracking hook.</p></li>
+<li><p>Periodic hook (<a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.periodic_callback" title="noether.core.callbacks.periodic.PeriodicCallback.periodic_callback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">periodic_callback()</span></code></a>): Called only when the configured interval is reached, typically for
 expensive operations like evaluation or checkpointing.</p></li>
 </ul>
 </dd>
@@ -875,7 +875,7 @@ expensive operations like evaluation or checkpointing.</p></li>
 
 <span class="c1"># Configure in YAML:</span>
 <span class="c1"># callbacks:</span>
-<span class="c1">#   - kind: CustomMetricCallback</span>
+<span class="c1">#   - kind: path.to.CustomMetricCallback</span>
 <span class="c1">#     every_n_epochs: 10</span>
 </pre></div>
 </div>
@@ -926,18 +926,19 @@ expensive operations like evaluation or checkpointing.</p></li>
 <dd><p>Batch size used during training.</p>
 </dd></dl>
 
-<p>Initializes the <cite>PeriodicCallback</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><em>noether.core.schemas.callbacks.CallBackBaseConfig</em></a>) – Configuration of the <cite>PeriodicCallback</cite>.</p></li>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><em>noether.core.schemas.callbacks.CallBackBaseConfig</em></a>) – Configuration for the callback. See
+<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a>
+for available options.</p></li>
 <li><p><strong>trainer</strong> (<em>noether.training.trainers.BaseTrainer</em>) – Trainer of the current run.</p></li>
 <li><p><strong>model</strong> (<em>noether.core.models.ModelBase</em>) – Model of the current run.</p></li>
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../../../data/container/index.html#noether.data.container.DataContainer" title="noether.data.container.DataContainer"><em>noether.data.container.DataContainer</em></a>) – DataContainer instance that provides access to all datasets.</p></li>
-<li><p><strong>tracker</strong> (<em>noether.core.trackers.BaseTracker</em>) – Tracker instance to log metrics to stdout/disk/online platform.</p></li>
-<li><p><strong>log_writer</strong> (<em>noether.core.writers.LogWriter</em>) – LogWriter instance to log metrics.</p></li>
-<li><p><strong>checkpoint_writer</strong> (<em>noether.core.writers.CheckpointWriter</em>) – CheckpointWriter instance to save checkpoints.</p></li>
-<li><p><strong>metric_property_provider</strong> (<em>noether.core.providers.MetricPropertyProvider</em>) – MetricPropertyProvider instance to access properties of metrics.</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../../../data/container/index.html#noether.data.container.DataContainer" title="noether.data.container.DataContainer"><em>noether.data.container.DataContainer</em></a>) – <a class="reference internal" href="../../../data/container/index.html#noether.data.container.DataContainer" title="noether.data.container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a> instance that provides access to all datasets.</p></li>
+<li><p><strong>tracker</strong> (<em>noether.core.trackers.BaseTracker</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTracker</span></code> instance to log metrics to stdout/disk/online platform.</p></li>
+<li><p><strong>log_writer</strong> (<em>noether.core.writers.LogWriter</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">LogWriter</span></code> instance to log metrics.</p></li>
+<li><p><strong>checkpoint_writer</strong> (<em>noether.core.writers.CheckpointWriter</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">CheckpointWriter</span></code> instance to save checkpoints.</p></li>
+<li><p><strong>metric_property_provider</strong> (<em>noether.core.providers.MetricPropertyProvider</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">MetricPropertyProvider</span></code> instance to access properties of metrics.</p></li>
 <li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Name of the callback.</p></li>
 </ul>
 </dd>
@@ -969,11 +970,13 @@ expensive operations like evaluation or checkpointing.</p></li>
 <p>This method is the primary entry point for periodic actions in subclasses. It is
 triggered when any of the configured intervals (<code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code>,
 or <code class="docutils literal notranslate"><span class="pre">every_n_samples</span></code>) are reached.</p>
-<p>Subclasses should override this method to implement periodic logic such as:
-* Calculating and logging expensive validation metrics
-* Saving specific model checkpoints or artifacts
-* Visualizing training progress (e.g., plotting samples)
-* Adjusting training hyperparameters or model state</p>
+<p>Subclasses should override this method to implement periodic logic such as:</p>
+<ul class="simple">
+<li><p>Calculating and logging expensive validation metrics</p></li>
+<li><p>Saving specific model checkpoints or artifacts</p></li>
+<li><p>Visualizing training progress (e.g., plotting samples)</p></li>
+<li><p>Adjusting training hyperparameters or model state</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
@@ -982,10 +985,10 @@ or <code class="docutils literal notranslate"><span class="pre">every_n_samples<
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interval_type</strong> (<em>IntervalType</em>) – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
-<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance providing details about the current
-training progress (epoch, update, sample counts).</p></li>
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance providing details about
+the current training progress (epoch, update, sample counts).</p></li>
 <li><p><strong>**kwargs</strong> – Additional keyword arguments passed from the triggering hook
-(e.g., from <code class="docutils literal notranslate"><span class="pre">after_epoch</span></code> or <code class="docutils literal notranslate"><span class="pre">after_update</span></code>).</p></li>
+(e.g., from <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.after_epoch" title="noether.core.callbacks.periodic.PeriodicCallback.after_epoch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">after_epoch()</span></code></a> or <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.after_update" title="noether.core.callbacks.periodic.PeriodicCallback.after_update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">after_update()</span></code></a>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1002,10 +1005,12 @@ training progress (epoch, update, sample counts).</p></li>
 an optimizer update is performed in that step (i.e., when <code class="docutils literal notranslate"><span class="pre">accumulation_steps</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>).
 It is primarily used for tracking metrics that should be averaged or aggregated
 across accumulation steps.</p>
-<p>Common use cases include:
-* Logging per-batch losses for high-frequency monitoring
-* Accumulating statistics across batches before an optimizer update
-* Implementing custom logging that needs access to individual batch data</p>
+<p>Common use cases include:</p>
+<ul class="simple">
+<li><p>Logging per-batch losses for high-frequency monitoring</p></li>
+<li><p>Accumulating statistics across batches before an optimizer update</p></li>
+<li><p>Implementing custom logging that needs access to individual batch data</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method is generally intended to be called within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context
@@ -1014,7 +1019,7 @@ by the trainer to ensure no gradients are tracked during logging operations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p></li>
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p></li>
 <li><p><strong>batch</strong> (<em>Any</em>) – The current data batch processed in this accumulation step.</p></li>
 <li><p><strong>losses</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>torch.Tensor</em><em>]</em>) – Dictionary of computed losses for the current batch.</p></li>
 <li><p><strong>update_outputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>torch.Tensor</em><em>] </em><em>| </em><em>None</em>) – Optional dictionary of model outputs for the current batch.</p></li>
@@ -1034,12 +1039,14 @@ by the trainer to ensure no gradients are tracked during logging operations.</p>
 <dd><p>Hook called after each optimizer update step.</p>
 <p>This method is invoked after a successful optimizer step and parameter update.
 It is typically used for tracking metrics that should be recorded once per update
-cycle, such as:
-* Latest loss values
-* Learning rates
-* Model parameter statistics (norms, etc.)
-* Training throughput and timing measurements</p>
-<p>Unlike <code class="docutils literal notranslate"><span class="pre">periodic_callback</span></code>, this hook is called on every update step, making it
+cycle, such as:</p>
+<ul class="simple">
+<li><p>Latest loss values</p></li>
+<li><p>Learning rates</p></li>
+<li><p>Model parameter statistics (norms, etc.)</p></li>
+<li><p>Training throughput and timing measurements</p></li>
+</ul>
+<p>Unlike <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.periodic_callback" title="noether.core.callbacks.periodic.PeriodicCallback.periodic_callback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">periodic_callback()</span></code></a>, this hook is called on every update step, making it
 suitable for maintaining running averages or high-frequency telemetry.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1048,7 +1055,7 @@ suitable for maintaining running averages or high-frequency telemetry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p></li>
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p></li>
 <li><p><strong>times</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>) – Dictionary containing time measurements for various parts of the training
 step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_time’).</p></li>
 </ul>
@@ -1062,10 +1069,14 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.after_epoch">
 <span class="sig-name descname"><span class="pre">after_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.after_epoch" title="Link to this definition">¶</a></dt>
-<dd><p>Invoked after every epoch to check if callback should be invoked. Applies <cite>torch.no_grad()</cite>.</p>
+<dd><p>Invoked after every epoch to check if callback should be invoked.</p>
+<p>Applies <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -1076,10 +1087,14 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.after_update">
 <span class="sig-name descname"><span class="pre">after_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.after_update" title="Link to this definition">¶</a></dt>
-<dd><p>Invoked after every update to check if callback should be invoked. Applies <cite>torch.no_grad()</cite>.</p>
+<dd><p>Invoked after every update to check if callback should be invoked.</p>
+<p>Applies <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -1103,10 +1118,10 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.updates_till_next_log">
 <span class="sig-name descname"><span class="pre">updates_till_next_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_till_next_log" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates how many updates remain until this callback is invoked.</p>
+<dd><p>Calculate how many updates remain until this callback is invoked.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p>
+<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Number of updates remaining until the next callback invocation.</p>
@@ -1120,10 +1135,10 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.updates_per_log_interval">
 <span class="sig-name descname"><span class="pre">updates_per_log_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_per_log_interval" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates how many updates are from one invocation of this callback to the next.</p>
+<dd><p>Calculate how many updates are from one invocation of this callback to the next.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance to access current training progress.</p>
+<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Number of updates between callback invocations.</p>
@@ -1137,12 +1152,13 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.get_interval_string_verbose">
 <span class="sig-name descname"><span class="pre">get_interval_string_verbose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.get_interval_string_verbose" title="Link to this definition">¶</a></dt>
-<dd><p>Returns <cite>every_n_epochs</cite>, <cite>every_n_updates</cite> or <cite>every_n_samples</cite> depending on which one is not None.
-:returns: Interval as, e.g., “every_n_epochs=1” for epoch-based intervals.
-:rtype: str</p>
+<dd><p>Return interval configuration as a verbose string.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Interval as, e.g., “every_n_epochs=1” for epoch-based intervals.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1150,12 +1166,13 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.to_short_interval_string">
 <span class="sig-name descname"><span class="pre">to_short_interval_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.to_short_interval_string" title="Link to this definition">¶</a></dt>
-<dd><p>Returns <cite>every_n_epochs</cite>, <cite>every_n_updates</cite> or <cite>every_n_samples</cite> depending on which one is not None.
-:returns: Interval as, e.g., “E1” if <cite>every_n_epochs=1</cite> for epoch-based intervals.
-:rtype: str</p>
+<dd><p>Return interval configuration as a short string.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Interval as, e.g., “E1” if <code class="docutils literal notranslate"><span class="pre">every_n_epochs=1</span></code> for epoch-based intervals.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1167,38 +1184,40 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.periodic.</span></span><span class="sig-name descname"><span class="pre">PeriodicDataIteratorCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_property_provider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodicCallback</span></code></a></p>
 <p>Base class for callbacks that perform periodic iterations over a dataset.</p>
-<p>PeriodicDataIteratorCallback extends PeriodicCallback to support evaluations or computations that require iterating
-over an entire dataset. This is commonly used for validation/test set evaluation, computing metrics on held-out
-data, or any operation that needs to process batches from a dataset at regular training intervals.</p>
+<p>PeriodicDataIteratorCallback extends <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicCallback</span></code></a> to support evaluations or computations that require
+iterating over an entire dataset. This is commonly used for validation/test set evaluation, computing metrics on
+held-out data, or any operation that needs to process batches from a dataset at regular training intervals.</p>
 <p>The class integrates with the training data pipeline by registering samplers that control when and how data is
 loaded. It handles the complete iteration workflow: data loading, batch processing, result collation across
 distributed ranks, and final processing.</p>
 <dl class="simple">
 <dt>Workflow:</dt><dd><ol class="arabic simple">
-<li><p><strong>Registration</strong> (<cite>register_sampler_config</cite>): Register which dataset(s) to iterate over and configure the
-sampler (sequential or distributed).</p></li>
-<li><p><strong>Iteration</strong> (<cite>_iterate_over_dataset</cite>): When the periodic interval is reached, iterate through the dataset
-in batches.</p></li>
-<li><p><strong>Process Data</strong> (<cite>process_data</cite>): Process a single batch (e.g., run model inference) and return results.</p></li>
-<li><p><strong>Collation</strong> (<cite>_collate_result</cite>): Aggregate results across all batches and distributed ranks.</p></li>
-<li><p><strong>Processing</strong> (<cite>process_results</cite>): Compute final metrics or perform actions with the aggregated results.</p></li>
+<li><p><strong>Registration</strong> (<code class="xref py py-meth docutils literal notranslate"><span class="pre">register_sampler_config()</span></code>): Register which dataset(s) to iterate over and configure
+the sampler (sequential or distributed).</p></li>
+<li><p><strong>Iteration</strong> (<code class="xref py py-meth docutils literal notranslate"><span class="pre">_iterate_over_dataset()</span></code>): When the periodic interval is reached, iterate through the
+dataset in batches.</p></li>
+<li><p><strong>Process Data</strong> (<a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_data()</span></code></a>): Process a single batch (e.g., run model inference) and return
+results.</p></li>
+<li><p><strong>Collation</strong> (<code class="xref py py-meth docutils literal notranslate"><span class="pre">_collate_result()</span></code>): Aggregate results across all batches and distributed ranks.</p></li>
+<li><p><strong>Processing</strong> (<a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_results()</span></code></a>): Compute final metrics or perform actions with the aggregated
+results.</p></li>
 </ol>
 </dd>
 <dt>Key Features:</dt><dd><ul class="simple">
 <li><p><strong>Distributed Support</strong>: Automatically handles distributed evaluation with proper gathering across ranks and
 padding removal.</p></li>
 <li><p><strong>Flexible Collation</strong>: Supports collating various result types (tensors, dicts of tensors, lists).</p></li>
-<li><p><strong>Data Pipeline Integration</strong>: Uses <cite>SamplerIntervalConfig</cite> to integrate with the interleaved sampler for
-efficient data loading.</p></li>
+<li><p><strong>Data Pipeline Integration</strong>: Uses <code class="xref py py-class docutils literal notranslate"><span class="pre">SamplerIntervalConfig</span></code> to integrate with
+the interleaved sampler for efficient data loading.</p></li>
 <li><p><strong>Progress Tracking</strong>: Provides progress bars and timing information for data loading.</p></li>
 </ul>
 </dd>
-<dt>Template Methods to Override:</dt><dd><p>Child classes must implement <cite>process_data</cite> and typically override <cite>register_sampler_config</cite> and
-<cite>process_results</cite>:</p>
+<dt>Template Methods to Override:</dt><dd><p>Child classes must implement <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_data()</span></code></a> and typically override <code class="xref py py-meth docutils literal notranslate"><span class="pre">register_sampler_config()</span></code> and
+<a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_results()</span></code></a>:</p>
 <ul class="simple">
-<li><p><cite>process_data</cite>: Process a single batch (e.g., run model inference).</p></li>
-<li><p><cite>register_sampler_config</cite>: Register the dataset to iterate over (default uses <cite>self.dataset_key</cite>).</p></li>
-<li><p><cite>process_results</cite>: Process the aggregated results from all batches.</p></li>
+<li><p><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_data()</span></code></a>: Process a single batch (e.g., run model inference).</p></li>
+<li><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">register_sampler_config()</span></code>: Register the dataset to iterate over (default uses <code class="docutils literal notranslate"><span class="pre">self.dataset_key</span></code>).</p></li>
+<li><p><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_results()</span></code></a>: Process the aggregated results from all batches.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1208,10 +1227,6 @@ efficient data loading.</p></li>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">dataset_key</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataset_key</span> <span class="o">=</span> <span class="n">dataset_key</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">register_sampler_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SamplerIntervalConfig</span><span class="p">:</span>
-        <span class="c1"># Register test dataset for iteration</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler_config_from_key</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_key</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">trainer_model</span><span class="p">):</span>
         <span class="c1"># Run inference on batch</span>
@@ -1236,7 +1251,7 @@ efficient data loading.</p></li>
 
 <span class="c1"># Configure in YAML:</span>
 <span class="c1"># callbacks:</span>
-<span class="c1">#   - kind: AccuracyCallback</span>
+<span class="c1">#   - kind: path.to.AccuracyCallback</span>
 <span class="c1">#     every_n_epochs: 1</span>
 <span class="c1">#     dataset_key: &quot;test&quot;</span>
 </pre></div>
@@ -1264,18 +1279,11 @@ efficient data loading.</p></li>
         <span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">add_scalar</span><span class="p">(</span><span class="s2">&quot;embedding_norm&quot;</span><span class="p">,</span> <span class="n">mean_embedding_norm</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>Using a subset of the dataset for faster evaluation:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">FastValidationCallback</span><span class="p">(</span><span class="n">PeriodicDataIteratorCallback</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">register_sampler_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SamplerIntervalConfig</span><span class="p">:</span>
-        <span class="c1"># Only use first 1000 samples for quick validation</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler_config_from_key</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-</pre></div>
-</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicDataIteratorCallback._sampler_config">
 <span class="sig-name descname"><span class="pre">_sampler_config</span></span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback._sampler_config" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for the sampler that controls dataset iteration. Automatically set when
-<cite>register_sampler_config</cite> is called.</p>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">register_sampler_config()</span></code> is called.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1287,71 +1295,56 @@ efficient data loading.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>The <cite>process_data</cite> method is called within a <cite>torch.no_grad()</cite> context automatically.</p></li>
+<li><p>The <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_data()</span></code></a> method is called within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context automatically.</p></li>
 <li><p>For distributed training, results are automatically gathered across all ranks with proper padding removal.</p></li>
 </ul>
 </div>
-<p>Initializes the <cite>PeriodicCallback</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><em>noether.core.schemas.callbacks.CallBackBaseConfig</em></a>) – Configuration of the <cite>PeriodicCallback</cite>.</p></li>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig" title="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig"><em>noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig</em></a>) – Configuration for the callback. See
+<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig" title="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallbackConfig</span></code></a>
+for available options.</p></li>
 <li><p><strong>trainer</strong> (<em>noether.training.trainers.BaseTrainer</em>) – Trainer of the current run.</p></li>
 <li><p><strong>model</strong> (<em>noether.core.models.ModelBase</em>) – Model of the current run.</p></li>
-<li><p><strong>data_container</strong> (<a class="reference internal" href="../../../data/container/index.html#noether.data.container.DataContainer" title="noether.data.container.DataContainer"><em>noether.data.container.DataContainer</em></a>) – DataContainer instance that provides access to all datasets.</p></li>
-<li><p><strong>tracker</strong> (<em>noether.core.trackers.BaseTracker</em>) – Tracker instance to log metrics to stdout/disk/online platform.</p></li>
-<li><p><strong>log_writer</strong> (<em>noether.core.writers.LogWriter</em>) – LogWriter instance to log metrics.</p></li>
-<li><p><strong>checkpoint_writer</strong> (<em>noether.core.writers.CheckpointWriter</em>) – CheckpointWriter instance to save checkpoints.</p></li>
-<li><p><strong>metric_property_provider</strong> (<em>noether.core.providers.MetricPropertyProvider</em>) – MetricPropertyProvider instance to access properties of metrics.</p></li>
+<li><p><strong>data_container</strong> (<a class="reference internal" href="../../../data/container/index.html#noether.data.container.DataContainer" title="noether.data.container.DataContainer"><em>noether.data.container.DataContainer</em></a>) – <a class="reference internal" href="../../../data/container/index.html#noether.data.container.DataContainer" title="noether.data.container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a> instance that provides access to all datasets.</p></li>
+<li><p><strong>tracker</strong> (<em>noether.core.trackers.BaseTracker</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTracker</span></code> instance to log metrics to stdout/disk/online platform.</p></li>
+<li><p><strong>log_writer</strong> (<em>noether.core.writers.LogWriter</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">LogWriter</span></code> instance to log metrics.</p></li>
+<li><p><strong>checkpoint_writer</strong> (<em>noether.core.writers.CheckpointWriter</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">CheckpointWriter</span></code> instance to save checkpoints.</p></li>
+<li><p><strong>metric_property_provider</strong> (<em>noether.core.providers.MetricPropertyProvider</em>) – <code class="xref py py-class docutils literal notranslate"><span class="pre">MetricPropertyProvider</span></code> instance to access properties of metrics.</p></li>
 <li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Name of the callback.</p></li>
 </ul>
 </dd>
 </dl>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.dataset_key">
+<span class="sig-name descname"><span class="pre">dataset_key</span></span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.dataset_key" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="id4">
 <span class="sig-name descname"><span class="pre">total_data_time</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#id4" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.sampler_config">
+<span class="sig-name descname"><span class="pre">sampler_config</span></span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.sampler_config" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicDataIteratorCallback._sampler_config_from_key">
 <span class="sig-name descname"><span class="pre">_sampler_config_from_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback._sampler_config_from_key" title="Link to this definition">¶</a></dt>
-<dd><p>Registers the dataset that is used for this callback in the dataloading pipeline.</p>
+<dd><p>Register the dataset that is used for this callback in the dataloading pipeline.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Key for identifying the dataset from <cite>self.data_container</cite>. Uses the first dataset if <cite>None</cite>.</p></li>
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Key for identifying the dataset from <code class="docutils literal notranslate"><span class="pre">self.data_container</span></code>. Uses the first dataset if <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
 <li><p><strong>properties</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><em>set</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – Optionally specifies a subset of properties to load from the dataset.</p></li>
-<li><p><strong>max_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – If provided, only uses a subset of the full dataset. Default: None (no subset).</p></li>
+<li><p><strong>max_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – If provided, only uses a subset of the full dataset. Default: <code class="docutils literal notranslate"><span class="pre">None</span></code> (no subset).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><dl class="simple">
-<dt>How many sampler_configs were registered before this call (used as identifier to assert that callbacks</dt><dd><p>that register multiple sampler_configs also iterate over the datasets in the correct order).</p>
-</dd>
-</dl>
-</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>noether.data.samplers.SamplerIntervalConfig</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.register_sampler_config">
-<span class="sig-name descname"><span class="pre">register_sampler_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.register_sampler_config" title="Link to this definition">¶</a></dt>
-<dd><p>Template method for subclasses to define which dataset to iterate over.</p>
-<p>This method should return a <code class="docutils literal notranslate"><span class="pre">SamplerIntervalConfig</span></code> that specifies the dataset,
-sampler, and interval for periodic iteration. The default implementation looks
-for a <code class="docutils literal notranslate"><span class="pre">dataset_key</span></code> attribute on the callback instance.</p>
-<p>Subclasses that require more complex sampler configurations (e.g., iterating over
-multiple datasets or using custom samplers) can override this method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>The configuration for the periodic dataset iteration.</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.14)"><strong>NotImplementedError</strong></a> – If <code class="docutils literal notranslate"><span class="pre">dataset_key</span></code> is not set and the method is not overridden.</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">SamplerIntervalConfig</span></code> for the registered dataset.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>noether.data.samplers.SamplerIntervalConfig</p>
@@ -1363,6 +1356,7 @@ multiple datasets or using custom samplers) can override this method.</p>
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data">
 <em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">batch</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainer_model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data" title="Link to this definition">¶</a></dt>
 <dd><p>Template method that is called for each batch that is loaded from the dataset.</p>
+<p>This method should process a single batch and return results that will be collated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1370,8 +1364,11 @@ multiple datasets or using custom samplers) can override this method.</p>
 <li><p><strong>trainer_model</strong> (<em>torch.nn.Module</em>) – Model of the current training run.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Any</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Processed results for this batch. Can be a tensor, dict of tensors, list, or tuple.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1379,13 +1376,16 @@ multiple datasets or using custom samplers) can override this method.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results">
 <span class="sig-name descname"><span class="pre">process_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">results</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results" title="Link to this definition">¶</a></dt>
-<dd><p>Template method that is called with the collated results that were produced by <cite>iterate_over_dataset</cite>.</p>
+<dd><p>Template method that is called with the collated results from dataset iteration.</p>
+<p>For example, metrics can be computed from the results for the entire test/validation dataset and logged.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>results</strong> (<em>Any</em>) – The collated results that were produced by <cite>_iterate_over_dataset</cite>.</p></li>
+<li><p><strong>results</strong> (<em>Any</em>) – The collated results that were produced by <code class="xref py py-meth docutils literal notranslate"><span class="pre">_iterate_over_dataset()</span></code> and the individual
+<a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_data()</span></code></a> calls.</p></li>
 <li><p><strong>interval_type</strong> – The type of interval that triggered this callback invocation.</p></li>
-<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – The current update counter.</p></li>
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> with the current training state.</p></li>
+<li><p><strong>**_</strong> – Additional unused keyword arguments.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1401,11 +1401,13 @@ multiple datasets or using custom samplers) can override this method.</p>
 <p>This method is the primary entry point for periodic actions in subclasses. It is
 triggered when any of the configured intervals (<code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code>,
 or <code class="docutils literal notranslate"><span class="pre">every_n_samples</span></code>) are reached.</p>
-<p>Subclasses should override this method to implement periodic logic such as:
-* Calculating and logging expensive validation metrics
-* Saving specific model checkpoints or artifacts
-* Visualizing training progress (e.g., plotting samples)
-* Adjusting training hyperparameters or model state</p>
+<p>Subclasses should override this method to implement periodic logic such as:</p>
+<ul class="simple">
+<li><p>Calculating and logging expensive validation metrics</p></li>
+<li><p>Saving specific model checkpoints or artifacts</p></li>
+<li><p>Visualizing training progress (e.g., plotting samples)</p></li>
+<li><p>Adjusting training hyperparameters or model state</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
@@ -1414,10 +1416,10 @@ or <code class="docutils literal notranslate"><span class="pre">every_n_samples<
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>interval_type</strong> (<em>IntervalType</em>) – “epoch”, “update”, “sample” or “eval” indicating which interval triggered this callback.</p></li>
-<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – UpdateCounter instance providing details about the current
-training progress (epoch, update, sample counts).</p></li>
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance providing details about
+the current training progress (epoch, update, sample counts).</p></li>
 <li><p><strong>**kwargs</strong> – Additional keyword arguments passed from the triggering hook
-(e.g., from <code class="docutils literal notranslate"><span class="pre">after_epoch</span></code> or <code class="docutils literal notranslate"><span class="pre">after_update</span></code>).</p></li>
+(e.g., from <code class="xref py py-meth docutils literal notranslate"><span class="pre">after_epoch()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">after_update()</span></code>).</p></li>
 <li><p><strong>data_iter</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator" title="(in Python v3.14)"><em>collections.abc.Iterator</em></a>)</p></li>
 <li><p><strong>batch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
 </ul>
@@ -1433,18 +1435,20 @@ training progress (epoch, update, sample counts).</p></li>
 <span class="sig-name descname"><span class="pre">after_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.after_training" title="Link to this definition">¶</a></dt>
 <dd><p>Hook called once after the training loop finishes.</p>
 <p>This method is intended to be overridden by derived classes to perform cleanup or
-final reporting tasks after training is complete. Common use cases include:
-* Performing a final evaluation on the test set
-* Saving final model weights or artifacts
-* Sending notifications (e.g., via Slack or email) about the completed run
-* Closing or finalizing experiment tracking sessions</p>
+final reporting tasks after training is complete. Common use cases include:</p>
+<ul class="simple">
+<li><p>Performing a final evaluation on the test set</p></li>
+<li><p>Saving final model weights or artifacts</p></li>
+<li><p>Sending notifications (e.g., via Slack or email) about the completed run</p></li>
+<li><p>Closing or finalizing experiment tracking sessions</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> – UpdateCounter instance to access current training progress.</p>
+<dd class="field-odd"><p><strong>update_counter</strong> – <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -1547,9 +1551,10 @@ final reporting tasks after training is complete. Common use cases include:
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback._sampler_config"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback._sampler_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.total_data_time"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.total_data_time</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.dataset_key"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.dataset_key</span></code></a></li>
 <li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.total_data_time</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.sampler_config"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.sampler_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback._sampler_config_from_key"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback._sampler_config_from_key()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.register_sampler_config"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.register_sampler_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.process_data()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.process_results()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.periodic_callback"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.periodic_callback()</span></code></a></li>

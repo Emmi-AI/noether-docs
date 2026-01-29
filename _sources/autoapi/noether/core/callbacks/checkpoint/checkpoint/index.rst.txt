@@ -22,10 +22,20 @@ Module Contents
 
    Callback to save the model and optimizer state periodically.
 
-   Initializes the CheckpointCallback.
+   Example config:
 
-   :param callback_config: The configuration for the callback.
-   :param \*\*kwargs: additional arguments passed to the parent class.
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.CheckpointCallback
+         name: CheckpointCallback
+         every_n_epochs: 1
+         save_weights: true
+         save_optim: true
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.CheckpointCallbackConfig`
+                           for available options.
+   :param \*\*kwargs: Additional arguments passed to the parent class.
 
 
    .. py:attribute:: save_weights
@@ -51,6 +61,7 @@ Module Contents
 
       This method is intended to be overridden by derived classes to perform initialization
       tasks before training begins. Common use cases include:
+
       * Initializing experiment tracking (e.g., logging hyperparameters)
       * Printing model summaries or architecture details
       * Initializing specific data structures or buffers needed during training
@@ -58,7 +69,7 @@ Module Contents
 
       .. note:: This method is executed within a ``torch.no_grad()`` context.
 
-      :param update_counter: UpdateCounter instance to access current training progress.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
 
 
 
@@ -71,6 +82,7 @@ Module Contents
       or ``every_n_samples``) are reached.
 
       Subclasses should override this method to implement periodic logic such as:
+
       * Calculating and logging expensive validation metrics
       * Saving specific model checkpoints or artifacts
       * Visualizing training progress (e.g., plotting samples)
@@ -79,10 +91,10 @@ Module Contents
       .. note:: This method is executed within a ``torch.no_grad()`` context.
 
       :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
-      :param update_counter: UpdateCounter instance providing details about the current
-                             training progress (epoch, update, sample counts).
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance providing details about
+                             the current training progress (epoch, update, sample counts).
       :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
-                         (e.g., from ``after_epoch`` or ``after_update``).
+                         (e.g., from :meth:`after_epoch` or :meth:`after_update`).
 
 
 
@@ -92,6 +104,7 @@ Module Contents
 
       This method is intended to be overridden by derived classes to perform cleanup or
       final reporting tasks after training is complete. Common use cases include:
+
       * Performing a final evaluation on the test set
       * Saving final model weights or artifacts
       * Sending notifications (e.g., via Slack or email) about the completed run
@@ -99,7 +112,7 @@ Module Contents
 
       .. note:: This method is executed within a ``torch.no_grad()`` context.
 
-      :param update_counter: UpdateCounter instance to access current training progress.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
 
 
 

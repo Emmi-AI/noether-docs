@@ -18,6 +18,7 @@ Classes
 .. autoapisummary::
 
    noether.core.schemas.callbacks.CallBackBaseConfig
+   noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig
    noether.core.schemas.callbacks.BestCheckpointCallbackConfig
    noether.core.schemas.callbacks.CheckpointCallbackConfig
    noether.core.schemas.callbacks.EmaCallbackConfig
@@ -39,8 +40,6 @@ Module Contents
 
    .. py:attribute:: name
       :type:  str
-      :value: None
-
 
 
    .. py:attribute:: kind
@@ -111,6 +110,23 @@ Module Contents
 
 
 
+.. py:class:: PeriodicDataIteratorCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  str
+
+
+   .. py:attribute:: dataset_key
+      :type:  str
+      :value: None
+
+
+      The key of the dataset to be used for the loss calculation. Can be any key that is registered in the `DataContainer`.
+
+
 .. py:class:: BestCheckpointCallbackConfig(/, **data)
 
    Bases: :py:obj:`CallBackBaseConfig`
@@ -151,7 +167,7 @@ Module Contents
       :value: None
 
 
-      Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name='encoder' here).
+      The name of the model to save. If None, all models are saved.
 
 
    .. py:attribute:: model_names
@@ -159,7 +175,7 @@ Module Contents
       :value: None
 
 
-      Same as `model_name` but allows passing multiple `model_names`.
+      Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name='encoder' here). This only applies when training a CompositeModel. If None, all models are saved.
 
 
 .. py:class:: CheckpointCallbackConfig(/, **data)
@@ -334,7 +350,7 @@ Module Contents
       :value: None
 
 
-      List of patterns to track. Matched if it is contained in one of the update_outputs keys.
+      List of keys to track in the additional_outputs of the TrainerResult returned by the trainer's update step.
 
 
    .. py:attribute:: patterns
@@ -342,7 +358,7 @@ Module Contents
       :value: None
 
 
-      List of patterns to track. Matched if it is contained in one of the update_outputs keys.
+      List of patterns to track in the additional_outputs of the TrainerResult returned by the trainer's update step. Matched if it is contained in one of the update_outputs keys.
 
 
    .. py:attribute:: verbose
@@ -379,21 +395,13 @@ Module Contents
 
 .. py:class:: OfflineLossCallbackConfig(/, **data)
 
-   Bases: :py:obj:`CallBackBaseConfig`
+   Bases: :py:obj:`PeriodicDataIteratorCallbackConfig`
 
 
    .. py:attribute:: name
       :type:  Literal['OfflineLossCallback']
       :value: None
 
-
-
-   .. py:attribute:: dataset_key
-      :type:  str
-      :value: None
-
-
-      The key of the dataset to be used for the loss calculation. Can be any key that is registered in the `DataContainer`.
 
 
    .. py:attribute:: output_patterns_to_log
