@@ -41,6 +41,7 @@ Module Contents
 
 
    .. py:attribute:: hook_outputs
+      :type:  dict[str, torch.Tensor]
 
 
    .. py:attribute:: pos_embed_hook

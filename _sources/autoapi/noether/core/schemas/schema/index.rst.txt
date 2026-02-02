@@ -4,6 +4,14 @@ noether.core.schemas.schema
 .. py:module:: noether.core.schemas.schema
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.schemas.schema.ACCELERATOR_TYPES
+
+
 Classes
 -------
 
@@ -19,10 +27,13 @@ Functions
 .. autoapisummary::
 
    noether.core.schemas.schema.master_port_from_env
+   noether.core.schemas.schema.default_accelerator
 
 
 Module Contents
 ---------------
+
+.. py:data:: ACCELERATOR_TYPES
 
 .. py:class:: StaticConfigSchema(/, **data)
 
@@ -77,6 +88,11 @@ Module Contents
    Gets the master port from the environment variable if available.
 
 
+.. py:function:: default_accelerator()
+
+   Sets the accelerator if it is not already set.
+
+
 .. py:class:: ConfigSchema(/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`
@@ -101,11 +117,11 @@ Module Contents
 
 
    .. py:attribute:: accelerator
-      :type:  Literal['cpu', 'gpu', 'mps'] | None
+      :type:  ACCELERATOR_TYPES
       :value: None
 
 
-      Type of accelerator to use. Default is None, which lets the system choose the best available accelerator. GPU > MPS > CPU.
+      Type of accelerator to use. By default the system choose the best available accelerator. GPU > MPS > CPU.
 
 
    .. py:attribute:: stage_name
@@ -308,11 +324,5 @@ Module Contents
 
 
       The fully qualified import path for the configuration class.
-
-
-   .. py:method:: set_accelerator_if_unset()
-
-      Sets the accelerator if it is not already set.
-
 
 

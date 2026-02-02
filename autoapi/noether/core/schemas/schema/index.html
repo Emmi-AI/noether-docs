@@ -785,6 +785,18 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.core.schemas.schema">
 <span id="noether-core-schemas-schema"></span><h1>noether.core.schemas.schema<a class="headerlink" href="#module-noether.core.schemas.schema" title="Link to this heading">¶</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.schema.ACCELERATOR_TYPES" title="noether.core.schemas.schema.ACCELERATOR_TYPES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCELERATOR_TYPES</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
@@ -808,12 +820,20 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.schema.master_port_from_env" title="noether.core.schemas.schema.master_port_from_env"><code class="xref py py-obj docutils literal notranslate"><span class="pre">master_port_from_env</span></code></a>()</p></td>
 <td><p>Gets the master port from the environment variable if available.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.schema.default_accelerator" title="noether.core.schemas.schema.default_accelerator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">default_accelerator</span></code></a>()</p></td>
+<td><p>Sets the accelerator if it is not already set.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.core.schemas.schema.ACCELERATOR_TYPES">
+<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.schema.</span></span><span class="sig-name descname"><span class="pre">ACCELERATOR_TYPES</span></span><a class="headerlink" href="#noether.core.schemas.schema.ACCELERATOR_TYPES" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.StaticConfigSchema">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.schema.</span></span><span class="sig-name descname"><span class="pre">StaticConfigSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.schema.StaticConfigSchema" title="Link to this definition">¶</a></dt>
@@ -880,6 +900,17 @@
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.schemas.schema.default_accelerator">
+<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.schema.</span></span><span class="sig-name descname"><span class="pre">default_accelerator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.schema.default_accelerator" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the accelerator if it is not already set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ACCELERATOR_TYPES</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.schema.</span></span><span class="sig-name descname"><span class="pre">ConfigSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema" title="Link to this definition">¶</a></dt>
@@ -902,8 +933,8 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.accelerator">
-<span class="sig-name descname"><span class="pre">accelerator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'cpu'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'gpu'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'mps'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.accelerator" title="Link to this definition">¶</a></dt>
-<dd><p>Type of accelerator to use. Default is None, which lets the system choose the best available accelerator. GPU &gt; MPS &gt; CPU.</p>
+<span class="sig-name descname"><span class="pre">accelerator</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ACCELERATOR_TYPES</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.accelerator" title="Link to this definition">¶</a></dt>
+<dd><p>Type of accelerator to use. By default the system choose the best available accelerator. GPU &gt; MPS &gt; CPU.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1101,17 +1132,6 @@ validated to form a valid model.</p>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.set_accelerator_if_unset">
-<span class="sig-name descname"><span class="pre">set_accelerator_if_unset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.set_accelerator_if_unset" title="Link to this definition">¶</a></dt>
-<dd><p>Sets the accelerator if it is not already set.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema" title="noether.core.schemas.schema.ConfigSchema">ConfigSchema</a></p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 </section>
@@ -1179,9 +1199,11 @@ validated to form a valid model.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">noether.core.schemas.schema</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.schema.ACCELERATOR_TYPES"><code class="docutils literal notranslate"><span class="pre">ACCELERATOR_TYPES</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema.output_path"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema.output_path</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema.default_cudnn_benchmark"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema.default_cudnn_benchmark</span></code></a></li>
@@ -1192,6 +1214,7 @@ validated to form a valid model.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.master_port_from_env"><code class="docutils literal notranslate"><span class="pre">master_port_from_env()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.schema.default_accelerator"><code class="docutils literal notranslate"><span class="pre">default_accelerator()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema"><code class="docutils literal notranslate"><span class="pre">ConfigSchema</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.name"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.name</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.accelerator"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.accelerator</span></code></a></li>
@@ -1222,7 +1245,6 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.serialize_output_path"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.serialize_output_path()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.get_env_master_port"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.get_env_master_port()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.config_schema_kind"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.config_schema_kind</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.set_accelerator_if_unset"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.set_accelerator_if_unset()</span></code></a></li>
 </ul>
 </li>
 </ul>
