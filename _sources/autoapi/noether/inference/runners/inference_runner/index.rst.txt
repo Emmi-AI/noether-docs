@@ -1,7 +1,7 @@
-inference_runner
-================
+noether.inference.runners.inference_runner
+==========================================
 
-.. py:module:: inference_runner
+.. py:module:: noether.inference.runners.inference_runner
 
 
 Attributes
@@ -9,7 +9,7 @@ Attributes
 
 .. autoapisummary::
 
-   inference_runner.logger
+   noether.inference.runners.inference_runner.logger
 
 
 Classes
@@ -17,7 +17,7 @@ Classes
 
 .. autoapisummary::
 
-   inference_runner.InferenceRunner
+   noether.inference.runners.inference_runner.InferenceRunner
 
 
 Module Contents
