@@ -789,13 +789,40 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.modeling.functional.geometric">
 <span id="noether-modeling-functional-geometric"></span><h1>noether.modeling.functional.geometric<a class="headerlink" href="#module-noether.modeling.functional.geometric" title="Link to this heading">¶</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.functional.geometric.HAS_PYG" title="noether.modeling.functional.geometric.HAS_PYG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HAS_PYG</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.functional.geometric.HAS_TRITON" title="noether.modeling.functional.geometric.HAS_TRITON"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HAS_TRITON</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.functional.geometric.radius" title="noether.modeling.functional.geometric.radius"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radius</span></code></a>(x, y, r, max_num_neighbors, batch_x, batch_y)</p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.functional.geometric.radius_triton" title="noether.modeling.functional.geometric.radius_triton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radius_triton</span></code></a>(x, y, r[, batch_x, batch_y, ...])</p></td>
+<td><p>Find all edges where points in x are within radius r of points in y.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.functional.geometric.radius_pytorch" title="noether.modeling.functional.geometric.radius_pytorch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radius_pytorch</span></code></a>(x, y, r[, batch_x, batch_y, ...])</p></td>
+<td><p>Fallback implementation of radius using pure PyTorch operations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.functional.geometric.knn_triton" title="noether.modeling.functional.geometric.knn_triton"><code class="xref py py-obj docutils literal notranslate"><span class="pre">knn_triton</span></code></a>(x, y, k[, batch_x, batch_y, cosine])</p></td>
+<td><p>Calculates k-nearest neighbors using a Triton kernel.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.functional.geometric.knn_pytorch" title="noether.modeling.functional.geometric.knn_pytorch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">knn_pytorch</span></code></a>(x, y, k[, batch_x, batch_y, cosine])</p></td>
+<td><p>Fallback implementation of knn using pure PyTorch operations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.functional.geometric.radius" title="noether.modeling.functional.geometric.radius"><code class="xref py py-obj docutils literal notranslate"><span class="pre">radius</span></code></a>(x, y, r, max_num_neighbors[, batch_x, batch_y])</p></td>
+<td><p>Find all points within radius r.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.functional.geometric.knn" title="noether.modeling.functional.geometric.knn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">knn</span></code></a>(x, y, k[, batch_x, batch_y])</p></td>
 <td><p></p></td>
@@ -809,15 +836,159 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.modeling.functional.geometric.HAS_PYG">
+<span class="sig-prename descclassname"><span class="pre">noether.modeling.functional.geometric.</span></span><span class="sig-name descname"><span class="pre">HAS_PYG</span></span><a class="headerlink" href="#noether.modeling.functional.geometric.HAS_PYG" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.modeling.functional.geometric.HAS_TRITON">
+<span class="sig-prename descclassname"><span class="pre">noether.modeling.functional.geometric.</span></span><span class="sig-name descname"><span class="pre">HAS_TRITON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#noether.modeling.functional.geometric.HAS_TRITON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.modeling.functional.geometric.radius_triton">
+<span class="sig-prename descclassname"><span class="pre">noether.modeling.functional.geometric.</span></span><span class="sig-name descname"><span class="pre">radius_triton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_num_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.functional.geometric.radius_triton" title="Link to this definition">¶</a></dt>
+<dd><p>Find all edges where points in x are within radius r of points in y.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Source points, shape (N, D) or flattened (N*D,) with D inferred</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Target points, shape (M, D) or flattened (M*D,)</p></li>
+<li><p><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Radius threshold</p></li>
+<li><p><strong>max_num_neighbors</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Maximum neighbors per target point (default: N)</p></li>
+<li><p><strong>batch_x</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Batch indices for x points, shape (N,)</p></li>
+<li><p><strong>batch_y</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Batch indices for y points, shape (M,)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>row 0: source indices (from x)</p></li>
+<li><p>row 1: target indices (from y)</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Edge index tensor of shape (2, E) where</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.modeling.functional.geometric.radius_pytorch">
+<span class="sig-prename descclassname"><span class="pre">noether.modeling.functional.geometric.</span></span><span class="sig-name descname"><span class="pre">radius_pytorch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_num_neighbors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.functional.geometric.radius_pytorch" title="Link to this definition">¶</a></dt>
+<dd><p>Fallback implementation of radius using pure PyTorch operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Source points (N, D).</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Query points (M, D).</p></li>
+<li><p><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Radius to search for.</p></li>
+<li><p><strong>max_num_neighbors</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Maximum number of neighbors to return.</p></li>
+<li><p><strong>batch_x</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Batch index for source points.</p></li>
+<li><p><strong>batch_y</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Batch index for query points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Edge index (2, num_edges).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.modeling.functional.geometric.knn_triton">
+<span class="sig-prename descclassname"><span class="pre">noether.modeling.functional.geometric.</span></span><span class="sig-name descname"><span class="pre">knn_triton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cosine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.functional.geometric.knn_triton" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates k-nearest neighbors using a Triton kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Reference points (N, D)</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Query points (M, D)</p></li>
+<li><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Number of neighbors</p></li>
+<li><p><strong>batch_x</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Optional batch indices for x (N,)</p></li>
+<li><p><strong>batch_y</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Optional batch indices for y (M,)</p></li>
+<li><p><strong>cosine</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – If True, uses Cosine distance. False = Euclidean.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Indices of the k nearest neighbors for each y (M, K)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.modeling.functional.geometric.knn_pytorch">
+<span class="sig-prename descclassname"><span class="pre">noether.modeling.functional.geometric.</span></span><span class="sig-name descname"><span class="pre">knn_pytorch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cosine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.functional.geometric.knn_pytorch" title="Link to this definition">¶</a></dt>
+<dd><p>Fallback implementation of knn using pure PyTorch operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Source points (N, D).</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Query points (M, D).</p></li>
+<li><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Number of neighbors.</p></li>
+<li><p><strong>batch_x</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Batch index for source points.</p></li>
+<li><p><strong>batch_y</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Batch index for query points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Edge index (2, num_edges).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.modeling.functional.geometric.radius">
-<span class="sig-prename descclassname"><span class="pre">noether.modeling.functional.geometric.</span></span><span class="sig-name descname"><span class="pre">radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_num_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.functional.geometric.radius" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">noether.modeling.functional.geometric.</span></span><span class="sig-name descname"><span class="pre">radius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_num_neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.functional.geometric.radius" title="Link to this definition">¶</a></dt>
+<dd><p>Find all points within radius r.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Source points (N, D).</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Query points (M, D).</p></li>
+<li><p><strong>r</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Radius to search for.</p></li>
+<li><p><strong>max_num_neighbors</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Maximum number of neighbors to return per query.</p></li>
+<li><p><strong>batch_x</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Batch index for source points.</p></li>
+<li><p><strong>batch_y</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>) – Batch index for query points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Edge index (2, num_edges).
+first row: source indices (from y)
+second row: target indices (from x)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.modeling.functional.geometric.knn">
 <span class="sig-prename descclassname"><span class="pre">noether.modeling.functional.geometric.</span></span><span class="sig-name descname"><span class="pre">knn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.functional.geometric.knn" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>)</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>)</p></li>
+<li><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>batch_x</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>batch_y</strong> (<em>torch.Tensor</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.modeling.functional.geometric.segment_reduce">
@@ -889,8 +1060,15 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">noether.modeling.functional.geometric</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.modeling.functional.geometric.HAS_PYG"><code class="docutils literal notranslate"><span class="pre">HAS_PYG</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.functional.geometric.HAS_TRITON"><code class="docutils literal notranslate"><span class="pre">HAS_TRITON</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.functional.geometric.radius_triton"><code class="docutils literal notranslate"><span class="pre">radius_triton()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.functional.geometric.radius_pytorch"><code class="docutils literal notranslate"><span class="pre">radius_pytorch()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.functional.geometric.knn_triton"><code class="docutils literal notranslate"><span class="pre">knn_triton()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.functional.geometric.knn_pytorch"><code class="docutils literal notranslate"><span class="pre">knn_pytorch()</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.functional.geometric.radius"><code class="docutils literal notranslate"><span class="pre">radius()</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.functional.geometric.knn"><code class="docutils literal notranslate"><span class="pre">knn()</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.functional.geometric.segment_reduce"><code class="docutils literal notranslate"><span class="pre">segment_reduce()</span></code></a></li>

@@ -4,11 +4,24 @@ noether.modeling.functional.geometric
 .. py:module:: noether.modeling.functional.geometric
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.modeling.functional.geometric.HAS_PYG
+   noether.modeling.functional.geometric.HAS_TRITON
+
+
 Functions
 ---------
 
 .. autoapisummary::
 
+   noether.modeling.functional.geometric.radius_triton
+   noether.modeling.functional.geometric.radius_pytorch
+   noether.modeling.functional.geometric.knn_triton
+   noether.modeling.functional.geometric.knn_pytorch
    noether.modeling.functional.geometric.radius
    noether.modeling.functional.geometric.knn
    noether.modeling.functional.geometric.segment_reduce
@@ -17,9 +30,88 @@ Functions
 Module Contents
 ---------------
 
-.. py:function:: radius(x, y, r, max_num_neighbors, batch_x, batch_y)
+.. py:data:: HAS_PYG
 
-.. py:function:: knn(x, y, k, batch_x=None, batch_y=None)
+.. py:data:: HAS_TRITON
+   :value: True
+
+
+.. py:function:: radius_triton(x, y, r, batch_x = None, batch_y = None, max_num_neighbors = None)
+
+   Find all edges where points in x are within radius r of points in y.
+
+   :param x: Source points, shape (N, D) or flattened (N*D,) with D inferred
+   :param y: Target points, shape (M, D) or flattened (M*D,)
+   :param r: Radius threshold
+   :param max_num_neighbors: Maximum neighbors per target point (default: N)
+   :param batch_x: Batch indices for x points, shape (N,)
+   :param batch_y: Batch indices for y points, shape (M,)
+
+   :returns:
+
+             - row 0: source indices (from x)
+             - row 1: target indices (from y)
+   :rtype: Edge index tensor of shape (2, E) where
+
+
+.. py:function:: radius_pytorch(x, y, r, batch_x = None, batch_y = None, max_num_neighbors = None)
+
+   Fallback implementation of radius using pure PyTorch operations.
+
+   :param x: Source points (N, D).
+   :param y: Query points (M, D).
+   :param r: Radius to search for.
+   :param max_num_neighbors: Maximum number of neighbors to return.
+   :param batch_x: Batch index for source points.
+   :param batch_y: Batch index for query points.
+
+   :returns: Edge index (2, num_edges).
+
+
+.. py:function:: knn_triton(x, y, k, batch_x = None, batch_y = None, cosine = False)
+
+   Calculates k-nearest neighbors using a Triton kernel.
+
+   :param x: Reference points (N, D)
+   :param y: Query points (M, D)
+   :param k: Number of neighbors
+   :param batch_x: Optional batch indices for x (N,)
+   :param batch_y: Optional batch indices for y (M,)
+   :param cosine: If True, uses Cosine distance. False = Euclidean.
+
+   :returns: Indices of the k nearest neighbors for each y (M, K)
+
+
+.. py:function:: knn_pytorch(x, y, k, batch_x = None, batch_y = None, cosine=False)
+
+   Fallback implementation of knn using pure PyTorch operations.
+
+   :param x: Source points (N, D).
+   :param y: Query points (M, D).
+   :param k: Number of neighbors.
+   :param batch_x: Batch index for source points.
+   :param batch_y: Batch index for query points.
+
+   :returns: Edge index (2, num_edges).
+
+
+.. py:function:: radius(x, y, r, max_num_neighbors, batch_x = None, batch_y = None)
+
+   Find all points within radius r.
+
+   :param x: Source points (N, D).
+   :param y: Query points (M, D).
+   :param r: Radius to search for.
+   :param max_num_neighbors: Maximum number of neighbors to return per query.
+   :param batch_x: Batch index for source points.
+   :param batch_y: Batch index for query points.
+
+   :returns: Edge index (2, num_edges).
+             first row: source indices (from y)
+             second row: target indices (from x)
+
+
+.. py:function:: knn(x, y, k, batch_x = None, batch_y = None)
 
 .. py:function:: segment_reduce(src, lengths, reduce)
 
