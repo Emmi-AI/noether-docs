@@ -197,7 +197,7 @@ Module Contents
 
 
    .. py:attribute:: tracker
-      :type:  noether.core.schemas.trackers.WandBTrackerSchema | None
+      :type:  noether.core.schemas.trackers.AnyTracker | None
       :value: None
 
 

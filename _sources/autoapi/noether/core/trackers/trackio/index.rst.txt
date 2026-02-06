@@ -1,0 +1,47 @@
+noether.core.trackers.trackio
+=============================
+
+.. py:module:: noether.core.trackers.trackio
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.trackers.trackio.TRACKIO_IMPORT_ERROR
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.trackers.trackio.TrackioTracker
+
+
+Module Contents
+---------------
+
+.. py:data:: TRACKIO_IMPORT_ERROR
+   :value: None
+
+
+.. py:class:: TrackioTracker(tracker_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+
+
+   HuggingFace Trackio tracker.
+
+   https://github.com/gradio-app/trackio
+
+
+   Initialize the TrackioTracker.
+   :param tracker_config: Configuration for the TrackioTracker.
+   :param \*\*kwargs: Additional keyword arguments passed to the parent class.
+
+
+   .. py:attribute:: config
+
+

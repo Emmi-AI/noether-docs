@@ -442,6 +442,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../trackers/index.html">noether.core.trackers</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><div class="visually-hidden">Toggle navigation of noether.core.trackers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../trackers/base/index.html">noether.core.trackers.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../trackers/noop/index.html">noether.core.trackers.noop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../trackers/trackio/index.html">noether.core.trackers.trackio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../trackers/wandb/index.html">noether.core.trackers.wandb</a></li>
 </ul>
 </li>
@@ -998,7 +999,7 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.tracker">
-<span class="sig-name descname"><span class="pre">tracker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema" title="noether.core.schemas.trackers.WandBTrackerSchema"><span class="pre">noether.core.schemas.trackers.WandBTrackerSchema</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.tracker" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">tracker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.schemas.trackers.AnyTracker</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.tracker" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for experiment tracking. If None, no tracking is used. If “disabled”, tracking is explicitly disabled.  WandB is currently the only supported tracker.</p>
 </dd></dl>
 

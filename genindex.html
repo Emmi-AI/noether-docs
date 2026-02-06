@@ -440,6 +440,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/core/trackers/index.html">noether.core.trackers</a><input class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><div class="visually-hidden">Toggle navigation of noether.core.trackers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/trackers/base/index.html">noether.core.trackers.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/trackers/noop/index.html">noether.core.trackers.noop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/trackers/trackio/index.html">noether.core.trackers.trackio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/trackers/wandb/index.html">noether.core.trackers.wandb</a></li>
 </ul>
 </li>
@@ -893,10 +894,10 @@
 </li>
         <li><a href="autoapi/noether/core/distributed/gather/index.html#noether.core.distributed.gather.all_reduce_sum_grad">all_reduce_sum_grad() (in module noether.core.distributed.gather)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/distributed/gather/index.html#noether.core.distributed.gather.all_reduce_sum_nograd">all_reduce_sum_nograd() (in module noether.core.distributed.gather)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/distributed/gather/index.html#noether.core.distributed.gather.AllGatherGradAutograd">AllGatherGradAutograd (class in noether.core.distributed.gather)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.MultiBranchAnchorAttentionConfig.anchor_suffix">anchor_suffix (noether.core.schemas.modules.attention.MultiBranchAnchorAttentionConfig attribute)</a>
@@ -914,6 +915,8 @@
         <li><a href="autoapi/noether/core/schemas/normalizers/index.html#noether.core.schemas.normalizers.AnyNormalizer">AnyNormalizer (in module noether.core.schemas.normalizers)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.AnyScheduleConfig">AnyScheduleConfig (in module noether.core.schemas.schedules)</a>
+</li>
+        <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.AnyTracker">AnyTracker (in module noether.core.schemas.trackers)</a>
 </li>
         <li><a href="autoapi/noether/io/cli/cli/index.html#noether.io.cli.cli.app">app (in module noether.io.cli.cli)</a>
 </li>
@@ -1316,6 +1319,8 @@
         <li><a href="autoapi/noether/core/optimizer/optimizer_wrapper/index.html#noether.core.optimizer.optimizer_wrapper.OptimizerWrapper.config">config (noether.core.optimizer.optimizer_wrapper.OptimizerWrapper attribute)</a>
 
         <ul>
+          <li><a href="autoapi/noether/core/trackers/trackio/index.html#noether.core.trackers.trackio.TrackioTracker.config">(noether.core.trackers.trackio.TrackioTracker attribute)</a>
+</li>
           <li><a href="autoapi/noether/data/base/dataset/index.html#noether.data.base.dataset.Dataset.config">(noether.data.base.dataset.Dataset attribute)</a>
 </li>
           <li><a href="autoapi/noether/data/samplers/interleaved_sampler/index.html#noether.data.samplers.interleaved_sampler.InterleavedSampler.config">(noether.data.samplers.interleaved_sampler.InterleavedSampler attribute)</a>
@@ -2870,6 +2875,8 @@
 </li>
           <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.StepIntervalScheduleConfig.kind">(noether.core.schemas.schedules.StepIntervalScheduleConfig attribute)</a>
 </li>
+          <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TrackioTrackerSchema.kind">(noether.core.schemas.trackers.TrackioTrackerSchema attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema.kind">(noether.core.schemas.trackers.WandBTrackerSchema attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.kind">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
@@ -3666,6 +3673,8 @@
           <li><a href="autoapi/noether/core/trackers/base/index.html#module-noether.core.trackers.base">noether.core.trackers.base</a>
 </li>
           <li><a href="autoapi/noether/core/trackers/noop/index.html#module-noether.core.trackers.noop">noether.core.trackers.noop</a>
+</li>
+          <li><a href="autoapi/noether/core/trackers/trackio/index.html#module-noether.core.trackers.trackio">noether.core.trackers.trackio</a>
 </li>
           <li><a href="autoapi/noether/core/trackers/wandb/index.html#module-noether.core.trackers.wandb">noether.core.trackers.wandb</a>
 </li>
@@ -4901,6 +4910,13 @@
 </li>
         </ul></li>
         <li>
+    noether.core.trackers.trackio
+
+        <ul>
+          <li><a href="autoapi/noether/core/trackers/trackio/index.html#module-noether.core.trackers.trackio">module</a>
+</li>
+        </ul></li>
+        <li>
     noether.core.trackers.wandb
 
         <ul>
@@ -5222,6 +5238,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/ahmedml/index.html#module-noether.data.datasets.cfd.caeml.ahmedml">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.caeml.ahmedml.dataset
 
@@ -5229,8 +5247,6 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/ahmedml/dataset/index.html#module-noether.data.datasets.cfd.caeml.ahmedml.dataset">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.caeml.ahmedml.split
 
@@ -6785,6 +6801,8 @@
         <li><a href="autoapi/noether/core/configs/wandb/index.html#id3">project (noether.core.configs.wandb.WandBConfig attribute)</a>, <a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.project">[1]</a>
 
         <ul>
+          <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TrackioTrackerSchema.project">(noether.core.schemas.trackers.TrackioTrackerSchema attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema.project">(noether.core.schemas.trackers.WandBTrackerSchema attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/trackers/wandb/index.html#noether.core.trackers.wandb.WandBTracker.project">(noether.core.trackers.wandb.WandBTracker attribute)</a>
@@ -7378,6 +7396,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#id1">(noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset attribute)</a>, <a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset.source_root">[1]</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TrackioTrackerSchema.space_id">space_id (noether.core.schemas.trackers.TrackioTrackerSchema attribute)</a>
+</li>
         <li><a href="autoapi/noether/data/pipeline/collators/sparse_tensor_offset/index.html#noether.data.pipeline.collators.sparse_tensor_offset.SparseTensorOffsetCollator">SparseTensorOffsetCollator (class in noether.data.pipeline.collators.sparse_tensor_offset)</a>
 </li>
         <li><a href="autoapi/noether/core/utils/training/training_iteration/index.html#noether.core.utils.training.training_iteration.TrainingIteration.specified_properties_count">specified_properties_count (noether.core.utils.training.training_iteration.TrainingIteration property)</a>
@@ -7786,8 +7806,6 @@
 </li>
         <li><a href="autoapi/noether/core/callbacks/default/train_time/index.html#noether.core.callbacks.default.train_time.TrainTimeCallback.total_train_data_time">total_train_data_time (noether.core.callbacks.default.train_time.TrainTimeCallback attribute)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/default/online_loss/index.html#noether.core.callbacks.default.online_loss.OnlineLossCallback.track_after_accumulation_step">track_after_accumulation_step() (noether.core.callbacks.default.online_loss.OnlineLossCallback method)</a>
 
         <ul>
@@ -7798,6 +7816,8 @@
           <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.track_after_accumulation_step">(noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback.track_after_update_step">track_after_update_step() (noether.core.callbacks.checkpoint.ema.EmaCallback method)</a>
 
         <ul>
@@ -7836,6 +7856,12 @@
           <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.tracker">(noether.training.trainers.base.BaseTrainer attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/trackers/trackio/index.html#noether.core.trackers.trackio.TRACKIO_IMPORT_ERROR">TRACKIO_IMPORT_ERROR (in module noether.core.trackers.trackio)</a>
+</li>
+        <li><a href="autoapi/noether/core/trackers/trackio/index.html#noether.core.trackers.trackio.TrackioTracker">TrackioTracker (class in noether.core.trackers.trackio)</a>
+</li>
+        <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TrackioTrackerSchema">TrackioTrackerSchema (class in noether.core.schemas.trackers)</a>
+</li>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.DatasetSplitIDs.train">train (noether.core.schemas.dataset.DatasetSplitIDs attribute)</a>
 
         <ul>

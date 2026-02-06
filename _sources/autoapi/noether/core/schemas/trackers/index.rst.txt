@@ -4,12 +4,21 @@ noether.core.schemas.trackers
 .. py:module:: noether.core.schemas.trackers
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.schemas.trackers.AnyTracker
+
+
 Classes
 -------
 
 .. autoapisummary::
 
    noether.core.schemas.trackers.WandBTrackerSchema
+   noether.core.schemas.trackers.TrackioTrackerSchema
 
 
 Module Contents
@@ -21,7 +30,7 @@ Module Contents
 
 
    .. py:attribute:: kind
-      :type:  str
+      :type:  Literal['noether.core.trackers.WandBTracker']
       :value: None
 
 
@@ -49,4 +58,41 @@ Module Contents
 
       he mode of W&B. Can be 'disabled', 'online', or 'offline'.
 
+
+.. py:class:: TrackioTrackerSchema(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Schema for TrackioTracker configuration.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.trackers.TrackioTracker']
+      :value: None
+
+
+
+   .. py:attribute:: project
+      :type:  str
+
+      The project name for the Trackio project.
+
+
+   .. py:attribute:: space_id
+      :type:  str | None
+      :value: None
+
+
+      The HuggingFace space ID where to store the Trackio data.
+
+
+.. py:data:: AnyTracker
 

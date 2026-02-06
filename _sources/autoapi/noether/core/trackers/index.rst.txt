@@ -12,6 +12,7 @@ Submodules
 
    /autoapi/noether/core/trackers/base/index
    /autoapi/noether/core/trackers/noop/index
+   /autoapi/noether/core/trackers/trackio/index
    /autoapi/noether/core/trackers/wandb/index
 
 
