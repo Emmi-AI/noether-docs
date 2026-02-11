@@ -807,6 +807,7 @@
 Note by default the outputs (checkpoints, logs, etc.) will be stored in the <code class="docutils literal notranslate"><span class="pre">outputs/</span></code> folder in the repo root.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>noether-train<span class="w"> </span>--hp<span class="w"> </span>tutorial/configs/train_shapenet.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>+experiment/shapenet<span class="o">=</span>upt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">tracker</span><span class="o">=</span>disabled<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="nv">dataset_root</span><span class="o">=</span>/Users/user/data/shapenet_car
 </pre></div>
 </div>
