@@ -22,7 +22,20 @@ Module Contents
 
    Concatenates multiple tensors into a single tensor.
 
-   :param items: A list of keys in the sample dict whose tensors should be concatenated.
+
+   .. code-block:: python
+
+       # dummy example
+       processor = ConcatTensorSampleProcessor(items=["image_part1", "image_part2"], target_key="full_image", dim=0)
+       input_sample = {
+           "image_part1": torch.randn(3, 224, 224),
+           "image_part2": torch.randn(3, 224, 224),
+       }
+       output_sample = processor(input_sample)
+       # output_sample['full_image'] will be a tensor of shape (6, 224, 224)
+
+
+   :param items: A list of keys in the input_sample dict whose tensors should be concatenated.
    :param target_key: The key in the sample dict where the concatenated tensor will be stored.
    :param dim: The dimension along which to concatenate the tensors. Defaults to 0.
 

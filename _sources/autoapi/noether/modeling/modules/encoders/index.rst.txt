@@ -10,7 +10,6 @@ Submodules
 .. toctree::
    :maxdepth: 1
 
-   /autoapi/noether/modeling/modules/encoders/mlp/index
    /autoapi/noether/modeling/modules/encoders/supernode_pooling/index
 
 

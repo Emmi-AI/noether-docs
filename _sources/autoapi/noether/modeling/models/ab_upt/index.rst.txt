@@ -20,7 +20,9 @@ Module Contents
    Bases: :py:obj:`torch.nn.Module`
 
 
-   Implementation of the Anchored Branched UPT model.
+   Implementation of the Anchored Branched UPT model. Including input embedding and output projection, so this is an off-the-shelf model that can be used directly by providing the appropriate input tensors.
+
+   :param config: Configuration for the AB-UPT model. See :class:`~noether.core.schemas.models.AnchorBranchedUPTConfig` for details.
 
 
    .. py:attribute:: data_specs
@@ -29,13 +31,13 @@ Module Contents
    .. py:attribute:: rope
 
 
+   .. py:attribute:: pos_embed
+
+
    .. py:attribute:: encoder
 
 
    .. py:attribute:: geometry_blocks
-
-
-   .. py:attribute:: pos_embed
 
 
    .. py:attribute:: surface_bias
@@ -78,16 +80,7 @@ Module Contents
    .. py:method:: physics_blocks_forward(surface_position_all, volume_position_all, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition)
 
       Forward pass through the physics blocks of the model.
-
       Allthough in the AB-UPT paper we only have a perceiver block a the first block, it is possible to have more perceiver blocks in the physics blocks that attend to the geometry encoding.
-
-      :param surface_position_all: Tensor of shape (B, N_surface_total, D_pos)
-      :param volume_position_all: Tensor of shape (B, N_volume_total, D_pos)
-      :param geometry_encoding: Tensor of shape (B, N_supernodes, D_hidden)
-      :param physics_token_specs: List of TokenSpec defining the token specifications for the physics blocks.
-      :param physics_attn_kwargs: Additional attention kwargs for the physics transformer blocks.
-      :param physics_perceiver_attn_kwargs: Additional attention kwargs for the physics perceiver blocks.
-      :param condition: Optional conditioning tensor of shape (B, D_condition)
 
 
 
@@ -101,16 +94,12 @@ Module Contents
 
       Create RoPE frequencies for all relevant positions.
 
-      :param geometry_position: Tensor of shape (B * N_geometry, D_pos), sparse tensor.
-      :param geometry_supernode_idx: Tensor of shape (B * number of super nodes,) with indices of supernodes
-      :param surface_position_all: Tensor of shape (B, N_surface_total, D_pos)
-      :param volume_position_all: Tensor of shape (B, N_volume_total, D_pos)
-
 
 
    .. py:method:: forward(geometry_position, geometry_supernode_idx, geometry_batch_idx, surface_anchor_position, volume_anchor_position, geometry_design_parameters = None, inflow_design_parameters = None, query_surface_position = None, query_volume_position = None)
 
       Forward pass of the AB-UPT model.
+
       :param geometry_position: Coordinates of the geometry mesh. Tensor of shape (B * N_geometry, D_pos), sparse tensor
       :param geometry_supernode_idx: Indices of the supernodes for the geometry points. Tensor of shape (B * number of super nodes,)
       :param geometry_batch_idx: Batch indices for the geometry points. Tensor of shape (B * N_geometry,). If None, assumes all points belong to the same batch.
@@ -120,6 +109,9 @@ Module Contents
       :param inflow_design_parameters: Design parameters related to the inflow to condition on. Tensor of shape (B, D_inflow).
       :param query_surface_position: Coordinates of the query surface points.
       :param query_volume_position: Coordinates of the query volume points.
+
+      :returns: A dictionary containing the predictions for surface and volume fields, sliced according to the data specifications.
+      :rtype: dict[str, torch.Tensor]
 
 
 

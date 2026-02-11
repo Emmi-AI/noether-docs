@@ -22,7 +22,7 @@ Module Contents
 
    Implementation of the UPT (Universal Physics Transformer) model.
 
-   :param config: Configuration for the UPT model.
+   :param config: Configuration for the UPT model. See :class:`~noether.core.schemas.models.UPTConfig` for details.
 
 
    .. py:attribute:: encoder
@@ -51,14 +51,6 @@ Module Contents
       Compute the RoPE frequency arguments for the surface_position and query_position. If we don't use RoPE,
       return empty dicts.
 
-      :param surface_position_batch_idx: Batch indices for the surface positions.
-      :param surface_position: Surface position coordinates.
-      :param surface_position_supernode_idx: Supernode indices for the surface positions.
-      :param query_position: Query position coordinates.
-
-      :returns: Dictionary containing the RoPE frequency arguments.
-      :rtype: dict[str, torch.Tensor]
-
 
 
    .. py:method:: forward(surface_position_batch_idx, surface_position_supernode_idx, surface_position, query_position)
@@ -73,9 +65,8 @@ Module Contents
       :param geometry_position: geometry position information.
       :param query_position: input coordinates of the query points.
 
-      :returns: dictionary with the output tensors, containing the surface pressure and volume
-                velocity.
-      :rtype: dict[str, torch.Tensor]
+      :returns: Output tensor containing the predictions for the surface and volume fields, sliced according to the data specifications.
+      :rtype: torch.Tensor
 
 
 

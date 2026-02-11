@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: Hyperparameters
 
-   Utility class for managing hyperparameters and test run configuration.
+   Utility class to store and log hyperparameters configurations from a Pydantic model.
 
 
    .. py:method:: save_resolved(stage_hyperparameters, out_file_uri)

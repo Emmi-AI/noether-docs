@@ -37,13 +37,15 @@ Module Contents
 
    .. py:attribute:: depth
       :type:  int
+      :value: None
+
 
       Number of transformer blocks in the model.
 
 
    .. py:attribute:: mlp_expansion_factor
       :type:  int
-      :value: 4
+      :value: None
 
 
       Expansion factor for the MLP hidden dimension relative to the hidden dimension. If 'mlp_hidden_dim' is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.

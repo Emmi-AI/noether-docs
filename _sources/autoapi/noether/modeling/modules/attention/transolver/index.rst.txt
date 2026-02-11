@@ -26,9 +26,8 @@ Module Contents
    - F.scaled_dot_product_attention instead of slow pytorch attention
    - Possibility to mask tokens (required to process variable sized inputs)
 
-   Initialize the Transolver attention module.
-
-   :param config: configuration of the attention module.
+   :param config: Configuration for the Transolver attention module. See
+                  :class:`~noether.core.schemas.modules.AttentionConfig` for available options.
 
 
    .. py:attribute:: num_heads

@@ -22,9 +22,8 @@ Module Contents
 
    Transolver++ Attention module as implemented in https://github.com/thuml/Transolver_plus/blob/main/models/Transolver_plus.py
 
-   Initialize the TransolverPlusPlusAttention module.
-
-   :param config: Configuration object for the attention module.
+   :param config: Configuration for the TransolverPlusPlusAttention module. See
+                  :class:`~noether.core.schemas.modules.AttentionConfig` for available options.
 
 
    .. py:attribute:: dim_head

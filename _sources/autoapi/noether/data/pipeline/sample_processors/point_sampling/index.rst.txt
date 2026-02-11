@@ -20,7 +20,26 @@ Module Contents
    Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
 
 
-   Randomly subsamples points from a pointcloud.
+   Randomly subsamples points from a tensor.
+
+   .. code-block:: python
+
+       # dummy example
+       processor = PointSamplingSampleProcessor(
+           items={"input_position", "output_position"},
+           num_points=1024,
+           seed=42,
+       )
+       input_sample = {
+           "input_position": torch.randn(5000, 3),
+           "output_position": torch.randn(5000, 3),
+           "input_features": torch.randn(5000, 6),
+       }
+       output_sample = processor(input_sample)
+       # output_sample['input_position'] will be a tensor of shape (1024, 3)
+       # output_sample['output_position'] will be a tensor of shape (1024, 3)
+       # output_sample['input_features'] will be unchanged.
+       # If input features is also added to items, it will be of shape (1024, 6)
 
    :param items: Which pointcloud items should be subsampled (e.g., input_position, output_position, ...). If multiple
    :param items are present:

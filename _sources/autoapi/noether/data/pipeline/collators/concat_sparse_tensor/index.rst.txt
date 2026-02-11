@@ -20,9 +20,7 @@ Module Contents
    Concatenates a sparse tensor along its first axis. Additionally, creates the batch_idx tensor which maps samples
    to their respective index in a batch.
 
-   Initializes the ConcatSparseTensorCollator.
-
-   :param items: Which pointcloud items should be collated.
+   :param items: Which pointcloud items (i.e., keys in the sample dictionaries) should be collated.
    :param create_batch_idx: If true, creates a batch_idx tensor that maps samples to their index in the batch.
                             Defaults to False.
    :param batch_idx_key: How the generated batch_idx tensor should be called. Defaults to "batch_idx". If multiple

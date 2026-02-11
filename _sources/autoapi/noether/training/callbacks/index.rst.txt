@@ -11,6 +11,5 @@ Submodules
    :maxdepth: 1
 
    /autoapi/noether/training/callbacks/offline_loss/index
-   /autoapi/noether/training/callbacks/supernode_pooling_coverage/index
 
 

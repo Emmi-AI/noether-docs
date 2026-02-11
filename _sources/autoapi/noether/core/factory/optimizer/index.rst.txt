@@ -20,18 +20,22 @@ Module Contents
    Bases: :py:obj:`noether.core.factory.base.Factory`
 
 
-   Factory for creating optimizers. Handles wrapping into OptimerWrapper by creating the corresponding constructor
-   for the underlying `torch.optim.Optimizer`. Objects are returned as partials, as creating the optimizer requires
-   the model parameters from the instantiated model.
+   Factory for creating optimizers.
+
+   Handles wrapping into :class:`~noether.core.optimizer.OptimizerWrapper` by creating the corresponding constructor
+   for the underlying :class:`~torch.optim.Optimizer`. Objects are returned as partials, as creating the optimizer
+   requires the model parameters from the instantiated model.
 
 
    .. py:method:: instantiate(optimizer_config)
 
-      Instantiates the model either based on `kind` and `kwargs` or from the checkpoint.
+      Instantiates the optimizer based on the provided configuration.
 
-      :param optimizer_config: config for the optimizer to create. This config contains both the torch optimizer and the OptimerWrapper configurations.
+      :param optimizer_config: Configuration for the optimizer to create. This config contains both the
+                               :class:`~torch.optim.Optimizer` and the :class:`~noether.core.optimizer.OptimizerWrapper` configurations.
+                               See :class:`~noether.core.schemas.optimizers.OptimizerConfig` for available options.
 
-      :returns: A callable that initializes the optimizer.
+      :returns: A callable that initializes the :class:`~noether.core.optimizer.OptimizerWrapper`.
 
 
 

@@ -20,20 +20,20 @@ Module Contents
    Bases: :py:obj:`noether.core.factory.base.Factory`
 
 
-   Factory for creating schedules. Handles wrapping into ScheduleWrapper which handles update/epoch based
-   scheduling. Additionally, populates the `effective_batch_size` and `updates_per_epoch` to avoid specifying it
+   Factory for creating schedules. Handles wrapping into :class:`~noether.core.utils.training.schedule.ScheduleWrapper` which handles update/epoch based
+   scheduling. Additionally, populates the ``effective_batch_size`` and ``updates_per_epoch`` to avoid specifying it
    in the config.
 
 
    .. py:method:: create(schedule_config, **kwargs)
 
-      Creates a schedule if the schedule is specified as dictionary. If the schedule was already instantiated, it
-      will simply return the existing schedule. If `obj_or_kwargs` is None, None is returned.
+      Creates a schedule based on the provided config and wraps it into a :class:`~noether.core.utils.training.schedule.ScheduleWrapper`.
 
-      :param schedule_config: The schedule config or already instantiated schedule.
+      :param schedule_config: The schedule config or already instantiated schedule. See
+                              :class:`~noether.core.schemas.schedules.AnyScheduleConfig` for available options.
       :param \*\*kwargs: Additional keyword arguments that are passed to the schedule constructor.
 
-      :returns: The instantiated schedule.
+      :returns: The instantiated schedule wrapped in :class:`~noether.core.utils.training.schedule.ScheduleWrapper`.
 
 
 

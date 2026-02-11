@@ -18,18 +18,19 @@ Module Contents
 .. py:class:: OptimizerWrapper(model, torch_optim_ctor, optim_wrapper_config, update_counter = None)
 
    Wrapper around an `torch.optim.Optimizer` that allows
-   - excluding biases and weights of normalization layers from weight decay
-   - creating param_groups (e.g., for a layerwise lr scaling)
-   - learning rate scheduling
-   - gradient clipping
-   - weight decay scheduling
+       - excluding biases and weights of normalization layers from weight decay
+       - creating param_groups (e.g., for a layerwise lr scaling)
+       - learning rate scheduling
+       - gradient clipping
+       - weight decay scheduling
+   Have a look at the class:`noether.core.schemas.optimizers.OptimizerConfig` for available options.
 
    :param model: Parameters of this model will be optimized.
-   :param torch_optim_ctor: The `torch.optim.Optimizer` that should be wrapped. Needs to be a callable because it
-                            requires the parameters of the model for initialization.
+   :param torch_optim_ctor: The :class:`~torch.optim.Optimizer` that should be wrapped. Needs to be a callable
+                            because it requires the parameters of the model for initialization.
    :param optim_wrapper_config: The configuration for the optimizer wrapper.
-   :param update_counter: Object that provides the current training progress to enable scheduling of the learning rate or
-                          the weight decay.
+   :param update_counter: Object that provides the current training progress to enable scheduling of the learning
+                          rate or the weight decay.
 
 
    .. py:attribute:: schedule

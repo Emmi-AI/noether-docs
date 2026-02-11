@@ -25,10 +25,11 @@ Module Contents
 
    .. rubric:: Example
 
-   >>> schedule_config:
-   >>>   kind: noether.core.schedules.LinearDecreasingSchedule
-   >>>   max_value: ${model.optim.lr}
-   >>>   end_value: 0.0
+   .. code-block:: yaml
+       schedule_config:
+       kind: noether.core.schedules.LinearDecreasingSchedule
+       max_value: ${model.optim.lr}
+       end_value: 0.0
 
    Initialize the scheduler.
 

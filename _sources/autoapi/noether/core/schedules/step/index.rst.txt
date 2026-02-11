@@ -26,18 +26,18 @@ Module Contents
 
    .. rubric:: Example
 
-   >>> schedule_config:
-   >>>    kind: noether.core.schedules.StepDecreasingSchedule
-   >>>    factor: 0.1
-   >>>    decreases_interval: 0.01
-   >>>    max_value: ${model.optim.lr}
+   .. code-block:: yaml
+
+       schedule_config:
+           kind: noether.core.schedules.StepDecreasingSchedule
+           factor: 0.1
+           decreases_interval: 0.01
+           max_value: ${model.optim.lr}
 
    I.e., after each 1% of the total training steps, the value is multiplied by 0.1.
 
-   Initialize the scheduler.
-
-   Args:
-   config: The configuration for the scheduler.
+   :param config: The configuration for the scheduler. See
+                  :class:`~noether.core.schemas.schedules.StepDecreasingScheduleConfig` for details.
 
 
    .. py:attribute:: factor
@@ -53,21 +53,18 @@ Module Contents
 
    A scheduler that progresses at fixed steps and increases or decreases by some factor at these steps.
 
-   Initialize the scheduler.
-
    :param config: Configuration for the step fixed schedule.
 
-   .. rubric:: Example
-
-   >>> schedule_config:
-   >>> kind: noether.core.schedules.StepFixedSchedule
-   >>> factor: 0.1
-   >>> start_value: ${model.optim.lr}
-   >>> steps:
-   >>>   - 0.01
-   >>>   - 0.02
-   >>>   - 0.03
-
+   Example:
+   .. code-block:: yaml
+       schedule_config:
+           kind: noether.core.schedules.StepFixedSchedule
+           factor: 0.1
+           start_value: ${model.optim.lr}
+           steps:
+               - 0.01
+               - 0.02
+               - 0.03
    Lower LR by factor 0.1 at 1%, 2%, and 3% of total training steps.
 
 
@@ -87,16 +84,16 @@ Module Contents
 
    A scheduler that progresses at fixed intervals and increases or decreases by some factor at these intervals.
 
-   Initialize the scheduler.
-
    :param config: Configuration for the step interval schedule.
 
    Example:
-   >>> schedule_config:
-   >>>     kind: noether.core.schedules.StepIntervalSchedule
-   >>>     start_value: 1.0
-   >>>     factor: 0.5
-   >>>     update_interval: 0.01
+
+   .. code-block:: yaml
+       schedule_config:
+           kind: noether.core.schedules.StepIntervalSchedule
+           start_value: 1.0
+           factor: 0.5
+           update_interval: 0.01
 
 
    .. py:attribute:: start_value

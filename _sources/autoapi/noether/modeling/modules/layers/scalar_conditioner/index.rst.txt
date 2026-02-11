@@ -25,10 +25,7 @@ Module Contents
    sine-cosine embeddings followed by a mlp (per scalar). These vectors are then concatenated and projected down
    to condition_dim with an MLP.
 
-   :param hidden_dim: Dimension for embedding the scalars and the per-scalar MLP.
-   :param num_scalars: How many scalars are embedded.
-   :param condition_dim: Dimension of the final conditioning vector. Defaults to 4 * dim if condition_dim is None.
-   :param init_weights: Weight initialization for MLPs.
+   :param config: configuration for the ScalarsConditioner. See :class:`~noether.core.schemas.modules.layers.scalar_conditioner.ScalarsConditionerConfig` for available options.
 
 
    .. py:attribute:: hidden_dim

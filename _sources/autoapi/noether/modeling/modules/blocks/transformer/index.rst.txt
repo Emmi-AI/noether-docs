@@ -22,10 +22,9 @@ Module Contents
 
    A transformer block with a single attention layer and a feedforward layer.
 
-   Initializes a transformer block.
-
-   Args:
-
+   :param config: Configuration for the transformer block. See
+                  :class:`~noether.core.schemas.modules.blocks.TransformerBlockConfig`
+                  for available options.
 
 
    .. py:attribute:: norm1
@@ -59,7 +58,7 @@ Module Contents
       :param x: Input tensor with shape (batch_size, seqlen/num_tokens, hidden_dim).
       :param condition: Conditioning vector. If provided, the attention and MLP will be scaled, shifted and gated
                         feature-wise with predicted values from this vector.
-      :param attn_kwargs: Dict with arguments for the attention (such as the attention mask). Defaults to None.
+      :param attn_kwargs: Dict with arguments for the attention (such as the attention mask or rope frequencies). Defaults to None.
 
       :returns: Tensor after the forward pass of the transformer block.
 

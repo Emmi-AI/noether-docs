@@ -27,7 +27,7 @@ Module Contents
 
    Initialize the MLP.
 
-   :param config: Configuration object for the MLP.
+   :param config: Configuration object for the MLP. See :class:`~noether.core.schemas.modules.mlp.MLPConfig` for available options.
 
 
    .. py:attribute:: init_weights

@@ -34,8 +34,16 @@ Module Contents
 
    Weights and Biases tracker.
 
-   Initialize the WandBTracker.
-   :param tracker_config: Configuration for the WandBTracker. Implements the `WandBTrackerSchema`.
+   Example config:
+
+   .. code-block:: yaml
+       - kind: noether.core.trackers.WandBTracker
+         mode: online
+         entity: my_entity
+         project: my_project
+
+
+   :param tracker_config: Configuration for the WandBTracker. See :class:`~noether.core.schemas.trackers.WandBTrackerSchema` for available options including mode, entity, and project.
    :param \*\*kwargs: Additional keyword arguments passed to the parent class.
 
 

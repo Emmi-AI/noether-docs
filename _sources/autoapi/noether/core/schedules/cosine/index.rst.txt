@@ -25,10 +25,11 @@ Module Contents
 
    .. rubric:: Example
 
-   >>> schedule_config:
-   >>>   kind: noether.core.schedules.CosineDecreasingSchedule
-   >>>   max_value: ${model.optim.lr}
-   >>>   end_value: 0.0
+   .. code-block:: yaml
+       schedule_config:
+       kind: noether.core.schedules.CosineDecreasingSchedule
+       max_value: ${model.optim.lr} # or just manually set the starting value
+       end_value: 0.0
 
    Initialize the scheduler.
 
@@ -42,10 +43,11 @@ Module Contents
 
    .. rubric:: Example
 
-   >>> schedule_config:
-   >>>   kind: noether.core.schedules.CosineIncreasingSchedule
-   >>>   max_value: ${model.optim.lr}
-   >>>   start_value: 0.0
+   .. code-block:: yaml
+       schedule_config:
+       kind: noether.core.schedules.CosineIncreasingSchedule
+       max_value: ${model.optim.lr}
+       start_value: 0.0
 
    Initialize the scheduler.
 

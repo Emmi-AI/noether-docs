@@ -47,14 +47,14 @@ Module Contents
 
    .. py:attribute:: num_layers
       :type:  int
-      :value: 0
+      :value: None
 
 
       Number of hidden layers in the MLP. If 0, the MLP is a two linear layer MLP from input_dim, hidden_dim, activation to output_dim.
 
 
    .. py:attribute:: activation
-      :type:  str
+      :type:  Literal['RELU', 'GELU', 'SIGMOID', 'TANH', 'LEAKY_RELU', 'SOFTPLUS', 'ELU', 'SILU']
       :value: 'GELU'
 
 

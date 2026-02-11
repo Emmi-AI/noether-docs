@@ -22,9 +22,7 @@ Module Contents
 
    A periodic Callback that is invoked at the end of each epoch to calculate and track the loss and a dataset.
 
-   Initializes the OfflineLossCallback.
-
-   :param callback_config: configuration of the OfflineLossCallback.
+   :param callback_config: configuration of the OfflineLossCallback. See :class:`~noether.core.schemas.callbacks.OfflineLossCallbackConfig` for the available options.
 
 
    .. py:attribute:: dataset_key

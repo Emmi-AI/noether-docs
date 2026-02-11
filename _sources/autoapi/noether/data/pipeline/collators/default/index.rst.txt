@@ -19,10 +19,8 @@ Module Contents
 
    Applies `torch.utils.data.default_collate` to the specified items.
 
-   Initializes the DefaultCollator.
-
-   :param items: Items to apply `default_collate` to.
-   :param optional_items: Items to apply `default_collate` to if they are present.
+   :param items: Items (i.e, keys) to apply `default_collate` to.
+   :param optional_items: Items (i.e, keys) to apply `default_collate` to if they are present.
 
 
    .. py:attribute:: items

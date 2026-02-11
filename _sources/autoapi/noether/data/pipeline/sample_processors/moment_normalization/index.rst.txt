@@ -22,7 +22,25 @@ Module Contents
 
    Normalizes a value with its mean and standard deviation (i.e., its moments).
 
-   :param item: The item to normalize.
+
+   .. code-block:: python
+
+       # dummy example
+       processor = MomentNormalizationSampleProcessor(
+           item="measurement",
+           mean=[10.0],
+           std=[2.0],
+           logscale=False,
+       )
+       input_sample = {
+           "measurement": torch.tensor([[12.0], [14.0], [8.0]]),
+           "other_item": torch.tensor([[1.0], [2.0], [3.0]]),
+       }
+       output_sample = processor(input_sample)
+       # output_sample['measurement'] will be tensor([[1.0], [2.0], [-1.0]])
+       # output_sample['other_item'] will be unchanged.
+
+   :param item: The item (i.e., key in the input sample dictionary) to normalize.
    :param mean: The mean of the value. Mandatory if logscale=False.
    :param std: The standard deviation of the value. Mandatory if logscale=False.
    :param logmean: The mean of the value in logscale. Mandatory if logscale=True.

@@ -22,7 +22,11 @@ Module Contents
 
    Pre-processes data on a sample-level to normalize positions.
 
-   :param items: The position items to normalize.
+   Should only be used when multiple items should be normalized with the same normalization.
+   If only one item should be normalized, consider using the preprocessor
+   :class:`~noether.data.preprocessors.normalizers.PositionNormalizer` instead.
+
+   :param items: The position items to normalize. I.e., keys of the input_sample dictionary that should be normalized.
    :param raw_pos_min: The minimum position in the source domain.
    :param raw_pos_max: The maximum position in the source domain.
    :param scale: The maximum value of the position. Defaults to 1000.
@@ -43,17 +47,5 @@ Module Contents
 
 
    .. py:attribute:: raw_size
-
-
-   .. py:method:: inverse(key, value)
-
-      Inverts the normalization from the __call__ method of a single item in the batch.
-
-      :param key: The name of the item.
-      :param value: The value of the item.
-
-      :returns: The same name and the denormalized value.
-      :rtype: (key, value)
-
 
 

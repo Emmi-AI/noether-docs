@@ -25,6 +25,8 @@ Module Contents
    :param scale: Scale tensor with shape (batch_size, dim) or (batch_size, 1 dim).
    :param shift: Shift tensor with shape (batch_size, dim) or (batch_size, 1 dim).
 
+   :returns: The scaled and shifted input, where each feature of x is scaled by (1 + scale) and then shifted by shift.
+
 
 .. py:function:: modulate_gate(x, gate)
 
@@ -32,5 +34,7 @@ Module Contents
 
    :param x: Input tensor (e.g., input to a transformer block with shape (batch_size, sequence_length, dim)).
    :param gate: Gate tensor with shape (batch_size, dim) or (batch_size, 1 dim).
+
+   :returns: The gated input, where each feature of x is multiplied by the corresponding gate value.
 
 

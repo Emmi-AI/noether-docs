@@ -22,9 +22,8 @@ Module Contents
 
    Scaled dot-product attention module.
 
-   Initialize the DotProductAttention module.
-
-   :param config: configuration of the attention module.
+   :param config: Configuration for the DotProductAttention module. See
+                  :class:`~noether.core.schemas.modules.AttentionConfig` for available options.
 
 
    .. py:attribute:: num_heads

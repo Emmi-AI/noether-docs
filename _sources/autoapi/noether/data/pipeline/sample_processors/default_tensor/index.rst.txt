@@ -22,11 +22,25 @@ Module Contents
 
    Create a tensor with a fixed dummy value, with a specified size.
 
-   :param item_key_name: _description_
-   :param default_value: _description_
-   :param feature_dim: _description_
-   :param size: _description_
-   :param matching_item_key: _description_
+
+   .. code-block:: python
+
+       # dummy example
+       processor = DefaultTensorSampleProcessor(
+           item_key_name="default_tensor",
+           feature_dim=128,
+           size=10,
+           default_value=0.5,
+       )
+       input_sample = {}
+       output_sample = processor(input_sample)
+       # output_sample['default_tensor'] will be a tensor of shape (10, 128) filled with 0.5
+
+   :param item_key_name: key of the created default tensor in the output sample dict.
+   :param default_value: value to fill the created default tensor with.
+   :param feature_dim: size of the feature dimension of the created default tensor.
+   :param size: size of the first dimension of the created default tensor.
+   :param matching_item_key: key of an existing tensor in the input sample dict to match the size of the first dimension.
 
 
    .. py:attribute:: item_key_name

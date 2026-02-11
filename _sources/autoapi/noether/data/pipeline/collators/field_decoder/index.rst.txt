@@ -24,8 +24,6 @@ Module Contents
        targets (i.e., calculate a loss)
 
 
-   Initializes the FieldDecoderCollator.
-
    :param position_item: Identifier for the position.
    :param target_items: Identifiers for the position, can use multiple target_items if multiple values are predicted with
    :param the same decoder:

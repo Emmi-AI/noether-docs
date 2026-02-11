@@ -21,8 +21,10 @@ Module Contents
 
 
    Utility processor that simply renames the dictionary keys in a batch.
+   Rename keys in the batch if they are in the key_map and keep old keys otherwise.
+   Creates a new dictionary whose keys are renamed but uses references to the values of the old dict.
+   This avoids copying the data and at the same time does not modify this function's input.
 
-   Initializes the RenameKeysPostCollator
 
    :param key_map: dict with source keys as keys and target keys as values. The source keys are renamed target keys.
 

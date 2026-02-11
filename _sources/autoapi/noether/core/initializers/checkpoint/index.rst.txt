@@ -23,14 +23,14 @@ Module Contents
    Helper class that provides a standard way to create an ABC using
    inheritance.
 
-   Initialize model from checkpoint.
-
-   :param initializer_config: configuration for the initializer.
+   :param initializer_config: configuration for the initializer. See :class:`~noether.core.schemas.initializers.CheckpointInitializerConfig` for available options.
    :param \*\*kwargs: additional arguments to pass to the parent class.
 
 
    .. py:attribute:: checkpoint
       :type:  str | noether.core.utils.training.training_iteration.TrainingIteration
+
+      Base class to initialize models from checkpoints of previous runs. Should not be used directly, but inherited by other initializers such as PreviousRunInitializer or ResumeInitializer.
 
 
    .. py:attribute:: run_id

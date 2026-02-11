@@ -23,6 +23,8 @@ Module Contents
    Shuffles the dataset, optionally with seed.
 
    :param dataset: The dataset to shuffle.
+   :param config: Configuration for the ShuffleWrapper. See :class:`~noether.core.schemas.dataset.ShuffleWrapperConfig`
+                  for available options.
 
    :raises ValueError: If the dataset is not an instance of noether.data.Dataset, or if the seed is not an integer or None.
 

@@ -281,7 +281,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/training/use_callbacks.html">How to Use and Build Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -329,7 +329,6 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../core/configs/index.html">noether.core.configs</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of noether.core.configs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/configs/hyperparameters/index.html">noether.core.configs.hyperparameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../core/configs/wandb/index.html">noether.core.configs.wandb</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../core/distributed/index.html">noether.core.distributed</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of noether.core.distributed</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -365,7 +364,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../core/models/index.html">noether.core.models</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of noether.core.models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/models/base/index.html">noether.core.models.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/models/composite/index.html">noether.core.models.composite</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../core/models/single/index.html">noether.core.models.single</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core/models/model/index.html">noether.core.models.model</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../core/optimizer/index.html">noether.core.optimizer</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of noether.core.optimizer</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -575,7 +574,6 @@
 <li class="toctree-l5 current current-page"><a class="current reference internal" href="#">noether.data.pipeline.sample_processors.position_normalization</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../rename_keys/index.html">noether.data.pipeline.sample_processors.rename_keys</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../replace_key/index.html">noether.data.pipeline.sample_processors.replace_key</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../samplewise_normalization/index.html">noether.data.pipeline.sample_processors.samplewise_normalization</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../supernode_sampling/index.html">noether.data.pipeline.sample_processors.supernode_sampling</a></li>
 </ul>
 </li>
@@ -699,7 +697,6 @@
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../../modeling/modules/encoders/index.html">noether.modeling.modules.encoders</a><input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.encoders</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../../../modeling/modules/encoders/mlp/index.html">noether.modeling.modules.encoders.mlp</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../modeling/modules/encoders/supernode_pooling/index.html">noether.modeling.modules.encoders.supernode_pooling</a></li>
 </ul>
 </li>
@@ -725,7 +722,6 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../../training/index.html">noether.training</a><input class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" role="switch" type="checkbox"/><label for="toctree-checkbox-70"><div class="visually-hidden">Toggle navigation of noether.training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../training/callbacks/index.html">noether.training.callbacks</a><input class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" role="switch" type="checkbox"/><label for="toctree-checkbox-71"><div class="visually-hidden">Toggle navigation of noether.training.callbacks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../training/callbacks/offline_loss/index.html">noether.training.callbacks.offline_loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../../training/callbacks/supernode_pooling_coverage/index.html">noether.training.callbacks.supernode_pooling_coverage</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" role="switch" type="checkbox"/><label for="toctree-checkbox-72"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -810,10 +806,13 @@
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.pipeline.sample_processors.position_normalization.</span></span><span class="sig-name descname"><span class="pre">PositionNormalizationSampleProcessor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_pos_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw_pos_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../sample_processor/index.html#noether.data.pipeline.sample_processor.SampleProcessor" title="noether.data.pipeline.sample_processor.SampleProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.pipeline.sample_processor.SampleProcessor</span></code></a></p>
 <p>Pre-processes data on a sample-level to normalize positions.</p>
+<p>Should only be used when multiple items should be normalized with the same normalization.
+If only one item should be normalized, consider using the preprocessor
+<a class="reference internal" href="../../../preprocessors/normalizers/index.html#noether.data.preprocessors.normalizers.PositionNormalizer" title="noether.data.preprocessors.normalizers.PositionNormalizer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PositionNormalizer</span></code></a> instead.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><em>set</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>) – The position items to normalize.</p></li>
+<li><p><strong>items</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><em>set</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>]</em>) – The position items to normalize. I.e., keys of the input_sample dictionary that should be normalized.</p></li>
 <li><p><strong>raw_pos_min</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.14)"><em>collections.abc.Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>) – The minimum position in the source domain.</p></li>
 <li><p><strong>raw_pos_max</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.14)"><em>collections.abc.Sequence</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>) – The maximum position in the source domain.</p></li>
 <li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – The maximum value of the position. Defaults to 1000.</p></li>
@@ -844,26 +843,6 @@
 <dt class="sig sig-object py" id="noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor.raw_size">
 <span class="sig-name descname"><span class="pre">raw_size</span></span><a class="headerlink" href="#noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor.raw_size" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor.inverse">
-<span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor.inverse" title="Link to this definition">¶</a></dt>
-<dd><p>Inverts the normalization from the __call__ method of a single item in the batch.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The name of the item.</p></li>
-<li><p><strong>value</strong> (<em>torch.Tensor</em>) – The value of the item.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The same name and the denormalized value.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>(key, value)</p>
-</dd>
-</dl>
-</dd></dl>
 
 </dd></dl>
 
@@ -940,7 +919,6 @@
 <li><a class="reference internal" href="#noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor.raw_pos_min_tensor"><code class="docutils literal notranslate"><span class="pre">PositionNormalizationSampleProcessor.raw_pos_min_tensor</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor.raw_pos_max_tensor"><code class="docutils literal notranslate"><span class="pre">PositionNormalizationSampleProcessor.raw_pos_max_tensor</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor.raw_size"><code class="docutils literal notranslate"><span class="pre">PositionNormalizationSampleProcessor.raw_size</span></code></a></li>
-<li><a class="reference internal" href="#noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor.inverse"><code class="docutils literal notranslate"><span class="pre">PositionNormalizationSampleProcessor.inverse()</span></code></a></li>
 </ul>
 </li>
 </ul>

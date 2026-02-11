@@ -34,16 +34,13 @@ Module Contents
 
 
    Dataset implementation for aerodynamic datasets with volume and surface fields.
-
    This unified dataset class provides an interface for aerodynamics dataset with volume and surface fields.
    The dataset behavior such as the dataset choice, train/val/test split IDs, etc.
    is configured through constructor parameters, allowing for easy extension to new datasets.
 
-   :param dataset_config: Configuration for the dataset.
 
-   Args:
-   dataset_config_provider: Optional provider for dataset configuration.
-   dataset_normalizers: A dictionary that contains normalization ComposePreProcess(ers) for each data type. The key for each normalizer can be used in the with_normalizers decorator.
+   :param dataset_config: Configuration for the dataset. See :class:`~noether.core.schemas.dataset.DatasetBaseConfig` for available options.
+   :param filemap: FileMap object defining the mapping of data properties to filenames. See :class:`~noether.data.datasets.cfd.caeml.filemap.FileMap` for details.
 
 
    .. py:attribute:: split

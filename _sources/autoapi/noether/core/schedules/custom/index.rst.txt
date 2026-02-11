@@ -24,17 +24,17 @@ Module Contents
 
    .. rubric:: Example
 
-   >>> schedule_config:
-   >>>   kind: noether.core.schedules.CustomSLchedule
-   >>>   values:
-   >>>     - 1.0e-3
-   >>>     - 5.0e-4
-   >>>     - 1.0e-4
+   .. code-block:: yaml
 
-   Initialize the scheduler.
+       schedule_config:
+           kind: noether.core.schedules.CustomSchedule
+           values:
+               - 1.0e-3
+               - 5.0e-4
+               - 1.0e-4
 
-   :param overhang_percent: The percentage by which the schedule is artificially prolonged.
-   :param overhang_steps: The number of steps by which the schedule is artificially prolonged.
+   :param config: Configuration of the custom schedule. See
+                  :class:`~noether.core.schemas.schedules.CustomScheduleConfig` for details.
 
 
    .. py:attribute:: values

@@ -22,7 +22,7 @@ Module Contents
 
    Creates frequencies for rotary embeddings (RoPE) from https://arxiv.org/abs/2104.09864 for variable positions.
 
-   :param config: Configuration for RoPE frequency settings.
+   :param config: Configuration for RoPE frequency settings. See :class:`~noether.core.schemas.modules.layers.RopeFrequencyConfig` for available options.
 
 
    .. py:attribute:: omega
@@ -51,5 +51,8 @@ Module Contents
 
 
    .. py:method:: forward(coords)
+
+      :param coords: coordinates to create RoPE frequencies for. Expected shape is (..., input_dim).
+
 
 

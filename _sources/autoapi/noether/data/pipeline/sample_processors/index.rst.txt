@@ -19,7 +19,6 @@ Submodules
    /autoapi/noether/data/pipeline/sample_processors/position_normalization/index
    /autoapi/noether/data/pipeline/sample_processors/rename_keys/index
    /autoapi/noether/data/pipeline/sample_processors/replace_key/index
-   /autoapi/noether/data/pipeline/sample_processors/samplewise_normalization/index
    /autoapi/noether/data/pipeline/sample_processors/supernode_sampling/index
 
 

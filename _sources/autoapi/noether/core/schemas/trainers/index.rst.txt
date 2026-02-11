@@ -77,7 +77,7 @@ Module Contents
       :value: None
 
 
-      The epoch to start training at.
+      The epoch to start training at. This means that the trainer will skip all epochs before this epoch. Learning rate and other schedulers will be stepped accordingly. Useful for resuming training from a specific epoch.
 
 
    .. py:attribute:: add_default_callbacks
@@ -159,7 +159,7 @@ Module Contents
       :value: None
 
 
-      The integer number of epochs to to periodically track metrics at.
+      The integer number of epochs to periodically track metrics at.
 
 
    .. py:attribute:: track_every_n_updates

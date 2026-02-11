@@ -23,8 +23,7 @@ Module Contents
    LayerScale module scales the input tensor by a learnable parameter gamma.
 
    Initialize the LayerScale module.
-   :param hidden_dim: Number of dimensions of the input tensor to be scaled.
-   :param init_scale: Initial gamme scale value. Defaults to 1e-5.
+   :param config: Configuration for the LayerScale module. See :class:`~noether.core.schemas.modules.layers.LayerScaleConfig` for details.
 
 
    .. py:method:: forward(x)

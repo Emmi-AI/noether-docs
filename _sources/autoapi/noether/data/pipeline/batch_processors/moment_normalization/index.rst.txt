@@ -20,9 +20,24 @@ Module Contents
    Bases: :py:obj:`noether.data.pipeline.batch_processor.BatchProcessor`
 
 
-   Normalizes a value with its mean and standard deviation (i.e., its moments).
+   Normalizes a value with its mean and standard deviation (i.e., its moments) in a batch.
 
-   Initializes the MomentNormalizationPostCollator
+   Example:
+
+   .. code-block:: python
+
+       processor = MomentNormalizationBatchProcessor(
+           items=['velocity', 'pressure'],
+           mean=[1.0, 2.0],
+           std=[0.1, 0.2],
+       )
+       batch = {
+           'velocity': torch.tensor([[.., ..], [.., ..]]),
+           'pressure': torch.tensor([[.., ..], [.., ..]]),
+       }
+       normalized_batch = processor(batch)
+       # normalized_batch['velocity'] will be tensor([[.., ..], [.., ..]])
+       # normalized_batch['pressure'] will be tensor([[.., ..], [.., ..]])
 
    :param items: the position items to normalize.
    :param mean: the mean of the value.

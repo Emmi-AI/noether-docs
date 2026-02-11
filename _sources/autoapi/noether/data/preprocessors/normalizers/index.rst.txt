@@ -24,7 +24,8 @@ Module Contents
 
    Preprocessor that shifts and scales the input data, with (x + shift) * scale.
 
-   :param normalizer_config: Configuration containing shift and scale values.
+   :param normalizer_config: Configuration containing shift and scale values. See :class:`~noether.core.schemas.normalizers.ShiftAndScaleNormalizerConfig` for details.
+   :param \*\*kwargs: Additional arguments passed to the parent class.
 
    :raises ValueError: If `shift` and `scale` do not have the same length.
    :raises ValueError: If `logscale_shift` and `logscale_scale` do not have the same length when `logscale` is True.
@@ -34,16 +35,10 @@ Module Contents
    :raises ValueError: If `shift` and `scale` are provided but not both.
 
 
-   .. py:attribute:: shift
-      :type:  torch.Tensor | None
-      :value: None
-
-
-
    .. py:attribute:: scale
-      :type:  torch.Tensor | None
-      :value: None
 
+
+   .. py:attribute:: shift
 
 
    .. py:attribute:: logscale
@@ -64,7 +59,7 @@ Module Contents
 
    Normalizes data using mean and standard deviation. It shifts the data by subtracting the mean and scales it by dividing by the standard deviation.
 
-   :param normalizer_config: Configuration containing mean and std values. Imports MeanStdNormalizerConfig.
+   :param normalizer_config: Configuration containing mean and std values. See :class:`~noether.core.schemas.normalizers.MeanStdNormalizerConfig` for details.
    :param \*\*kwargs: Additional arguments passed to the parent class.
 
    :raises ValueError: If `mean` and `std` do not have the same length.
@@ -90,7 +85,7 @@ Module Contents
 
    Normalizes position data to a range of [0, scale]. It inherits from ShiftAndScaleNormalizer and applies a shift and scale based on the provided raw position min and max values.
 
-   :param normalizer_config: Configuration containing raw position min, max, and scale values.
+   :param normalizer_config: Configuration containing raw position min, max, and scale values. See :class:`~noether.core.schemas.normalizers.PositionNormalizerConfig` for details.
    :param \*\*kwargs: Additional arguments passed to the parent class.
 
    :raises ValueError: If `raw_pos_min` and `raw_pos_max` do not have the same length.

@@ -22,9 +22,7 @@ Module Contents
 
    Post-processes data on a batch-level to normalize positions.
 
-   Initializes the PositionNormalizationPostCollator
-
-   :param items: The position items to normalize.
+   :param items: The position items (i.e., keys in the batch) to normalize.
    :param raw_pos_min: The minimum position in the source domain.
    :param raw_pos_max: The maximum position in the source domain.
    :param scale: The maximum value of the position. Defaults to 1000.

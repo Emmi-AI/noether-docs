@@ -12,6 +12,6 @@ Submodules
 
    /autoapi/noether/core/models/base/index
    /autoapi/noether/core/models/composite/index
-   /autoapi/noether/core/models/single/index
+   /autoapi/noether/core/models/model/index
 
 

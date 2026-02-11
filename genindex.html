@@ -279,7 +279,7 @@
 <li class="toctree-l1"><a class="reference internal" href="guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guides/training/use_callbacks.html">How to Use and Build Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -327,7 +327,6 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/core/configs/index.html">noether.core.configs</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of noether.core.configs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/configs/hyperparameters/index.html">noether.core.configs.hyperparameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/configs/wandb/index.html">noether.core.configs.wandb</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/core/distributed/index.html">noether.core.distributed</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of noether.core.distributed</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -363,7 +362,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/core/models/index.html">noether.core.models</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of noether.core.models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/models/base/index.html">noether.core.models.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/models/composite/index.html">noether.core.models.composite</a></li>
-<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/models/single/index.html">noether.core.models.single</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/models/model/index.html">noether.core.models.model</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/core/optimizer/index.html">noether.core.optimizer</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of noether.core.optimizer</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -573,7 +572,6 @@
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/data/pipeline/sample_processors/position_normalization/index.html">noether.data.pipeline.sample_processors.position_normalization</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/data/pipeline/sample_processors/rename_keys/index.html">noether.data.pipeline.sample_processors.rename_keys</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/data/pipeline/sample_processors/replace_key/index.html">noether.data.pipeline.sample_processors.replace_key</a></li>
-<li class="toctree-l5"><a class="reference internal" href="autoapi/noether/data/pipeline/sample_processors/samplewise_normalization/index.html">noether.data.pipeline.sample_processors.samplewise_normalization</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/data/pipeline/sample_processors/supernode_sampling/index.html">noether.data.pipeline.sample_processors.supernode_sampling</a></li>
 </ul>
 </li>
@@ -697,7 +695,6 @@
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="autoapi/noether/modeling/modules/encoders/index.html">noether.modeling.modules.encoders</a><input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.encoders</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l5"><a class="reference internal" href="autoapi/noether/modeling/modules/encoders/mlp/index.html">noether.modeling.modules.encoders.mlp</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/modeling/modules/encoders/supernode_pooling/index.html">noether.modeling.modules.encoders.supernode_pooling</a></li>
 </ul>
 </li>
@@ -723,7 +720,6 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/noether/training/index.html">noether.training</a><input class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" role="switch" type="checkbox"/><label for="toctree-checkbox-70"><div class="visually-hidden">Toggle navigation of noether.training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/training/callbacks/index.html">noether.training.callbacks</a><input class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" role="switch" type="checkbox"/><label for="toctree-checkbox-71"><div class="visually-hidden">Toggle navigation of noether.training.callbacks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/training/callbacks/offline_loss/index.html">noether.training.callbacks.offline_loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html">noether.training.callbacks.supernode_pooling_coverage</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" role="switch" type="checkbox"/><label for="toctree-checkbox-72"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -785,10 +781,6 @@
 <section id="_" class="genindex-section">
   <h2>_</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
-    <td style="width: 33%; vertical-align: top;"><ul>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback._sampler_config">_sampler_config (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>
-</li>
-    </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback._sampler_config_from_key">_sampler_config_from_key() (noether.core.callbacks.periodic.PeriodicDataIteratorCallback method)</a>
 </li>
@@ -929,7 +921,7 @@
         <ul>
           <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.apply_initializers">(noether.core.models.composite.CompositeModel method)</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.apply_initializers">(noether.core.models.single.Model method)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.apply_initializers">(noether.core.models.model.Model method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.apply_resume_initializer">apply_resume_initializer() (noether.training.trainers.base.BaseTrainer method)</a>
@@ -1066,8 +1058,6 @@
           <li><a href="autoapi/noether/core/callbacks/default/param_count/index.html#noether.core.callbacks.default.param_count.ParamCountCallback.before_training">(noether.core.callbacks.default.param_count.ParamCountCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/default/progress/index.html#noether.core.callbacks.default.progress.ProgressCallback.before_training">(noether.core.callbacks.default.progress.ProgressCallback method)</a>
-</li>
-          <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.before_training">(noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback method)</a>
 </li>
         </ul></li>
     </ul></td>
@@ -1460,7 +1450,7 @@
         </ul></li>
         <li><a href="autoapi/noether/io/cli/cli_huggingface/index.html#noether.io.cli.cli_huggingface.HuggingFaceRepoType.DATASET">DATASET (noether.io.cli.cli_huggingface.HuggingFaceRepoType attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.dataset_key">dataset_key (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id4">dataset_key (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.dataset_key">[1]</a>
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig.dataset_key">(noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig attribute)</a>
@@ -1550,10 +1540,10 @@
 </li>
         <li><a href="autoapi/noether/core/schemas/schema/index.html#noether.core.schemas.schema.StaticConfigSchema.default_cudnn_deterministic">default_cudnn_deterministic (noether.core.schemas.schema.StaticConfigSchema attribute)</a>
 </li>
-        <li><a href="autoapi/noether/data/pipeline/sample_processors/default_tensor/index.html#noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor.default_value">default_value (noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/data/pipeline/sample_processors/default_tensor/index.html#noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor.default_value">default_value (noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor attribute)</a>
+</li>
         <li><a href="autoapi/noether/data/pipeline/collators/default/index.html#noether.data.pipeline.collators.default.DefaultCollator">DefaultCollator (class in noether.data.pipeline.collators.default)</a>
 </li>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/default_tensor/index.html#noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor">DefaultTensorSampleProcessor (class in noether.data.pipeline.sample_processors.default_tensor)</a>
@@ -1597,7 +1587,7 @@
         <ul>
           <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.device">(noether.core.models.composite.CompositeModel property)</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.device">(noether.core.models.single.Model property)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.device">(noether.core.models.model.Model property)</a>
 </li>
           <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.device">(noether.training.trainers.base.BaseTrainer attribute)</a>
 </li>
@@ -1613,8 +1603,6 @@
         <li><a href="autoapi/noether/core/utils/torch/amp/index.html#noether.core.utils.torch.amp.disable">disable() (in module noether.core.utils.torch.amp)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.disable_gradient_accumulation">disable_gradient_accumulation (noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
-</li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBMode.DISABLED">DISABLED (noether.core.configs.wandb.WandBMode attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/distributed/config/index.html#noether.core.distributed.config.DistributedConfig">DistributedConfig (class in noether.core.distributed.config)</a>
 </li>
@@ -1669,8 +1657,6 @@
 </li>
         </ul></li>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/drop_outliers/index.html#noether.data.pipeline.sample_processors.drop_outliers.DropOutliersSampleProcessor">DropOutliersSampleProcessor (class in noether.data.pipeline.sample_processors.drop_outliers)</a>
-</li>
-        <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.dst_idx_hook">dst_idx_hook (noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/stats/index.html#noether.data.stats.RunningMoments.dump">dump() (noether.data.stats.RunningMoments method)</a>
 </li>
@@ -1756,11 +1742,9 @@
         </ul></li>
         <li><a href="autoapi/noether/io/diskcache/lru_cache/index.html#noether.io.diskcache.lru_cache.LRUCacheFileSystem.enforce_size_every_seconds">enforce_size_every_seconds (noether.io.diskcache.lru_cache.LRUCacheFileSystem attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#id2">entity (noether.core.configs.wandb.WandBConfig attribute)</a>, <a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.entity">[1]</a>
+        <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema.entity">entity (noether.core.schemas.trackers.WandBTrackerSchema attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema.entity">(noether.core.schemas.trackers.WandBTrackerSchema attribute)</a>
-</li>
           <li><a href="autoapi/noether/core/trackers/wandb/index.html#noether.core.trackers.wandb.WandBTracker.entity">(noether.core.trackers.wandb.WandBTracker attribute)</a>
 </li>
         </ul></li>
@@ -2002,10 +1986,10 @@
 </li>
         <li><a href="autoapi/noether/core/writers/log_writer/index.html#noether.core.writers.log_writer.LogWriter.flush">flush() (noether.core.writers.log_writer.LogWriter method)</a>
 </li>
-        <li><a href="autoapi/noether/core/utils/logging/formatting/index.html#noether.core.utils.logging.formatting.CustomFormatter.fmt">fmt (noether.core.utils.logging.formatting.CustomFormatter attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/utils/logging/formatting/index.html#noether.core.utils.logging.formatting.CustomFormatter.fmt">fmt (noether.core.utils.logging.formatting.CustomFormatter attribute)</a>
+</li>
         <li><a href="autoapi/noether/io/cli/cli_utils/index.html#noether.io.cli.cli_utils.fmt_bytes">fmt_bytes() (in module noether.io.cli.cli_utils)</a>
 </li>
         <li><a href="autoapi/noether/core/utils/logging/formatting/index.html#noether.core.utils.logging.formatting.CustomFormatter.format">format() (noether.core.utils.logging.formatting.CustomFormatter method)</a>
@@ -2040,8 +2024,6 @@
           <li><a href="autoapi/noether/modeling/modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlock.forward">(noether.modeling.modules.blocks.transformer.TransformerBlock method)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/decoders/deep_perceiver/index.html#noether.modeling.modules.decoders.deep_perceiver.DeepPerceiverDecoder.forward">(noether.modeling.modules.decoders.deep_perceiver.DeepPerceiverDecoder method)</a>
-</li>
-          <li><a href="autoapi/noether/modeling/modules/encoders/mlp/index.html#noether.modeling.modules.encoders.mlp.MlpEncoder.forward">(noether.modeling.modules.encoders.mlp.MlpEncoder method)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/encoders/supernode_pooling/index.html#noether.modeling.modules.encoders.supernode_pooling.SupernodePooling.forward">(noether.modeling.modules.encoders.supernode_pooling.SupernodePooling method)</a>
 </li>
@@ -2209,7 +2191,7 @@
         <ul>
           <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.get_named_models">(noether.core.models.composite.CompositeModel method)</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.get_named_models">(noether.core.models.single.Model method)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.get_named_models">(noether.core.models.model.Model method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/preprocessing/index.html#noether.data.datasets.cfd.shapenet_car.preprocessing.get_normal">get_normal() (in module noether.data.datasets.cfd.shapenet_car.preprocessing)</a>
@@ -2390,8 +2372,6 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/datasets/cfd/caeml/drivaerml/split/index.html#noether.data.datasets.cfd.caeml.drivaerml.split.DrivAerMLDefaultSplitIDs.hidden_test">hidden_test (noether.data.datasets.cfd.caeml.drivaerml.split.DrivAerMLDefaultSplitIDs attribute)</a>
 </li>
-        <li><a href="autoapi/noether/data/pipeline/sample_processors/samplewise_normalization/index.html#noether.data.pipeline.sample_processors.samplewise_normalization.SamplewiseNormalizationSampleProcessor.high_tensor">high_tensor (noether.data.pipeline.sample_processors.samplewise_normalization.SamplewiseNormalizationSampleProcessor attribute)</a>
-</li>
         <li><a href="autoapi/noether/core/callbacks/checkpoint/best_checkpoint/index.html#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.higher_is_better">higher_is_better (noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback attribute)</a>
 
         <ul>
@@ -2403,10 +2383,6 @@
         <li><a href="autoapi/noether/core/providers/metric_property/index.html#noether.core.providers.metric_property.Ordinality.HIGHER_IS_BETTER">HIGHER_IS_BETTER (noether.core.providers.metric_property.Ordinality attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/providers/metric_property/index.html#noether.core.providers.metric_property.MetricPropertyProvider.higher_is_better">higher_is_better() (noether.core.providers.metric_property.MetricPropertyProvider method)</a>
-</li>
-        <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.hook_outputs">hook_outputs (noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback attribute)</a>
-</li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#id1">host (noether.core.configs.wandb.WandBConfig attribute)</a>, <a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.host">[1]</a>
 </li>
         <li><a href="autoapi/noether/io/providers/index.html#noether.io.providers.Provider.HUGGINGFACE">HUGGINGFACE (noether.io.providers.Provider attribute)</a>
 </li>
@@ -2545,7 +2521,7 @@
         <ul>
           <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.initialize_optimizer">(noether.core.models.composite.CompositeModel method)</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.initialize_optimizer">(noether.core.models.single.Model method)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.initialize_optimizer">(noether.core.models.model.Model method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/models/base/index.html#noether.core.models.base.ModelBase.initialize_weights">initialize_weights() (noether.core.models.base.ModelBase method)</a>
@@ -2553,7 +2529,7 @@
         <ul>
           <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.initialize_weights">(noether.core.models.composite.CompositeModel method)</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.initialize_weights">(noether.core.models.single.Model method)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.initialize_weights">(noether.core.models.model.Model method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/io/diskcache/cache_benchmark/index.html#noether.io.diskcache.cache_benchmark.initialize_worker">initialize_worker() (in module noether.io.diskcache.cache_benchmark)</a>
@@ -2633,10 +2609,6 @@
         <ul>
           <li><a href="autoapi/noether/data/pipeline/sample_processors/moment_normalization/index.html#noether.data.pipeline.sample_processors.moment_normalization.MomentNormalizationSampleProcessor.inverse">(noether.data.pipeline.sample_processors.moment_normalization.MomentNormalizationSampleProcessor method)</a>
 </li>
-          <li><a href="autoapi/noether/data/pipeline/sample_processors/position_normalization/index.html#noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor.inverse">(noether.data.pipeline.sample_processors.position_normalization.PositionNormalizationSampleProcessor method)</a>
-</li>
-          <li><a href="autoapi/noether/data/pipeline/sample_processors/samplewise_normalization/index.html#noether.data.pipeline.sample_processors.samplewise_normalization.SamplewiseNormalizationSampleProcessor.inverse">(noether.data.pipeline.sample_processors.samplewise_normalization.SamplewiseNormalizationSampleProcessor method)</a>
-</li>
           <li><a href="autoapi/noether/data/preprocessors/compose/index.html#noether.data.preprocessors.compose.ComposePreProcess.inverse">(noether.data.preprocessors.compose.ComposePreProcess method)</a>
 </li>
         </ul></li>
@@ -2654,8 +2626,6 @@
           <li><a href="autoapi/noether/core/distributed/config/index.html#noether.core.distributed.config.DistributedConfig.is_data_rank0">(noether.core.distributed.config.DistributedConfig method)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.is_disabled">is_disabled (noether.core.configs.wandb.WandBConfig property)</a>
-</li>
         <li><a href="autoapi/noether/core/distributed/config/index.html#noether.core.distributed.config.is_distributed">is_distributed() (in module noether.core.distributed.config)</a>
 
         <ul>
@@ -2673,7 +2643,7 @@
         <ul>
           <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.is_frozen">(noether.core.models.composite.CompositeModel property)</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.is_frozen">(noether.core.models.single.Model property)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.is_frozen">(noether.core.models.model.Model property)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/models/base/index.html#noether.core.schemas.models.base.ModelBaseConfig.is_frozen">(noether.core.schemas.models.base.ModelBaseConfig attribute)</a>
 </li>
@@ -2700,10 +2670,6 @@
 </li>
         <li><a href="autoapi/noether/core/providers/metric_property/index.html#noether.core.providers.metric_property.MetricPropertyProvider.is_neutral_key">is_neutral_key() (noether.core.providers.metric_property.MetricPropertyProvider method)</a>
 </li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.is_offline">is_offline (noether.core.configs.wandb.WandBConfig property)</a>
-</li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.is_online">is_online (noether.core.configs.wandb.WandBConfig property)</a>
-</li>
         <li><a href="autoapi/noether/core/distributed/config/index.html#noether.core.distributed.config.is_rank0">is_rank0() (in module noether.core.distributed.config)</a>
 
         <ul>
@@ -2716,8 +2682,6 @@
           <li><a href="autoapi/noether/data/pipeline/sample_processors/drop_outliers/index.html#noether.data.pipeline.sample_processors.drop_outliers.DropOutliersSampleProcessor.item">(noether.data.pipeline.sample_processors.drop_outliers.DropOutliersSampleProcessor attribute)</a>
 </li>
           <li><a href="autoapi/noether/data/pipeline/sample_processors/moment_normalization/index.html#noether.data.pipeline.sample_processors.moment_normalization.MomentNormalizationSampleProcessor.item">(noether.data.pipeline.sample_processors.moment_normalization.MomentNormalizationSampleProcessor attribute)</a>
-</li>
-          <li><a href="autoapi/noether/data/pipeline/sample_processors/samplewise_normalization/index.html#noether.data.pipeline.sample_processors.samplewise_normalization.SamplewiseNormalizationSampleProcessor.item">(noether.data.pipeline.sample_processors.samplewise_normalization.SamplewiseNormalizationSampleProcessor attribute)</a>
 </li>
           <li><a href="autoapi/noether/data/pipeline/sample_processors/supernode_sampling/index.html#noether.data.pipeline.sample_processors.supernode_sampling.SupernodeSamplingSampleProcessor.item">(noether.data.pipeline.sample_processors.supernode_sampling.SupernodeSamplingSampleProcessor attribute)</a>
 </li>
@@ -2918,8 +2882,6 @@
 </li>
         <li><a href="autoapi/noether/core/utils/common/stopwatch/index.html#noether.core.utils.common.stopwatch.Stopwatch.last_lap_time">last_lap_time (noether.core.utils.common.stopwatch.Stopwatch property)</a>
 </li>
-        <li><a href="autoapi/noether/modeling/modules/encoders/mlp/index.html#noether.modeling.modules.encoders.mlp.MlpEncoder.layer">layer (noether.modeling.modules.encoders.mlp.MlpEncoder attribute)</a>
-</li>
         <li><a href="autoapi/noether/modeling/modules/layers/layer_scale/index.html#noether.modeling.modules.layers.layer_scale.LayerScale">LayerScale (class in noether.modeling.modules.layers.layer_scale)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig.layerscale">layerscale (noether.core.schemas.modules.blocks.TransformerBlockConfig attribute)</a>
@@ -3030,10 +2992,10 @@
           <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig.log_output">(noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/stats/index.html#noether.data.stats.RunningMoments.log_scale">log_scale (noether.data.stats.RunningMoments attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/platform/system/index.html#noether.core.utils.platform.system.log_system_info">log_system_info() (in module noether.core.utils.platform.system)</a>
 </li>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.log_writer">log_writer (noether.training.trainers.base.BaseTrainer attribute)</a>
@@ -3360,19 +3322,15 @@
 </li>
         <li><a href="autoapi/noether/core/schemas/modules/mlp/index.html#noether.core.schemas.modules.mlp.MLPConfig">MLPConfig (class in noether.core.schemas.modules.mlp)</a>
 </li>
-        <li><a href="autoapi/noether/modeling/modules/encoders/mlp/index.html#noether.modeling.modules.encoders.mlp.MlpEncoder">MlpEncoder (class in noether.modeling.modules.encoders.mlp)</a>
-</li>
         <li><a href="autoapi/noether/modeling/modules/layers/scalar_conditioner/index.html#noether.modeling.modules.layers.scalar_conditioner.ScalarsConditioner.mlps">mlps (noether.modeling.modules.layers.scalar_conditioner.ScalarsConditioner attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#id0">mode (noether.core.configs.wandb.WandBConfig attribute)</a>, <a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.mode">[1]</a>
+        <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema.mode">mode (noether.core.schemas.trackers.WandBTrackerSchema attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema.mode">(noether.core.schemas.trackers.WandBTrackerSchema attribute)</a>
-</li>
           <li><a href="autoapi/noether/core/trackers/wandb/index.html#noether.core.trackers.wandb.WandBTracker.mode">(noether.core.trackers.wandb.WandBTracker attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model">Model (class in noether.core.models.single)</a>
+        <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model">Model (class in noether.core.models.model)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/base/index.html#noether.core.callbacks.base.CallbackBase.model">model (noether.core.callbacks.base.CallbackBase attribute)</a>
 
@@ -3512,8 +3470,6 @@
 </li>
           <li><a href="autoapi/noether/core/configs/hyperparameters/index.html#module-noether.core.configs.hyperparameters">noether.core.configs.hyperparameters</a>
 </li>
-          <li><a href="autoapi/noether/core/configs/wandb/index.html#module-noether.core.configs.wandb">noether.core.configs.wandb</a>
-</li>
           <li><a href="autoapi/noether/core/distributed/index.html#module-noether.core.distributed">noether.core.distributed</a>
 </li>
           <li><a href="autoapi/noether/core/distributed/config/index.html#module-noether.core.distributed.config">noether.core.distributed.config</a>
@@ -3560,7 +3516,7 @@
 </li>
           <li><a href="autoapi/noether/core/models/composite/index.html#module-noether.core.models.composite">noether.core.models.composite</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#module-noether.core.models.single">noether.core.models.single</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#module-noether.core.models.model">noether.core.models.model</a>
 </li>
           <li><a href="autoapi/noether/core/optimizer/index.html#module-noether.core.optimizer">noether.core.optimizer</a>
 </li>
@@ -3856,8 +3812,6 @@
 </li>
           <li><a href="autoapi/noether/data/pipeline/sample_processors/replace_key/index.html#module-noether.data.pipeline.sample_processors.replace_key">noether.data.pipeline.sample_processors.replace_key</a>
 </li>
-          <li><a href="autoapi/noether/data/pipeline/sample_processors/samplewise_normalization/index.html#module-noether.data.pipeline.sample_processors.samplewise_normalization">noether.data.pipeline.sample_processors.samplewise_normalization</a>
-</li>
           <li><a href="autoapi/noether/data/pipeline/sample_processors/supernode_sampling/index.html#module-noether.data.pipeline.sample_processors.supernode_sampling">noether.data.pipeline.sample_processors.supernode_sampling</a>
 </li>
           <li><a href="autoapi/noether/data/preprocessors/index.html#module-noether.data.preprocessors">noether.data.preprocessors</a>
@@ -4020,8 +3974,6 @@
 </li>
           <li><a href="autoapi/noether/modeling/modules/encoders/index.html#module-noether.modeling.modules.encoders">noether.modeling.modules.encoders</a>
 </li>
-          <li><a href="autoapi/noether/modeling/modules/encoders/mlp/index.html#module-noether.modeling.modules.encoders.mlp">noether.modeling.modules.encoders.mlp</a>
-</li>
           <li><a href="autoapi/noether/modeling/modules/encoders/supernode_pooling/index.html#module-noether.modeling.modules.encoders.supernode_pooling">noether.modeling.modules.encoders.supernode_pooling</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/layers/index.html#module-noether.modeling.modules.layers">noether.modeling.modules.layers</a>
@@ -4051,8 +4003,6 @@
           <li><a href="autoapi/noether/training/callbacks/index.html#module-noether.training.callbacks">noether.training.callbacks</a>
 </li>
           <li><a href="autoapi/noether/training/callbacks/offline_loss/index.html#module-noether.training.callbacks.offline_loss">noether.training.callbacks.offline_loss</a>
-</li>
-          <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#module-noether.training.callbacks.supernode_pooling_coverage">noether.training.callbacks.supernode_pooling_coverage</a>
 </li>
           <li><a href="autoapi/noether/training/cli/index.html#module-noether.training.cli">noether.training.cli</a>
 </li>
@@ -4343,13 +4293,6 @@
 </li>
         </ul></li>
         <li>
-    noether.core.configs.wandb
-
-        <ul>
-          <li><a href="autoapi/noether/core/configs/wandb/index.html#module-noether.core.configs.wandb">module</a>
-</li>
-        </ul></li>
-        <li>
     noether.core.distributed
 
         <ul>
@@ -4511,10 +4454,10 @@
 </li>
         </ul></li>
         <li>
-    noether.core.models.single
+    noether.core.models.model
 
         <ul>
-          <li><a href="autoapi/noether/core/models/single/index.html#module-noether.core.models.single">module</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#module-noether.core.models.model">module</a>
 </li>
         </ul></li>
         <li>
@@ -5231,6 +5174,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/index.html#module-noether.data.datasets.cfd.caeml">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.caeml.ahmedml
 
@@ -5238,8 +5183,6 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/ahmedml/index.html#module-noether.data.datasets.cfd.caeml.ahmedml">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.caeml.ahmedml.dataset
 
@@ -5546,13 +5489,6 @@
 
         <ul>
           <li><a href="autoapi/noether/data/pipeline/sample_processors/replace_key/index.html#module-noether.data.pipeline.sample_processors.replace_key">module</a>
-</li>
-        </ul></li>
-        <li>
-    noether.data.pipeline.sample_processors.samplewise_normalization
-
-        <ul>
-          <li><a href="autoapi/noether/data/pipeline/sample_processors/samplewise_normalization/index.html#module-noether.data.pipeline.sample_processors.samplewise_normalization">module</a>
 </li>
         </ul></li>
         <li>
@@ -6123,13 +6059,6 @@
 </li>
         </ul></li>
         <li>
-    noether.modeling.modules.encoders.mlp
-
-        <ul>
-          <li><a href="autoapi/noether/modeling/modules/encoders/mlp/index.html#module-noether.modeling.modules.encoders.mlp">module</a>
-</li>
-        </ul></li>
-        <li>
     noether.modeling.modules.encoders.supernode_pooling
 
         <ul>
@@ -6232,13 +6161,6 @@
 
         <ul>
           <li><a href="autoapi/noether/training/callbacks/offline_loss/index.html#module-noether.training.callbacks.offline_loss">module</a>
-</li>
-        </ul></li>
-        <li>
-    noether.training.callbacks.supernode_pooling_coverage
-
-        <ul>
-          <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#module-noether.training.callbacks.supernode_pooling_coverage">module</a>
 </li>
         </ul></li>
         <li>
@@ -6392,8 +6314,6 @@
 </li>
         <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.PeriodicBoolScheduleConfig.off_value">off_value (noether.core.schemas.schedules.PeriodicBoolScheduleConfig attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBMode.OFFLINE">OFFLINE (noether.core.configs.wandb.WandBMode attribute)</a>
-</li>
         <li><a href="autoapi/noether/training/callbacks/offline_loss/index.html#noether.training.callbacks.offline_loss.OfflineLossCallback">OfflineLossCallback (class in noether.training.callbacks.offline_loss)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.OfflineLossCallbackConfig">OfflineLossCallbackConfig (class in noether.core.schemas.callbacks)</a>
@@ -6412,8 +6332,6 @@
 </li>
         <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.PeriodicBoolScheduleConfig.on_value">on_value (noether.core.schemas.schedules.PeriodicBoolScheduleConfig attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBMode.ONLINE">ONLINE (noether.core.configs.wandb.WandBMode attribute)</a>
-</li>
         <li><a href="autoapi/noether/core/callbacks/default/online_loss/index.html#noether.core.callbacks.default.online_loss.OnlineLossCallback">OnlineLossCallback (class in noether.core.callbacks.default.online_loss)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.OnlineLossCallbackConfig">OnlineLossCallbackConfig (class in noether.core.schemas.callbacks)</a>
@@ -6427,7 +6345,7 @@
         <ul>
           <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.optimizer_schedule_step">(noether.core.models.composite.CompositeModel method)</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.optimizer_schedule_step">(noether.core.models.single.Model method)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.optimizer_schedule_step">(noether.core.models.model.Model method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/models/base/index.html#noether.core.models.base.ModelBase.optimizer_step">optimizer_step() (noether.core.models.base.ModelBase method)</a>
@@ -6435,7 +6353,7 @@
         <ul>
           <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.optimizer_step">(noether.core.models.composite.CompositeModel method)</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.optimizer_step">(noether.core.models.single.Model method)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.optimizer_step">(noether.core.models.model.Model method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/models/base/index.html#noether.core.models.base.ModelBase.optimizer_zero_grad">optimizer_zero_grad() (noether.core.models.base.ModelBase method)</a>
@@ -6443,7 +6361,7 @@
         <ul>
           <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.optimizer_zero_grad">(noether.core.models.composite.CompositeModel method)</a>
 </li>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.optimizer_zero_grad">(noether.core.models.single.Model method)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.optimizer_zero_grad">(noether.core.models.model.Model method)</a>
 </li>
         </ul></li>
     </ul></td>
@@ -6645,8 +6563,6 @@
 </li>
           <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.periodic_callback">(noether.core.callbacks.periodic.PeriodicDataIteratorCallback method)</a>
 </li>
-          <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.periodic_callback">(noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback method)</a>
-</li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.PeriodicBoolScheduleConfig">PeriodicBoolScheduleConfig (class in noether.core.schemas.schedules)</a>
 </li>
@@ -6704,8 +6620,6 @@
           <li><a href="autoapi/noether/modeling/modules/encoders/supernode_pooling/index.html#noether.modeling.modules.encoders.supernode_pooling.SupernodePooling.pos_embed">(noether.modeling.modules.encoders.supernode_pooling.SupernodePooling attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.pos_embed_hook">pos_embed_hook (noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback attribute)</a>
-</li>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.position_dim">position_dim (noether.core.schemas.dataset.AeroDataSpecs attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/pipeline/collators/field_decoder/index.html#noether.data.pipeline.collators.field_decoder.FieldDecoderCollator.position_item">position_item (noether.data.pipeline.collators.field_decoder.FieldDecoderCollator attribute)</a>
@@ -6798,11 +6712,9 @@
         </ul></li>
         <li><a href="autoapi/noether/modeling/modules/attention/transolver_plusplus/index.html#noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention.proj_temperature">proj_temperature (noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#id3">project (noether.core.configs.wandb.WandBConfig attribute)</a>, <a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.project">[1]</a>
+        <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TrackioTrackerSchema.project">project (noether.core.schemas.trackers.TrackioTrackerSchema attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TrackioTrackerSchema.project">(noether.core.schemas.trackers.TrackioTrackerSchema attribute)</a>
-</li>
           <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema.project">(noether.core.schemas.trackers.WandBTrackerSchema attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/trackers/wandb/index.html#noether.core.trackers.wandb.WandBTracker.project">(noether.core.trackers.wandb.WandBTracker attribute)</a>
@@ -6966,8 +6878,6 @@
         </ul></li>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/replace_key/index.html#noether.data.pipeline.sample_processors.replace_key.ReplaceKeySampleProcessor">ReplaceKeySampleProcessor (class in noether.data.pipeline.sample_processors.replace_key)</a>
 </li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig.require_online">require_online() (noether.core.configs.wandb.WandBConfig method)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/logging/formatting/index.html#noether.core.utils.logging.formatting.CustomFormatter.RESET">RESET (noether.core.utils.logging.formatting.CustomFormatter attribute)</a>
@@ -7102,11 +7012,9 @@
 </li>
         <li><a href="autoapi/noether/data/samplers/interleaved_sampler/index.html#noether.data.samplers.interleaved_sampler.SamplerIntervalConfig.sampler">sampler (noether.data.samplers.interleaved_sampler.SamplerIntervalConfig attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.sampler_config">sampler_config (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>
+        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id6">sampler_config (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.sampler_config">[1]</a>
 </li>
         <li><a href="autoapi/noether/data/samplers/interleaved_sampler/index.html#noether.data.samplers.interleaved_sampler.SamplerIntervalConfig">SamplerIntervalConfig (class in noether.data.samplers.interleaved_sampler)</a>
-</li>
-        <li><a href="autoapi/noether/data/pipeline/sample_processors/samplewise_normalization/index.html#noether.data.pipeline.sample_processors.samplewise_normalization.SamplewiseNormalizationSampleProcessor">SamplewiseNormalizationSampleProcessor (class in noether.data.pipeline.sample_processors.samplewise_normalization)</a>
 </li>
         <li><a href="autoapi/noether/io/cli/cli_utils/index.html#noether.io.cli.cli_utils.sanitize">sanitize() (in module noether.io.cli.cli_utils)</a>
 </li>
@@ -7366,10 +7274,10 @@
 </li>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.skip_nan_loss_counter">skip_nan_loss_counter (noether.training.trainers.base.BaseTrainer attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.skip_nan_loss_max_count">skip_nan_loss_max_count (noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.skip_nan_loss_max_count">skip_nan_loss_max_count (noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
+</li>
         <li><a href="autoapi/noether/core/utils/common/naming/index.html#noether.core.utils.common.naming.snake_type_name">snake_type_name() (in module noether.core.utils.common.naming)</a>
 </li>
         <li><a href="autoapi/noether/modeling/modules/attention/transolver_plusplus/index.html#noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention.softmax">softmax (noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention attribute)</a>
@@ -7393,7 +7301,7 @@
 </li>
           <li><a href="autoapi/noether/data/datasets/cfd/emmi_wing/dataset/index.html#noether.data.datasets.cfd.emmi_wing.dataset.EmmiWingDataset.source_root">(noether.data.datasets.cfd.emmi_wing.dataset.EmmiWingDataset attribute)</a>
 </li>
-          <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#id1">(noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset attribute)</a>, <a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset.source_root">[1]</a>
+          <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset.source_root">(noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TrackioTrackerSchema.space_id">space_id (noether.core.schemas.trackers.TrackioTrackerSchema attribute)</a>
@@ -7409,7 +7317,7 @@
 </li>
           <li><a href="autoapi/noether/data/datasets/cfd/emmi_wing/dataset/index.html#noether.data.datasets.cfd.emmi_wing.dataset.EmmiWingDataset.split">(noether.data.datasets.cfd.emmi_wing.dataset.EmmiWingDataset attribute)</a>
 </li>
-          <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#id0">(noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset attribute)</a>, <a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset.split">[1]</a>
+          <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset.split">(noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/encoders/index.html#noether.core.schemas.modules.encoders.SupernodePoolingConfig.spool_pos_mode">spool_pos_mode (noether.core.schemas.modules.encoders.SupernodePoolingConfig attribute)</a>
@@ -7419,8 +7327,6 @@
 </li>
         </ul></li>
         <li><a href="autoapi/noether/io/diskcache/lru_cache/index.html#noether.io.diskcache.lru_cache.SqliteLRUCacheFileSystem">SqliteLRUCacheFileSystem (class in noether.io.diskcache.lru_cache)</a>
-</li>
-        <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.src_idx_hook">src_idx_hook (noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/scripts/validate_pytorch_compatibilities/index.html#noether.core.scripts.validate_pytorch_compatibilities.StabilityTestModel">StabilityTestModel (class in noether.core.scripts.validate_pytorch_compatibilities)</a>
 </li>
@@ -7496,8 +7402,6 @@
           <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.state_dict">(noether.training.trainers.base.BaseTrainer method)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/models/base/index.html#noether.core.models.base.ModelBase.static_context">static_context (noether.core.models.base.ModelBase attribute)</a>
-</li>
         <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.static_graph">static_graph (noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/schema/index.html#noether.core.schemas.schema.StaticConfigSchema">StaticConfigSchema (class in noether.core.schemas.schema)</a>
@@ -7600,13 +7504,9 @@
           <li><a href="autoapi/noether/core/schemas/models/upt/index.html#noether.core.schemas.models.upt.UPTConfig.supernode_pooling_config">(noether.core.schemas.models.upt.UPTConfig attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.supernode_pooling_path">supernode_pooling_path (noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback attribute)</a>
-</li>
         <li><a href="autoapi/noether/modeling/modules/encoders/supernode_pooling/index.html#noether.modeling.modules.encoders.supernode_pooling.SupernodePooling">SupernodePooling (class in noether.modeling.modules.encoders.supernode_pooling)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/modules/encoders/index.html#noether.core.schemas.modules.encoders.SupernodePoolingConfig">SupernodePoolingConfig (class in noether.core.schemas.modules.encoders)</a>
-</li>
-        <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback">SupernodePoolingCoverageCallback (class in noether.training.callbacks.supernode_pooling_coverage)</a>
 </li>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/supernode_sampling/index.html#noether.data.pipeline.sample_processors.supernode_sampling.SupernodeSamplingSampleProcessor">SupernodeSamplingSampleProcessor (class in noether.data.pipeline.sample_processors.supernode_sampling)</a>
 </li>
@@ -7741,7 +7641,7 @@
         <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.to">to() (noether.core.models.composite.CompositeModel method)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.to">(noether.core.models.single.Model method)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.to">(noether.core.models.model.Model method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/utils/bidict/index.html#noether.core.utils.bidict.Bidict.to_backward">to_backward() (noether.core.utils.bidict.Bidict method)</a>
@@ -7794,7 +7694,7 @@
 </li>
         <li><a href="autoapi/noether/io/logging_progress/index.html#noether.io.logging_progress.LogProgress.total">total (noether.io.logging_progress.LogProgress attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id4">total_data_time (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.total_data_time">[1]</a>
+        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id5">total_data_time (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.total_data_time">[1]</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.FieldDimSpec.total_dim">total_dim (noether.core.schemas.dataset.FieldDimSpec property)</a>
 </li>
@@ -7806,6 +7706,8 @@
 </li>
         <li><a href="autoapi/noether/core/callbacks/default/train_time/index.html#noether.core.callbacks.default.train_time.TrainTimeCallback.total_train_data_time">total_train_data_time (noether.core.callbacks.default.train_time.TrainTimeCallback attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/default/online_loss/index.html#noether.core.callbacks.default.online_loss.OnlineLossCallback.track_after_accumulation_step">track_after_accumulation_step() (noether.core.callbacks.default.online_loss.OnlineLossCallback method)</a>
 
         <ul>
@@ -7813,11 +7715,7 @@
 </li>
           <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.track_after_accumulation_step">(noether.core.callbacks.periodic.PeriodicCallback method)</a>
 </li>
-          <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.track_after_accumulation_step">(noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback method)</a>
-</li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback.track_after_update_step">track_after_update_step() (noether.core.callbacks.checkpoint.ema.EmaCallback method)</a>
 
         <ul>
@@ -7837,10 +7735,6 @@
         <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback">TrackAdditionalOutputsCallback (class in noether.core.callbacks.online.track_outputs)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig">TrackAdditionalOutputsCallbackConfig (class in noether.core.schemas.callbacks)</a>
-</li>
-        <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.tracked_coverages">tracked_coverages (noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback attribute)</a>
-</li>
-        <li><a href="autoapi/noether/training/callbacks/supernode_pooling_coverage/index.html#noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback.tracked_degrees">tracked_degrees (noether.training.callbacks.supernode_pooling_coverage.SupernodePoolingCoverageCallback attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/default/online_loss/index.html#noether.core.callbacks.default.online_loss.OnlineLossCallback.tracked_losses">tracked_losses (noether.core.callbacks.default.online_loss.OnlineLossCallback attribute)</a>
 </li>
@@ -7877,7 +7771,7 @@
         <li><a href="autoapi/noether/core/models/composite/index.html#noether.core.models.composite.CompositeModel.train">train() (noether.core.models.composite.CompositeModel method)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/models/single/index.html#noether.core.models.single.Model.train">(noether.core.models.single.Model method)</a>
+          <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.train">(noether.core.models.model.Model method)</a>
 </li>
           <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.train">(noether.training.trainers.base.BaseTrainer method)</a>
 </li>
@@ -8030,8 +7924,6 @@
 </li>
         <li><a href="autoapi/noether/io/checkpoint/types/index.html#noether.io.checkpoint.types.CheckpointMetadata.uri">uri (noether.io.checkpoint.types.CheckpointMetadata attribute)</a>
 </li>
-        <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset.uris">uris (noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset attribute)</a>
-</li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.TransolverPlusPlusAttentionConfig.use_adaptive_temperature">use_adaptive_temperature (noether.core.schemas.modules.attention.TransolverPlusPlusAttentionConfig attribute)</a>
 </li>
         <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.use_geometry_branch">use_geometry_branch (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
@@ -8118,11 +8010,9 @@
 </li>
         <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.validate_warmup">validate_warmup() (noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig method)</a>
 </li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBMode.value">value (noether.core.configs.wandb.WandBMode property)</a>
+        <li><a href="autoapi/noether/core/optimizer/param_group_modifiers/weight_decay_by_name/index.html#noether.core.optimizer.param_group_modifiers.weight_decay_by_name.WeightDecayByNameModifier.value">value (noether.core.optimizer.param_group_modifiers.weight_decay_by_name.WeightDecayByNameModifier attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/optimizer/param_group_modifiers/weight_decay_by_name/index.html#noether.core.optimizer.param_group_modifiers.weight_decay_by_name.WeightDecayByNameModifier.value">(noether.core.optimizer.param_group_modifiers.weight_decay_by_name.WeightDecayByNameModifier attribute)</a>
-</li>
           <li><a href="autoapi/noether/core/schedules/constant/index.html#noether.core.schedules.constant.ConstantSchedule.value">(noether.core.schedules.constant.ConstantSchedule attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/optimizers/index.html#noether.core.schemas.optimizers.ParamGroupModifierConfig.value">(noether.core.schemas.optimizers.ParamGroupModifierConfig attribute)</a>
@@ -8264,10 +8154,6 @@
     <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/trackers/wandb/index.html#noether.core.trackers.wandb.WANDB_IMPORT_ERROR">WANDB_IMPORT_ERROR (in module noether.core.trackers.wandb)</a>
 </li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBConfig">WandBConfig (class in noether.core.configs.wandb)</a>
-</li>
-        <li><a href="autoapi/noether/core/configs/wandb/index.html#noether.core.configs.wandb.WandBMode">WandBMode (class in noether.core.configs.wandb)</a>
-</li>
         <li><a href="autoapi/noether/core/trackers/wandb/index.html#noether.core.trackers.wandb.WandBTracker">WandBTracker (class in noether.core.trackers.wandb)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema">WandBTrackerSchema (class in noether.core.schemas.trackers)</a>
@@ -8296,10 +8182,10 @@
           <li><a href="autoapi/noether/core/optimizer/param_group_modifiers/weight_decay_by_name/index.html#noether.core.optimizer.param_group_modifiers.weight_decay_by_name.WeightDecayByNameModifier.was_applied_successfully">(noether.core.optimizer.param_group_modifiers.weight_decay_by_name.WeightDecayByNameModifier method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/default/eta/index.html#noether.core.callbacks.default.eta.EtaCallback.LoggerWasCalledHandler.was_called">was_called (noether.core.callbacks.default.eta.EtaCallback.LoggerWasCalledHandler attribute)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/optimizers/index.html#noether.core.schemas.optimizers.OptimizerConfig.weight_decay">weight_decay (noether.core.schemas.optimizers.OptimizerConfig attribute)</a>
 
         <ul>

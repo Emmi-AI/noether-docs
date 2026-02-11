@@ -20,23 +20,18 @@ Module Contents
    Bases: :py:obj:`noether.core.factory.base.Factory`
 
 
-   Base factory. Implements base structures for creating a single object, a list of objects and a dict
-   of objects. The main difference between these methods are the default return values. As python does not like using
-   an empty list/dict as default value for an argument, arguments are by default often None. By differentiating
-   between these three types, one avoids none checks whenever the factory is called.
-   - create: creates an object.
-   - create_list: creates a list of objects.
-   - create_dict: creates a dict of objects.
+   Specialized factory for datasets. Next to the standard instantiation of datasets, it also supports wrapping of the dataset inside dataset wrappers.
 
-   For example, creating a list
-   ```
-   class Example:
-       def __init__(self, callbacks: list[Callback] | None = None)
-           # automatic none check in create_list (this is how FactoryBase is implemented)
-           self.callbacks = create_list(callbacks)
-           # required none check after creating the list (this is how one could implement it without create_list)
-           self.callbacks = create(callbacks) or []
-   ```
+   Example config:
+
+   .. code-block:: yaml
+
+       kind: path.to.model.MyModel
+       dataset_wrappers:
+         - kind: noether.data.base.wrappers.SomeDatasetWrapper
+           param1: value1
+         - kind: noether.data.base.wrappers.AnotherDatasetWrapper
+           param2: value2
 
 
    .. py:attribute:: dataset_wrapper_factory
@@ -44,7 +39,15 @@ Module Contents
 
    .. py:method:: instantiate(dataset_config, **kwargs)
 
-      Instantiates the dataset either based on `dataset_config` or from the checkpoint.
+      Instantiates the dataset either based on `dataset_config`
+
+
+      :param dataset_config: Configuration for the dataset. See
+                             :class:`~noether.core.schemas.dataset.DatasetBaseConfig`
+                             for available options including dataset wrappers.
+      :param \*\*kwargs: Additional keyword arguments provided to the parent class.
+
+      :returns: The instantiated dataset, possibly wrapped in dataset wrappers specified in the configuration.
 
 
 

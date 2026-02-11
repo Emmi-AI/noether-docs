@@ -30,6 +30,7 @@ Module Contents
          stop_at_epoch: 10
          name: FixedEarlyStopper
 
+
    :param callback_config: The configuration for the callback. See
                            :class:`~noether.core.schemas.callbacks.FixedEarlyStopperConfig`
                            for available options.

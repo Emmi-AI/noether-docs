@@ -24,13 +24,14 @@ Module Contents
 
    .. rubric:: Example
 
-   >>> schedule_config:
-   >>>   kind: noether.core.schedules.ConstantSchedule
-   >>>   value : ${model.optim.lr}
+   .. code-block:: yaml
 
-   Initialize the scheduler.
+       schedule_config:
+           kind: noether.core.schedules.ConstantSchedule
+           value: ${model.optim.lr}
 
-   :param scheduler_config: Configuration of the constant schedule.
+   :param config: Configuration of the constant schedule. See
+                  :class:`~noether.core.schemas.schedules.ConstantScheduleConfig` for details.
 
 
    .. py:attribute:: value

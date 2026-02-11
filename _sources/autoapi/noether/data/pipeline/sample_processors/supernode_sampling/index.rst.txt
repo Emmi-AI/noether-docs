@@ -22,9 +22,9 @@ Module Contents
 
    Randomly samples supernodes from a pointcloud.
 
-   :param item: Which pointcloud item is used to sample supernodes.
+   :param item: Which key in the input_sample (i.e., pointcloud item) is used to sample supernodes.
    :param num_supernodes: How many supernodes to sample.
-   :param items_at_supernodes: Selects items at the supernodes (e.g., pressure at supernodes). Defaults to None.
+   :param items_at_supernodes: Selects items at the supernodes (e.g., pressure at supernodes). Defaults to None. These items are sampled accordingly and added to the output supernodes.
    :param seed: Random seed for deterministic sampling for evaluation. Default None (i.e., no seed). If not None,
                 requires sample index to be present in batch.
 

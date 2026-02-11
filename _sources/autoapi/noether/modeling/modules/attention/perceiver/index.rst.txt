@@ -22,9 +22,8 @@ Module Contents
 
    Perceiver style attention module. This module is similar to a cross-attention modules.
 
-   Initialize the PerceiverAttention module.
-
-   :param config: configuration of the attention module.
+   :param config: Configuration for the PerceiverAttention module. See
+                  :class:`~noether.core.schemas.modules.AttentionConfig` for available options.
 
 
    .. py:attribute:: num_heads

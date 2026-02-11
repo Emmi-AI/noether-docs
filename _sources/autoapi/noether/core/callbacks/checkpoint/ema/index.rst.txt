@@ -22,6 +22,19 @@ Module Contents
 
    Callback for exponential moving average (EMA) of model weights.
 
+   Example config:
+
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.EmaCallback
+         every_n_epochs: 10
+         save_weights: false
+         save_last_weights: false
+         save_latest_weights: true
+         target_factors:
+           - 0.9999
+         name: EmaCallback
+
    :param callback_config: Configuration for the callback. See
                            :class:`~noether.core.schemas.callbacks.EmaCallbackConfig`
                            for available options.

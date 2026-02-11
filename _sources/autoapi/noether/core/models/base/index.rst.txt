@@ -15,23 +15,22 @@ Classes
 Module Contents
 ---------------
 
-.. py:class:: ModelBase(model_config, update_counter = None, path_provider = None, data_container = None, initializer_config = None, static_context = None)
+.. py:class:: ModelBase(model_config, update_counter = None, path_provider = None, data_container = None, initializer_config = None)
 
    Bases: :py:obj:`torch.nn.Module`
 
 
-   
-   Base class for models that is used to define the interface for all models trainable by the trainers.
+   Base class for models (:class:`~noether.core.models.model.Model` and :class:`~noether.core.models.composite.CompositeModel`) that is used to define the interface for all models trainable by the :class:`~noether.training.trainers.base.BaseTrainer`.
 
    Provides methods to initialize the model weights and setup (model-specific) optimizers.
 
-   :param model_config: Model configuration.
-   :param update_counter: The update counter provided to the optimizer.
-   :param path_provider: A path provider used by the initializer to store or retrieve checkpoints.
-   :param data_container: The data container which includes the data and dataloader.
+
+   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
+   :param path_provider: A path :class:`~noether.core.providers.path.PathProvider` used by the initializer to store or retrieve checkpoints.
+   :param data_container: The :class:`~noether.data.container.DataContainer` which includes the data and dataloader.
                           This is currently unused but helpful for quick prototyping only, evaluating forward in debug mode, etc.
    :param initializer_config: The initializer config used to initialize the model e.g. from a checkpoint.
-   :param static_context: The static context used to pass information between submodules, e.g. patch_size, latent_dim.
 
 
    .. py:attribute:: logger
@@ -59,9 +58,6 @@ Module Contents
       :type:  list[noether.core.initializers.InitializerBase]
       :value: []
 
-
-
-   .. py:attribute:: static_context
 
 
    .. py:attribute:: model_config
@@ -95,20 +91,28 @@ Module Contents
       :type: int
 
 
+      Returns the total number of parameters in the model.
+
 
    .. py:property:: trainable_param_count
       :type: int
 
+
+      Returns the number of parameters that require gradients (i.e., are trainable).
 
 
    .. py:property:: frozen_param_count
       :type: int
 
 
+      Returns the number of parameters that do not require gradients (i.e., are frozen).
+
 
    .. py:property:: nograd_paramnames
       :type: list[str]
 
+
+      Returns a list of parameter names that do not have gradients (i.e., grad is None) but require gradients.
 
 
    .. py:method:: initialize()

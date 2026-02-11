@@ -36,6 +36,7 @@ Module Contents
 
    In this example, whenever a new best validation loss is found, the corresponding test loss is logged under the key ``loss/test/total/at_best/loss/val/total``.
 
+
    :param callback_config: Configuration for the callback. See
                            :class:`~noether.core.schemas.callbacks.BestMetricCallbackConfig`
                            for available options including source and target metric keys.

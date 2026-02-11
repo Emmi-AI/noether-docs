@@ -27,7 +27,8 @@ Module Contents
 
    Initialize the SupernodePooling.
 
-   :param config: Configuration for the SupernodePooling module.
+   :param config: Configuration for the SupernodePooling module. See
+                  :class:`~noether.core.schemas.modules.encoders.SupernodePoolingConfig` for available options.
 
 
    .. py:attribute:: radius

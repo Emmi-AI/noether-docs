@@ -281,7 +281,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guides/training/use_callbacks.html">How to Use and Build Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -329,7 +329,6 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/configs/index.html">noether.core.configs</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of noether.core.configs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../core/configs/hyperparameters/index.html">noether.core.configs.hyperparameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../core/configs/wandb/index.html">noether.core.configs.wandb</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/distributed/index.html">noether.core.distributed</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of noether.core.distributed</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -365,7 +364,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/models/index.html">noether.core.models</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of noether.core.models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../core/models/base/index.html">noether.core.models.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/models/composite/index.html">noether.core.models.composite</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../core/models/single/index.html">noether.core.models.single</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/models/model/index.html">noether.core.models.model</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/optimizer/index.html">noether.core.optimizer</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of noether.core.optimizer</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -575,7 +574,6 @@
 <li class="toctree-l5"><a class="reference internal" href="../../data/pipeline/sample_processors/position_normalization/index.html">noether.data.pipeline.sample_processors.position_normalization</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../data/pipeline/sample_processors/rename_keys/index.html">noether.data.pipeline.sample_processors.rename_keys</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../data/pipeline/sample_processors/replace_key/index.html">noether.data.pipeline.sample_processors.replace_key</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../data/pipeline/sample_processors/samplewise_normalization/index.html">noether.data.pipeline.sample_processors.samplewise_normalization</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../data/pipeline/sample_processors/supernode_sampling/index.html">noether.data.pipeline.sample_processors.supernode_sampling</a></li>
 </ul>
 </li>
@@ -699,7 +697,6 @@
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../modules/encoders/index.html">noether.modeling.modules.encoders</a><input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.encoders</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l5"><a class="reference internal" href="../modules/encoders/mlp/index.html">noether.modeling.modules.encoders.mlp</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../modules/encoders/supernode_pooling/index.html">noether.modeling.modules.encoders.supernode_pooling</a></li>
 </ul>
 </li>
@@ -725,7 +722,6 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../training/index.html">noether.training</a><input class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" role="switch" type="checkbox"/><label for="toctree-checkbox-70"><div class="visually-hidden">Toggle navigation of noether.training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../training/callbacks/index.html">noether.training.callbacks</a><input class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" role="switch" type="checkbox"/><label for="toctree-checkbox-71"><div class="visually-hidden">Toggle navigation of noether.training.callbacks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../training/callbacks/offline_loss/index.html">noether.training.callbacks.offline_loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../training/callbacks/supernode_pooling_coverage/index.html">noether.training.callbacks.supernode_pooling_coverage</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" role="switch" type="checkbox"/><label for="toctree-checkbox-72"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>

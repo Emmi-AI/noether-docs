@@ -38,7 +38,7 @@ Module Contents
 
 
    Initialize the TrackioTracker.
-   :param tracker_config: Configuration for the TrackioTracker.
+   :param tracker_config: Configuration for the TrackioTracker. See :class:`~noether.core.schemas.trackers.TrackioTrackerSchema` for available options including project and space_id.
    :param \*\*kwargs: Additional keyword arguments passed to the parent class.
 
 

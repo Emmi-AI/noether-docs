@@ -31,8 +31,7 @@ Module Contents
 
    Initialize the UnquantizedDropPath module.
 
-   :param drop_prob: Probability to drop a path.. Defaults to 0..
-   :param scale_by_keep: Up-scales activations during training to avoid train-test mismatch.. Defaults to True.
+   :param config: Configuration for the UnquantizedDropPath module. See :class:`~noether.core.schemas.modules.layers.UnquantizedDropPathConfig` for the available options.
 
 
    .. py:attribute:: drop_prob

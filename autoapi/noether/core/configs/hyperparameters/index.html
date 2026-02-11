@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" /><link rel="next" title="noether.core.configs.wandb" href="../wandb/index.html" /><link rel="prev" title="noether.core.configs" href="../index.html" />
+<link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" /><link rel="next" title="noether.core.distributed" href="../../distributed/index.html" /><link rel="prev" title="noether.core.configs" href="../index.html" />
         <link rel="prefetch" href="../../../../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
@@ -281,7 +281,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use and Implement Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use and Build Callbacks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Noether Zoos</span></p>
@@ -329,7 +329,6 @@
 </li>
 <li class="toctree-l3 current has-children"><a class="reference internal" href="../index.html">noether.core.configs</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle navigation of noether.core.configs</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l4 current current-page"><a class="current reference internal" href="#">noether.core.configs.hyperparameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../wandb/index.html">noether.core.configs.wandb</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../distributed/index.html">noether.core.distributed</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of noether.core.distributed</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -365,7 +364,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../models/index.html">noether.core.models</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><div class="visually-hidden">Toggle navigation of noether.core.models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../models/base/index.html">noether.core.models.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../models/composite/index.html">noether.core.models.composite</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../models/single/index.html">noether.core.models.single</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../models/model/index.html">noether.core.models.model</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../optimizer/index.html">noether.core.optimizer</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><div class="visually-hidden">Toggle navigation of noether.core.optimizer</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -575,7 +574,6 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../data/pipeline/sample_processors/position_normalization/index.html">noether.data.pipeline.sample_processors.position_normalization</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../data/pipeline/sample_processors/rename_keys/index.html">noether.data.pipeline.sample_processors.rename_keys</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../data/pipeline/sample_processors/replace_key/index.html">noether.data.pipeline.sample_processors.replace_key</a></li>
-<li class="toctree-l5"><a class="reference internal" href="../../../data/pipeline/sample_processors/samplewise_normalization/index.html">noether.data.pipeline.sample_processors.samplewise_normalization</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../data/pipeline/sample_processors/supernode_sampling/index.html">noether.data.pipeline.sample_processors.supernode_sampling</a></li>
 </ul>
 </li>
@@ -699,7 +697,6 @@
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../modeling/modules/encoders/index.html">noether.modeling.modules.encoders</a><input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.encoders</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/encoders/mlp/index.html">noether.modeling.modules.encoders.mlp</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/encoders/supernode_pooling/index.html">noether.modeling.modules.encoders.supernode_pooling</a></li>
 </ul>
 </li>
@@ -725,7 +722,6 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../training/index.html">noether.training</a><input class="toctree-checkbox" id="toctree-checkbox-70" name="toctree-checkbox-70" role="switch" type="checkbox"/><label for="toctree-checkbox-70"><div class="visually-hidden">Toggle navigation of noether.training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../training/callbacks/index.html">noether.training.callbacks</a><input class="toctree-checkbox" id="toctree-checkbox-71" name="toctree-checkbox-71" role="switch" type="checkbox"/><label for="toctree-checkbox-71"><div class="visually-hidden">Toggle navigation of noether.training.callbacks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../training/callbacks/offline_loss/index.html">noether.training.callbacks.offline_loss</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../training/callbacks/supernode_pooling_coverage/index.html">noether.training.callbacks.supernode_pooling_coverage</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-72" name="toctree-checkbox-72" role="switch" type="checkbox"/><label for="toctree-checkbox-72"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -797,7 +793,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.configs.hyperparameters.Hyperparameters" title="noether.core.configs.hyperparameters.Hyperparameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hyperparameters</span></code></a></p></td>
-<td><p>Utility class for managing hyperparameters and test run configuration.</p></td>
+<td><p>Utility class to store and log hyperparameters configurations from a Pydantic model.</p></td>
 </tr>
 </tbody>
 </table>
@@ -808,7 +804,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.configs.hyperparameters.Hyperparameters">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.configs.hyperparameters.</span></span><span class="sig-name descname"><span class="pre">Hyperparameters</span></span><a class="headerlink" href="#noether.core.configs.hyperparameters.Hyperparameters" title="Link to this definition">¶</a></dt>
-<dd><p>Utility class for managing hyperparameters and test run configuration.</p>
+<dd><p>Utility class to store and log hyperparameters configurations from a Pydantic model.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.configs.hyperparameters.Hyperparameters.save_resolved">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_resolved</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage_hyperparameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_file_uri</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.configs.hyperparameters.Hyperparameters.save_resolved" title="Link to this definition">¶</a></dt>
@@ -856,12 +852,12 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../wandb/index.html">
+          <a class="next-page" href="../../distributed/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">noether.core.configs.wandb</div>
+                <div class="title">noether.core.distributed</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
