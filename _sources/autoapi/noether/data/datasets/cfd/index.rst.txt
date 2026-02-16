@@ -17,3 +17,367 @@ Submodules
    /autoapi/noether/data/datasets/cfd/shapenet_car/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.AhmedMLDataset
+   noether.data.datasets.cfd.AhmedMLDefaultSplitIDs
+   noether.data.datasets.cfd.DrivAerMLDataset
+   noether.data.datasets.cfd.DrivAerMLDefaultSplitIDs
+   noether.data.datasets.cfd.DrivAerNetDataset
+   noether.data.datasets.cfd.EmmiWingDataset
+   noether.data.datasets.cfd.ShapeNetCarDataset
+   noether.data.datasets.cfd.ShapeNetCarDefaultSplitIDs
+
+
+Package Contents
+----------------
+
+.. py:class:: AhmedMLDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.caeml.dataset.CAEMLDataset`
+
+
+   Dataset implementation for AhmedML CFD simulations.
+
+   :param dataset_config: Configuration for the dataset.
+
+   Initialize the AhmedML dataset.
+
+   :param dataset_config: Configuration for the dataset.
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+
+.. py:class:: AhmedMLDefaultSplitIDs(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+
+
+   Default split IDs for AhmedML dataset with validation.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: EXPECTED_TRAIN_SIZE
+      :value: 400
+
+
+
+   .. py:attribute:: EXPECTED_VAL_SIZE
+      :value: 50
+
+
+
+   .. py:attribute:: EXPECTED_TEST_SIZE
+      :value: 50
+
+
+
+   .. py:attribute:: DATASET_NAME
+      :value: 'AhmedML'
+
+
+
+   .. py:attribute:: train
+      :type:  set[int]
+
+
+   .. py:attribute:: val
+      :type:  set[int]
+
+
+   .. py:attribute:: test
+      :type:  set[int]
+
+
+   .. py:method:: create_split()
+      :staticmethod:
+
+
+      A helper function to create a random split of the dataset. The default indices were created with seed=42.
+
+
+
+.. py:class:: DrivAerMLDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.caeml.dataset.CAEMLDataset`
+
+
+   Dataset implementation for DrivaerML CFD simulations.
+
+   :param dataset_config: Configuration for the dataset.
+
+   Initialize the DrivaerML dataset.
+
+   :param dataset_config: Configuration for the dataset.
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+
+.. py:class:: DrivAerMLDefaultSplitIDs(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+
+
+   Default split IDs for DrivAerML dataset with validation.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: EXPECTED_TRAIN_SIZE
+      :value: 400
+
+
+
+   .. py:attribute:: EXPECTED_VAL_SIZE
+      :value: 34
+
+
+
+   .. py:attribute:: EXPECTED_TEST_SIZE
+      :value: 50
+
+
+
+   .. py:attribute:: EXPECTED_HIDDEN_TEST_SIZE
+      :value: 16
+
+
+
+   .. py:attribute:: DATASET_NAME
+      :value: 'DrivAerML'
+
+
+
+   .. py:attribute:: train
+      :type:  set[int]
+
+
+   .. py:attribute:: val
+      :type:  set[int]
+
+
+   .. py:attribute:: test
+      :type:  set[int]
+
+
+   .. py:attribute:: hidden_test
+      :type:  set[int]
+
+
+   .. py:method:: create_split()
+      :staticmethod:
+
+
+      A helper function to create a random split of the dataset. The default indices were created with seed=42.
+
+
+
+.. py:class:: DrivAerNetDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.dataset.AeroDataset`
+
+
+   Dataset implementation for DrivAerNet and DrivAerNet++ dataset.
+
+   :param dataset_config: Configuration for the dataset. See :class:`~noether.core.schemas.dataset.DatasetBaseConfig` for available options.
+   :param filemap: FileMap object defining the mapping of data properties to filenames. See :class:`~noether.data.datasets.cfd.caeml.filemap.FileMap` for details.
+
+
+   .. py:attribute:: FILEMAP
+
+
+   .. py:attribute:: source_root
+
+
+   .. py:attribute:: design_ids
+
+
+.. py:class:: EmmiWingDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.dataset.AeroDataset`
+
+
+   Dataset implementation for aerodynamic datasets with volume and surface fields.
+   This unified dataset class provides an interface for aerodynamics dataset with volume and surface fields.
+   The dataset behavior such as the dataset choice, train/val/test split IDs, etc.
+   is configured through constructor parameters, allowing for easy extension to new datasets.
+
+
+   :param dataset_config: Configuration for the dataset. See :class:`~noether.core.schemas.dataset.DatasetBaseConfig` for available options.
+   :param filemap: FileMap object defining the mapping of data properties to filenames. See :class:`~noether.data.datasets.cfd.caeml.filemap.FileMap` for details.
+
+
+   .. py:attribute:: split
+
+
+   .. py:attribute:: source_root
+
+
+   .. py:method:: sample_info(idx)
+
+      Get information about a sample such as its local path, run name, etc.
+
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+
+   .. py:property:: supported_splits
+      :type: set[str]
+
+
+
+   .. py:method:: getitem_geometry_design_parameters(idx)
+
+      Retrieves geometry design parameters as a single tensor.
+
+      :returns: Geometry design parameters tensor of shape (1, num_geometry_parameters)
+      :rtype: torch.Tensor
+
+
+
+   .. py:method:: getitem_inflow_design_parameters(idx)
+
+      Retrieves inflow design parameters as a single tensor.
+
+      :returns: Inflow design parameters tensor of shape (1, num_inflow_parameters)
+      :rtype: torch.Tensor
+
+
+
+.. py:class:: ShapeNetCarDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.dataset.AeroDataset`
+
+
+   Dataset implementation for ShapeNet Car CFD simulations.
+
+   This dataset provides access to:
+   - Surface properties: positions, pressure, normals
+   - Volume properties: positions, velocity, normals, signed distance field (SDF)
+
+   The dataset is split by parameter configurations:
+   - Test: param0 (100 samples)
+   - Validation: no validation split defined
+   - Train: param1-8 (789 samples)
+
+   Download link to the raw dataset: http://www.nobuyuki-umetani.com/publication/mlcfd_data.zip
+
+   Expected directory structure:
+       root/
+           preprocessed/
+               param0/
+                   <simulation_id>/
+                       surface_points.pt
+                       surface_pressure.pt
+                       surface_normals.pt
+                       volume_velocity.pt
+                       volume_points.pt
+                       volume_sdf.pt
+                       volume_normals.pt
+               param1/
+                   ...
+               ...
+               param8/
+
+   Initialize the ShapeNet Car dataset.
+
+   :param dataset_config: Configuration for the dataset.
+
+   :raises TypeError: If dataset_config is not ShapeNetDatasetConfig
+   :raises ValueError: If configuration is invalid or split is unknown
+   :raises FileNotFoundError: If data directory does not exist
+
+
+   .. py:attribute:: split
+
+
+   .. py:attribute:: source_root
+      :type:  pathlib.Path
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+
+   .. py:method:: sample_info(idx)
+
+      Get information about a sample such as its local path, run name, etc.
+
+
+
+.. py:class:: ShapeNetCarDefaultSplitIDs(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+
+
+   Default split IDs for ShapeNet Car dataset with validation.
+
+   Following the Transolver paper convention:
+       - param0 is used for test/validation set
+       - param1-8 are used for training set
+
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: EXPECTED_TRAIN_SIZE
+      :value: 789
+
+
+
+   .. py:attribute:: EXPECTED_VAL_SIZE
+      :value: 0
+
+
+
+   .. py:attribute:: EXPECTED_TEST_SIZE
+      :value: 100
+
+
+
+   .. py:attribute:: DATASET_NAME
+      :value: 'ShapeNet-Car'
+
+
+
+   .. py:attribute:: train
+      :type:  set[str]
+
+
+   .. py:attribute:: val
+      :type:  set[str]
+
+
+   .. py:attribute:: test
+      :type:  set[str]
+
+

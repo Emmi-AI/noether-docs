@@ -18,3 +18,238 @@ Submodules
    /autoapi/noether/core/schemas/modules/layers/scalar_conditioner/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig
+   noether.core.schemas.modules.layers.UnquantizedDropPathConfig
+   noether.core.schemas.modules.layers.LayerScaleConfig
+   noether.core.schemas.modules.layers.LinearProjectionConfig
+   noether.core.schemas.modules.layers.RopeFrequencyConfig
+
+
+Package Contents
+----------------
+
+.. py:class:: ContinuousSincosEmbeddingConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for Continuous Sine-Cosine Embedding layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the output embedding.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the input coordinates.
+
+
+   .. py:attribute:: max_wavelength
+      :type:  int
+      :value: None
+
+
+      Maximum wavelength for the sine-cosine embeddings.
+
+
+.. py:class:: UnquantizedDropPathConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for the UnquantizedDropPath layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: drop_prob
+      :type:  float
+      :value: None
+
+
+      Probability of dropping a path during training.
+
+
+   .. py:attribute:: scale_by_keep
+      :type:  bool
+      :value: None
+
+
+      Up-scales activations during training by 1 - drop_prob to avoid train-test mismatch. Defaults to True.
+
+
+.. py:class:: LayerScaleConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for Layer Scale module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Number of dimensions of the input tensor to be scaled.
+
+
+   .. py:attribute:: init_values
+      :type:  float | None
+      :value: None
+
+
+      Initial gamme scale value. Defaults to 1e-5.
+
+
+.. py:class:: LinearProjectionConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for a LinearProjection layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the linear projection.
+
+
+   .. py:attribute:: output_dim
+      :type:  int
+      :value: None
+
+
+      Output dimension of the linear projection.
+
+
+   .. py:attribute:: ndim
+      :type:  None | int
+      :value: None
+
+
+      Number of dimensions of the input domain. Either None (Linear projection),  1D (sequence), 2D, or 3D. Defaults to None.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      If true, use bias term in the linear projection. Defaults to True.
+
+
+   .. py:attribute:: optional
+      :type:  bool
+      :value: None
+
+
+      If true and input_dim==output_dim (i.e., there is no up/down projection), then the identity mapping is used. Defaults to False.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Initialization method of the weights of the MLP. Options are 'torch' (i.e., similar to the module) or 'truncnormal002', or 'zero'. Defaults to 'torch'.
+
+
+   .. py:method:: validate_ndim()
+
+      Validate the ndim field to ensure it is either None, 1, 2, or 3.
+
+
+
+.. py:class:: RopeFrequencyConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for RoPE frequency settings.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of frequencies (in transformers this should be the head dimension).
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the coordinates (e.g., 2 for 2D coordinates, 3 for 3D coordinates).
+
+
+   .. py:attribute:: max_wavelength
+      :type:  int
+      :value: None
+
+
+      10000.0
+
+      :type: Theta parameter for the transformer sine/cosine embedding. Default
+
+
+   .. py:attribute:: implementation
+      :type:  Literal['real', 'complex']
+      :value: None
+
+
+      "real" -> basic implementation using real coordinates (this is slow and only here for backward compatibility).
+      "complex" -> fast implementation of rotation via complex multiplication. Default: "real".
+
+

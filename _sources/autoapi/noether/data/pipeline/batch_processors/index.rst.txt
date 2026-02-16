@@ -15,3 +15,137 @@ Submodules
    /autoapi/noether/data/pipeline/batch_processors/rename_keys/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.batch_processors.MomentNormalizationBatchProcessor
+   noether.data.pipeline.batch_processors.PositionNormalizationBatchProcessor
+   noether.data.pipeline.batch_processors.RenameKeysBatchProcessor
+
+
+Package Contents
+----------------
+
+.. py:class:: MomentNormalizationBatchProcessor(items, mean, std)
+
+   Bases: :py:obj:`noether.data.pipeline.batch_processor.BatchProcessor`
+
+
+   Normalizes a value with its mean and standard deviation (i.e., its moments) in a batch.
+
+   Example:
+
+   .. code-block:: python
+
+       processor = MomentNormalizationBatchProcessor(
+           items=['velocity', 'pressure'],
+           mean=[1.0, 2.0],
+           std=[0.1, 0.2],
+       )
+       batch = {
+           'velocity': torch.tensor([[.., ..], [.., ..]]),
+           'pressure': torch.tensor([[.., ..], [.., ..]]),
+       }
+       normalized_batch = processor(batch)
+       # normalized_batch['velocity'] will be tensor([[.., ..], [.., ..]])
+       # normalized_batch['pressure'] will be tensor([[.., ..], [.., ..]])
+
+   :param items: the position items to normalize.
+   :param mean: the mean of the value.
+   :param std: the standard deviation of the value.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: mean_tensor
+
+
+   .. py:attribute:: std_tensor
+
+
+   .. py:method:: denormalize(key, value)
+
+      Inverts the normalization from the __call__ method of a single item in the batch.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The same name and the denormalized value.
+      :rtype: (key, value)
+
+
+
+.. py:class:: PositionNormalizationBatchProcessor(items, raw_pos_min, raw_pos_max, scale = 1000)
+
+   Bases: :py:obj:`noether.data.pipeline.batch_processor.BatchProcessor`
+
+
+   Post-processes data on a batch-level to normalize positions.
+
+   :param items: The position items (i.e., keys in the batch) to normalize.
+   :param raw_pos_min: The minimum position in the source domain.
+   :param raw_pos_max: The maximum position in the source domain.
+   :param scale: The maximum value of the position. Defaults to 1000.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: scale
+      :value: 1000
+
+
+
+   .. py:attribute:: raw_pos_min_tensor
+
+
+   .. py:attribute:: raw_pos_max_tensor
+
+
+   .. py:attribute:: raw_size
+
+
+   .. py:method:: denormalize(key, value)
+
+      Inverts the normalization from the __call__ method of a single item in the batch.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The same name and the denormalized value.
+      :rtype: (key, value)
+
+
+
+.. py:class:: RenameKeysBatchProcessor(key_map)
+
+   Bases: :py:obj:`noether.data.pipeline.batch_processor.BatchProcessor`
+
+
+   Utility processor that simply renames the dictionary keys in a batch.
+   Rename keys in the batch if they are in the key_map and keep old keys otherwise.
+   Creates a new dictionary whose keys are renamed but uses references to the values of the old dict.
+   This avoids copying the data and at the same time does not modify this function's input.
+
+
+   :param key_map: dict with source keys as keys and target keys as values. The source keys are renamed target keys.
+
+
+   .. py:attribute:: key_map
+
+
+   .. py:method:: denormalize(key, value)
+
+      Inverts the key mapping from the __call__ method.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The (potentially) remapped name and the unchanged value.
+      :rtype: (key, value)
+
+
+

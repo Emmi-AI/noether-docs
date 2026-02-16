@@ -19,3 +19,315 @@ Submodules
    /autoapi/noether/modeling/modules/layers/transformer_batchnorm/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.layers.ContinuousSincosEmbed
+   noether.modeling.modules.layers.UnquantizedDropPath
+   noether.modeling.modules.layers.LayerScale
+   noether.modeling.modules.layers.LinearProjection
+   noether.modeling.modules.layers.RopeFrequency
+   noether.modeling.modules.layers.ScalarsConditioner
+   noether.modeling.modules.layers.TransformerBatchNorm
+
+
+Package Contents
+----------------
+
+.. py:class:: ContinuousSincosEmbed(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Embedding layer for continuous coordinates using sine and cosine functions.
+   The original implementation from the Attenion is All You Need paper, deals with descrete 1D cordinates (i.e., a sequence).
+   Howerver, this implementation is able to deal with 2D and 3D coordinate systems as well.
+
+
+   :param config: Configuration for the ContinuousSincosEmbed module. See :class:`~noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig` for the available options.
+
+
+   .. py:attribute:: omega
+      :type:  torch.Tensor
+
+
+   .. py:attribute:: padding_tensor
+      :type:  torch.Tensor
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: input_dim
+
+
+   .. py:attribute:: ndim_padding
+
+
+   .. py:attribute:: sincos_padding
+
+
+   .. py:attribute:: max_wavelength
+
+
+   .. py:attribute:: padding
+
+
+   .. py:method:: forward(coords)
+
+      Forward method of the ContinuousSincosEmbed layer.
+
+      :param coords: Tensor of coordinates. The shape of the tensor should be [batch size, number of points, coordinate dimension] or [number of points, coordinate dimension].
+
+      :raises NotImplementedError: Only supports sparse (i.e. [number of points, coordinate dimension]) or dense (i.e. [batch size, number of points, coordinate dimension]) coordinates systems.
+
+      :returns: Tensor with embedded coordinates.
+
+
+
+.. py:class:: UnquantizedDropPath(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Unquantized drop path (Stochastic Depth, https://arxiv.org/abs/1603.09382) per sample. Unquantized means
+   that dropped paths are still calculated. Number of dropped paths is fully stochastic, i.e., it can happen that
+   not a single path is dropped or that all paths are dropped. In a quantized drop path, the same amount of
+   paths are dropped in each forward pass, resulting in large speedups with high drop_prob values. See
+   https://arxiv.org/abs/2212.04884 for more discussion. UnquantizedDropPath does not provide any speedup,
+   consider using a quantized version if large drop_prob values are used.
+
+   Adapted from https://github.com/huggingface/pytorch-image-models/blob/main/timm/layers/drop.py#L150
+
+   Initialize the UnquantizedDropPath module.
+
+   :param config: Configuration for the UnquantizedDropPath module. See :class:`~noether.core.schemas.modules.layers.UnquantizedDropPathConfig` for the available options.
+
+
+   .. py:attribute:: drop_prob
+
+
+   .. py:attribute:: scale_by_keep
+
+
+   .. py:property:: keep_prob
+
+      Return the keep probability. I.e. the probability to keep a path, which is 1 - drop_prob.
+
+      :returns: Float value of the keep probability.
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the UnquantizedDropPath module.
+
+      :param x: Tensor to apply the drop path. Shape: (batch_size, ...).
+
+      :returns: (batch_size, ...). If drop_prob is 0, the input tensor is returned. If drop_prob is 1, a tensor with zeros is returned.
+      :rtype: Tensor with drop path applied. Shape
+
+
+
+   .. py:method:: extra_repr()
+
+      Extra representation of the UnquantizedDropPath module.
+
+      :returns: Return a string representation of the module.
+
+
+
+.. py:class:: LayerScale(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   LayerScale module scales the input tensor by a learnable parameter gamma.
+
+   Initialize the LayerScale module.
+   :param config: Configuration for the LayerScale module. See :class:`~noether.core.schemas.modules.layers.LayerScaleConfig` for details.
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the LayerScale module.
+
+      :param x: Input tensor to be scaled.
+
+      :returns: Tensor scaled by the gamma parameter.
+
+
+
+.. py:class:: LinearProjection(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   LinearProjection is a linear projection layer that can be used for 1D, 2D, and 3D data.
+
+   :param config: The configuration of the LinearProjection. See :class:`~noether.core.schemas.modules.layers.LinearProjectionConfig` for available options.
+
+   :raises NotImplementedError: raises not implemented error if the number of dimensions of the input domain is bigger than 4.
+
+
+   .. py:attribute:: project
+      :type:  torch.nn.Linear | torch.nn.Conv1d | torch.nn.Conv2d | torch.nn.Conv3d | torch.nn.Identity
+
+
+   .. py:attribute:: init_weights
+
+
+   .. py:method:: reset_parameters()
+
+      Reset the parameters of the MLP with a specific initialization. Options are "torch" (i.e., default) or
+          "truncnormal002".
+
+      :raises NotImplementedError: raised if the specified initialization is not implemented.
+
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the LinearProjection.
+
+      :param x: Input tensor to the LinearProjection.
+
+      :returns: Output tensor from the LinearProjection.
+
+
+
+.. py:class:: RopeFrequency(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Creates frequencies for rotary embeddings (RoPE) from https://arxiv.org/abs/2104.09864 for variable positions.
+
+   :param config: Configuration for RoPE frequency settings. See :class:`~noether.core.schemas.modules.layers.RopeFrequencyConfig` for available options.
+
+
+   .. py:attribute:: omega
+      :type:  torch.Tensor
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: input_dim
+
+
+   .. py:attribute:: implementation
+
+
+   .. py:attribute:: ndim_padding
+
+
+   .. py:attribute:: sincos_padding
+
+
+   .. py:attribute:: max_wavelength
+
+
+   .. py:attribute:: padding
+
+
+   .. py:method:: forward(coords)
+
+      :param coords: coordinates to create RoPE frequencies for. Expected shape is (..., input_dim).
+
+
+
+.. py:class:: ScalarsConditioner(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   
+   Embeds num_scalars scalars into a single conditioning vector via first encoding every scalar with
+   sine-cosine embeddings followed by a mlp (per scalar). These vectors are then concatenated and projected down
+   to condition_dim with an MLP.
+
+   :param config: configuration for the ScalarsConditioner. See :class:`~noether.core.schemas.modules.layers.scalar_conditioner.ScalarsConditionerConfig` for available options.
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: num_scalars
+
+
+   .. py:attribute:: condition_dim
+
+
+   .. py:attribute:: embed
+
+
+   .. py:attribute:: mlps
+
+
+   .. py:attribute:: shared_mlp
+
+
+   .. py:method:: forward(*args, **kwargs)
+
+      Embeds scalars into a single conditioning vector. Scalars can be passed as *args or as **kwargs. It is
+      recommended to use kwargs to avoid bugs that originate from passing scalars in a different order at two
+      locations in the code. Recommended usage: condition = conditioner(geometry_angle=75.3, friction_angle=24.6)
+      :param \*args: Scalars in tensor representation (batch_size,) or (batch_size, 1).
+      :param \*\*kwargs: Scalars in tensor representation (batch_size,) or (batch_size, 1).
+
+      :returns: Conditioning vector with shape (batch_size, condition_dim)
+
+      Example:
+      .. code-block:: python
+
+          conditioner = ScalarsConditioner(
+              ScalarsConditionerConfig(
+                  hidden_dim=64,
+                  num_scalars=2,
+                  condition_dim=128,
+                  init_weights="gaussian",
+              )
+          )
+          geometry_angle = torch.tensor([75.3, 80.1])  # shape (batch_size,)
+          friction_angle = torch.tensor([24.6, 30.2])  # shape (batch_size,)
+          condition = conditioner(
+              geometry_angle=geometry_angle, friction_angle=friction_angle
+          )  # shape (batch_size, condition_dim)
+
+
+
+.. py:class:: TransformerBatchNorm(num_features, eps = 1e-05, elementwise_affine = True, bias = True)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Wrapper around `torch.nn.BatchNorm1d` that considers all tokens of a single sample as the full batch.
+   Additionally remaps `affine` to `elementwise_affine` and supports disabling bias to comply with the
+   `torch.nn.LayerNorm` interface. Does not use any nn.BatchNorm1d modules to avoid errors with nn.SyncBatchnorm.
+
+
+   .. py:attribute:: num_features
+
+
+   .. py:attribute:: eps
+      :value: 1e-05
+
+
+
+   .. py:attribute:: elementwise_affine
+      :value: True
+
+
+
+   .. py:method:: forward(x)
+
+      BatchNorm1d where all tokens of a single sample correspond to a full batch.
+
+      :param x: Tensor of shape (batch_size, seqlen, dim).
+
+      :returns: Normalized x of shape (batch_size, seqlen, dim).
+
+
+

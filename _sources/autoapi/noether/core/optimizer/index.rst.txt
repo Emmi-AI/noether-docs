@@ -15,3 +15,243 @@ Submodules
    /autoapi/noether/core/optimizer/param_group_modifiers/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.optimizer.Lion
+   noether.core.optimizer.OptimizerWrapper
+   noether.core.optimizer.LrScaleByNameModifier
+   noether.core.optimizer.ParamGroupModifierBase
+   noether.core.optimizer.WeightDecayByNameModifier
+
+
+Package Contents
+----------------
+
+.. py:class:: Lion(params, lr, betas = (0.9, 0.99), weight_decay = 0.0, caution = False, maximize = False, foreach = None)
+
+   Bases: :py:obj:`torch.optim.optimizer.Optimizer`
+
+
+   Implements Lion algorithm.
+
+   Initialize the hyperparameters.
+
+   :param params: iterable of parameters to optimize or dicts defining parameter groups
+   :param lr: learning rate
+   :param betas: coefficients used for computing running averages of gradient and its square
+   :param weight_decay: weight decay coefficient
+   :param caution: apply caution
+
+
+   .. py:method:: step(closure=None)
+
+      Performs a single optimization step.
+
+      :param closure: A closure that reevaluates the model and returns the loss.
+
+      :returns: the loss.
+
+
+
+.. py:class:: OptimizerWrapper(model, torch_optim_ctor, optim_wrapper_config, update_counter = None)
+
+   Wrapper around an `torch.optim.Optimizer` that allows
+       - excluding biases and weights of normalization layers from weight decay
+       - creating param_groups (e.g., for a layerwise lr scaling)
+       - learning rate scheduling
+       - gradient clipping
+       - weight decay scheduling
+   Have a look at the class:`noether.core.schemas.optimizers.OptimizerConfig` for available options.
+
+   :param model: Parameters of this model will be optimized.
+   :param torch_optim_ctor: The :class:`~torch.optim.Optimizer` that should be wrapped. Needs to be a callable
+                            because it requires the parameters of the model for initialization.
+   :param optim_wrapper_config: The configuration for the optimizer wrapper.
+   :param update_counter: Object that provides the current training progress to enable scheduling of the learning
+                          rate or the weight decay.
+
+
+   .. py:attribute:: schedule
+      :type:  noether.core.utils.training.schedule_wrapper.ScheduleWrapper | None
+      :value: None
+
+
+
+   .. py:attribute:: weight_decay_schedule
+      :type:  noether.core.utils.training.schedule_wrapper.ScheduleWrapper | None
+      :value: None
+
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: model
+
+
+   .. py:attribute:: update_counter
+      :value: None
+
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: param_idx_to_name
+
+
+   .. py:attribute:: torch_optim
+
+
+   .. py:attribute:: all_parameters
+      :value: None
+
+
+
+   .. py:method:: step(grad_scaler = None)
+
+      Wrapper around `torch.optim.Optimizer.step` which automatically handles:
+      - gradient scaling for mixed precision (including updating the GradientScaler state)
+      - gradient clipping
+      - calling the .step function of the optimizer
+
+
+
+   .. py:method:: schedule_step()
+
+      Applies the current state of the schedules to the parameter groups.
+
+
+
+   .. py:method:: zero_grad(set_to_none=True)
+
+      Wrapper around `torch.optim.Optimizer.zero_grad`.
+
+
+
+   .. py:method:: state_dict()
+
+      Wrapper around `torch.optim.Optimizer.state_dict`. Additionally adds info about index to name mapping.
+
+
+
+   .. py:method:: load_state_dict(state_dict_to_load)
+
+      Wrapper around `torch.optim.Optimizer.load_state_dict`. Additionally handles edge cases if the parameter
+      groups of the loaded state_dict do not match the current configuration. By default, torch would overwrite the
+      current parameter groups with the one from the checkpoint. This is undesireable in the following cases:
+      - add new parameters (e.g. unfreeze something)
+      - change weight_decay or other param_group properties: the load_state_dict would overwrite the actual
+          weight_decay (defined in the constructor of the OptimizerWrapper) with the weight_decay from the checkpoint
+
+      :param state_dict_to_load: The optimizer state to load.
+
+
+
+.. py:class:: LrScaleByNameModifier(param_group_modifier_config)
+
+   Bases: :py:obj:`noether.core.optimizer.param_group_modifiers.base.ParamGroupModifierBase`
+
+
+   Scales the learning rate of a certain parameter.
+
+
+   .. py:attribute:: scale
+
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: param_was_found
+      :value: False
+
+
+
+   .. py:method:: get_properties(model, name, param)
+
+      This method is called with all items of `model.named_parameters()` to compose the parameter groups for the
+      whole model. If the desired parameter name is found, it returns a modifier that scales down the learning rate.
+
+      :param model: Model from which the parameter originates from. Used to extract properties (e.g., number of layers
+                    for a layerwise learning rate decay).
+      :param name: Name of the parameter as stored inside the model.
+      :param param: The parameter tensor.
+
+
+
+   .. py:method:: was_applied_successfully()
+
+      Check if the parameter was found within the model.
+
+
+
+.. py:class:: ParamGroupModifierBase
+
+   Generic implementation to change properties of optimizer parameter groups.
+
+
+   .. py:method:: get_properties(model, name, param)
+      :abstractmethod:
+
+
+      Returns the modified properties for a given model parameter. This method is called with all items of
+      `model.named_parameters()` to compose the parameter groups for the whole model.
+
+      :param model: Model from which the parameter originates from. Used to extract properties (e.g., number of layers
+                    for a layerwise learning rate decay).
+      :param name: Name of the parameter as stored inside the model.
+      :param param: The parameter tensor.
+
+
+
+   .. py:method:: was_applied_successfully()
+      :abstractmethod:
+
+
+      Checks if the parameter group modifier was applied successfully.
+
+
+
+.. py:class:: WeightDecayByNameModifier(param_group_modifier_config)
+
+   Bases: :py:obj:`noether.core.optimizer.param_group_modifiers.base.ParamGroupModifierBase`
+
+
+   Changes the weight decay value for a single parameter. Use-cases:
+   - ViT exclude CLS token parameters
+   - Transformer learned positional embeddings
+   - Learnable query tokens for cross attention ("PerceiverPooling")
+
+
+   .. py:attribute:: name
+
+
+   .. py:attribute:: value
+
+
+   .. py:attribute:: param_was_found
+      :value: False
+
+
+
+   .. py:method:: get_properties(model, name, param)
+
+      This method is called with all items of `model.named_parameters()` to compose the parameter groups for the
+      whole model. If the desired parameter name is found, it returns a modifier that sets the weight decay.
+
+      :param model: Model from which the parameter originates from. Used to extract properties (e.g., number of layers
+                    for a layerwise learning rate decay).
+      :param name: Name of the parameter as stored inside the model.
+      :param param: The parameter tensor.
+
+
+
+   .. py:method:: was_applied_successfully()
+
+      Check if the parameter was found within the model.
+
+
+

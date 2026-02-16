@@ -16,3 +16,98 @@ Submodules
    /autoapi/noether/data/pipeline/collators/sparse_tensor_offset/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.collators.ConcatSparseTensorCollator
+   noether.data.pipeline.collators.DefaultCollator
+   noether.data.pipeline.collators.FieldDecoderCollator
+   noether.data.pipeline.collators.SparseTensorOffsetCollator
+
+
+Package Contents
+----------------
+
+.. py:class:: ConcatSparseTensorCollator(items, create_batch_idx = False, batch_idx_key = 'batch_idx')
+
+   Concatenates a sparse tensor along its first axis. Additionally, creates the batch_idx tensor which maps samples
+   to their respective index in a batch.
+
+   :param items: Which pointcloud items (i.e., keys in the sample dictionaries) should be collated.
+   :param create_batch_idx: If true, creates a batch_idx tensor that maps samples to their index in the batch.
+                            Defaults to False.
+   :param batch_idx_key: How the generated batch_idx tensor should be called. Defaults to "batch_idx". If multiple
+                         `batch_idx` tensors are generated, this needs to be set to distinguish between them. For example,
+                         if a subsampled pointcloud is loaded and also the raw pointcloud without subsampling one could use
+                         `batch_idx` for the subsampled pointcloud and `batch_idx_raw` for the raw pointcloud.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: create_batch_idx
+      :value: False
+
+
+
+   .. py:attribute:: batch_idx_key
+      :value: 'batch_idx'
+
+
+
+.. py:class:: DefaultCollator(items = None, optional_items = None)
+
+   Applies `torch.utils.data.default_collate` to the specified items.
+
+   :param items: Items (i.e, keys) to apply `default_collate` to.
+   :param optional_items: Items (i.e, keys) to apply `default_collate` to if they are present.
+
+
+   .. py:attribute:: items
+      :value: None
+
+
+
+   .. py:attribute:: optional_items
+      :value: None
+
+
+
+.. py:class:: FieldDecoderCollator(position_item, target_items)
+
+   Collates a field to be used in a UPT-style decoder. It requires:
+   - Positions as dense tensor (used as query for the Perceiver decoder)
+   - Targets as sparse tensor (e.g., used for calculating a loss)
+   - Unbatch mask to convert the dense output of the Perceiver decoder into a sparse tensor to compare it to the
+       targets (i.e., calculate a loss)
+
+
+   :param position_item: Identifier for the position.
+   :param target_items: Identifiers for the position, can use multiple target_items if multiple values are predicted with
+   :param the same decoder:
+   :type the same decoder: e.g., predict surface pressure and surface wall shear stress
+
+
+   .. py:attribute:: position_item
+
+
+   .. py:attribute:: target_items
+
+
+.. py:class:: SparseTensorOffsetCollator(item, offset_key)
+
+   Bases: :py:obj:`noether.data.pipeline.collator.Collator`
+
+
+   Collates sparse tensors by concatenating them along the first axis and creating an offset tensor that maps
+   each sample to its respective index in the batch.
+
+
+   .. py:attribute:: item
+
+
+   .. py:attribute:: offset_key
+
+

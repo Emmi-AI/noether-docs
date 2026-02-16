@@ -16,3 +16,129 @@ Submodules
    /autoapi/noether/data/datasets/cfd/shapenet_car/split/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.shapenet_car.ShapeNetCarDataset
+   noether.data.datasets.cfd.shapenet_car.ShapeNetCarDefaultSplitIDs
+
+
+Package Contents
+----------------
+
+.. py:class:: ShapeNetCarDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.dataset.AeroDataset`
+
+
+   Dataset implementation for ShapeNet Car CFD simulations.
+
+   This dataset provides access to:
+   - Surface properties: positions, pressure, normals
+   - Volume properties: positions, velocity, normals, signed distance field (SDF)
+
+   The dataset is split by parameter configurations:
+   - Test: param0 (100 samples)
+   - Validation: no validation split defined
+   - Train: param1-8 (789 samples)
+
+   Download link to the raw dataset: http://www.nobuyuki-umetani.com/publication/mlcfd_data.zip
+
+   Expected directory structure:
+       root/
+           preprocessed/
+               param0/
+                   <simulation_id>/
+                       surface_points.pt
+                       surface_pressure.pt
+                       surface_normals.pt
+                       volume_velocity.pt
+                       volume_points.pt
+                       volume_sdf.pt
+                       volume_normals.pt
+               param1/
+                   ...
+               ...
+               param8/
+
+   Initialize the ShapeNet Car dataset.
+
+   :param dataset_config: Configuration for the dataset.
+
+   :raises TypeError: If dataset_config is not ShapeNetDatasetConfig
+   :raises ValueError: If configuration is invalid or split is unknown
+   :raises FileNotFoundError: If data directory does not exist
+
+
+   .. py:attribute:: split
+
+
+   .. py:attribute:: source_root
+      :type:  pathlib.Path
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+
+   .. py:method:: sample_info(idx)
+
+      Get information about a sample such as its local path, run name, etc.
+
+
+
+.. py:class:: ShapeNetCarDefaultSplitIDs(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+
+
+   Default split IDs for ShapeNet Car dataset with validation.
+
+   Following the Transolver paper convention:
+       - param0 is used for test/validation set
+       - param1-8 are used for training set
+
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: EXPECTED_TRAIN_SIZE
+      :value: 789
+
+
+
+   .. py:attribute:: EXPECTED_VAL_SIZE
+      :value: 0
+
+
+
+   .. py:attribute:: EXPECTED_TEST_SIZE
+      :value: 100
+
+
+
+   .. py:attribute:: DATASET_NAME
+      :value: 'ShapeNet-Car'
+
+
+
+   .. py:attribute:: train
+      :type:  set[str]
+
+
+   .. py:attribute:: val
+      :type:  set[str]
+
+
+   .. py:attribute:: test
+      :type:  set[str]
+
+

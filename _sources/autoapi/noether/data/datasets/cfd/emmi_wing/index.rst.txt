@@ -14,3 +14,69 @@ Submodules
    /autoapi/noether/data/datasets/cfd/emmi_wing/split/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.emmi_wing.EmmiWingDataset
+
+
+Package Contents
+----------------
+
+.. py:class:: EmmiWingDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.dataset.AeroDataset`
+
+
+   Dataset implementation for aerodynamic datasets with volume and surface fields.
+   This unified dataset class provides an interface for aerodynamics dataset with volume and surface fields.
+   The dataset behavior such as the dataset choice, train/val/test split IDs, etc.
+   is configured through constructor parameters, allowing for easy extension to new datasets.
+
+
+   :param dataset_config: Configuration for the dataset. See :class:`~noether.core.schemas.dataset.DatasetBaseConfig` for available options.
+   :param filemap: FileMap object defining the mapping of data properties to filenames. See :class:`~noether.data.datasets.cfd.caeml.filemap.FileMap` for details.
+
+
+   .. py:attribute:: split
+
+
+   .. py:attribute:: source_root
+
+
+   .. py:method:: sample_info(idx)
+
+      Get information about a sample such as its local path, run name, etc.
+
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+
+   .. py:property:: supported_splits
+      :type: set[str]
+
+
+
+   .. py:method:: getitem_geometry_design_parameters(idx)
+
+      Retrieves geometry design parameters as a single tensor.
+
+      :returns: Geometry design parameters tensor of shape (1, num_geometry_parameters)
+      :rtype: torch.Tensor
+
+
+
+   .. py:method:: getitem_inflow_design_parameters(idx)
+
+      Retrieves inflow design parameters as a single tensor.
+
+      :returns: Inflow design parameters tensor of shape (1, num_inflow_parameters)
+      :rtype: torch.Tensor
+
+
+

@@ -22,3 +22,464 @@ Submodules
    /autoapi/noether/data/pipeline/sample_processors/supernode_sampling/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.pipeline.sample_processors.ConcatTensorSampleProcessor
+   noether.data.pipeline.sample_processors.DefaultTensorSampleProcessor
+   noether.data.pipeline.sample_processors.DropOutliersSampleProcessor
+   noether.data.pipeline.sample_processors.DuplicateKeysSampleProcessor
+   noether.data.pipeline.sample_processors.MomentNormalizationSampleProcessor
+   noether.data.pipeline.sample_processors.PointSamplingSampleProcessor
+   noether.data.pipeline.sample_processors.PositionNormalizationSampleProcessor
+   noether.data.pipeline.sample_processors.RenameKeysSampleProcessor
+   noether.data.pipeline.sample_processors.ReplaceKeySampleProcessor
+   noether.data.pipeline.sample_processors.SupernodeSamplingSampleProcessor
+
+
+Package Contents
+----------------
+
+.. py:class:: ConcatTensorSampleProcessor(items, target_key, dim = 0)
+
+   Bases: :py:obj:`noether.data.pipeline.SampleProcessor`
+
+
+   Concatenates multiple tensors into a single tensor.
+
+
+   .. code-block:: python
+
+       # dummy example
+       processor = ConcatTensorSampleProcessor(items=["image_part1", "image_part2"], target_key="full_image", dim=0)
+       input_sample = {
+           "image_part1": torch.randn(3, 224, 224),
+           "image_part2": torch.randn(3, 224, 224),
+       }
+       output_sample = processor(input_sample)
+       # output_sample['full_image'] will be a tensor of shape (6, 224, 224)
+
+
+   :param items: A list of keys in the input_sample dict whose tensors should be concatenated.
+   :param target_key: The key in the sample dict where the concatenated tensor will be stored.
+   :param dim: The dimension along which to concatenate the tensors. Defaults to 0.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: target_key
+
+
+   .. py:attribute:: dim
+      :value: 0
+
+
+
+.. py:class:: DefaultTensorSampleProcessor(item_key_name, feature_dim, size = None, matching_item_key = None, default_value = 0.0)
+
+   Bases: :py:obj:`noether.data.pipeline.SampleProcessor`
+
+
+   Create a tensor with a fixed dummy value, with a specified size.
+
+
+   .. code-block:: python
+
+       # dummy example
+       processor = DefaultTensorSampleProcessor(
+           item_key_name="default_tensor",
+           feature_dim=128,
+           size=10,
+           default_value=0.5,
+       )
+       input_sample = {}
+       output_sample = processor(input_sample)
+       # output_sample['default_tensor'] will be a tensor of shape (10, 128) filled with 0.5
+
+   :param item_key_name: key of the created default tensor in the output sample dict.
+   :param default_value: value to fill the created default tensor with.
+   :param feature_dim: size of the feature dimension of the created default tensor.
+   :param size: size of the first dimension of the created default tensor.
+   :param matching_item_key: key of an existing tensor in the input sample dict to match the size of the first dimension.
+
+
+   .. py:attribute:: item_key_name
+
+
+   .. py:attribute:: feature_dim
+
+
+   .. py:attribute:: size
+      :value: None
+
+
+
+   .. py:attribute:: matching_item_key
+      :value: None
+
+
+
+   .. py:attribute:: default_value
+      :value: 0.0
+
+
+
+.. py:class:: DropOutliersSampleProcessor(item, affected_items = None, min_value = None, max_value = None, min_quantile = None, max_quantile = None)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Drops all outliers from key in a the input sample.
+
+   .. code-block:: python
+
+       # dummy example
+       processor = DropOutliersSampleProcessor(
+           item="measurement",
+           affected_items={"related_measurement1", "related_measurement2"},
+           min_value=0.0,
+           max_value=100.0,
+       )
+
+       input_sample = {
+           "measurement": torch.tensor([[10.0], [200.0], [-5.0], [50.0]]),
+           "related_measurement1": torch.tensor([[1.0], [2.0], [3.0], [4.0]]),
+           "related_measurement2": torch.tensor([[5.0], [6.0], [7.0], [8.0]]),
+       }
+       output_sample = processor(input_sample)
+       # output_sample['measurement'] will be tensor([[10.0], [50.0]])
+       # output_sample['related_measurement1'] will be tensor([[1.0], [4.0]])
+       # output_sample['related_measurement2'] will be tensor([[5.0], [8.0]])
+
+   :param item: The item to drop outliers from.
+   :param affected_items: List of item (keys) that is also affected by outlier removal. Defaults to None.
+   :param min_value: Drop outliers below min_value. Defaults to None.
+   :param max_value: Drop outliers above max_value. Defaults to None.
+   :param min_quantile: Drop outliers in/below min_quantile. Defaults to None.
+   :param max_quantile: Drop outliers in/above max_value. Defaults to None.
+
+
+   .. py:attribute:: item
+
+
+   .. py:attribute:: affected_items
+      :value: None
+
+
+
+   .. py:attribute:: min_value
+      :value: None
+
+
+
+   .. py:attribute:: max_value
+      :value: None
+
+
+
+   .. py:attribute:: min_quantile
+      :value: None
+
+
+
+   .. py:attribute:: max_quantile
+      :value: None
+
+
+
+.. py:class:: DuplicateKeysSampleProcessor(key_map)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Utility processor that simply duplicates the dictionary keys in a batch.
+
+   Duplicates keys in the batch if they are in the key_map.
+   Creates a new dictionary whose keys are duplicated but uses references to the values of the old dict.
+   This avoids copying the data and at the same time does not modify this function's input.
+
+   .. code-block:: python
+
+       # dummy example
+       processor = DuplicateKeysSampleProcessor(key_map={"original_key": "duplicated_key"})
+
+       input_sample = {
+           "original_key": tensor_data,
+       }
+
+       output_sample = processor(input_sample)
+       # output_sample['original_key'] will be tensor_data
+       # output_sample['duplicated_key'] will also be tensor_data
+
+
+   :param key_map: Dict with source keys as keys and target keys as values. The source keys are duplicated
+                   in the samples and the target keys are created. The values of the source keys are used for the target
+                   keys.
+
+
+   .. py:attribute:: key_map
+
+
+.. py:class:: MomentNormalizationSampleProcessor(item, mean = None, std = None, logmean = None, logstd = None, logscale = False)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Normalizes a value with its mean and standard deviation (i.e., its moments).
+
+
+   .. code-block:: python
+
+       # dummy example
+       processor = MomentNormalizationSampleProcessor(
+           item="measurement",
+           mean=[10.0],
+           std=[2.0],
+           logscale=False,
+       )
+       input_sample = {
+           "measurement": torch.tensor([[12.0], [14.0], [8.0]]),
+           "other_item": torch.tensor([[1.0], [2.0], [3.0]]),
+       }
+       output_sample = processor(input_sample)
+       # output_sample['measurement'] will be tensor([[1.0], [2.0], [-1.0]])
+       # output_sample['other_item'] will be unchanged.
+
+   :param item: The item (i.e., key in the input sample dictionary) to normalize.
+   :param mean: The mean of the value. Mandatory if logscale=False.
+   :param std: The standard deviation of the value. Mandatory if logscale=False.
+   :param logmean: The mean of the value in logscale. Mandatory if logscale=True.
+   :param logstd: The standard deviation of the value in logscale. Mandatory if logscale=True.
+   :param logscale: Whether to convert the value to logscale before normalization.
+
+
+   .. py:attribute:: item
+
+
+   .. py:attribute:: mean_tensor
+      :value: None
+
+
+
+   .. py:attribute:: std_tensor
+      :value: None
+
+
+
+   .. py:attribute:: logmean_tensor
+      :value: None
+
+
+
+   .. py:attribute:: logstd_tensor
+      :value: None
+
+
+
+   .. py:attribute:: logscale
+      :value: False
+
+
+
+   .. py:method:: inverse(key, value)
+
+      Inverts the normalization from the __call__ method of a single item in the batch.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The same name and the denormalized value.
+      :rtype: (key, value)
+
+
+
+.. py:class:: PointSamplingSampleProcessor(items, num_points, seed = None)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Randomly subsamples points from a tensor.
+
+   .. code-block:: python
+
+       # dummy example
+       processor = PointSamplingSampleProcessor(
+           items={"input_position", "output_position"},
+           num_points=1024,
+           seed=42,
+       )
+       input_sample = {
+           "input_position": torch.randn(5000, 3),
+           "output_position": torch.randn(5000, 3),
+           "input_features": torch.randn(5000, 6),
+       }
+       output_sample = processor(input_sample)
+       # output_sample['input_position'] will be a tensor of shape (1024, 3)
+       # output_sample['output_position'] will be a tensor of shape (1024, 3)
+       # output_sample['input_features'] will be unchanged.
+       # If input features is also added to items, it will be of shape (1024, 6)
+
+   :param items: Which pointcloud items should be subsampled (e.g., input_position, output_position, ...). If multiple
+   :param items are present:
+   :param the subsampling will use identical indices for all items (e.g.:
+   :param to downsample:
+   :param output_position and output_pressure with the same subsampling).:
+   :param num_points: Number of points to sample.
+   :param seed: Random seed for deterministic sampling for evaluation. Default None (i.e., no seed). If not None,
+                requires sample index to be present in batch.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: num_points
+
+
+   .. py:attribute:: seed
+      :value: None
+
+
+
+.. py:class:: PositionNormalizationSampleProcessor(items, raw_pos_min, raw_pos_max, scale = 1000)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Pre-processes data on a sample-level to normalize positions.
+
+   Should only be used when multiple items should be normalized with the same normalization.
+   If only one item should be normalized, consider using the preprocessor
+   :class:`~noether.data.preprocessors.normalizers.PositionNormalizer` instead.
+
+   :param items: The position items to normalize. I.e., keys of the input_sample dictionary that should be normalized.
+   :param raw_pos_min: The minimum position in the source domain.
+   :param raw_pos_max: The maximum position in the source domain.
+   :param scale: The maximum value of the position. Defaults to 1000.
+
+
+   .. py:attribute:: items
+
+
+   .. py:attribute:: scale
+      :value: 1000
+
+
+
+   .. py:attribute:: raw_pos_min_tensor
+
+
+   .. py:attribute:: raw_pos_max_tensor
+
+
+   .. py:attribute:: raw_size
+
+
+.. py:class:: RenameKeysSampleProcessor(key_map)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Sample processor that simply renames the dictionary keys in a batch.
+
+   Rename keys in the batch if they are in the key_map and keep old keys otherwise.
+   Creates a new dictionary whose keys are renamed but uses references to the values of the old dict.
+   This avoids copying the data and at the same time does not modify this function's input.
+
+   .. code-block:: python
+
+       # dummy example
+       processor = RenameKeysSampleProcessor(key_map={"old_key1": "new_key1", "old_key2": "new_key2"})
+       input_sample = {
+           "old_key1": some_tensor1,
+           "old_key2": some_tensor2,
+           "unchanged_key": some_tensor3,
+       }
+
+       output_sample = processor(input_sample)
+       # output_sample will be: {
+       #     'new_key1': some_tensor1,
+       #     'new_key2': some_tensor2,
+       #     'unchanged_key': some_tensor3,
+       # }
+
+
+   :param key_map: Dict with source keys as keys and target keys as values. The source keys are renamed target keys.
+
+
+   .. py:attribute:: key_map
+
+
+.. py:class:: ReplaceKeySampleProcessor(source_key, target_keys)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Sample processor that replaces the key with multiple other keys.
+
+   Replaces a key in the batch with one or multiple other keys.
+   Creates a new dictionary whose keys are duplicated but uses references to the values of the old dict.
+   This avoids copying the data and at the same time does not modify this function's input.
+
+   .. code-block:: python
+
+       # dummy example
+       processor = ReplaceKeySampleProcessor(source_key="source", target_keys={"target1", "target2"})
+       input_sample = {
+           "source": some_tensor,
+           "unchanged_key": some_other_tensor,
+       }
+       output_sample = processor(input_sample)
+       # output_sample will be: {
+       #     'target1': some_tensor,
+       #     'target2': some_tensor,
+       #     'unchanged_key': some_other_tensor,
+       # }
+
+   :param source_key: Key in the input_sample to be replaced.
+   :param target_keys: List of keys where source_key should be replaced in.
+
+
+   .. py:attribute:: source_key
+
+
+   .. py:attribute:: target_keys
+
+
+.. py:class:: SupernodeSamplingSampleProcessor(item, num_supernodes, supernode_idx_key = 'supernode_idx', items_at_supernodes = None, seed = None)
+
+   Bases: :py:obj:`noether.data.pipeline.sample_processor.SampleProcessor`
+
+
+   Randomly samples supernodes from a pointcloud.
+
+   :param item: Which key in the input_sample (i.e., pointcloud item) is used to sample supernodes.
+   :param num_supernodes: How many supernodes to sample.
+   :param items_at_supernodes: Selects items at the supernodes (e.g., pressure at supernodes). Defaults to None. These items are sampled accordingly and added to the output supernodes.
+   :param seed: Random seed for deterministic sampling for evaluation. Default None (i.e., no seed). If not None,
+                requires sample index to be present in batch.
+
+
+   .. py:attribute:: item
+
+
+   .. py:attribute:: num_supernodes
+
+
+   .. py:attribute:: supernode_idx_key
+      :value: 'supernode_idx'
+
+
+
+   .. py:attribute:: items_at_supernodes
+      :value: None
+
+
+
+   .. py:attribute:: seed
+      :value: None
+
+
+

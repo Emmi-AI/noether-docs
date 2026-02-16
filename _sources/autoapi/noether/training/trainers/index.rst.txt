@@ -14,3 +14,271 @@ Submodules
    /autoapi/noether/training/trainers/types/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.training.trainers.BaseTrainer
+   noether.training.trainers.TrainerResult
+
+
+Package Contents
+----------------
+
+.. py:class:: BaseTrainer(config, data_container, device, tracker, path_provider, main_sampler_kwargs = None, metric_property_provider = None)
+
+   Base class for all trainers that use SGD-based optimizers.
+
+   This class implements the main training loop and provides utility functions for logging, checkpointing, and callbacks.
+   In your down-stream you have to implement the `loss_compute` method that calculates the loss based on the model output and the targets.
+   Optionally, you can also override the `train_step` method if you want to implement a custom training step (e.g., for multi-loss training or custom backward logic).
+   If you only want to implement a custom loss calculation but keep the rest of the training loop, you can just override the `loss_compute` method.
+   For example:
+
+   .. code-block:: python
+
+       class MyTrainer(BaseTrainer):
+           def __init__(self, trainer_config: BaseTrainerConfig, **kwargs):
+               super().__init__(trainer_config, **kwargs)
+
+           def loss_compute(
+               self, forward_output: dict[str, torch.Tensor], targets: dict[str, torch.Tensor]
+           ) -> LossResult:
+               # compute loss based on model output and targets
+               return loss
+
+
+
+   :param config: Configuration for the trainer. See :class:`~noether.core.schemas.BaseTrainerConfig` for the available options.
+   :param data_container: The :class:`~noether.data.container.DataContainer` which includes the data and dataloader.
+   :param device: The device to use for training (e.g., "cuda"). It is assumed that the process was configured such
+                  that only 1 device is visible (e.g., via the `CUDA_VISIBLE_DEVICES` environment variable).
+   :param main_sampler_kwargs: Kwargs passed to instantiate the main sampler.
+   :param tracker: The tracker to use for training.
+   :param path_provider: The :class:`~noether.core.providers.PathProvider` to use for training.
+   :param metric_property_provider: The :class:`~noether.core.providers.MetricPropertyProvider` to use for training.
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: data_container
+
+
+   .. py:attribute:: path_provider
+
+
+   .. py:attribute:: main_sampler_kwargs
+      :value: None
+
+
+
+   .. py:attribute:: device
+      :type:  torch.device
+
+
+   .. py:attribute:: end_checkpoint
+
+
+   .. py:attribute:: precision
+
+
+   .. py:attribute:: updates_per_epoch
+
+
+   .. py:attribute:: skip_nan_loss_counter
+      :value: 0
+
+
+
+   .. py:attribute:: initializer
+      :type:  noether.core.initializers.InitializerBase | None
+      :value: None
+
+
+
+   .. py:attribute:: tracker
+
+
+   .. py:attribute:: metric_property_provider
+      :value: None
+
+
+
+   .. py:attribute:: update_counter
+
+
+   .. py:attribute:: log_writer
+
+
+   .. py:attribute:: checkpoint_writer
+
+
+   .. py:attribute:: callbacks
+      :type:  list[noether.core.callbacks.CallbackBase]
+      :value: []
+
+
+
+   .. py:attribute:: forward_properties
+
+
+   .. py:attribute:: target_properties
+
+
+   .. py:attribute:: batch_keys
+
+
+   .. py:method:: get_user_callbacks(model, evaluation=False)
+
+
+   .. py:method:: get_all_callbacks(model)
+
+      Get all callbacks including default/trainer callbacks.
+
+
+
+   .. py:method:: get_trainer_callbacks(callback_default_args)
+
+      Get trainer-specific callbacks. This may optionally be overridden by derived classes.
+
+
+
+   .. py:method:: get_default_callback_intervals()
+
+      Get default intervals at which callbacks are called.
+
+
+
+   .. py:method:: get_default_callbacks(default_kwargs)
+
+
+   .. py:method:: state_dict()
+
+      Get the state dict of the trainer.
+
+
+
+   .. py:method:: load_state_dict(state_dict)
+
+      Load the state dict of the trainer.
+
+
+
+   .. py:method:: apply_resume_initializer(model)
+
+      Apply the resume initializer to the model.
+
+
+
+   .. py:method:: get_data_loader(iterator_callbacks, batch_size, evaluation = False)
+
+      Get the data loader for training.
+
+
+
+   .. py:method:: loss_compute(forward_output, targets)
+      :abstractmethod:
+
+
+      Each trainer that extends this class needs to implement a custom loss computation using the targets and the model output.
+
+      :param forward_output: Output of the model after the forward pass.
+      :param targets: Dict with target tensors needed to compute the loss for this trainer.
+
+      :returns: A dict with the (weighted) sub-losses to log. Or a tuple of (losses, additional_outputs) where additional_outputs is
+                a dict with additional information about the model forward pass that is passed to the track_after_accumulation_step method of the callbacks, e.g., the logits and targets to calculate a training accuracy in a callback).
+
+      Note: If a tuple is returned, the second element will be passed as additional_outputs in the TrainerResult returned by the train_step method.
+
+
+
+   .. py:method:: train_step(batch, model)
+
+      Overriding this function is optional. By default, the `train_step` of the model will be called and is
+      expected to return a TrainerResult. Trainers can override this method to implement custom training logic.
+
+      :param batch: Batch of data from which the loss is calculated.
+      :param model: Model to use for processing the data.
+
+      :returns: TrainerResult dataclass with the loss for backpropagation, (optionally) individual losses if multiple
+                losses are used, and (optionally) additional information about the model forward pass that is passed
+                to the callbacks (e.g., the logits and targets to calculate a training accuracy in a callback).
+
+
+
+   .. py:method:: wrap_model(model)
+
+      Wrap the model for training, return the model, wrapped model and ddp+compiled model.
+
+
+
+   .. py:method:: wrap_ddp(model)
+
+      Wrap the model with DistributedDataParallel in multi-GPU settings.
+
+
+
+   .. py:method:: wrap_compile(ddp_model)
+
+      Wrap the model with torch.compile.
+
+
+
+   .. py:method:: train(model)
+
+      Train the model.
+
+
+
+   .. py:method:: drop_metadata(data)
+      :staticmethod:
+
+
+
+   .. py:method:: update(batch, dist_model, model = None, training = True, accumulation_steps = 1, iter_step = 0, **kwargs)
+
+      Perform forward and backward pass.
+
+
+
+   .. py:method:: call_before_training(callbacks)
+
+      Hook that is called before training starts.
+
+
+
+   .. py:method:: call_after_training(callbacks)
+
+      Hook that is called after training ends.
+
+
+
+   .. py:method:: eval(model)
+
+      Run evaluation by executing all configured callbacks.
+
+
+
+.. py:class:: TrainerResult
+
+   .. py:attribute:: total_loss
+      :type:  torch.Tensor
+
+
+   .. py:attribute:: losses_to_log
+      :type:  dict[str, torch.Tensor] | None
+      :value: None
+
+
+
+   .. py:attribute:: additional_outputs
+      :type:  dict[str, torch.Tensor] | None
+      :value: None
+
+
+

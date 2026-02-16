@@ -14,3 +14,51 @@ Submodules
    /autoapi/noether/core/utils/platform/worker/index
 
 
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.platform.get_cli_command
+   noether.core.utils.platform.get_installed_cuda_version
+   noether.core.utils.platform.log_system_info
+   noether.core.utils.platform.get_fair_cpu_count
+   noether.core.utils.platform.get_total_cpu_count
+
+
+Package Contents
+----------------
+
+.. py:function:: get_cli_command()
+
+   Return the command with which the script was called.
+
+   Attention: This assumes the script was started with `python` (not `python3` or similar).
+
+   :returns: The command with which the script was called.
+
+
+.. py:function:: get_installed_cuda_version()
+
+.. py:function:: log_system_info()
+
+   Logs system information like OS, CUDA version, and Python version.
+
+
+.. py:function:: get_fair_cpu_count(reserve_for_main = 1)
+
+   Get the number of CPUs to use per device.
+
+   If SLURM is used, the number of CPUs per task is used.
+   Otherwise, CPUs are divided equally across devices (GPUs or a single CPU device).
+
+   :param reserve_for_main: CPUs to keep for the main / orchestration thread.
+
+   :returns: Number of CPUs to use per device.
+
+
+.. py:function:: get_total_cpu_count()
+
+   Get the total number of CPUs visible to this process.
+
+

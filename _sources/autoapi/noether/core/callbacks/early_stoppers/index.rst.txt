@@ -15,3 +15,143 @@ Submodules
    /autoapi/noether/core/callbacks/early_stoppers/metric/index
 
 
+Exceptions
+----------
+
+.. autoapisummary::
+
+   noether.core.callbacks.early_stoppers.EarlyStopIteration
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.early_stoppers.EarlyStopperBase
+   noether.core.callbacks.early_stoppers.FixedEarlyStopper
+   noether.core.callbacks.early_stoppers.MetricEarlyStopper
+
+
+Package Contents
+----------------
+
+.. py:exception:: EarlyStopIteration
+
+   Bases: :py:obj:`StopIteration`
+
+
+   Custom StopIteration exception for Early Stoppers.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+.. py:class:: EarlyStopperBase(callback_config, trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Base class for early stoppers that is used to define the interface for early stoppers used by the trainers.
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.CallBackBaseConfig`
+                           for available options.
+   :param trainer: Trainer of the current run.
+   :param model: Model of the current run.
+   :param data_container: :class:`~noether.data.container.DataContainer` instance that provides access to all datasets.
+   :param tracker: :class:`~noether.core.trackers.BaseTracker` instance to log metrics to stdout/disk/online platform.
+   :param log_writer: :class:`~noether.core.writers.LogWriter` instance to log metrics.
+   :param checkpoint_writer: :class:`~noether.core.writers.CheckpointWriter` instance to save checkpoints.
+   :param metric_property_provider: :class:`~noether.core.providers.MetricPropertyProvider` instance to access properties of metrics.
+   :param name: Name of the callback.
+
+
+   .. py:method:: to_short_interval_string()
+
+      Convert the interval to a short string representation used for logging.
+
+
+
+   .. py:method:: periodic_callback(*, interval_type, update_counter, **kwargs)
+
+      Check if training should stop and raise exception if needed.
+
+      :param interval_type: Type of interval that triggered this callback.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance with current training state.
+      :param \*\*kwargs: Additional keyword arguments.
+
+      :raises EarlyStopIteration: If training should be stopped based on the stopping criterion.
+
+
+
+.. py:class:: FixedEarlyStopper(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.early_stoppers.base.EarlyStopperBase`
+
+
+   Early stopper (training) based on a fixed number of epochs, updates, or samples.
+
+   Example config:
+
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.FixedEarlyStopper
+         stop_at_epoch: 10
+         name: FixedEarlyStopper
+
+
+   :param callback_config: The configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.FixedEarlyStopperConfig`
+                           for available options.
+   :param \*\*kwargs: Additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: stop_at_sample
+
+
+   .. py:attribute:: stop_at_update
+
+
+   .. py:attribute:: stop_at_epoch
+
+
+.. py:class:: MetricEarlyStopper(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.early_stoppers.base.EarlyStopperBase`
+
+
+   Early stopper (training) based on a metric value to be monitored.
+
+   Example config:
+
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.MetricEarlyStopper
+         every_n_epochs: 1
+         metric_key: loss/val/total
+         tolerance: 0.10
+         name: MetricEarlyStopper
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.MetricEarlyStopperConfig`
+                           for available options including metric key and tolerance.
+   :param \*\*kwargs: Additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: metric_key
+
+
+   .. py:attribute:: higher_is_better
+
+
+   .. py:attribute:: tolerance
+
+
+   .. py:attribute:: tolerance_counter
+      :value: 0
+
+
+
+   .. py:attribute:: best_metric
+
+

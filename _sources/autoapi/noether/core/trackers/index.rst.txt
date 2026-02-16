@@ -16,3 +16,158 @@ Submodules
    /autoapi/noether/core/trackers/wandb/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.trackers.BaseTracker
+   noether.core.trackers.NoopTracker
+   noether.core.trackers.TrackioTracker
+   noether.core.trackers.WandBTracker
+
+
+Package Contents
+----------------
+
+.. py:class:: BaseTracker(metric_property_provider, path_provider)
+
+   Base class for all experiment trackers.
+
+   Initialize the BaseTracker.
+
+   :param metric_property_provider: The metric property provider gives additional information such
+                                    as whether higher values are better.
+   :param path_provider: Gives access to paths (e.g., output_path: where checkpoints/logs are stored).
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: metric_property_provider
+
+
+   .. py:attribute:: path_provider
+
+
+   .. py:attribute:: summary
+      :type:  dict[str, Any]
+
+
+   .. py:method:: init(accelerator, run_name, stage_name, stage_hp, run_id, output_uri)
+
+      Initialize the tracker for a specific run.
+
+      :param accelerator: The accelerator used for training (e.g., "cpu", "cuda").
+      :param run_name: The name of the run.
+      :param stage_name: The stage of the run.
+      :param stage_hp: The hyperparameters for the run stage.
+      :param run_id: The ID of the run.
+      :param output_uri: The URI where the output will be stored.
+
+
+
+   .. py:method:: log(data)
+
+      Log data to the tracker.
+
+      :param data: The data to log. This should be a dictionary where the values are the data to log.
+
+
+
+   .. py:method:: close()
+
+      Close the file used by the tracker and save the summary.
+
+
+
+   .. py:method:: set_summary(key, value)
+
+      Set a summary value.
+      :param key: The key for the summary value.
+      :param value: The value to set.
+
+
+
+   .. py:method:: update_summary(data)
+
+      Update the summary with new data.
+
+      :param data: The data to update the summary with. This should be a dictionary where the values are the data to log.
+
+
+
+   .. py:method:: summarize_logvalues()
+
+      Summarize the log values from the entries.
+      This method is called after the training is finished and summarizes the log values.
+      It computes the min/max values for each log value and stores them in the summary.
+
+
+
+.. py:class:: NoopTracker(metric_property_provider, path_provider)
+
+   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+
+
+   Dummy tracker that does nothing.
+
+   Initialize the BaseTracker.
+
+   :param metric_property_provider: The metric property provider gives additional information such
+                                    as whether higher values are better.
+   :param path_provider: Gives access to paths (e.g., output_path: where checkpoints/logs are stored).
+
+
+.. py:class:: TrackioTracker(tracker_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+
+
+   HuggingFace Trackio tracker.
+
+   https://github.com/gradio-app/trackio
+
+
+   Initialize the TrackioTracker.
+   :param tracker_config: Configuration for the TrackioTracker. See :class:`~noether.core.schemas.trackers.TrackioTrackerSchema` for available options including project and space_id.
+   :param \*\*kwargs: Additional keyword arguments passed to the parent class.
+
+
+   .. py:attribute:: config
+
+
+.. py:class:: WandBTracker(tracker_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+
+
+   Weights and Biases tracker.
+
+   Example config:
+
+   .. code-block:: yaml
+       - kind: noether.core.trackers.WandBTracker
+         mode: online
+         entity: my_entity
+         project: my_project
+
+
+   :param tracker_config: Configuration for the WandBTracker. See :class:`~noether.core.schemas.trackers.WandBTrackerSchema` for available options including mode, entity, and project.
+   :param \*\*kwargs: Additional keyword arguments passed to the parent class.
+
+
+   .. py:attribute:: MODES
+      :value: ['disabled', 'online', 'offline']
+
+
+
+   .. py:attribute:: mode
+
+
+   .. py:attribute:: entity
+
+
+   .. py:attribute:: project
+
+

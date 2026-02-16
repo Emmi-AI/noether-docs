@@ -15,3 +15,370 @@ Submodules
    /autoapi/noether/core/callbacks/checkpoint/ema/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.checkpoint.BestCheckpointCallback
+   noether.core.callbacks.checkpoint.CheckpointCallback
+   noether.core.callbacks.checkpoint.EmaCallback
+
+
+Package Contents
+----------------
+
+.. py:class:: BestCheckpointCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback to save the best model based on a metric.
+
+   This callback monitors a specified metric and saves the model checkpoint whenever
+   a new best value is achieved. It supports storing different model components when using a composite model and can save checkpoints at different tolerance thresholds.
+
+   Example config:
+
+   .. code-block:: yaml
+
+       callbacks:
+         - kind: noether.core.callbacks.BestCheckpointCallback
+           name: BestCheckpointCallback
+           every_n_epochs: 1
+           metric_key: loss/val/total
+           model_names:  # only applies when training a CompositeModel
+             - encoder
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.BestCheckpointCallbackConfig`
+                           for available options including metric key, model names, and tolerance settings.
+   :param \*\*kwargs: Additional arguments passed to the parent class.
+
+
+   .. py:attribute:: metric_key
+
+
+   .. py:attribute:: model_names
+
+
+   .. py:attribute:: higher_is_better
+
+
+   .. py:attribute:: best_metric_value
+
+
+   .. py:attribute:: save_frozen_weights
+
+
+   .. py:attribute:: tolerances_is_exceeded
+
+
+   .. py:attribute:: tolerance_counter
+      :value: 0
+
+
+
+   .. py:attribute:: metric_at_exceeded_tolerance
+      :type:  dict[float, float]
+
+
+   .. py:method:: state_dict()
+
+      Return the state of the callback for checkpointing.
+
+      :returns: Dictionary containing the best metric value, tolerance tracking state,
+                and counter information.
+
+
+
+   .. py:method:: load_state_dict(state_dict)
+
+      Load the callback state from a checkpoint.
+
+      .. note:: This modifies the input state_dict in place.
+
+      :param state_dict: Dictionary containing the saved callback state.
+
+
+
+   .. py:method:: before_training(*, update_counter)
+
+      Validate callback configuration before training starts.
+
+      :param update_counter: The training update counter.
+
+      :raises NotImplementedError: If resuming training with tolerances is attempted.
+
+
+
+   .. py:method:: periodic_callback(**_)
+
+      Execute the periodic callback to check and save best model.
+
+      This method is called at the configured frequency (e.g., every N epochs).
+      It checks if the current metric value is better than the previous best,
+      and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.
+
+      :raises KeyError: If the log cache is empty or the metric key is not found.
+
+
+
+   .. py:method:: after_training(**kwargs)
+
+      Log the best metric values at different tolerance thresholds after training completes.
+
+      :param \*\*kwargs: Additional keyword arguments (unused).
+
+
+
+.. py:class:: CheckpointCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback to save the model and optimizer state periodically.
+
+   Example config:
+
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.CheckpointCallback
+         name: CheckpointCallback
+         every_n_epochs: 1
+         save_weights: true
+         save_optim: true
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.CheckpointCallbackConfig`
+                           for available options.
+   :param \*\*kwargs: Additional arguments passed to the parent class.
+
+
+   .. py:attribute:: save_weights
+
+
+   .. py:attribute:: save_optim
+
+
+   .. py:attribute:: save_latest_weights
+
+
+   .. py:attribute:: save_latest_optim
+
+
+   .. py:attribute:: model_names
+      :value: []
+
+
+
+   .. py:method:: before_training(*, update_counter)
+
+      Hook called once before the training loop starts.
+
+      This method is intended to be overridden by derived classes to perform initialization
+      tasks before training begins. Common use cases include:
+
+      * Initializing experiment tracking (e.g., logging hyperparameters)
+      * Printing model summaries or architecture details
+      * Initializing specific data structures or buffers needed during training
+      * Performing sanity checks on the data or configuration
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+
+
+
+   .. py:method:: periodic_callback(*, interval_type, update_counter, **kwargs)
+
+      Hook called periodically based on the configured intervals.
+
+      This method is the primary entry point for periodic actions in subclasses. It is
+      triggered when any of the configured intervals (``every_n_epochs``, ``every_n_updates``,
+      or ``every_n_samples``) are reached.
+
+      Subclasses should override this method to implement periodic logic such as:
+
+      * Calculating and logging expensive validation metrics
+      * Saving specific model checkpoints or artifacts
+      * Visualizing training progress (e.g., plotting samples)
+      * Adjusting training hyperparameters or model state
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance providing details about
+                             the current training progress (epoch, update, sample counts).
+      :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
+                         (e.g., from :meth:`after_epoch` or :meth:`after_update`).
+
+
+
+   .. py:method:: after_training(**_)
+
+      Hook called once after the training loop finishes.
+
+      This method is intended to be overridden by derived classes to perform cleanup or
+      final reporting tasks after training is complete. Common use cases include:
+
+      * Performing a final evaluation on the test set
+      * Saving final model weights or artifacts
+      * Sending notifications (e.g., via Slack or email) about the completed run
+      * Closing or finalizing experiment tracking sessions
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+
+
+
+.. py:class:: EmaCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback for exponential moving average (EMA) of model weights.
+
+   Example config:
+
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.EmaCallback
+         every_n_epochs: 10
+         save_weights: false
+         save_last_weights: false
+         save_latest_weights: true
+         target_factors:
+           - 0.9999
+         name: EmaCallback
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.EmaCallbackConfig`
+                           for available options.
+   :param \*\*kwargs: Additional arguments passed to the parent class.
+
+
+   .. py:attribute:: model_paths
+
+
+   .. py:attribute:: target_factors
+
+
+   .. py:attribute:: save_weights
+
+
+   .. py:attribute:: save_last_weights
+
+
+   .. py:attribute:: save_latest_weights
+
+
+   .. py:attribute:: parameters
+      :type:  dict[tuple[str | None, float], dict[str, torch.Tensor]]
+
+
+   .. py:attribute:: buffers
+      :type:  dict[str | None, dict[str, torch.Tensor]]
+
+
+   .. py:method:: resume_from_checkpoint(resumption_paths, model)
+
+      Resume EMA state from a checkpoint.
+
+      :param resumption_paths: :class:`~noether.core.providers.path.PathProvider` with paths to checkpoint files.
+      :param model: Model to resume EMA state for.
+
+
+
+   .. py:method:: before_training(**_)
+
+      Hook called once before the training loop starts.
+
+      This method is intended to be overridden by derived classes to perform initialization
+      tasks before training begins. Common use cases include:
+
+      * Initializing experiment tracking (e.g., logging hyperparameters)
+      * Printing model summaries or architecture details
+      * Initializing specific data structures or buffers needed during training
+      * Performing sanity checks on the data or configuration
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+
+
+
+   .. py:method:: apply_ema(cur_model, model_path, target_factor)
+
+      fused in-place implementation
+
+
+
+   .. py:method:: track_after_update_step(**_)
+
+      Hook called after each optimizer update step.
+
+      This method is invoked after a successful optimizer step and parameter update.
+      It is typically used for tracking metrics that should be recorded once per update
+      cycle, such as:
+
+      * Latest loss values
+      * Learning rates
+      * Model parameter statistics (norms, etc.)
+      * Training throughput and timing measurements
+
+      Unlike :meth:`periodic_callback`, this hook is called on every update step, making it
+      suitable for maintaining running averages or high-frequency telemetry.
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+      :param times: Dictionary containing time measurements for various parts of the training
+                    step (e.g., 'data_time', 'forward_time', 'backward_time', 'update_time').
+
+
+
+   .. py:method:: periodic_callback(*, interval_type, update_counter, **_)
+
+      Hook called periodically based on the configured intervals.
+
+      This method is the primary entry point for periodic actions in subclasses. It is
+      triggered when any of the configured intervals (``every_n_epochs``, ``every_n_updates``,
+      or ``every_n_samples``) are reached.
+
+      Subclasses should override this method to implement periodic logic such as:
+
+      * Calculating and logging expensive validation metrics
+      * Saving specific model checkpoints or artifacts
+      * Visualizing training progress (e.g., plotting samples)
+      * Adjusting training hyperparameters or model state
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance providing details about
+                             the current training progress (epoch, update, sample counts).
+      :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
+                         (e.g., from :meth:`after_epoch` or :meth:`after_update`).
+
+
+
+   .. py:method:: after_training(**_)
+
+      Hook called once after the training loop finishes.
+
+      This method is intended to be overridden by derived classes to perform cleanup or
+      final reporting tasks after training is complete. Common use cases include:
+
+      * Performing a final evaluation on the test set
+      * Saving final model weights or artifacts
+      * Sending notifications (e.g., via Slack or email) about the completed run
+      * Closing or finalizing experiment tracking sessions
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+
+
+

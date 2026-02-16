@@ -17,3 +17,339 @@ Submodules
    /autoapi/noether/core/schemas/models/upt/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.models.AnchorBranchedUPTConfig
+   noether.core.schemas.models.ModelBaseConfig
+   noether.core.schemas.models.TransformerConfig
+   noether.core.schemas.models.TransolverConfig
+   noether.core.schemas.models.TransolverPlusPlusConfig
+   noether.core.schemas.models.UPTConfig
+
+
+Package Contents
+----------------
+
+.. py:class:: AnchorBranchedUPTConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: supernode_pooling_config
+      :type:  noether.core.schemas.modules.encoders.SupernodePoolingConfig
+
+
+   .. py:attribute:: transformer_block_config
+      :type:  noether.core.schemas.modules.blocks.TransformerBlockConfig
+
+
+   .. py:attribute:: geometry_depth
+      :type:  int
+      :value: None
+
+
+      Number of transformer blocks in the geometry encoder.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the model.
+
+
+   .. py:attribute:: physics_blocks
+      :type:  list[Literal['shared', 'cross', 'joint', 'perceiver']]
+
+      Types of physics blocks to use in the model.
+      Options are "shared", "cross", "joint", and "perceiver".
+      Shared: Self-attention within a branch (surface or volume). Attention blocks share weights between surface and volume.
+      Cross: Cross-attention between surface and volume branches. Weights are shared between surface and volume.
+      Joint: Joint attention over surface and volume points. I.e. full self-attention over both surface and volume points.
+      Perceiver: Perceiver-style attention blocks.
+
+
+   .. py:attribute:: num_surface_blocks
+      :type:  int
+      :value: None
+
+
+      Number of transformer blocks in the surface decoder. Weights are not shared with the volume decoder.
+
+
+   .. py:attribute:: num_volume_blocks
+      :type:  int
+      :value: None
+
+
+      Number of transformer blocks in the volume decoder. Weights are not shared with the surface decoder.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Weight initialization of linear layers. Defaults to "truncnormal002".
+
+
+   .. py:attribute:: drop_path_rate
+      :type:  float
+      :value: None
+
+
+      Drop path rate for stochastic depth. Defaults to 0.0 (no drop path).
+
+
+   .. py:attribute:: data_specs
+      :type:  noether.core.schemas.dataset.AeroDataSpecs
+
+      Data specifications for the model.
+
+
+.. py:class:: ModelBaseConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+
+      Kind of model to use, i.e. class path
+
+
+   .. py:attribute:: name
+      :type:  str
+
+      Name of the model. Needs to be unique
+
+
+   .. py:attribute:: optimizer_config
+      :type:  noether.core.schemas.optimizers.OptimizerConfig | None
+      :value: None
+
+
+      The optimizer configuration to use for training the model. When a model is used for inference only, this can be left as None.
+
+
+   .. py:attribute:: initializers
+      :type:  list[Annotated[noether.core.schemas.initializers.AnyInitializer, Field(discriminator='kind')]] | None
+      :value: None
+
+
+      List of initializers configs to use for the model.
+
+
+   .. py:attribute:: is_frozen
+      :type:  bool | None
+      :value: False
+
+
+      Whether to freeze the model parameters (i.e., not trainable).
+
+
+   .. py:attribute:: forward_properties
+      :type:  list[str] | None
+      :value: []
+
+
+      List of properties to be used as inputs for the forward pass of the model. Only relevant when the train_step of the BaseTrainer is used. When overridden in a class method, this property is ignored.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:property:: config_kind
+      :type: str
+
+
+      The fully qualified import path for the configuration class.
+
+
+.. py:class:: TransformerConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.modules.blocks.TransformerBlockConfig`, :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+
+
+   Configuration for a Transformer model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: depth
+      :type:  int
+      :value: None
+
+
+      Number of transformer blocks in the model.
+
+
+   .. py:attribute:: mlp_expansion_factor
+      :type:  int
+      :value: None
+
+
+      Expansion factor for the MLP hidden dimension relative to the hidden dimension. If 'mlp_hidden_dim' is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.
+
+
+   .. py:method:: set_mlp_hidden_dim()
+
+
+.. py:class:: TransolverConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.models.transformer.TransformerConfig`, :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+
+
+   Configuration for a Transolver model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: attention_constructor
+      :type:  Literal['transolver', 'transolver_plusplus']
+      :value: 'transolver'
+
+
+      Constructor of the attention module. Defaults to 'dot_product'.
+
+
+   .. py:attribute:: attention_arguments
+      :type:  dict
+
+      Additional arguments for the attention module that are only needed for a specific attention implementation.
+
+
+.. py:class:: TransolverPlusPlusConfig(/, **data)
+
+   Bases: :py:obj:`TransolverConfig`
+
+
+   Configuration for a Transolver++ model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: attention_constructor
+      :type:  Literal['transolver_plusplus']
+      :value: 'transolver_plusplus'
+
+
+      Constructor of the attention module. Defaults to 'dot_product'.
+
+
+.. py:class:: UPTConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+
+
+   Configuration for a Transolver model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: num_heads
+      :type:  int
+      :value: None
+
+
+      Number of attention heads in the model.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the model.
+
+
+   .. py:attribute:: mlp_expansion_factor
+      :type:  int
+      :value: None
+
+
+      Expansion factor for the MLP of the FF layers.
+
+
+   .. py:attribute:: approximator_depth
+      :type:  int
+      :value: None
+
+
+      Number of approximator layers.
+
+
+   .. py:attribute:: use_rope
+      :type:  bool
+      :value: None
+
+
+
+   .. py:attribute:: supernode_pooling_config
+      :type:  noether.core.schemas.modules.SupernodePoolingConfig
+
+
+   .. py:attribute:: approximator_config
+      :type:  noether.core.schemas.modules.blocks.TransformerBlockConfig
+
+
+   .. py:attribute:: decoder_config
+      :type:  noether.core.schemas.modules.DeepPerceiverDecoderConfig
+
+
+   .. py:attribute:: bias_layers
+      :type:  bool
+      :value: None
+
+
+
+   .. py:attribute:: data_specs
+      :type:  noether.core.schemas.dataset.AeroDataSpecs
+
+

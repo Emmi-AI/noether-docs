@@ -14,3 +14,103 @@ Submodules
    /autoapi/noether/core/utils/torch/device/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.utils.torch.NoopContext
+   noether.core.utils.torch.NoopGradScaler
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.torch.get_grad_scaler_and_autocast_context
+   noether.core.utils.torch.get_supported_precision
+   noether.core.utils.torch.is_bfloat16_compatible
+   noether.core.utils.torch.is_float16_compatible
+   noether.core.utils.torch.move_items_to_device
+
+
+Package Contents
+----------------
+
+.. py:class:: NoopContext
+
+   A no-operation context manager that does nothing.
+
+
+.. py:class:: NoopGradScaler
+
+   Bases: :py:obj:`torch.amp.grad_scaler.GradScaler`
+
+
+   A no-operation gradient scaler that performs no scaling.
+
+
+   .. py:method:: scale(outputs)
+
+
+   .. py:method:: unscale_(optimizer)
+
+
+   .. py:method:: step(optimizer, *args, **kwargs)
+      :staticmethod:
+
+
+
+   .. py:method:: update(new_scale = None)
+
+
+.. py:function:: get_grad_scaler_and_autocast_context(precision, device)
+
+   Returns the appropriate gradient scaler and autocast context manager for the given precision.
+
+   :param precision: The desired precision.
+   :type precision: torch.dtype
+   :param device: The device where computation occurs.
+   :type device: torch.device
+
+   :returns: The corresponding scaler and autocast context.
+
+
+.. py:function:: get_supported_precision(desired_precision, device)
+
+   Returns desired_precision if it is supported and backup_precision otherwise. For example, bfloat16 is not
+   supported by all GPUs.
+
+   :param desired_precision: The desired precision format.
+   :param device: The selected device (e.g., torch.device("cuda")).
+
+   :returns: The most suitable precision supported by the device.
+   :rtype: torch.dtype
+
+
+.. py:function:: is_bfloat16_compatible(device)
+
+   Checks if bfloat16 precision is supported on the given device.
+
+   :param device: The device to check.
+
+   :returns: True if bfloat16 is supported, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: is_float16_compatible(device)
+
+   Checks if float16 precision is supported on the given device.
+
+   :param device: The device to check.
+
+   :returns: True if float16 is supported, False otherwise.
+   :rtype: bool
+
+
+.. py:function:: move_items_to_device(device, batch)
+
+   Moves everything in the batch to the given device.
+
+

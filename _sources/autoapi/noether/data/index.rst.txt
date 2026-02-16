@@ -20,3 +20,768 @@ Submodules
    /autoapi/noether/data/tools/index
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.ScalarOrSequence
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.Dataset
+   noether.data.DatasetWrapper
+   noether.data.Subset
+   noether.data.PropertySubsetWrapper
+   noether.data.RepeatWrapper
+   noether.data.ShuffleWrapper
+   noether.data.SubsetWrapper
+   noether.data.BatchProcessor
+   noether.data.Collator
+   noether.data.MultiStagePipeline
+   noether.data.SampleProcessor
+   noether.data.ComposePreProcess
+   noether.data.PreProcessor
+   noether.data.InterleavedSampler
+   noether.data.InterleavedSamplerConfig
+   noether.data.SamplerIntervalConfig
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.with_normalizers
+   noether.data.to_tensor
+
+
+Package Contents
+----------------
+
+.. py:class:: Dataset(dataset_config)
+
+   Bases: :py:obj:`torch.utils.data.Dataset`
+
+
+   Noether dataset implementation, which is a wrapper around torch.utils.data.Dataset that can hold a dataset_config_provider.
+   A dataset should map a key (i.e., an index) to its corresponding data.
+   Each sub-class should implement individual getitem_* methods, where * is the name of an item in the dataset.
+   Each getitem_* method loads an individual tensor/data sample from disk.
+   For example, if you dataset consists of images and targets/labels (stored as tensors), a getitem_image(idx) and getitem_target(idx) method should be implemented in the dataset subclass.
+   The __getitem__ method of this class will loop over all the individual getitem_* methods implemented by the child class and return their results.
+   Optionally it is possible to configure which getitem methods are called.
+
+   Example: Image classification datasets
+
+   .. code-block:: python
+
+       class CarAeroDynamicsDataset(Dataset):
+           def __init__(self, dataset_config, dataset_normalizers, **kwargs):
+               super().__init__(dataset_config=dataset_config, **kwargs)
+               self.path = dataset_config.path
+
+           def __len__(self):
+               return 100  # Example length
+
+           def getitem_surface_pressure(self, idx):
+               # Load surface pressure tensor
+               return torch.load(f"{self.path}/surface_pressure_tensor/{idx}.pt")
+
+           def getitem_surface_geometry(self, idx):
+               # Load surface geometry tensor
+               return torch.load(f"{self.path}/surface_geometry_tensor/{idx}.pt")
+
+
+       dataset = CarAeroDynamicsDataset("path/to/dataset")
+       sample0 = dataset[0]
+       surface_pressure_0 = sample0["surface_pressure"]
+       surface_geometry_0 = sample0["surface_geometry"]
+
+   Data from a getitem method should be normalized in many cases. To apply normalization, add a the decorator function to the getitem method.
+   For example:
+
+   .. code-block:: python
+
+       @with_normalizers("surface_pressure")
+       def getitem_surface_pressure(self, idx):
+           # Load surface pressure tensor
+           return torch.load(f"{self.path}/surface_pressure_tensor/{idx}.pt")
+
+   "surface_pressure" is the key in the self.normalizers dictionary, this key maps to a preprocessor that should implement the correct data normalization.
+
+   Example configuration for dataset normalizers:
+
+   .. code-block:: yaml
+
+       # dummy example configuration for an image classification
+       dataset:
+           kind: noether.data.datasets.CarAeroDynamicsDataset
+           pipeline:  # configure the data pipeline to collate individual samples into batches
+           dataset_normalizers:
+               surface_pressure:
+                   - kind: noether.data.preprocessors.normalizers.MeanStdNormalization
+                     mean: [1., 2., 3.]
+                     std: [0.1, 0.2, 0.3]
+
+   :param dataset_config: Configuration for the dataset. See :class:`~noether.core.schemas.dataset.DatasetBaseConfig`
+                          for available options including dataset normalizers.
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: normalizers
+      :type:  dict[str, noether.data.preprocessors.ComposePreProcess]
+
+
+   .. py:attribute:: compute_statistics
+      :value: False
+
+
+
+   .. py:property:: pipeline
+      :type: noether.data.pipeline.Collator | None
+
+
+      Returns the pipeline for the dataset.
+
+
+   .. py:method:: get_all_getitem_names()
+
+      Returns all names of getitem functions that are implemented. E.g., image classification has getitem_x and
+      getitem_class -> the result will be ["x", "class"].
+
+
+
+.. py:class:: DatasetWrapper(dataset)
+
+   Wrapper around arbitrary noether.data.Dataset instances to generically change something about the dataset.
+   For example:
+       - Create a subset of the dataset (noether.data.Subset)
+       - Define which properties/items to load from the dataset, i.e., which getitem_* methods to call (noether.data.ModeWrapper)
+   What exactly is changed depends on the specific implementation of the DatasetWrapper child class.
+
+   :param dataset: base dataset to be wrapped
+
+
+   .. py:attribute:: dataset
+
+
+.. py:class:: Subset(dataset, indices)
+
+   Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapper`
+
+
+   Wrapper around arbitrary noether.data.Dataset instances to only use a subset of the samples, similar to
+   torch.utils.Subset, but with support for individual getitem_* methods instead of the __getitem__ method.
+
+   Example:
+
+   .. code-block:: python
+
+       from noether.data import SubsetWrapper, Dataset
+
+       len(dataset)  # 10
+       subset = SubsetWrapper(dataset=dataset, indices=[0, 2, 5, 7])
+       len(subset)  # 4
+       subset[4]  # returns dataset[7]
+
+   Initializes the Subset wrapper.
+
+   :param dataset: The base dataset to be wrapped
+   :param indices: valid indices of the wrapped dataset (list, tuple, or numpy array)
+
+
+   .. py:attribute:: indices
+
+
+.. py:function:: with_normalizers(normalizer_key)
+
+   Decorator to apply a normalizer to the output of a getitem_* function of the implemented Dataset class.
+
+   This decorator will look for a normalizer registered under the specified key and apply it to the output of the decorated function.
+
+   Example usage:
+
+   .. code-block:: python
+
+       @with_normalizers("surface_pressure")
+       def getitem_surface_pressure(self, idx):
+           # Load surface pressure tensor
+           return torch.load(f"{self.path}/surface_pressure_tensor/{idx}.pt")
+
+   :param normalizer_key: The key of the normalizer to apply. This key should be present in the self.normalizers dictionary of the Dataset class.
+
+
+.. py:class:: PropertySubsetWrapper(dataset, properties)
+
+   Bases: :py:obj:`noether.data.base.DatasetWrapper`
+
+
+   Wrapper around arbitrary noether.data.Dataset instances to make __getitem__ load the properties that are defined
+   in the `properties` attribute of this wrapper. For example, if we have a dataset that contains three kinds of items: "x", "y", and "z"
+   (i.e., the dataset implements `getitem_x`, `getitem_y`, and `getitem_z` methods), we can create a PropertySubsetWrapper around that dataset with `properties={"x", "y"}`.
+   to only load "x" and "y" when __getitem__ is called. This is useful to avoid loading unnecessary data from disk. For example, it might be that you need different items from the same dataset
+   during training and validation. During training, you might only need "x" and "y", while during validation you might need "x", "y", and "z".
+   By using a PropertySubsetWrapper, you can create two different datasets for training and validation that only load the necessary items.
+
+   Example:
+
+   .. code-block:: python
+
+       from noether.data import PropertySubsetWrapper, Dataset
+
+
+       class DummyDataset(Dataset):
+           def __init__(self):
+               self.data = torch.arange(10)
+
+           def getitem_x(self, idx):
+               return self.data[idx] * 2
+
+           def getitem_y(self, idx):
+               return self.data[idx] + 3
+
+           def getitem_z(self, idx):
+               return self.data[idx] - 5
+
+           def __len__(self):
+               return len(self.data)
+
+
+       dataset = DummyDataset()
+       wrapper = PropertySubsetWrapper(dataset=dataset, properties={"x", "y"})
+       sample = wrapper[4]  # calls dataset.getitem_x(4) and dataset.getitem_y(4), getitem_z is not called
+       sample  # {"x": 8, "y": 7}
+       wrapper.properties  # {"x", "y"}
+
+
+   :param dataset: Base dataset to be wrapped.
+   :param properties: Which properties to load from the wrapped dataset when __getitem__ is called.
+
+   :raises TypeError: If properties is not a set.
+   :raises ValueError: If properties is empty or if any property does not correspond to a getitem
+
+
+   .. py:attribute:: properties
+
+
+   .. py:method:: from_included_excluded(dataset, included_properties, excluded_properties)
+      :classmethod:
+
+
+      Creates a PropertySubsetWrapper from included and excluded properties.
+
+      :param dataset: Base dataset to be wrapped.
+      :param included_properties: If defined, only these properties are included.
+      :param excluded_properties: If defined, these properties are excluded.
+
+      :returns: The created PropertySubsetWrapper.
+      :rtype: PropertySubsetWrapper
+
+
+
+.. py:class:: RepeatWrapper(config, dataset)
+
+   Bases: :py:obj:`noether.data.base.Subset`
+
+
+   Repeats the wrapped dataset `repetitions` times.
+
+   Example:
+
+   .. code-block:: python
+
+       from noether.data import Dataset as ListDataset
+
+       dataset = ListDataset([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+       len(dataset)
+       10
+       repeat_dataset = RepeatWrapper(dataset, repetitions=3)
+       len(repeat_dataset)
+       30
+
+   :param config: Configuration for the RepeatWrapper. See :class:`~noether.core.schemas.dataset.RepeatWrapperConfig`
+                  for available options.
+   :param dataset: The dataset to repeat.
+
+   :raises ValueError: If repetitions is less than 2 or if the dataset is empty.
+       You don't need to use this wrapper with repetitions < 2.
+
+
+   .. py:attribute:: repetitions
+
+
+.. py:class:: ShuffleWrapper(dataset, config)
+
+   Bases: :py:obj:`noether.data.base.Subset`
+
+
+   Shuffles the dataset, optionally with seed.
+
+   :param dataset: The dataset to shuffle.
+   :param config: Configuration for the ShuffleWrapper. See :class:`~noether.core.schemas.dataset.ShuffleWrapperConfig`
+                  for available options.
+
+   :raises ValueError: If the dataset is not an instance of noether.data.Dataset, or if the seed is not an integer or None.
+
+
+   .. py:attribute:: seed
+
+
+.. py:class:: SubsetWrapper(dataset, config)
+
+   Bases: :py:obj:`noether.data.base.Subset`
+
+
+   Wraps the dataset with a noether.data.Subset using indices generated by the properties from the constructor.
+
+   :param dataset: The dataset to wrap.
+   :param config: The configuration to use. See :class:`~noether.core.schemas.dataset.SubsetWrapperConfig`
+                  for available options.
+
+   :raises ValueError: If the input parameters are invalid.
+   :raises RuntimeError: If no valid indices are provided.
+
+
+.. py:class:: BatchProcessor
+
+   .. py:method:: denormalize(key, value)
+      :abstractmethod:
+
+
+      Inverts the normalization from the __call__ method of a single item in the batch. If nothing needs to be
+      done for the denormalization, this method should simply return the passed key/value.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The (potentially) back-mapped name and the (potentially) denormalized value.
+      :rtype: (key, value)
+
+
+
+.. py:class:: Collator
+
+   Base object that uses torch.utils.data.default_collate in its __call__ function. Derived classes can overwrite
+   the __call__ implementation to implement a custom collate function. The collator can be passed to
+   torch.utils.data.DataLoader via the collate_fn argument (DataLoader(dataset, batch_size=2, collate_fn=Collator()).
+
+   .. rubric:: Example
+
+   >>> collator = Collator()
+   >>> num_samples = 2
+   >>> samples = [{"data": torch.randn(3, 256, 256)} for _ in range(num_samples)]
+   >>> batch = collator(samples)
+   >>> batch["data"].shape  # torch.Size([2, 3, 256, 256])
+
+
+.. py:class:: MultiStagePipeline(collators = None, sample_processors = None, batch_processors = None)
+
+   Bases: :py:obj:`noether.data.pipeline.collator.Collator`
+
+
+   A Collator that processes the list of samples into a batch in multiple stages:
+       - sample_processors: Processing the data before collation on a per-sample level.
+       - collators: Conversion from a list of samples into a batch (dict of usually tensors).
+       - batch_processors: Processing after collation on a batch-level.
+   Most of the work is usually done by the sample_processors. One or two collators, and batch processors are often not needed. However this depends on the use case.
+   .. rubric:: Example
+
+   >>> sample_processors = [MySampleProcessor1(), MySampleProcessor2()]
+   >>> collators = [MyCollator1(), MyCollator2()]
+   >>> batch_processors = [MyBatchProcessor1(), MyBatchProcessor2()]
+   >>> multistage_pipeline = MultiStagePipeline(
+   >>>     sample_processors=sample_processors,
+   >>>     collators=collators,
+   >>>     batch_processors=batch_processors
+   >>> )
+   >>> batch = multistage_pipeline(samples)
+
+   :param sample_processors: A list of callables that will be applied sequentially to pre-process on a per-sample level (e.g., subsample a pointcloud).
+   :param collators: A list of callables that will be applied sequentially to convert the list of individual samples into a batched format. If None, the default PyTorch collator will be used.
+   :param batch_processors: A list of callables that will be applied sequentially to process on a per-batch level.
+
+
+   .. py:attribute:: sample_processors
+      :value: []
+
+
+
+   .. py:attribute:: batch_processors
+      :value: []
+
+
+
+   .. py:method:: get_sample_processor(predicate)
+
+      Retrieves a sample processor by a predicate function.
+      Examples:
+      - Search by type (assumes the sample processor type only occurs once in the list of sample processors)
+        `pipeline.get_sample_processor(lambda p: isinstance(p, MySampleProcessorType))`
+      - Search by type and member
+        `pipeline.get_sample_processor(lambda p: isinstance(p, PointSamplingSampleProcessor) and "input_pos" in p.items)`
+
+      :param predicate: A function that is called for each processor and selects if this is the right one.
+
+      :returns: The matching sample processor.
+      :rtype: Any
+
+      :raises ValueError: If no matching sample processor are found, multiple matching sample processors are found or if there
+          are no sample processors.
+
+
+
+.. py:class:: SampleProcessor
+
+   .. py:method:: inverse(key, value)
+      :abstractmethod:
+
+
+      Inverts the transformation from the __call__ method of a single item in the batch. Only should be implemented if the SampleProcessor is invertable or if the identity function is valid.
+
+      :param key: The name of the item.
+      :param value: The value of the item.
+
+      :returns: The (potentially) back-mapped name and the (potentially) denormalized value.
+      :rtype: (key, value)
+
+
+
+   .. py:method:: save_copy(obj)
+      :staticmethod:
+
+
+      Make a deep copy of an object to avoid modifying the original object.
+
+      :param obj: Any object that should be copied.
+
+      :returns: A deep copy of the input object.
+
+
+
+.. py:class:: ComposePreProcess(normalization_key, preprocessors)
+
+   Compose multiple transforms and support inversion by reversing the sequence and inverting each transform.
+
+   Example:
+
+   .. code-block:: python
+
+       from noether.data.preprocessors.compose import ComposePreProcess
+
+       normalizer = ComposePreProcess(
+           normalization_key="image",
+           preprocessors=[
+               MyPreProcessor1(),
+               MyPreProcessor2(),
+           ],
+       )
+       processed_data = normalizer(input_data)
+       original_data = normalizer.inverse(processed_data)
+
+   :param normalization_key: key to identify on which getitem_ in the dataset/tensor the preprocessor is applied.
+   :param preprocessors: list of PreProcessor instances to compose.
+
+   :raises TypeError: If preprocessors is not a list or if any item in the list is not an instance of PreProcessor.
+   :raises ValueError: If the preprocessors list is empty.
+
+
+   .. py:attribute:: normalization_key
+
+
+   .. py:attribute:: transforms
+
+
+   .. py:method:: inverse(x)
+
+      Return a transform that applies the inverse transformations in reverse order.
+      :param x: The input to be denormalized.
+
+
+
+.. py:class:: PreProcessor(normalization_key)
+
+   Base class for all data preprocessors.
+   Example:
+
+   .. code-block:: python
+
+       class MyPreProcessor(PreProcessor):
+           def __init__(self, normalization_key: "image"):
+               super().__init__(normalization_key=normalization_key)
+
+           def __call__(self, x):
+               # Example processing: normalize to [0, 1]
+               return x / 255.0
+
+           def denormalize(self, x):
+               # Example denormalization: scale back to [0, 255]
+               return x * 255.0
+
+   :param normalization_key: key to identify on which getitem_ in the dataset/tensor the preprocessor is applied.
+
+   :raises TypeError: If normalization_key is not a string.
+
+
+   .. py:attribute:: normalization_key
+
+
+   .. py:method:: denormalize(x)
+      :abstractmethod:
+
+
+      Denormalizes the input data. This method should be overridden by subclasses if denormalization is supported.
+      If denormalization is not supported, it raises NotImplementedError or decide to implement the identity function.
+
+      :param x: The input tensor to denormalize.
+
+
+
+.. py:data:: ScalarOrSequence
+
+.. py:function:: to_tensor(data)
+
+   Helper function to convert input data to a PyTorch tensor if it is not already one.
+
+   :param data: The input data to convert. Can be a sequence of floats, a torch.Tensor, or None.
+
+   Returns: The input data as a torch.Tensor if it was a sequence, the original tensor if it was already a torch.Tensor, or None if the input was None.
+   :raises TypeError: If the input data is of an unsupported type.
+
+
+.. py:class:: InterleavedSampler(train_sampler, config, train_collator = None, callback_samplers = None)
+
+   Sampler to allow efficient dataloading by using a single large dataset containing train/test/... datasets all at
+   once. The sampler will sample from different regionis in the dataset according to its specification. For example,
+   consider a training dataset of length 100 and a test dataset of length 10. If the sampler is configured with a
+   RandomSampler of the training dataset indices as main_sampler, it will repeatedly iterate over the training
+   dataset. If the test dataset is configured with a sequential sampler that should be invoked after every epoch, the
+   sampler will first return indices for the 100 training samples (randomly sampled) and then indices for the 10 test
+   samples (in sequential order).
+
+   :param train_sampler: Sampler that is invoked by default (e.g., randomly sample from the trainset)
+   :param config: Configuration for the InterleavedSampler.
+   :param train_collator: Collator used to collate samples from indices sampled from the train sampler.
+   :param callback_samplers: Configurations when the train_sampler should be paused and
+                             indices from other samplers (e.g., from a testset) should be returned. Also configures the interval and
+                             optionally a different batch_size to use for the interleaved batches.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: main_sampler
+
+
+   .. py:attribute:: extra_samplers
+      :value: []
+
+
+
+   .. py:attribute:: index_offsets
+
+
+   .. py:attribute:: dataset
+
+
+   .. py:attribute:: collator
+
+
+   .. py:attribute:: batch_sampler
+
+
+   .. py:attribute:: batch_size
+
+
+   .. py:method:: calculate_start(config, sampler_len)
+      :staticmethod:
+
+
+
+   .. py:method:: get_data_loader(num_workers = 0, pin_memory = False)
+
+      Creates the DataLoader that uses the InterleavedSampler with the accordingly configured dataset.
+
+      :param num_workers: Number of workers to use.
+      :param pin_memory: Whether to use pin memory.
+
+      :returns: DataLoader that uses the InterleavedSampler with the accordingly configured dataset.
+
+
+
+.. py:class:: InterleavedSamplerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: batch_size
+      :type:  int
+
+      batch_size to use for creating batches of the main_sampler indices.
+
+
+   .. py:attribute:: drop_last
+      :type:  bool
+      :value: True
+
+
+      Whether to drop the last non-full batch of the main_sampler.
+
+
+   .. py:attribute:: max_epochs
+      :type:  int | None
+      :value: None
+
+
+      How many epochs to sample at most from the main_sampler. Whatever limit is reached first (epochs/updates/samples) will stop the sampling.
+
+
+   .. py:attribute:: max_updates
+      :type:  int | None
+      :value: None
+
+
+      How many updates to sample at most from the main_sampler. Whatever limit is reached first (epochs/updates/samples) will stop the sampling.
+
+
+   .. py:attribute:: max_samples
+      :type:  int | None
+      :value: None
+
+
+      How many samples to sample at most from the main_sampler. Whatever limit is reached first (epochs/updates/samples) will stop the sampling.
+
+
+   .. py:attribute:: start_epoch
+      :type:  int | None
+      :value: None
+
+
+      At which epoch to start (used for resuming training). Mutually exclusive with `start_update` and `start_sample`.
+
+
+   .. py:attribute:: start_update
+      :type:  int | None
+      :value: None
+
+
+      At which update to start (used for resuming training). Mutually exclusive with `start_epoch` and `start_sample`.
+
+
+   .. py:attribute:: start_sample
+      :type:  int | None
+      :value: None
+
+
+      At which sample to start (used for resuming training). Mutually exclusive with `start_epoch` and `start_update`.
+
+
+   .. py:attribute:: evaluation
+      :type:  bool
+      :value: False
+
+
+      If True, the sampler is used for evaluation and will only iterate over the interleaved samplers once without iterating over the main sampler.
+
+
+   .. py:method:: check_positive_values(v)
+      :classmethod:
+
+
+      Ensures that all integer-based frequency and batch size fields are positive.
+
+
+
+   .. py:method:: validate_stop()
+
+      Ensures that at least one frequency ('*_n_*') is specified and
+
+
+
+   .. py:method:: validate_start()
+
+      Ensures that at least one start ('start_*') is specified
+
+
+
+.. py:class:: SamplerIntervalConfig
+
+   Configuration dataclass for setting up the dataloading pipeline, which is structured to load data from a "main"
+   dataset (i.e., the dataset used for training), which is interleaved by iterations over other datasets (e.g., a
+   test dataset to calculate a metric in a callback) in regular intervals.
+
+   :param sampler: Any sampler that would be used in `torch.utils.data.DataLoader(sampler=...)`.
+                   Examples: `RandomSampler` for a training dataset or `SequentialSampler` for evaluation.
+   :type sampler: SizedIterable
+   :param every_n_epochs: Epoch-based interval. Invokes the callback after every n epochs. Mutually
+                          exclusive with other intervals.
+   :type every_n_epochs: int | None
+   :param every_n_updates: Update-based interval. Invokes the callback after every n epochs. Mutually
+                           exclusive with other intervals.
+   :type every_n_updates: int | None
+   :param every_n_samples: Sample-based interval. Invokes the callback after every n epochs. Mutually
+                           exclusive with other intervals.
+   :type every_n_samples: int | None
+   :param pipeline: Any function that would be used in `torch.utils.data.DataLoader(collate_fn=...)`.
+   :type pipeline: Optional[callable]
+   :param batch_size: Batch size to use for this callback. Default: None (which will use the same batch_size
+                      as used for the "main" sampler, i.e., the one used for training).
+   :type batch_size: int | None
+
+
+   .. py:attribute:: sampler
+      :type:  noether.core.utils.common.SizedIterable
+
+
+   .. py:attribute:: pipeline
+      :type:  collections.abc.Callable | None
+
+
+   .. py:attribute:: every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: every_n_updates
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: every_n_samples
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: batch_size
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:method:: validate_frequency()
+
+      Ensures that exactly one frequency ('every_n_*') is specified and
+      that 'batch_size' is present if 'every_n_samples' is used.
+
+
+
+   .. py:method:: check_positive_values(v)
+      :classmethod:
+
+
+      Ensures that all integer-based frequency and batch size fields are positive.
+
+
+

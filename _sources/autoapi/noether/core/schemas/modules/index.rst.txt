@@ -18,3 +18,963 @@ Submodules
    /autoapi/noether/core/schemas/modules/mlp/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.modules.AttentionConfig
+   noether.core.schemas.modules.CrossAnchorAttentionConfig
+   noether.core.schemas.modules.DotProductAttentionConfig
+   noether.core.schemas.modules.IrregularNatAttentionConfig
+   noether.core.schemas.modules.JointAnchorAttentionConfig
+   noether.core.schemas.modules.MixedAttentionConfig
+   noether.core.schemas.modules.MultiBranchAnchorAttentionConfig
+   noether.core.schemas.modules.PerceiverAttentionConfig
+   noether.core.schemas.modules.TransolverAttentionConfig
+   noether.core.schemas.modules.TransolverPlusPlusAttentionConfig
+   noether.core.schemas.modules.PerceiverBlockConfig
+   noether.core.schemas.modules.TransformerBlockConfig
+   noether.core.schemas.modules.DeepPerceiverDecoderConfig
+   noether.core.schemas.modules.SupernodePoolingConfig
+   noether.core.schemas.modules.ContinuousSincosEmbeddingConfig
+   noether.core.schemas.modules.LayerScaleConfig
+   noether.core.schemas.modules.LinearProjectionConfig
+   noether.core.schemas.modules.RopeFrequencyConfig
+   noether.core.schemas.modules.UnquantizedDropPathConfig
+   noether.core.schemas.modules.MLPConfig
+   noether.core.schemas.modules.UpActDownMLPConfig
+
+
+Package Contents
+----------------
+
+.. py:class:: AttentionConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for an attention module.
+   Since we can have many different attention implementations, we allow extra fields.
+   such that we can use the same schema for all attention modules.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for an attention module.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the hidden features.
+
+
+   .. py:attribute:: num_heads
+      :type:  int
+      :value: None
+
+
+      Number of attention heads.
+
+
+   .. py:attribute:: use_rope
+      :type:  bool
+      :value: None
+
+
+      Whether to use Rotary Positional Embeddings (RoPE).
+
+
+   .. py:attribute:: dropout
+      :type:  float
+      :value: None
+
+
+      Dropout rate for the attention weights and output projection.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Weight initialization strategy.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias terms in linear layers.
+
+
+   .. py:attribute:: head_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimensionality of each attention head.
+
+
+   .. py:method:: validate_hidden_dim_and_num_heads()
+
+
+.. py:class:: CrossAnchorAttentionConfig(/, **data)
+
+   Bases: :py:obj:`MultiBranchAnchorAttentionConfig`
+
+
+   Configuration for Cross Anchor Attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+.. py:class:: DotProductAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for the Dot Product attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+.. py:class:: IrregularNatAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for the Irregular Neighbourhood Attention Transformer (NAT) attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the input features.
+
+
+   .. py:attribute:: radius
+      :type:  float
+      :value: None
+
+
+      Radius for the radius graph.
+
+
+   .. py:attribute:: max_degree
+      :type:  int
+      :value: None
+
+
+      Maximum number of neighbors per point.
+
+
+   .. py:attribute:: relpos_mlp_hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimensionality of the relative position bias MLP.
+
+
+   .. py:attribute:: relpos_mlp_dropout
+      :type:  float
+      :value: None
+
+
+      Dropout rate for the relative position bias MLP.
+
+
+.. py:class:: JointAnchorAttentionConfig(/, **data)
+
+   Bases: :py:obj:`MultiBranchAnchorAttentionConfig`
+
+
+   Configuration for Joint Anchor Attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+.. py:class:: MixedAttentionConfig(/, **data)
+
+   Bases: :py:obj:`DotProductAttentionConfig`
+
+
+   Configuration for Mixed Attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+.. py:class:: MultiBranchAnchorAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for Multi-Branch Anchor Attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: branches
+      :type:  list[str]
+      :value: None
+
+
+
+   .. py:attribute:: anchor_suffix
+      :type:  str
+      :value: None
+
+
+
+.. py:class:: PerceiverAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for the Perceiver attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kv_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimensionality of the key/value features. If None, use hidden_dim.
+
+
+   .. py:method:: set_kv_dim()
+
+
+.. py:class:: TransolverAttentionConfig(/, **data)
+
+   Bases: :py:obj:`AttentionConfig`
+
+
+   Configuration for the Transolver attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: num_slices
+      :type:  int
+      :value: None
+
+
+      Number of slices to project the input tokens to.
+
+
+.. py:class:: TransolverPlusPlusAttentionConfig(/, **data)
+
+   Bases: :py:obj:`TransolverAttentionConfig`
+
+
+   Configuration for the Transolver++ attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: use_overparameterization
+      :type:  bool
+      :value: None
+
+
+      Whether to use overparameterization for the slice projection.
+
+
+   .. py:attribute:: use_adaptive_temperature
+      :type:  bool
+      :value: None
+
+
+      Whether to use an adaptive temperature for the slice selection.
+
+
+   .. py:attribute:: temperature_activation
+      :type:  Literal['sigmoid', 'softplus', 'exp'] | None
+      :value: None
+
+
+      Activation function for the adaptive temperature.
+
+
+   .. py:attribute:: use_gumbel_softmax
+      :type:  bool
+      :value: None
+
+
+      Whether to use Gumbel-Softmax for the slice selection.
+
+
+.. py:class:: PerceiverBlockConfig(/, **data)
+
+   Bases: :py:obj:`TransformerBlockConfig`
+
+
+   Configuration for the PerceiverBlock module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kv_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimensionality of the key and value representations. Defaults to None. If None, hidden_dim is used.
+
+
+   .. py:method:: set_kv_dim()
+
+      Set kv_dim to hidden_dim if not provided.
+
+
+
+.. py:class:: TransformerBlockConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for a transformer block.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden Dimension of the transformer block.
+
+
+   .. py:attribute:: num_heads
+      :type:  int
+      :value: None
+
+
+      Number of attention heads.
+
+
+   .. py:attribute:: mlp_hidden_dim
+      :type:  int | None
+      :value: None
+
+
+      Hidden dimension of the MLP layer. If set to None, the mlp_hidden dim is set to hidden_dim * mlp_expansion_factor in the TransformerConfig. If both are None, an error is raised.
+
+
+   .. py:attribute:: mlp_expansion_factor
+      :type:  int | None
+      :value: None
+
+
+      Expansion factor for the MLP hidden dimension relative to the hidden dimension. If 'mlp_hidden_dim' is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.
+
+
+   .. py:attribute:: drop_path
+      :type:  float
+      :value: None
+
+
+      Probability to drop the attention or MLP module. Defaults to 0.0.
+
+
+   .. py:attribute:: normalization_constructor
+      :type:  type
+
+      Constructor for the normalization layer.
+
+
+   .. py:attribute:: attention_constructor
+      :type:  Literal['dot_product', 'perceiver', 'transolver', 'transolver_plusplus']
+      :value: 'dot_product'
+
+
+      Constructor of the attention module. Defaults to 'dot_product'.
+
+
+   .. py:attribute:: layerscale
+      :type:  float | None
+      :value: None
+
+
+      Init scale value to scale layer activations. Defaults to None.
+
+
+   .. py:attribute:: condition_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimension of the conditioning vector. If none, no conditioning is applied. If provided, the transformer block will turn into a Diffusion Transformer (DiT) block.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use biases in norm/projections. Defaults to True.
+
+
+   .. py:attribute:: eps
+      :type:  float
+      :value: None
+
+
+      Epsilon Value for the layer nornalization. Defaults to 1e-6.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Initialization method for the weight matrices of the network. Defaults to "truncnormal002
+
+
+   .. py:attribute:: use_rope
+      :type:  bool
+      :value: None
+
+
+      Whether to use Rotary Positional Embeddings (RoPE).
+
+
+   .. py:attribute:: attention_arguments
+      :type:  dict
+
+      Additional arguments for the attention module that are only needed for a specific attention implementation.
+
+
+   .. py:method:: set_mlp_hidden_dim()
+
+
+.. py:class:: DeepPerceiverDecoderConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for the DeepPerceiverDecoder module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: perceiver_block_config
+      :type:  noether.core.schemas.modules.blocks.PerceiverBlockConfig
+      :value: None
+
+
+      Configuration for the Perceiver blocks used in the decoder.
+
+
+   .. py:attribute:: depth
+      :type:  int
+      :value: None
+
+
+      Number of deep perceiver decoder layers (i.e., depth of the network). Defaults to 1.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension for the query positions.
+
+
+.. py:class:: SupernodePoolingConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension for positional embeddings, messages and the resulting output vector.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Number of positional dimension (e.g., input_dim=2 for a 2D position, input_dim=3 for a 3D position)
+
+
+   .. py:attribute:: radius
+      :type:  float | None
+      :value: None
+
+
+      Radius around each supernode. From points within this radius, messages are passed to the supernode.
+
+
+   .. py:attribute:: k
+      :type:  int | None
+      :value: None
+
+
+      Number of neighbors for each supernode. From the k-NN points, messages are passed to the supernode.
+
+
+   .. py:attribute:: max_degree
+      :type:  int
+      :value: None
+
+
+      Maximum degree of the radius graph. Defaults to 32.
+
+
+   .. py:attribute:: spool_pos_mode
+      :type:  Literal['abspos', 'relpos', 'absrelpos']
+      :value: None
+
+
+      absolute space ("abspos"), relative space ("relpos") or both ("absrelpos").
+
+      :type: Type of position embedding
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Weight initialization of linear layers. Defaults to "truncnormal002".
+
+
+   .. py:attribute:: readd_supernode_pos
+      :type:  bool
+      :value: None
+
+
+      If true, the absolute positional encoding of the supernode is concatenated to the supernode vector after message passing and linearly projected back to hidden_dim. Defaults to True.
+
+
+   .. py:attribute:: aggregation
+      :type:  Literal['mean', 'sum']
+      :value: None
+
+
+      Aggregation for message passing ("mean" or "sum").
+
+
+   .. py:attribute:: message_mode
+      :type:  Literal['mlp', 'linear', 'identity']
+      :value: None
+
+
+      How messages are created. "mlp" (2 layer MLP), "linear" (nn.Linear), "identity" (nn.Identity). Defaults to "mlp".
+
+
+   .. py:attribute:: input_features_dim
+      :type:  int | None
+      :value: None
+
+
+      Number of input features per point. None will fall back to a version without features. Defaults to None, which means no input features.
+
+
+   .. py:method:: validate_radius_and_k()
+
+
+.. py:class:: ContinuousSincosEmbeddingConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for Continuous Sine-Cosine Embedding layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the output embedding.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the input coordinates.
+
+
+   .. py:attribute:: max_wavelength
+      :type:  int
+      :value: None
+
+
+      Maximum wavelength for the sine-cosine embeddings.
+
+
+.. py:class:: LayerScaleConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for Layer Scale module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Number of dimensions of the input tensor to be scaled.
+
+
+   .. py:attribute:: init_values
+      :type:  float | None
+      :value: None
+
+
+      Initial gamme scale value. Defaults to 1e-5.
+
+
+.. py:class:: LinearProjectionConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for a LinearProjection layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the linear projection.
+
+
+   .. py:attribute:: output_dim
+      :type:  int
+      :value: None
+
+
+      Output dimension of the linear projection.
+
+
+   .. py:attribute:: ndim
+      :type:  None | int
+      :value: None
+
+
+      Number of dimensions of the input domain. Either None (Linear projection),  1D (sequence), 2D, or 3D. Defaults to None.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      If true, use bias term in the linear projection. Defaults to True.
+
+
+   .. py:attribute:: optional
+      :type:  bool
+      :value: None
+
+
+      If true and input_dim==output_dim (i.e., there is no up/down projection), then the identity mapping is used. Defaults to False.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Initialization method of the weights of the MLP. Options are 'torch' (i.e., similar to the module) or 'truncnormal002', or 'zero'. Defaults to 'torch'.
+
+
+   .. py:method:: validate_ndim()
+
+      Validate the ndim field to ensure it is either None, 1, 2, or 3.
+
+
+
+.. py:class:: RopeFrequencyConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for RoPE frequency settings.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of frequencies (in transformers this should be the head dimension).
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the coordinates (e.g., 2 for 2D coordinates, 3 for 3D coordinates).
+
+
+   .. py:attribute:: max_wavelength
+      :type:  int
+      :value: None
+
+
+      10000.0
+
+      :type: Theta parameter for the transformer sine/cosine embedding. Default
+
+
+   .. py:attribute:: implementation
+      :type:  Literal['real', 'complex']
+      :value: None
+
+
+      "real" -> basic implementation using real coordinates (this is slow and only here for backward compatibility).
+      "complex" -> fast implementation of rotation via complex multiplication. Default: "real".
+
+
+.. py:class:: UnquantizedDropPathConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for the UnquantizedDropPath layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: drop_prob
+      :type:  float
+      :value: None
+
+
+      Probability of dropping a path during training.
+
+
+   .. py:attribute:: scale_by_keep
+      :type:  bool
+      :value: None
+
+
+      Up-scales activations during training by 1 - drop_prob to avoid train-test mismatch. Defaults to True.
+
+
+.. py:class:: MLPConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the MLP.
+
+
+   .. py:attribute:: output_dim
+      :type:  int
+      :value: None
+
+
+      Output dimension of the MLP.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension for each layer.
+
+
+   .. py:attribute:: num_layers
+      :type:  int
+      :value: None
+
+
+      Number of hidden layers in the MLP. If 0, the MLP is a two linear layer MLP from input_dim, hidden_dim, activation to output_dim.
+
+
+   .. py:attribute:: activation
+      :type:  Literal['RELU', 'GELU', 'SIGMOID', 'TANH', 'LEAKY_RELU', 'SOFTPLUS', 'ELU', 'SILU']
+      :value: 'GELU'
+
+
+      Activation function to use between layers.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: 'truncnormal002'
+
+
+      Weight initialization method.
+
+
+.. py:class:: UpActDownMLPConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the MLP.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the MLP.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias in the MLP.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Initialization method of the weights of the MLP. Options are  "torch" (i.e., similar to the module) or  'truncnormal002'. Defaults to 'truncnormal002'.
+
+
+   .. py:method:: check_dims()
+
+      Validator to check that hidden_dim is greater than input_dim.
+
+      :raises ValueError: raised if hidden_dim is not greater than input_dim.
+
+
+

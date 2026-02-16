@@ -18,3 +18,121 @@ Submodules
    /autoapi/noether/data/preprocessors/utils/index
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.preprocessors.ScalarOrSequence
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.preprocessors.PreProcessor
+   noether.data.preprocessors.ComposePreProcess
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.preprocessors.to_tensor
+
+
+Package Contents
+----------------
+
+.. py:class:: PreProcessor(normalization_key)
+
+   Base class for all data preprocessors.
+   Example:
+
+   .. code-block:: python
+
+       class MyPreProcessor(PreProcessor):
+           def __init__(self, normalization_key: "image"):
+               super().__init__(normalization_key=normalization_key)
+
+           def __call__(self, x):
+               # Example processing: normalize to [0, 1]
+               return x / 255.0
+
+           def denormalize(self, x):
+               # Example denormalization: scale back to [0, 255]
+               return x * 255.0
+
+   :param normalization_key: key to identify on which getitem_ in the dataset/tensor the preprocessor is applied.
+
+   :raises TypeError: If normalization_key is not a string.
+
+
+   .. py:attribute:: normalization_key
+
+
+   .. py:method:: denormalize(x)
+      :abstractmethod:
+
+
+      Denormalizes the input data. This method should be overridden by subclasses if denormalization is supported.
+      If denormalization is not supported, it raises NotImplementedError or decide to implement the identity function.
+
+      :param x: The input tensor to denormalize.
+
+
+
+.. py:class:: ComposePreProcess(normalization_key, preprocessors)
+
+   Compose multiple transforms and support inversion by reversing the sequence and inverting each transform.
+
+   Example:
+
+   .. code-block:: python
+
+       from noether.data.preprocessors.compose import ComposePreProcess
+
+       normalizer = ComposePreProcess(
+           normalization_key="image",
+           preprocessors=[
+               MyPreProcessor1(),
+               MyPreProcessor2(),
+           ],
+       )
+       processed_data = normalizer(input_data)
+       original_data = normalizer.inverse(processed_data)
+
+   :param normalization_key: key to identify on which getitem_ in the dataset/tensor the preprocessor is applied.
+   :param preprocessors: list of PreProcessor instances to compose.
+
+   :raises TypeError: If preprocessors is not a list or if any item in the list is not an instance of PreProcessor.
+   :raises ValueError: If the preprocessors list is empty.
+
+
+   .. py:attribute:: normalization_key
+
+
+   .. py:attribute:: transforms
+
+
+   .. py:method:: inverse(x)
+
+      Return a transform that applies the inverse transformations in reverse order.
+      :param x: The input to be denormalized.
+
+
+
+.. py:data:: ScalarOrSequence
+
+.. py:function:: to_tensor(data)
+
+   Helper function to convert input data to a PyTorch tensor if it is not already one.
+
+   :param data: The input data to convert. Can be a sequence of floats, a torch.Tensor, or None.
+
+   Returns: The input data as a torch.Tensor if it was a sequence, the original tensor if it was already a torch.Tensor, or None if the input was None.
+   :raises TypeError: If the input data is of an unsupported type.
+
+

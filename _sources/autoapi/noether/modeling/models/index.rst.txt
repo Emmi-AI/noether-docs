@@ -16,3 +16,196 @@ Submodules
    /autoapi/noether/modeling/models/upt/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.models.AnchoredBranchedUPT
+   noether.modeling.models.Transformer
+   noether.modeling.models.UPT
+
+
+Package Contents
+----------------
+
+.. py:class:: AnchoredBranchedUPT(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Implementation of the Anchored Branched UPT model. Including input embedding and output projection, so this is an off-the-shelf model that can be used directly by providing the appropriate input tensors.
+
+   :param config: Configuration for the AB-UPT model. See :class:`~noether.core.schemas.models.AnchorBranchedUPTConfig` for details.
+
+
+   .. py:attribute:: data_specs
+
+
+   .. py:attribute:: rope
+
+
+   .. py:attribute:: pos_embed
+
+
+   .. py:attribute:: encoder
+
+
+   .. py:attribute:: geometry_blocks
+
+
+   .. py:attribute:: surface_bias
+
+
+   .. py:attribute:: volume_bias
+
+
+   .. py:attribute:: num_perceivers
+      :value: 0
+
+
+
+   .. py:attribute:: physics_blocks
+
+
+   .. py:attribute:: use_geometry_branch
+      :value: False
+
+
+
+   .. py:attribute:: surface_decoder_blocks
+
+
+   .. py:attribute:: volume_decoder_blocks
+
+
+   .. py:attribute:: surface_decoder
+
+
+   .. py:attribute:: volume_decoder
+
+
+   .. py:method:: geometry_branch_forward(geometry_position, geometry_supernode_idx, geometry_batch_idx, condition, geometry_attn_kwargs)
+
+      Forward pass through the geometry branch of the model.
+
+
+
+   .. py:method:: physics_blocks_forward(surface_position_all, volume_position_all, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition)
+
+      Forward pass through the physics blocks of the model.
+      Allthough in the AB-UPT paper we only have a perceiver block a the first block, it is possible to have more perceiver blocks in the physics blocks that attend to the geometry encoding.
+
+
+
+   .. py:method:: decoder_blocks_forward(x_physics, physics_token_specs, surface_token_specs, volume_token_specs, surface_position_all, volume_position_all, surface_decoder_attn_kwargs, volume_decoder_attn_kwargs, condition)
+
+      Forward pass through the decoder blocks of the model. We have a separate decoder for surface and volume tokens.
+
+
+
+   .. py:method:: create_rope_frequencies(geometry_position, geometry_supernode_idx, surface_position_all, volume_position_all)
+
+      Create RoPE frequencies for all relevant positions.
+
+
+
+   .. py:method:: forward(geometry_position, geometry_supernode_idx, geometry_batch_idx, surface_anchor_position, volume_anchor_position, geometry_design_parameters = None, inflow_design_parameters = None, query_surface_position = None, query_volume_position = None)
+
+      Forward pass of the AB-UPT model.
+
+      :param geometry_position: Coordinates of the geometry mesh. Tensor of shape (B * N_geometry, D_pos), sparse tensor
+      :param geometry_supernode_idx: Indices of the supernodes for the geometry points. Tensor of shape (B * number of super nodes,)
+      :param geometry_batch_idx: Batch indices for the geometry points. Tensor of shape (B * N_geometry,). If None, assumes all points belong to the same batch.
+      :param surface_anchor_position: Coordinates of the surface anchor points. Tensor of shape (B, N_surface_anchor, D_pos)
+      :param volume_anchor_position: Coordinates of the volume anchor points. Tensor of shape (B, N_volume_anchor, D_pos)
+      :param geometry_design_parameters: Design parameters related to the geometry to condition on. Tensor of shape (B, D_geom)
+      :param inflow_design_parameters: Design parameters related to the inflow to condition on. Tensor of shape (B, D_inflow).
+      :param query_surface_position: Coordinates of the query surface points.
+      :param query_volume_position: Coordinates of the query volume points.
+
+      :returns: A dictionary containing the predictions for surface and volume fields, sliced according to the data specifications.
+      :rtype: dict[str, torch.Tensor]
+
+
+
+.. py:class:: Transformer(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Implementation of a Transformer model.
+
+   :param config: Configuration of the Transformer model.
+
+
+   .. py:attribute:: blocks
+
+
+   .. py:method:: forward(x, attn_kwargs)
+
+      Forward pass of the Transformer model.
+
+      :param x: Input tensor of shape (batch_size, seq_len, hidden_dim).
+      :param attn_kwargs: Additional arguments for the attention mechanism.
+
+      :returns: Output tensor after processing through the Transformer model.
+      :rtype: torch.Tensor
+
+
+
+.. py:class:: UPT(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Implementation of the UPT (Universal Physics Transformer) model.
+
+   :param config: Configuration for the UPT model. See :class:`~noether.core.schemas.models.UPTConfig` for details.
+
+
+   .. py:attribute:: encoder
+
+
+   .. py:attribute:: use_rope
+
+
+   .. py:attribute:: pos_embed
+
+
+   .. py:attribute:: approximator_blocks
+
+
+   .. py:attribute:: decoder
+
+
+   .. py:attribute:: norm
+
+
+   .. py:attribute:: prediction_layer
+
+
+   .. py:method:: compute_rope_args(surface_position_batch_idx, surface_position, surface_position_supernode_idx, query_position)
+
+      Compute the RoPE frequency arguments for the surface_position and query_position. If we don't use RoPE,
+      return empty dicts.
+
+
+
+   .. py:method:: forward(surface_position_batch_idx, surface_position_supernode_idx, surface_position, query_position)
+
+      Forward pass of the UPT model.
+
+      :param input_position: input coordinates of the surface points.
+      :param surface_mask_query: surface mask for the query points, indicating which points are surface points.
+      :param surface_position_batch_idx: batch indices for the surface positions, since the surface positions are
+                                         a sparse tensor for the supernode pooling.
+      :param surface_position_supernode_idx: supernode indices for the surface positions.
+      :param geometry_position: geometry position information.
+      :param query_position: input coordinates of the query points.
+
+      :returns: Output tensor containing the predictions for the surface and volume fields, sliced according to the data specifications.
+      :rtype: torch.Tensor
+
+
+

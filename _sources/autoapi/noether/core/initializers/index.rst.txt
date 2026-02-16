@@ -16,3 +16,251 @@ Submodules
    /autoapi/noether/core/initializers/resume/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.initializers.InitializerBase
+   noether.core.initializers.CheckpointInitializer
+   noether.core.initializers.PreviousRunInitializer
+   noether.core.initializers.ResumeInitializer
+
+
+Package Contents
+----------------
+
+.. py:class:: InitializerBase(path_provider)
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+   Base class for model initializers.
+
+   :param path_provider: PathProvider instance to access paths to load models from.
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: path_provider
+
+
+   .. py:method:: init_weights(model)
+      :abstractmethod:
+
+
+      Initialize the model weights from the checkpoint.
+
+      :param model: the model to load the weights into.
+
+
+
+   .. py:method:: init_optimizer(model)
+      :abstractmethod:
+
+
+      Initialize the optimizer for the model.
+
+      :param model: a model to initialize the optimizer for. Assumes the model has an attribute optim.
+
+
+
+   .. py:method:: init_trainer(trainer)
+
+      Initialize the trainer from the checkpoint.
+
+      By default, does nothing. Can be overridden by child classes.
+
+      :param trainer: the trainer to initialize.
+
+
+
+   .. py:method:: init_callbacks(callbacks, model)
+
+      Initialize the callbacks from the checkpoint.
+
+      By default, does nothing. Can be overridden by child classes.
+
+      :param callbacks: the list of callbacks to initialize.
+      :param model: the model associated with the callbacks.
+
+
+
+   .. py:method:: start_checkpoint()
+
+      Get the start checkpoint for the model.
+
+      By default , returns a TrainingIteration starting from zero.
+
+      :returns: the start checkpoint for the model.
+      :rtype: checkpoint
+
+
+
+.. py:class:: CheckpointInitializer(initializer_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.initializers.base.InitializerBase`
+
+
+   Helper class that provides a standard way to create an ABC using
+   inheritance.
+
+   :param initializer_config: configuration for the initializer. See :class:`~noether.core.schemas.initializers.CheckpointInitializerConfig` for available options.
+   :param \*\*kwargs: additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: checkpoint
+      :type:  str | noether.core.utils.training.training_iteration.TrainingIteration
+
+      Base class to initialize models from checkpoints of previous runs. Should not be used directly, but inherited by other initializers such as PreviousRunInitializer or ResumeInitializer.
+
+
+   .. py:attribute:: run_id
+
+
+   .. py:attribute:: model_name
+
+
+   .. py:attribute:: load_optim
+
+
+   .. py:attribute:: model_info
+
+
+   .. py:attribute:: pop_ckpt_kwargs_keys
+
+
+   .. py:attribute:: stage_name
+
+
+   .. py:attribute:: init_run_path_provider
+
+
+   .. py:method:: init_optimizer(model)
+
+      Initialize the optimizer for the model if it is derived from Model.
+
+      If model is a `CompositeModel`, nothing happens. This is expected as CompositeModels can be arbitrarily nested
+      and do not have an optimizer. Instead, a CompositeModel calls `init_optim` with all its submodels which can be
+      of type `Model` or a nested `CompositeModel`.
+
+      :param model: a model to initialize the optimizer for. Assumes the model has an attribute optim.
+
+
+
+.. py:class:: PreviousRunInitializer(initializer_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.initializers.CheckpointInitializer`
+
+
+   Initializes a model from a checkpoint of a previous run (specified by the run_id), this initializers hence only loads model weights.
+   When a previous run should be resumed for further training, use ResumeInitializer instead.
+   This initializer needs to be initialized as part of a model config.
+   It is possible to remove certain keys or patterns from the checkpoint before loading it into the model, or to rename certain patterns.
+
+   For example:
+
+   .. code-block:: yaml
+
+       model:
+         kind: path.to.MyModelClass
+         param1: value1
+         name: my_model
+         initializer:
+           kind: noether.core.initializers.PreviousRunInitializer
+           run_id: <previous_run_id>
+           model_name: my_model
+           checkpoint: latest
+           keys_to_remove:
+               - encoder.block1.weight
+
+   :param initializer_config: Configuration for the initializer. See :class:`~noether.core.schemas.initializers.PreviousRunInitializerConfig` for available options.
+   :param \*\*kwargs: additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: keys_to_remove
+
+
+   .. py:attribute:: patterns_to_remove
+
+
+   .. py:attribute:: patterns_to_rename
+
+
+   .. py:attribute:: patterns_to_instantiate
+
+
+   .. py:method:: init_weights(model, model_name = None)
+
+      Initialize the model weights from the checkpoint.
+
+      :param model: the model to load the weights into.
+
+
+
+.. py:class:: ResumeInitializer(initializer_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.initializers.checkpoint.CheckpointInitializer`
+
+
+   Initializes models/optimizers from a checkpoint ready for resuming training.
+   Needs to be configured as part of the config by setting the resume_run_id in the root config (assumg the same output path is used).
+   This initializer assumes that the previous run is going to be resumed for further training (i.e., trianing is not finished yet)
+
+   For example (config snippet is part of the trainer config):
+
+   .. code-block:: yaml
+
+       resume_run_id: <previous_run_id>
+
+
+   :param initializer_config: configuration for the initializer. See :class:`~noether.core.schemas.initializers.ResumeInitializerConfig` for available options.
+   :param \*\*kwargs: additional arguments to pass to the parent class.
+
+
+   .. py:method:: init_weights(model)
+
+      Initialize the model weights from the checkpoint.
+
+      :param model: the model to load the weights into.
+
+
+
+   .. py:method:: init_optimizer(model)
+
+      Initialize the optimizer for the model.
+
+      :param model: a model to initialize the optimizer for.
+
+
+
+   .. py:method:: start_checkpoint()
+
+      Get the start checkpoint for the model.
+
+      :returns: the start checkpoint for the model.
+      :rtype: checkpoint
+
+
+
+   .. py:method:: init_trainer(trainer)
+
+      Initialize the trainer from the checkpoint.
+
+      :param trainer: the trainer to initialize.
+
+
+
+   .. py:method:: init_callbacks(callbacks, model)
+
+      Initialize the callbacks from the checkpoint.
+
+      :param callbacks: the callbacks to initialize.
+      :param model: the model to initialize the callbacks for.
+
+
+

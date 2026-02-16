@@ -25,3 +25,1861 @@ Submodules
    /autoapi/noether/core/schemas/trainers/index
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.schemas.CallbacksConfig
+   noether.core.schemas.AnyInitializer
+   noether.core.schemas.AnyNormalizer
+   noether.core.schemas.AnyScheduleConfig
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.BestCheckpointCallbackConfig
+   noether.core.schemas.BestMetricCallbackConfig
+   noether.core.schemas.CallBackBaseConfig
+   noether.core.schemas.CheckpointCallbackConfig
+   noether.core.schemas.EmaCallbackConfig
+   noether.core.schemas.FixedEarlyStopperConfig
+   noether.core.schemas.MetricEarlyStopperConfig
+   noether.core.schemas.OfflineLossCallbackConfig
+   noether.core.schemas.OnlineLossCallbackConfig
+   noether.core.schemas.TrackAdditionalOutputsCallbackConfig
+   noether.core.schemas.CheckpointInitializerConfig
+   noether.core.schemas.InitializerConfig
+   noether.core.schemas.PreviousRunInitializerConfig
+   noether.core.schemas.ResumeInitializerConfig
+   noether.core.schemas.ModelBaseConfig
+   noether.core.schemas.OptimizerConfig
+   noether.core.schemas.ParamGroupModifierConfig
+   noether.core.schemas.ConstantScheduleConfig
+   noether.core.schemas.CustomScheduleConfig
+   noether.core.schemas.DecreasingProgressScheduleConfig
+   noether.core.schemas.IncreasingProgressScheduleConfig
+   noether.core.schemas.LinearWarmupCosineDecayScheduleConfig
+   noether.core.schemas.PeriodicBoolScheduleConfig
+   noether.core.schemas.PolynomialDecreasingScheduleConfig
+   noether.core.schemas.PolynomialIncreasingScheduleConfig
+   noether.core.schemas.ProgressScheduleConfig
+   noether.core.schemas.ScheduleBaseConfig
+   noether.core.schemas.SchedulerConfig
+   noether.core.schemas.StepDecreasingScheduleConfig
+   noether.core.schemas.StepFixedScheduleConfig
+   noether.core.schemas.StepIntervalScheduleConfig
+   noether.core.schemas.ConfigSchema
+   noether.core.schemas.WandBTrackerSchema
+   noether.core.schemas.BaseTrainerConfig
+
+
+Package Contents
+----------------
+
+.. py:class:: BestCheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['BestCheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+      :value: None
+
+
+      "The key of the metric to be used for checking the best model.
+
+
+   .. py:attribute:: save_frozen_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to also save the frozen weights of the model.
+
+
+   .. py:attribute:: tolerances
+      :type:  list[int] | None
+      :value: None
+
+
+      "If provided, this callback will produce multiple best models which differ in the amount of intervals they allow the metric to not improve. For example, tolerance=[5] with every_n_epochs=1 will store a checkpoint where at most 5 epochs have passed until the metric improved. Additionally, the best checkpoint over the whole training will always be stored (i.e., tolerance=infinite). When setting different tolerances, one can evaluate different early stopping configurations with one training run.
+
+
+   .. py:attribute:: model_name
+      :type:  str | None
+      :value: None
+
+
+      The name of the model to save. If None, all models are saved.
+
+
+   .. py:attribute:: model_names
+      :type:  list[str] | None
+      :value: None
+
+
+      Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name='encoder' here). This only applies when training a CompositeModel. If None, all models are saved.
+
+
+.. py:class:: BestMetricCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['BestMetricCallback']
+      :value: None
+
+
+      The metric to use to dermine whether the current model obtained a new best (e.g., loss/valid/total)
+
+
+   .. py:attribute:: source_metric_key
+      :type:  str
+      :value: None
+
+
+      The metrics to keep track of (e.g., loss/test/total)
+
+
+   .. py:attribute:: target_metric_keys
+      :type:  list[str] | None
+      :value: None
+
+
+      The metrics to keep track of if they are present (useful when different model configurations log different evaluation metrics to avoid reconfiguring the callback).
+
+
+   .. py:attribute:: optional_target_metric_keys
+      :type:  list[str] | None
+      :value: None
+
+
+
+.. py:class:: CallBackBaseConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: name
+      :type:  str
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+      Epoch-based interval. Invokes the callback after every n epochs. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: every_n_updates
+      :type:  int | None
+      :value: None
+
+
+      Update-based interval. Invokes the callback after every n updates. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: every_n_samples
+      :type:  int | None
+      :value: None
+
+
+      Sample-based interval. Invokes the callback after every n samples. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: batch_size
+      :type:  int | None
+      :value: None
+
+
+      None (use the same batch_size as for training).
+
+      :type: Batch size to use for this callback. Default
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one frequency ('every_n_*') is specified and
+      that 'batch_size' is present if 'every_n_samples' is used.
+
+
+
+   .. py:method:: check_positive_values(v)
+      :classmethod:
+
+
+      Ensures that all integer-based frequency and batch size fields are positive.
+
+
+
+   .. py:method:: check_kind_is_not_empty(v)
+      :classmethod:
+
+
+      Ensures the 'kind' field is a non-empty string.
+
+
+
+.. py:data:: CallbacksConfig
+
+.. py:class:: CheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['CheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: save_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the weights of the model.
+
+
+   .. py:attribute:: save_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the optimizer state.
+
+
+   .. py:attribute:: save_latest_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest weights of the model. Note that the latest weights are always overwritten on the next invocation of this callback.
+
+
+   .. py:attribute:: save_latest_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest optimizer state. Note that the latest optimizer state is always overwritten on the next invocation of this callback
+
+
+   .. py:attribute:: model_name
+      :type:  str | None
+      :value: None
+
+
+      The name of the model to save. If None, all models are saved.
+
+
+.. py:class:: EmaCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['EmaCallback']
+      :value: None
+
+
+
+   .. py:attribute:: target_factors
+      :type:  list[float]
+      :value: None
+
+
+      The factors for the EMA.
+
+
+   .. py:attribute:: model_paths
+      :type:  list[str | None] | None
+      :value: None
+
+
+      The paths to the models to apply the EMA to (i.e., composite_model.encoder/composite_model.decoder, path of the PyTorch nn.Modules in the checkpoint). If None, the EMA is applied to the whole model. When training with a CompositeModel, the paths on the submodules (i.e., 'encoder', 'decoder', etc.) should be provided via this field, otherwise the EMA will be applied to the CompositeModel as a whole which is not possible to restore later on.
+
+
+   .. py:attribute:: save_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the EMA weights.
+
+
+   .. py:attribute:: save_last_weights
+      :type:  bool
+      :value: None
+
+
+      Save the weights of the model when training is over (i.e., at the end of training, save the EMA weights).
+
+
+   .. py:attribute:: save_latest_weights
+      :type:  bool
+      :value: None
+
+
+      Save the latest EMA weights. Note that the latest weights are always overwritten on the next invocation of this callback.
+
+
+.. py:class:: FixedEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: name
+      :type:  Literal['FixedEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_sample
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_update
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_epoch
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one stop ('stop_at_*') is specified
+
+
+
+.. py:class:: MetricEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['MetricEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+
+      The key of the metric to monitor
+
+
+   .. py:attribute:: tolerance
+      :type:  int
+
+      The number of times the metric can stagnate before stopping training
+
+
+   .. py:method:: check_tolerance_positive(v)
+      :classmethod:
+
+
+      Ensures that tolerance is at least 1.
+
+
+
+.. py:class:: OfflineLossCallbackConfig(/, **data)
+
+   Bases: :py:obj:`PeriodicDataIteratorCallbackConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['OfflineLossCallback']
+      :value: None
+
+
+
+   .. py:attribute:: output_patterns_to_log
+      :type:  list[str] | None
+      :value: None
+
+
+      additional arguments passed to the parent class.
+
+      :type: For instance, if the output key is 'some_loss' and the pattern is ['loss'].  **kwargs
+
+
+.. py:class:: OnlineLossCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['OnlineLossCallback']
+      :value: None
+
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      Whether to log the loss.
+
+
+.. py:class:: TrackAdditionalOutputsCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   .. py:attribute:: name
+      :type:  Literal['TrackAdditionalOutputsCallback']
+      :value: None
+
+
+
+   .. py:attribute:: keys
+      :type:  list[str] | None
+      :value: None
+
+
+      List of keys to track in the additional_outputs of the TrainerResult returned by the trainer's update step.
+
+
+   .. py:attribute:: patterns
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to track in the additional_outputs of the TrainerResult returned by the trainer's update step. Matched if it is contained in one of the update_outputs keys.
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      If True uses the logger to print the tracked values otherwise uses no logger.
+
+
+   .. py:attribute:: reduce
+      :type:  Literal['mean', 'last']
+      :value: None
+
+
+      The reduction method to be applied to the tracked values to reduce to scalar. Currently supports 'mean' and 'last'.
+
+
+   .. py:attribute:: log_output
+      :type:  bool
+      :value: None
+
+
+      Whether to log the tracked scalar values.
+
+
+   .. py:attribute:: save_output
+      :type:  bool
+      :value: None
+
+
+      Whether to save the tracked scalar values to disk.
+
+
+.. py:data:: AnyInitializer
+
+.. py:class:: CheckpointInitializerConfig(/, **data)
+
+   Bases: :py:obj:`InitializerConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.initializers.CheckpointInitializer']
+      :value: None
+
+
+
+   .. py:attribute:: load_optim
+      :type:  bool
+      :value: None
+
+
+      Whether or not to load the optimizer state from the checkpoint. Default is True, as this is usually used to resume a training run
+
+
+   .. py:attribute:: pop_ckpt_kwargs_keys
+      :type:  list[str] | None
+      :value: None
+
+
+      which checkpoint to load. If a string is provided, must be one of ("latest", "best_loss"). If a dictionary is provided, must contain keys "epoch", "update", "sample" to identify the checkpoint.
+
+
+.. py:class:: InitializerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+      :value: None
+
+
+
+   .. py:attribute:: kwargs
+      :type:  dict[str, Any] | None
+      :value: None
+
+
+      Additional keyword arguments to pass to the initializer.
+
+
+   .. py:attribute:: run_id
+      :type:  str
+
+      A unique identifier for the training stage. This is used to find the correct checkpoint.
+
+
+   .. py:attribute:: stage_name
+      :type:  str | None
+      :value: None
+
+
+      The name of the stage training stage if defined. When training, the stage name is usually "train".
+
+
+   .. py:attribute:: model_name
+      :type:  str | None
+      :value: None
+
+
+      The name of the model to load. This is the model_name used in CheckpointCallback.
+
+
+   .. py:attribute:: model_info
+      :type:  str | None
+      :value: None
+
+
+      Optional string that is used as suffix in the checkpoint filename.
+
+
+   .. py:attribute:: checkpoint
+      :type:  str | None | dict
+      :value: None
+
+
+      Which checkpoint to load.
+      Checkpoint is usually "latest" or "best_loss", depending on which checkpoint you want to load.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+.. py:class:: PreviousRunInitializerConfig(/, **data)
+
+   Bases: :py:obj:`CheckpointInitializerConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.initializers.PreviousRunInitializer']
+      :value: None
+
+
+
+   .. py:attribute:: load_optim
+      :type:  bool
+      :value: None
+
+
+      Whether or not to load the optimizer state from the checkpoint. Default is True, as this is usually used to resume a training run
+
+
+   .. py:attribute:: keys_to_remove
+      :type:  list[str] | None
+      :value: None
+
+
+      List of keys to remove from the checkpoint.
+
+
+   .. py:attribute:: patterns_to_remove
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to remove from the checkpoint.
+
+
+   .. py:attribute:: patterns_to_rename
+      :type:  list[dict] | None
+      :value: None
+
+
+      List of patterns to rename in the checkpoint.
+
+
+   .. py:attribute:: patterns_to_instantiate
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to instantiate in the checkpoint.
+
+
+.. py:class:: ResumeInitializerConfig(/, **data)
+
+   Bases: :py:obj:`CheckpointInitializerConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.initializers.ResumeInitializer']
+      :value: None
+
+
+
+   .. py:attribute:: load_optim
+      :type:  bool
+      :value: None
+
+
+      Whether or not to load the optimizer state from the checkpoint. Default is True, as this is usually used to resume a training run
+
+
+   .. py:attribute:: model_name
+      :type:  str
+      :value: None
+
+
+      The name of the model to load. This is the model_name used in CheckpointCallback.
+
+
+.. py:class:: ModelBaseConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+
+      Kind of model to use, i.e. class path
+
+
+   .. py:attribute:: name
+      :type:  str
+
+      Name of the model. Needs to be unique
+
+
+   .. py:attribute:: optimizer_config
+      :type:  noether.core.schemas.optimizers.OptimizerConfig | None
+      :value: None
+
+
+      The optimizer configuration to use for training the model. When a model is used for inference only, this can be left as None.
+
+
+   .. py:attribute:: initializers
+      :type:  list[Annotated[noether.core.schemas.initializers.AnyInitializer, Field(discriminator='kind')]] | None
+      :value: None
+
+
+      List of initializers configs to use for the model.
+
+
+   .. py:attribute:: is_frozen
+      :type:  bool | None
+      :value: False
+
+
+      Whether to freeze the model parameters (i.e., not trainable).
+
+
+   .. py:attribute:: forward_properties
+      :type:  list[str] | None
+      :value: []
+
+
+      List of properties to be used as inputs for the forward pass of the model. Only relevant when the train_step of the BaseTrainer is used. When overridden in a class method, this property is ignored.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:property:: config_kind
+      :type: str
+
+
+      The fully qualified import path for the configuration class.
+
+
+.. py:data:: AnyNormalizer
+
+.. py:class:: OptimizerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+      The class path of the torch optimizer to use. E.g., 'torch.optim.AdamW'.
+
+
+   .. py:attribute:: lr
+      :type:  float | None
+      :value: None
+
+
+      The learning rate for the optimizer.
+
+
+   .. py:attribute:: weight_decay
+      :type:  float | None
+      :value: None
+
+
+      The weight decay (L2 penalty) for the optimizer.
+
+
+   .. py:attribute:: clip_grad_value
+      :type:  float | None
+      :value: None
+
+
+      The maximum value for gradient clipping.
+
+
+   .. py:attribute:: clip_grad_norm
+      :type:  float | None
+      :value: None
+
+
+      The maximum norm for gradient clipping.
+
+
+   .. py:attribute:: param_group_modifiers_config
+      :type:  list[ParamGroupModifierConfig] | None
+      :value: None
+
+
+      List of parameter group modifiers to apply. These can modify the learning rate or weight decay for specific parameters.
+
+
+   .. py:attribute:: exclude_bias_from_weight_decay
+      :type:  bool
+      :value: True
+
+
+      If true, excludes the bias parameters (i.e., parameters that end with '.bias') from the weight decay. Default true.
+
+
+   .. py:attribute:: exclude_normalization_params_from_weight_decay
+      :type:  bool
+      :value: True
+
+
+      If true, excludes the weights of normalization layers from the weight decay. This is implemented by excluding all 1D tensors from the weight decay. Default true.
+
+
+   .. py:attribute:: weight_decay_schedule
+      :type:  noether.core.schemas.schedules.AnyScheduleConfig | None
+      :value: None
+
+
+
+   .. py:attribute:: schedule_config
+      :type:  noether.core.schemas.schedules.AnyScheduleConfig | None
+      :value: None
+
+
+
+   .. py:method:: return_optim_wrapper_args()
+
+
+.. py:class:: ParamGroupModifierConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for a parameter group modifier. Both for the LrScaleByNameModifier and the WeightDecayByNameModifier,
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+      The class path of the parameter group modifier. Either noether.core.optimizer.param_group_modifiers.LrScaleByNameModifier or noether.core.optimizer.param_group_modifiers.WeightDecayByNameModifier.
+
+
+   .. py:attribute:: scale
+      :type:  float | None
+      :value: None
+
+
+      The scaling factor for the learning rate. Must be greater than 0.0. Only for the LrScaleByNameModifier.
+
+
+   .. py:attribute:: value
+      :type:  float | None
+      :value: None
+
+
+      The weight decay value. With 0.0  the parameter is excluded from the weight decay. Only for the WeightDecayByNameModifier.
+
+
+   .. py:attribute:: name
+      :type:  str
+
+      The name of the parameter within the model. E.g., 'backbone.cls_token'.
+
+
+   .. py:method:: check_scale_or_value_exclusive()
+
+      Validates that either 'scale' or 'value' is provided, but not both.
+      This is a model-level validator that runs after individual field validation.
+
+
+
+.. py:data:: AnyScheduleConfig
+
+.. py:class:: ConstantScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.ConstantSchedule']
+      :value: 'noether.core.schedules.ConstantSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: value
+      :type:  float
+
+      The constant value that will be returned for all steps. Value should be equal to the learning rate defined in the optimizer.
+
+
+.. py:class:: CustomScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.CustomSchedule']
+      :value: 'noether.core.schedules.CustomSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: values
+      :type:  list[float]
+
+      The list of values that will be returned for each step. Values show ben as long as the number of steps.
+
+
+.. py:class:: DecreasingProgressScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.DecreasingProgressSchedule']
+      :value: 'noether.core.schedules.DecreasingProgressSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: max_value
+      :type:  float
+      :value: None
+
+
+      Maximum (starting) value of the schedule.
+
+
+   .. py:attribute:: end_value
+      :type:  float
+      :value: None
+
+
+      Minimum (ending) value of the schedule.
+
+
+.. py:class:: IncreasingProgressScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.IncreasingProgressSchedule']
+      :value: 'noether.core.schedules.IncreasingProgressSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+
+   .. py:attribute:: max_value
+      :type:  float | None
+      :value: None
+
+
+      Minimum (starting) value of the schedule.
+
+
+.. py:class:: LinearWarmupCosineDecayScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.LinearWarmupCosineDecaySchedule']
+      :value: 'noether.core.schedules.LinearWarmupCosineDecaySchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: warmup_steps
+      :type:  int | None
+      :value: None
+
+
+      The number of steps to linearly increase the value from start to max.
+
+
+   .. py:attribute:: warmup_percent
+      :type:  float | None
+      :value: None
+
+
+      The percentage of steps to linearly increase the value from start to max.
+
+
+   .. py:attribute:: max_value
+      :type:  float
+      :value: None
+
+
+      The maximum value of the scheduler from which to start the cosine decay phase. This should be equal to the learning rate defined in the optimizer. I.e., max value is learning rate
+
+
+   .. py:method:: validate_warmup()
+
+      Ensures that exactly one of 'warmup_steps' or 'warmup_percent' is specified.
+
+
+
+.. py:class:: PeriodicBoolScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.PeriodicBoolSchedule']
+      :value: 'noether.core.schedules.PeriodicBoolSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: initial_state
+      :type:  bool
+
+      The initial (boolean) state of the scheduler (on or off).
+
+
+   .. py:attribute:: off_value
+      :type:  float
+      :value: None
+
+
+      The value to return when the scheduler is in the off state.
+
+
+   .. py:attribute:: on_value
+      :type:  float
+      :value: None
+
+
+      The value to return when the scheduler is in the on state.
+
+
+   .. py:attribute:: off_duration
+      :type:  int
+      :value: None
+
+
+      The number of steps the scheduler is in the off state.
+
+
+   .. py:attribute:: on_duration
+      :type:  int
+      :value: None
+
+
+      The number of steps the scheduler is in the on state.
+
+
+   .. py:attribute:: invert
+      :type:  bool
+      :value: None
+
+
+      Whether to invert the scheduler, i.e. return off_value when on and vice versa.
+
+
+.. py:class:: PolynomialDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.PolynomialDecreasingSchedule']
+      :value: 'noether.core.schedules.PolynomialDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: power
+      :type:  float
+      :value: None
+
+
+      The power of the polynomial function.
+
+
+.. py:class:: PolynomialIncreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`IncreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.PolynomialIncreasingSchedule']
+      :value: 'noether.core.schedules.PolynomialIncreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: power
+      :type:  float
+      :value: None
+
+
+      The power of the polynomial function.
+
+
+.. py:class:: ProgressScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.ProgressSchedule']
+      :value: 'noether.core.schedules.ProgressSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: exclude_first
+      :type:  bool
+      :value: None
+
+
+      Whether to exclude the first value of the schedule.
+
+
+   .. py:attribute:: exclude_last
+      :type:  bool
+      :value: None
+
+
+      Whether to exclude the last value of the schedule.
+
+
+.. py:class:: ScheduleBaseConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: overhang_percent
+      :type:  float | None
+      :value: None
+
+
+      The percentage by which the schedule is artificially prolonged. Mutually exclusive with `overhang_steps`.
+
+
+   .. py:attribute:: overhang_steps
+      :type:  int | None
+      :value: None
+
+
+      The number of steps by which the schedule is artificially prolonged. Mutually exclusive with `overhang_percent`.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+
+   .. py:attribute:: end_value
+      :type:  float
+      :value: None
+
+
+
+   .. py:attribute:: weight_decay
+      :type:  float | None
+      :value: None
+
+
+
+   .. py:attribute:: start_percent
+      :type:  float | None
+      :value: None
+
+
+      The percentage of steps at which the schedule starts.
+
+
+   .. py:attribute:: end_percent
+      :type:  float | None
+      :value: None
+
+
+      The percentage of steps at which the schedule ends.
+
+
+   .. py:attribute:: start_step
+      :type:  int | None
+      :value: None
+
+
+      The step at which the schedule starts.
+
+
+   .. py:attribute:: end_step
+      :type:  int | None
+      :value: None
+
+
+      The step at which the schedule ends.
+
+
+   .. py:attribute:: interval
+      :type:  Literal['update', 'epoch']
+      :value: None
+
+
+      Whether the schedule is based on updates or epochs. Interval should be either "update" or "epoch". Default is "update". Under the hood steps is always used. However, when "epoch" is selected here, the step count is derived from epochs via the UpdateCounter.
+
+
+   .. py:method:: check_mutual_exclusion()
+
+      Ensures that 'overhang_percent' and 'overhang_steps' are mutually exclusive.
+
+
+
+   .. py:method:: validate_start_end_steps()
+
+
+   .. py:method:: validate_start_end_percents()
+
+
+.. py:class:: SchedulerConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.scheduler.SchedulerConfig']
+      :value: 'noether.core.schedules.scheduler.SchedulerConfig'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: warmup_percent
+      :type:  float
+      :value: None
+
+
+
+   .. py:attribute:: end_value
+      :type:  float
+      :value: None
+
+
+
+.. py:class:: StepDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.StepDecreasingSchedule']
+      :value: 'noether.core.schedules.StepDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: factor
+      :type:  float
+      :value: None
+
+
+      The factor by which the value decreases.
+
+
+   .. py:attribute:: decreases_interval
+      :type:  float
+      :value: None
+
+
+      The interval in range [0, 1] at which the value decreases.
+
+
+   .. py:method:: check_interval()
+
+      Ensures that 'interval' is a float in the range (0, 1).
+
+
+
+.. py:class:: StepFixedScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.StepFixedSchedule']
+      :value: 'noether.core.schedules.StepFixedSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+      The initial value of the scheduler.
+
+
+   .. py:attribute:: factor
+      :type:  float
+      :value: None
+
+
+      The factor by which the value is multiplied after reaching the next step provided in steps.
+
+
+   .. py:attribute:: steps
+      :type:  list[float]
+      :value: None
+
+
+      The steps at which the value changes, must be a list of floats in the range (0, 1).
+
+
+   .. py:method:: validate_steps()
+
+      Ensures that 'steps' is a non-empty list of floats in the range (0, 1).
+
+
+
+.. py:class:: StepIntervalScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.StepIntervalSchedule']
+      :value: 'noether.core.schedules.StepIntervalSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+      The initial value of the scheduler. I.e, the learning rate at step 0.
+
+
+   .. py:attribute:: factor
+      :type:  float
+      :value: None
+
+
+      The factor by which the value is multiplied after reaching the next interval.
+
+
+   .. py:attribute:: update_interval
+      :type:  float
+      :value: None
+
+
+      The interval in range (0, 1) at which the value changes.
+
+
+   .. py:method:: check_update_interval(v)
+
+      Ensures that 'update_interval' is a float in the range (0, 1).
+
+
+
+.. py:class:: ConfigSchema(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Root configuration schema for all experiments in Noether.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  str | None
+      :value: None
+
+
+      Name of the experiment.
+
+
+   .. py:attribute:: accelerator
+      :type:  ACCELERATOR_TYPES
+      :value: None
+
+
+      Type of accelerator to use. By default the system choose the best available accelerator. GPU > MPS > CPU.
+
+
+   .. py:attribute:: stage_name
+      :type:  str | None
+      :value: None
+
+
+      Name of the current stage. I.e., train, finetune, test, etc. When None, the run_id directory is used as output directory. Otherwise, run_id/stage_name is used.
+
+
+   .. py:attribute:: dataset_kind
+      :type:  str | None
+      :value: None
+
+
+      Kind of dataset to use i.e., class path.
+
+
+   .. py:attribute:: dataset_root
+      :type:  str | None
+      :value: None
+
+
+      Root directory of the dataset.
+
+
+   .. py:attribute:: resume_run_id
+      :type:  str | None
+      :value: None
+
+
+      Run ID to resume from. If None, start a new run. This can be used to resume training from the last checkpoint of a previous run when training was interrupted/failed.
+
+
+   .. py:attribute:: resume_stage_name
+      :type:  str | None
+      :value: None
+
+
+      Stage name to resume from. If None, resume from the default stage.
+
+
+   .. py:attribute:: resume_checkpoint
+      :type:  str | None
+      :value: None
+
+
+      Path to checkpoint to resume from. If None, the 'latest' checkpoint will be used.
+
+
+   .. py:attribute:: seed
+      :type:  int
+      :value: None
+
+
+      Random seed for reproducibility.
+
+
+   .. py:attribute:: dataset_statistics
+      :type:  dict[str, list[float | int]] | None
+      :value: None
+
+
+      Pre-computed dataset statistics, e.g., mean and std for normalization. Since some tensors are multi-dimensional, the statistics are stored as lists.
+
+
+   .. py:attribute:: dataset_normalizer
+      :type:  dict[str, list[noether.core.schemas.normalizers.AnyNormalizer]] | None
+      :value: None
+
+
+      List of normalizers to apply to the dataset. The key is the data source name.
+
+
+   .. py:attribute:: tracker
+      :type:  noether.core.schemas.trackers.AnyTracker | None
+      :value: None
+
+
+      Configuration for experiment tracking. If None, no tracking is used. If "disabled", tracking is explicitly disabled.  WandB is currently the only supported tracker.
+
+
+   .. py:attribute:: run_id
+      :type:  str | None
+      :value: None
+
+
+      Unique identifier for the run. If None, a new ID will be generated.
+
+
+   .. py:attribute:: devices
+      :type:  str | None
+      :value: None
+
+
+      Comma-separated list of device IDs to use. If None, all available devices will be used.
+
+
+   .. py:attribute:: num_workers
+      :type:  int | None
+      :value: None
+
+
+      Number of worker threads for data loading. If None,  will use (#CPUs / #GPUs - 1) workers
+
+
+   .. py:attribute:: cudnn_benchmark
+      :type:  bool
+      :value: True
+
+
+      Whether to enable cudnn benchmark mode for this run.
+
+
+   .. py:attribute:: cudnn_deterministic
+      :type:  bool
+      :value: False
+
+
+      Whether to enable cudnn deterministic mode for this run.
+
+
+   .. py:attribute:: datasets
+      :type:  dict[str, noether.core.schemas.dataset.DatasetBaseConfig]
+      :value: None
+
+
+
+   .. py:attribute:: model
+      :type:  noether.core.schemas.models.ModelBaseConfig
+      :value: None
+
+
+
+   .. py:attribute:: trainer
+      :type:  noether.core.schemas.trainers.BaseTrainerConfig
+      :value: None
+
+
+
+   .. py:attribute:: debug
+      :type:  bool
+      :value: False
+
+
+      If True, enables debug mode with more verbose logging, no WandB logging and output written to debug directory.
+
+
+   .. py:attribute:: store_code_in_output
+      :type:  bool
+      :value: True
+
+
+      If True, store a copy of the current code in the output directory for reproducibility.
+
+
+   .. py:attribute:: output_path
+      :type:  pathlib.Path
+
+      Path to output directory.
+
+
+   .. py:attribute:: master_port
+      :type:  int
+      :value: None
+
+
+      Port for distributed master node. If None, will be set from environment variable MASTER_PORT if available.
+
+
+   .. py:method:: empty_dict_is_none(v)
+      :classmethod:
+
+
+      Pre-processes tracker input before validation.
+
+
+
+   .. py:method:: validate_output_path(value)
+      :classmethod:
+
+
+      Validates that the output path is valid.
+
+
+
+   .. py:method:: serialize_output_path(value)
+
+
+   .. py:method:: get_env_master_port(value)
+      :classmethod:
+
+
+      Sets master_port from environment variable if available.
+
+
+
+   .. py:property:: config_schema_kind
+      :type: str
+
+
+      The fully qualified import path for the configuration class.
+
+
+.. py:class:: WandBTrackerSchema(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.trackers.WandBTracker']
+      :value: None
+
+
+
+   .. py:attribute:: entity
+      :type:  str | None
+      :value: None
+
+
+      The entity name for the W&B project.
+
+
+   .. py:attribute:: project
+      :type:  str | None
+      :value: None
+
+
+      The project name for the W&B project.
+
+
+   .. py:attribute:: mode
+      :type:  Literal['disabled', 'online', 'offline'] | None
+      :value: None
+
+
+      he mode of W&B. Can be 'disabled', 'online', or 'offline'.
+
+
+.. py:class:: BaseTrainerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+
+
+   .. py:attribute:: max_epochs
+      :type:  int | None
+      :value: None
+
+
+      The maximum number of epochs to train for. Mutually exclusive with max_updates and max_samples. If set to 0, training will be skipped and all callbacks will be invoked once (useful for evaluation-only runs).
+
+
+   .. py:attribute:: max_updates
+      :type:  int | None
+      :value: None
+
+
+      The maximum number of updates to train for. Mutually exclusive with max_epochs and max_samples. If set to 0, training will be skipped and all callbacks will be invoked once (useful for evaluation-only runs).
+
+
+   .. py:attribute:: max_samples
+      :type:  int | None
+      :value: None
+
+
+      The maximum number of samples to train for. Mutually exclusive with max_epochs and max_updates. If set to 0, training will be skipped and all callbacks will be invoked once (useful for evaluation-only runs).
+
+
+   .. py:attribute:: start_at_epoch
+      :type:  int | None
+      :value: None
+
+
+      The epoch to start training at. This means that the trainer will skip all epochs before this epoch. Learning rate and other schedulers will be stepped accordingly. Useful for resuming training from a specific epoch.
+
+
+   .. py:attribute:: add_default_callbacks
+      :type:  bool | None
+      :value: None
+
+
+      Whether to add default callbacks. Default callbacks log things like simple dataset statistics or the current value of the learning rate if it is scheduled.
+
+
+   .. py:attribute:: add_trainer_callbacks
+      :type:  bool | None
+      :value: None
+
+
+      Whether to add trainer specific callbacks (e.g., a callback to log the training accuracy for a classification task).
+
+
+   .. py:attribute:: effective_batch_size
+      :type:  int
+      :value: None
+
+
+      the "global batch size". In multi-GPU setups, the batch size per device, ("local batch size") is `effective_batch_size / number of devices`. If gradient accumulation is used, the forward-pass batch size is derived by dividing by the number of gradient accumulation steps.
+
+      :type: The effective batch size used for optimization. This is the number of samples that are processed before an update step is taken
+
+
+   .. py:attribute:: precision
+      :type:  Literal['float32', 'fp32', 'float16', 'fp16', 'bfloat16', 'bf16']
+      :value: None
+
+
+      The precision to use for training (e.g., "float32"). Mixed precision training (e.g., "float16" or "bfloat16") can be used to speed up training and reduce memory usage on supported hardware (e.g., NVIDIA GPUs).
+
+
+   .. py:attribute:: callbacks
+      :type:  list[noether.core.schemas.callbacks.CallbacksConfig] | None
+      :value: None
+
+
+      The callbacks to use for training.
+
+
+   .. py:attribute:: initializer
+      :type:  noether.core.schemas.initializers.InitializerConfig | None
+      :value: None
+
+
+      The initializer to use for training. Mainly used for resuming training via ResumeInitializer.
+
+
+   .. py:attribute:: log_every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+      The integer number of epochs to periodically log at.
+
+
+   .. py:attribute:: log_every_n_updates
+      :type:  int | None
+      :value: None
+
+
+      The integer number of updates to periodically log at.
+
+
+   .. py:attribute:: log_every_n_samples
+      :type:  int | None
+      :value: None
+
+
+      The integer number of samples to periodically log at.
+
+
+   .. py:attribute:: track_every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+      The integer number of epochs to periodically track metrics at.
+
+
+   .. py:attribute:: track_every_n_updates
+      :type:  int | None
+      :value: None
+
+
+      The integer number of updates to periodically track metrics at.
+
+
+   .. py:attribute:: track_every_n_samples
+      :type:  int | None
+      :value: None
+
+
+      The integer number of samples to periodically track metrics at.
+
+
+   .. py:attribute:: max_batch_size
+      :type:  int | None
+      :value: None
+
+
+      The maximum batch size to use for model forward pass in training. If the effective_batch_size is larger than max_batch_size, gradient accumulation will be used to simulate the larger batch size. For example, if effective_batch_size=8 and max_batch_size=2, 4 gradient accumulation steps will be taken before each optimizer step.
+
+
+   .. py:attribute:: skip_nan_loss
+      :type:  bool
+      :value: None
+
+
+      Whether to skip NaN losses. These can sometimes occur due to unlucky coincidences. If true, NaN losses will be skipped without terminating the training up until 100 NaN losses occurred in a row.
+
+
+   .. py:attribute:: skip_nan_loss_max_count
+      :type:  int
+      :value: None
+
+
+
+   .. py:attribute:: disable_gradient_accumulation
+      :type:  bool
+      :value: None
+
+
+      Whether to disable gradient accumulation. Gradient accumulation is sometimes used to simulate larger batch sizes, but can lead to worse generalization.
+
+
+   .. py:attribute:: use_torch_compile
+      :type:  bool
+      :value: None
+
+
+      Whether to use `torch.compile` to compile the model for faster training.
+
+
+   .. py:attribute:: find_unused_params
+      :type:  bool
+      :value: None
+
+
+      Sets the `find_unused_parameters` flag of `DistributedDataParallel`.
+
+
+   .. py:attribute:: static_graph
+      :type:  bool
+      :value: None
+
+
+      Sets the `static_graph` flag of `DistributedDataParallel`.
+
+
+   .. py:attribute:: forward_properties
+      :type:  list[str] | None
+      :value: []
+
+
+      Properties (i.e., keys from the batch dict) from the input batch that are used as inputs to the model during the forward pass.
+
+
+   .. py:attribute:: target_properties
+      :type:  list[str] | None
+      :value: []
+
+
+      Properties (i.e., keys from the batch dict) from the input batch that are used as targets for the model during the forward pass.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+

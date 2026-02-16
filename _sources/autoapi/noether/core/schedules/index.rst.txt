@@ -21,3 +21,512 @@ Submodules
    /autoapi/noether/core/schedules/step/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schedules.DecreasingProgressSchedule
+   noether.core.schedules.IncreasingProgressSchedule
+   noether.core.schedules.ProgressSchedule
+   noether.core.schedules.ScheduleBase
+   noether.core.schedules.SequentialPercentSchedule
+   noether.core.schedules.SequentialPercentScheduleConfig
+   noether.core.schedules.SequentialStepSchedule
+   noether.core.schedules.SequentialStepScheduleConfig
+   noether.core.schedules.ConstantSchedule
+   noether.core.schedules.ConstantScheduleConfig
+   noether.core.schedules.CosineDecreasingSchedule
+   noether.core.schedules.CosineIncreasingSchedule
+   noether.core.schedules.CustomSchedule
+   noether.core.schedules.CustomScheduleConfig
+   noether.core.schedules.LinearDecreasingSchedule
+   noether.core.schedules.LinearIncreasingSchedule
+   noether.core.schedules.LinearWarmupCosineDecaySchedule
+   noether.core.schedules.PolynomialDecreasingSchedule
+   noether.core.schedules.StepDecreasingSchedule
+   noether.core.schedules.StepFixedSchedule
+   noether.core.schedules.StepIntervalSchedule
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.schedules.cosine
+   noether.core.schedules.linear
+   noether.core.schedules.polynomial
+
+
+Package Contents
+----------------
+
+.. py:class:: DecreasingProgressSchedule(config)
+
+   Bases: :py:obj:`ProgressSchedule`
+
+
+   Base class for schedules that monotonically decrease in value over time.
+
+   Initialize the scheduler.
+
+
+.. py:class:: IncreasingProgressSchedule(config)
+
+   Bases: :py:obj:`ProgressSchedule`
+
+
+   Base class for schedules that monotonically increase in value over time.
+
+   Initialize the scheduler.
+
+
+.. py:class:: ProgressSchedule(config, start_value, delta)
+
+   Bases: :py:obj:`ScheduleBase`
+
+
+   Base class for schedules that progress monotonically in value over time.
+
+   Initialize the scheduler.
+
+   :param config: Configuration for the progress schedule.
+   :param start_value: The initial value of the scheduler.
+   :param delta: The total change in value over the schedule.
+
+
+   .. py:attribute:: start_value
+
+
+   .. py:attribute:: delta
+
+
+   .. py:attribute:: exclude_first
+
+
+   .. py:attribute:: exclude_last
+
+
+.. py:class:: ScheduleBase(overhang_percent = None, overhang_steps = None)
+
+   Base class for schedules.
+
+   Initialize the scheduler.
+
+   :param overhang_percent: The percentage by which the schedule is artificially prolonged.
+   :param overhang_steps: The number of steps by which the schedule is artificially prolonged.
+
+
+   .. py:attribute:: overhang_percent
+      :value: None
+
+
+
+   .. py:attribute:: overhang_steps
+      :value: None
+
+
+
+   .. py:method:: get_value(step, total_steps)
+
+      Get the value of the schedule at a given step.
+
+      This function includes the correction for overhangs in percent or steps and then calls the _get_value method.
+      Therefore, it should not be overwritten by subclasses. Instead, the _get_value method should be implemented.
+
+      :param step: The step for which to get the scheduler value.
+      :param total_steps: The total number of steps.
+
+
+
+.. py:class:: SequentialPercentSchedule(schedule_configs)
+
+   Bases: :py:obj:`ScheduleBase`
+
+
+   A scheduler that switches between multiple schedules based on the percentage of steps completed.
+
+   Initialize the scheduler.
+
+   :param schedule_configs: A list of schedule configurations.
+   :param \*\*kwargs: Additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: schedule_configs
+
+
+   .. py:method:: get_sequential_schedule_config(step, total_steps)
+
+
+.. py:class:: SequentialPercentScheduleConfig
+
+   .. py:attribute:: schedule
+      :type:  ScheduleBase
+
+
+   .. py:attribute:: start_percent
+      :type:  float | None
+      :value: None
+
+
+
+   .. py:attribute:: end_percent
+      :type:  float | None
+      :value: None
+
+
+
+.. py:class:: SequentialStepSchedule(schedule_configs, **kwargs)
+
+   Bases: :py:obj:`ScheduleBase`
+
+
+   A scheduler that switches between multiple schedules based on the step number.
+
+   Initialize the scheduler.
+
+   :param schedule_configs: A list of schedule configurations.
+   :param \*\*kwargs: Additional arguments to pass to the parent class.
+
+
+   .. py:attribute:: schedule_configs
+
+
+   .. py:method:: get_sequential_schedule_config(step)
+
+
+.. py:class:: SequentialStepScheduleConfig
+
+   .. py:attribute:: schedule
+      :type:  ScheduleBase
+
+
+   .. py:attribute:: start_step
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: end_step
+      :type:  int | None
+      :value: None
+
+
+
+.. py:class:: ConstantSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.ScheduleBase`
+
+
+   Constant value schedule that returns the same value for all steps.
+
+   .. rubric:: Example
+
+   .. code-block:: yaml
+
+       schedule_config:
+           kind: noether.core.schedules.ConstantSchedule
+           value: ${model.optim.lr}
+
+   :param config: Configuration of the constant schedule. See
+                  :class:`~noether.core.schemas.schedules.ConstantScheduleConfig` for details.
+
+
+   .. py:attribute:: value
+
+
+.. py:class:: ConstantScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.ConstantSchedule']
+      :value: 'noether.core.schedules.ConstantSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: value
+      :type:  float
+
+      The constant value that will be returned for all steps. Value should be equal to the learning rate defined in the optimizer.
+
+
+.. py:class:: CosineDecreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.DecreasingProgressSchedule`
+
+
+   Cosine annealing scheduler with decreasing values.
+
+   .. rubric:: Example
+
+   .. code-block:: yaml
+       schedule_config:
+       kind: noether.core.schedules.CosineDecreasingSchedule
+       max_value: ${model.optim.lr} # or just manually set the starting value
+       end_value: 0.0
+
+   Initialize the scheduler.
+
+
+.. py:class:: CosineIncreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.IncreasingProgressSchedule`
+
+
+   Cosine annealing scheduler with increasing values.
+
+   .. rubric:: Example
+
+   .. code-block:: yaml
+       schedule_config:
+       kind: noether.core.schedules.CosineIncreasingSchedule
+       max_value: ${model.optim.lr}
+       start_value: 0.0
+
+   Initialize the scheduler.
+
+
+.. py:class:: CustomSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.ScheduleBase`
+
+
+   Custom schedule that simply returns the values provided in the constructor.
+
+   .. rubric:: Example
+
+   .. code-block:: yaml
+
+       schedule_config:
+           kind: noether.core.schedules.CustomSchedule
+           values:
+               - 1.0e-3
+               - 5.0e-4
+               - 1.0e-4
+
+   :param config: Configuration of the custom schedule. See
+                  :class:`~noether.core.schemas.schedules.CustomScheduleConfig` for details.
+
+
+   .. py:attribute:: values
+
+
+.. py:class:: CustomScheduleConfig(/, **data)
+
+   Bases: :py:obj:`ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.CustomSchedule']
+      :value: 'noether.core.schedules.CustomSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: values
+      :type:  list[float]
+
+      The list of values that will be returned for each step. Values show ben as long as the number of steps.
+
+
+.. py:function:: cosine(step, total_steps)
+
+   cosine schedule from [0 to 1]
+
+
+.. py:function:: linear(step, total_steps)
+
+   linearly increasing from [0 to 1]
+
+
+.. py:function:: polynomial(step, total_steps, power)
+
+   polynomial schedule from [0 to 1]
+   https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.PolynomialLR.html
+
+
+.. py:class:: LinearDecreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.DecreasingProgressSchedule`
+
+
+   A scheduler that decreases linearly from the maximum to minimum value over the total number of steps.
+
+   .. rubric:: Example
+
+   .. code-block:: yaml
+       schedule_config:
+       kind: noether.core.schedules.LinearDecreasingSchedule
+       max_value: ${model.optim.lr}
+       end_value: 0.0
+
+   Initialize the scheduler.
+
+
+.. py:class:: LinearIncreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.IncreasingProgressSchedule`
+
+
+   A scheduler that increases linearly from the minimum to maximum value over the total number of steps.
+
+   .. rubric:: Example
+
+   >>> schedule_config:
+   >>>   kind: noether.core.schedules.LinearIncreasingSchedule
+   >>>   max_value: ${model.optim.lr}
+   >>>   start_value: 0.0
+
+   Initialize the scheduler.
+
+
+.. py:class:: LinearWarmupCosineDecaySchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.ScheduleBase`
+
+
+   A cosine annealing scheduler with linear increasing warmup phase."
+
+   .. rubric:: Example
+
+   .. code-block:: yaml
+       schedule_config:
+       kind: noether.core.schedules.LinearWarmupCosineDecaySchedule
+       warmup_percent: 0.05
+       end_value: 1.0e-6
+       max_value: ${model.optim.lr} # or just manually set the max value
+
+   Takes either warmup_steps or warmup_percent as argument to determine the length of the warmup phase.
+
+   :param config: Configuration for the linear warmup cosine decay schedule. See
+                  :class:`~noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig` for details.
+
+
+   .. py:attribute:: schedule
+      :type:  noether.core.schedules.base.ScheduleBase
+
+
+   .. py:attribute:: warmup_steps
+
+
+   .. py:attribute:: warmup_percent
+
+
+.. py:class:: PolynomialDecreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.DecreasingProgressSchedule`
+
+
+   A scheduler that decreases polynomially from the maximum to minimum value over the total number of steps.
+
+   :param config: Configuration for the polynomial decreasing schedule. See
+                  :class:`~noether.core.schemas.schedules.PolynomialDecreasingScheduleConfig` for details.
+
+   .. rubric:: Example
+
+   .. code-block:: yaml
+
+       schedule_config:
+           kind: noether.core.schedules.PolynomialDecreasingSchedule
+           power: 2.0
+           start_value: ${model.optim.lr} # reference to the lr defined above
+           end_value: 1e-6
+
+
+   .. py:attribute:: power
+
+
+.. py:class:: StepDecreasingSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.DecreasingProgressSchedule`
+
+
+   A scheduler that decreases exponentially from the maximum to minimum value over the total number of steps.
+
+   .. rubric:: Example
+
+   .. code-block:: yaml
+
+       schedule_config:
+           kind: noether.core.schedules.StepDecreasingSchedule
+           factor: 0.1
+           decreases_interval: 0.01
+           max_value: ${model.optim.lr}
+
+   I.e., after each 1% of the total training steps, the value is multiplied by 0.1.
+
+   :param config: The configuration for the scheduler. See
+                  :class:`~noether.core.schemas.schedules.StepDecreasingScheduleConfig` for details.
+
+
+   .. py:attribute:: factor
+
+
+   .. py:attribute:: decreases_interval
+
+
+.. py:class:: StepFixedSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.ScheduleBase`
+
+
+   A scheduler that progresses at fixed steps and increases or decreases by some factor at these steps.
+
+   :param config: Configuration for the step fixed schedule.
+
+   Example:
+   .. code-block:: yaml
+       schedule_config:
+           kind: noether.core.schedules.StepFixedSchedule
+           factor: 0.1
+           start_value: ${model.optim.lr}
+           steps:
+               - 0.01
+               - 0.02
+               - 0.03
+   Lower LR by factor 0.1 at 1%, 2%, and 3% of total training steps.
+
+
+   .. py:attribute:: steps
+
+
+   .. py:attribute:: start_value
+
+
+   .. py:attribute:: factor
+
+
+.. py:class:: StepIntervalSchedule(config)
+
+   Bases: :py:obj:`noether.core.schedules.base.ScheduleBase`
+
+
+   A scheduler that progresses at fixed intervals and increases or decreases by some factor at these intervals.
+
+   :param config: Configuration for the step interval schedule.
+
+   Example:
+
+   .. code-block:: yaml
+       schedule_config:
+           kind: noether.core.schedules.StepIntervalSchedule
+           start_value: 1.0
+           factor: 0.5
+           update_interval: 0.01
+
+
+   .. py:attribute:: start_value
+
+
+   .. py:attribute:: factor
+
+
+   .. py:attribute:: update_interval
+
+

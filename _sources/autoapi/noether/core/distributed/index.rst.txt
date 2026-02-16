@@ -16,3 +16,144 @@ Submodules
    /autoapi/noether/core/distributed/utils/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.distributed.DistributedConfig
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.distributed.barrier
+   noether.core.distributed.get_local_rank
+   noether.core.distributed.get_managed_rank
+   noether.core.distributed.get_managed_world_size
+   noether.core.distributed.get_num_nodes
+   noether.core.distributed.get_rank
+   noether.core.distributed.get_world_size
+   noether.core.distributed.is_data_rank0
+   noether.core.distributed.is_distributed
+   noether.core.distributed.is_local_rank0
+   noether.core.distributed.is_managed
+   noether.core.distributed.is_rank0
+   noether.core.distributed.set_config
+   noether.core.distributed.all_gather_grad
+   noether.core.distributed.all_gather_nograd
+   noether.core.distributed.all_gather_nograd_clipped
+   noether.core.distributed.all_reduce_mean_grad
+   noether.core.distributed.all_reduce_mean_nograd
+   noether.core.distributed.all_reduce_sum_grad
+   noether.core.distributed.all_reduce_sum_nograd
+   noether.core.distributed.run
+   noether.core.distributed.run_managed
+   noether.core.distributed.run_unmanaged
+   noether.core.distributed.accelerator_to_device
+   noether.core.distributed.check_single_device_visible
+   noether.core.distributed.log_device_info
+   noether.core.distributed.parse_devices
+
+
+Package Contents
+----------------
+
+.. py:class:: DistributedConfig
+
+   .. py:method:: is_managed()
+      :staticmethod:
+
+
+
+   .. py:method:: get_local_rank()
+
+
+   .. py:method:: get_num_nodes()
+
+
+   .. py:method:: get_managed_world_size()
+
+
+   .. py:method:: get_managed_rank()
+
+
+   .. py:method:: is_distributed()
+      :staticmethod:
+
+
+
+   .. py:method:: get_rank()
+
+
+   .. py:method:: get_world_size()
+
+
+   .. py:method:: is_data_rank0()
+
+
+   .. py:method:: is_rank0()
+
+
+   .. py:method:: is_local_rank0()
+
+
+   .. py:method:: barrier()
+
+
+.. py:function:: barrier()
+
+.. py:function:: get_local_rank()
+
+.. py:function:: get_managed_rank()
+
+.. py:function:: get_managed_world_size()
+
+.. py:function:: get_num_nodes()
+
+.. py:function:: get_rank()
+
+.. py:function:: get_world_size()
+
+.. py:function:: is_data_rank0()
+
+.. py:function:: is_distributed()
+
+.. py:function:: is_local_rank0()
+
+.. py:function:: is_managed()
+
+.. py:function:: is_rank0()
+
+.. py:function:: set_config(new_config)
+
+.. py:function:: all_gather_grad(x, batch_dim=0)
+
+.. py:function:: all_gather_nograd(x)
+
+.. py:function:: all_gather_nograd_clipped(x, max_length)
+
+.. py:function:: all_reduce_mean_grad(x)
+
+.. py:function:: all_reduce_mean_nograd(x)
+
+.. py:function:: all_reduce_sum_grad(x)
+
+.. py:function:: all_reduce_sum_nograd(x)
+
+.. py:function:: run(main, devices=None, accelerator='gpu', master_port=None)
+
+.. py:function:: run_managed(main, accelerator='gpu', devices=None)
+
+.. py:function:: run_unmanaged(main, devices, accelerator = 'gpu', master_port = None)
+
+.. py:function:: accelerator_to_device(accelerator)
+
+.. py:function:: check_single_device_visible(accelerator)
+
+.. py:function:: log_device_info(accelerator, device_ids)
+
+.. py:function:: parse_devices(accelerator, devices)
+

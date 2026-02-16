@@ -13,3 +13,32 @@ Submodules
    /autoapi/noether/core/extractors/forward_hook/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.extractors.ForwardHook
+
+
+Package Contents
+----------------
+
+.. py:class:: ForwardHook(outputs, raise_exception = False, key = None)
+
+   .. py:attribute:: key
+
+
+   .. py:attribute:: outputs
+
+
+   .. py:attribute:: raise_exception
+      :value: False
+
+
+
+   .. py:attribute:: enabled
+      :value: True
+
+
+

@@ -13,3 +13,41 @@ Submodules
    /autoapi/noether/modeling/modules/decoders/deep_perceiver/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.decoders.DeepPerceiverDecoder
+
+
+Package Contents
+----------------
+
+.. py:class:: DeepPerceiverDecoder(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   A deep Perceiver decoder module. Can be configured with different number of layers and hidden dimensions.
+   However, it should be noted that this layer is not a full-fledged Perceiver, since it only has a cross-attention mechanism.
+
+   :param config: Configuration for the DeepPerceiverDecoder module. See :class:`~noether.core.schemas.modules.decoders.DeepPerceiverDecoderConfig` for available options.
+
+
+   .. py:attribute:: blocks
+
+
+   .. py:method:: forward(kv, queries, attn_kwargs = None, condition = None)
+
+      Forward pass of the model.
+
+      :param kv: The key-value tensor (batch_size, num_latent_tokens, dim).
+      :param queries: The query tensor (batch_size, num_output_queries, dim).
+      :param attn_kwargs: Dict with arguments for the attention (such as the attention mask or rope frequencies). Defaults to None.
+      :param condition: Optional conditioning tensor that can be used in the attention mechanism. This can be used to pass additional conditioning information, etc.
+
+      :returns: The predictions as sparse tensor (batch_size * num_output_pos, num_out_values).
+
+
+

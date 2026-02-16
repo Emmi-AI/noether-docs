@@ -19,11 +19,29 @@ Functions
 
 .. autoapisummary::
 
+   noether.core.distributed.run.accelerator_to_device
+   noether.core.distributed.run.check_single_device_visible
+   noether.core.distributed.run.log_device_info
+   noether.core.distributed.run.parse_devices
+   noether.core.distributed.run.run_managed
+   noether.core.distributed.run.run_unmanaged
    noether.core.distributed.run.run
 
 
 Package Contents
 ----------------
+
+.. py:function:: accelerator_to_device(accelerator)
+
+.. py:function:: check_single_device_visible(accelerator)
+
+.. py:function:: log_device_info(accelerator, device_ids)
+
+.. py:function:: parse_devices(accelerator, devices)
+
+.. py:function:: run_managed(main, accelerator='gpu', devices=None)
+
+.. py:function:: run_unmanaged(main, devices, accelerator = 'gpu', master_port = None)
 
 .. py:function:: run(main, devices=None, accelerator='gpu', master_port=None)
 

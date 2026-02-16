@@ -17,3 +17,248 @@ Submodules
    /autoapi/noether/core/factory/utils/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.factory.Factory
+   noether.core.factory.DatasetFactory
+   noether.core.factory.OptimizerFactory
+   noether.core.factory.ScheduleFactory
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.factory.class_constructor_from_class_path
+
+
+Package Contents
+----------------
+
+.. py:class:: Factory(returns_partials = False)
+
+   Base factory. Implements base structures for creating a single object, a list of objects and a dict
+   of objects.
+
+   For example, creating a list:
+
+   .. code-block:: python
+
+       class Example:
+           def __init__(self, callbacks: list[CallbackConfig] | None = None):
+               # automatic none check in create_list (this is how Factory is implemented)
+               self.callbacks = Factory().create_list(callbacks)
+               # required none check after creating the list (this is how one could implement it without create_list)
+
+
+   Objects can be instantiated from either:
+
+   * :class:`~pydantic.BaseModel`: In this case, the ``kind`` field is used to determine the class path of the
+     object to be instantiated. The full pydantic model is passed to the constructor.
+
+     .. code-block:: python
+
+         class ExampleConfig(pydantic.BaseModel):
+             kind: str
+             param1: int
+             param2: str
+
+
+         class ExampleObject:
+             def __init__(self, config: ExampleConfig):
+                 self.param1 = config.param1
+                 self.param2 = config.param2
+                 # kind is also in the config, but usually not needed in the object itself
+
+
+         example_config = ExampleConfig(kind="path.to.ExampleObject", param1=42, param2="hello")
+         example_object = Factory().create(example_config)
+
+     Using :class:`~pydantic.BaseModel` is the preferred way of instantiating objects as it provides type safety
+     and validation.
+
+   * Dictionary: In this case, the ``kind`` key is used to determine the class path of the object to be
+     instantiated. The full dictionary is passed to the constructor. However, almost all classes in Noether take a
+     config object as input to the constructor. This approach will only work for custom classes that take named
+     arguments in the constructor.
+
+     .. code-block:: python
+
+         example_dict = {"kind": "path.to.ExampleObject", "param1": 42, "param2": "hello"}
+
+
+         class ExampleObject:
+             # constructor takes named arguments directly, and kind popped before passing to constructor
+             def __init__(self, param1: int, param2: str):
+                 self.param1 = param1
+                 self.param2 = param2
+
+
+         example_object = Factory().create(example_dict)
+
+
+   .. py:attribute:: logger
+
+
+   .. py:attribute:: returns_partials
+      :value: False
+
+
+
+   .. py:method:: create(obj_or_kwargs, **kwargs)
+
+      Creates an object if the object is specified as dictionary. If the object was already instantiated, it will
+      simply return the existing object. If ``obj_or_kwargs`` is ``None``, ``None`` is returned.
+
+      :param obj_or_kwargs: Either an existing object or a description of how an object should be instantiated
+                            (dict or :class:`~pydantic.BaseModel`).
+      :param kwargs: Further kwargs that are passed when creating the object. These are often dependencies such as
+                     :class:`~noether.core.utils.training.counter.UpdateCounter`,
+                     :class:`~noether.core.providers.path.PathProvider`,
+                     :class:`~noether.core.providers.metric_property.MetricPropertyProvider`, etc.
+
+      :returns: The instantiated object.
+
+
+
+   .. py:method:: create_list(collection, **kwargs)
+
+      Creates a list of objects by calling the :meth:`create` function for every item in the collection.
+
+      If ``collection`` is ``None``, an empty list is returned.
+
+      :param collection: Either a list of configs how the objects should be instantiated.
+      :param kwargs: Further kwargs that are passed to all object instantiations. These are often dependencies such as
+                     :class:`~noether.core.utils.training.counter.UpdateCounter`,
+                     :class:`~noether.core.providers.path.PathProvider`,
+                     :class:`~noether.core.providers.metric_property.MetricPropertyProvider`, etc.
+
+      :returns: The instantiated list of objects or an empty list.
+
+
+
+   .. py:method:: create_dict(collection, **kwargs)
+
+      Creates a dict of objects by calling the :meth:`create` function for every item in the collection.
+
+      If ``collection`` is ``None``, an empty dictionary is returned.
+
+      :param collection: Either a dict of existing objects or a dict of descriptions how the objects
+                         should be instantiated and what their identifier in the dict is.
+      :param kwargs: Further kwargs that are passed to all object instantiations. These are often dependencies such as
+                     :class:`~noether.core.utils.training.counter.UpdateCounter`,
+                     :class:`~noether.core.providers.path.PathProvider`,
+                     :class:`~noether.core.providers.metric_property.MetricPropertyProvider`, etc.
+
+      :returns: The instantiated dict of objects or an empty dict.
+
+
+
+   .. py:method:: instantiate(object_config = None, **kwargs)
+
+      Instantiates an object based on its fully specified classpath.
+
+      :param object_config: Configuration containing the fully specified type of the object in the ``kind`` field such as: ``"torch.optim.SGD"`` or ``"noether.core.callbacks.CheckpointCallback"``.
+      :param kwargs: kwargs passed to the type when instantiating the object.
+
+      :returns: The instantiated object.
+
+
+
+.. py:class:: DatasetFactory(dataset_wrapper_factory = None)
+
+   Bases: :py:obj:`noether.core.factory.base.Factory`
+
+
+   Specialized factory for datasets. Next to the standard instantiation of datasets, it also supports wrapping of the dataset inside dataset wrappers.
+
+   Example config:
+
+   .. code-block:: yaml
+
+       kind: path.to.model.MyModel
+       dataset_wrappers:
+         - kind: noether.data.base.wrappers.SomeDatasetWrapper
+           param1: value1
+         - kind: noether.data.base.wrappers.AnotherDatasetWrapper
+           param2: value2
+
+
+   .. py:attribute:: dataset_wrapper_factory
+
+
+   .. py:method:: instantiate(dataset_config, **kwargs)
+
+      Instantiates the dataset either based on `dataset_config`
+
+
+      :param dataset_config: Configuration for the dataset. See
+                             :class:`~noether.core.schemas.dataset.DatasetBaseConfig`
+                             for available options including dataset wrappers.
+      :param \*\*kwargs: Additional keyword arguments provided to the parent class.
+
+      :returns: The instantiated dataset, possibly wrapped in dataset wrappers specified in the configuration.
+
+
+
+.. py:class:: OptimizerFactory
+
+   Bases: :py:obj:`noether.core.factory.base.Factory`
+
+
+   Factory for creating optimizers.
+
+   Handles wrapping into :class:`~noether.core.optimizer.OptimizerWrapper` by creating the corresponding constructor
+   for the underlying :class:`~torch.optim.Optimizer`. Objects are returned as partials, as creating the optimizer
+   requires the model parameters from the instantiated model.
+
+
+   .. py:method:: instantiate(optimizer_config)
+
+      Instantiates the optimizer based on the provided configuration.
+
+      :param optimizer_config: Configuration for the optimizer to create. This config contains both the
+                               :class:`~torch.optim.Optimizer` and the :class:`~noether.core.optimizer.OptimizerWrapper` configurations.
+                               See :class:`~noether.core.schemas.optimizers.OptimizerConfig` for available options.
+
+      :returns: A callable that initializes the :class:`~noether.core.optimizer.OptimizerWrapper`.
+
+
+
+.. py:class:: ScheduleFactory(returns_partials = False)
+
+   Bases: :py:obj:`noether.core.factory.base.Factory`
+
+
+   Factory for creating schedules. Handles wrapping into :class:`~noether.core.utils.training.schedule.ScheduleWrapper` which handles update/epoch based
+   scheduling. Additionally, populates the ``effective_batch_size`` and ``updates_per_epoch`` to avoid specifying it
+   in the config.
+
+
+   .. py:method:: create(schedule_config, **kwargs)
+
+      Creates a schedule based on the provided config and wraps it into a :class:`~noether.core.utils.training.schedule.ScheduleWrapper`.
+
+      :param schedule_config: The schedule config or already instantiated schedule. See
+                              :class:`~noether.core.schemas.schedules.AnyScheduleConfig` for available options.
+      :param \*\*kwargs: Additional keyword arguments that are passed to the schedule constructor.
+
+      :returns: The instantiated schedule wrapped in :class:`~noether.core.utils.training.schedule.ScheduleWrapper`.
+
+
+
+.. py:function:: class_constructor_from_class_path(class_path)
+
+   Creates a callable that constructs an object from a classpath. This callable is either a ``type`` (if no further
+   kwargs are needed to be passed) or a :func:`~functools.partial` otherwise. This is equivalent to Hydra instantiation with ``_target_``, which is also based on class paths.
+
+   :param class_path: Fully specified module path of the object. For example: ``"torch.optim.SGD"`` or
+                      ``"noether.core.callbacks.checkpoint.checkpoint.CheckpointCallback"``.
+
+   :returns: A callable that constructs the object.
+
+

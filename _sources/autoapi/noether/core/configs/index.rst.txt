@@ -13,3 +13,44 @@ Submodules
    /autoapi/noether/core/configs/hyperparameters/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.configs.Hyperparameters
+
+
+Package Contents
+----------------
+
+.. py:class:: Hyperparameters
+
+   Utility class to store and log hyperparameters configurations from a Pydantic model.
+
+
+   .. py:method:: save_resolved(stage_hyperparameters, out_file_uri)
+      :staticmethod:
+
+
+      Save the resolved hyperparameters to the output file.
+
+      :param stage_hyperparameters: Hyperparameters to save.
+      :param out_file_uri: Path to the output file.
+
+      :returns: None
+
+
+
+   .. py:method:: log(stage_hyperparameters)
+      :staticmethod:
+
+
+      Logs the stage hyperparameters in YAML format without trailing newlines.
+
+      :param stage_hyperparameters: The hyperparameters configuration to log.
+
+      :returns: None
+
+
+

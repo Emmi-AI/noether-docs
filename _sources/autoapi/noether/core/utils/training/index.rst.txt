@@ -15,3 +15,302 @@ Submodules
    /autoapi/noether/core/utils/training/training_iteration/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.utils.training.UpdateCounter
+   noether.core.utils.training.ScheduleWrapper
+   noether.core.utils.training.TrainingIteration
+
+
+Package Contents
+----------------
+
+.. py:class:: UpdateCounter(start_iteration, end_iteration, updates_per_epoch, effective_batch_size)
+
+   UpdateCounter is used to track the current update, epoch, and sample
+   number during training.
+
+   Initializes UpdateCounter.
+
+   :param start_iteration: The iteration (measured in either epochs, updates, or samples) at which the training
+                           will start. If the training is resumed the values will be updated accordingly.
+   :param end_iteration: The iteration (measured in either epochs, updates, or samples) at which the training will
+                         end.
+   :param updates_per_epoch: Number of updates per epoch.
+   :param effective_batch_size: Effective batch size.
+
+
+   .. py:attribute:: updates_per_epoch
+
+
+   .. py:attribute:: start_iteration
+
+
+   .. py:attribute:: end_iteration
+
+
+   .. py:attribute:: cur_iteration
+
+
+   .. py:attribute:: effective_batch_size
+
+
+   .. py:property:: is_full_epoch
+      :type: bool
+
+
+      Returns True if the current update is a full epoch.
+
+
+   .. py:property:: epoch_as_float
+      :type: float
+
+
+      Returns the current epoch as a float value.
+
+
+   .. py:property:: epoch
+      :type: int | None
+
+
+      Returns the current epoch.
+
+
+   .. py:property:: update
+      :type: int | None
+
+
+      Returns the current update.
+
+
+   .. py:property:: sample
+      :type: int | None
+
+
+      Returns the current sample.
+
+
+   .. py:property:: is_finished
+      :type: bool
+
+
+      Returns True if the end checkpoint is reached.
+
+
+   .. py:method:: next_epoch()
+
+      Increments the current epoch by 1.
+
+
+
+   .. py:method:: next_update()
+
+      Increments the current update by 1.
+
+
+
+   .. py:method:: add_samples(num_samples)
+
+      Adds samples to the current sample count.
+
+
+
+.. py:class:: ScheduleWrapper(schedule, update_counter = None, interval = 'update')
+
+   Wrapper around a schedule that handles getting the value based on an UpdateCounter and whether the schedule is
+   based on updates or epochs.
+
+   :param schedule: The :class:`~noether.core.schedules.base.ScheduleBase` to wrap.
+   :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` to use for getting the
+                          current step. If None, the schedule is assumed to be constant.
+   :param interval: Whether the schedule is based on updates or epochs. Interval should be either "update" or "epoch".
+
+
+   .. py:attribute:: schedule
+
+
+   .. py:attribute:: update_counter
+      :value: None
+
+
+
+   .. py:attribute:: interval
+      :value: 'update'
+
+
+
+   .. py:method:: get_value()
+
+      Get the current value of the schedule based on the current step in the UpdateCounter.
+
+
+
+.. py:class:: TrainingIteration(epoch = None, update = None, sample = None)
+
+   .. py:attribute:: epoch
+      :value: None
+
+
+
+   .. py:attribute:: update
+      :value: None
+
+
+
+   .. py:attribute:: sample
+      :value: None
+
+
+
+   .. py:method:: copy()
+
+      Creates a copy of a TrainingIteration object.
+
+
+
+   .. py:property:: specified_properties_count
+      :type: int
+
+
+      Counts the number of specified (non-None) properties.
+
+
+   .. py:property:: is_fully_specified
+      :type: bool
+
+
+      Checks if all properties are specified.
+
+
+   .. py:property:: is_minimally_specified
+      :type: bool
+
+
+      Checks if at least one property is specified.
+
+
+   .. py:method:: get_n_equal_properties(other)
+
+      Counts the number of equal properties between two TrainingIteration objects.
+
+      :param other: The other TrainingIteration object to compare with.
+
+
+
+   .. py:method:: to_fully_specified(updates_per_epoch, effective_batch_size)
+
+      Converts the TrainingIteration object to a fully specified TrainingIteration object.
+      This method calculates the missing properties based on the specified ones.
+
+      :param updates_per_epoch: The number of updates per epoch.
+      :param effective_batch_size: The effective batch size used in the training process.
+
+
+
+   .. py:method:: from_dict(data)
+      :classmethod:
+
+
+
+   .. py:method:: has_same_specified_properties(other)
+
+      Checks if the specified properties of two TrainingIteration objects are the same.
+
+      :param other: The other TrainingIteration object to compare with.
+
+
+
+   .. py:method:: from_string(value)
+      :staticmethod:
+
+
+      Converts a training iteration string into a TrainingIteration object.
+
+      The training iteration string should be in the format "E{epoch}_U{update}_S{sample}".
+      For instance: `E5_U12_S123` corresponds to `TrainingIteration(epoch=5, update=12, sample=123)`.
+
+      :param value: The TrainingIteration string to convert.
+
+
+
+   .. py:method:: contains_string(source)
+      :staticmethod:
+
+
+      Checks if the source string contains a training iteration string.
+
+      :param source: The source string to check.
+
+      :returns: True if the source string contains a training iteration string, False otherwise.
+      :rtype: bool
+
+
+
+   .. py:method:: find_string(source)
+      :staticmethod:
+
+
+      Checks if the source string contains a training iteration string and returns it.
+
+      :param source: The source string to check.
+
+      :returns: The found TrainingIteration string.
+      :rtype: str
+
+
+
+   .. py:method:: from_filename(fname)
+      :staticmethod:
+
+
+      Creates a TrainingIteration object from a filename that contains a training iteration string.
+
+      :param fname: The filename to extract the training iteration string from.
+
+      :returns: The created object.
+      :rtype: TrainingIteration
+
+
+
+   .. py:method:: to_fully_specified_from_filenames(directory, training_iteration, prefix = None, suffix = None)
+      :staticmethod:
+
+
+      Converts a minimally specified TrainingIteration to a fully specified one
+      from filenames in a given folder.
+      The first file containing a training iteration string and optionally starting
+      with `prefix` or ending with `suffix` is used.
+
+      :param directory: The directory containing training iteration files.
+      :param training_iteration: The TrainingIteration object to match against.
+      :param prefix: Optional prefix to filter files.
+      :param suffix: Optional suffix to filter files.
+
+      :returns: The created object.
+      :rtype: TrainingIteration
+
+      :raises FileNotFoundError: If no matching file is found.
+
+
+
+   .. py:method:: to_target_specification(target)
+
+      Creates a new object that matches the target specification.
+
+      Example:
+      ```
+      self=TrainingIteration(epoch=6, update=12, sample=123)`
+      target=TrainingIteration(epoch=5)
+      print(self.to_target_specification(target))
+      TrainingIteration(epoch=6)
+      ```
+      :param target: The target TrainingIteration object to match against.
+
+      :returns: The created object.
+      :rtype: TrainingIteration
+
+
+

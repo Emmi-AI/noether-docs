@@ -17,3 +17,175 @@ Submodules
    /autoapi/noether/core/utils/common/validation/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.utils.common.Stopwatch
+   noether.core.utils.common.SizedIterable
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.utils.common.lower_type_name
+   noether.core.utils.common.pascal_to_snake
+   noether.core.utils.common.snake_type_name
+   noether.core.utils.common.select_with_path
+   noether.core.utils.common.validate_path
+   noether.core.utils.common.check_all_none
+   noether.core.utils.common.check_at_least_one
+   noether.core.utils.common.check_at_most_one
+   noether.core.utils.common.check_exclusive
+   noether.core.utils.common.check_inclusive
+   noether.core.utils.common.float_to_integer_exact
+
+
+Package Contents
+----------------
+
+.. py:function:: lower_type_name(obj)
+
+   Return the type name of an object in lowercase.
+
+
+.. py:function:: pascal_to_snake(pascal_case)
+
+   Convert pascal/camel to snake case using Regex.
+
+   Handles acronyms and numbers correctly.
+   .. rubric:: Example
+
+   XMLParser -> xml_parser
+   HTTPClient -> http_client
+   V2Model -> v2_model
+
+
+.. py:function:: snake_type_name(obj)
+
+   Return the type name of an object in snake case.
+
+
+.. py:function:: select_with_path(obj, path)
+
+   Access values of an object, a list or a dictionary using a string path.
+
+   :param obj: The object to access.
+   :param path: The path to the value, e.g. "a.b.c" or "a[0].b.c".
+
+
+.. py:function:: validate_path(path, exists = 'must', suffix = None, mkdir = False)
+
+   Converts a string to a Path, validates it, and optionally creates it.
+
+   :param path: The path string to validate.
+   :param exists:
+                  - "must": Raises FileNotFoundError if the path doesn't exist.
+                  - "must_not": Raises FileExistsError if the path already exists.
+                  - "any": Performs no existence check.
+   :param suffix: If provided, checks if the path ends with this suffix.
+   :param mkdir: If True, creates the directory path (like mkdir -p).
+
+   :returns: The validated path.
+   :rtype: Path
+
+
+.. py:class:: Stopwatch
+
+   A stopwatch class to measure elapsed time.
+
+
+   .. py:method:: start()
+
+      Start the stopwatch.
+
+
+
+   .. py:method:: stop()
+
+      Stop the stopwatch and return the elapsed time since the last lap.
+
+
+
+   .. py:method:: lap()
+
+      Record a lap time and return the elapsed time since the last lap.
+
+
+
+   .. py:property:: last_lap_time
+      :type: float
+
+
+      Return the last lap time.
+
+
+   .. py:property:: lap_count
+      :type: int
+
+
+      Return the number of laps recorded.
+
+
+   .. py:property:: average_lap_time
+      :type: float
+
+
+      Return the average lap time.
+
+
+   .. py:property:: elapsed_seconds
+      :type: float
+
+
+      Return the total elapsed time since the stopwatch was started.
+
+
+   .. py:property:: elapsed_milliseconds
+      :type: float
+
+
+      Return the total elapsed time since the stopwatch was started in milliseconds.
+
+
+.. py:class:: SizedIterable
+
+   Bases: :py:obj:`Protocol`
+
+
+   Sampler needs to implement __len__ and be iterable such that the type checking doesn't complain.
+
+
+.. py:function:: check_all_none(*args)
+
+   Checks if all arguments are None.
+
+
+.. py:function:: check_at_least_one(*args)
+
+   Checks if at least one of the arguments is not None.
+
+
+.. py:function:: check_at_most_one(*args)
+
+   Checks if at most one of the arguments is not None.
+
+
+.. py:function:: check_exclusive(*args)
+
+   Checks if exactly one of the arguments is not None.
+
+
+.. py:function:: check_inclusive(*args)
+
+   Checks if either all arguments are not None or if all are None.
+
+
+.. py:function:: float_to_integer_exact(f)
+
+   Converts floats without decimals to int.
+
+

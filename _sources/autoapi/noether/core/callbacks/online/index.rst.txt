@@ -14,3 +14,183 @@ Submodules
    /autoapi/noether/core/callbacks/online/track_outputs/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.callbacks.online.BestMetricCallback
+   noether.core.callbacks.online.TrackAdditionalOutputsCallback
+
+
+Package Contents
+----------------
+
+.. py:class:: BestMetricCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   A callback that keeps track of the best metric value over a training run for a certain metric (i.e., source_metric_key) while also logging one or more target metrics.
+
+   For example, track the test loss the epoch with the best validation loss to simulate early stopping.
+
+   Example config:
+
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.BestMetricCallback
+         every_n_epochs: 1
+         source_metric_key: loss/val/total
+         target_metric_keys:
+           -  loss/test/total
+
+   In this example, whenever a new best validation loss is found, the corresponding test loss is logged under the key ``loss/test/total/at_best/loss/val/total``.
+
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.BestMetricCallbackConfig`
+                           for available options including source and target metric keys.
+   :param \*\*kwargs: Additional keyword arguments provided to the parent class.
+
+
+   .. py:attribute:: source_metric_key
+
+
+   .. py:attribute:: target_metric_keys
+
+
+   .. py:attribute:: optional_target_metric_keys
+
+
+   .. py:attribute:: higher_is_better
+
+
+   .. py:attribute:: best_metric_value
+
+
+   .. py:attribute:: previous_log_values
+      :type:  dict[str, Any]
+
+
+   .. py:method:: periodic_callback(**__)
+
+      Hook called periodically based on the configured intervals.
+
+      This method is the primary entry point for periodic actions in subclasses. It is
+      triggered when any of the configured intervals (``every_n_epochs``, ``every_n_updates``,
+      or ``every_n_samples``) are reached.
+
+      Subclasses should override this method to implement periodic logic such as:
+
+      * Calculating and logging expensive validation metrics
+      * Saving specific model checkpoints or artifacts
+      * Visualizing training progress (e.g., plotting samples)
+      * Adjusting training hyperparameters or model state
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance providing details about
+                             the current training progress (epoch, update, sample counts).
+      :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
+                         (e.g., from :meth:`after_epoch` or :meth:`after_update`).
+
+
+
+.. py:class:: TrackAdditionalOutputsCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Callback that is invoked during training after every gradient step to track certain outputs from the update step.
+   The update_outputs that are provided in the track_after_accumulation_step method are the additional_outputs field from the TrainerResult returned by the trainer's update step.
+
+
+   The update_outputs that are provided in the track_after_accumulation_step method are the additional_outputs field from the TrainerResult returned by the trainer's update step.
+
+   The provided ``update_outputs`` are assumed to be a dictionary and outputs that match keys or patterns are tracked.
+   An update output matches if either the key matches exactly, e.g. {"some_output": ...} and keys["some_output"];
+   or if one of the patterns is contained in the update key name, e.g. {"some_loss": ...} and patterns = ["loss"].
+
+   Example config:
+
+   .. code-block:: yaml
+
+       - kind: noether.core.callbacks.TrackAdditionalOutputsCallback
+         name: TrackAdditionalOutputsCallback
+         every_n_updates: 1
+         keys:
+           - "surface_pressure_loss"
+
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig`
+                           for available options including keys and patterns to track.
+   :param \*\*kwargs: Additional keyword arguments provided to the parent class.
+
+
+   .. py:attribute:: out
+      :type:  pathlib.Path | None
+
+
+   .. py:attribute:: patterns
+
+
+   .. py:attribute:: keys
+
+
+   .. py:attribute:: verbose
+
+
+   .. py:attribute:: tracked_values
+      :type:  collections.defaultdict[str, list]
+
+
+   .. py:attribute:: reduce
+
+
+   .. py:attribute:: log_output
+
+
+   .. py:attribute:: save_output
+
+
+   .. py:method:: track_after_accumulation_step(*, update_counter, update_outputs, **_)
+
+      Track the specified outputs after each accumulation step.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` object to track the number of updates.
+      :param update_outputs: The additional_outputs field from the TrainerResult returned by the trainer's update step.
+                             Note that the base train_step method in the base trainer does not provide any additional outputs by
+                             default, and hence this callback can only be used if the train_step is modified to provide additional
+                             outputs.
+      :param \*\*_: Additional unused keyword arguments.
+
+
+
+   .. py:method:: periodic_callback(*, update_counter, **_)
+
+      Hook called periodically based on the configured intervals.
+
+      This method is the primary entry point for periodic actions in subclasses. It is
+      triggered when any of the configured intervals (``every_n_epochs``, ``every_n_updates``,
+      or ``every_n_samples``) are reached.
+
+      Subclasses should override this method to implement periodic logic such as:
+
+      * Calculating and logging expensive validation metrics
+      * Saving specific model checkpoints or artifacts
+      * Visualizing training progress (e.g., plotting samples)
+      * Adjusting training hyperparameters or model state
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param interval_type: "epoch", "update", "sample" or "eval" indicating which interval triggered this callback.
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance providing details about
+                             the current training progress (epoch, update, sample counts).
+      :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
+                         (e.g., from :meth:`after_epoch` or :meth:`after_update`).
+
+
+

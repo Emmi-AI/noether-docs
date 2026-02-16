@@ -19,3 +19,687 @@ Submodules
    /autoapi/noether/modeling/modules/mlp/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.DotProductAttention
+   noether.modeling.modules.PerceiverAttention
+   noether.modeling.modules.TransolverAttention
+   noether.modeling.modules.PerceiverBlock
+   noether.modeling.modules.TransformerBlock
+   noether.modeling.modules.DeepPerceiverDecoder
+   noether.modeling.modules.SupernodePooling
+   noether.modeling.modules.ContinuousSincosEmbed
+   noether.modeling.modules.LayerScale
+   noether.modeling.modules.LinearProjection
+   noether.modeling.modules.UnquantizedDropPath
+   noether.modeling.modules.MLP
+   noether.modeling.modules.UpActDownMlp
+
+
+Package Contents
+----------------
+
+.. py:class:: DotProductAttention(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Scaled dot-product attention module.
+
+   :param config: Configuration for the DotProductAttention module. See
+                  :class:`~noether.core.schemas.modules.AttentionConfig` for available options.
+
+
+   .. py:attribute:: num_heads
+      :value: None
+
+
+
+   .. py:attribute:: head_dim
+
+
+   .. py:attribute:: init_weights
+      :value: None
+
+
+
+   .. py:attribute:: use_rope
+      :value: None
+
+
+
+   .. py:attribute:: dropout
+      :value: None
+
+
+
+   .. py:attribute:: proj_dropout
+
+
+   .. py:attribute:: qkv
+
+
+   .. py:attribute:: proj
+
+
+   .. py:method:: forward(x, attn_mask = None, freqs = None)
+
+      Forward function of the DotProductAttention module.
+
+      :param x: Tensor to apply self-attention over, shape (batch size, sequence length, hidden_dim).
+      :param attn_mask: For causal attention (i.e., no attention over the future token) a attention mask should be provided. Defaults to None.
+      :param freqs: Frequencies for Rotary Positional Embedding (RoPE) of queries/keys. None if use_rope=False.
+
+      :returns: Returns the output of the attention module.
+
+
+
+.. py:class:: PerceiverAttention(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Perceiver style attention module. This module is similar to a cross-attention modules.
+
+   :param config: Configuration for the PerceiverAttention module. See
+                  :class:`~noether.core.schemas.modules.AttentionConfig` for available options.
+
+
+   .. py:attribute:: num_heads
+      :value: None
+
+
+
+   .. py:attribute:: head_dim
+
+
+   .. py:attribute:: init_weights
+      :value: None
+
+
+
+   .. py:attribute:: use_rope
+      :value: None
+
+
+
+   .. py:attribute:: kv
+
+
+   .. py:attribute:: q
+
+
+   .. py:attribute:: proj
+
+
+   .. py:attribute:: dropout
+      :value: None
+
+
+
+   .. py:attribute:: proj_dropout
+
+
+   .. py:method:: forward(q, kv, attn_mask = None, q_freqs = None, k_freqs = None)
+
+      Forward function of the PerceiverAttention module.
+
+      :param q: Query tensor, shape (batch size, number of points/tokens, hidden_dim).
+      :param kv: Key/value tensor, shape (batch size, number of latent tokens, hidden_dim).
+      :param attn_mask: When applying causal attention, an attention mask is required. Defaults to None.
+      :param q_freqs: Frequencies for Rotary Positional Embedding (RoPE) of queries. None if use_rope=False.
+      :param k_freqs: Frequencies for Rotary Positional Embedding (RoPE) of keys. None if use_rope=False.
+
+      :returns: Returns the output of the perceiver attention module.
+
+
+
+.. py:class:: TransolverAttention(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Adapted from https://github.com/thuml/Transolver/blob/main/Car-Design-ShapeNetCar/models/Transolver.py
+   - Readable reshaping operations via einops
+   - Merged qkv linear layer for higher GPU utilization
+   - F.scaled_dot_product_attention instead of slow pytorch attention
+   - Possibility to mask tokens (required to process variable sized inputs)
+
+   :param config: Configuration for the Transolver attention module. See
+                  :class:`~noether.core.schemas.modules.AttentionConfig` for available options.
+
+
+   .. py:attribute:: num_heads
+      :value: None
+
+
+
+   .. py:attribute:: dropout
+      :value: None
+
+
+
+   .. py:attribute:: temperature
+
+
+   .. py:attribute:: in_project_x
+
+
+   .. py:attribute:: in_project_fx
+
+
+   .. py:attribute:: in_project_slice
+
+
+   .. py:attribute:: qkv
+
+
+   .. py:attribute:: proj
+
+
+   .. py:attribute:: proj_dropout
+
+
+   .. py:method:: create_slices(x, num_input_points, attn_mask = None)
+
+      Given a set of points, project them to a fixed number of slices using the computed the slice weights per token.
+
+      :param x: Input tensor with shape (batch_size, num_input_points, hidden_dim).
+      :param num_input_points: Number of input points.
+      :param attn_mask: Mask to mask out certain token for the attention. Defaults to None.
+
+      :returns: Tensor with the projected slice tokens and the slice weights.
+
+
+
+   .. py:method:: forward(x, attn_mask = None)
+
+      Forward pass of the Transolver attention module.
+
+      :param x: Input tensor with shape (batch_size, seqlen, hidden_dim).
+      :param attn_mask: Attention mask tensor with shape (batch_size). Defaults to None.
+
+      :returns: Tensor after applying the transolver attention mechanism.
+
+
+
+.. py:class:: PerceiverBlock(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   For a self-attention module, the input tensor for the query, key, and value are the same. The PerceiverBlock,
+   takes different input tensors for the query and the key/value.
+
+   :param config: Configuration of the PerceiverBlock. See :class:`~noether.core.schemas.modules.blocks.PerceiverBlockConfig`
+   :param for available options.:
+
+
+   .. py:attribute:: norm1q
+
+
+   .. py:attribute:: norm1kv
+
+
+   .. py:attribute:: attn
+
+
+   .. py:attribute:: ls1
+
+
+   .. py:attribute:: drop_path1
+
+
+   .. py:attribute:: norm2
+
+
+   .. py:attribute:: mlp
+
+
+   .. py:attribute:: ls2
+
+
+   .. py:attribute:: drop_path2
+
+
+   .. py:method:: forward(q, kv, condition = None, attn_kwargs = None)
+
+      Forward pass of the PerceiverBlock.
+
+      :param q: Input tensor with shape (batch_size, seqlen/num_tokens, hidden_dim) for the query representations.
+      :param kv: Input tensor with shape (batch_size, seqlen/num_tokens, hidden_dim) for the key and value representations.
+      :param condition: Conditioning vector. If provided, the attention and MLP will be scaled, shifted and gated
+                        feature-wise with predicted values from this vector.
+      :param attn_kwargs: Dict with arguments for the attention (such as the attention mask or rope frequencies). Defaults to None.
+
+      :returns: Tensor after the forward pass of the PerceiverBlock.
+
+
+
+.. py:class:: TransformerBlock(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   A transformer block with a single attention layer and a feedforward layer.
+
+   :param config: Configuration for the transformer block. See
+                  :class:`~noether.core.schemas.modules.blocks.TransformerBlockConfig`
+                  for available options.
+
+
+   .. py:attribute:: norm1
+
+
+   .. py:attribute:: attention_block
+
+
+   .. py:attribute:: ls1
+
+
+   .. py:attribute:: drop_path1
+
+
+   .. py:attribute:: norm2
+
+
+   .. py:attribute:: mlp
+
+
+   .. py:attribute:: ls2
+
+
+   .. py:attribute:: drop_path2
+
+
+   .. py:method:: forward(x, condition = None, attn_kwargs = None)
+
+      Forward pass of the transformer block.
+
+      :param x: Input tensor with shape (batch_size, seqlen/num_tokens, hidden_dim).
+      :param condition: Conditioning vector. If provided, the attention and MLP will be scaled, shifted and gated
+                        feature-wise with predicted values from this vector.
+      :param attn_kwargs: Dict with arguments for the attention (such as the attention mask or rope frequencies). Defaults to None.
+
+      :returns: Tensor after the forward pass of the transformer block.
+
+
+
+.. py:class:: DeepPerceiverDecoder(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   A deep Perceiver decoder module. Can be configured with different number of layers and hidden dimensions.
+   However, it should be noted that this layer is not a full-fledged Perceiver, since it only has a cross-attention mechanism.
+
+   :param config: Configuration for the DeepPerceiverDecoder module. See :class:`~noether.core.schemas.modules.decoders.DeepPerceiverDecoderConfig` for available options.
+
+
+   .. py:attribute:: blocks
+
+
+   .. py:method:: forward(kv, queries, attn_kwargs = None, condition = None)
+
+      Forward pass of the model.
+
+      :param kv: The key-value tensor (batch_size, num_latent_tokens, dim).
+      :param queries: The query tensor (batch_size, num_output_queries, dim).
+      :param attn_kwargs: Dict with arguments for the attention (such as the attention mask or rope frequencies). Defaults to None.
+      :param condition: Optional conditioning tensor that can be used in the attention mechanism. This can be used to pass additional conditioning information, etc.
+
+      :returns: The predictions as sparse tensor (batch_size * num_output_pos, num_out_values).
+
+
+
+.. py:class:: SupernodePooling(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Supernode pooling layer.
+
+   The permutation of the supernodes is preserved through the message passing (contrary to the (GP-)UPT code).
+   Additionally, radius is used instead of radius_graph, which is more efficient.
+
+   Initialize the SupernodePooling.
+
+   :param config: Configuration for the SupernodePooling module. See
+                  :class:`~noether.core.schemas.modules.encoders.SupernodePoolingConfig` for available options.
+
+
+   .. py:attribute:: radius
+
+
+   .. py:attribute:: k
+
+
+   .. py:attribute:: max_degree
+
+
+   .. py:attribute:: spool_pos_mode
+
+
+   .. py:attribute:: readd_supernode_pos
+
+
+   .. py:attribute:: aggregation
+
+
+   .. py:attribute:: input_features_dim
+
+
+   .. py:attribute:: pos_embed
+
+
+   .. py:attribute:: output_dim
+
+
+   .. py:method:: compute_src_and_dst_indices(input_pos, supernode_idx, batch_idx = None)
+
+      Compute the source and destination indices for the message passing to the supernodes.
+
+      :param input_pos: Sparse tensor with shape (batch_size * number of points, 3), representing the input geometries.
+      :param supernode_idx: Indexes of the supernodes in the sparse tensor input_pos.
+      :param batch_idx: 1D tensor, containing the batch index of each entry in input_pos. Default None.
+
+      :returns: Tensor with src and destination indexes for the message passing into the supernodes.
+
+
+
+   .. py:method:: create_messages(input_pos, src_idx, dst_idx, supernode_idx, input_features = None)
+
+      Create messages for the message passing to the supernodes, based on different positional encoding
+      representations.
+
+      :param input_pos: Tensor of shape (batch_size * number_of_points_per_sample, {2,3}), representing the point cloud
+                        representation of the input geometry.
+      :param src_idx: Index of the source nodes from input_pos.
+      :param dst_idx: Source index of the destination nodes from input_pos tensor. These indexes should be the matching
+                      supernode indexes.
+      :param supernode_idx: Indexes of the node in input_pos that are considered supernodes.
+
+      :raises NotImplementedError: Raised if the mode is not implemented. Either "abspos", "relpos" or "absrelpos" are
+          allowed.
+
+      :returns:
+
+                Tensor with messages for the message passing into the super nodes and the embedding coordinates of the
+                    supernodes.
+
+
+
+   .. py:method:: accumulate_messages(x, dst_idx, supernode_idx, batch_idx = None)
+
+      Method to accumulate the messages of neighbouring points into the supernodes.
+
+      :param x: Tensor containing the message representation of each neighbour representation.
+      :param dst_idx: Index of the destination (i.e., supernode) where each message should go to.
+      :param supernode_idx: Indexes of the supernode in the input point cloud.
+      :param batch_idx: Batch index of the points in the sparse tensor.
+
+      :returns: Tensor with the aggregated messages for each supernode.
+
+
+
+   .. py:method:: forward(input_pos, supernode_idx, batch_idx = None, input_features = None)
+
+      Forward pass of the supernode pooling layer.
+
+      :param input_pos: Sparse tensor with shape (batch_size * number_of_points_per_sample, 3), representing the point cloud representation of the input geometry.
+      :param supernode_idx: indexes of the supernodes in the sparse tensor input_pos.
+      :param batch_idx: 1D tensor, containing the batch index of each entry in input_pos. Default None.
+      :param input_features: Sparse tensor with shape (batch_size * number_of_points_per_sample, number_of_features)
+
+      :returns: Tensor with the aggregated messages for each supernode.
+
+
+
+.. py:class:: ContinuousSincosEmbed(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Embedding layer for continuous coordinates using sine and cosine functions.
+   The original implementation from the Attenion is All You Need paper, deals with descrete 1D cordinates (i.e., a sequence).
+   Howerver, this implementation is able to deal with 2D and 3D coordinate systems as well.
+
+
+   :param config: Configuration for the ContinuousSincosEmbed module. See :class:`~noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig` for the available options.
+
+
+   .. py:attribute:: omega
+      :type:  torch.Tensor
+
+
+   .. py:attribute:: padding_tensor
+      :type:  torch.Tensor
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: input_dim
+
+
+   .. py:attribute:: ndim_padding
+
+
+   .. py:attribute:: sincos_padding
+
+
+   .. py:attribute:: max_wavelength
+
+
+   .. py:attribute:: padding
+
+
+   .. py:method:: forward(coords)
+
+      Forward method of the ContinuousSincosEmbed layer.
+
+      :param coords: Tensor of coordinates. The shape of the tensor should be [batch size, number of points, coordinate dimension] or [number of points, coordinate dimension].
+
+      :raises NotImplementedError: Only supports sparse (i.e. [number of points, coordinate dimension]) or dense (i.e. [batch size, number of points, coordinate dimension]) coordinates systems.
+
+      :returns: Tensor with embedded coordinates.
+
+
+
+.. py:class:: LayerScale(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   LayerScale module scales the input tensor by a learnable parameter gamma.
+
+   Initialize the LayerScale module.
+   :param config: Configuration for the LayerScale module. See :class:`~noether.core.schemas.modules.layers.LayerScaleConfig` for details.
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the LayerScale module.
+
+      :param x: Input tensor to be scaled.
+
+      :returns: Tensor scaled by the gamma parameter.
+
+
+
+.. py:class:: LinearProjection(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   LinearProjection is a linear projection layer that can be used for 1D, 2D, and 3D data.
+
+   :param config: The configuration of the LinearProjection. See :class:`~noether.core.schemas.modules.layers.LinearProjectionConfig` for available options.
+
+   :raises NotImplementedError: raises not implemented error if the number of dimensions of the input domain is bigger than 4.
+
+
+   .. py:attribute:: project
+      :type:  torch.nn.Linear | torch.nn.Conv1d | torch.nn.Conv2d | torch.nn.Conv3d | torch.nn.Identity
+
+
+   .. py:attribute:: init_weights
+
+
+   .. py:method:: reset_parameters()
+
+      Reset the parameters of the MLP with a specific initialization. Options are "torch" (i.e., default) or
+          "truncnormal002".
+
+      :raises NotImplementedError: raised if the specified initialization is not implemented.
+
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the LinearProjection.
+
+      :param x: Input tensor to the LinearProjection.
+
+      :returns: Output tensor from the LinearProjection.
+
+
+
+.. py:class:: UnquantizedDropPath(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Unquantized drop path (Stochastic Depth, https://arxiv.org/abs/1603.09382) per sample. Unquantized means
+   that dropped paths are still calculated. Number of dropped paths is fully stochastic, i.e., it can happen that
+   not a single path is dropped or that all paths are dropped. In a quantized drop path, the same amount of
+   paths are dropped in each forward pass, resulting in large speedups with high drop_prob values. See
+   https://arxiv.org/abs/2212.04884 for more discussion. UnquantizedDropPath does not provide any speedup,
+   consider using a quantized version if large drop_prob values are used.
+
+   Adapted from https://github.com/huggingface/pytorch-image-models/blob/main/timm/layers/drop.py#L150
+
+   Initialize the UnquantizedDropPath module.
+
+   :param config: Configuration for the UnquantizedDropPath module. See :class:`~noether.core.schemas.modules.layers.UnquantizedDropPathConfig` for the available options.
+
+
+   .. py:attribute:: drop_prob
+
+
+   .. py:attribute:: scale_by_keep
+
+
+   .. py:property:: keep_prob
+
+      Return the keep probability. I.e. the probability to keep a path, which is 1 - drop_prob.
+
+      :returns: Float value of the keep probability.
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the UnquantizedDropPath module.
+
+      :param x: Tensor to apply the drop path. Shape: (batch_size, ...).
+
+      :returns: (batch_size, ...). If drop_prob is 0, the input tensor is returned. If drop_prob is 1, a tensor with zeros is returned.
+      :rtype: Tensor with drop path applied. Shape
+
+
+
+   .. py:method:: extra_repr()
+
+      Extra representation of the UnquantizedDropPath module.
+
+      :returns: Return a string representation of the module.
+
+
+
+.. py:class:: MLP(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Implements a Multi-Layer Perceptron (MLP) with configurable number of layers, hidden dimension activation functions and weight initialization methods.
+   Only one hidden dimension is supported for simplicity, i.e., all hidden layers have the same dimension.
+   The MLP will always have one input layer and one output layer. When num_layers=0, the MLP is a two layer network with one non-linearity in between.
+   When num_layers>=1, the MLP has additional hidden layers, etc.
+
+   Initialize the MLP.
+
+   :param config: Configuration object for the MLP. See :class:`~noether.core.schemas.modules.mlp.MLPConfig` for available options.
+
+
+   .. py:attribute:: init_weights
+
+
+   .. py:attribute:: mlp
+
+
+   .. py:method:: reset_parameters()
+
+      Reset the parameters of the MLP with a specific initialization. Options are "torch" (i.e., default), or
+          "truncnormal002".
+
+      :raises NotImplementedError: raised if the specified initialization is not implemented.
+
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the MLP.
+
+      :param x: Input tensor to the MLP.
+
+      :returns: Output tensor from the MLP.
+
+
+
+.. py:class:: UpActDownMlp(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   UpActDownMlp is a vanilla MLP with an up-projection followed by an GELU activation function and a
+   down-projection to the original input dim.
+
+   Initialize the UpActDownMlp.
+
+   :param config: The configuration of the UpActDownMlp.
+
+
+   .. py:attribute:: init_weights
+
+
+   .. py:attribute:: fc1
+
+
+   .. py:attribute:: act
+
+
+   .. py:attribute:: fc2
+
+
+   .. py:method:: reset_parameters()
+
+      Reset the parameters of the MLP with a specific initialization. Options are "torch" (i.e., default), or
+          "truncnormal002".
+
+      :raises NotImplementedError: raised if the specified initialization is not implemented.
+
+
+
+   .. py:method:: forward(x)
+
+      Forward function of the UpActDownMlp.
+
+      :param x: Input tensor to the MLP.
+
+      :returns: Output tensor from the MLP.
+
+
+

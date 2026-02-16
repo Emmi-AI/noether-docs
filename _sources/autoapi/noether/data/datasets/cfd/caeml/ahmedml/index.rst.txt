@@ -14,3 +14,89 @@ Submodules
    /autoapi/noether/data/datasets/cfd/caeml/ahmedml/split/index
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.caeml.ahmedml.AhmedMLDataset
+   noether.data.datasets.cfd.caeml.ahmedml.AhmedMLDefaultSplitIDs
+
+
+Package Contents
+----------------
+
+.. py:class:: AhmedMLDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.caeml.dataset.CAEMLDataset`
+
+
+   Dataset implementation for AhmedML CFD simulations.
+
+   :param dataset_config: Configuration for the dataset.
+
+   Initialize the AhmedML dataset.
+
+   :param dataset_config: Configuration for the dataset.
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+
+.. py:class:: AhmedMLDefaultSplitIDs(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+
+
+   Default split IDs for AhmedML dataset with validation.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: EXPECTED_TRAIN_SIZE
+      :value: 400
+
+
+
+   .. py:attribute:: EXPECTED_VAL_SIZE
+      :value: 50
+
+
+
+   .. py:attribute:: EXPECTED_TEST_SIZE
+      :value: 50
+
+
+
+   .. py:attribute:: DATASET_NAME
+      :value: 'AhmedML'
+
+
+
+   .. py:attribute:: train
+      :type:  set[int]
+
+
+   .. py:attribute:: val
+      :type:  set[int]
+
+
+   .. py:attribute:: test
+      :type:  set[int]
+
+
+   .. py:method:: create_split()
+      :staticmethod:
+
+
+      A helper function to create a random split of the dataset. The default indices were created with seed=42.
+
+
+
