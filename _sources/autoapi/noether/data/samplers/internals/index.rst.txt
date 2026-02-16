@@ -4,3 +4,30 @@ noether.data.samplers.internals
 .. py:module:: noether.data.samplers.internals
 
 
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.samplers.internals.SamplerOutput
+
+
+Module Contents
+---------------
+
+.. py:class:: SamplerOutput
+
+   Bases: :py:obj:`NamedTuple`
+
+
+   Output of the InterleavedSampler. Contains the sample index and the dataset index.
+
+
+   .. py:attribute:: is_full_batch
+      :type:  bool
+
+
+   .. py:attribute:: idx
+      :type:  int
+
+

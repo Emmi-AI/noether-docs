@@ -237,7 +237,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -780,7 +780,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -788,6 +788,38 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.data.samplers.internals">
 <span id="noether-data-samplers-internals"></span><h1>noether.data.samplers.internals<a class="headerlink" href="#module-noether.data.samplers.internals" title="Link to this heading">¶</a></h1>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.samplers.internals.SamplerOutput" title="noether.data.samplers.internals.SamplerOutput"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SamplerOutput</span></code></a></p></td>
+<td><p>Output of the InterleavedSampler. Contains the sample index and the dataset index.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.data.samplers.internals.SamplerOutput">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.samplers.internals.</span></span><span class="sig-name descname"><span class="pre">SamplerOutput</span></span><a class="headerlink" href="#noether.data.samplers.internals.SamplerOutput" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">NamedTuple</span></code></p>
+<p>Output of the InterleavedSampler. Contains the sample index and the dataset index.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.samplers.internals.SamplerOutput.is_full_batch">
+<span class="sig-name descname"><span class="pre">is_full_batch</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#noether.data.samplers.internals.SamplerOutput.is_full_batch" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.samplers.internals.SamplerOutput.idx">
+<span class="sig-name descname"><span class="pre">idx</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><a class="headerlink" href="#noether.data.samplers.internals.SamplerOutput.idx" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
 </section>
 
         </article>
@@ -857,8 +889,35 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">noether.data.samplers.internals</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.data.samplers.internals.SamplerOutput"><code class="docutils literal notranslate"><span class="pre">SamplerOutput</span></code></a><ul>
+<li><a class="reference internal" href="#noether.data.samplers.internals.SamplerOutput.is_full_batch"><code class="docutils literal notranslate"><span class="pre">SamplerOutput.is_full_batch</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.samplers.internals.SamplerOutput.idx"><code class="docutils literal notranslate"><span class="pre">SamplerOutput.idx</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
