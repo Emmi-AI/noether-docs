@@ -263,7 +263,7 @@ Module Contents
    .. py:method:: at_eval(update_counter, **kwargs)
 
 
-   .. py:method:: updates_till_next_log(update_counter)
+   .. py:method:: updates_till_next_invocation(update_counter)
 
       Calculate how many updates remain until this callback is invoked.
 
@@ -273,7 +273,7 @@ Module Contents
 
 
 
-   .. py:method:: updates_per_log_interval(update_counter)
+   .. py:method:: updates_per_interval(update_counter)
 
       Calculate how many updates are from one invocation of this callback to the next.
 

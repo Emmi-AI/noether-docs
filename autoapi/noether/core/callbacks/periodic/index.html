@@ -1121,8 +1121,8 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.updates_till_next_log">
-<span class="sig-name descname"><span class="pre">updates_till_next_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_till_next_log" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.updates_till_next_invocation">
+<span class="sig-name descname"><span class="pre">updates_till_next_invocation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_till_next_invocation" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate how many updates remain until this callback is invoked.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1138,8 +1138,8 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.updates_per_log_interval">
-<span class="sig-name descname"><span class="pre">updates_per_log_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_per_log_interval" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.periodic.PeriodicCallback.updates_per_interval">
+<span class="sig-name descname"><span class="pre">updates_per_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_per_interval" title="Link to this definition">¶</a></dt>
 <dd><p>Calculate how many updates are from one invocation of this callback to the next.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1568,8 +1568,8 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.after_epoch"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.after_epoch()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.after_update"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.after_update()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.at_eval"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.at_eval()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_till_next_log"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.updates_till_next_log()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_per_log_interval"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.updates_per_log_interval()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_till_next_invocation"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.updates_till_next_invocation()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.updates_per_interval"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.updates_per_interval()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.get_interval_string_verbose"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.get_interval_string_verbose()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicCallback.to_short_interval_string"><code class="docutils literal notranslate"><span class="pre">PeriodicCallback.to_short_interval_string()</span></code></a></li>
 </ul>
