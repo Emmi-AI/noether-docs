@@ -12,6 +12,7 @@ Submodules
 
    /autoapi/noether/core/trackers/base/index
    /autoapi/noether/core/trackers/noop/index
+   /autoapi/noether/core/trackers/tensorboard/index
    /autoapi/noether/core/trackers/trackio/index
    /autoapi/noether/core/trackers/wandb/index
 
@@ -23,6 +24,7 @@ Classes
 
    noether.core.trackers.BaseTracker
    noether.core.trackers.NoopTracker
+   noether.core.trackers.TensorboardTracker
    noether.core.trackers.TrackioTracker
    noether.core.trackers.WandBTracker
 
@@ -117,6 +119,29 @@ Package Contents
    :param metric_property_provider: The metric property provider gives additional information such
                                     as whether higher values are better.
    :param path_provider: Gives access to paths (e.g., output_path: where checkpoints/logs are stored).
+
+
+.. py:class:: TensorboardTracker(tracker_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+
+
+   TensorBoard tracker for logging metrics and configuration.
+
+   Initialize the TensorboardTracker.
+
+   :param tracker_config: Configuration for TensorBoard. See :class:`~noether.core.schemas.trackers.TensorboardTrackerSchema`
+                          for available options (typically including base `log_dir`).
+   :param \*\*kwargs: Additional keyword arguments passed to the parent class.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: writer
+      :type:  torch.utils.tensorboard.SummaryWriter | None
+      :value: None
+
 
 
 .. py:class:: TrackioTracker(tracker_config, **kwargs)

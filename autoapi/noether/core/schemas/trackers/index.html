@@ -442,6 +442,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../trackers/index.html">noether.core.trackers</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.trackers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../trackers/base/index.html">noether.core.trackers.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../trackers/noop/index.html">noether.core.trackers.noop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../trackers/tensorboard/index.html">noether.core.trackers.tensorboard</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../trackers/trackio/index.html">noether.core.trackers.trackio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../trackers/wandb/index.html">noether.core.trackers.wandb</a></li>
 </ul>
@@ -811,6 +812,9 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.trackers.TrackioTrackerSchema" title="noether.core.schemas.trackers.TrackioTrackerSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrackioTrackerSchema</span></code></a></p></td>
 <td><p>Schema for TrackioTracker configuration.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.trackers.TensorboardTrackerSchema" title="noether.core.schemas.trackers.TensorboardTrackerSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TensorboardTrackerSchema</span></code></a></p></td>
+<td><p>Schema for TensorboardTracker configuration.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -880,6 +884,39 @@ validated to form a valid model.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.trackers.TrackioTrackerSchema.space_id">
 <span class="sig-name descname"><span class="pre">space_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.TrackioTrackerSchema.space_id" title="Link to this definition">¶</a></dt>
 <dd><p>The HuggingFace space ID where to store the Trackio data.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.trackers.TensorboardTrackerSchema">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.trackers.</span></span><span class="sig-name descname"><span class="pre">TensorboardTrackerSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.trackers.TensorboardTrackerSchema" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Schema for TensorboardTracker configuration.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.trackers.TensorboardTrackerSchema.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.trackers.TensorboardTracker'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.kind" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.trackers.TensorboardTrackerSchema.log_dir">
+<span class="sig-name descname"><span class="pre">log_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.log_dir" title="Link to this definition">¶</a></dt>
+<dd><p>The base directory where TensorBoard event files will be stored.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.trackers.TensorboardTrackerSchema.flush_secs">
+<span class="sig-name descname"><span class="pre">flush_secs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.flush_secs" title="Link to this definition">¶</a></dt>
+<dd><p>How often, in seconds, to flush the pending events to disk.</p>
 </dd></dl>
 
 </dd></dl>
@@ -986,6 +1023,12 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.trackers.TrackioTrackerSchema.kind"><code class="docutils literal notranslate"><span class="pre">TrackioTrackerSchema.kind</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trackers.TrackioTrackerSchema.project"><code class="docutils literal notranslate"><span class="pre">TrackioTrackerSchema.project</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trackers.TrackioTrackerSchema.space_id"><code class="docutils literal notranslate"><span class="pre">TrackioTrackerSchema.space_id</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schemas.trackers.TensorboardTrackerSchema"><code class="docutils literal notranslate"><span class="pre">TensorboardTrackerSchema</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.kind"><code class="docutils literal notranslate"><span class="pre">TensorboardTrackerSchema.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.log_dir"><code class="docutils literal notranslate"><span class="pre">TensorboardTrackerSchema.log_dir</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.flush_secs"><code class="docutils literal notranslate"><span class="pre">TensorboardTrackerSchema.flush_secs</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.trackers.AnyTracker"><code class="docutils literal notranslate"><span class="pre">AnyTracker</span></code></a></li>

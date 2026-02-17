@@ -442,6 +442,7 @@
 <li class="toctree-l3 current has-children current-page"><a class="current reference internal" href="#">noether.core.trackers</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.trackers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="base/index.html">noether.core.trackers.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="noop/index.html">noether.core.trackers.noop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tensorboard/index.html">noether.core.trackers.tensorboard</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trackio/index.html">noether.core.trackers.trackio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="wandb/index.html">noether.core.trackers.wandb</a></li>
 </ul>
@@ -794,6 +795,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="base/index.html">noether.core.trackers.base</a></li>
 <li class="toctree-l1"><a class="reference internal" href="noop/index.html">noether.core.trackers.noop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tensorboard/index.html">noether.core.trackers.tensorboard</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trackio/index.html">noether.core.trackers.trackio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wandb/index.html">noether.core.trackers.wandb</a></li>
 </ul>
@@ -810,10 +812,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.trackers.NoopTracker" title="noether.core.trackers.NoopTracker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NoopTracker</span></code></a></p></td>
 <td><p>Dummy tracker that does nothing.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.trackers.TrackioTracker" title="noether.core.trackers.TrackioTracker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrackioTracker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.trackers.TensorboardTracker" title="noether.core.trackers.TensorboardTracker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TensorboardTracker</span></code></a></p></td>
+<td><p>TensorBoard tracker for logging metrics and configuration.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.trackers.TrackioTracker" title="noether.core.trackers.TrackioTracker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrackioTracker</span></code></a></p></td>
 <td><p>HuggingFace Trackio tracker.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.trackers.WandBTracker" title="noether.core.trackers.WandBTracker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WandBTracker</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.trackers.WandBTracker" title="noether.core.trackers.WandBTracker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WandBTracker</span></code></a></p></td>
 <td><p>Weights and Biases tracker.</p></td>
 </tr>
 </tbody>
@@ -962,6 +967,33 @@ as whether higher values are better.</p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.trackers.TensorboardTracker">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.trackers.</span></span><span class="sig-name descname"><span class="pre">TensorboardTracker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tracker_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.trackers.TensorboardTracker" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.trackers.base.BaseTracker" title="noether.core.trackers.base.BaseTracker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.trackers.base.BaseTracker</span></code></a></p>
+<p>TensorBoard tracker for logging metrics and configuration.</p>
+<p>Initialize the TensorboardTracker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tracker_config</strong> (<a class="reference internal" href="../schemas/trackers/index.html#noether.core.schemas.trackers.TensorboardTrackerSchema" title="noether.core.schemas.trackers.TensorboardTrackerSchema"><em>noether.core.schemas.trackers.TensorboardTrackerSchema</em></a>) – Configuration for TensorBoard. See <a class="reference internal" href="../schemas/trackers/index.html#noether.core.schemas.trackers.TensorboardTrackerSchema" title="noether.core.schemas.trackers.TensorboardTrackerSchema"><code class="xref py py-class docutils literal notranslate"><span class="pre">TensorboardTrackerSchema</span></code></a>
+for available options (typically including base <cite>log_dir</cite>).</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments passed to the parent class.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.trackers.TensorboardTracker.config">
+<span class="sig-name descname"><span class="pre">config</span></span><a class="headerlink" href="#noether.core.trackers.TensorboardTracker.config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.trackers.TensorboardTracker.writer">
+<span class="sig-name descname"><span class="pre">writer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.utils.tensorboard.SummaryWriter</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.trackers.TensorboardTracker.writer" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1121,6 +1153,11 @@ as whether higher values are better.</p></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.trackers.NoopTracker"><code class="docutils literal notranslate"><span class="pre">NoopTracker</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.trackers.TensorboardTracker"><code class="docutils literal notranslate"><span class="pre">TensorboardTracker</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.trackers.TensorboardTracker.config"><code class="docutils literal notranslate"><span class="pre">TensorboardTracker.config</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.trackers.TensorboardTracker.writer"><code class="docutils literal notranslate"><span class="pre">TensorboardTracker.writer</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.trackers.TrackioTracker"><code class="docutils literal notranslate"><span class="pre">TrackioTracker</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.trackers.TrackioTracker.config"><code class="docutils literal notranslate"><span class="pre">TrackioTracker.config</span></code></a></li>
 </ul>

@@ -19,6 +19,7 @@ Classes
 
    noether.core.schemas.trackers.WandBTrackerSchema
    noether.core.schemas.trackers.TrackioTrackerSchema
+   noether.core.schemas.trackers.TensorboardTrackerSchema
 
 
 Module Contents
@@ -92,6 +93,43 @@ Module Contents
 
 
       The HuggingFace space ID where to store the Trackio data.
+
+
+.. py:class:: TensorboardTrackerSchema(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Schema for TensorboardTracker configuration.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.trackers.TensorboardTracker']
+      :value: None
+
+
+
+   .. py:attribute:: log_dir
+      :type:  str
+      :value: None
+
+
+      The base directory where TensorBoard event files will be stored.
+
+
+   .. py:attribute:: flush_secs
+      :type:  int
+      :value: None
+
+
+      How often, in seconds, to flush the pending events to disk.
 
 
 .. py:data:: AnyTracker

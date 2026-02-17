@@ -442,6 +442,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/noether/core/trackers/index.html">noether.core.trackers</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.trackers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/trackers/base/index.html">noether.core.trackers.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/trackers/noop/index.html">noether.core.trackers.noop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/trackers/tensorboard/index.html">noether.core.trackers.tensorboard</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/trackers/trackio/index.html">noether.core.trackers.trackio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/trackers/wandb/index.html">noether.core.trackers.wandb</a></li>
 </ul>
@@ -797,6 +798,7 @@
 <ul class="simple">
 <li><p><strong>Weights &amp; Biases (W&amp;B)</strong>: A popular developer-first MLOps platform.</p></li>
 <li><p><strong>Trackio</strong>: A HuggingFace-integrated tracker for lightweight experiment logging.</p></li>
+<li><p><strong>TensorBoard</strong>: A classic, local-first visualization toolkit for machine learning experiments.</p></li>
 </ul>
 </section>
 <section id="configuring-trackers">
@@ -824,6 +826,24 @@
 <span class="nt">space_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-hf-space-id</span><span class="w">  </span><span class="c1"># Optional: defaults to your HF space if running on HF</span>
 </pre></div>
 </div>
+</section>
+<section id="tensorboard">
+<h3>TensorBoard<a class="headerlink" href="#tensorboard" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt>:: note ::</dt><dd><p>You have to install the <cite>tensorboard</cite> package separately to use this tracker: <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">tensorboard</span></code>.</p>
+</dd>
+</dl>
+<p>To use TensorBoard, use the <code class="docutils literal notranslate"><span class="pre">noether.core.trackers.TensorboardTracker</span></code> kind:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.trackers.TensorboardTracker</span>
+<span class="nt">log_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tensorboard_logs</span><span class="w">         </span><span class="c1"># Optional: defaults to tensorboard_logs. Directory to store TensorBoard event files. This directory will be created inside output_path.</span>
+<span class="nt">flush_secs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60</span><span class="w">                     </span><span class="c1"># Optional: defaults to 60 seconds. Specifies how often to flush pending events to disk</span>
+</pre></div>
+</div>
+<p>Start the TensorBoard server from your terminal and point to the output directory specified in your configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tensorboard<span class="w"> </span>--logdir<span class="w"> </span>./outputs<span class="w"> </span><span class="c1"># Adjust the path to match your output directory</span>
+</pre></div>
+</div>
+<p>Once the server starts running, it will output a local URL, which you can open in your web browser to view your experiment dashboards.</p>
 </section>
 <section id="disabling-tracker">
 <h3>Disabling Tracker<a class="headerlink" href="#disabling-tracker" title="Link to this heading">¶</a></h3>
@@ -925,6 +945,7 @@ You can access the tracker in your custom callbacks with the <a class="reference
 <li><a class="reference internal" href="#configuring-trackers">Configuring Trackers</a><ul>
 <li><a class="reference internal" href="#weights-biases">Weights &amp; Biases</a></li>
 <li><a class="reference internal" href="#trackio">Trackio</a></li>
+<li><a class="reference internal" href="#tensorboard">TensorBoard</a></li>
 <li><a class="reference internal" href="#disabling-tracker">Disabling Tracker</a></li>
 </ul>
 </li>

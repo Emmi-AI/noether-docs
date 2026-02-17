@@ -440,6 +440,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/core/trackers/index.html">noether.core.trackers</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.trackers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/trackers/base/index.html">noether.core.trackers.base</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/trackers/noop/index.html">noether.core.trackers.noop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/trackers/tensorboard/index.html">noether.core.trackers.tensorboard</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/trackers/trackio/index.html">noether.core.trackers.trackio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/trackers/wandb/index.html">noether.core.trackers.wandb</a></li>
 </ul>
@@ -1916,6 +1917,10 @@
         <ul>
           <li><a href="autoapi/noether/core/optimizer/index.html#noether.core.optimizer.OptimizerWrapper.config">(noether.core.optimizer.OptimizerWrapper attribute)</a>
 </li>
+          <li><a href="autoapi/noether/core/trackers/tensorboard/index.html#noether.core.trackers.tensorboard.TensorboardTracker.config">(noether.core.trackers.tensorboard.TensorboardTracker attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/trackers/index.html#noether.core.trackers.TensorboardTracker.config">(noether.core.trackers.TensorboardTracker attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/trackers/trackio/index.html#noether.core.trackers.trackio.TrackioTracker.config">(noether.core.trackers.trackio.TrackioTracker attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/trackers/index.html#noether.core.trackers.TrackioTracker.config">(noether.core.trackers.TrackioTracker attribute)</a>
@@ -3341,6 +3346,8 @@
           <li><a href="autoapi/noether/core/writers/index.html#noether.core.writers.LogWriter.flush">(noether.core.writers.LogWriter method)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TensorboardTrackerSchema.flush_secs">flush_secs (noether.core.schemas.trackers.TensorboardTrackerSchema attribute)</a>
+</li>
         <li><a href="autoapi/noether/core/utils/logging/index.html#noether.core.utils.logging.CustomFormatter.fmt">fmt (noether.core.utils.logging.CustomFormatter attribute)</a>
 
         <ul>
@@ -4992,6 +4999,8 @@
 </li>
           <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.StepIntervalScheduleConfig.kind">(noether.core.schemas.StepIntervalScheduleConfig attribute)</a>
 </li>
+          <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TensorboardTrackerSchema.kind">(noether.core.schemas.trackers.TensorboardTrackerSchema attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TrackioTrackerSchema.kind">(noether.core.schemas.trackers.TrackioTrackerSchema attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.WandBTrackerSchema.kind">(noether.core.schemas.trackers.WandBTrackerSchema attribute)</a>
@@ -5247,6 +5256,8 @@
           <li><a href="autoapi/noether/core/distributed/utils/index.html#noether.core.distributed.utils.log_device_info">(in module noether.core.distributed.utils)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TensorboardTrackerSchema.log_dir">log_dir (noether.core.schemas.trackers.TensorboardTrackerSchema attribute)</a>
+</li>
         <li><a href="autoapi/noether/core/writers/log_writer/index.html#noether.core.writers.log_writer.LogWriter.log_entries">log_entries (noether.core.writers.log_writer.LogWriter attribute)</a>
 
         <ul>
@@ -6284,6 +6295,8 @@
           <li><a href="autoapi/noether/core/trackers/base/index.html#module-noether.core.trackers.base">noether.core.trackers.base</a>
 </li>
           <li><a href="autoapi/noether/core/trackers/noop/index.html#module-noether.core.trackers.noop">noether.core.trackers.noop</a>
+</li>
+          <li><a href="autoapi/noether/core/trackers/tensorboard/index.html#module-noether.core.trackers.tensorboard">noether.core.trackers.tensorboard</a>
 </li>
           <li><a href="autoapi/noether/core/trackers/trackio/index.html#module-noether.core.trackers.trackio">noether.core.trackers.trackio</a>
 </li>
@@ -7594,6 +7607,13 @@
 </li>
         </ul></li>
         <li>
+    noether.core.trackers.tensorboard
+
+        <ul>
+          <li><a href="autoapi/noether/core/trackers/tensorboard/index.html#module-noether.core.trackers.tensorboard">module</a>
+</li>
+        </ul></li>
+        <li>
     noether.core.trackers.trackio
 
         <ul>
@@ -7943,6 +7963,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/dataset/index.html#module-noether.data.datasets.cfd.caeml.dataset">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.caeml.drivaerml
 
@@ -7950,8 +7972,6 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/drivaerml/index.html#module-noether.data.datasets.cfd.caeml.drivaerml">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.caeml.drivaerml.dataset
 
@@ -11769,6 +11789,16 @@
           <li><a href="autoapi/noether/core/utils/logging/formatting/index.html#noether.core.utils.logging.formatting.tensor_like_to_string">(in module noether.core.utils.logging.formatting)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/trackers/tensorboard/index.html#noether.core.trackers.tensorboard.TENSORBOARD_IMPORT_ERROR">TENSORBOARD_IMPORT_ERROR (in module noether.core.trackers.tensorboard)</a>
+</li>
+        <li><a href="autoapi/noether/core/trackers/index.html#noether.core.trackers.TensorboardTracker">TensorboardTracker (class in noether.core.trackers)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/trackers/tensorboard/index.html#noether.core.trackers.tensorboard.TensorboardTracker">(class in noether.core.trackers.tensorboard)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/trackers/index.html#noether.core.schemas.trackers.TensorboardTrackerSchema">TensorboardTrackerSchema (class in noether.core.schemas.trackers)</a>
+</li>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.DatasetSplitIDs.test">test (noether.core.schemas.dataset.DatasetSplitIDs attribute)</a>
 
         <ul>
@@ -12967,6 +12997,10 @@
 
         <ul>
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.CallbackBase.writer">(noether.core.callbacks.CallbackBase attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/trackers/tensorboard/index.html#noether.core.trackers.tensorboard.TensorboardTracker.writer">(noether.core.trackers.tensorboard.TensorboardTracker attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/trackers/index.html#noether.core.trackers.TensorboardTracker.writer">(noether.core.trackers.TensorboardTracker attribute)</a>
 </li>
         </ul></li>
     </ul></td>

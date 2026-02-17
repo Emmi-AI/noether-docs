@@ -1,0 +1,52 @@
+noether.core.trackers.tensorboard
+=================================
+
+.. py:module:: noether.core.trackers.tensorboard
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.trackers.tensorboard.TENSORBOARD_IMPORT_ERROR
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.trackers.tensorboard.TensorboardTracker
+
+
+Module Contents
+---------------
+
+.. py:data:: TENSORBOARD_IMPORT_ERROR
+   :value: None
+
+
+.. py:class:: TensorboardTracker(tracker_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+
+
+   TensorBoard tracker for logging metrics and configuration.
+
+   Initialize the TensorboardTracker.
+
+   :param tracker_config: Configuration for TensorBoard. See :class:`~noether.core.schemas.trackers.TensorboardTrackerSchema`
+                          for available options (typically including base `log_dir`).
+   :param \*\*kwargs: Additional keyword arguments passed to the parent class.
+
+
+   .. py:attribute:: config
+
+
+   .. py:attribute:: writer
+      :type:  torch.utils.tensorboard.SummaryWriter | None
+      :value: None
+
+
+
