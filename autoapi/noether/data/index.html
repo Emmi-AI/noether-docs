@@ -1189,19 +1189,19 @@ You don’t need to use this wrapper with repetitions &lt; 2.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.data.ShuffleWrapper">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.</span></span><span class="sig-name descname"><span class="pre">ShuffleWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.ShuffleWrapper" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.</span></span><span class="sig-name descname"><span class="pre">ShuffleWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.ShuffleWrapper" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="base/index.html#noether.data.base.Subset" title="noether.data.base.Subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.base.Subset</span></code></a></p>
 <p>Shuffles the dataset, optionally with seed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<a class="reference internal" href="base/index.html#noether.data.base.Dataset" title="noether.data.base.Dataset"><em>noether.data.base.Dataset</em></a>) – The dataset to shuffle.</p></li>
 <li><p><strong>config</strong> (<a class="reference internal" href="../core/schemas/dataset/index.html#noether.core.schemas.dataset.ShuffleWrapperConfig" title="noether.core.schemas.dataset.ShuffleWrapperConfig"><em>noether.core.schemas.dataset.ShuffleWrapperConfig</em></a>) – Configuration for the ShuffleWrapper. See <a class="reference internal" href="../core/schemas/dataset/index.html#noether.core.schemas.dataset.ShuffleWrapperConfig" title="noether.core.schemas.dataset.ShuffleWrapperConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShuffleWrapperConfig</span></code></a>
 for available options.</p></li>
+<li><p><strong>dataset</strong> (<a class="reference internal" href="base/index.html#noether.data.base.Dataset" title="noether.data.base.Dataset"><em>noether.data.base.Dataset</em></a>) – The dataset to shuffle.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the dataset is not an instance of noether.data.Dataset, or if the seed is not an integer or None.</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the dataset is not an instance of noether.data.Dataset or DatasetWrapper, or if the seed is not an integer or None.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1213,15 +1213,15 @@ for available options.</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.data.SubsetWrapper">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.</span></span><span class="sig-name descname"><span class="pre">SubsetWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.SubsetWrapper" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.</span></span><span class="sig-name descname"><span class="pre">SubsetWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.SubsetWrapper" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="base/index.html#noether.data.base.Subset" title="noether.data.base.Subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.base.Subset</span></code></a></p>
 <p>Wraps the dataset with a noether.data.Subset using indices generated by the properties from the constructor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<a class="reference internal" href="base/index.html#noether.data.base.Dataset" title="noether.data.base.Dataset"><em>noether.data.base.Dataset</em></a><em> | </em><a class="reference internal" href="base/wrapper/index.html#noether.data.base.wrapper.DatasetWrapper" title="noether.data.base.wrapper.DatasetWrapper"><em>noether.data.base.wrapper.DatasetWrapper</em></a>) – The dataset to wrap.</p></li>
 <li><p><strong>config</strong> (<a class="reference internal" href="../core/schemas/dataset/index.html#noether.core.schemas.dataset.SubsetWrapperConfig" title="noether.core.schemas.dataset.SubsetWrapperConfig"><em>noether.core.schemas.dataset.SubsetWrapperConfig</em></a>) – The configuration to use. See <a class="reference internal" href="../core/schemas/dataset/index.html#noether.core.schemas.dataset.SubsetWrapperConfig" title="noether.core.schemas.dataset.SubsetWrapperConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubsetWrapperConfig</span></code></a>
 for available options.</p></li>
+<li><p><strong>dataset</strong> (<a class="reference internal" href="base/index.html#noether.data.base.Dataset" title="noether.data.base.Dataset"><em>noether.data.base.Dataset</em></a><em> | </em><a class="reference internal" href="base/wrapper/index.html#noether.data.base.wrapper.DatasetWrapper" title="noether.data.base.wrapper.DatasetWrapper"><em>noether.data.base.wrapper.DatasetWrapper</em></a>) – The dataset to wrap.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
