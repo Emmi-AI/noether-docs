@@ -71,12 +71,6 @@ Module Contents
       Probability to drop the attention or MLP module. Defaults to 0.0.
 
 
-   .. py:attribute:: normalization_constructor
-      :type:  type
-
-      Constructor for the normalization layer.
-
-
    .. py:attribute:: attention_constructor
       :type:  Literal['dot_product', 'perceiver', 'transolver', 'transolver_plusplus']
       :value: 'dot_product'
