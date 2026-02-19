@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="How to Implement a Custom Multistage Pipeline" href="how_to_write_a_multistage_pipeline.html" /><link rel="prev" title="How to Use Private Data Source" href="how_to_use_private_data_source.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="How to Run Evaluation on Trained Models" href="../inference/how_to_run_evaluation_on_trained_models.html" /><link rel="prev" title="Experiment Tracking" href="experiment_tracking.html" />
         <link rel="prefetch" href="../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>How to Implement a Custom Dataset - Noether Framework documentation</title>
+        <title>How to continue Training from a Checkpoint - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -237,7 +237,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -278,14 +278,14 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">How-to Guides</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of How-to Guides</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../linux_cuda_setup.html">Advanced Linux &amp; NVIDIA Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../working_with_cli.html">Working with the CLI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">How to Implement a Custom Dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../training/implement_a_custom_model.html">How to Implement a Custom Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../training/use_callbacks.html">How to Use and Build Callbacks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../training/experiment_tracking.html">Experiment Tracking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../training/how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implement_a_custom_model.html">How to Implement a Custom Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_callbacks.html">How to Use and Build Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="experiment_tracking.html">Experiment Tracking</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">How to continue Training from a Checkpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 </li>
@@ -764,12 +764,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/guides/data/how_to_make_a_custom_dataset.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/guides/training/how_to_initialize.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/guides/data/how_to_make_a_custom_dataset.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/guides/training/how_to_initialize.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -782,83 +782,98 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="how-to-implement-a-custom-dataset">
-<h1>How to Implement a Custom Dataset<a class="headerlink" href="#how-to-implement-a-custom-dataset" title="Link to this heading">¶</a></h1>
-<p>Below we provide a minimal (dummy code) example of how to create a custom dataset by extending the base <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code> class.
-Every single tensor that belongs to a ‘data sample’ must have its own <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> method, with a unique suffix.
-By default, all <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> will be called when fetching a data sample, unless specified otherwise in the configuration file (by configuring <code class="docutils literal notranslate"><span class="pre">excluded_properties</span></code>).
-To apply data normalization, the <code class="docutils literal notranslate"><span class="pre">&#64;with_normalizers</span></code> decorator must be used on each <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> method.
-The key provided to the decorator must match the key of the configured normalizer.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">with_normalizers</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetBaseConfig</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">MyCustomDatasetConfig</span><span class="p">(</span><span class="n">DatasetBaseConfig</span><span class="p">):</span>
-    <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;path.to.MyCustomDataset&quot;</span>
-    <span class="c1"># Add any custom configuration fields here</span>
-    <span class="n">data_paths</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">MyCustomDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">MyCustomDatasetConfig</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data_paths</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">data_paths</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">root</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Return the length of your dataset</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_paths</span><span class="p">)</span>
-
-    <span class="nd">@with_normalizers</span><span class="p">(</span><span class="s2">&quot;tensor_x&quot;</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">getitem_tensor_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="c1"># Load and return the data sample and its corresponding label as tensors</span>
-        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_paths</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span> <span class="n">weights_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="nd">@with_normalizers</span><span class="p">(</span><span class="s2">&quot;tensor_y&quot;</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">getitem_tensor_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-        <span class="c1"># Load and return the data sample and its corresponding label as tensors</span>
-        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_paths</span><span class="p">[</span><span class="n">idx</span><span class="p">]),</span> <span class="n">weights_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+          <section id="how-to-continue-training-from-a-checkpoint">
+<h1>How to continue Training from a Checkpoint<a class="headerlink" href="#how-to-continue-training-from-a-checkpoint" title="Link to this heading">¶</a></h1>
+<p>Noether stores model checkpoints, with the <a class="reference internal" href="../../autoapi/noether/core/writers/index.html#noether.core.writers.CheckpointWriter" title="noether.core.writers.CheckpointWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">CheckpointWriter</span></code></a>, a structured file naming convention:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{model_name}_{model_info}_cp={checkpoint}_model.th
 </pre></div>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">datasets</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">custom_dataset</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path.to.MyCustomDataset</span>
-<span class="w">        </span><span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/data</span>
-<span class="w">        </span><span class="nt">data_paths</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">0</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_0.pt</span>
-<span class="w">            </span><span class="nt">1</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_1.pt</span>
-<span class="w">            </span><span class="nt">2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample_2.pt</span>
-<span class="w">            </span><span class="c1"># Add more data paths as needed</span>
-<span class="w">        </span><span class="nt">excluded_properties</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w">  </span><span class="c1"># Optionally exclude certain getitem_* methods</span>
+<p>This naming scheme consists of three main components:</p>
+<dl class="simple">
+<dt><strong>Model Name</strong> (<code class="docutils literal notranslate"><span class="pre">model_name</span></code>)</dt><dd><p>A unique identifier for your model (e.g., <code class="docutils literal notranslate"><span class="pre">transformer</span></code>, <code class="docutils literal notranslate"><span class="pre">upt</span></code>, <code class="docutils literal notranslate"><span class="pre">ab-upt</span></code>). This must be configured
+in your model config and is used to identify which model the checkpoint belongs to.</p>
+</dd>
+<dt><strong>Checkpoint Identifier</strong> (<code class="docutils literal notranslate"><span class="pre">checkpoint</span></code>)</dt><dd><p>Indicates when in training the model was saved. Common values include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">latest</span></code> — the most recent periodic checkpoint</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">best.{metric_name}</span></code> — the checkpoint with the best value for a specific metric (e.g., <code class="docutils literal notranslate"><span class="pre">best.accuracy</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E10_U100_S200</span></code> — a specific training point (epoch 10, update 100, sample 200)</p></li>
+</ul>
+</dd>
+<dt><strong>Model Info</strong> (<code class="docutils literal notranslate"><span class="pre">model_info</span></code>) <em>(optional)</em></dt><dd><p>Additional metadata to distinguish special checkpoint variants. For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ema_factor=0.9999</span></code> — Exponential Moving Average (EMA) weights</p></li>
+<li><p>If omitted, the filename becomes: <code class="docutils literal notranslate"><span class="pre">{model_name}_cp={checkpoint}_model.th</span></code></p></li>
+<li><p>Model info is defined by the user (for example in a custom callback) and can be anything. Make sure the model info is informative and conistent.</p></li>
+</ul>
+</dd>
+</dl>
+<section id="checkpoint-storage-location">
+<h2>Checkpoint Storage Location<a class="headerlink" href="#checkpoint-storage-location" title="Link to this heading">¶</a></h2>
+<p>Checkpoints are stored in the following directory structure:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;output_dir&gt;/&lt;run_id&gt;/&lt;stage_name&gt;/checkpoints/{model_name}_{model_info}_cp={checkpoint}_model.th
 </pre></div>
 </div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tensor_x</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.data.preprocessors.normalizers.MeanStdNormalization</span>
-<span class="w">      </span><span class="nt">mean</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
-<span class="w">      </span><span class="nt">std</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-<span class="nt">tensor_y</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.data.preprocessors.normalizers.MeanStdNormalization</span>
-<span class="w">      </span><span class="nt">mean</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-<span class="w">      </span><span class="nt">std</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">output_dir</span></code> — Your configured output directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_id</span></code> — The unique identifier for the training run</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stage_name</span></code> — The name of the training stage (if using multi-stage training)</p></li>
+</ul>
+</section>
+<section id="resuming-training-from-a-previous-run">
+<h2>Resuming Training from a Previous Run<a class="headerlink" href="#resuming-training-from-a-previous-run" title="Link to this heading">¶</a></h2>
+<p>To resume training from a checkpoint (e.g., after a crash or interruption), add the following to your root configuration file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">resume_run_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;id of the previous run&gt;</span>
+<span class="nt">resume_stage_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;stage name from the previous run&gt;</span>
+<span class="nt">stage_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">continue_training</span><span class="w">  </span><span class="c1"># Optional: defaults to resumed stage name if not specified</span>
+<span class="nt">resume_checkpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;checkpoint&gt;</span><span class="w">  </span><span class="c1"># Optional: specify a particular checkpoint to resume from</span>
 </pre></div>
 </div>
-<p>Let’s say we run a training pipeline with the above dataset configuration and a batch size of 4.
-Then the output will be a list of 4 dictionaries (a batch), where each dictionary has the following structure:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;tensor_x&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">tensor_x_sample_0</span><span class="o">&gt;</span><span class="p">,</span>
-        <span class="s2">&quot;tensor_y&quot;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">tensor_y_sample_0</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="c1"># ... (3 more samples)</span>
-<span class="p">]</span>
+<p>If no <cite>resume_checkpoint</cite> is specified, the training will resume from the latest checkpoint of the specified stage.
+For the <cite>resume_checkpoint</cite>, you can specify a particular checkpoint by using either the epoch (e.g., <code class="docutils literal notranslate"><span class="pre">E10</span></code>) the update (e.g., <code class="docutils literal notranslate"><span class="pre">U100</span></code>) or the sample (e.g., <code class="docutils literal notranslate"><span class="pre">S200</span></code>) to resume from.
+Do not use the fully specified checkpoint filename here (e.g., <code class="docutils literal notranslate"><span class="pre">E10_U100_S200</span></code>).</p>
+</section>
+<section id="initializing-model-weights-from-a-previous-run">
+<h2>Initializing Model Weights from a Previous Run<a class="headerlink" href="#initializing-model-weights-from-a-previous-run" title="Link to this heading">¶</a></h2>
+<p>To initialize only the model weights (without resuming the full training state), use the <a class="reference internal" href="../../autoapi/noether/core/initializers/index.html#noether.core.initializers.PreviousRunInitializer" title="noether.core.initializers.PreviousRunInitializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code></a>
+in your model configuration:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">model</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_model</span>
+<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path.to.MyModel</span>
+<span class="w">  </span><span class="nt">initializers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.initializers.PreviousRunInitializer</span>
+<span class="w">      </span><span class="nt">run_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;previous run_id&gt;</span>
+<span class="w">      </span><span class="nt">model_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;model_name&gt;</span>
+<span class="w">      </span><span class="nt">stage_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;stage_name&gt;</span><span class="w">     </span><span class="c1"># Optional: leave empty if no stage</span>
+<span class="w">      </span><span class="nt">checkpoint_tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;checkpoint&gt;</span><span class="w">      </span><span class="c1"># e.g., latest, best.accuracy, E10_U100_S200</span>
+<span class="w">      </span><span class="nt">model_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;model_info&gt;</span><span class="w">      </span><span class="c1"># Optional: e.g., ema_factor=0.9999</span>
 </pre></div>
 </div>
+<p>This approach is useful for:</p>
+<ul class="simple">
+<li><p>Transfer learning from a pretrained model</p></li>
+<li><p>Fine-tuning on a new dataset</p></li>
+<li><p>Starting a new training run with pretrained weights</p></li>
+</ul>
+</section>
+<section id="use-cases">
+<h2>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt><strong>Full Training Resumption</strong></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">resume_run_id</span></code> and <code class="docutils literal notranslate"><span class="pre">resume_stage_name</span></code> when you need to continue training exactly where it left off,
+preserving optimizer state, callback states (if any), and training/trainer progress/state.</p>
+</dd>
+<dt><strong>Weight Initialization Only</strong></dt><dd><p>Use <a class="reference internal" href="../../autoapi/noether/core/initializers/index.html#noether.core.initializers.PreviousRunInitializer" title="noether.core.initializers.PreviousRunInitializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code></a> when you want to start a training from scratch with
+pretrained weights.</p>
+</dd>
+</dl>
+</section>
 </section>
 
         </article>
@@ -866,23 +881,23 @@ Then the output will be a list of 4 dictionaries (a batch), where each dictionar
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="how_to_write_a_multistage_pipeline.html">
+          <a class="next-page" href="../inference/how_to_run_evaluation_on_trained_models.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">How to Implement a Custom Multistage Pipeline</div>
+                <div class="title">How to Run Evaluation on Trained Models</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="how_to_use_private_data_source.html">
+          <a class="prev-page" href="experiment_tracking.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">How to Use Private Data Source</div>
+                <div class="title">Experiment Tracking</div>
                 
               </div>
             </a>
@@ -928,8 +943,30 @@ Then the output will be a list of 4 dictionaries (a batch), where each dictionar
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">How to continue Training from a Checkpoint</a><ul>
+<li><a class="reference internal" href="#checkpoint-storage-location">Checkpoint Storage Location</a></li>
+<li><a class="reference internal" href="#resuming-training-from-a-previous-run">Resuming Training from a Previous Run</a></li>
+<li><a class="reference internal" href="#initializing-model-weights-from-a-previous-run">Initializing Model Weights from a Previous Run</a></li>
+<li><a class="reference internal" href="#use-cases">Use Cases</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

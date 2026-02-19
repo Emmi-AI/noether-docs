@@ -56,7 +56,7 @@ Module Contents
       Get the start checkpoint for the model.
 
       :returns: the start checkpoint for the model.
-      :rtype: checkpoint
+      :rtype: TrainingIteration
 
 
 

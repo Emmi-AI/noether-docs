@@ -24,9 +24,10 @@ Module Contents
       :staticmethod:
 
 
-      Save the resolved hyperparameters to the output file.
+      Save the resolved config schema hyperparameters to the output file.
 
-      :param stage_hyperparameters: Hyperparameters to save.
+
+      :param stage_hyperparameters: Hyperparameters to save in a Pydantic object.
       :param out_file_uri: Path to the output file.
 
       :returns: None

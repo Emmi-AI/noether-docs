@@ -97,7 +97,7 @@ Package Contents
       By default , returns a TrainingIteration starting from zero.
 
       :returns: the start checkpoint for the model.
-      :rtype: checkpoint
+      :rtype: TrainingIteration
 
 
 
@@ -106,17 +106,14 @@ Package Contents
    Bases: :py:obj:`noether.core.initializers.base.InitializerBase`
 
 
-   Helper class that provides a standard way to create an ABC using
-   inheritance.
+   Base class to initialize models from checkpoints of previous runs. Should not be used directly, but inherited by other initializers such as PreviousRunInitializer or ResumeInitializer.
 
    :param initializer_config: configuration for the initializer. See :class:`~noether.core.schemas.initializers.CheckpointInitializerConfig` for available options.
    :param \*\*kwargs: additional arguments to pass to the parent class.
 
 
-   .. py:attribute:: checkpoint
+   .. py:attribute:: checkpoint_tag
       :type:  str | noether.core.utils.training.training_iteration.TrainingIteration
-
-      Base class to initialize models from checkpoints of previous runs. Should not be used directly, but inherited by other initializers such as PreviousRunInitializer or ResumeInitializer.
 
 
    .. py:attribute:: run_id
@@ -170,11 +167,12 @@ Package Contents
          kind: path.to.MyModelClass
          param1: value1
          name: my_model
-         initializer:
-           kind: noether.core.initializers.PreviousRunInitializer
-           run_id: <previous_run_id>
-           model_name: my_model
-           checkpoint: latest
+         initializers:
+           - kind: noether.core.initializers.PreviousRunInitializer
+           run_id: <run_id>
+           model_name: transformer
+           stage_name: train
+           checkpoint_tag: last
            keys_to_remove:
                - encoder.block1.weight
 
@@ -243,7 +241,7 @@ Package Contents
       Get the start checkpoint for the model.
 
       :returns: the start checkpoint for the model.
-      :rtype: checkpoint
+      :rtype: TrainingIteration
 
 
 

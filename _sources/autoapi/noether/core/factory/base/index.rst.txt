@@ -20,6 +20,7 @@ Module Contents
    Base factory. Implements base structures for creating a single object, a list of objects and a dict
    of objects.
 
+
    For example, creating a list:
 
    .. code-block:: python
@@ -91,7 +92,7 @@ Module Contents
       simply return the existing object. If ``obj_or_kwargs`` is ``None``, ``None`` is returned.
 
       :param obj_or_kwargs: Either an existing object or a description of how an object should be instantiated
-                            (dict or :class:`~pydantic.BaseModel`).
+                            (dict or :class:`pydantic.BaseModel`).
       :param kwargs: Further kwargs that are passed when creating the object. These are often dependencies such as
                      :class:`~noether.core.utils.training.counter.UpdateCounter`,
                      :class:`~noether.core.providers.path.PathProvider`,
@@ -138,8 +139,10 @@ Module Contents
 
       Instantiates an object based on its fully specified classpath.
 
-      :param object_config: Configuration containing the fully specified type of the object in the ``kind`` field such as: ``"torch.optim.SGD"`` or ``"noether.core.callbacks.CheckpointCallback"``.
-      :param kwargs: kwargs passed to the type when instantiating the object.
+      :param object_config: Configuration containing the fully specified type of the object in the ``kind`` field.
+                            For example: ``"torch.optim.SGD"`` or ``"noether.core.callbacks.CheckpointCallback"``.
+
+         kwargs: kwargs passed to the type when instantiating the object.
 
       :returns: The instantiated object.
 

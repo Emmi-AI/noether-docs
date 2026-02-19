@@ -82,7 +82,7 @@ Module Contents
       By default , returns a TrainingIteration starting from zero.
 
       :returns: the start checkpoint for the model.
-      :rtype: checkpoint
+      :rtype: TrainingIteration
 
 
 

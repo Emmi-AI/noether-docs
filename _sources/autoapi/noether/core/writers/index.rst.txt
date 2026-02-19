@@ -42,13 +42,11 @@ Package Contents
    - The encoder weights after every 10 epochs to evaluate performance at various training lengths.
    - The latest weights and optimizer states of encoder and decoder to allow resuming a run if it crashes.
    The CheckpointWriter provides functionality to store the following files:
-   - `autoencoder.encoder_cp=E10_... model.th`: encoder weights after 10 epochs
-   - `autoencoder.encoder_cp=E20_... model.th`: encoder weights after 20 epochs
-   - `autoencoder.encoder_cp=E30_... model.th`: encoder weights after 30 epochs
-   - `autoencoder.encoder_cp=last_model.th`: latest encoder weights
-   - `autoencoder.encoder_cp=last_optim.th`: latest encoder optimizer state
-   - `autoencoder.decoder_cp=last_model.th`: latest decoder weights
-   - `autoencoder.decoder_cp=last_optim.th`: latest decoder optimizer state
+   - `ab_upt_cp=E10_... model.th`: encoder weights after 10 epochs
+   - `ab_upt_cp=E20_... model.th`: encoder weights after 20 epochs
+   - `ab_upt_cp=E30_... model.th`: encoder weights after 30 epochs
+   - `ab_upt_cp=last_model.th`: latest encoder weights
+   - `ab_upt_cp=last_optim.th`: latest encoder optimizer state
 
 
    Each model checkpoint is populated with metadata. Each checkpoint will be a dictionary containing the keys:
@@ -71,21 +69,27 @@ Package Contents
    .. py:attribute:: update_counter
 
 
-   .. py:method:: save_model_checkpoint(output_name, state_dict, checkpoint_tag, model_config = None, **extra)
+   .. py:method:: save_model_checkpoint(model_name, checkpoint_tag, state_dict, model_config = None, model_info = None, **extra)
 
       Save a checkpoint to disk.
 
-      :param output_name: Output name of the checkpoint (including an extension).
-      :param state_dict: Model state dict to save.
+      The ouput name of the checkpoint will be constructed as `{model_name}{model_info}_cp={checkpoint}_model.th` (where model_info is an optional string and will be empty if not provided).
+      For example, if model_name is "autoencoder.encoder" and checkpoint is "E10_U200_S800", the output name will be "autoencoder.encoder_cp=E10_U200_S800_model.th".
+      However, if we store different model that the current one that is trained, for example, the EMA model, we can also provide additional info in the output name.
+      For example, if model_name is "autoencoder.encoder" and model_info is "ema", and checkpoint is "E10_U200_S800", the output name will be "autoencoder.encoder_ema_cp=E10_U200_S800_model.th".
+
+      :param model_name: Name of the model.
       :param checkpoint_tag: Checkpoint tag, for example "latest" or "E10_U200_S800".
+      :param state_dict: Model state dict to save.
       :param model_config: Model configuration. Defaults to None.
+      :param model_info: Additional info to include in the output name. Defaults to None.
       :param \*\*extra:
 
       :raises RuntimeError: in case of an unexpected error while parsing `model_config`.
 
 
 
-   .. py:method:: save(model, checkpoint_tag, trainer = None, save_weights = True, save_optim = True, save_latest_weights = False, save_latest_optim = False, model_names_to_save = None, save_frozen_weights = True)
+   .. py:method:: save(model, checkpoint_tag, trainer = None, save_weights = True, save_optim = True, save_latest_weights = False, save_latest_optim = False, model_names_to_save = None, save_frozen_weights = True, model_info = None)
 
       Saves a model to the disk.
 

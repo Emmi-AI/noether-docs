@@ -162,14 +162,6 @@ Module Contents
       "If provided, this callback will produce multiple best models which differ in the amount of intervals they allow the metric to not improve. For example, tolerance=[5] with every_n_epochs=1 will store a checkpoint where at most 5 epochs have passed until the metric improved. Additionally, the best checkpoint over the whole training will always be stored (i.e., tolerance=infinite). When setting different tolerances, one can evaluate different early stopping configurations with one training run.
 
 
-   .. py:attribute:: model_name
-      :type:  str | None
-      :value: None
-
-
-      The name of the model to save. If None, all models are saved.
-
-
    .. py:attribute:: model_names
       :type:  list[str] | None
       :value: None
@@ -194,7 +186,7 @@ Module Contents
       :value: None
 
 
-      Whether to save the weights of the model.
+      Whether to save the weights of the model every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.
 
 
    .. py:attribute:: save_optim
@@ -202,7 +194,7 @@ Module Contents
       :value: None
 
 
-      Whether to save the optimizer state.
+      Whether to save the optimizer state every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.
 
 
    .. py:attribute:: save_latest_weights
@@ -210,7 +202,7 @@ Module Contents
       :value: None
 
 
-      Whether to save the latest weights of the model. Note that the latest weights are always overwritten on the next invocation of this callback.
+      Whether to save the latest weights of the model every time this callback is invoked. Note that the latest weights are always overwritten on the next invocation of this callback.
 
 
    .. py:attribute:: save_latest_optim
@@ -218,11 +210,11 @@ Module Contents
       :value: None
 
 
-      Whether to save the latest optimizer state. Note that the latest optimizer state is always overwritten on the next invocation of this callback
+      Whether to save the latest optimizer state every time this callback is invoked. Note that the latest optimizer state is always overwritten on the next invocation of this callback
 
 
-   .. py:attribute:: model_name
-      :type:  str | None
+   .. py:attribute:: model_names
+      :type:  list[str] | None
       :value: None
 
 

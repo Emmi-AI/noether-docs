@@ -285,6 +285,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use and Build Callbacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/experiment_tracking.html">Experiment Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 </li>
@@ -1216,7 +1217,7 @@ the interleaved sampler for efficient data loading.</p></li>
 <li><p><strong>Progress Tracking</strong>: Provides progress bars and timing information for data loading.</p></li>
 </ul>
 </dd>
-<dt>Template Methods to Override:</dt><dd><p>Child classes must implement <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_data()</span></code></a> and typically override <code class="xref py py-meth docutils literal notranslate"><span class="pre">register_sampler_config()</span></code> and
+<dt>Template Methods to Override:</dt><dd><p>Child classes must implement <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_data()</span></code></a> and
 <a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_results"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_results()</span></code></a>:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback.process_data"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_data()</span></code></a>: Process a single batch (e.g., run model inference).</p></li>

@@ -67,21 +67,21 @@ Module Contents
       The name of the model to load. This is the model_name used in CheckpointCallback.
 
 
-   .. py:attribute:: model_info
-      :type:  str | None
-      :value: None
-
-
-      Optional string that is used as suffix in the checkpoint filename.
-
-
-   .. py:attribute:: checkpoint
+   .. py:attribute:: checkpoint_tag
       :type:  str | None | dict
       :value: None
 
 
       Which checkpoint to load.
-      Checkpoint is usually "latest" or "best_loss", depending on which checkpoint you want to load.
+      Checkpoint is usually "latest" or "best_loss", or "E*_U*_S*", depending on which checkpoint you want to load.
+
+
+   .. py:attribute:: model_info
+      :type:  str | None
+      :value: None
+
+
+      Optional string to provide additional info about the model weights in the checkpoint filename. E.g., the stored weights are the EMA, or in a different precision.
 
 
    .. py:attribute:: model_config

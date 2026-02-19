@@ -44,6 +44,7 @@ Package Contents
    Base factory. Implements base structures for creating a single object, a list of objects and a dict
    of objects.
 
+
    For example, creating a list:
 
    .. code-block:: python
@@ -115,7 +116,7 @@ Package Contents
       simply return the existing object. If ``obj_or_kwargs`` is ``None``, ``None`` is returned.
 
       :param obj_or_kwargs: Either an existing object or a description of how an object should be instantiated
-                            (dict or :class:`~pydantic.BaseModel`).
+                            (dict or :class:`pydantic.BaseModel`).
       :param kwargs: Further kwargs that are passed when creating the object. These are often dependencies such as
                      :class:`~noether.core.utils.training.counter.UpdateCounter`,
                      :class:`~noether.core.providers.path.PathProvider`,
@@ -162,8 +163,10 @@ Package Contents
 
       Instantiates an object based on its fully specified classpath.
 
-      :param object_config: Configuration containing the fully specified type of the object in the ``kind`` field such as: ``"torch.optim.SGD"`` or ``"noether.core.callbacks.CheckpointCallback"``.
-      :param kwargs: kwargs passed to the type when instantiating the object.
+      :param object_config: Configuration containing the fully specified type of the object in the ``kind`` field.
+                            For example: ``"torch.optim.SGD"`` or ``"noether.core.callbacks.CheckpointCallback"``.
+
+         kwargs: kwargs passed to the type when instantiating the object.
 
       :returns: The instantiated object.
 
@@ -180,7 +183,9 @@ Package Contents
 
    .. code-block:: yaml
 
-       kind: path.to.model.MyModel
+       kind: path.to.custom_dataset.CustomDataset
+       dataset_param1: value1
+       dataset_param2: value2
        dataset_wrappers:
          - kind: noether.data.base.wrappers.SomeDatasetWrapper
            param1: value1
@@ -194,7 +199,6 @@ Package Contents
    .. py:method:: instantiate(dataset_config, **kwargs)
 
       Instantiates the dataset either based on `dataset_config`
-
 
       :param dataset_config: Configuration for the dataset. See
                              :class:`~noether.core.schemas.dataset.DatasetBaseConfig`
@@ -210,11 +214,9 @@ Package Contents
    Bases: :py:obj:`noether.core.factory.base.Factory`
 
 
-   Factory for creating optimizers.
-
-   Handles wrapping into :class:`~noether.core.optimizer.OptimizerWrapper` by creating the corresponding constructor
-   for the underlying :class:`~torch.optim.Optimizer`. Objects are returned as partials, as creating the optimizer
-   requires the model parameters from the instantiated model.
+   Factory for creating optimizers. Handles wrapping into :class:`~noether.core.optimizer.OptimizerWrapper` by creating the corresponding constructor
+   for the underlying :class:`torch.optim.Optimizer`. Objects are returned as partials, as creating the optimizer requires
+   the model parameters from the instantiated model.
 
 
    .. py:method:: instantiate(optimizer_config)
@@ -222,6 +224,7 @@ Package Contents
       Instantiates the optimizer based on the provided configuration.
 
       :param optimizer_config: Configuration for the optimizer to create. This config contains both the
+                               :class:`torch.optim.Optimizer` and the :class:`~noether.core.optimizer.OptimizerWrapper` configurations.
                                :class:`~torch.optim.Optimizer` and the :class:`~noether.core.optimizer.OptimizerWrapper` configurations.
                                See :class:`~noether.core.schemas.optimizers.OptimizerConfig` for available options.
 

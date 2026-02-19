@@ -51,8 +51,6 @@ Module Contents
 
 
    .. py:attribute:: model_names
-      :value: []
-
 
 
    .. py:method:: before_training(*, update_counter)

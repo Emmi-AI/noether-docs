@@ -285,6 +285,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use and Build Callbacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/experiment_tracking.html">Experiment Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 </li>
@@ -810,11 +811,11 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.configs.hyperparameters.Hyperparameters.save_resolved">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">save_resolved</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage_hyperparameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_file_uri</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.configs.hyperparameters.Hyperparameters.save_resolved" title="Link to this definition">¶</a></dt>
-<dd><p>Save the resolved hyperparameters to the output file.</p>
+<dd><p>Save the resolved config schema hyperparameters to the output file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stage_hyperparameters</strong> (<a class="reference internal" href="../../schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema" title="noether.core.schemas.schema.ConfigSchema"><em>noether.core.schemas.schema.ConfigSchema</em></a>) – Hyperparameters to save.</p></li>
+<li><p><strong>stage_hyperparameters</strong> (<a class="reference internal" href="../../schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema" title="noether.core.schemas.schema.ConfigSchema"><em>noether.core.schemas.schema.ConfigSchema</em></a>) – Hyperparameters to save in a Pydantic object.</p></li>
 <li><p><strong>out_file_uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>pathlib.Path</em></a>) – Path to the output file.</p></li>
 </ul>
 </dd>

@@ -26,7 +26,9 @@ Module Contents
 
    .. code-block:: yaml
 
-       kind: path.to.model.MyModel
+       kind: path.to.custom_dataset.CustomDataset
+       dataset_param1: value1
+       dataset_param2: value2
        dataset_wrappers:
          - kind: noether.data.base.wrappers.SomeDatasetWrapper
            param1: value1
@@ -40,7 +42,6 @@ Module Contents
    .. py:method:: instantiate(dataset_config, **kwargs)
 
       Instantiates the dataset either based on `dataset_config`
-
 
       :param dataset_config: Configuration for the dataset. See
                              :class:`~noether.core.schemas.dataset.DatasetBaseConfig`
