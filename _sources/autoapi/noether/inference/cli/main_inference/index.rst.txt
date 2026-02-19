@@ -9,11 +9,14 @@ Functions
 
 .. autoapisummary::
 
+   noether.inference.cli.main_inference.convert_sets_to_lists
    noether.inference.cli.main_inference.main
 
 
 Module Contents
 ---------------
+
+.. py:function:: convert_sets_to_lists(obj)
 
 .. py:function:: main(inference_config)
 

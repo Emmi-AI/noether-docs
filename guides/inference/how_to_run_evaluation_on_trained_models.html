@@ -807,8 +807,11 @@
 <h3>Required Arguments<a class="headerlink" href="#required-arguments" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> is also using Hydra. Config can be provided via the <code class="docutils literal notranslate"><span class="pre">--hp</span></code> flag or directly as CLI arguments. The following argument is required:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input_dir</span></code>: The absolute or relative path to the directory of the training run you wish to evaluate. This directory must contain a <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code> file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_dir</span></code>: The absolute or relative path to the directory of root of the outputs of the training run you wish to evaluate (without the <cite>run_id</cite>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_id</span></code>: The specific run ID to evaluate a model from.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stage_name</span></code>: The stage of the training run to evaluate (optinal and can be empty). This is used to locate the correct checkpoint and configuration files.</p></li>
 </ul>
+<p>The folder <cite>input_dir/run_id/stage_name</cite> should contain the desired checkpoint files and the resolved configuration file (<cite>hp_resolved.yaml</cite>).</p>
 </section>
 <section id="supported-callbacks">
 <h3>Supported Callbacks<a class="headerlink" href="#supported-callbacks" title="Link to this heading">¶</a></h3>
@@ -819,11 +822,11 @@
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h3>
 <p>Basic evaluation using the latest checkpoint. This runs the same callbacks as configured during training:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs/2026-01-10/10-00-00
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs/<span class="w"> </span>+run_id<span class="o">=</span><span class="m">2026</span>-01-10/10-00-00<span class="w"> </span>+stage_name<span class="o">=</span>train
 </pre></div>
 </div>
 <p>Evaluation on a specific checkpoint:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs/2026-01-10/10-00-00<span class="w"> </span><span class="nv">resume_checkpoint</span><span class="o">=</span>best_accuracy<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs<span class="w"> </span><span class="nv">run_id</span><span class="o">=</span><span class="m">2026</span>-01-10/10-00-00<span class="w"> </span><span class="nv">resume_checkpoint</span><span class="o">=</span>best_accuracy<span class="w"> </span><span class="se">\</span>
 --hp<span class="w"> </span>configs/inference/visualization.yaml
 </pre></div>
 </div>
@@ -836,7 +839,7 @@
 <span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OfflineLossCallback</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs/2026-01-10/10-00-00<span class="w"> </span>--hp<span class="w"> </span>configs/inference/custom_eval_callbacks.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs<span class="w"> </span><span class="nv">run_id</span><span class="o">=</span><span class="m">2026</span>-01-10/10-00-00<span class="w"> </span>--hp<span class="w"> </span>configs/inference/custom_eval_callbacks.yaml
 </pre></div>
 </div>
 </section>
