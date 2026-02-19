@@ -948,13 +948,10 @@ This property defines where the summary is written to.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.providers.path.PathProvider.link">
 <span class="sig-name descname"><span class="pre">link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ancestor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.providers.path.PathProvider.link" title="Link to this definition">¶</a></dt>
-<dd><p>Create a symlink from the current run output path to the target run output path for resuming.</p>
+<dd><p>Create a symlink from the current run output to the ancestor run output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>target</strong> – The target PathProvider to link to.</p></li>
-<li><p><strong>ancestor</strong> (<a class="reference internal" href="#noether.core.providers.path.PathProvider" title="noether.core.providers.path.PathProvider"><em>PathProvider</em></a>)</p></li>
-</ul>
+<dd class="field-odd"><p><strong>ancestor</strong> (<a class="reference internal" href="#noether.core.providers.path.PathProvider" title="noether.core.providers.path.PathProvider"><em>PathProvider</em></a>) – The ancestor PathProvider to link to.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>

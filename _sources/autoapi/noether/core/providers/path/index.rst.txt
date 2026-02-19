@@ -108,9 +108,9 @@ Module Contents
 
    .. py:method:: link(ancestor)
 
-      Create a symlink from the current run output path to the target run output path for resuming.
+      Create a symlink from the current run output to the ancestor run output.
 
-      :param target: The target PathProvider to link to.
+      :param ancestor: The ancestor PathProvider to link to.
 
 
 
