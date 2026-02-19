@@ -808,43 +808,46 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.DotProductAttention" title="noether.modeling.modules.DotProductAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DotProductAttention</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.Activation" title="noether.modeling.modules.Activation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Activation</span></code></a></p></td>
+<td><p>Create a collection of name/value pairs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.DotProductAttention" title="noether.modeling.modules.DotProductAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DotProductAttention</span></code></a></p></td>
 <td><p>Scaled dot-product attention module.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.PerceiverAttention" title="noether.modeling.modules.PerceiverAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PerceiverAttention</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.PerceiverAttention" title="noether.modeling.modules.PerceiverAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PerceiverAttention</span></code></a></p></td>
 <td><p>Perceiver style attention module. This module is similar to a cross-attention modules.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.TransolverAttention" title="noether.modeling.modules.TransolverAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverAttention</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.TransolverAttention" title="noether.modeling.modules.TransolverAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverAttention</span></code></a></p></td>
 <td><p>Adapted from <a class="reference external" href="https://github.com/thuml/Transolver/blob/main/Car-Design-ShapeNetCar/models/Transolver.py">https://github.com/thuml/Transolver/blob/main/Car-Design-ShapeNetCar/models/Transolver.py</a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.PerceiverBlock" title="noether.modeling.modules.PerceiverBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PerceiverBlock</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.PerceiverBlock" title="noether.modeling.modules.PerceiverBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PerceiverBlock</span></code></a></p></td>
 <td><p>For a self-attention module, the input tensor for the query, key, and value are the same. The PerceiverBlock,</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.TransformerBlock" title="noether.modeling.modules.TransformerBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerBlock</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.TransformerBlock" title="noether.modeling.modules.TransformerBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerBlock</span></code></a></p></td>
 <td><p>A transformer block with a single attention layer and a feedforward layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.DeepPerceiverDecoder" title="noether.modeling.modules.DeepPerceiverDecoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeepPerceiverDecoder</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.DeepPerceiverDecoder" title="noether.modeling.modules.DeepPerceiverDecoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeepPerceiverDecoder</span></code></a></p></td>
 <td><p>A deep Perceiver decoder module. Can be configured with different number of layers and hidden dimensions.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.SupernodePooling" title="noether.modeling.modules.SupernodePooling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SupernodePooling</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.SupernodePooling" title="noether.modeling.modules.SupernodePooling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SupernodePooling</span></code></a></p></td>
 <td><p>Supernode pooling layer.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.ContinuousSincosEmbed" title="noether.modeling.modules.ContinuousSincosEmbed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ContinuousSincosEmbed</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.ContinuousSincosEmbed" title="noether.modeling.modules.ContinuousSincosEmbed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ContinuousSincosEmbed</span></code></a></p></td>
 <td><p>Embedding layer for continuous coordinates using sine and cosine functions.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.LayerScale" title="noether.modeling.modules.LayerScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerScale</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.LayerScale" title="noether.modeling.modules.LayerScale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerScale</span></code></a></p></td>
 <td><p>LayerScale module scales the input tensor by a learnable parameter gamma.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.LinearProjection" title="noether.modeling.modules.LinearProjection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearProjection</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.LinearProjection" title="noether.modeling.modules.LinearProjection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearProjection</span></code></a></p></td>
 <td><p>LinearProjection is a linear projection layer that can be used for 1D, 2D, and 3D data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.UnquantizedDropPath" title="noether.modeling.modules.UnquantizedDropPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnquantizedDropPath</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.UnquantizedDropPath" title="noether.modeling.modules.UnquantizedDropPath"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnquantizedDropPath</span></code></a></p></td>
 <td><p>Unquantized drop path (Stochastic Depth, <a class="reference external" href="https://arxiv.org/abs/1603.09382">https://arxiv.org/abs/1603.09382</a>) per sample. Unquantized means</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.MLP" title="noether.modeling.modules.MLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLP</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.MLP" title="noether.modeling.modules.MLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLP</span></code></a></p></td>
 <td><p>Implements a Multi-Layer Perceptron (MLP) with configurable number of layers, hidden dimension activation functions and weight initialization methods.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.UpActDownMlp" title="noether.modeling.modules.UpActDownMlp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UpActDownMlp</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.UpActDownMlp" title="noether.modeling.modules.UpActDownMlp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UpActDownMlp</span></code></a></p></td>
 <td><p>UpActDownMlp is a vanilla MLP with an up-projection followed by an GELU activation function and a</p></td>
 </tr>
 </tbody>
@@ -853,6 +856,92 @@
 </section>
 <section id="package-contents">
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.Activation">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.</span></span><span class="sig-name descname"><span class="pre">Activation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.Activation" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>Create a collection of name/value pairs.</p>
+<p>Example enumeration:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span><span class="w"> </span><span class="nc">Color</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">RED</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">... </span>    <span class="n">BLUE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">... </span>    <span class="n">GREEN</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Access them by:</p>
+<ul>
+<li><p>attribute access:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Color</span><span class="o">.</span><span class="n">RED</span>
+<span class="go">&lt;Color.RED: 1&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>value lookup:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Color</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;Color.RED: 1&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>name lookup:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Color</span><span class="p">[</span><span class="s1">&#39;RED&#39;</span><span class="p">]</span>
+<span class="go">&lt;Color.RED: 1&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Enumerations can be iterated over, and know how many members they have:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">Color</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">Color</span><span class="p">)</span>
+<span class="go">[&lt;Color.RED: 1&gt;, &lt;Color.BLUE: 2&gt;, &lt;Color.GREEN: 3&gt;]</span>
+</pre></div>
+</div>
+<p>Methods can be added to enumerations, and members can have their own
+attributes – see the documentation for details.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.Activation.GELU">
+<span class="sig-name descname"><span class="pre">GELU</span></span><a class="headerlink" href="#noether.modeling.modules.Activation.GELU" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.Activation.TANH">
+<span class="sig-name descname"><span class="pre">TANH</span></span><a class="headerlink" href="#noether.modeling.modules.Activation.TANH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.Activation.SIGMOID">
+<span class="sig-name descname"><span class="pre">SIGMOID</span></span><a class="headerlink" href="#noether.modeling.modules.Activation.SIGMOID" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.Activation.RELU">
+<span class="sig-name descname"><span class="pre">RELU</span></span><a class="headerlink" href="#noether.modeling.modules.Activation.RELU" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.Activation.LEAKY_RELU">
+<span class="sig-name descname"><span class="pre">LEAKY_RELU</span></span><a class="headerlink" href="#noether.modeling.modules.Activation.LEAKY_RELU" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.Activation.SOFTPLUS">
+<span class="sig-name descname"><span class="pre">SOFTPLUS</span></span><a class="headerlink" href="#noether.modeling.modules.Activation.SOFTPLUS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.Activation.ELU">
+<span class="sig-name descname"><span class="pre">ELU</span></span><a class="headerlink" href="#noether.modeling.modules.Activation.ELU" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.Activation.SILU">
+<span class="sig-name descname"><span class="pre">SILU</span></span><a class="headerlink" href="#noether.modeling.modules.Activation.SILU" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.DotProductAttention">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.</span></span><span class="sig-name descname"><span class="pre">DotProductAttention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.DotProductAttention" title="Link to this definition">¶</a></dt>
@@ -1911,6 +2000,17 @@ down-projection to the original input dim.</p>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.Activation"><code class="docutils literal notranslate"><span class="pre">Activation</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.Activation.GELU"><code class="docutils literal notranslate"><span class="pre">Activation.GELU</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.Activation.TANH"><code class="docutils literal notranslate"><span class="pre">Activation.TANH</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.Activation.SIGMOID"><code class="docutils literal notranslate"><span class="pre">Activation.SIGMOID</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.Activation.RELU"><code class="docutils literal notranslate"><span class="pre">Activation.RELU</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.Activation.LEAKY_RELU"><code class="docutils literal notranslate"><span class="pre">Activation.LEAKY_RELU</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.Activation.SOFTPLUS"><code class="docutils literal notranslate"><span class="pre">Activation.SOFTPLUS</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.Activation.ELU"><code class="docutils literal notranslate"><span class="pre">Activation.ELU</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.Activation.SILU"><code class="docutils literal notranslate"><span class="pre">Activation.SILU</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.modules.DotProductAttention"><code class="docutils literal notranslate"><span class="pre">DotProductAttention</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.modules.DotProductAttention.num_heads"><code class="docutils literal notranslate"><span class="pre">DotProductAttention.num_heads</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.DotProductAttention.head_dim"><code class="docutils literal notranslate"><span class="pre">DotProductAttention.head_dim</span></code></a></li>
