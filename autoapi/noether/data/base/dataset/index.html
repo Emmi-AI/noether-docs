@@ -807,7 +807,7 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.base.dataset.with_normalizers" title="noether.data.base.dataset.with_normalizers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">with_normalizers</span></code></a>(normalizer_key)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.base.dataset.with_normalizers" title="noether.data.base.dataset.with_normalizers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">with_normalizers</span></code></a>([_func_or_key])</p></td>
 <td><p>Decorator to apply a normalizer to the output of a getitem_* function of the implemented Dataset class.</p></td>
 </tr>
 </tbody>
@@ -818,19 +818,39 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.data.base.dataset.with_normalizers">
-<span class="sig-prename descclassname"><span class="pre">noether.data.base.dataset.</span></span><span class="sig-name descname"><span class="pre">with_normalizers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalizer_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.base.dataset.with_normalizers" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">noether.data.base.dataset.</span></span><span class="sig-name descname"><span class="pre">with_normalizers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_func_or_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.base.dataset.with_normalizers" title="Link to this definition">¶</a></dt>
 <dd><p>Decorator to apply a normalizer to the output of a getitem_* function of the implemented Dataset class.</p>
-<p>This decorator will look for a normalizer registered under the specified key and apply it to the output of the decorated function.</p>
+<p>This decorator will look for a normalizer registered under the specified key and apply it to the output
+of the decorated function. If no key is provided, the key is automatically inferred from the function name
+by removing the ‘<a href="#id1"><span class="problematic" id="id2">getitem_</span></a>’ prefix.</p>
 <p>Example usage:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@with_normalizers</span><span class="p">(</span><span class="s2">&quot;surface_pressure&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inferred key: &quot;surface_pressure&quot;</span>
+<span class="nd">@with_normalizers</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">getitem_surface_pressure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
-    <span class="c1"># Load surface pressure tensor</span>
-    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">/surface_pressure_tensor/</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">.pt&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">/surface_pressure/</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">.pt&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Explicit key: &quot;pressure&quot;</span>
+<span class="nd">@with_normalizers</span><span class="p">(</span><span class="s2">&quot;pressure&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">getitem_surface_pressure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">/surface_pressure/</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">.pt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>normalizer_key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The key of the normalizer to apply. This key should be present in the self.normalizers dictionary of the Dataset class.</p>
+<dd class="field-odd"><p><strong>_func_or_key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>Any</em><em> | </em><em>None</em>) – The normalizer key (str) or the function being decorated.
+If used as <cite>&#64;with_normalizers</cite> (no arguments), this will be the decorated function.
+If used as <cite>&#64;with_normalizers(“key”)</cite>, this will be the string key.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The decorated function with normalization applied.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the normalizer key cannot be resolved from the function name.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#AttributeError" title="(in Python v3.14)"><strong>AttributeError</strong></a> – If the class instance does not have a ‘normalizers’ attribute.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> – If the requested normalizer key is not found in the ‘normalizers’ dictionary.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>

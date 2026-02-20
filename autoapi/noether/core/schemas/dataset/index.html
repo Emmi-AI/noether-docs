@@ -822,13 +822,16 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs" title="noether.core.schemas.dataset.DatasetSplitIDs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetSplitIDs</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.CAEMLDatasetConfig" title="noether.core.schemas.dataset.CAEMLDatasetConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CAEMLDatasetConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs" title="noether.core.schemas.dataset.DatasetSplitIDs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetSplitIDs</span></code></a></p></td>
 <td><p>Base class for dataset split ID validation with overlap checking.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldDimSpec</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldDimSpec</span></code></a></p></td>
 <td><p>A specification for a group of named data fields and their dimensions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs" title="noether.core.schemas.dataset.AeroDataSpecs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroDataSpecs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs" title="noether.core.schemas.dataset.AeroDataSpecs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroDataSpecs</span></code></a></p></td>
 <td><p>Defines the complete data specification for a surrogate model.</p></td>
 </tr>
 </tbody>
@@ -944,25 +947,14 @@
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.root">
-<span class="sig-name descname"><span class="pre">root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.root" title="Link to this definition">¶</a></dt>
-<dd><p>Root directory of the dataset. If None, data is not loaded from disk, but somehow generated in memory.</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.pipeline">
 <span class="sig-name descname"><span class="pre">pipeline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.pipeline" title="Link to this definition">¶</a></dt>
 <dd><p>Config of the pipeline to use for the dataset.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.split">
-<span class="sig-name descname"><span class="pre">split</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'train'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'val'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'test'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.split" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.dataset_normalizers">
-<span class="sig-name descname"><span class="pre">dataset_normalizers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">noether.core.schemas.normalizers.AnyNormalizer</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.dataset_normalizers" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">dataset_normalizers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">noether.core.schemas.normalizers.AnyNormalizer</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">noether.core.schemas.normalizers.AnyNormalizer</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.dataset_normalizers" title="Link to this definition">¶</a></dt>
 <dd><p>List of normalizers to apply to the dataset. The key is the data source name.</p>
 </dd></dl>
 
@@ -987,6 +979,29 @@
 <dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.model_config">
 <span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.model_config" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.CAEMLDatasetConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">CAEMLDatasetConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.CAEMLDatasetConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.CAEMLDatasetConfig.root">
+<span class="sig-name descname"><span class="pre">root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.CAEMLDatasetConfig.root" title="Link to this definition">¶</a></dt>
+<dd><p>Root directory of the dataset. If None, data is not loaded from disk, but somehow generated in memory.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.CAEMLDatasetConfig.split">
+<span class="sig-name descname"><span class="pre">split</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'train'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'val'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'test'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.CAEMLDatasetConfig.split" title="Link to this definition">¶</a></dt>
+<dd><p>Which split of the dataset to use. Must be one of “train”, “val”, or “test”.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1359,14 +1374,17 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetWrappers"><code class="docutils literal notranslate"><span class="pre">DatasetWrappers</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.kind"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.kind</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.root"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.root</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.pipeline"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.pipeline</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.split"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.split</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.dataset_normalizers"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.dataset_normalizers</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.dataset_wrappers"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.dataset_wrappers</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.included_properties"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.included_properties</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.excluded_properties"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.excluded_properties</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.model_config"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.model_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.CAEMLDatasetConfig"><code class="docutils literal notranslate"><span class="pre">CAEMLDatasetConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.CAEMLDatasetConfig.root"><code class="docutils literal notranslate"><span class="pre">CAEMLDatasetConfig.root</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.CAEMLDatasetConfig.split"><code class="docutils literal notranslate"><span class="pre">CAEMLDatasetConfig.split</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs</span></code></a><ul>

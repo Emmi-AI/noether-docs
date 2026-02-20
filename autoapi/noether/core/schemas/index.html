@@ -2435,17 +2435,23 @@ validated to form a valid model.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.datasets">
 <span class="sig-name descname"><span class="pre">datasets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><span class="pre">noether.core.schemas.dataset.DatasetBaseConfig</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.datasets" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configuration for datasets. The key is the dataset and value is the configuration for that dataset.
+See <a class="reference internal" href="dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a> for available options.
+The key “train” is reserved for the training dataset, but if not provided, the first dataset will be used as training dataset by default,
+other keys are arbitrary and can be used to identify datasets for different stages, e.g., “train”, “val”, “test”, etc. or different datasets for the same stage, e.g., “train_cfd”, “train_wind_turbine”, etc.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.model">
 <span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><span class="pre">noether.core.schemas.models.ModelBaseConfig</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.model" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configuration for the model. See <a class="reference internal" href="models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.trainer">
 <span class="sig-name descname"><span class="pre">trainer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig" title="noether.core.schemas.trainers.BaseTrainerConfig"><span class="pre">noether.core.schemas.trainers.BaseTrainerConfig</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.trainer" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Configuration for the trainer. See <a class="reference internal" href="trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig" title="noether.core.schemas.trainers.BaseTrainerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrainerConfig</span></code></a> for available options.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.debug">

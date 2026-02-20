@@ -1549,17 +1549,26 @@ Package Contents
       :value: None
 
 
+      Configuration for datasets. The key is the dataset and value is the configuration for that dataset.
+      See :class:`~noether.core.schemas.dataset.DatasetBaseConfig` for available options.
+      The key "train" is reserved for the training dataset, but if not provided, the first dataset will be used as training dataset by default,
+      other keys are arbitrary and can be used to identify datasets for different stages, e.g., "train", "val", "test", etc. or different datasets for the same stage, e.g., "train_cfd", "train_wind_turbine", etc.
+
 
    .. py:attribute:: model
       :type:  noether.core.schemas.models.ModelBaseConfig
       :value: None
 
 
+      Configuration for the model. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+
 
    .. py:attribute:: trainer
       :type:  noether.core.schemas.trainers.BaseTrainerConfig
       :value: None
 
+
+      Configuration for the trainer. See :class:`~noether.core.schemas.trainers.BaseTrainerConfig` for available options.
 
 
    .. py:attribute:: debug

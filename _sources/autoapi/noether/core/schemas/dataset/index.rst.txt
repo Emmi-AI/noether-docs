@@ -22,6 +22,7 @@ Classes
    noether.core.schemas.dataset.ShuffleWrapperConfig
    noether.core.schemas.dataset.SubsetWrapperConfig
    noether.core.schemas.dataset.DatasetBaseConfig
+   noether.core.schemas.dataset.CAEMLDatasetConfig
    noether.core.schemas.dataset.DatasetSplitIDs
    noether.core.schemas.dataset.FieldDimSpec
    noether.core.schemas.dataset.AeroDataSpecs
@@ -113,14 +114,6 @@ Module Contents
       Kind of dataset to use.
 
 
-   .. py:attribute:: root
-      :type:  str | None
-      :value: None
-
-
-      Root directory of the dataset. If None, data is not loaded from disk, but somehow generated in memory.
-
-
    .. py:attribute:: pipeline
       :type:  Any | None
       :value: None
@@ -129,12 +122,8 @@ Module Contents
       Config of the pipeline to use for the dataset.
 
 
-   .. py:attribute:: split
-      :type:  Literal['train', 'val', 'test']
-
-
    .. py:attribute:: dataset_normalizers
-      :type:  dict[str, list[noether.core.schemas.normalizers.AnyNormalizer]] | None
+      :type:  dict[str, list[noether.core.schemas.normalizers.AnyNormalizer] | noether.core.schemas.normalizers.AnyNormalizer] | None
       :value: None
 
 
@@ -166,6 +155,25 @@ Module Contents
    .. py:attribute:: model_config
 
       Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+.. py:class:: CAEMLDatasetConfig(/, **data)
+
+   Bases: :py:obj:`DatasetBaseConfig`
+
+
+   .. py:attribute:: root
+      :type:  str | None
+      :value: None
+
+
+      Root directory of the dataset. If None, data is not loaded from disk, but somehow generated in memory.
+
+
+   .. py:attribute:: split
+      :type:  Literal['train', 'val', 'test']
+
+      Which split of the dataset to use. Must be one of "train", "val", or "test".
 
 
 .. py:class:: DatasetSplitIDs(/, **data)

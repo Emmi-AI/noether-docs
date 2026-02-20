@@ -135,22 +135,38 @@ Package Contents
 
 
 
-.. py:function:: with_normalizers(normalizer_key)
+.. py:function:: with_normalizers(_func_or_key = None)
 
    Decorator to apply a normalizer to the output of a getitem_* function of the implemented Dataset class.
 
-   This decorator will look for a normalizer registered under the specified key and apply it to the output of the decorated function.
+   This decorator will look for a normalizer registered under the specified key and apply it to the output
+   of the decorated function. If no key is provided, the key is automatically inferred from the function name
+   by removing the 'getitem_' prefix.
 
    Example usage:
 
    .. code-block:: python
 
-       @with_normalizers("surface_pressure")
+       # Inferred key: "surface_pressure"
+       @with_normalizers
        def getitem_surface_pressure(self, idx):
-           # Load surface pressure tensor
-           return torch.load(f"{self.path}/surface_pressure_tensor/{idx}.pt")
+           return torch.load(f"{self.path}/surface_pressure/{idx}.pt")
 
-   :param normalizer_key: The key of the normalizer to apply. This key should be present in the self.normalizers dictionary of the Dataset class.
+
+       # Explicit key: "pressure"
+       @with_normalizers("pressure")
+       def getitem_surface_pressure(self, idx):
+           return torch.load(f"{self.path}/surface_pressure/{idx}.pt")
+
+   :param _func_or_key: The normalizer key (str) or the function being decorated.
+                        If used as `@with_normalizers` (no arguments), this will be the decorated function.
+                        If used as `@with_normalizers("key")`, this will be the string key.
+
+   :returns: The decorated function with normalization applied.
+
+   :raises ValueError: If the normalizer key cannot be resolved from the function name.
+   :raises AttributeError: If the class instance does not have a 'normalizers' attribute.
+   :raises KeyError: If the requested normalizer key is not found in the 'normalizers' dictionary.
 
 
 .. py:class:: Subset(dataset, indices)
