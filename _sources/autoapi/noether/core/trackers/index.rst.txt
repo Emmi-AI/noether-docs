@@ -13,8 +13,8 @@ Submodules
    /autoapi/noether/core/trackers/base/index
    /autoapi/noether/core/trackers/noop/index
    /autoapi/noether/core/trackers/tensorboard/index
-   /autoapi/noether/core/trackers/trackio/index
-   /autoapi/noether/core/trackers/wandb/index
+   /autoapi/noether/core/trackers/trackio_tracker/index
+   /autoapi/noether/core/trackers/wandb_tracker/index
 
 
 Classes

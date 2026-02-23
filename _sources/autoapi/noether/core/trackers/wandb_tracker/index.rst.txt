@@ -1,7 +1,7 @@
-noether.core.trackers.wandb
-===========================
+noether.core.trackers.wandb_tracker
+===================================
 
-.. py:module:: noether.core.trackers.wandb
+.. py:module:: noether.core.trackers.wandb_tracker
 
 
 Attributes
@@ -9,7 +9,7 @@ Attributes
 
 .. autoapisummary::
 
-   noether.core.trackers.wandb.WANDB_IMPORT_ERROR
+   noether.core.trackers.wandb_tracker.WANDB_IMPORT_ERROR
 
 
 Classes
@@ -17,7 +17,7 @@ Classes
 
 .. autoapisummary::
 
-   noether.core.trackers.wandb.WandBTracker
+   noether.core.trackers.wandb_tracker.WandBTracker
 
 
 Module Contents

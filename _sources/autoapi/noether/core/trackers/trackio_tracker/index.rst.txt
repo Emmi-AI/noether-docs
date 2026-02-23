@@ -1,7 +1,7 @@
-noether.core.trackers.trackio
-=============================
+noether.core.trackers.trackio_tracker
+=====================================
 
-.. py:module:: noether.core.trackers.trackio
+.. py:module:: noether.core.trackers.trackio_tracker
 
 
 Attributes
@@ -9,7 +9,7 @@ Attributes
 
 .. autoapisummary::
 
-   noether.core.trackers.trackio.TRACKIO_IMPORT_ERROR
+   noether.core.trackers.trackio_tracker.TRACKIO_IMPORT_ERROR
 
 
 Classes
@@ -17,7 +17,7 @@ Classes
 
 .. autoapisummary::
 
-   noether.core.trackers.trackio.TrackioTracker
+   noether.core.trackers.trackio_tracker.TrackioTracker
 
 
 Module Contents
