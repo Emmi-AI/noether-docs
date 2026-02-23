@@ -265,7 +265,7 @@ Module Contents
 
 .. py:class:: FieldDimSpec
 
-   Bases: :py:obj:`pydantic.RootModel`\ [\ :py:obj:`dict`\ [\ :py:obj:`str`\ , :py:obj:`int`\ ]\ ]
+   Bases: :py:obj:`pydantic.RootModel`\ [\ :py:obj:`collections.OrderedDict`\ [\ :py:obj:`str`\ , :py:obj:`int`\ ]\ ]
 
 
    A specification for a group of named data fields and their dimensions.
