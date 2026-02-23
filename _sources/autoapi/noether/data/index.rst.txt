@@ -604,6 +604,8 @@ Package Contents
 
 
    .. py:attribute:: index_offsets
+      :value: []
+
 
 
    .. py:attribute:: dataset
