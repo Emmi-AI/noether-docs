@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" /><link rel="next" title="noether.core.schemas.models.ab_upt" href="ab_upt/index.html" /><link rel="prev" title="noether.core.schemas.initializers" href="../initializers/index.html" />
+<link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" /><link rel="next" title="noether.core.schemas.models.ab_upt" href="ab_upt/index.html" /><link rel="prev" title="noether.core.schemas.mixins" href="../mixins/index.html" />
         <link rel="prefetch" href="../../../../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
@@ -402,6 +402,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../dataset/index.html">noether.core.schemas.dataset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../filemap/index.html">noether.core.schemas.filemap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../initializers/index.html">noether.core.schemas.initializers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mixins/index.html">noether.core.schemas.mixins</a></li>
 <li class="toctree-l4 current has-children current-page"><a class="current reference internal" href="#">noether.core.schemas.models</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle navigation of noether.core.schemas.models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="ab_upt/index.html">noether.core.schemas.models.ab_upt</a></li>
 <li class="toctree-l5"><a class="reference internal" href="base/index.html">noether.core.schemas.models.base</a></li>
@@ -1073,7 +1074,7 @@ validated to form a valid model.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.models.UPTConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.models.</span></span><span class="sig-name descname"><span class="pre">UPTConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.UPTConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schemas.models.base.ModelBaseConfig" title="noether.core.schemas.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.base.ModelBaseConfig</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schemas.models.base.ModelBaseConfig" title="noether.core.schemas.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.base.ModelBaseConfig</span></code></a>, <a class="reference internal" href="../mixins/index.html#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.mixins.InjectSharedFieldFromParentMixin</span></code></a></p>
 <p>Configuration for a Transolver model.</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
@@ -1121,17 +1122,17 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.UPTConfig.supernode_pooling_config">
-<span class="sig-name descname"><span class="pre">supernode_pooling_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../modules/index.html#noether.core.schemas.modules.SupernodePoolingConfig" title="noether.core.schemas.modules.SupernodePoolingConfig"><span class="pre">noether.core.schemas.modules.SupernodePoolingConfig</span></a></em><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.supernode_pooling_config" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">supernode_pooling_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/index.html#noether.core.schemas.modules.SupernodePoolingConfig" title="noether.core.schemas.modules.SupernodePoolingConfig"><span class="pre">noether.core.schemas.modules.SupernodePoolingConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.supernode_pooling_config" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.UPTConfig.approximator_config">
-<span class="sig-name descname"><span class="pre">approximator_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><span class="pre">noether.core.schemas.modules.blocks.TransformerBlockConfig</span></a></em><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.approximator_config" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">approximator_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><span class="pre">noether.core.schemas.modules.blocks.TransformerBlockConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.approximator_config" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.UPTConfig.decoder_config">
-<span class="sig-name descname"><span class="pre">decoder_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../modules/index.html#noether.core.schemas.modules.DeepPerceiverDecoderConfig" title="noether.core.schemas.modules.DeepPerceiverDecoderConfig"><span class="pre">noether.core.schemas.modules.DeepPerceiverDecoderConfig</span></a></em><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.decoder_config" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">decoder_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/index.html#noether.core.schemas.modules.DeepPerceiverDecoderConfig" title="noether.core.schemas.modules.DeepPerceiverDecoderConfig"><span class="pre">noether.core.schemas.modules.DeepPerceiverDecoderConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.decoder_config" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1163,14 +1164,14 @@ validated to form a valid model.</p>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../initializers/index.html">
+          <a class="prev-page" href="../mixins/index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">noether.core.schemas.initializers</div>
+                <div class="title">noether.core.schemas.mixins</div>
                 
               </div>
             </a>

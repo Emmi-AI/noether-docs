@@ -14,6 +14,7 @@ Submodules
    /autoapi/noether/core/schemas/dataset/index
    /autoapi/noether/core/schemas/filemap/index
    /autoapi/noether/core/schemas/initializers/index
+   /autoapi/noether/core/schemas/mixins/index
    /autoapi/noether/core/schemas/models/index
    /autoapi/noether/core/schemas/modules/index
    /autoapi/noether/core/schemas/normalizers/index

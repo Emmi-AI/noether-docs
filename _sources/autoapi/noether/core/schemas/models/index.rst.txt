@@ -275,7 +275,7 @@ Package Contents
 
 .. py:class:: UPTConfig(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`, :py:obj:`noether.core.schemas.mixins.InjectSharedFieldFromParentMixin`
 
 
    Configuration for a Transolver model.
@@ -332,15 +332,15 @@ Package Contents
 
 
    .. py:attribute:: supernode_pooling_config
-      :type:  noether.core.schemas.modules.SupernodePoolingConfig
+      :type:  Annotated[noether.core.schemas.modules.SupernodePoolingConfig, noether.core.schemas.mixins.Shared]
 
 
    .. py:attribute:: approximator_config
-      :type:  noether.core.schemas.modules.blocks.TransformerBlockConfig
+      :type:  Annotated[noether.core.schemas.modules.blocks.TransformerBlockConfig, noether.core.schemas.mixins.Shared]
 
 
    .. py:attribute:: decoder_config
-      :type:  noether.core.schemas.modules.DeepPerceiverDecoderConfig
+      :type:  Annotated[noether.core.schemas.modules.DeepPerceiverDecoderConfig, noether.core.schemas.mixins.Shared]
 
 
    .. py:attribute:: bias_layers

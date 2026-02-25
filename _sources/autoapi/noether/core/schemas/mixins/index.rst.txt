@@ -1,0 +1,50 @@
+noether.core.schemas.mixins
+===========================
+
+.. py:module:: noether.core.schemas.mixins
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.mixins.Shared
+   noether.core.schemas.mixins.InjectSharedFieldFromParentMixin
+
+
+Module Contents
+---------------
+
+.. py:class:: Shared
+
+   Marker class to indicate a field should inherit shared values from the parent config.
+
+
+.. py:class:: InjectSharedFieldFromParentMixin(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Mixin to propagate shared fields from parent configuration to sub-configurations.
+
+   Usage:
+       class MyConfig(BaseModel, InjectSharedFieldFromParentMixin):
+           sub_config: Annotated[SubConfigType, Shared]
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:method:: propagate_shared_fields(data)
+      :classmethod:
+
+
+      Propagates shared fields from parent config to sub-configurations if keys are identical.
+
+
+
