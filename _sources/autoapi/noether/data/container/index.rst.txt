@@ -73,7 +73,7 @@ Module Contents
                            `shuffle_seed`. Defaults to None (=no wrapping).
 
       :returns: Dataset of the DataContainer optionally wrapped into dataset wrappers.
-      :rtype: Dataset
+      :rtype: Dataset | DatasetWrapper
 
 
 

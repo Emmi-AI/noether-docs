@@ -825,18 +825,13 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.data.base.wrappers.timing.TimingWrapper">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.base.wrappers.timing.</span></span><span class="sig-name descname"><span class="pre">TimingWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.base.wrappers.timing.TimingWrapper" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.Dataset" title="(in PyTorch v2.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../index.html#noether.data.base.DatasetWrapper" title="noether.data.base.DatasetWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.base.DatasetWrapper</span></code></a></p>
 <p>Wrapper that times __getitem__ calls and returns both the item and the time taken.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dataset</strong> – The dataset to wrap</p>
+<dd class="field-odd"><p><strong>dataset</strong> (<a class="reference internal" href="../../index.html#noether.data.base.Dataset" title="noether.data.base.Dataset"><em>noether.data.base.Dataset</em></a><em> | </em><a class="reference internal" href="../../index.html#noether.data.base.DatasetWrapper" title="noether.data.base.DatasetWrapper"><em>noether.data.base.DatasetWrapper</em></a>) – The dataset to wrap</p>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.data.base.wrappers.timing.TimingWrapper.dataset">
-<span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#noether.data.base.wrappers.timing.TimingWrapper.dataset" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 </section>
@@ -926,10 +921,7 @@
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.data.base.wrappers.timing.META_GETITEM_TIME"><code class="docutils literal notranslate"><span class="pre">META_GETITEM_TIME</span></code></a></li>
-<li><a class="reference internal" href="#noether.data.base.wrappers.timing.TimingWrapper"><code class="docutils literal notranslate"><span class="pre">TimingWrapper</span></code></a><ul>
-<li><a class="reference internal" href="#noether.data.base.wrappers.timing.TimingWrapper.dataset"><code class="docutils literal notranslate"><span class="pre">TimingWrapper.dataset</span></code></a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#noether.data.base.wrappers.timing.TimingWrapper"><code class="docutils literal notranslate"><span class="pre">TimingWrapper</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -83,7 +83,7 @@ Package Contents
        wrapper.properties  # {"x", "y"}
 
 
-   :param dataset: Base dataset to be wrapped.
+   :param dataset: Base dataset to be wrapped. Can be a dataset or another dataset wrapper.
    :param properties: Which properties to load from the wrapped dataset when __getitem__ is called.
 
    :raises TypeError: If properties is not a set.
@@ -148,7 +148,7 @@ Package Contents
 
    :param config: Configuration for the ShuffleWrapper. See :class:`~noether.core.schemas.dataset.ShuffleWrapperConfig`
                   for available options.
-   :param dataset: The dataset to shuffle.
+   :param dataset: The dataset to shuffle. Can be a base dataset or an already wrapped dataset.
 
    :raises ValueError: If the dataset is not an instance of noether.data.Dataset or DatasetWrapper, or if the seed is not an integer or None.
 
@@ -177,14 +177,11 @@ Package Contents
 
 .. py:class:: TimingWrapper(dataset)
 
-   Bases: :py:obj:`torch.utils.data.Dataset`
+   Bases: :py:obj:`noether.data.base.DatasetWrapper`
 
 
    Wrapper that times __getitem__ calls and returns both the item and the time taken.
 
    :param dataset: The dataset to wrap
-
-
-   .. py:attribute:: dataset
 
 

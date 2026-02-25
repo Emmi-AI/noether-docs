@@ -58,7 +58,7 @@ Module Contents
        wrapper.properties  # {"x", "y"}
 
 
-   :param dataset: Base dataset to be wrapped.
+   :param dataset: Base dataset to be wrapped. Can be a dataset or another dataset wrapper.
    :param properties: Which properties to load from the wrapped dataset when __getitem__ is called.
 
    :raises TypeError: If properties is not a set.

@@ -29,14 +29,11 @@ Module Contents
 
 .. py:class:: TimingWrapper(dataset)
 
-   Bases: :py:obj:`torch.utils.data.Dataset`
+   Bases: :py:obj:`noether.data.base.DatasetWrapper`
 
 
    Wrapper that times __getitem__ calls and returns both the item and the time taken.
 
    :param dataset: The dataset to wrap
-
-
-   .. py:attribute:: dataset
 
 
