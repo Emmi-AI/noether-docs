@@ -22,7 +22,7 @@ Classes
    noether.core.schemas.dataset.ShuffleWrapperConfig
    noether.core.schemas.dataset.SubsetWrapperConfig
    noether.core.schemas.dataset.DatasetBaseConfig
-   noether.core.schemas.dataset.CAEMLDatasetConfig
+   noether.core.schemas.dataset.StandardDatasetConfig
    noether.core.schemas.dataset.DatasetSplitIDs
    noether.core.schemas.dataset.FieldDimSpec
    noether.core.schemas.dataset.AeroDataSpecs
@@ -157,17 +157,25 @@ Module Contents
       Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
 
 
-.. py:class:: CAEMLDatasetConfig(/, **data)
+.. py:class:: StandardDatasetConfig(/, **data)
 
    Bases: :py:obj:`DatasetBaseConfig`
 
 
+   Base config for datasets with fixed splits.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: root
-      :type:  str | None
-      :value: None
+      :type:  str
 
-
-      Root directory of the dataset. If None, data is not loaded from disk, but somehow generated in memory.
+      Root directory of the dataset.
 
 
    .. py:attribute:: split

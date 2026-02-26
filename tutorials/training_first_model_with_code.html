@@ -856,7 +856,7 @@ runtime. These configs are Pydantic models, so if something is wrong you will ge
     <span class="n">EmaCallbackConfig</span><span class="p">,</span>
     <span class="n">OfflineLossCallbackConfig</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">AeroDataSpecs</span><span class="p">,</span> <span class="n">DatasetBaseConfig</span><span class="p">,</span> <span class="n">DatasetWrappers</span><span class="p">,</span> <span class="n">RepeatWrapperConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">AeroDataSpecs</span><span class="p">,</span> <span class="n">StandardDatasetConfig</span><span class="p">,</span> <span class="n">DatasetWrappers</span><span class="p">,</span> <span class="n">RepeatWrapperConfig</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.modules</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">DeepPerceiverDecoderConfig</span><span class="p">,</span>
     <span class="n">SupernodePoolingConfig</span><span class="p">,</span>
@@ -995,8 +995,8 @@ directly in the <code class="docutils literal notranslate"><span class="pre">Hyd
     <span class="n">dataset_statistics</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
     <span class="n">dataset_normalizer</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">AnyNormalizer</span><span class="p">]],</span>
     <span class="n">dataset_wrappers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DatasetWrappers</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DatasetBaseConfig</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">DatasetBaseConfig</span><span class="p">(</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StandardDatasetConfig</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">StandardDatasetConfig</span><span class="p">(</span>
         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;noether.data.datasets.cfd.ShapeNetCarDataset&quot;</span><span class="p">,</span>
         <span class="n">root</span><span class="o">=</span><span class="n">dataset_root</span><span class="p">,</span>
         <span class="n">pipeline</span><span class="o">=</span><span class="n">AeroCFDPipelineConfig</span><span class="p">(</span>
