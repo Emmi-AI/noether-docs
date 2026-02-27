@@ -294,6 +294,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../../noether/io/caching.html">Disk Caching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../reference/hardware_setup.html">Hardware Allocation &amp; Training Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../reference/config_inheritance.html">Configuration Inheritance</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../../../index.html">API Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current has-children"><a class="reference internal" href="../../index.html">noether.core</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of noether.core</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../callbacks/index.html">noether.core.callbacks</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of noether.core.callbacks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -824,7 +825,7 @@
 <td><p>Configuration for a Transolver++ model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.models.UPTConfig" title="noether.core.schemas.models.UPTConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UPTConfig</span></code></a></p></td>
-<td><p>Configuration for a Transolver model.</p></td>
+<td><p>Configuration for a UPT model.</p></td>
 </tr>
 </tbody>
 </table>
@@ -835,7 +836,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.models.</span></span><span class="sig-name descname"><span class="pre">AnchorBranchedUPTConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schemas.models.base.ModelBaseConfig" title="noether.core.schemas.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.base.ModelBaseConfig</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schemas.models.base.ModelBaseConfig" title="noether.core.schemas.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.base.ModelBaseConfig</span></code></a>, <a class="reference internal" href="../mixins/index.html#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.mixins.InjectSharedFieldFromParentMixin</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -849,12 +850,12 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.supernode_pooling_config">
-<span class="sig-name descname"><span class="pre">supernode_pooling_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../modules/encoders/index.html#noether.core.schemas.modules.encoders.SupernodePoolingConfig" title="noether.core.schemas.modules.encoders.SupernodePoolingConfig"><span class="pre">noether.core.schemas.modules.encoders.SupernodePoolingConfig</span></a></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.supernode_pooling_config" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">supernode_pooling_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/encoders/index.html#noether.core.schemas.modules.encoders.SupernodePoolingConfig" title="noether.core.schemas.modules.encoders.SupernodePoolingConfig"><span class="pre">noether.core.schemas.modules.encoders.SupernodePoolingConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.supernode_pooling_config" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.transformer_block_config">
-<span class="sig-name descname"><span class="pre">transformer_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><span class="pre">noether.core.schemas.modules.blocks.TransformerBlockConfig</span></a></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.transformer_block_config" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">transformer_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><span class="pre">noether.core.schemas.modules.blocks.TransformerBlockConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.transformer_block_config" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1075,7 +1076,7 @@ validated to form a valid model.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.models.UPTConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.models.</span></span><span class="sig-name descname"><span class="pre">UPTConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.UPTConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schemas.models.base.ModelBaseConfig" title="noether.core.schemas.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.base.ModelBaseConfig</span></code></a>, <a class="reference internal" href="../mixins/index.html#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.mixins.InjectSharedFieldFromParentMixin</span></code></a></p>
-<p>Configuration for a Transolver model.</p>
+<p>Configuration for a UPT model.</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
 validated to form a valid model.</p>

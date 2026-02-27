@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="How-to Guides" href="../guides/index.html" /><link rel="prev" title="Training First Model (with Configs)" href="training_first_model_with_configs.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="noether" href="../autoapi/noether/index.html" /><link rel="prev" title="Hardware Allocation &amp; Training Configurations" href="hardware_setup.html" />
         <link rel="prefetch" href="../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>Training First Model (with Code) - Noether Framework documentation</title>
+        <title>Configuration Inheritance - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -267,11 +267,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../noether/dataset_zoo.html">Noether Dataset Zoo</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="prerequisites.html">Prerequisites</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting_started_install_and_verify.html">Getting Started: Install &amp; Verify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="training_first_model_with_configs.html">Training First Model (with Configs)</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Training First Model (with Code)</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/prerequisites.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/getting_started_install_and_verify.html">Getting Started: Install &amp; Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/training_first_model_with_configs.html">Training First Model (with Configs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/training_first_model_with_code.html">Training First Model (with Code)</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/tutorial/README.MD">Walkthrough</a></li>
 </ul>
 <ul>
@@ -291,10 +291,10 @@
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../noether/io/caching.html">Disk Caching</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/hardware_setup.html">Hardware Allocation &amp; Training Configurations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/config_inheritance.html">Configuration Inheritance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware_setup.html">Hardware Allocation &amp; Training Configurations</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Configuration Inheritance</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../autoapi/noether/index.html">API Reference</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../autoapi/noether/core/index.html">noether.core</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of noether.core</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../autoapi/noether/core/callbacks/index.html">noether.core.callbacks</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of noether.core.callbacks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -766,12 +766,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/tutorials/training_first_model_with_code.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/reference/config_inheritance.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/tutorials/training_first_model_with_code.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/reference/config_inheritance.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -790,403 +790,178 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="training-first-model-with-code">
-<h1>Training First Model (with Code)<a class="headerlink" href="#training-first-model-with-code" title="Link to this heading">¶</a></h1>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+          <section id="configuration-inheritance">
+<h1>Configuration Inheritance<a class="headerlink" href="#configuration-inheritance" title="Link to this heading">¶</a></h1>
+<p>UPT and AB-UPT models support automatic configuration injection from parent to submodules for shared parameters. This feature helps reduce verbosity and maintain consistency across complex model architectures.</p>
+<section id="how-it-works">
+<h2>How It Works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h2>
+<p>When you define certain parameters at the top level of a configuration, they automatically propagate down to nested submodules unless explicitly overridden in the submodule configuration. This inheritance works recursively across multiple levels of nesting.</p>
+<p><strong>Inherited parameters:</strong></p>
 <ul class="simple">
-<li><p>you cloned the <strong>Noether Framework</strong></p></li>
-<li><p>you have a <code class="docutils literal notranslate"><span class="pre">tutorial/</span></code> folder in the repo root</p></li>
-<li><p>you prepared the <code class="docutils literal notranslate"><span class="pre">ShapeNet-Car</span></code> dataset</p></li>
+<li><p><strong>UPT models</strong>: <code class="docutils literal notranslate"><span class="pre">hidden_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">num_heads</span></code>, <code class="docutils literal notranslate"><span class="pre">mlp_expansion_factor</span></code></p></li>
+<li><p><strong>AB-UPT models</strong>: <code class="docutils literal notranslate"><span class="pre">hidden_dim</span></code></p></li>
 </ul>
-<p>The fetching and preprocessing instructions are in the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> located in the
-<code class="docutils literal notranslate"><span class="pre">src/noether/data/datasets/cfd/shapenet_car/</span></code> folder. Review them first and proceed with the next steps when ready.</p>
+<p>The inheritance mechanism uses Pydantic’s validation system and the <code class="docutils literal notranslate"><span class="pre">InjectSharedFieldFromParentMixin</span></code> to detect and propagate these shared fields before model instantiation.</p>
 </section>
-<section id="what-we-build-in-this-tutorial">
-<h2>What we build in this tutorial<a class="headerlink" href="#what-we-build-in-this-tutorial" title="Link to this heading">¶</a></h2>
-<p>We will build a training run in Python code (no YAML).
-The code produces the same config object that the CLI would normally create.</p>
-<p>You will learn:</p>
+<section id="benefits">
+<h2>Benefits<a class="headerlink" href="#benefits" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>how the config is structured (datasets, model, trainer, callbacks)</p></li>
-<li><p>what dataset stats/specs and normalizers do</p></li>
-<li><p>how to start training with <code class="docutils literal notranslate"><span class="pre">HydraRunner().main()</span></code></p></li>
+<li><p><strong>Reduced redundancy</strong>: Define shared parameters once instead of repeating them in every submodule</p></li>
+<li><p><strong>Consistency</strong>: Ensures all submodules use the same architectural parameters by default</p></li>
+<li><p><strong>Flexibility</strong>: Override inherited values in specific submodules when needed</p></li>
 </ul>
 </section>
-<section id="implementation">
-<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">¶</a></h2>
-<section id="overview">
-<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h3>
-<p>Sometimes you want to run training via code. We get it.</p>
-<p>Previously we covered <a class="reference internal" href="training_first_model_with_configs.html"><span class="doc">how to train using CLI and configs</span></a>, now we will focus
-on making things to work via the Python code.</p>
-<p>Relevant files for this can be found under <code class="docutils literal notranslate"><span class="pre">src/noether/training/</span></code> folder. Let’s briefly go over it:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">training/callbacks</span></code> - callbacks executed during and post training</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">training/cli/</span></code> - the CLI definition that we use in the <a class="reference internal" href="training_first_model_with_configs.html"><span class="doc">previous tutorial</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">training/runners/</span></code> - core <code class="docutils literal notranslate"><span class="pre">Hydra</span></code> runner logic that we will use to make the code to work</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">training/trainers/</span></code> - <code class="docutils literal notranslate"><span class="pre">BaseTrainer</span></code> that can be extended downstream, used directly in the <code class="docutils literal notranslate"><span class="pre">Hydra</span></code> runner</p></li>
-</ul>
-<p>In this tutorial we skip <code class="docutils literal notranslate"><span class="pre">yaml</span></code> configs and build the run config in Python.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The example code below uses typed configs and many small schema classes. If this looks overwhelming, don’t worry:
-it will make sense as you follow the steps.</p>
-</div>
-</section>
-<section id="step-1-create-an-entry-point">
-<h3>Step 1: Create an entry point<a class="headerlink" href="#step-1-create-an-entry-point" title="Link to this heading">¶</a></h3>
-<p>Let’s create a new file <code class="docutils literal notranslate"><span class="pre">tutorial/train_shapenet_upt.py</span></code> and use it to run our pipeline. Why “tutorial”? Because
-it has necessary components to get us started and here we want to see a difference between “configs vs. code” workflows.</p>
-</section>
-<section id="step-2-create-necessary-imports">
-<h3>Step 2: Create necessary imports<a class="headerlink" href="#step-2-create-necessary-imports" title="Link to this heading">¶</a></h3>
-<p>Most schema classes live in <code class="docutils literal notranslate"><span class="pre">noether.core.schemas</span></code>. They help us keep typing consistent and validate inputs at
-runtime. These configs are Pydantic models, so if something is wrong you will get a clear validation error.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<section id="example-upt-configuration">
+<h2>Example - UPT Configuration<a class="headerlink" href="#example-upt-configuration" title="Link to this heading">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tutorial.model.UPT</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upt</span>
+<span class="nt">hidden_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192</span>
+<span class="nt">num_heads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="nt">mlp_expansion_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="nt">approximator_depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
+<span class="nt">use_rope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="nt">supernode_pooling_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">input_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">radius</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9</span>
+<span class="w">  </span><span class="c1"># hidden_dim: 192 (inherited from parent)</span>
+<span class="w">  </span><span class="c1"># num_heads: 3 (inherited from parent)</span>
+<span class="w">  </span><span class="c1"># mlp_expansion_factor: 4 (inherited from parent)</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="nt">approximator_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">use_rope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="c1"># hidden_dim: 192 (inherited from parent)</span>
+<span class="w">  </span><span class="c1"># num_heads: 3 (inherited from parent)</span>
+<span class="w">  </span><span class="c1"># mlp_expansion_factor: 4 (inherited from parent)</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.configs</span><span class="w"> </span><span class="kn">import</span> <span class="n">StaticConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">BestCheckpointCallbackConfig</span><span class="p">,</span>
-    <span class="n">CheckpointCallbackConfig</span><span class="p">,</span>
-    <span class="n">EmaCallbackConfig</span><span class="p">,</span>
-    <span class="n">OfflineLossCallbackConfig</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">AeroDataSpecs</span><span class="p">,</span> <span class="n">StandardDatasetConfig</span><span class="p">,</span> <span class="n">DatasetWrappers</span><span class="p">,</span> <span class="n">RepeatWrapperConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.modules</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">DeepPerceiverDecoderConfig</span><span class="p">,</span>
-    <span class="n">SupernodePoolingConfig</span><span class="p">,</span>
-    <span class="n">PerceiverBlockConfig</span><span class="p">,</span>
-    <span class="n">TransformerBlockConfig</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.normalizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnyNormalizer</span><span class="p">,</span> <span class="n">MeanStdNormalizerConfig</span><span class="p">,</span> <span class="n">PositionNormalizerConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.optimizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">OptimizerConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.schedules</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearWarmupCosineDecayScheduleConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigSchema</span><span class="p">,</span> <span class="n">StaticConfigSchema</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">AeroStatsSchema</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.training.runners</span><span class="w"> </span><span class="kn">import</span> <span class="n">HydraRunner</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tutorial.callbacks.surface_volume_evaluation_metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
-    <span class="n">SurfaceVolumeEvaluationMetricsCallbackConfig</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tutorial.schemas.models.upt_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">UPTConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tutorial.schemas.pipelines.aero_pipeline_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">AeroCFDPipelineConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">tutorial.schemas.trainers.automotive_aerodynamics_trainer_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutomotiveAerodynamicsCfdTrainerConfig</span>
+<span class="nt">decoder_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
+<span class="w">  </span><span class="nt">input_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">perceiver_block_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">use_rope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="c1"># hidden_dim: 192 (inherited from parent via decoder_config)</span>
+<span class="w">    </span><span class="c1"># num_heads: 3 (inherited from parent via decoder_config)</span>
+<span class="w">    </span><span class="c1"># mlp_expansion_factor: 4 (inherited from parent via decoder_config)</span>
 </pre></div>
 </div>
-<p>Let’s go over each group to better understand the outline:</p>
-<p>Data:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">noether.core.configs</span></code> - the main config classes, contains configuration for all other components</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">noether.core.schemas.dataset</span></code> - dataset related configs and types for type-hinting</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">noether.core.schemas.modules</span></code> - building blocks of our models, we will use UPT architecture</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">noether.core.schemas.normalizers</span></code> - data normalization configs to be applied during the data loading</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">noether.core.schemas.statistics</span></code> - data statistics aggregation, e.g. mean, std, etc.</p></li>
-<li><p>etc.</p></li>
-</ul>
-<p>Training:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">noether.core.schemas.callbacks</span></code> - relevant callbacks for our training</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">noether.core.schemas.optimizers</span></code> - optimizer config</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tutorial.schemas.trainers.automotive_aerodynamics_trainer_config</span></code> - trainer configuration</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tutorial.schemas.models</span></code> - configs for model initialization</p></li>
-<li><p>etc.</p></li>
-</ul>
-<p>Execution:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">noether.training.runners</span></code> - orchestrators responsible for pipeline execution</p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">HydraRunner</span></code> from <code class="docutils literal notranslate"><span class="pre">noether</span></code> comes with a few public methods: <code class="docutils literal notranslate"><span class="pre">run()</span></code> is used by the CLI, and <code class="docutils literal notranslate"><span class="pre">main()</span></code>
-can be used to run the pipeline via Python. We use the latter to avoid YAML files in this tutorial.</p>
-</div>
 </section>
-<section id="step-3-declare-main-function">
-<h3>Step 3: Declare main() function<a class="headerlink" href="#step-3-declare-main-function" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">dataset_root</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/Users/user/datasets/shapenet_car&quot;</span><span class="p">)</span>  <span class="c1"># feel free to change this to match your structure</span>
-    <span class="n">output_path</span> <span class="o">=</span> <span class="n">dataset_root</span> <span class="o">/</span> <span class="s2">&quot;outputs&quot;</span>
-
-    <span class="n">data_specs</span> <span class="o">=</span> <span class="n">build_specs</span><span class="p">()</span>
-    <span class="n">dataset_normalizer</span> <span class="o">=</span> <span class="n">build_dataset_normalizer</span><span class="p">()</span>
-
-    <span class="n">model_forward_properties</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;surface_mask_query&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;surface_position_batch_idx&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;surface_position_supernode_idx&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;surface_position&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;surface_query_position&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;volume_query_position&quot;</span><span class="p">,</span>
-    <span class="p">]</span>
-
-    <span class="n">upt_model_config</span> <span class="o">=</span> <span class="n">build_model_config</span><span class="p">(</span><span class="n">data_specs</span><span class="p">,</span> <span class="n">model_forward_properties</span><span class="p">)</span>
-    <span class="n">aero_trainer_config</span> <span class="o">=</span> <span class="n">build_trainer_config</span><span class="p">(</span><span class="n">data_specs</span><span class="p">,</span> <span class="n">model_forward_properties</span><span class="p">)</span>
-
-    <span class="n">HydraRunner</span><span class="p">()</span><span class="o">.</span><span class="n">main</span><span class="p">(</span>
-        <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;mps&quot;</span><span class="p">),</span>
-        <span class="n">config</span><span class="o">=</span><span class="n">ConfigSchema</span><span class="p">(</span><span class="o">...</span><span class="p">),</span>  <span class="c1"># note that &#39;...&#39; is a placeholder that we will populate later</span>
-        <span class="n">output_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span>
-    <span class="p">)</span>
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+<section id="nested-inheritance">
+<h2>Nested Inheritance<a class="headerlink" href="#nested-inheritance" title="Link to this heading">¶</a></h2>
+<p>Configuration inheritance works across multiple levels. In the example above, <code class="docutils literal notranslate"><span class="pre">perceiver_block_config</span></code> is nested inside <code class="docutils literal notranslate"><span class="pre">decoder_config</span></code>, which is nested in the top-level UPT config. The shared parameters propagate all the way down:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>UPT config (hidden_dim=192)
+  └── decoder_config (inherits hidden_dim=192)
+        └── perceiver_block_config (inherits hidden_dim=192)
 </pre></div>
 </div>
-<p>This is the core outline of the pipeline. If you will run this code you will get a lot of errors, but conceptually we
-are ready.</p>
-<p>Worth noting that we have several functions that start with <code class="docutils literal notranslate"><span class="pre">build_*</span></code> - we will create them in a minute, but first
-let’s take a look at what we have:</p>
-<ol class="arabic simple">
-<li><p>We declared input and output directories for our training.</p></li>
-<li><p>We will use python-based configs to define our pipeline. These configs will be created via <code class="docutils literal notranslate"><span class="pre">build_*</span></code> methods or
-directly in the <code class="docutils literal notranslate"><span class="pre">HydraRunner().main(config=ConfigSchema(...))</span></code> declaration.</p></li>
-<li><p>We declare model properties that will be sent to the forward pass.</p></li>
-<li><p>The final execution will be handled by <code class="docutils literal notranslate"><span class="pre">noether</span></code>’s internal runner.</p></li>
+</section>
+<section id="overriding-inherited-values">
+<h2>Overriding Inherited Values<a class="headerlink" href="#overriding-inherited-values" title="Link to this heading">¶</a></h2>
+<p>You can override inherited values at any level by explicitly specifying them:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tutorial.model.UPT</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">upt</span>
+<span class="nt">hidden_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192</span>
+<span class="nt">num_heads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="nt">mlp_expansion_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+
+<span class="nt">approximator_config</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># hidden_dim: 192 (still inherited)</span>
+<span class="w">  </span><span class="c1"># num_heads: 3 (still inherited)</span>
+<span class="w">  </span><span class="nt">mlp_expansion_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"> </span><span class="c1"># Override: use 2 instead of inherited 4</span>
+</pre></div>
+</div>
+</section>
+<section id="when-inheritance-doesn-t-apply">
+<h2>When Inheritance Doesn’t Apply<a class="headerlink" href="#when-inheritance-doesn-t-apply" title="Link to this heading">¶</a></h2>
+<p>Configuration inheritance only works for:</p>
+<ul class="simple">
+<li><p>Parameters that are defined as “shared” in the model schema</p></li>
+<li><p>Submodules that have matching parameter names in their schema</p></li>
+<li><p>Dictionary-based configurations (if you define config with python code where submodules are instantiated with explicit parameters, inheritance won’t apply)</p></li>
+</ul>
+<p>If a submodule doesn’t have a field matching the parent’s shared parameter, that parameter simply isn’t injected.</p>
+</section>
+<section id="how-to-add-it-to-your-own-schemas">
+<h2>How to Add It to Your Own Schemas<a class="headerlink" href="#how-to-add-it-to-your-own-schemas" title="Link to this heading">¶</a></h2>
+<p>To add configuration inheritance to your own schemas, follow these steps:</p>
+<ol class="arabic">
+<li><p><strong>Add the mixin to your parent config</strong></p>
+<p>Import and inherit from <code class="docutils literal notranslate"><span class="pre">InjectSharedFieldFromParentMixin</span></code> in your parent configuration class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.mixins</span><span class="w"> </span><span class="kn">import</span> <span class="n">InjectSharedFieldFromParentMixin</span><span class="p">,</span> <span class="n">Shared</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyModelConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">InjectSharedFieldFromParentMixin</span><span class="p">):</span>
+    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">num_layers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># ...other fields</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Mark sub-config fields with the Shared annotation</strong></p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">Annotated[SubConfigType,</span> <span class="pre">Shared]</span></code> to mark which sub-config fields should receive inherited parameters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyModelConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">InjectSharedFieldFromParentMixin</span><span class="p">):</span>
+    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">num_layers</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># This sub-config will receive inherited fields</span>
+    <span class="n">encoder_config</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">EncoderConfig</span><span class="p">,</span> <span class="n">Shared</span><span class="p">]</span>
+
+    <span class="c1"># This sub-config will also receive inherited fields</span>
+    <span class="n">decoder_config</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">DecoderConfig</span><span class="p">,</span> <span class="n">Shared</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Ensure sub-configs have matching field names</strong></p>
+<p>Only fields with matching names will be inherited. If your sub-config has a <code class="docutils literal notranslate"><span class="pre">hidden_dim</span></code> field and the parent has a <code class="docutils literal notranslate"><span class="pre">hidden_dim</span></code> field, the value will be inherited:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">EncoderConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Will inherit from parent</span>
+    <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Won&#39;t inherit (no matching parent field)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>For nested inheritance, add the mixin to sub-configs too</strong></p>
+<p>If your sub-config also has nested configurations, add the mixin to enable multi-level inheritance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DecoderConfig</span><span class="p">(</span><span class="n">InjectSharedFieldFromParentMixin</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># This nested config will also receive inherited fields</span>
+    <span class="n">attention_config</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">AttentionConfig</span><span class="p">,</span> <span class="n">Shared</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
 </ol>
-</section>
-<section id="step-4-dataset-configs">
-<h3>Step 4: Dataset configs<a class="headerlink" href="#step-4-dataset-configs" title="Link to this heading">¶</a></h3>
-<p>Now we will declare dataset constants and convenience <code class="docutils literal notranslate"><span class="pre">build_</span></code> methods (you can place it right under the imports):</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DATASET_STATS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;raw_pos_min&quot;</span><span class="p">:</span>  <span class="p">[</span><span class="o">-</span><span class="mf">4.5</span><span class="p">],</span>
-    <span class="s2">&quot;raw_pos_max&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">6.0</span><span class="p">],</span>
-    <span class="s2">&quot;surface_pressure_mean&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">36.4098</span><span class="p">],</span>
-    <span class="s2">&quot;surface_pressure_std&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">48.6757</span><span class="p">],</span>
-    <span class="s2">&quot;volume_velocity_mean&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.00293915</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0230546</span><span class="p">,</span> <span class="mf">17.546032</span><span class="p">],</span>
-    <span class="s2">&quot;volume_velocity_std&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.361689</span><span class="p">,</span> <span class="mf">1.267649</span><span class="p">,</span> <span class="mf">5.850353</span><span class="p">],</span>
-    <span class="s2">&quot;volume_sdf_mean&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.74222e-01</span><span class="p">],</span>
-    <span class="s2">&quot;volume_sdf_std&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.78948e-01</span><span class="p">],</span>
-<span class="p">}</span>
-<span class="n">DATA_SPECS</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;position_dim&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="s2">&quot;surface_feature_dim&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;surface_sdf&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;surface_normals&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;volume_feature_dim&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;volume_sdf&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s2">&quot;volume_normals&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;surface_output_dims&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;pressure&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s2">&quot;volume_output_dims&quot;</span><span class="p">:{</span>
-        <span class="s2">&quot;velocity&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="p">},</span>
-<span class="p">}</span>
+<section id="complete-example">
+<h3>Complete Example<a class="headerlink" href="#complete-example" title="Link to this heading">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.mixins</span><span class="w"> </span><span class="kn">import</span> <span class="n">InjectSharedFieldFromParentMixin</span><span class="p">,</span> <span class="n">Shared</span>
 
+<span class="k">class</span><span class="w"> </span><span class="nc">AttentionConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">num_heads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">build_stats</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AeroStatsSchema</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">AeroStatsSchema</span><span class="p">(</span><span class="o">**</span><span class="n">DATASET_STATS</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">EncoderConfig</span><span class="p">(</span><span class="n">InjectSharedFieldFromParentMixin</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">attention_config</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">AttentionConfig</span><span class="p">,</span> <span class="n">Shared</span><span class="p">]</span>
 
-
-<span class="k">def</span><span class="w"> </span><span class="nf">build_specs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AeroDataSpecs</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">AeroDataSpecs</span><span class="p">(</span><span class="o">**</span><span class="n">DATA_SPECS</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MyModelConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">InjectSharedFieldFromParentMixin</span><span class="p">):</span>
+    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">num_heads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">encoder_config</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">EncoderConfig</span><span class="p">,</span> <span class="n">Shared</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_dataset_config</span><span class="p">(</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">],</span>
-    <span class="n">dataset_root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">data_specs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">AeroDataSpecs</span><span class="p">,</span>
-    <span class="n">dataset_statistics</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
-    <span class="n">dataset_normalizer</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">AnyNormalizer</span><span class="p">]],</span>
-    <span class="n">dataset_wrappers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DatasetWrappers</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">StandardDatasetConfig</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">StandardDatasetConfig</span><span class="p">(</span>
-        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;noether.data.datasets.cfd.ShapeNetCarDataset&quot;</span><span class="p">,</span>
-        <span class="n">root</span><span class="o">=</span><span class="n">dataset_root</span><span class="p">,</span>
-        <span class="n">pipeline</span><span class="o">=</span><span class="n">AeroCFDPipelineConfig</span><span class="p">(</span>
-            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tutorial.pipeline.AeroMultistagePipeline&quot;</span><span class="p">,</span>
-            <span class="n">num_surface_points</span><span class="o">=</span><span class="mi">3586</span><span class="p">,</span> <span class="c1"># max = 3586</span>
-            <span class="n">num_volume_points</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>   <span class="c1"># max = 28504</span>
-            <span class="n">num_surface_queries</span><span class="o">=</span><span class="mi">3586</span><span class="p">,</span>
-            <span class="n">num_volume_queries</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
-            <span class="n">num_supernodes</span><span class="o">=</span><span class="mi">3586</span><span class="p">,</span>
-            <span class="n">sample_query_points</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">use_physics_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-            <span class="n">dataset_statistics</span><span class="o">=</span><span class="n">AeroStatsSchema</span><span class="p">(</span><span class="o">**</span><span class="n">dataset_statistics</span><span class="p">),</span>
-            <span class="n">data_specs</span><span class="o">=</span><span class="n">data_specs</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_specs</span><span class="p">,</span> <span class="n">AeroDataSpecs</span><span class="p">)</span> <span class="k">else</span> <span class="n">AeroDataSpecs</span><span class="p">(</span><span class="o">**</span><span class="n">data_specs</span><span class="p">),</span>
-        <span class="p">),</span>
-        <span class="n">split</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
-        <span class="n">dataset_normalizers</span><span class="o">=</span><span class="n">dataset_normalizer</span><span class="p">,</span>
-        <span class="n">dataset_wrappers</span><span class="o">=</span><span class="n">dataset_wrappers</span><span class="p">,</span>
-        <span class="n">included_properties</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">excluded_properties</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;surface_friction&quot;</span><span class="p">,</span> <span class="s2">&quot;volume_pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;volume_vorticity&quot;</span><span class="p">},</span>
-    <span class="p">)</span>
+<p>With this setup, a YAML configuration like:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">hidden_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256</span>
+<span class="nt">num_heads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
+<span class="nt">encoder_config</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6</span>
+<span class="w">  </span><span class="nt">attention_config</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># hidden_dim and num_heads inherited from top level</span>
 </pre></div>
 </div>
-<p>This config defines our datasets (both <code class="docutils literal notranslate"><span class="pre">train</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code>). Note the <code class="docutils literal notranslate"><span class="pre">kind</span></code> fields: they are strings that
-point to a Python class path inside the codebase. The factory uses them to build real objects, just like in the
-config-driven workflow.</p>
-</section>
-<section id="step-5-trainer-config">
-<h3>Step 5: Trainer config<a class="headerlink" href="#step-5-trainer-config" title="Link to this heading">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_trainer_config</span><span class="p">(</span><span class="n">model_forward_properties</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">AutomotiveAerodynamicsCfdTrainerConfig</span><span class="p">:</span>
-    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">loss_and_log_every_n_epochs</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">save_and_ema_every_n_epochs</span> <span class="o">=</span> <span class="mi">10</span>
-
-    <span class="k">return</span> <span class="n">AutomotiveAerodynamicsCfdTrainerConfig</span><span class="p">(</span>
-        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tutorial.trainers.AutomotiveAerodynamicsCFDTrainer&quot;</span><span class="p">,</span>
-        <span class="n">surface_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-        <span class="n">volume_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-        <span class="n">surface_pressure_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-        <span class="n">volume_velocity_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-        <span class="n">use_physics_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">precision</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">,</span>
-        <span class="n">max_epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-        <span class="n">effective_batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-        <span class="n">log_every_n_epochs</span><span class="o">=</span><span class="n">loss_and_log_every_n_epochs</span><span class="p">,</span>
-        <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span>
-            <span class="n">CheckpointCallbackConfig</span><span class="p">(</span>
-                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;noether.core.callbacks.CheckpointCallback&quot;</span><span class="p">,</span>
-                <span class="n">save_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">save_latest_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">save_latest_optim</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                <span class="n">every_n_epochs</span><span class="o">=</span><span class="n">save_and_ema_every_n_epochs</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="c1"># validation loss</span>
-            <span class="n">OfflineLossCallbackConfig</span><span class="p">(</span>
-                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;noether.training.callbacks.OfflineLossCallback&quot;</span><span class="p">,</span>
-                <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-                <span class="n">every_n_epochs</span><span class="o">=</span><span class="n">loss_and_log_every_n_epochs</span><span class="p">,</span>
-                <span class="n">dataset_key</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">BestCheckpointCallbackConfig</span><span class="p">(</span>
-                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;noether.core.callbacks.BestCheckpointCallback&quot;</span><span class="p">,</span>
-                <span class="n">every_n_epochs</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
-                <span class="n">metric_key</span><span class="o">=</span><span class="s2">&quot;loss/test/total&quot;</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="c1"># test loss</span>
-            <span class="n">SurfaceVolumeEvaluationMetricsCallbackConfig</span><span class="p">(</span>
-                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tutorial.callbacks.SurfaceVolumeEvaluationMetricsCallback&quot;</span><span class="p">,</span>
-                <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">every_n_epochs</span><span class="o">=</span><span class="n">loss_and_log_every_n_epochs</span><span class="p">,</span>
-                <span class="n">dataset_key</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
-                <span class="n">forward_properties</span><span class="o">=</span><span class="n">model_forward_properties</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="n">SurfaceVolumeEvaluationMetricsCallbackConfig</span><span class="p">(</span>
-                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tutorial.callbacks.SurfaceVolumeEvaluationMetricsCallback&quot;</span><span class="p">,</span>
-                <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                <span class="n">every_n_epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
-                <span class="n">dataset_key</span><span class="o">=</span><span class="s2">&quot;test_repeat&quot;</span><span class="p">,</span>
-                <span class="n">forward_properties</span><span class="o">=</span><span class="n">model_forward_properties</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="c1"># ema</span>
-            <span class="n">EmaCallbackConfig</span><span class="p">(</span>
-                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;noether.core.callbacks.EmaCallback&quot;</span><span class="p">,</span>
-                <span class="n">every_n_epochs</span><span class="o">=</span><span class="n">save_and_ema_every_n_epochs</span><span class="p">,</span>
-                <span class="n">save_weights</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                <span class="n">save_last_weights</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                <span class="n">save_latest_weights</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">target_factors</span><span class="o">=</span><span class="p">{</span><span class="mf">0.9999</span><span class="p">},</span>
-            <span class="p">),</span>
-        <span class="p">],</span>
-        <span class="n">forward_properties</span><span class="o">=</span><span class="n">model_forward_properties</span><span class="p">,</span>
-        <span class="n">target_properties</span><span class="o">=</span><span class="p">[</span>
-            <span class="s2">&quot;surface_pressure_target&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;volume_velocity_target&quot;</span><span class="p">,</span>
-        <span class="p">],</span>
-    <span class="p">)</span>
-</pre></div>
-</div>
-<p>Trainer configuration is at the core of the training pipeline, as you can see the callbacks is the crucial component
-of it.</p>
-</section>
-<section id="step-6-filling-the-gaps">
-<h3>Step 6: Filling the gaps<a class="headerlink" href="#step-6-filling-the-gaps" title="Link to this heading">¶</a></h3>
-<p>At last, we will populate the placeholder fields that we declared for the <code class="docutils literal notranslate"><span class="pre">HydraRunner</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">HydraRunner</span><span class="p">()</span><span class="o">.</span><span class="n">main</span><span class="p">(</span>
-    <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;mps&quot;</span><span class="p">),</span>
-    <span class="n">config</span><span class="o">=</span><span class="n">ConfigSchema</span><span class="p">(</span>
-        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">accelerator</span><span class="o">=</span><span class="s2">&quot;mps&quot;</span><span class="p">,</span>  <span class="c1"># can be &quot;cpu&quot;, &quot;gpu&quot;, &quot;mps&quot;</span>
-        <span class="n">stage_name</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
-        <span class="n">dataset_kind</span><span class="o">=</span><span class="s2">&quot;noether.data.datasets.cfd.ShapeNetCarDataset&quot;</span><span class="p">,</span>
-        <span class="n">dataset_root</span><span class="o">=</span><span class="n">dataset_root</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span>
-        <span class="n">resume_run_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">resume_stage_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">resume_checkpoint</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
-        <span class="n">dataset_statistics</span><span class="o">=</span><span class="n">DATASET_STATS</span><span class="p">,</span>
-        <span class="n">dataset_normalizer</span><span class="o">=</span><span class="n">dataset_normalizer</span><span class="p">,</span>
-        <span class="n">output_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span>
-        <span class="n">tracker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">run_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">devices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">num_workers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">datasets</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">build_dataset_config</span><span class="p">(</span>
-                <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">,</span>
-                <span class="n">dataset_root</span><span class="o">=</span><span class="n">dataset_root</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span>
-                <span class="n">data_specs</span><span class="o">=</span><span class="n">data_specs</span><span class="p">,</span>
-                <span class="n">dataset_statistics</span><span class="o">=</span><span class="n">DATASET_STATS</span><span class="p">,</span>
-                <span class="n">dataset_normalizer</span><span class="o">=</span><span class="n">dataset_normalizer</span><span class="p">,</span>
-                <span class="n">dataset_wrappers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="n">build_dataset_config</span><span class="p">(</span>
-                <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
-                <span class="n">dataset_root</span><span class="o">=</span><span class="n">dataset_root</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span>
-                <span class="n">data_specs</span><span class="o">=</span><span class="n">data_specs</span><span class="p">,</span>
-                <span class="n">dataset_statistics</span><span class="o">=</span><span class="n">DATASET_STATS</span><span class="p">,</span>
-                <span class="n">dataset_normalizer</span><span class="o">=</span><span class="n">dataset_normalizer</span><span class="p">,</span>
-                <span class="n">dataset_wrappers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-            <span class="p">),</span>
-            <span class="s2">&quot;test_repeat&quot;</span><span class="p">:</span> <span class="n">build_dataset_config</span><span class="p">(</span>
-                <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
-                <span class="n">dataset_root</span><span class="o">=</span><span class="n">dataset_root</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span>
-                <span class="n">data_specs</span><span class="o">=</span><span class="n">data_specs</span><span class="p">,</span>
-                <span class="n">dataset_statistics</span><span class="o">=</span><span class="n">DATASET_STATS</span><span class="p">,</span>
-                <span class="n">dataset_normalizer</span><span class="o">=</span><span class="n">dataset_normalizer</span><span class="p">,</span>
-                <span class="n">dataset_wrappers</span><span class="o">=</span><span class="p">[</span><span class="n">RepeatWrapperConfig</span><span class="p">(</span>
-                    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;noether.data.base.wrappers.RepeatWrapper&quot;</span><span class="p">,</span>
-                    <span class="n">repetitions</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                <span class="p">)],</span>
-            <span class="p">),</span>
-        <span class="p">},</span>
-        <span class="n">model</span><span class="o">=</span><span class="n">upt_model_config</span><span class="p">,</span>
-        <span class="n">trainer</span><span class="o">=</span><span class="n">aero_trainer_config</span><span class="p">,</span>
-        <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">store_code_in_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">output_path</span><span class="o">=</span><span class="n">output_path</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span>
-    <span class="p">),</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-<p>As you can see above, there are multiple arguments that were defined with <code class="docutils literal notranslate"><span class="pre">None</span></code>. They are present here to show
-available settings that you can modify to your needs. You can also freely remove them from the code to make a bit more
-lightweight. This won’t break the logic.</p>
-</section>
-<section id="step-7-run-training">
-<h3>Step 7: Run training<a class="headerlink" href="#step-7-run-training" title="Link to this heading">¶</a></h3>
-<p>You are ready to start the training! If you are using an IDE - simply run the file. Otherwise, in the repo root
-from your terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>tutorial.train_shapenet_upt
-</pre></div>
-</div>
-<p>This makes Python add the repo root to sys.path, so <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tutorial.*</span></code> works. Alternatively, you can add repo root
-to PYTHONPATH:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>tutorial/train_shapenet_upt.py
-</pre></div>
-</div>
-<p>If everything is set up correctly, you should see the logs indicating successful initialization and training
-(use your task manager and/or activity monitor to see if the hardware is properly utilized).</p>
-<p>The output directory will be populated with files like this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>shapenet_car/outputs/YYYY-MM-DD_&lt;SHORT_ID&gt;
-└──<span class="w"> </span>train
-<span class="w">    </span>├──<span class="w"> </span>basetracker
-<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>config.yaml
-<span class="w">    </span>├──<span class="w"> </span>hp_resolved.yaml
-<span class="w">    </span>└──<span class="w"> </span>log.txt
-</pre></div>
-</div>
-<p>After the training progresses, check this folder again - you will find the checkpoints and other training artifacts
-there.</p>
+<p>will automatically propagate <code class="docutils literal notranslate"><span class="pre">hidden_dim</span></code> and <code class="docutils literal notranslate"><span class="pre">num_heads</span></code> to both <code class="docutils literal notranslate"><span class="pre">encoder_config</span></code> and <code class="docutils literal notranslate"><span class="pre">encoder_config.attention_config</span></code>.</p>
 </section>
 </section>
 </section>
@@ -1196,23 +971,23 @@ there.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../guides/index.html">
+          <a class="next-page" href="../autoapi/noether/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">How-to Guides</div>
+                <div class="title">noether</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="training_first_model_with_configs.html">
+          <a class="prev-page" href="hardware_setup.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Training First Model (with Configs)</div>
+                <div class="title">Hardware Allocation &amp; Training Configurations</div>
                 
               </div>
             </a>
@@ -1270,18 +1045,15 @@ there.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Training First Model (with Code)</a><ul>
-<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li><a class="reference internal" href="#what-we-build-in-this-tutorial">What we build in this tutorial</a></li>
-<li><a class="reference internal" href="#implementation">Implementation</a><ul>
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#step-1-create-an-entry-point">Step 1: Create an entry point</a></li>
-<li><a class="reference internal" href="#step-2-create-necessary-imports">Step 2: Create necessary imports</a></li>
-<li><a class="reference internal" href="#step-3-declare-main-function">Step 3: Declare main() function</a></li>
-<li><a class="reference internal" href="#step-4-dataset-configs">Step 4: Dataset configs</a></li>
-<li><a class="reference internal" href="#step-5-trainer-config">Step 5: Trainer config</a></li>
-<li><a class="reference internal" href="#step-6-filling-the-gaps">Step 6: Filling the gaps</a></li>
-<li><a class="reference internal" href="#step-7-run-training">Step 7: Run training</a></li>
+<li><a class="reference internal" href="#">Configuration Inheritance</a><ul>
+<li><a class="reference internal" href="#how-it-works">How It Works</a></li>
+<li><a class="reference internal" href="#benefits">Benefits</a></li>
+<li><a class="reference internal" href="#example-upt-configuration">Example - UPT Configuration</a></li>
+<li><a class="reference internal" href="#nested-inheritance">Nested Inheritance</a></li>
+<li><a class="reference internal" href="#overriding-inherited-values">Overriding Inherited Values</a></li>
+<li><a class="reference internal" href="#when-inheritance-doesn-t-apply">When Inheritance Doesn’t Apply</a></li>
+<li><a class="reference internal" href="#how-to-add-it-to-your-own-schemas">How to Add It to Your Own Schemas</a><ul>
+<li><a class="reference internal" href="#complete-example">Complete Example</a></li>
 </ul>
 </li>
 </ul>

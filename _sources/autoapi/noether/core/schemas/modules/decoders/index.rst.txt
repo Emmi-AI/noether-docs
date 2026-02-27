@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: DeepPerceiverDecoderConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`noether.core.schemas.mixins.InjectSharedFieldFromParentMixin`, :py:obj:`pydantic.BaseModel`
 
 
    Configuration for the DeepPerceiverDecoder module.
@@ -31,7 +31,7 @@ Module Contents
 
 
    .. py:attribute:: perceiver_block_config
-      :type:  noether.core.schemas.modules.blocks.PerceiverBlockConfig
+      :type:  Annotated[noether.core.schemas.modules.blocks.PerceiverBlockConfig, noether.core.schemas.mixins.Shared]
       :value: None
 
 

@@ -35,7 +35,7 @@ Package Contents
 
 .. py:class:: AnchorBranchedUPTConfig(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`, :py:obj:`noether.core.schemas.mixins.InjectSharedFieldFromParentMixin`
 
 
    .. py:attribute:: model_config
@@ -44,11 +44,11 @@ Package Contents
 
 
    .. py:attribute:: supernode_pooling_config
-      :type:  noether.core.schemas.modules.encoders.SupernodePoolingConfig
+      :type:  Annotated[noether.core.schemas.modules.encoders.SupernodePoolingConfig, noether.core.schemas.mixins.Shared]
 
 
    .. py:attribute:: transformer_block_config
-      :type:  noether.core.schemas.modules.blocks.TransformerBlockConfig
+      :type:  Annotated[noether.core.schemas.modules.blocks.TransformerBlockConfig, noether.core.schemas.mixins.Shared]
 
 
    .. py:attribute:: geometry_depth
@@ -278,7 +278,7 @@ Package Contents
    Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`, :py:obj:`noether.core.schemas.mixins.InjectSharedFieldFromParentMixin`
 
 
-   Configuration for a Transolver model.
+   Configuration for a UPT model.
 
    Create a new model by parsing and validating input data from keyword arguments.
 

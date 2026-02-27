@@ -28,6 +28,8 @@ Module Contents
 
    Mixin to propagate shared fields from parent configuration to sub-configurations.
 
+   Supports recursive/nested injection across multiple levels of configuration hierarchy.
+
    Usage:
        class MyConfig(BaseModel, InjectSharedFieldFromParentMixin):
            sub_config: Annotated[SubConfigType, Shared]
@@ -44,7 +46,7 @@ Module Contents
       :classmethod:
 
 
-      Propagates shared fields from parent config to sub-configurations if keys are identical.
+      Propagates shared fields from parent config to sub-configurations recursively.
 
 
 

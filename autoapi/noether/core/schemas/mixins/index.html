@@ -294,6 +294,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../../../noether/io/caching.html">Disk Caching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../reference/hardware_setup.html">Hardware Allocation &amp; Training Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../reference/config_inheritance.html">Configuration Inheritance</a></li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../../../index.html">API Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of API Reference</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current has-children"><a class="reference internal" href="../../index.html">noether.core</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of noether.core</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../callbacks/index.html">noether.core.callbacks</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of noether.core.callbacks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -819,6 +820,7 @@
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.mixins.</span></span><span class="sig-name descname"><span class="pre">InjectSharedFieldFromParentMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
 <p>Mixin to propagate shared fields from parent configuration to sub-configurations.</p>
+<p>Supports recursive/nested injection across multiple levels of configuration hierarchy.</p>
 <dl class="simple">
 <dt>Usage:</dt><dd><dl class="simple">
 <dt>class MyConfig(BaseModel, InjectSharedFieldFromParentMixin):</dt><dd><p>sub_config: Annotated[SubConfigType, Shared]</p>
@@ -838,7 +840,7 @@ validated to form a valid model.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin.propagate_shared_fields">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">propagate_shared_fields</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin.propagate_shared_fields" title="Link to this definition">¶</a></dt>
-<dd><p>Propagates shared fields from parent config to sub-configurations if keys are identical.</p>
+<dd><p>Propagates shared fields from parent config to sub-configurations recursively.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
