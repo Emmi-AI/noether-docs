@@ -739,6 +739,7 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../training/trainers/index.html">noether.training.trainers</a><input class="toctree-checkbox" id="toctree-checkbox-75" name="toctree-checkbox-75" role="switch" type="checkbox"/><label for="toctree-checkbox-75"><div class="visually-hidden">Toggle navigation of noether.training.trainers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../training/trainers/base/index.html">noether.training.trainers.base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../training/trainers/constants/index.html">noether.training.trainers.constants</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../training/trainers/types/index.html">noether.training.trainers.types</a></li>
 </ul>
 </li>
@@ -1115,7 +1116,7 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.OnlineLossCallbackConfig.verbose">
 <span class="sig-name descname"><span class="pre">verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.OnlineLossCallbackConfig.verbose" title="Link to this definition">¶</a></dt>
-<dd><p>Whether to log the loss.</p>
+<dd><p>Whether to also log to the (console) logger. If False, the loss will only logged to the experiment tracker.</p>
 </dd></dl>
 
 </dd></dl>

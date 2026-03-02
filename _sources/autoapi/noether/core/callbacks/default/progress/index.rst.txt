@@ -15,7 +15,7 @@ Classes
 Module Contents
 ---------------
 
-.. py:class:: ProgressCallback(callback_config, **kwargs)
+.. py:class:: ProgressCallback(callback_config, trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None)
 
    Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
 
@@ -78,6 +78,30 @@ Module Contents
                              the current training progress (epoch, update, sample counts).
       :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
                          (e.g., from :meth:`after_epoch` or :meth:`after_update`).
+
+
+
+   .. py:method:: track_after_update_step(*, update_counter, **_)
+
+      Hook called after each optimizer update step.
+
+      This method is invoked after a successful optimizer step and parameter update.
+      It is typically used for tracking metrics that should be recorded once per update
+      cycle, such as:
+
+      * Latest loss values
+      * Learning rates
+      * Model parameter statistics (norms, etc.)
+      * Training throughput and timing measurements
+
+      Unlike :meth:`periodic_callback`, this hook is called on every update step, making it
+      suitable for maintaining running averages or high-frequency telemetry.
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+      :param times: Dictionary containing time measurements for various parts of the training
+                    step (e.g., 'data_time', 'forward_time', 'backward_time', 'update_time').
 
 
 

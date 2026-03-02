@@ -739,6 +739,7 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../training/trainers/index.html">noether.training.trainers</a><input class="toctree-checkbox" id="toctree-checkbox-75" name="toctree-checkbox-75" role="switch" type="checkbox"/><label for="toctree-checkbox-75"><div class="visually-hidden">Toggle navigation of noether.training.trainers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../training/trainers/base/index.html">noether.training.trainers.base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../training/trainers/constants/index.html">noether.training.trainers.constants</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../training/trainers/types/index.html">noether.training.trainers.types</a></li>
 </ul>
 </li>
@@ -1009,6 +1010,18 @@
 <dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.trainers.BaseTrainerConfig.validate_callback_frequency">
+<span class="sig-name descname"><span class="pre">validate_callback_frequency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.trainers.BaseTrainerConfig.validate_callback_frequency" title="Link to this definition">¶</a></dt>
+<dd><p>Ensures that exactly one frequency (‘every_n_*’) is specified and
+that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig" title="noether.core.schemas.trainers.BaseTrainerConfig">BaseTrainerConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1130,6 +1143,7 @@
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.forward_properties"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.forward_properties</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.target_properties"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.target_properties</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.model_config"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.validate_callback_frequency"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.validate_callback_frequency()</span></code></a></li>
 </ul>
 </li>
 </ul>

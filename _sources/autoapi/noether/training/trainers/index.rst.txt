@@ -11,6 +11,7 @@ Submodules
    :maxdepth: 1
 
    /autoapi/noether/training/trainers/base/index
+   /autoapi/noether/training/trainers/constants/index
    /autoapi/noether/training/trainers/types/index
 
 
@@ -261,6 +262,11 @@ Package Contents
    .. py:method:: eval(model)
 
       Run evaluation by executing all configured callbacks.
+
+
+
+   .. py:property:: total_training_updates
+      :type: int
 
 
 

@@ -451,7 +451,7 @@ Package Contents
       :value: None
 
 
-      Whether to log the loss.
+      Whether to also log to the (console) logger. If False, the loss will only logged to the experiment tracker.
 
 
 .. py:class:: TrackAdditionalOutputsCallbackConfig(/, **data)
@@ -1971,5 +1971,12 @@ Package Contents
    .. py:attribute:: model_config
 
       Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one frequency ('every_n_*') is specified and
+      that 'batch_size' is present if 'every_n_samples' is used.
+
 
 

@@ -4,15 +4,6 @@ noether.training.trainers.base
 .. py:module:: noether.training.trainers.base
 
 
-Attributes
-----------
-
-.. autoapisummary::
-
-   noether.training.trainers.base.TRAINING_DATA_WAIT_TIME
-   noether.training.trainers.base.TRAINING_UPDATE_TIME
-
-
 Classes
 -------
 
@@ -56,14 +47,6 @@ Module Contents
       Returns True if the record should be logged, or False otherwise.
       If deemed appropriate, the record may be modified in-place.
 
-
-
-.. py:data:: TRAINING_DATA_WAIT_TIME
-   :value: 'data_wait'
-
-
-.. py:data:: TRAINING_UPDATE_TIME
-   :value: 'update'
 
 
 .. py:class:: BaseTrainer(config, data_container, device, tracker, path_provider, main_sampler_kwargs = None, metric_property_provider = None)
@@ -301,6 +284,11 @@ Module Contents
    .. py:method:: eval(model)
 
       Run evaluation by executing all configured callbacks.
+
+
+
+   .. py:property:: total_training_updates
+      :type: int
 
 
 
