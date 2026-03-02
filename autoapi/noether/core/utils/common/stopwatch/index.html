@@ -809,8 +809,22 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.utils.common.stopwatch.Stopwatch">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.utils.common.stopwatch.</span></span><span class="sig-name descname"><span class="pre">Stopwatch</span></span><a class="headerlink" href="#noether.core.utils.common.stopwatch.Stopwatch" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.utils.common.stopwatch.</span></span><span class="sig-name descname"><span class="pre">Stopwatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.utils.common.stopwatch.Stopwatch" title="Link to this definition">¶</a></dt>
 <dd><p>A stopwatch class to measure elapsed time.</p>
+<p>Supports two timing backends depending on the provided device:</p>
+<ul class="simple">
+<li><p><strong>CPU</strong> (<code class="docutils literal notranslate"><span class="pre">device=None</span></code>): plain <code class="docutils literal notranslate"><span class="pre">time.perf_counter()</span></code> wall-clock timing.</p></li>
+<li><p><strong>GPU</strong> (CUDA or MPS <code class="docutils literal notranslate"><span class="pre">device</span></code>): device event-based timing using
+<code class="docutils literal notranslate"><span class="pre">torch.cuda.Event</span></code> / <code class="docutils literal notranslate"><span class="pre">torch.mps.Event</span></code> for accurate GPU measurements.
+Events are recorded non-blocking in <code class="docutils literal notranslate"><span class="pre">stop()</span></code> / <code class="docutils literal notranslate"><span class="pre">lap()</span></code> and resolved
+lazily in <code class="docutils literal notranslate"><span class="pre">elapsed_seconds</span></code>, which synchronizes each pending event pair
+individually before calling <code class="docutils literal notranslate"><span class="pre">elapsed_time()</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(in PyTorch v2.10)"><em>torch.device</em></a><em> | </em><em>None</em>) – Optional device that selects the timing backend.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.utils.common.stopwatch.Stopwatch.start">
 <span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.utils.common.stopwatch.Stopwatch.start" title="Link to this definition">¶</a></dt>
@@ -826,6 +840,8 @@
 <dt class="sig sig-object py" id="noether.core.utils.common.stopwatch.Stopwatch.stop">
 <span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.utils.common.stopwatch.Stopwatch.stop" title="Link to this definition">¶</a></dt>
 <dd><p>Stop the stopwatch and return the elapsed time since the last lap.</p>
+<p>For GPU devices the return value is always <code class="docutils literal notranslate"><span class="pre">float(&quot;nan&quot;)</span></code>; access
+<code class="docutils literal notranslate"><span class="pre">elapsed_seconds</span></code> after stopping to obtain the resolved time.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
@@ -837,9 +853,25 @@
 <dt class="sig sig-object py" id="noether.core.utils.common.stopwatch.Stopwatch.lap">
 <span class="sig-name descname"><span class="pre">lap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.utils.common.stopwatch.Stopwatch.lap" title="Link to this definition">¶</a></dt>
 <dd><p>Record a lap time and return the elapsed time since the last lap.</p>
+<p>For GPU devices the return value is always <code class="docutils literal notranslate"><span class="pre">float(&quot;nan&quot;)</span></code>; access
+<code class="docutils literal notranslate"><span class="pre">elapsed_seconds</span></code> after stopping to obtain the resolved time.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.utils.common.stopwatch.Stopwatch.sync">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.utils.common.stopwatch.Stopwatch.sync" title="Link to this definition">¶</a></dt>
+<dd><p>Synchronize the given GPU device. No-op for CPU devices.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>device</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(in PyTorch v2.10)"><em>torch.device</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -881,6 +913,8 @@
 <dt class="sig sig-object py" id="noether.core.utils.common.stopwatch.Stopwatch.elapsed_seconds">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">elapsed_seconds</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#noether.core.utils.common.stopwatch.Stopwatch.elapsed_seconds" title="Link to this definition">¶</a></dt>
 <dd><p>Return the total elapsed time since the stopwatch was started.</p>
+<p>For GPU stopwatches, flushes any pending event pairs first,
+synchronizing each end event before calling <code class="docutils literal notranslate"><span class="pre">elapsed_time()</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
@@ -990,6 +1024,7 @@
 <li><a class="reference internal" href="#noether.core.utils.common.stopwatch.Stopwatch.start"><code class="docutils literal notranslate"><span class="pre">Stopwatch.start()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.utils.common.stopwatch.Stopwatch.stop"><code class="docutils literal notranslate"><span class="pre">Stopwatch.stop()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.utils.common.stopwatch.Stopwatch.lap"><code class="docutils literal notranslate"><span class="pre">Stopwatch.lap()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.utils.common.stopwatch.Stopwatch.sync"><code class="docutils literal notranslate"><span class="pre">Stopwatch.sync()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.utils.common.stopwatch.Stopwatch.last_lap_time"><code class="docutils literal notranslate"><span class="pre">Stopwatch.last_lap_time</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.utils.common.stopwatch.Stopwatch.lap_count"><code class="docutils literal notranslate"><span class="pre">Stopwatch.lap_count</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.utils.common.stopwatch.Stopwatch.average_lap_time"><code class="docutils literal notranslate"><span class="pre">Stopwatch.average_lap_time</span></code></a></li>

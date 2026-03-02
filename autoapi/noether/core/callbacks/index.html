@@ -2230,13 +2230,13 @@ for available options.</p></li>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.TrainTimeCallback.train_data_times">
-<span class="sig-name descname"><span class="pre">train_data_times</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#noether.core.callbacks.TrainTimeCallback.train_data_times" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.TrainTimeCallback.train_times">
+<span class="sig-name descname"><span class="pre">train_times</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.callbacks.TrainTimeCallback.train_times" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.callbacks.TrainTimeCallback.total_train_data_time">
-<span class="sig-name descname"><span class="pre">total_train_data_time</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#noether.core.callbacks.TrainTimeCallback.total_train_data_time" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.callbacks.TrainTimeCallback.total_train_times">
+<span class="sig-name descname"><span class="pre">total_train_times</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.callbacks.TrainTimeCallback.total_train_times" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2262,7 +2262,7 @@ suitable for maintaining running averages or high-frequency telemetry.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>update_counter</strong> – <a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p></li>
-<li><p><strong>times</strong> – Dictionary containing time measurements for various parts of the training
+<li><p><strong>times</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>) – Dictionary containing time measurements for various parts of the training
 step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_time’).</p></li>
 </ul>
 </dd>
@@ -3530,8 +3530,8 @@ final reporting tasks after training is complete. Common use cases include:</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.callbacks.TrainTimeCallback"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.callbacks.TrainTimeCallback.train_data_times"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.train_data_times</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.TrainTimeCallback.total_train_data_time"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.total_train_data_time</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.TrainTimeCallback.train_times"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.train_times</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.TrainTimeCallback.total_train_times"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.total_train_times</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.TrainTimeCallback.track_after_update_step"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.track_after_update_step()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.TrainTimeCallback.periodic_callback"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.periodic_callback()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.TrainTimeCallback.after_training"><code class="docutils literal notranslate"><span class="pre">TrainTimeCallback.after_training()</span></code></a></li>

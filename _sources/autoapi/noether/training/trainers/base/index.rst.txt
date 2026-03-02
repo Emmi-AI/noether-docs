@@ -263,7 +263,7 @@ Module Contents
 
 
 
-   .. py:method:: update(batch, dist_model, model = None, training = True, accumulation_steps = 1, iter_step = 0, **kwargs)
+   .. py:method:: update(batch, dist_model, model = None, accumulation_steps = 1, iter_step = 0, **kwargs)
 
       Perform forward and backward pass.
 

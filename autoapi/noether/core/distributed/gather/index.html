@@ -834,6 +834,18 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.gather.all_reduce_sum_grad" title="noether.core.distributed.gather.all_reduce_sum_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_reduce_sum_grad</span></code></a>(x)</p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.gather.reduce_mean_grad" title="noether.core.distributed.gather.reduce_mean_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_mean_grad</span></code></a>(x[, dest_rank])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.gather.reduce_mean_nograd" title="noether.core.distributed.gather.reduce_mean_nograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_mean_nograd</span></code></a>(x[, dest_rank])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.gather.reduce_max_grad" title="noether.core.distributed.gather.reduce_max_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_max_grad</span></code></a>(x[, dest_rank])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.gather.reduce_max_nograd" title="noether.core.distributed.gather.reduce_max_nograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_max_nograd</span></code></a>(x[, dest_rank])</p></td>
+<td><p></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.gather.all_reduce_mean_grad" title="noether.core.distributed.gather.all_reduce_mean_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_reduce_mean_grad</span></code></a>(x)</p></td>
 <td><p></p></td>
 </tr>
@@ -901,6 +913,26 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.gather.all_reduce_sum_grad">
 <span class="sig-prename descclassname"><span class="pre">noether.core.distributed.gather.</span></span><span class="sig-name descname"><span class="pre">all_reduce_sum_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.gather.all_reduce_sum_grad" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.distributed.gather.reduce_mean_grad">
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.gather.</span></span><span class="sig-name descname"><span class="pre">reduce_mean_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.gather.reduce_mean_grad" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.distributed.gather.reduce_mean_nograd">
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.gather.</span></span><span class="sig-name descname"><span class="pre">reduce_mean_nograd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.gather.reduce_mean_nograd" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.distributed.gather.reduce_max_grad">
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.gather.</span></span><span class="sig-name descname"><span class="pre">reduce_max_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.gather.reduce_max_grad" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.distributed.gather.reduce_max_nograd">
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.gather.</span></span><span class="sig-name descname"><span class="pre">reduce_max_nograd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.gather.reduce_max_nograd" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -1012,6 +1044,10 @@
 <li><a class="reference internal" href="#noether.core.distributed.gather.all_gather_nograd_clipped"><code class="docutils literal notranslate"><span class="pre">all_gather_nograd_clipped()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.gather.all_reduce_sum_nograd"><code class="docutils literal notranslate"><span class="pre">all_reduce_sum_nograd()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.gather.all_reduce_sum_grad"><code class="docutils literal notranslate"><span class="pre">all_reduce_sum_grad()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.distributed.gather.reduce_mean_grad"><code class="docutils literal notranslate"><span class="pre">reduce_mean_grad()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.distributed.gather.reduce_mean_nograd"><code class="docutils literal notranslate"><span class="pre">reduce_mean_nograd()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.distributed.gather.reduce_max_grad"><code class="docutils literal notranslate"><span class="pre">reduce_max_grad()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.distributed.gather.reduce_max_nograd"><code class="docutils literal notranslate"><span class="pre">reduce_max_nograd()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.gather.all_reduce_mean_grad"><code class="docutils literal notranslate"><span class="pre">all_reduce_mean_grad()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.gather.all_reduce_mean_nograd"><code class="docutils literal notranslate"><span class="pre">all_reduce_mean_nograd()</span></code></a></li>
 </ul>

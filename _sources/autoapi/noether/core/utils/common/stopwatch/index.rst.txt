@@ -15,9 +15,20 @@ Classes
 Module Contents
 ---------------
 
-.. py:class:: Stopwatch
+.. py:class:: Stopwatch(device = None)
 
    A stopwatch class to measure elapsed time.
+
+   Supports two timing backends depending on the provided device:
+
+   * **CPU** (``device=None``): plain ``time.perf_counter()`` wall-clock timing.
+   * **GPU** (CUDA or MPS ``device``): device event-based timing using
+     ``torch.cuda.Event`` / ``torch.mps.Event`` for accurate GPU measurements.
+     Events are recorded non-blocking in ``stop()`` / ``lap()`` and resolved
+     lazily in ``elapsed_seconds``, which synchronizes each pending event pair
+     individually before calling ``elapsed_time()``.
+
+   :param device: Optional device that selects the timing backend.
 
 
    .. py:method:: start()
@@ -30,11 +41,25 @@ Module Contents
 
       Stop the stopwatch and return the elapsed time since the last lap.
 
+      For GPU devices the return value is always ``float("nan")``; access
+      ``elapsed_seconds`` after stopping to obtain the resolved time.
+
 
 
    .. py:method:: lap()
 
       Record a lap time and return the elapsed time since the last lap.
+
+      For GPU devices the return value is always ``float("nan")``; access
+      ``elapsed_seconds`` after stopping to obtain the resolved time.
+
+
+
+   .. py:method:: sync(device)
+      :staticmethod:
+
+
+      Synchronize the given GPU device. No-op for CPU devices.
 
 
 
@@ -64,6 +89,9 @@ Module Contents
 
 
       Return the total elapsed time since the stopwatch was started.
+
+      For GPU stopwatches, flushes any pending event pairs first,
+      synchronizing each end event before calling ``elapsed_time()``.
 
 
    .. py:property:: elapsed_milliseconds

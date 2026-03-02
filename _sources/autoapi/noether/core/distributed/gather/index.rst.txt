@@ -25,6 +25,10 @@ Functions
    noether.core.distributed.gather.all_gather_nograd_clipped
    noether.core.distributed.gather.all_reduce_sum_nograd
    noether.core.distributed.gather.all_reduce_sum_grad
+   noether.core.distributed.gather.reduce_mean_grad
+   noether.core.distributed.gather.reduce_mean_nograd
+   noether.core.distributed.gather.reduce_max_grad
+   noether.core.distributed.gather.reduce_max_nograd
    noether.core.distributed.gather.all_reduce_mean_grad
    noether.core.distributed.gather.all_reduce_mean_nograd
 
@@ -65,6 +69,14 @@ Module Contents
 .. py:function:: all_reduce_sum_nograd(x)
 
 .. py:function:: all_reduce_sum_grad(x)
+
+.. py:function:: reduce_mean_grad(x, dest_rank=0)
+
+.. py:function:: reduce_mean_nograd(x, dest_rank=0)
+
+.. py:function:: reduce_max_grad(x, dest_rank=0)
+
+.. py:function:: reduce_max_nograd(x, dest_rank=0)
 
 .. py:function:: all_reduce_mean_grad(x)
 

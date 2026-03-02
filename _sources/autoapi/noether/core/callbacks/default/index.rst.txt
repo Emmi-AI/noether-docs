@@ -547,15 +547,12 @@ Package Contents
    :param name: Name of the callback.
 
 
-   .. py:attribute:: train_data_times
-      :type:  list[float]
-      :value: []
+   .. py:attribute:: train_times
+      :type:  dict[str, list[float]]
 
 
-
-   .. py:attribute:: total_train_data_time
-      :value: 0.0
-
+   .. py:attribute:: total_train_times
+      :type:  dict[str, float]
 
 
    .. py:method:: track_after_update_step(*, times, **_)
