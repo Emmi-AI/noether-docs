@@ -98,3 +98,12 @@ Module Contents
       Data specifications for the model.
 
 
+   .. py:method:: validate_parameters()
+
+      Validate validity of parameters across the model and its submodules.
+
+      Ensures that hidden_dim is consistent across parent and all submodules.
+      Note: transformer_block_config validates hidden_dim % num_heads == 0 in its own validator.
+
+
+

@@ -880,6 +880,20 @@ validated to form a valid model.</p>
 <span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs" title="noether.core.schemas.dataset.AeroDataSpecs"><span class="pre">noether.core.schemas.dataset.AeroDataSpecs</span></a></em><a class="headerlink" href="#noether.core.schemas.models.upt.UPTConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.upt.UPTConfig.validate_parameters">
+<span class="sig-name descname"><span class="pre">validate_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.upt.UPTConfig.validate_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Validate validity of parameters across the model and its submodules.</p>
+<p>Ensures that:
+1. hidden_dim is divisible by num_heads in parent and all submodules with num_heads
+2. hidden_dim is consistent across parent and all submodules</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig" title="noether.core.schemas.models.upt.UPTConfig">UPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -979,6 +993,7 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.decoder_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.decoder_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.bias_layers"><code class="docutils literal notranslate"><span class="pre">UPTConfig.bias_layers</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.data_specs"><code class="docutils literal notranslate"><span class="pre">UPTConfig.data_specs</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">UPTConfig.validate_parameters()</span></code></a></li>
 </ul>
 </li>
 </ul>

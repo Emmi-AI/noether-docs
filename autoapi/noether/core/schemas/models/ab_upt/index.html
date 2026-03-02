@@ -884,6 +884,19 @@ Perceiver: Perceiver-style attention blocks.</p>
 <dd><p>Data specifications for the model.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.validate_parameters">
+<span class="sig-name descname"><span class="pre">validate_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.validate_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Validate validity of parameters across the model and its submodules.</p>
+<p>Ensures that hidden_dim is consistent across parent and all submodules.
+Note: transformer_block_config validates hidden_dim % num_heads == 0 in its own validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig" title="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -983,6 +996,7 @@ Perceiver: Perceiver-style attention blocks.</p>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.init_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.drop_path_rate"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.drop_path_rate</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.data_specs"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.data_specs</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.validate_parameters()</span></code></a></li>
 </ul>
 </li>
 </ul>

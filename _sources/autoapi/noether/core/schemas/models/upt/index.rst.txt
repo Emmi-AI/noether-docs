@@ -95,3 +95,13 @@ Module Contents
       :type:  noether.core.schemas.dataset.AeroDataSpecs
 
 
+   .. py:method:: validate_parameters()
+
+      Validate validity of parameters across the model and its submodules.
+
+      Ensures that:
+      1. hidden_dim is divisible by num_heads in parent and all submodules with num_heads
+      2. hidden_dim is consistent across parent and all submodules
+
+
+
