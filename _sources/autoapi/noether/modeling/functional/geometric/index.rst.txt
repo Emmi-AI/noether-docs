@@ -24,7 +24,6 @@ Functions
    noether.modeling.functional.geometric.knn_pytorch
    noether.modeling.functional.geometric.radius
    noether.modeling.functional.geometric.knn
-   noether.modeling.functional.geometric.segment_reduce
 
 
 Module Contents
@@ -112,6 +111,4 @@ Module Contents
 
 
 .. py:function:: knn(x, y, k, batch_x = None, batch_y = None)
-
-.. py:function:: segment_reduce(src, lengths, reduce)
 

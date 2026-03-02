@@ -474,7 +474,8 @@ Package Contents
       :param supernode_idx: Indexes of the supernodes in the sparse tensor input_pos.
       :param batch_idx: 1D tensor, containing the batch index of each entry in input_pos. Default None.
 
-      :returns: Tensor with src and destination indexes for the message passing into the supernodes.
+      :returns: Tuple of (src_idx, dst_idx, local_dst_idx) where src_idx and dst_idx are absolute indices into
+                input_pos and local_dst_idx is a 0-indexed position into supernode_idx (used for scatter_reduce_).
 
 
 
@@ -500,14 +501,13 @@ Package Contents
 
 
 
-   .. py:method:: accumulate_messages(x, dst_idx, supernode_idx, batch_idx = None)
+   .. py:method:: accumulate_messages(x, local_dst_idx, supernode_idx)
 
       Method to accumulate the messages of neighbouring points into the supernodes.
 
       :param x: Tensor containing the message representation of each neighbour representation.
-      :param dst_idx: Index of the destination (i.e., supernode) where each message should go to.
+      :param local_dst_idx: 0-indexed position into supernode_idx for each message (no CUDA sync).
       :param supernode_idx: Indexes of the supernode in the input point cloud.
-      :param batch_idx: Batch index of the points in the sparse tensor.
 
       :returns: Tensor with the aggregated messages for each supernode.
 
