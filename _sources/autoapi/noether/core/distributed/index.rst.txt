@@ -12,6 +12,7 @@ Submodules
 
    /autoapi/noether/core/distributed/config/index
    /autoapi/noether/core/distributed/gather/index
+   /autoapi/noether/core/distributed/reduce/index
    /autoapi/noether/core/distributed/run/index
    /autoapi/noether/core/distributed/utils/index
 
@@ -49,6 +50,10 @@ Functions
    noether.core.distributed.all_reduce_mean_nograd
    noether.core.distributed.all_reduce_sum_grad
    noether.core.distributed.all_reduce_sum_nograd
+   noether.core.distributed.reduce_max_grad
+   noether.core.distributed.reduce_max_nograd
+   noether.core.distributed.reduce_mean_grad
+   noether.core.distributed.reduce_mean_nograd
    noether.core.distributed.run
    noether.core.distributed.run_managed
    noether.core.distributed.run_unmanaged
@@ -131,9 +136,9 @@ Package Contents
 
 .. py:function:: all_gather_grad(x, batch_dim=0)
 
-.. py:function:: all_gather_nograd(x)
+.. py:function:: all_gather_nograd(x, batch_dim=0)
 
-.. py:function:: all_gather_nograd_clipped(x, max_length)
+.. py:function:: all_gather_nograd_clipped(x, max_length = None, batch_dim=0)
 
 .. py:function:: all_reduce_mean_grad(x)
 
@@ -142,6 +147,14 @@ Package Contents
 .. py:function:: all_reduce_sum_grad(x)
 
 .. py:function:: all_reduce_sum_nograd(x)
+
+.. py:function:: reduce_max_grad(x, dest_rank=0)
+
+.. py:function:: reduce_max_nograd(x, dest_rank=0)
+
+.. py:function:: reduce_mean_grad(x, dest_rank=0)
+
+.. py:function:: reduce_mean_nograd(x, dest_rank=0)
 
 .. py:function:: run(main, devices=None, accelerator='gpu', master_port=None)
 

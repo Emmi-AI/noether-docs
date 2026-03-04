@@ -337,6 +337,7 @@
 <li class="toctree-l3 current has-children current-page"><a class="current reference internal" href="#">noether.core.distributed</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><div class="visually-hidden">Toggle navigation of noether.core.distributed</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="config/index.html">noether.core.distributed.config</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gather/index.html">noether.core.distributed.gather</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reduce/index.html">noether.core.distributed.reduce</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="run/index.html">noether.core.distributed.run</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><div class="visually-hidden">Toggle navigation of noether.core.distributed.run</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="run/managed/index.html">noether.core.distributed.run.managed</a></li>
 <li class="toctree-l5"><a class="reference internal" href="run/unmanaged/index.html">noether.core.distributed.run.unmanaged</a></li>
@@ -799,6 +800,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="config/index.html">noether.core.distributed.config</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gather/index.html">noether.core.distributed.gather</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reduce/index.html">noether.core.distributed.reduce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run/index.html">noether.core.distributed.run</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils/index.html">noether.core.distributed.utils</a></li>
 </ul>
@@ -863,10 +865,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.all_gather_grad" title="noether.core.distributed.all_gather_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_gather_grad</span></code></a>(x[, batch_dim])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.all_gather_nograd" title="noether.core.distributed.all_gather_nograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_gather_nograd</span></code></a>(x)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.all_gather_nograd" title="noether.core.distributed.all_gather_nograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_gather_nograd</span></code></a>(x[, batch_dim])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.all_gather_nograd_clipped" title="noether.core.distributed.all_gather_nograd_clipped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_gather_nograd_clipped</span></code></a>(x, max_length)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.all_gather_nograd_clipped" title="noether.core.distributed.all_gather_nograd_clipped"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_gather_nograd_clipped</span></code></a>(x[, max_length, batch_dim])</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.all_reduce_mean_grad" title="noether.core.distributed.all_reduce_mean_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_reduce_mean_grad</span></code></a>(x)</p></td>
@@ -879,6 +881,18 @@
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.all_reduce_sum_nograd" title="noether.core.distributed.all_reduce_sum_nograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">all_reduce_sum_nograd</span></code></a>(x)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.reduce_max_grad" title="noether.core.distributed.reduce_max_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_max_grad</span></code></a>(x[, dest_rank])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.reduce_max_nograd" title="noether.core.distributed.reduce_max_nograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_max_nograd</span></code></a>(x[, dest_rank])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.reduce_mean_grad" title="noether.core.distributed.reduce_mean_grad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_mean_grad</span></code></a>(x[, dest_rank])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.reduce_mean_nograd" title="noether.core.distributed.reduce_mean_nograd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_mean_nograd</span></code></a>(x[, dest_rank])</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="run/index.html#module-noether.core.distributed.run" title="noether.core.distributed.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>(main[, devices, accelerator, master_port])</p></td>
@@ -1106,37 +1120,148 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.all_gather_grad">
 <span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">all_gather_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.all_gather_grad" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.all_gather_nograd">
-<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">all_gather_nograd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.all_gather_nograd" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">all_gather_nograd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.all_gather_nograd" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.all_gather_nograd_clipped">
-<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">all_gather_nograd_clipped</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.all_gather_nograd_clipped" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">all_gather_nograd_clipped</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.all_gather_nograd_clipped" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p></li>
+<li><p><strong>max_length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.all_reduce_mean_grad">
 <span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">all_reduce_mean_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.all_reduce_mean_grad" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.all_reduce_mean_nograd">
 <span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">all_reduce_mean_nograd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.all_reduce_mean_nograd" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.all_reduce_sum_grad">
 <span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">all_reduce_sum_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.all_reduce_sum_grad" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.all_reduce_sum_nograd">
 <span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">all_reduce_sum_nograd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.all_reduce_sum_nograd" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.distributed.reduce_max_grad">
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">reduce_max_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.reduce_max_grad" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.distributed.reduce_max_nograd">
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">reduce_max_nograd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.reduce_max_nograd" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.distributed.reduce_mean_grad">
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">reduce_mean_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.reduce_mean_grad" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.distributed.reduce_mean_nograd">
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.</span></span><span class="sig-name descname"><span class="pre">reduce_mean_nograd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dest_rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.reduce_mean_nograd" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.run">
@@ -1312,6 +1437,10 @@
 <li><a class="reference internal" href="#noether.core.distributed.all_reduce_mean_nograd"><code class="docutils literal notranslate"><span class="pre">all_reduce_mean_nograd()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.all_reduce_sum_grad"><code class="docutils literal notranslate"><span class="pre">all_reduce_sum_grad()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.all_reduce_sum_nograd"><code class="docutils literal notranslate"><span class="pre">all_reduce_sum_nograd()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.distributed.reduce_max_grad"><code class="docutils literal notranslate"><span class="pre">reduce_max_grad()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.distributed.reduce_max_nograd"><code class="docutils literal notranslate"><span class="pre">reduce_max_nograd()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.distributed.reduce_mean_grad"><code class="docutils literal notranslate"><span class="pre">reduce_mean_grad()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.distributed.reduce_mean_nograd"><code class="docutils literal notranslate"><span class="pre">reduce_mean_nograd()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.run"><code class="docutils literal notranslate"><span class="pre">run()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.run_managed"><code class="docutils literal notranslate"><span class="pre">run_managed()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.run_unmanaged"><code class="docutils literal notranslate"><span class="pre">run_unmanaged()</span></code></a></li>

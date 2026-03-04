@@ -4,14 +4,6 @@ noether.core.distributed.gather
 .. py:module:: noether.core.distributed.gather
 
 
-Classes
--------
-
-.. autoapisummary::
-
-   noether.core.distributed.gather.AllGatherGradAutograd
-
-
 Functions
 ---------
 
@@ -20,39 +12,12 @@ Functions
    noether.core.distributed.gather.get_device_and_bfloat16supported
    noether.core.distributed.gather.get_bool_gather_supported
    noether.core.distributed.gather.all_gather_grad
-   noether.core.distributed.gather.all_gather_grad_autograd
    noether.core.distributed.gather.all_gather_nograd
    noether.core.distributed.gather.all_gather_nograd_clipped
-   noether.core.distributed.gather.all_reduce_sum_nograd
-   noether.core.distributed.gather.all_reduce_sum_grad
-   noether.core.distributed.gather.reduce_mean_grad
-   noether.core.distributed.gather.reduce_mean_nograd
-   noether.core.distributed.gather.reduce_max_grad
-   noether.core.distributed.gather.reduce_max_nograd
-   noether.core.distributed.gather.all_reduce_mean_grad
-   noether.core.distributed.gather.all_reduce_mean_nograd
 
 
 Module Contents
 ---------------
-
-.. py:class:: AllGatherGradAutograd
-
-   Bases: :py:obj:`torch.autograd.Function`
-
-
-   Gathers tensors from all process and supports backward propagation for the gradients across processes.
-
-
-   .. py:method:: forward(ctx, x)
-      :staticmethod:
-
-
-
-   .. py:method:: backward(ctx, *grads)
-      :staticmethod:
-
-
 
 .. py:function:: get_device_and_bfloat16supported()
 
@@ -60,25 +25,7 @@ Module Contents
 
 .. py:function:: all_gather_grad(x, batch_dim=0)
 
-.. py:function:: all_gather_grad_autograd(x)
+.. py:function:: all_gather_nograd(x, batch_dim=0)
 
-.. py:function:: all_gather_nograd(x)
-
-.. py:function:: all_gather_nograd_clipped(x, max_length)
-
-.. py:function:: all_reduce_sum_nograd(x)
-
-.. py:function:: all_reduce_sum_grad(x)
-
-.. py:function:: reduce_mean_grad(x, dest_rank=0)
-
-.. py:function:: reduce_mean_nograd(x, dest_rank=0)
-
-.. py:function:: reduce_max_grad(x, dest_rank=0)
-
-.. py:function:: reduce_max_nograd(x, dest_rank=0)
-
-.. py:function:: all_reduce_mean_grad(x)
-
-.. py:function:: all_reduce_mean_nograd(x)
+.. py:function:: all_gather_nograd_clipped(x, max_length = None, batch_dim=0)
 

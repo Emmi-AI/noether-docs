@@ -40,7 +40,7 @@ Module Contents
 
 
    .. py:attribute:: total_train_times
-      :type:  dict[str, float]
+      :type:  dict[str, torch.Tensor]
 
 
    .. py:method:: track_after_update_step(*, times, **_)

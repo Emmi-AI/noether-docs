@@ -436,8 +436,6 @@ Module Contents
 
 
    .. py:attribute:: total_data_time
-      :value: 0.0
-
 
 
    .. py:attribute:: sampler_config

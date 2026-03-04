@@ -1090,7 +1090,7 @@ Package Contents
 
 
    .. py:attribute:: total_train_times
-      :type:  dict[str, float]
+      :type:  dict[str, torch.Tensor]
 
 
    .. py:method:: track_after_update_step(*, times, **_)
@@ -1848,8 +1848,6 @@ Package Contents
 
 
    .. py:attribute:: total_data_time
-      :value: 0.0
-
 
 
    .. py:attribute:: sampler_config
