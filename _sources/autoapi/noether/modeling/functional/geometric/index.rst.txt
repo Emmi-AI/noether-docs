@@ -67,7 +67,7 @@ Module Contents
    :returns: Edge index (2, num_edges).
 
 
-.. py:function:: knn_triton(x, y, k, batch_x = None, batch_y = None, cosine = False)
+.. py:function:: knn_triton(x, y, k, batch_x = None, batch_y = None)
 
    Calculates k-nearest neighbors using a Triton kernel.
 
