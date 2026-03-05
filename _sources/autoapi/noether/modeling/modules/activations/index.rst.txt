@@ -82,3 +82,9 @@ Module Contents
    .. py:attribute:: SILU
 
 
+   .. py:method:: build()
+
+      Create a new instance of the activation module.
+
+
+

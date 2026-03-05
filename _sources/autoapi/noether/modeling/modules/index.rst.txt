@@ -110,6 +110,12 @@ Package Contents
    .. py:attribute:: SILU
 
 
+   .. py:method:: build()
+
+      Create a new instance of the activation module.
+
+
+
 .. py:class:: DotProductAttention(config)
 
    Bases: :py:obj:`torch.nn.Module`
