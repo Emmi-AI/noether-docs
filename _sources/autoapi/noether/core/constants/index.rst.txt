@@ -1,0 +1,26 @@
+noether.core.constants
+======================
+
+.. py:module:: noether.core.constants
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.constants.TRAINING_DATA_WAIT_TIME
+   noether.core.constants.TRAINING_UPDATE_TIME
+
+
+Module Contents
+---------------
+
+.. py:data:: TRAINING_DATA_WAIT_TIME
+   :value: 'data_wait'
+
+
+.. py:data:: TRAINING_UPDATE_TIME
+   :value: 'update'
+
+

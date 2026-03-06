@@ -12,6 +12,7 @@ Submodules
 
    /autoapi/noether/core/callbacks/index
    /autoapi/noether/core/configs/index
+   /autoapi/noether/core/constants/index
    /autoapi/noether/core/distributed/index
    /autoapi/noether/core/extractors/index
    /autoapi/noether/core/factory/index
