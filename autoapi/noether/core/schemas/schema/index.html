@@ -811,10 +811,7 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema" title="noether.core.schemas.schema.StaticConfigSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StaticConfigSchema</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema" title="noether.core.schemas.schema.ConfigSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConfigSchema</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema" title="noether.core.schemas.schema.ConfigSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConfigSchema</span></code></a></p></td>
 <td><p>Root configuration schema for all experiments in Noether.</p></td>
 </tr>
 </tbody>
@@ -842,61 +839,6 @@
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ACCELERATOR_TYPES">
 <span class="sig-prename descclassname"><span class="pre">noether.core.schemas.schema.</span></span><span class="sig-name descname"><span class="pre">ACCELERATOR_TYPES</span></span><a class="headerlink" href="#noether.core.schemas.schema.ACCELERATOR_TYPES" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.schema.StaticConfigSchema">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.schema.</span></span><span class="sig-name descname"><span class="pre">StaticConfigSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.schema.StaticConfigSchema" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.schema.StaticConfigSchema.output_path">
-<span class="sig-name descname"><span class="pre">output_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.schema.StaticConfigSchema.output_path" title="Link to this definition">¶</a></dt>
-<dd><p>Path to store all outputs of the run, including logs, checkpoints, etc.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.schema.StaticConfigSchema.default_cudnn_benchmark">
-<span class="sig-name descname"><span class="pre">default_cudnn_benchmark</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#noether.core.schemas.schema.StaticConfigSchema.default_cudnn_benchmark" title="Link to this definition">¶</a></dt>
-<dd><p>Whether to enable cudnn benchmark mode by default.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.schema.StaticConfigSchema.default_cudnn_deterministic">
-<span class="sig-name descname"><span class="pre">default_cudnn_deterministic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.core.schemas.schema.StaticConfigSchema.default_cudnn_deterministic" title="Link to this definition">¶</a></dt>
-<dd><p>Whether to enable cudnn deterministic mode by default.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.schema.StaticConfigSchema.master_port">
-<span class="sig-name descname"><span class="pre">master_port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.StaticConfigSchema.master_port" title="Link to this definition">¶</a></dt>
-<dd><p>Port for distributed master node. If None, will be set from environment variable MASTER_PORT if available.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.schema.StaticConfigSchema.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.core.schemas.schema.StaticConfigSchema.model_config" title="Link to this definition">¶</a></dt>
-<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.schema.StaticConfigSchema.from_uri">
-<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_uri</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uri</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.schema.StaticConfigSchema.from_uri" title="Link to this definition">¶</a></dt>
-<dd><p>Load static config from a given URI (file path).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema" title="noether.core.schemas.schema.StaticConfigSchema">StaticConfigSchema</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.master_port_from_env">
@@ -1237,15 +1179,6 @@ other keys are arbitrary and can be used to identify datasets for different stag
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ACCELERATOR_TYPES"><code class="docutils literal notranslate"><span class="pre">ACCELERATOR_TYPES</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema.output_path"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema.output_path</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema.default_cudnn_benchmark"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema.default_cudnn_benchmark</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema.default_cudnn_deterministic"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema.default_cudnn_deterministic</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema.master_port"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema.master_port</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema.model_config"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema.model_config</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.schema.StaticConfigSchema.from_uri"><code class="docutils literal notranslate"><span class="pre">StaticConfigSchema.from_uri()</span></code></a></li>
-</ul>
-</li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.master_port_from_env"><code class="docutils literal notranslate"><span class="pre">master_port_from_env()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.default_accelerator"><code class="docutils literal notranslate"><span class="pre">default_accelerator()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema"><code class="docutils literal notranslate"><span class="pre">ConfigSchema</span></code></a><ul>

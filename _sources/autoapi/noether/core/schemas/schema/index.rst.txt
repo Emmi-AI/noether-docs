@@ -17,7 +17,6 @@ Classes
 
 .. autoapisummary::
 
-   noether.core.schemas.schema.StaticConfigSchema
    noether.core.schemas.schema.ConfigSchema
 
 
@@ -34,54 +33,6 @@ Module Contents
 ---------------
 
 .. py:data:: ACCELERATOR_TYPES
-
-.. py:class:: StaticConfigSchema(/, **data)
-
-   Bases: :py:obj:`pydantic.BaseModel`
-
-
-   .. py:attribute:: output_path
-      :type:  str
-
-      Path to store all outputs of the run, including logs, checkpoints, etc.
-
-
-   .. py:attribute:: default_cudnn_benchmark
-      :type:  bool
-      :value: True
-
-
-      Whether to enable cudnn benchmark mode by default.
-
-
-   .. py:attribute:: default_cudnn_deterministic
-      :type:  bool | None
-      :value: False
-
-
-      Whether to enable cudnn deterministic mode by default.
-
-
-   .. py:attribute:: master_port
-      :type:  int | None
-      :value: None
-
-
-      Port for distributed master node. If None, will be set from environment variable MASTER_PORT if available.
-
-
-   .. py:attribute:: model_config
-
-      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
-
-
-   .. py:method:: from_uri(uri)
-      :staticmethod:
-
-
-      Load static config from a given URI (file path).
-
-
 
 .. py:function:: master_port_from_env()
 
