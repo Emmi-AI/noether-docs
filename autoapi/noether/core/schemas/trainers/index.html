@@ -979,6 +979,12 @@
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.trainers.BaseTrainerConfig.save_on_sigint">
+<span class="sig-name descname"><span class="pre">save_on_sigint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trainers.BaseTrainerConfig.save_on_sigint" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to save a checkpoint on SIGINT (Ctrl+C). SIGTERM always triggers a checkpoint save. When False (default), Ctrl+C will stop training immediately without saving.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.trainers.BaseTrainerConfig.use_torch_compile">
 <span class="sig-name descname"><span class="pre">use_torch_compile</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trainers.BaseTrainerConfig.use_torch_compile" title="Link to this definition">¶</a></dt>
 <dd><p>Whether to use <cite>torch.compile</cite> to compile the model for faster training.</p>
@@ -1141,6 +1147,7 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.skip_nan_loss"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.skip_nan_loss</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.skip_nan_loss_max_count"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.skip_nan_loss_max_count</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.disable_gradient_accumulation"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.disable_gradient_accumulation</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.save_on_sigint"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.save_on_sigint</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.use_torch_compile"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.use_torch_compile</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.find_unused_params"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.find_unused_params</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.static_graph"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.static_graph</span></code></a></li>
