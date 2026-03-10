@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" /><link rel="next" title="noether.core.schemas.statistics" href="../statistics/index.html" /><link rel="prev" title="noether.core.schemas.schedules" href="../schedules/index.html" />
+<link rel="index" title="Index" href="../../../../../genindex.html" /><link rel="search" title="Search" href="../../../../../search.html" /><link rel="next" title="noether.core.schemas.slurm" href="../slurm/index.html" /><link rel="prev" title="noether.core.schemas.schedules" href="../schedules/index.html" />
         <link rel="prefetch" href="../../../../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
@@ -285,6 +285,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/use_callbacks.html">How to Use and Build Callbacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/experiment_tracking.html">Experiment Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/launch_job.html">How to launch a SLURM job from the command line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
@@ -435,6 +436,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../optimizers/index.html">noether.core.schemas.optimizers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../schedules/index.html">noether.core.schemas.schedules</a></li>
 <li class="toctree-l4 current current-page"><a class="current reference internal" href="#">noether.core.schemas.schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../slurm/index.html">noether.core.schemas.slurm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../statistics/index.html">noether.core.schemas.statistics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../trackers/index.html">noether.core.schemas.trackers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../trainers/index.html">noether.core.schemas.trainers</a></li>
@@ -733,6 +735,7 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-73" name="toctree-checkbox-73" role="switch" type="checkbox"/><label for="toctree-checkbox-73"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../training/cli/main_train/index.html">noether.training.cli.main_train</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../training/cli/submit_job/index.html">noether.training.cli.submit_job</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../training/runners/index.html">noether.training.runners</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.training.runners</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1023,6 +1026,12 @@ other keys are arbitrary and can be used to identify datasets for different stag
 <dd><p>Port for distributed master node. If None, will be set from environment variable MASTER_PORT if available.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.slurm">
+<span class="sig-name descname"><span class="pre">slurm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../slurm/index.html#noether.core.schemas.slurm.SlurmConfig" title="noether.core.schemas.slurm.SlurmConfig"><span class="pre">noether.core.schemas.slurm.SlurmConfig</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.slurm" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for SLURM job submission.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.empty_dict_is_none">
 <em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">empty_dict_is_none</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.empty_dict_is_none" title="Link to this definition">¶</a></dt>
@@ -1099,12 +1108,12 @@ other keys are arbitrary and can be used to identify datasets for different stag
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../statistics/index.html">
+          <a class="next-page" href="../slurm/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">noether.core.schemas.statistics</div>
+                <div class="title">noether.core.schemas.slurm</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -1206,6 +1215,7 @@ other keys are arbitrary and can be used to identify datasets for different stag
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.store_code_in_output"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.store_code_in_output</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.output_path"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.output_path</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.master_port"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.master_port</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.slurm"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.slurm</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.empty_dict_is_none"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.empty_dict_is_none()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.validate_output_path"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.validate_output_path()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.serialize_output_path"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.serialize_output_path()</span></code></a></li>

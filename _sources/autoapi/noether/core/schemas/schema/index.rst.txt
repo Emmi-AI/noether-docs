@@ -252,6 +252,14 @@ Module Contents
       Port for distributed master node. If None, will be set from environment variable MASTER_PORT if available.
 
 
+   .. py:attribute:: slurm
+      :type:  noether.core.schemas.slurm.SlurmConfig | None
+      :value: None
+
+
+      Configuration for SLURM job submission.
+
+
    .. py:method:: empty_dict_is_none(v)
       :classmethod:
 

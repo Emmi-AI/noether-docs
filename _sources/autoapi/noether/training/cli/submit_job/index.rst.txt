@@ -1,0 +1,43 @@
+noether.training.cli.submit_job
+===============================
+
+.. py:module:: noether.training.cli.submit_job
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.training.cli.submit_job.validate_config
+   noether.training.cli.submit_job.main
+
+
+Module Contents
+---------------
+
+.. py:function:: validate_config(config)
+
+   Validate the configuration using the specified schema.
+
+   :param config: The Hydra configuration to validate
+
+   :returns: The validated configuration schema
+
+   :raises ValueError: If the configuration is missing required fields
+   :raises RuntimeError: If the schema class cannot be loaded
+
+
+.. py:function:: main(config)
+
+   Main entry point for SLURM job submission.
+
+   Validates a Hydra config and submits a training job via ``sbatch``.
+
+   Example:
+   .. code-block:: bash
+
+      noether-submit-job --hp configs/train_shapenet.yaml +seed=1 tracker=disabled
+      noether-submit-job --hp configs/train_shapenet.yaml --dry-run
+
+

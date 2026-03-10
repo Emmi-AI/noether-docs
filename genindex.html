@@ -283,6 +283,7 @@
 <li class="toctree-l2"><a class="reference internal" href="guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides/training/use_callbacks.html">How to Use and Build Callbacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides/training/experiment_tracking.html">Experiment Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/training/launch_job.html">How to launch a SLURM job from the command line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides/training/how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
@@ -433,6 +434,7 @@
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/schemas/optimizers/index.html">noether.core.schemas.optimizers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/schemas/schedules/index.html">noether.core.schemas.schedules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/schemas/schema/index.html">noether.core.schemas.schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/schemas/slurm/index.html">noether.core.schemas.slurm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/schemas/statistics/index.html">noether.core.schemas.statistics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/schemas/trackers/index.html">noether.core.schemas.trackers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/schemas/trainers/index.html">noether.core.schemas.trainers</a></li>
@@ -731,6 +733,7 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-73" name="toctree-checkbox-73" role="switch" type="checkbox"/><label for="toctree-checkbox-73"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/training/cli/main_train/index.html">noether.training.cli.main_train</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/training/cli/submit_job/index.html">noether.training.cli.submit_job</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/training/runners/index.html">noether.training.runners</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.training.runners</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1015,14 +1018,14 @@
         </ul></li>
         <li><a href="autoapi/noether/modeling/functional/init/index.html#noether.modeling.functional.init.ALL_LAYERS">ALL_LAYERS (in module noether.modeling.functional.init)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/optimizer/optimizer_wrapper/index.html#noether.core.optimizer.optimizer_wrapper.OptimizerWrapper.all_parameters">all_parameters (noether.core.optimizer.optimizer_wrapper.OptimizerWrapper attribute)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/optimizer/index.html#noether.core.optimizer.OptimizerWrapper.all_parameters">(noether.core.optimizer.OptimizerWrapper attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/distributed/index.html#noether.core.distributed.all_reduce_mean_grad">all_reduce_mean_grad() (in module noether.core.distributed)</a>
 
         <ul>
@@ -1137,6 +1140,12 @@
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.UPTConfig.approximator_depth">(noether.core.schemas.models.UPTConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.array">array (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.array">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/data/datasets/cfd/caeml/preprocessing/index.html#noether.data.datasets.cfd.caeml.preprocessing.assert_same_length">assert_same_length() (in module noether.data.datasets.cfd.caeml.preprocessing)</a>
@@ -1401,6 +1410,12 @@
         </ul></li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.begin">begin (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.begin">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/io/diskcache/cache_benchmark/index.html#noether.io.diskcache.cache_benchmark.benchmark">benchmark() (in module noether.io.diskcache.cache_benchmark)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/early_stoppers/metric/index.html#noether.core.callbacks.early_stoppers.metric.MetricEarlyStopper.best_metric">best_metric (noether.core.callbacks.early_stoppers.metric.MetricEarlyStopper attribute)</a>
@@ -1625,6 +1640,12 @@
         </ul></li>
         <li><a href="autoapi/noether/io/diskcache/lru_cache/index.html#noether.io.diskcache.lru_cache.LRUCacheFileSystem.cat_ranges">cat_ranges() (noether.io.diskcache.lru_cache.LRUCacheFileSystem method)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.chdir">chdir (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.chdir">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/utils/common/index.html#noether.core.utils.common.check_all_none">check_all_none() (in module noether.core.utils.common)</a>
 
         <ul>
@@ -2051,6 +2072,12 @@
 
         <ul>
           <li><a href="autoapi/noether/core/utils/logging/index.html#noether.core.utils.logging.MessageCounter.counts">(noether.core.utils.logging.MessageCounter attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.cpus_per_task">cpus_per_task (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.cpus_per_task">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/factory/base/index.html#noether.core.factory.base.Factory.create">create() (noether.core.factory.base.Factory method)</a>
@@ -2913,6 +2940,12 @@
           <li><a href="autoapi/noether/core/trackers/index.html#noether.core.trackers.WandBTracker.entity">(noether.core.trackers.WandBTracker attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.env_path">env_path (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.env_path">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.CheckpointConfig.epoch">epoch (noether.core.schemas.trainers.CheckpointConfig attribute)</a>
 
         <ul>
@@ -2947,6 +2980,12 @@
           <li><a href="autoapi/noether/data/preprocessors/normalizers/index.html#noether.data.preprocessors.normalizers.MeanStdNormalization.EPSILON">(noether.data.preprocessors.normalizers.MeanStdNormalization attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.error">error (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.error">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.ParallelErrors.errors">errors (noether.io.verification.ParallelErrors attribute)</a>
 </li>
         <li><a href="autoapi/noether/io/interfaces/huggingface/index.html#noether.io.interfaces.huggingface.estimate_hf_repo_size">estimate_hf_repo_size() (in module noether.io.interfaces.huggingface)</a>
@@ -2979,14 +3018,14 @@
           <li><a href="autoapi/noether/core/callbacks/default/eta/index.html#noether.core.callbacks.default.eta.EtaCallback.LoggerWasCalledHandler">(class in noether.core.callbacks.default.eta)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/io/interfaces/s3/index.html#noether.io.interfaces.s3.S3Object.etag">etag (noether.io.interfaces.s3.S3Object attribute)</a>
 
         <ul>
           <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.FileRecord.etag">(noether.io.verification.FileRecord attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.eval">eval() (noether.training.trainers.base.BaseTrainer method)</a>
 
         <ul>
@@ -3779,14 +3818,14 @@
           <li><a href="autoapi/noether/core/distributed/index.html#noether.core.distributed.DistributedConfig.get_managed_world_size">(noether.core.distributed.DistributedConfig method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/training/training_iteration/index.html#noether.core.utils.training.training_iteration.TrainingIteration.get_n_equal_properties">get_n_equal_properties() (noether.core.utils.training.training_iteration.TrainingIteration method)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/utils/training/index.html#noether.core.utils.training.TrainingIteration.get_n_equal_properties">(noether.core.utils.training.TrainingIteration method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/models/base/index.html#noether.core.models.base.ModelBase.get_named_models">get_named_models() (noether.core.models.base.ModelBase method)</a>
 
         <ul>
@@ -3957,8 +3996,26 @@
 </li>
         <li><a href="autoapi/noether/data/datasets/cfd/dataset/index.html#noether.data.datasets.cfd.dataset.AeroDataset.getitem_volume_vorticity">getitem_volume_vorticity() (noether.data.datasets.cfd.dataset.AeroDataset method)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.gpus">gpus (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.gpus">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.gpus_per_node">gpus_per_node (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.gpus_per_node">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/types/index.html#noether.core.types.CheckpointKeys.GRAD_SCALER">GRAD_SCALER (noether.core.types.CheckpointKeys attribute)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.gres">gres (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.gres">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/utils/logging/index.html#noether.core.utils.logging.CustomFormatter.GREY">GREY (noether.core.utils.logging.CustomFormatter attribute)</a>
 
         <ul>
@@ -4817,6 +4874,12 @@
   <h2>J</h2>
   <table style="width: 100%" class="indextable genindextable"><tr>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.job_name">job_name (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.job_name">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/modeling/modules/attention/anchor_attention/index.html#noether.modeling.modules.attention.anchor_attention.JointAnchorAttention">JointAnchorAttention (class in noether.modeling.modules.attention.anchor_attention)</a>
 
         <ul>
@@ -4907,6 +4970,12 @@
           <li><a href="autoapi/noether/core/schemas/initializers/index.html#noether.core.schemas.initializers.PreviousRunInitializerConfig.keys_to_remove">(noether.core.schemas.initializers.PreviousRunInitializerConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.PreviousRunInitializerConfig.keys_to_remove">(noether.core.schemas.PreviousRunInitializerConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.kill_on_invalid_dep">kill_on_invalid_dep (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.kill_on_invalid_dep">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schedules/index.html#noether.core.schedules.ConstantScheduleConfig.kind">kind (noether.core.schedules.ConstantScheduleConfig attribute)</a>
@@ -5578,6 +5647,8 @@
 </li>
           <li><a href="autoapi/noether/training/cli/main_train/index.html#noether.training.cli.main_train.main">(in module noether.training.cli.main_train)</a>
 </li>
+          <li><a href="autoapi/noether/training/cli/submit_job/index.html#noether.training.cli.submit_job.main">(in module noether.training.cli.submit_job)</a>
+</li>
           <li><a href="autoapi/noether/inference/runners/inference_runner/index.html#noether.inference.runners.inference_runner.InferenceRunner.main">(noether.inference.runners.inference_runner.InferenceRunner static method)</a>
 </li>
           <li><a href="autoapi/noether/training/runners/hydra_runner/index.html#noether.training.runners.hydra_runner.HydraRunner.main">(noether.training.runners.hydra_runner.HydraRunner static method)</a>
@@ -5753,6 +5824,12 @@
 </li>
         <li><a href="autoapi/noether/core/schemas/normalizers/index.html#noether.core.schemas.normalizers.MeanStdNormalizerConfig">MeanStdNormalizerConfig (class in noether.core.schemas.normalizers)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.mem">mem (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.mem">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/data/datasets/cfd/caeml/preprocessing/index.html#noether.data.datasets.cfd.caeml.preprocessing.merge_vtu_parts">merge_vtu_parts() (in module noether.data.datasets.cfd.caeml.preprocessing)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/modules/encoders/index.html#noether.core.schemas.modules.encoders.SupernodePoolingConfig.message_mode">message_mode (noether.core.schemas.modules.encoders.SupernodePoolingConfig attribute)</a>
@@ -6023,6 +6100,10 @@
           <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.OptimizerConfig.model_config">(noether.core.schemas.OptimizerConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/optimizers/index.html#noether.core.schemas.optimizers.OptimizerConfig.model_config">(noether.core.schemas.optimizers.OptimizerConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.model_config">(noether.core.schemas.slurm.SlurmConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.model_config">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.model_config">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
 </li>
@@ -6318,6 +6399,8 @@
           <li><a href="autoapi/noether/core/schemas/schedules/index.html#module-noether.core.schemas.schedules">noether.core.schemas.schedules</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/schema/index.html#module-noether.core.schemas.schema">noether.core.schemas.schema</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/slurm/index.html#module-noether.core.schemas.slurm">noether.core.schemas.slurm</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/statistics/index.html#module-noether.core.schemas.statistics">noether.core.schemas.statistics</a>
 </li>
@@ -6715,6 +6798,8 @@
 </li>
           <li><a href="autoapi/noether/training/cli/main_train/index.html#module-noether.training.cli.main_train">noether.training.cli.main_train</a>
 </li>
+          <li><a href="autoapi/noether/training/cli/submit_job/index.html#module-noether.training.cli.submit_job">noether.training.cli.submit_job</a>
+</li>
           <li><a href="autoapi/noether/training/runners/index.html#module-noether.training.runners">noether.training.runners</a>
 </li>
           <li><a href="autoapi/noether/training/runners/hydra_runner/index.html#module-noether.training.runners.hydra_runner">noether.training.runners.hydra_runner</a>
@@ -6894,6 +6979,18 @@
 
         <ul>
           <li><a href="autoapi/noether/core/utils/training/index.html#noether.core.utils.training.UpdateCounter.next_update">(noether.core.utils.training.UpdateCounter method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.nice">nice (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.nice">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.nodes">nodes (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.nodes">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
         </ul></li>
         <li>
@@ -7608,6 +7705,13 @@
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/schema/index.html#module-noether.core.schemas.schema">module</a>
+</li>
+        </ul></li>
+        <li>
+    noether.core.schemas.slurm
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/slurm/index.html#module-noether.core.schemas.slurm">module</a>
 </li>
         </ul></li>
         <li>
@@ -8999,6 +9103,13 @@
 </li>
         </ul></li>
         <li>
+    noether.training.cli.submit_job
+
+        <ul>
+          <li><a href="autoapi/noether/training/cli/submit_job/index.html#module-noether.training.cli.submit_job">module</a>
+</li>
+        </ul></li>
+        <li>
     noether.training.runners
 
         <ul>
@@ -9139,6 +9250,18 @@
           <li><a href="autoapi/noether/data/base/dataset/index.html#noether.data.base.dataset.Dataset.normalizers">(noether.data.base.dataset.Dataset attribute)</a>
 </li>
           <li><a href="autoapi/noether/data/index.html#noether.data.Dataset.normalizers">(noether.data.Dataset attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.ntasks">ntasks (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.ntasks">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.ntasks_per_node">ntasks_per_node (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.ntasks_per_node">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/modeling/modules/layers/transformer_batchnorm/index.html#noether.modeling.modules.layers.transformer_batchnorm.TransformerBatchNorm.num_features">num_features (noether.modeling.modules.layers.transformer_batchnorm.TransformerBatchNorm attribute)</a>
@@ -9441,6 +9564,12 @@
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.TrackAdditionalOutputsCallback.out">(noether.core.callbacks.TrackAdditionalOutputsCallback attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.output">output (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.output">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/layers/linear_projection/index.html#noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig.output_dim">output_dim (noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig attribute)</a>
 
         <ul>
@@ -9621,6 +9750,12 @@
 </li>
         <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/preprocessing/index.html#noether.data.datasets.cfd.shapenet_car.preprocessing.parser">parser (in module noether.data.datasets.cfd.shapenet_car.preprocessing)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.partition">partition (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.partition">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/utils/common/index.html#noether.core.utils.common.pascal_to_snake">pascal_to_snake() (in module noether.core.utils.common)</a>
 
         <ul>
@@ -9845,10 +9980,10 @@
           <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback">(class in noether.core.callbacks.periodic)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig">PeriodicDataIteratorCallbackConfig (class in noether.core.schemas.callbacks)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig">PeriodicDataIteratorCallbackConfig (class in noether.core.schemas.callbacks)</a>
+</li>
         <li><a href="autoapi/noether/core/schemas/models/ab_upt/index.html#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.physics_blocks">physics_blocks (noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig attribute)</a>
 
         <ul>
@@ -10433,12 +10568,18 @@
           <li><a href="autoapi/noether/data/index.html#noether.data.RepeatWrapper.repetitions">(noether.data.RepeatWrapper attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/index.html#noether.data.pipeline.sample_processors.ReplaceKeySampleProcessor">ReplaceKeySampleProcessor (class in noether.data.pipeline.sample_processors)</a>
 
         <ul>
           <li><a href="autoapi/noether/data/pipeline/sample_processors/replace_key/index.html#noether.data.pipeline.sample_processors.replace_key.ReplaceKeySampleProcessor">(class in noether.data.pipeline.sample_processors.replace_key)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.reservation">reservation (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.reservation">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/utils/logging/index.html#noether.core.utils.logging.CustomFormatter.RESET">RESET (noether.core.utils.logging.CustomFormatter attribute)</a>
@@ -11225,14 +11366,14 @@
           <li><a href="autoapi/noether/core/utils/common/typing/index.html#noether.core.utils.common.typing.SizedIterable">(class in noether.core.utils.common.typing)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.BaseTrainerConfig.skip_nan_loss">skip_nan_loss (noether.core.schemas.BaseTrainerConfig attribute)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.skip_nan_loss">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.skip_nan_loss_counter">skip_nan_loss_counter (noether.training.trainers.base.BaseTrainer attribute)</a>
 
         <ul>
@@ -11243,6 +11384,18 @@
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.skip_nan_loss_max_count">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.ConfigSchema.slurm">slurm (noether.core.schemas.ConfigSchema attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema.slurm">(noether.core.schemas.schema.ConfigSchema attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig">SlurmConfig (class in noether.core.schemas)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig">(class in noether.core.schemas.slurm)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/utils/common/index.html#noether.core.utils.common.snake_type_name">snake_type_name() (in module noether.core.utils.common)</a>
@@ -11949,6 +12102,12 @@
 </li>
         <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#noether.data.datasets.cfd.shapenet_car.dataset.TEST_PARAM_INDEX">TEST_PARAM_INDEX (in module noether.data.datasets.cfd.shapenet_car.dataset)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.time">time (noether.core.schemas.slurm.SlurmConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.time">(noether.core.schemas.SlurmConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/data/datasets/cfd/caeml/preprocessing/index.html#noether.data.datasets.cfd.caeml.preprocessing.time_block">time_block() (in module noether.data.datasets.cfd.caeml.preprocessing)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/default/eta/index.html#noether.core.callbacks.default.eta.EtaCallback.time_since_last_log">time_since_last_log (noether.core.callbacks.default.eta.EtaCallback attribute)</a>
@@ -12013,6 +12172,12 @@
           <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.to_short_interval_string">(noether.core.callbacks.periodic.PeriodicCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.PeriodicCallback.to_short_interval_string">(noether.core.callbacks.PeriodicCallback method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.to_srun_args">to_srun_args() (noether.core.schemas.slurm.SlurmConfig method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.to_srun_args">(noether.core.schemas.SlurmConfig method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/utils/training/training_iteration/index.html#noether.core.utils.training.training_iteration.TrainingIteration.to_target_specification">to_target_specification() (noether.core.utils.training.training_iteration.TrainingIteration method)</a>
@@ -12707,6 +12872,12 @@
 </li>
         <li><a href="autoapi/noether/core/utils/torch/amp/index.html#noether.core.utils.torch.amp.VALID_PRECISIONS">VALID_PRECISIONS (in module noether.core.utils.torch.amp)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.validate_array_format">validate_array_format() (noether.core.schemas.slurm.SlurmConfig class method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.validate_array_format">(noether.core.schemas.SlurmConfig class method)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.BaseTrainerConfig.validate_callback_frequency">validate_callback_frequency() (noether.core.schemas.BaseTrainerConfig method)</a>
 
         <ul>
@@ -12721,6 +12892,8 @@
           <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.validate_callback_frequency">(noether.core.schemas.trainers.BaseTrainerConfig method)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/training/cli/submit_job/index.html#noether.training.cli.submit_job.validate_config">validate_config() (in module noether.training.cli.submit_job)</a>
+</li>
         <li><a href="autoapi/noether/data/index.html#noether.data.SamplerIntervalConfig.validate_frequency">validate_frequency() (noether.data.SamplerIntervalConfig method)</a>
 
         <ul>
@@ -12729,10 +12902,22 @@
           <li><a href="autoapi/noether/data/samplers/index.html#noether.data.samplers.SamplerIntervalConfig.validate_frequency">(noether.data.samplers.SamplerIntervalConfig method)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.validate_gpu_spec">validate_gpu_spec() (noether.core.schemas.slurm.SlurmConfig class method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.validate_gpu_spec">(noether.core.schemas.SlurmConfig class method)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig.validate_hidden_dim_and_num_heads">validate_hidden_dim_and_num_heads() (noether.core.schemas.modules.attention.AttentionConfig method)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig.validate_hidden_dim_and_num_heads">(noether.core.schemas.modules.AttentionConfig method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.validate_memory_format">validate_memory_format() (noether.core.schemas.slurm.SlurmConfig class method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.validate_memory_format">(noether.core.schemas.SlurmConfig class method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/layers/linear_projection/index.html#noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig.validate_ndim">validate_ndim() (noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig method)</a>
@@ -12809,6 +12994,12 @@
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/normalizers/index.html#noether.core.schemas.normalizers.validate_tensor">validate_tensor() (in module noether.core.schemas.normalizers)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.validate_time_format">validate_time_format() (noether.core.schemas.slurm.SlurmConfig class method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.validate_time_format">(noether.core.schemas.SlurmConfig class method)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.LinearWarmupCosineDecayScheduleConfig.validate_warmup">validate_warmup() (noether.core.schemas.LinearWarmupCosineDecayScheduleConfig method)</a>
 
         <ul>
@@ -12837,6 +13028,8 @@
           <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.ConstantScheduleConfig.value">(noether.core.schemas.schedules.ConstantScheduleConfig attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schedules/custom/index.html#noether.core.schedules.custom.CustomSchedule.values">values (noether.core.schedules.custom.CustomSchedule attribute)</a>
 
         <ul>
@@ -12849,8 +13042,6 @@
           <li><a href="autoapi/noether/core/schemas/schedules/index.html#noether.core.schemas.schedules.CustomScheduleConfig.values">(noether.core.schemas.schedules.CustomScheduleConfig attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.FieldDimSpec.values">values() (noether.core.schemas.dataset.FieldDimSpec method)</a>
 </li>
         <li><a href="autoapi/noether/data/stats/index.html#noether.data.stats.RunningMoments.var">var (noether.data.stats.RunningMoments property)</a>

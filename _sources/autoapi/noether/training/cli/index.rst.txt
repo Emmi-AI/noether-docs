@@ -11,6 +11,7 @@ Submodules
    :maxdepth: 1
 
    /autoapi/noether/training/cli/main_train/index
+   /autoapi/noether/training/cli/submit_job/index
 
 
 Functions
