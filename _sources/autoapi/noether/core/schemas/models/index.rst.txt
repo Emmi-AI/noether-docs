@@ -116,6 +116,30 @@ Package Contents
       Data specifications for the model.
 
 
+   .. py:method:: set_condition_dim()
+
+      Set condition_dim in transformer_block_config based on data_specs.
+
+
+
+   .. py:method:: rope_frequency_config()
+
+
+   .. py:method:: pos_embed_config()
+
+
+   .. py:method:: bias_mlp_config()
+
+
+   .. py:method:: perceiver_block_config()
+
+
+   .. py:method:: surface_decoder_config()
+
+
+   .. py:method:: volume_decoder_config()
+
+
    .. py:method:: validate_parameters()
 
       Validate validity of parameters across the model and its submodules.
@@ -188,7 +212,7 @@ Package Contents
 
 .. py:class:: TransformerConfig(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.modules.blocks.TransformerBlockConfig`, :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`, :py:obj:`noether.core.schemas.mixins.InjectSharedFieldFromParentMixin`
 
 
    Configuration for a Transformer model.
@@ -206,6 +230,14 @@ Package Contents
       Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
 
 
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the model. Used for all transformer blocks.
+
+
    .. py:attribute:: depth
       :type:  int
       :value: None
@@ -214,15 +246,8 @@ Package Contents
       Number of transformer blocks in the model.
 
 
-   .. py:attribute:: mlp_expansion_factor
-      :type:  int
-      :value: None
-
-
-      Expansion factor for the MLP hidden dimension relative to the hidden dimension. If 'mlp_hidden_dim' is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.
-
-
-   .. py:method:: set_mlp_hidden_dim()
+   .. py:attribute:: transformer_block_config
+      :type:  Annotated[noether.core.schemas.modules.blocks.TransformerBlockConfig, noether.core.schemas.mixins.Shared]
 
 
 .. py:class:: TransolverConfig(/, **data)
@@ -250,13 +275,9 @@ Package Contents
       :value: 'transolver'
 
 
-      Constructor of the attention module. Defaults to 'dot_product'.
-
 
    .. py:attribute:: attention_arguments
       :type:  dict
-
-      Additional arguments for the attention module that are only needed for a specific attention implementation.
 
 
 .. py:class:: TransolverPlusPlusConfig(/, **data)
@@ -278,8 +299,6 @@ Package Contents
       :type:  Literal['transolver_plusplus']
       :value: 'transolver_plusplus'
 
-
-      Constructor of the attention module. Defaults to 'dot_product'.
 
 
 .. py:class:: UPTConfig(/, **data)
@@ -360,6 +379,27 @@ Package Contents
 
    .. py:attribute:: data_specs
       :type:  noether.core.schemas.dataset.AeroDataSpecs
+
+
+   .. py:method:: linear_output_projection_config()
+
+
+   .. py:method:: rope_frequency_config()
+
+
+   .. py:method:: validate_rope_usage()
+
+      Ensure that if use_rope is True in the main config, it is also True in the approximator_config.
+
+
+
+   .. py:method:: update_supernode_pooling_config()
+
+      Inject shared fields into supernode_pooling_config.
+
+
+
+   .. py:method:: pos_embedding_config()
 
 
    .. py:method:: validate_parameters()

@@ -814,7 +814,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.models.transformer.TransformerConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.models.transformer.</span></span><span class="sig-name descname"><span class="pre">TransformerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.transformer.TransformerConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.modules.blocks.TransformerBlockConfig</span></code></a>, <a class="reference internal" href="../base/index.html#noether.core.schemas.models.base.ModelBaseConfig" title="noether.core.schemas.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.base.ModelBaseConfig</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.schemas.models.base.ModelBaseConfig" title="noether.core.schemas.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.base.ModelBaseConfig</span></code></a>, <a class="reference internal" href="../../mixins/index.html#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.mixins.InjectSharedFieldFromParentMixin</span></code></a></p>
 <p>Configuration for a Transformer model.</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
@@ -832,20 +832,20 @@ validated to form a valid model.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.transformer.TransformerConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.transformer.TransformerConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Hidden dimension of the model. Used for all transformer blocks.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.transformer.TransformerConfig.depth">
 <span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.transformer.TransformerConfig.depth" title="Link to this definition">¶</a></dt>
 <dd><p>Number of transformer blocks in the model.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.models.transformer.TransformerConfig.mlp_expansion_factor">
-<span class="sig-name descname"><span class="pre">mlp_expansion_factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.transformer.TransformerConfig.mlp_expansion_factor" title="Link to this definition">¶</a></dt>
-<dd><p>Expansion factor for the MLP hidden dimension relative to the hidden dimension. If ‘mlp_hidden_dim’ is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.models.transformer.TransformerConfig.set_mlp_hidden_dim">
-<span class="sig-name descname"><span class="pre">set_mlp_hidden_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.transformer.TransformerConfig.set_mlp_hidden_dim" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.models.transformer.TransformerConfig.transformer_block_config">
+<span class="sig-name descname"><span class="pre">transformer_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><span class="pre">noether.core.schemas.modules.blocks.TransformerBlockConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.transformer.TransformerConfig.transformer_block_config" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -937,9 +937,9 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.models.transformer.TransformerConfig"><code class="docutils literal notranslate"><span class="pre">TransformerConfig</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.models.transformer.TransformerConfig.model_config"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.transformer.TransformerConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.hidden_dim</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.transformer.TransformerConfig.depth"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.depth</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.models.transformer.TransformerConfig.mlp_expansion_factor"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.mlp_expansion_factor</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.models.transformer.TransformerConfig.set_mlp_hidden_dim"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.set_mlp_hidden_dim()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.transformer.TransformerConfig.transformer_block_config"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.transformer_block_config</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -98,6 +98,30 @@ Module Contents
       Data specifications for the model.
 
 
+   .. py:method:: set_condition_dim()
+
+      Set condition_dim in transformer_block_config based on data_specs.
+
+
+
+   .. py:method:: rope_frequency_config()
+
+
+   .. py:method:: pos_embed_config()
+
+
+   .. py:method:: bias_mlp_config()
+
+
+   .. py:method:: perceiver_block_config()
+
+
+   .. py:method:: surface_decoder_config()
+
+
+   .. py:method:: volume_decoder_config()
+
+
    .. py:method:: validate_parameters()
 
       Validate validity of parameters across the model and its submodules.

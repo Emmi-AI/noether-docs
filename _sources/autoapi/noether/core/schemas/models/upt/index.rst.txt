@@ -95,6 +95,27 @@ Module Contents
       :type:  noether.core.schemas.dataset.AeroDataSpecs
 
 
+   .. py:method:: linear_output_projection_config()
+
+
+   .. py:method:: rope_frequency_config()
+
+
+   .. py:method:: validate_rope_usage()
+
+      Ensure that if use_rope is True in the main config, it is also True in the approximator_config.
+
+
+
+   .. py:method:: update_supernode_pooling_config()
+
+      Inject shared fields into supernode_pooling_config.
+
+
+
+   .. py:method:: pos_embedding_config()
+
+
    .. py:method:: validate_parameters()
 
       Validate validity of parameters across the model and its submodules.

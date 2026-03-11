@@ -886,6 +886,58 @@ validated to form a valid model.</p>
 <dd></dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.upt.UPTConfig.linear_output_projection_config">
+<span class="sig-name descname"><span class="pre">linear_output_projection_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.upt.UPTConfig.linear_output_projection_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig">noether.core.schemas.modules.layers.LinearProjectionConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.upt.UPTConfig.rope_frequency_config">
+<span class="sig-name descname"><span class="pre">rope_frequency_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.upt.UPTConfig.rope_frequency_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/index.html#noether.core.schemas.modules.layers.RopeFrequencyConfig" title="noether.core.schemas.modules.layers.RopeFrequencyConfig">noether.core.schemas.modules.layers.RopeFrequencyConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.upt.UPTConfig.validate_rope_usage">
+<span class="sig-name descname"><span class="pre">validate_rope_usage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.upt.UPTConfig.validate_rope_usage" title="Link to this definition">¶</a></dt>
+<dd><p>Ensure that if use_rope is True in the main config, it is also True in the approximator_config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig" title="noether.core.schemas.models.upt.UPTConfig">UPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.upt.UPTConfig.update_supernode_pooling_config">
+<span class="sig-name descname"><span class="pre">update_supernode_pooling_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.upt.UPTConfig.update_supernode_pooling_config" title="Link to this definition">¶</a></dt>
+<dd><p>Inject shared fields into supernode_pooling_config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig" title="noether.core.schemas.models.upt.UPTConfig">UPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.upt.UPTConfig.pos_embedding_config">
+<span class="sig-name descname"><span class="pre">pos_embedding_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.upt.UPTConfig.pos_embedding_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/index.html#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig" title="noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig">noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="noether.core.schemas.models.upt.UPTConfig.validate_parameters">
 <span class="sig-name descname"><span class="pre">validate_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.upt.UPTConfig.validate_parameters" title="Link to this definition">¶</a></dt>
 <dd><p>Validate validity of parameters across the model and its submodules.</p>
@@ -998,6 +1050,11 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.decoder_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.decoder_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.bias_layers"><code class="docutils literal notranslate"><span class="pre">UPTConfig.bias_layers</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.data_specs"><code class="docutils literal notranslate"><span class="pre">UPTConfig.data_specs</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.linear_output_projection_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.linear_output_projection_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.rope_frequency_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.rope_frequency_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.validate_rope_usage"><code class="docutils literal notranslate"><span class="pre">UPTConfig.validate_rope_usage()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.update_supernode_pooling_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.update_supernode_pooling_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.pos_embedding_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.pos_embedding_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.upt.UPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">UPTConfig.validate_parameters()</span></code></a></li>
 </ul>
 </li>

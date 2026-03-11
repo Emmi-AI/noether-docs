@@ -397,6 +397,12 @@ Package Contents
 
 
 
+   .. py:method:: perceiver_attention_config()
+
+
+   .. py:method:: modulation_linear_projection_config()
+
+
 .. py:class:: TransformerBlockConfig(/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`
@@ -515,6 +521,21 @@ Package Contents
 
 
    .. py:method:: set_mlp_hidden_dim()
+
+
+   .. py:method:: linear_projection_config()
+
+
+   .. py:method:: layerscale_config()
+
+
+   .. py:method:: drop_path_config()
+
+
+   .. py:method:: modulation_linear_projection_config()
+
+
+   .. py:method:: up_act_down_mlp_config()
 
 
 .. py:class:: DeepPerceiverDecoderConfig(/, **data)

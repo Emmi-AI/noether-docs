@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: TransformerConfig(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.modules.blocks.TransformerBlockConfig`, :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`, :py:obj:`noether.core.schemas.mixins.InjectSharedFieldFromParentMixin`
 
 
    Configuration for a Transformer model.
@@ -35,6 +35,14 @@ Module Contents
       Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
 
 
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the model. Used for all transformer blocks.
+
+
    .. py:attribute:: depth
       :type:  int
       :value: None
@@ -43,14 +51,7 @@ Module Contents
       Number of transformer blocks in the model.
 
 
-   .. py:attribute:: mlp_expansion_factor
-      :type:  int
-      :value: None
-
-
-      Expansion factor for the MLP hidden dimension relative to the hidden dimension. If 'mlp_hidden_dim' is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.
-
-
-   .. py:method:: set_mlp_hidden_dim()
+   .. py:attribute:: transformer_block_config
+      :type:  Annotated[noether.core.schemas.modules.blocks.TransformerBlockConfig, noether.core.schemas.mixins.Shared]
 
 

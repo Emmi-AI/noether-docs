@@ -25,10 +25,10 @@ Module Contents
    :param config: Configuration for the UPT model. See :class:`~noether.core.schemas.models.UPTConfig` for details.
 
 
-   .. py:attribute:: encoder
-
-
    .. py:attribute:: use_rope
+
+
+   .. py:attribute:: encoder
 
 
    .. py:attribute:: pos_embed

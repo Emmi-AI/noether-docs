@@ -890,6 +890,77 @@ Perceiver: Perceiver-style attention blocks.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.set_condition_dim">
+<span class="sig-name descname"><span class="pre">set_condition_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.set_condition_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Set condition_dim in transformer_block_config based on data_specs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig" title="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.rope_frequency_config">
+<span class="sig-name descname"><span class="pre">rope_frequency_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.rope_frequency_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/index.html#noether.core.schemas.modules.layers.RopeFrequencyConfig" title="noether.core.schemas.modules.layers.RopeFrequencyConfig">noether.core.schemas.modules.layers.RopeFrequencyConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.pos_embed_config">
+<span class="sig-name descname"><span class="pre">pos_embed_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.pos_embed_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/index.html#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig" title="noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig">noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.bias_mlp_config">
+<span class="sig-name descname"><span class="pre">bias_mlp_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.bias_mlp_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/mlp/index.html#noether.core.schemas.modules.mlp.MLPConfig" title="noether.core.schemas.modules.mlp.MLPConfig">noether.core.schemas.modules.mlp.MLPConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.perceiver_block_config">
+<span class="sig-name descname"><span class="pre">perceiver_block_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.perceiver_block_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/blocks/index.html#noether.core.schemas.modules.blocks.PerceiverBlockConfig" title="noether.core.schemas.modules.blocks.PerceiverBlockConfig">noether.core.schemas.modules.blocks.PerceiverBlockConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.surface_decoder_config">
+<span class="sig-name descname"><span class="pre">surface_decoder_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.surface_decoder_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig">noether.core.schemas.modules.layers.LinearProjectionConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.volume_decoder_config">
+<span class="sig-name descname"><span class="pre">volume_decoder_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.volume_decoder_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig">noether.core.schemas.modules.layers.LinearProjectionConfig</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.validate_parameters">
 <span class="sig-name descname"><span class="pre">validate_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.validate_parameters" title="Link to this definition">¶</a></dt>
 <dd><p>Validate validity of parameters across the model and its submodules.</p>
@@ -1001,6 +1072,13 @@ Note: transformer_block_config validates hidden_dim % num_heads == 0 in its own 
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.init_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.drop_path_rate"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.drop_path_rate</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.data_specs"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.data_specs</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.set_condition_dim"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.set_condition_dim()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.rope_frequency_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.rope_frequency_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.pos_embed_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.pos_embed_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.bias_mlp_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.bias_mlp_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.perceiver_block_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.perceiver_block_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.surface_decoder_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.surface_decoder_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.volume_decoder_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.volume_decoder_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.validate_parameters()</span></code></a></li>
 </ul>
 </li>

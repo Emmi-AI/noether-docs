@@ -41,13 +41,9 @@ Module Contents
       :value: 'transolver'
 
 
-      Constructor of the attention module. Defaults to 'dot_product'.
-
 
    .. py:attribute:: attention_arguments
       :type:  dict
-
-      Additional arguments for the attention module that are only needed for a specific attention implementation.
 
 
 .. py:class:: TransolverPlusPlusConfig(/, **data)
@@ -69,7 +65,5 @@ Module Contents
       :type:  Literal['transolver_plusplus']
       :value: 'transolver_plusplus'
 
-
-      Constructor of the attention module. Defaults to 'dot_product'.
 
 
