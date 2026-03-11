@@ -873,6 +873,14 @@
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.CallBackBaseConfig.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.CallBackBaseConfig.id" title="Link to this definition">¶</a></dt>
+<dd><p>Optional unique identifier for this callback instance. Required when multiple stateful callbacks of the same
+type exist (e.g., two BestCheckpointCallbacks tracking different metrics). Used as the key when saving/loading
+callback state dicts to ensure correct matching on resume.</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.CallBackBaseConfig.every_n_epochs">
 <span class="sig-name descname"><span class="pre">every_n_epochs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.CallBackBaseConfig.every_n_epochs" title="Link to this definition">¶</a></dt>
 <dd><p>Epoch-based interval. Invokes the callback after every n epochs. Mutually exclusive with other intervals.</p>
@@ -1421,6 +1429,7 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.name"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.name</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.kind"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.id"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.id</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.every_n_epochs"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.every_n_epochs</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.every_n_updates"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.every_n_updates</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.every_n_samples"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.every_n_samples</span></code></a></li>

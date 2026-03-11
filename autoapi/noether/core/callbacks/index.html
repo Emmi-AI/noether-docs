@@ -986,6 +986,78 @@ are always executed within a torch.no_grad() context.</p>
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.CallbackBase.name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.core.callbacks.CallbackBase.checkpoint_key">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checkpoint_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.callbacks.CallbackBase.checkpoint_key" title="Link to this definition">¶</a></dt>
+<dd><p>Key used to identify this callback’s state in checkpoints.</p>
+<p>Returns the callback’s <code class="docutils literal notranslate"><span class="pre">id</span></code> if set, otherwise falls back to the class name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.CallbackBase.validate_checkpoint_keys">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_checkpoint_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callbacks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.CallbackBase.validate_checkpoint_keys" title="Link to this definition">¶</a></dt>
+<dd><p>Validate that all stateful callbacks have unique checkpoint keys.</p>
+<p>Should be called early (e.g. when callbacks are first assembled) so that
+duplicate-key errors surface immediately rather than hours into training
+when the first checkpoint is saved.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>callbacks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="#noether.core.callbacks.CallbackBase" title="noether.core.callbacks.CallbackBase"><em>CallbackBase</em></a><em>]</em>) – list of callbacks to validate.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If two stateful callbacks produce the same checkpoint key.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.CallbackBase.build_callback_state_dict">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build_callback_state_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callbacks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.CallbackBase.build_callback_state_dict" title="Link to this definition">¶</a></dt>
+<dd><p>Build a keyed dict of state dicts for all stateful callbacks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>callbacks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="#noether.core.callbacks.CallbackBase" title="noether.core.callbacks.CallbackBase"><em>CallbackBase</em></a><em>]</em>) – list of callbacks to save state for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict mapping checkpoint keys to state dicts (only stateful callbacks included).</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If two stateful callbacks produce the same checkpoint key.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.CallbackBase.load_callback_state_dicts">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_callback_state_dicts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callbacks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.CallbackBase.load_callback_state_dicts" title="Link to this definition">¶</a></dt>
+<dd><p>Load state dicts into callbacks, matching by key (dict) or position (legacy list).</p>
+<p>Modifies callbacks in-place via their <code class="docutils literal notranslate"><span class="pre">load_state_dict</span></code> method (analogous to
+<code class="docutils literal notranslate"><span class="pre">torch.nn.Module.load_state_dict</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callbacks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="#noether.core.callbacks.CallbackBase" title="noether.core.callbacks.CallbackBase"><em>CallbackBase</em></a><em>]</em>) – current callbacks to load state into (mutated in-place).</p></li>
+<li><p><strong>checkpoint_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>] </em><em>| </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><em>Any</em><em>]</em>) – either a dict keyed by checkpoint_key (new format) or a list (legacy format).</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.14)"><em>logging.Logger</em></a>) – logger for warnings.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.CallbackBase.state_dict">
 <span class="sig-name descname"><span class="pre">state_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.CallbackBase.state_dict" title="Link to this definition">¶</a></dt>
@@ -3438,6 +3510,10 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.metric_property_provider"><code class="docutils literal notranslate"><span class="pre">CallbackBase.metric_property_provider</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.checkpoint_writer"><code class="docutils literal notranslate"><span class="pre">CallbackBase.checkpoint_writer</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.name"><code class="docutils literal notranslate"><span class="pre">CallbackBase.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.checkpoint_key"><code class="docutils literal notranslate"><span class="pre">CallbackBase.checkpoint_key</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.validate_checkpoint_keys"><code class="docutils literal notranslate"><span class="pre">CallbackBase.validate_checkpoint_keys()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.build_callback_state_dict"><code class="docutils literal notranslate"><span class="pre">CallbackBase.build_callback_state_dict()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.load_callback_state_dicts"><code class="docutils literal notranslate"><span class="pre">CallbackBase.load_callback_state_dicts()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.state_dict"><code class="docutils literal notranslate"><span class="pre">CallbackBase.state_dict()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.load_state_dict"><code class="docutils literal notranslate"><span class="pre">CallbackBase.load_state_dict()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.resume_from_checkpoint"><code class="docutils literal notranslate"><span class="pre">CallbackBase.resume_from_checkpoint()</span></code></a></li>

@@ -112,6 +112,60 @@ Module Contents
 
 
 
+   .. py:property:: checkpoint_key
+      :type: str
+
+
+      Key used to identify this callback's state in checkpoints.
+
+      Returns the callback's ``id`` if set, otherwise falls back to the class name.
+
+
+   .. py:method:: validate_checkpoint_keys(callbacks)
+      :staticmethod:
+
+
+      Validate that all stateful callbacks have unique checkpoint keys.
+
+      Should be called early (e.g. when callbacks are first assembled) so that
+      duplicate-key errors surface immediately rather than hours into training
+      when the first checkpoint is saved.
+
+      :param callbacks: list of callbacks to validate.
+
+      :raises ValueError: If two stateful callbacks produce the same checkpoint key.
+
+
+
+   .. py:method:: build_callback_state_dict(callbacks)
+      :staticmethod:
+
+
+      Build a keyed dict of state dicts for all stateful callbacks.
+
+      :param callbacks: list of callbacks to save state for.
+
+      :returns: Dict mapping checkpoint keys to state dicts (only stateful callbacks included).
+
+      :raises ValueError: If two stateful callbacks produce the same checkpoint key.
+
+
+
+   .. py:method:: load_callback_state_dicts(callbacks, checkpoint_data, logger)
+      :staticmethod:
+
+
+      Load state dicts into callbacks, matching by key (dict) or position (legacy list).
+
+      Modifies callbacks in-place via their ``load_state_dict`` method (analogous to
+      ``torch.nn.Module.load_state_dict``).
+
+      :param callbacks: current callbacks to load state into (mutated in-place).
+      :param checkpoint_data: either a dict keyed by checkpoint_key (new format) or a list (legacy format).
+      :param logger: logger for warnings.
+
+
+
    .. py:method:: state_dict()
 
       If a callback is stateful, the state will be stored when a checkpoint is stored to the disk.

@@ -48,6 +48,16 @@ Module Contents
 
 
 
+   .. py:attribute:: id
+      :type:  str | None
+      :value: None
+
+
+      Optional unique identifier for this callback instance. Required when multiple stateful callbacks of the same
+      type exist (e.g., two BestCheckpointCallbacks tracking different metrics). Used as the key when saving/loading
+      callback state dicts to ensure correct matching on resume.
+
+
    .. py:attribute:: every_n_epochs
       :type:  int | None
       :value: None
