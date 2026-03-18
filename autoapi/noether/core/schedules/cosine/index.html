@@ -820,6 +820,12 @@
 <dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.schedules.base.DecreasingProgressSchedule" title="noether.core.schedules.base.DecreasingProgressSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.DecreasingProgressSchedule</span></code></a></p>
 <p>Cosine annealing scheduler with decreasing values.</p>
 <p class="rubric">Example</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">schedule_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.schedules.CosineDecreasingSchedule</span>
+<span class="w">    </span><span class="nt">max_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${model.optim.lr}</span><span class="w"> </span><span class="c1"># or just manually set the starting value</span>
+<span class="w">    </span><span class="nt">end_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+</pre></div>
+</div>
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -834,6 +840,12 @@
 <dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.schedules.base.IncreasingProgressSchedule" title="noether.core.schedules.base.IncreasingProgressSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.IncreasingProgressSchedule</span></code></a></p>
 <p>Cosine annealing scheduler with increasing values.</p>
 <p class="rubric">Example</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">schedule_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.schedules.CosineIncreasingSchedule</span>
+<span class="w">    </span><span class="nt">max_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${model.optim.lr}</span>
+<span class="w">    </span><span class="nt">start_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+</pre></div>
+</div>
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

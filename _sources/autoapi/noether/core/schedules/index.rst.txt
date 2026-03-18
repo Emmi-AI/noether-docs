@@ -265,10 +265,11 @@ Package Contents
    .. rubric:: Example
 
    .. code-block:: yaml
+
        schedule_config:
-       kind: noether.core.schedules.CosineDecreasingSchedule
-       max_value: ${model.optim.lr} # or just manually set the starting value
-       end_value: 0.0
+           kind: noether.core.schedules.CosineDecreasingSchedule
+           max_value: ${model.optim.lr} # or just manually set the starting value
+           end_value: 0.0
 
    Initialize the scheduler.
 
@@ -283,10 +284,11 @@ Package Contents
    .. rubric:: Example
 
    .. code-block:: yaml
+
        schedule_config:
-       kind: noether.core.schedules.CosineIncreasingSchedule
-       max_value: ${model.optim.lr}
-       start_value: 0.0
+           kind: noether.core.schedules.CosineIncreasingSchedule
+           max_value: ${model.optim.lr}
+           start_value: 0.0
 
    Initialize the scheduler.
 
@@ -361,10 +363,11 @@ Package Contents
    .. rubric:: Example
 
    .. code-block:: yaml
+
        schedule_config:
-       kind: noether.core.schedules.LinearDecreasingSchedule
-       max_value: ${model.optim.lr}
-       end_value: 0.0
+           kind: noether.core.schedules.LinearDecreasingSchedule
+           max_value: ${model.optim.lr}
+           end_value: 0.0
 
    Initialize the scheduler.
 
@@ -378,10 +381,12 @@ Package Contents
 
    .. rubric:: Example
 
-   >>> schedule_config:
-   >>>   kind: noether.core.schedules.LinearIncreasingSchedule
-   >>>   max_value: ${model.optim.lr}
-   >>>   start_value: 0.0
+   .. code-block:: yaml
+
+       schedule_config:
+           kind: noether.core.schedules.LinearIncreasingSchedule
+           max_value: ${model.optim.lr}
+           start_value: 0.0
 
    Initialize the scheduler.
 
@@ -396,11 +401,12 @@ Package Contents
    .. rubric:: Example
 
    .. code-block:: yaml
+
        schedule_config:
-       kind: noether.core.schedules.LinearWarmupCosineDecaySchedule
-       warmup_percent: 0.05
-       end_value: 1.0e-6
-       max_value: ${model.optim.lr} # or just manually set the max value
+           kind: noether.core.schedules.LinearWarmupCosineDecaySchedule
+           warmup_percent: 0.05
+           end_value: 1.0e-6
+           max_value: ${model.optim.lr} # or just manually set the max value
 
    Takes either warmup_steps or warmup_percent as argument to determine the length of the warmup phase.
 
@@ -481,7 +487,9 @@ Package Contents
    :param config: Configuration for the step fixed schedule.
 
    Example:
+
    .. code-block:: yaml
+
        schedule_config:
            kind: noether.core.schedules.StepFixedSchedule
            factor: 0.1
@@ -490,6 +498,7 @@ Package Contents
                - 0.01
                - 0.02
                - 0.03
+
    Lower LR by factor 0.1 at 1%, 2%, and 3% of total training steps.
 
 
@@ -514,6 +523,7 @@ Package Contents
    Example:
 
    .. code-block:: yaml
+
        schedule_config:
            kind: noether.core.schedules.StepIntervalSchedule
            start_value: 1.0
