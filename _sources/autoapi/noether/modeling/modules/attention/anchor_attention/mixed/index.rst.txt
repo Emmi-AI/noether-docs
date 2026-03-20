@@ -50,7 +50,7 @@ Module Contents
                   :class:`~noether.core.schemas.modules.attention.MixedAttentionConfig` for the available options.
 
 
-   .. py:method:: forward(x, token_specs, attention_patterns, attention_mask = None, freqs = None)
+   .. py:method:: forward(x, token_specs, attention_patterns, key_padding_mask = None, freqs = None)
 
       Apply mixed attention with flexible token-name-based patterns.
 
@@ -61,7 +61,9 @@ Module Contents
                                  token groups (queries) attend to which other token groups (keys/values).
                                  The provided patterns must be exhaustive and non-overlapping. This means every
                                  token group defined in `token_specs` must be a query in exactly one pattern.
-      :param attention_mask: Optional attention mask (not currently supported)
+      :param key_padding_mask: Optional boolean mask of shape ``(batch_size, n_tokens)``.
+                               ``True`` indicates a real token; ``False`` indicates a padding token that should not be attended to.
+                               The mask is sliced per attention pattern to cover only the key/value tokens of that pattern.
       :param freqs: RoPE frequencies for positional encoding
 
 

@@ -908,13 +908,14 @@ Subclasses only need to implement <cite>_create_attention_patterns</cite> to def
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.modeling.modules.attention.anchor_attention.MultiBranchAnchorAttention.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_specs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.anchor_attention.MultiBranchAnchorAttention.forward" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_specs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_padding_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">freqs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.anchor_attention.MultiBranchAnchorAttention.forward" title="Link to this definition">¶</a></dt>
 <dd><p>Apply attention using the patterns defined by the subclass.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>)</p></li>
 <li><p><strong>token_specs</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.14)"><em>collections.abc.Sequence</em></a><em>[</em><a class="reference internal" href="../../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.TokenSpec" title="noether.core.schemas.modules.attention.TokenSpec"><em>noether.core.schemas.modules.attention.TokenSpec</em></a><em>]</em>)</p></li>
+<li><p><strong>key_padding_mask</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>freqs</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
