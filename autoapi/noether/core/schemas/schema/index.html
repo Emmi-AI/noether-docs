@@ -406,6 +406,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../dataset/index.html">noether.core.schemas.dataset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../filemap/index.html">noether.core.schemas.filemap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../initializers/index.html">noether.core.schemas.initializers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lib/index.html">noether.core.schemas.lib</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../mixins/index.html">noether.core.schemas.mixins</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../models/index.html">noether.core.schemas.models</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle navigation of noether.core.schemas.models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../models/ab_upt/index.html">noether.core.schemas.models.ab_upt</a></li>
@@ -805,6 +806,15 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.schema.ACCELERATOR_TYPES" title="noether.core.schemas.schema.ACCELERATOR_TYPES"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ACCELERATOR_TYPES</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.schema.TModelConfig" title="noether.core.schemas.schema.TModelConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TModelConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.schema.TDatasetConfig" title="noether.core.schemas.schema.TDatasetConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TDatasetConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.schema.TTrainerConfig" title="noether.core.schemas.schema.TTrainerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TTrainerConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -864,6 +874,21 @@
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.core.schemas.schema.TModelConfig">
+<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.schema.</span></span><span class="sig-name descname"><span class="pre">TModelConfig</span></span><a class="headerlink" href="#noether.core.schemas.schema.TModelConfig" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.core.schemas.schema.TDatasetConfig">
+<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.schema.</span></span><span class="sig-name descname"><span class="pre">TDatasetConfig</span></span><a class="headerlink" href="#noether.core.schemas.schema.TDatasetConfig" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.core.schemas.schema.TTrainerConfig">
+<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.schema.</span></span><span class="sig-name descname"><span class="pre">TTrainerConfig</span></span><a class="headerlink" href="#noether.core.schemas.schema.TTrainerConfig" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema">
@@ -940,14 +965,8 @@ validated to form a valid model.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.dataset_normalizer">
-<span class="sig-name descname"><span class="pre">dataset_normalizer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">noether.core.schemas.normalizers.AnyNormalizer</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.dataset_normalizer" title="Link to this definition">¶</a></dt>
-<dd><p>List of normalizers to apply to the dataset. The key is the data source name.</p>
-</dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.tracker">
-<span class="sig-name descname"><span class="pre">tracker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.schemas.trackers.AnyTracker</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.tracker" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">tracker</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../trackers/index.html#noether.core.schemas.trackers.BaseTrackerConfig" title="noether.core.schemas.trackers.BaseTrackerConfig"><span class="pre">noether.core.schemas.trackers.BaseTrackerConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../trackers/index.html#noether.core.schemas.trackers.BaseTrackerConfig" title="noether.core.schemas.trackers.BaseTrackerConfig"><span class="pre">BaseTrackerConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.tracker" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for experiment tracking. If None, no tracking is used. If “disabled”, tracking is explicitly disabled.  WandB is currently the only supported tracker.</p>
 </dd></dl>
 
@@ -983,7 +1002,7 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.datasets">
-<span class="sig-name descname"><span class="pre">datasets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><span class="pre">noether.core.schemas.dataset.DatasetBaseConfig</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.datasets" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">datasets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigSchema.TDatasetConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><span class="pre">DatasetBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.datasets" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for datasets. The key is the dataset and value is the configuration for that dataset.
 See <a class="reference internal" href="../dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a> for available options.
 The key “train” is reserved for the training dataset, but if not provided, the first dataset will be used as training dataset by default,
@@ -992,13 +1011,13 @@ other keys are arbitrary and can be used to identify datasets for different stag
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.model">
-<span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><span class="pre">noether.core.schemas.models.ModelBaseConfig</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.model" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigSchema.TModelConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../index.html#noether.core.schemas.ModelBaseConfig" title="noether.core.schemas.ModelBaseConfig"><span class="pre">ModelBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.model" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for the model. See <a class="reference internal" href="../models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.trainer">
-<span class="sig-name descname"><span class="pre">trainer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig" title="noether.core.schemas.trainers.BaseTrainerConfig"><span class="pre">noether.core.schemas.trainers.BaseTrainerConfig</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.trainer" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">trainer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigSchema.TTrainerConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../index.html#noether.core.schemas.BaseTrainerConfig" title="noether.core.schemas.BaseTrainerConfig"><span class="pre">BaseTrainerConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.trainer" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for the trainer. See <a class="reference internal" href="../trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig" title="noether.core.schemas.trainers.BaseTrainerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrainerConfig</span></code></a> for available options.</p>
 </dd></dl>
 
@@ -1190,6 +1209,9 @@ other keys are arbitrary and can be used to identify datasets for different stag
 <li><a class="reference internal" href="#noether.core.schemas.schema.ACCELERATOR_TYPES"><code class="docutils literal notranslate"><span class="pre">ACCELERATOR_TYPES</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.master_port_from_env"><code class="docutils literal notranslate"><span class="pre">master_port_from_env()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.default_accelerator"><code class="docutils literal notranslate"><span class="pre">default_accelerator()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.schema.TModelConfig"><code class="docutils literal notranslate"><span class="pre">TModelConfig</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.schema.TDatasetConfig"><code class="docutils literal notranslate"><span class="pre">TDatasetConfig</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.schema.TTrainerConfig"><code class="docutils literal notranslate"><span class="pre">TTrainerConfig</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema"><code class="docutils literal notranslate"><span class="pre">ConfigSchema</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.name"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.name</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.accelerator"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.accelerator</span></code></a></li>
@@ -1201,7 +1223,6 @@ other keys are arbitrary and can be used to identify datasets for different stag
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.resume_checkpoint"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.resume_checkpoint</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.seed"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.seed</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.dataset_statistics"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.dataset_statistics</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.dataset_normalizer"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.dataset_normalizer</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.tracker"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.tracker</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.run_id"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.run_id</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.devices"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.devices</span></code></a></li>

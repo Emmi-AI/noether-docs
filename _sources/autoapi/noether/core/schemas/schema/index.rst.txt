@@ -10,6 +10,9 @@ Attributes
 .. autoapisummary::
 
    noether.core.schemas.schema.ACCELERATOR_TYPES
+   noether.core.schemas.schema.TModelConfig
+   noether.core.schemas.schema.TDatasetConfig
+   noether.core.schemas.schema.TTrainerConfig
 
 
 Classes
@@ -43,6 +46,12 @@ Module Contents
 
    Sets the accelerator if it is not already set.
 
+
+.. py:data:: TModelConfig
+
+.. py:data:: TDatasetConfig
+
+.. py:data:: TTrainerConfig
 
 .. py:class:: ConfigSchema(/, **data)
 
@@ -139,16 +148,8 @@ Module Contents
       Pre-computed dataset statistics, e.g., mean and std for normalization. Since some tensors are multi-dimensional, the statistics are stored as lists.
 
 
-   .. py:attribute:: dataset_normalizer
-      :type:  dict[str, list[noether.core.schemas.normalizers.AnyNormalizer]] | None
-      :value: None
-
-
-      List of normalizers to apply to the dataset. The key is the data source name.
-
-
    .. py:attribute:: tracker
-      :type:  noether.core.schemas.trackers.AnyTracker | None
+      :type:  Annotated[noether.core.schemas.trackers.BaseTrackerConfig, Discriminated(BaseTrackerConfig)] | None
       :value: None
 
 
@@ -196,7 +197,7 @@ Module Contents
 
 
    .. py:attribute:: datasets
-      :type:  dict[str, noether.core.schemas.dataset.DatasetBaseConfig]
+      :type:  dict[str, Annotated[ConfigSchema.TDatasetConfig, Discriminated(DatasetBaseConfig)]]
       :value: None
 
 
@@ -207,7 +208,7 @@ Module Contents
 
 
    .. py:attribute:: model
-      :type:  noether.core.schemas.models.ModelBaseConfig
+      :type:  Annotated[ConfigSchema.TModelConfig, Discriminated(ModelBaseConfig)]
       :value: None
 
 
@@ -215,7 +216,7 @@ Module Contents
 
 
    .. py:attribute:: trainer
-      :type:  noether.core.schemas.trainers.BaseTrainerConfig
+      :type:  Annotated[ConfigSchema.TTrainerConfig, Discriminated(BaseTrainerConfig)]
       :value: None
 
 

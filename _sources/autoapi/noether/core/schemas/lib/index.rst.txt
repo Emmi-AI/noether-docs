@@ -1,0 +1,33 @@
+noether.core.schemas.lib
+========================
+
+.. py:module:: noether.core.schemas.lib
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.core.schemas.lib.Discriminated
+   noether.core.schemas.lib.ConfiguredBy
+
+
+Module Contents
+---------------
+
+.. py:function:: Discriminated(registry_cls)
+
+   Returns a BeforeValidator that instantiates components based on their registry keys.
+   Usage: field: Annotated[Any, Discriminated(MyComponent)]
+
+
+.. py:function:: ConfiguredBy(config_class)
+
+   Decorator to mark a class as being configured by a specific config class.
+   Usage:
+       @ConfiguredBy(MyConfig)
+       class MyClass:
+           ...
+
+

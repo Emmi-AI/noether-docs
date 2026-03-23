@@ -20,6 +20,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.schemas.normalizers.NormalizerConfig
    noether.core.schemas.normalizers.MeanStdNormalizerConfig
    noether.core.schemas.normalizers.PositionNormalizerConfig
    noether.core.schemas.normalizers.ShiftAndScaleNormalizerConfig
@@ -44,15 +45,42 @@ Module Contents
 
 .. py:data:: SequenceOrTensor
 
-.. py:class:: MeanStdNormalizerConfig(/, **data)
+.. py:class:: NormalizerConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Base configuration for normalizers. All normalizer configs should inherit from this class.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: kind
       :type:  str | None
       :value: None
 
+
+      Kind of normalizer to use, i.e. class path
+
+
+.. py:class:: MeanStdNormalizerConfig(/, **data)
+
+   Bases: :py:obj:`NormalizerConfig`
+
+
+   Base configuration for normalizers. All normalizer configs should inherit from this class.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: mean
@@ -77,13 +105,17 @@ Module Contents
 
 .. py:class:: PositionNormalizerConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`NormalizerConfig`
 
 
-   .. py:attribute:: kind
-      :type:  str | None
-      :value: None
+   Base configuration for normalizers. All normalizer configs should inherit from this class.
 
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: raw_pos_min
@@ -111,13 +143,17 @@ Module Contents
 
 .. py:class:: ShiftAndScaleNormalizerConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`NormalizerConfig`
 
 
-   .. py:attribute:: kind
-      :type:  str | None
-      :value: None
+   Base configuration for normalizers. All normalizer configs should inherit from this class.
 
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: shift

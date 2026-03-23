@@ -406,6 +406,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../dataset/index.html">noether.core.schemas.dataset</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../filemap/index.html">noether.core.schemas.filemap</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../initializers/index.html">noether.core.schemas.initializers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lib/index.html">noether.core.schemas.lib</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../mixins/index.html">noether.core.schemas.mixins</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../models/index.html">noether.core.schemas.models</a><input class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><div class="visually-hidden">Toggle navigation of noether.core.schemas.models</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../models/ab_upt/index.html">noether.core.schemas.models.ab_upt</a></li>
@@ -815,34 +816,34 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig" title="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallbackConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="noether.core.schemas.callbacks.BestCheckpointCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.CheckpointCallbackConfig" title="noether.core.schemas.callbacks.CheckpointCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CheckpointCallbackConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.EmaCallbackConfig" title="noether.core.schemas.callbacks.EmaCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmaCallbackConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.OnlineLossCallbackConfig" title="noether.core.schemas.callbacks.OnlineLossCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OnlineLossCallbackConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.BestMetricCallbackConfig" title="noether.core.schemas.callbacks.BestMetricCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestMetricCallbackConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrackAdditionalOutputsCallbackConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig" title="noether.core.schemas.callbacks.OfflineLossCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.MetricEarlyStopperConfig" title="noether.core.schemas.callbacks.MetricEarlyStopperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.FixedEarlyStopperConfig" title="noether.core.schemas.callbacks.FixedEarlyStopperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig</span></code></a></p></td>
 <td><p></p></td>
@@ -856,17 +857,19 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.CallBackBaseConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">CallBackBaseConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.lib._RegistryBase</span></code></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
 </dd>
 </dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.callbacks.CallBackBaseConfig.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.callbacks.CallBackBaseConfig.name" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.CallBackBaseConfig.kind">
 <span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.CallBackBaseConfig.kind" title="Link to this definition">¶</a></dt>
@@ -960,7 +963,14 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">PeriodicDataIteratorCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -983,6 +993,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.BestCheckpointCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">BestCheckpointCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1023,6 +1040,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.CheckpointCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">CheckpointCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.CheckpointCallbackConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1069,6 +1093,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.EmaCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">EmaCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.EmaCallbackConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1115,6 +1146,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.OnlineLossCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">OnlineLossCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.OnlineLossCallbackConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1137,6 +1175,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.BestMetricCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">BestMetricCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.BestMetricCallbackConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1171,6 +1216,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">TrackAdditionalOutputsCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.TrackAdditionalOutputsCallbackConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1223,6 +1275,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.OfflineLossCallbackConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">OfflineLossCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.OfflineLossCallbackConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig" title="noether.core.schemas.callbacks.PeriodicDataIteratorCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallbackConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1250,6 +1309,13 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.MetricEarlyStopperConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">MetricEarlyStopperConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.MetricEarlyStopperConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1427,7 +1493,6 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.name"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.name</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.kind"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.kind</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.id"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.id</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig.every_n_epochs"><code class="docutils literal notranslate"><span class="pre">CallBackBaseConfig.every_n_epochs</span></code></a></li>

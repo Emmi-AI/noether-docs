@@ -17,6 +17,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.schemas.trackers.BaseTrackerConfig
    noether.core.schemas.trackers.WandBTrackerSchema
    noether.core.schemas.trackers.TrackioTrackerSchema
    noether.core.schemas.trackers.TensorboardTrackerSchema
@@ -25,15 +26,40 @@ Classes
 Module Contents
 ---------------
 
-.. py:class:: WandBTrackerSchema(/, **data)
+.. py:class:: BaseTrackerConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Base configuration for experiment trackers. All tracker configs should inherit from this class.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: kind
-      :type:  Literal['noether.core.trackers.WandBTracker']
+      :type:  str | None
       :value: None
 
+
+
+.. py:class:: WandBTrackerSchema(/, **data)
+
+   Bases: :py:obj:`BaseTrackerConfig`
+
+
+   Base configuration for experiment trackers. All tracker configs should inherit from this class.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: entity
@@ -57,12 +83,12 @@ Module Contents
       :value: None
 
 
-      he mode of W&B. Can be 'disabled', 'online', or 'offline'.
+      Tracking mode. Can be 'disabled', 'online', or 'offline'.
 
 
 .. py:class:: TrackioTrackerSchema(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`BaseTrackerConfig`
 
 
    Schema for TrackioTracker configuration.
@@ -73,12 +99,6 @@ Module Contents
    validated to form a valid model.
 
    `self` is explicitly positional-only to allow `self` as a field name.
-
-
-   .. py:attribute:: kind
-      :type:  Literal['noether.core.trackers.TrackioTracker']
-      :value: None
-
 
 
    .. py:attribute:: project
@@ -97,7 +117,7 @@ Module Contents
 
 .. py:class:: TensorboardTrackerSchema(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`BaseTrackerConfig`
 
 
    Schema for TensorboardTracker configuration.
@@ -108,12 +128,6 @@ Module Contents
    validated to form a valid model.
 
    `self` is explicitly positional-only to allow `self` as a field name.
-
-
-   .. py:attribute:: kind
-      :type:  Literal['noether.core.trackers.TensorboardTracker']
-      :value: None
-
 
 
    .. py:attribute:: log_dir

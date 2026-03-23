@@ -14,6 +14,7 @@ Submodules
    /autoapi/noether/core/schemas/dataset/index
    /autoapi/noether/core/schemas/filemap/index
    /autoapi/noether/core/schemas/initializers/index
+   /autoapi/noether/core/schemas/lib/index
    /autoapi/noether/core/schemas/mixins/index
    /autoapi/noether/core/schemas/models/index
    /autoapi/noether/core/schemas/modules/index
@@ -90,6 +91,19 @@ Package Contents
    Bases: :py:obj:`CallBackBaseConfig`
 
 
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: name
       :type:  Literal['BestCheckpointCallback']
       :value: None
@@ -133,6 +147,19 @@ Package Contents
    Bases: :py:obj:`CallBackBaseConfig`
 
 
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: name
       :type:  Literal['BestMetricCallback']
       :value: None
@@ -165,11 +192,20 @@ Package Contents
 
 .. py:class:: CallBackBaseConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
 
 
-   .. py:attribute:: name
-      :type:  str
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: kind
@@ -257,6 +293,19 @@ Package Contents
    Bases: :py:obj:`CallBackBaseConfig`
 
 
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: name
       :type:  Literal['CheckpointCallback']
       :value: None
@@ -306,6 +355,19 @@ Package Contents
 .. py:class:: EmaCallbackConfig(/, **data)
 
    Bases: :py:obj:`CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: name
@@ -400,6 +462,19 @@ Package Contents
    Bases: :py:obj:`CallBackBaseConfig`
 
 
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: name
       :type:  Literal['MetricEarlyStopper']
       :value: None
@@ -431,6 +506,19 @@ Package Contents
    Bases: :py:obj:`PeriodicDataIteratorCallbackConfig`
 
 
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: name
       :type:  Literal['OfflineLossCallback']
       :value: None
@@ -452,6 +540,19 @@ Package Contents
    Bases: :py:obj:`CallBackBaseConfig`
 
 
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: name
       :type:  Literal['OnlineLossCallback']
       :value: None
@@ -469,6 +570,19 @@ Package Contents
 .. py:class:: TrackAdditionalOutputsCallbackConfig(/, **data)
 
    Bases: :py:obj:`CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: name
@@ -527,17 +641,32 @@ Package Contents
 
 .. py:class:: DatasetBaseConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: kind
-      :type:  str
+      :type:  str | None
+      :value: None
+
 
       Kind of dataset to use.
 
 
    .. py:attribute:: pipeline
-      :type:  Any | None
+      :type:  Annotated[DatasetBaseConfig.TPipelineConfig | None, Discriminated(PipelineConfig)]
       :value: None
 
 
@@ -545,7 +674,7 @@ Package Contents
 
 
    .. py:attribute:: dataset_normalizers
-      :type:  dict[str, list[noether.core.schemas.normalizers.AnyNormalizer] | noether.core.schemas.normalizers.AnyNormalizer] | None
+      :type:  dict[str, list[Annotated[Any, Discriminated(NormalizerConfig)]] | Annotated[Any, Discriminated(NormalizerConfig)]] | None
       :value: None
 
 
@@ -581,7 +710,7 @@ Package Contents
 
 .. py:class:: StandardDatasetConfig(/, **data)
 
-   Bases: :py:obj:`DatasetBaseConfig`
+   Bases: :py:obj:`DatasetBaseConfig`, :py:obj:`abc.ABC`
 
 
    Base config for datasets with fixed splits.
@@ -778,11 +907,26 @@ Package Contents
 
 .. py:class:: ModelBaseConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: kind
-      :type:  str
+      :type:  str | None
+      :value: None
+
 
       Kind of model to use, i.e. class path
 
@@ -1589,16 +1733,8 @@ Package Contents
       Pre-computed dataset statistics, e.g., mean and std for normalization. Since some tensors are multi-dimensional, the statistics are stored as lists.
 
 
-   .. py:attribute:: dataset_normalizer
-      :type:  dict[str, list[noether.core.schemas.normalizers.AnyNormalizer]] | None
-      :value: None
-
-
-      List of normalizers to apply to the dataset. The key is the data source name.
-
-
    .. py:attribute:: tracker
-      :type:  noether.core.schemas.trackers.AnyTracker | None
+      :type:  Annotated[noether.core.schemas.trackers.BaseTrackerConfig, Discriminated(BaseTrackerConfig)] | None
       :value: None
 
 
@@ -1646,7 +1782,7 @@ Package Contents
 
 
    .. py:attribute:: datasets
-      :type:  dict[str, noether.core.schemas.dataset.DatasetBaseConfig]
+      :type:  dict[str, Annotated[ConfigSchema.TDatasetConfig, Discriminated(DatasetBaseConfig)]]
       :value: None
 
 
@@ -1657,7 +1793,7 @@ Package Contents
 
 
    .. py:attribute:: model
-      :type:  noether.core.schemas.models.ModelBaseConfig
+      :type:  Annotated[ConfigSchema.TModelConfig, Discriminated(ModelBaseConfig)]
       :value: None
 
 
@@ -1665,7 +1801,7 @@ Package Contents
 
 
    .. py:attribute:: trainer
-      :type:  noether.core.schemas.trainers.BaseTrainerConfig
+      :type:  Annotated[ConfigSchema.TTrainerConfig, Discriminated(BaseTrainerConfig)]
       :value: None
 
 
@@ -1983,13 +2119,17 @@ Package Contents
 
 .. py:class:: WandBTrackerSchema(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`BaseTrackerConfig`
 
 
-   .. py:attribute:: kind
-      :type:  Literal['noether.core.trackers.WandBTracker']
-      :value: None
+   Base configuration for experiment trackers. All tracker configs should inherit from this class.
 
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: entity
@@ -2013,12 +2153,25 @@ Package Contents
       :value: None
 
 
-      he mode of W&B. Can be 'disabled', 'online', or 'offline'.
+      Tracking mode. Can be 'disabled', 'online', or 'offline'.
 
 
 .. py:class:: BaseTrainerConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: kind
@@ -2092,7 +2245,7 @@ Package Contents
 
 
    .. py:attribute:: callbacks
-      :type:  list[noether.core.schemas.callbacks.CallbacksConfig] | None
+      :type:  list[Annotated[BaseTrainerConfig.TCallbackConfig, Discriminated(CallBackBaseConfig)]] | None
       :value: None
 
 

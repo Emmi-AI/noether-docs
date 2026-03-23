@@ -4,6 +4,14 @@ noether.core.schemas.trainers
 .. py:module:: noether.core.schemas.trainers
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.schemas.trainers.TCallbackConfig
+
+
 Classes
 -------
 
@@ -39,9 +47,24 @@ Module Contents
 
 
 
+.. py:data:: TCallbackConfig
+
 .. py:class:: BaseTrainerConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: kind
@@ -115,7 +138,7 @@ Module Contents
 
 
    .. py:attribute:: callbacks
-      :type:  list[noether.core.schemas.callbacks.CallbacksConfig] | None
+      :type:  list[Annotated[BaseTrainerConfig.TCallbackConfig, Discriminated(CallBackBaseConfig)]] | None
       :value: None
 
 

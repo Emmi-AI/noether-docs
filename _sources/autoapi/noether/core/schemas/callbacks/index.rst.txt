@@ -35,11 +35,20 @@ Module Contents
 
 .. py:class:: CallBackBaseConfig(/, **data)
 
-   Bases: :py:obj:`pydantic.BaseModel`
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
 
 
-   .. py:attribute:: name
-      :type:  str
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: kind
@@ -122,7 +131,20 @@ Module Contents
 
 .. py:class:: PeriodicDataIteratorCallbackConfig(/, **data)
 
-   Bases: :py:obj:`CallBackBaseConfig`
+   Bases: :py:obj:`CallBackBaseConfig`, :py:obj:`abc.ABC`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: name
@@ -140,6 +162,19 @@ Module Contents
 .. py:class:: BestCheckpointCallbackConfig(/, **data)
 
    Bases: :py:obj:`CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: name
@@ -183,6 +218,19 @@ Module Contents
 .. py:class:: CheckpointCallbackConfig(/, **data)
 
    Bases: :py:obj:`CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: name
@@ -236,6 +284,19 @@ Module Contents
    Bases: :py:obj:`CallBackBaseConfig`
 
 
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: name
       :type:  Literal['EmaCallback']
       :value: None
@@ -287,6 +348,19 @@ Module Contents
    Bases: :py:obj:`CallBackBaseConfig`
 
 
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: name
       :type:  Literal['OnlineLossCallback']
       :value: None
@@ -304,6 +378,19 @@ Module Contents
 .. py:class:: BestMetricCallbackConfig(/, **data)
 
    Bases: :py:obj:`CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: name
@@ -339,6 +426,19 @@ Module Contents
 .. py:class:: TrackAdditionalOutputsCallbackConfig(/, **data)
 
    Bases: :py:obj:`CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: name
@@ -400,6 +500,19 @@ Module Contents
    Bases: :py:obj:`PeriodicDataIteratorCallbackConfig`
 
 
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
    .. py:attribute:: name
       :type:  Literal['OfflineLossCallback']
       :value: None
@@ -419,6 +532,19 @@ Module Contents
 .. py:class:: MetricEarlyStopperConfig(/, **data)
 
    Bases: :py:obj:`CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: name

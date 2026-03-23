@@ -10,6 +10,7 @@ Attributes
 .. autoapisummary::
 
    noether.core.schemas.dataset.DatasetWrappers
+   noether.core.schemas.dataset.TPipelineConfig
 
 
 Classes
@@ -21,6 +22,7 @@ Classes
    noether.core.schemas.dataset.RepeatWrapperConfig
    noether.core.schemas.dataset.ShuffleWrapperConfig
    noether.core.schemas.dataset.SubsetWrapperConfig
+   noether.core.schemas.dataset.PipelineConfig
    noether.core.schemas.dataset.DatasetBaseConfig
    noether.core.schemas.dataset.StandardDatasetConfig
    noether.core.schemas.dataset.DatasetSplitIDs
@@ -101,21 +103,60 @@ Module Contents
 
 
 
-.. py:data:: DatasetWrappers
+.. py:class:: PipelineConfig(/, **data)
 
-.. py:class:: DatasetBaseConfig(/, **data)
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
 
-   Bases: :py:obj:`pydantic.BaseModel`
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: kind
       :type:  str
 
+
+.. py:data:: DatasetWrappers
+
+.. py:data:: TPipelineConfig
+
+.. py:class:: DatasetBaseConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
       Kind of dataset to use.
 
 
    .. py:attribute:: pipeline
-      :type:  Any | None
+      :type:  Annotated[DatasetBaseConfig.TPipelineConfig | None, Discriminated(PipelineConfig)]
       :value: None
 
 
@@ -123,7 +164,7 @@ Module Contents
 
 
    .. py:attribute:: dataset_normalizers
-      :type:  dict[str, list[noether.core.schemas.normalizers.AnyNormalizer] | noether.core.schemas.normalizers.AnyNormalizer] | None
+      :type:  dict[str, list[Annotated[Any, Discriminated(NormalizerConfig)]] | Annotated[Any, Discriminated(NormalizerConfig)]] | None
       :value: None
 
 
@@ -159,7 +200,7 @@ Module Contents
 
 .. py:class:: StandardDatasetConfig(/, **data)
 
-   Bases: :py:obj:`DatasetBaseConfig`
+   Bases: :py:obj:`DatasetBaseConfig`, :py:obj:`abc.ABC`
 
 
    Base config for datasets with fixed splits.
