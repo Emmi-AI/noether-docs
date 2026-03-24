@@ -815,7 +815,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.blocks.transformer.TransformerBlock">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.blocks.transformer.</span></span><span class="sig-name descname"><span class="pre">TransformerBlock</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.blocks.transformer.TransformerBlock" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>A transformer block with a single attention layer and a feedforward layer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -871,8 +871,8 @@ for available options.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>) – Input tensor with shape (batch_size, seqlen/num_tokens, hidden_dim).</p></li>
-<li><p><strong>condition</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – Conditioning vector. If provided, the attention and MLP will be scaled, shifted and gated
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input tensor with shape (batch_size, seqlen/num_tokens, hidden_dim).</p></li>
+<li><p><strong>condition</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – Conditioning vector. If provided, the attention and MLP will be scaled, shifted and gated
 feature-wise with predicted values from this vector.</p></li>
 <li><p><strong>attn_kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – Dict with arguments for the attention (such as the attention mask or rope frequencies). Defaults to None.</p></li>
 </ul>
@@ -881,7 +881,7 @@ feature-wise with predicted values from this vector.</p></li>
 <dd class="field-even"><p>Tensor after the forward pass of the transformer block.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>

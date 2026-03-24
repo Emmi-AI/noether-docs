@@ -823,16 +823,16 @@ the offset from the default, i.e., if scale == 0 and shift == 0 this method is e
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>) – Input tensor (e.g., input to a transformer block with shape (batch_size, sequence_length, dim)).</p></li>
-<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>) – Scale tensor with shape (batch_size, dim) or (batch_size, 1 dim).</p></li>
-<li><p><strong>shift</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>) – Shift tensor with shape (batch_size, dim) or (batch_size, 1 dim).</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input tensor (e.g., input to a transformer block with shape (batch_size, sequence_length, dim)).</p></li>
+<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Scale tensor with shape (batch_size, dim) or (batch_size, 1 dim).</p></li>
+<li><p><strong>shift</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Shift tensor with shape (batch_size, dim) or (batch_size, 1 dim).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The scaled and shifted input, where each feature of x is scaled by (1 + scale) and then shifted by shift.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -844,15 +844,15 @@ the offset from the default, i.e., if scale == 0 and shift == 0 this method is e
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>) – Input tensor (e.g., input to a transformer block with shape (batch_size, sequence_length, dim)).</p></li>
-<li><p><strong>gate</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>) – Gate tensor with shape (batch_size, dim) or (batch_size, 1 dim).</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input tensor (e.g., input to a transformer block with shape (batch_size, sequence_length, dim)).</p></li>
+<li><p><strong>gate</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Gate tensor with shape (batch_size, dim) or (batch_size, 1 dim).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The gated input, where each feature of x is multiplied by the corresponding gate value.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>

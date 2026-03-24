@@ -815,7 +815,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.drop_path.UnquantizedDropPath">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.drop_path.</span></span><span class="sig-name descname"><span class="pre">UnquantizedDropPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.drop_path.UnquantizedDropPath" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.10)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>Unquantized drop path (Stochastic Depth, <a class="reference external" href="https://arxiv.org/abs/1603.09382">https://arxiv.org/abs/1603.09382</a>) per sample. Unquantized means
 that dropped paths are still calculated. Number of dropped paths is fully stochastic, i.e., it can happen that
 not a single path is dropped or that all paths are dropped. In a quantized drop path, the same amount of
@@ -856,7 +856,7 @@ consider using a quantized version if large drop_prob values are used.</p>
 <dd><p>Forward function of the UnquantizedDropPath module.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>) – Tensor to apply the drop path. Shape: (batch_size, …).</p>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Tensor to apply the drop path. Shape: (batch_size, …).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>(batch_size, …). If drop_prob is 0, the input tensor is returned. If drop_prob is 1, a tensor with zeros is returned.</p>

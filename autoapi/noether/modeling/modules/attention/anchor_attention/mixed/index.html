@@ -850,21 +850,21 @@ and then performing separate attention computations for each pattern.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a>) – Input tensor [batch_size, n_tokens, dim]</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input tensor [batch_size, n_tokens, dim]</p></li>
 <li><p><strong>token_specs</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.14)"><em>collections.abc.Sequence</em></a><em>[</em><a class="reference internal" href="../../../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.TokenSpec" title="noether.core.schemas.modules.attention.TokenSpec"><em>noether.core.schemas.modules.attention.TokenSpec</em></a><em>]</em>) – Sequence of token specifications defining the input structure: assumes that the input
 x is a concatenation of tokens in the order of token_specs.</p></li>
 <li><p><strong>attention_patterns</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.14)"><em>collections.abc.Sequence</em></a><em>[</em><a class="reference internal" href="../../../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionPattern" title="noether.core.schemas.modules.attention.AttentionPattern"><em>noether.core.schemas.modules.attention.AttentionPattern</em></a><em>]</em>) – Sequence of attention patterns to apply. Each pattern defines which
 token groups (queries) attend to which other token groups (keys/values).
 The provided patterns must be exhaustive and non-overlapping. This means every
 token group defined in <cite>token_specs</cite> must be a query in exactly one pattern.</p></li>
-<li><p><strong>key_padding_mask</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – Optional boolean mask of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">n_tokens)</span></code>.
+<li><p><strong>key_padding_mask</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – Optional boolean mask of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">n_tokens)</span></code>.
 <code class="docutils literal notranslate"><span class="pre">True</span></code> indicates a real token; <code class="docutils literal notranslate"><span class="pre">False</span></code> indicates a padding token that should not be attended to.
 The mask is sliced per attention pattern to cover only the key/value tokens of that pattern.</p></li>
-<li><p><strong>freqs</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – RoPE frequencies for positional encoding</p></li>
+<li><p><strong>freqs</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – RoPE frequencies for positional encoding</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.10)">torch.Tensor</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
