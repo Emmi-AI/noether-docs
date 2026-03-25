@@ -284,6 +284,14 @@ Module Contents
       Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
 
 
+   .. py:attribute:: dataloader_prefetch_factor
+      :type:  int | None
+      :value: None
+
+
+      The `prefetch_factor` to use for the training dataloader. This controls how many batches are prefetched by each worker process in the dataloader. Increasing this can speed up training if data loading is a bottleneck, but also increases memory usage.
+
+
    .. py:method:: validate_callback_frequency()
 
       Ensures that exactly one frequency ('every_n_*') is specified and

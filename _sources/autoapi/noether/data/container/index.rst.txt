@@ -89,7 +89,7 @@ Module Contents
 
 
 
-   .. py:method:: get_data_loader(train_sampler, train_collator, batch_size, epochs, updates, samples, callback_samplers, start_epoch = None, evaluation = False)
+   .. py:method:: get_data_loader(train_sampler, train_collator, batch_size, epochs, updates, samples, callback_samplers, start_epoch = None, evaluation = False, prefetch_factor = None)
 
       Creates a `torch.utils.data.DataLoader` that can be used for efficient data loading by utilizing an
       `InterleavedSampler` based on the `main_sampler`, `configs` and other arguments that are passed to this method.

@@ -1045,6 +1045,12 @@ validated to form a valid model.</p>
 <dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.trainers.BaseTrainerConfig.dataloader_prefetch_factor">
+<span class="sig-name descname"><span class="pre">dataloader_prefetch_factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trainers.BaseTrainerConfig.dataloader_prefetch_factor" title="Link to this definition">¶</a></dt>
+<dd><p>The <cite>prefetch_factor</cite> to use for the training dataloader. This controls how many batches are prefetched by each worker process in the dataloader. Increasing this can speed up training if data loading is a bottleneck, but also increases memory usage.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.schemas.trainers.BaseTrainerConfig.validate_callback_frequency">
 <span class="sig-name descname"><span class="pre">validate_callback_frequency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.trainers.BaseTrainerConfig.validate_callback_frequency" title="Link to this definition">¶</a></dt>
@@ -1181,6 +1187,7 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.forward_properties"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.forward_properties</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.target_properties"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.target_properties</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.model_config"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.dataloader_prefetch_factor"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.dataloader_prefetch_factor</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.trainers.BaseTrainerConfig.validate_callback_frequency"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.validate_callback_frequency()</span></code></a></li>
 </ul>
 </li>
