@@ -15,6 +15,7 @@ Submodules
    /autoapi/noether/inference/index
    /autoapi/noether/io/index
    /autoapi/noether/modeling/index
+   /autoapi/noether/scaffold/index
    /autoapi/noether/training/index
 
 

@@ -1,0 +1,32 @@
+noether.scaffold.cli
+====================
+
+.. py:module:: noether.scaffold.cli
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.scaffold.cli.app
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.scaffold.cli.main
+
+
+Module Contents
+---------------
+
+.. py:data:: app
+
+.. py:function:: main(project_name, tracker = TrackerChoice.DISABLED, hardware = HardwareChoice.GPU, project_dir = Path('.'), wandb_entity = None)
+
+   Scaffold a new Noether training project.
+
+

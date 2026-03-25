@@ -1,0 +1,68 @@
+noether.scaffold.config
+=======================
+
+.. py:module:: noether.scaffold.config
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.scaffold.config.TEMPLATES
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.scaffold.config.ScaffoldConfig
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.scaffold.config.substitute
+   noether.scaffold.config.resolve_config
+
+
+Module Contents
+---------------
+
+.. py:data:: TEMPLATES
+
+.. py:class:: ScaffoldConfig
+
+   .. py:attribute:: project_name
+      :type:  str
+
+
+   .. py:attribute:: tracker
+      :type:  noether.scaffold.choices.TrackerChoice
+
+
+   .. py:attribute:: hardware
+      :type:  noether.scaffold.choices.HardwareChoice
+
+
+   .. py:attribute:: project_dir
+      :type:  pathlib.Path
+
+
+   .. py:attribute:: wandb_entity
+      :type:  str | None
+
+
+.. py:function:: substitute(content, config)
+
+   Replace template placeholders with config values.
+
+
+.. py:function:: resolve_config(project_name, tracker, hardware, project_dir, wandb_entity)
+
+   Build a fully-resolved ScaffoldConfig.
+
+

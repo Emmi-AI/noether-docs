@@ -1,0 +1,73 @@
+noether.scaffold.choices
+========================
+
+.. py:module:: noether.scaffold.choices
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.scaffold.choices.TrackerChoice
+   noether.scaffold.choices.HardwareChoice
+
+
+Module Contents
+---------------
+
+.. py:class:: TrackerChoice
+
+   Bases: :py:obj:`enum.StrEnum`
+
+
+   Enum where members are also (and must be) strings
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: WANDB
+      :value: 'wandb'
+
+
+
+   .. py:attribute:: TRACKIO
+      :value: 'trackio'
+
+
+
+   .. py:attribute:: TENSORBOARD
+      :value: 'tensorboard'
+
+
+
+   .. py:attribute:: DISABLED
+      :value: 'disabled'
+
+
+
+.. py:class:: HardwareChoice
+
+   Bases: :py:obj:`enum.StrEnum`
+
+
+   Enum where members are also (and must be) strings
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: GPU
+      :value: 'gpu'
+
+
+
+   .. py:attribute:: MPS
+      :value: 'mps'
+
+
+
+   .. py:attribute:: CPU
+      :value: 'cpu'
+
+
+

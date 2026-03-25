@@ -1,0 +1,18 @@
+noether.scaffold
+================
+
+.. py:module:: noether.scaffold
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/scaffold/choices/index
+   /autoapi/noether/scaffold/cli/index
+   /autoapi/noether/scaffold/config/index
+   /autoapi/noether/scaffold/file_manager/index
+
+

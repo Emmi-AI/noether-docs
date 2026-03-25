@@ -1,0 +1,36 @@
+noether.scaffold.file_manager
+=============================
+
+.. py:module:: noether.scaffold.file_manager
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.scaffold.file_manager.FileManager
+
+
+Module Contents
+---------------
+
+.. py:class:: FileManager
+
+   Manages file operations for project scaffolding.
+
+
+   .. py:method:: copy_template_tree(config)
+      :staticmethod:
+
+
+      Recursively copy all template files into the project directory with substitution.
+
+      Creates a nested layout:
+          project_dir/
+              pyproject.toml
+              project_name/
+                  __init__.py, callbacks/, models/, configs/, ...
+
+
+
