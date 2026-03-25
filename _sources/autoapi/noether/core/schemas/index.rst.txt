@@ -1225,6 +1225,14 @@ Package Contents
    Bases: :py:obj:`ScheduleBaseConfig`
 
 
+   .. py:attribute:: max_value
+      :type:  float
+      :value: None
+
+
+      The maximum value of the scheduler from which to start the cosine decay phase. This should be equal to the learning rate defined in the optimizer. I.e., max value is learning rate
+
+
    .. py:attribute:: kind
       :type:  Literal['noether.core.schedules.LinearWarmupCosineDecaySchedule']
       :value: 'noether.core.schedules.LinearWarmupCosineDecaySchedule'
@@ -1247,14 +1255,6 @@ Package Contents
 
 
       The percentage of steps to linearly increase the value from start to max.
-
-
-   .. py:attribute:: max_value
-      :type:  float
-      :value: None
-
-
-      The maximum value of the scheduler from which to start the cosine decay phase. This should be equal to the learning rate defined in the optimizer. I.e., max value is learning rate
 
 
    .. py:method:: validate_warmup()

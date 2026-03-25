@@ -1157,6 +1157,12 @@
 </dd>
 </dl>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.max_value">
+<span class="sig-name descname"><span class="pre">max_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.max_value" title="Link to this definition">¶</a></dt>
+<dd><p>The maximum value of the scheduler from which to start the cosine decay phase. This should be equal to the learning rate defined in the optimizer. I.e., max value is learning rate</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.kind">
 <span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.LinearWarmupCosineDecaySchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.LinearWarmupCosineDecaySchedule'</span></em><a class="headerlink" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.kind" title="Link to this definition">¶</a></dt>
 <dd><p>The fully qualified class name of the scheduler.</p>
@@ -1172,12 +1178,6 @@
 <dt class="sig sig-object py" id="noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_percent">
 <span class="sig-name descname"><span class="pre">warmup_percent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_percent" title="Link to this definition">¶</a></dt>
 <dd><p>The percentage of steps to linearly increase the value from start to max.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.max_value">
-<span class="sig-name descname"><span class="pre">max_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.max_value" title="Link to this definition">¶</a></dt>
-<dd><p>The maximum value of the scheduler from which to start the cosine decay phase. This should be equal to the learning rate defined in the optimizer. I.e., max value is learning rate</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1638,10 +1638,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.max_value"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.max_value</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.kind</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_steps"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.warmup_steps</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_percent"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.warmup_percent</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.max_value"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.max_value</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig.validate_warmup"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.validate_warmup()</span></code></a></li>
 </ul>
 </li>
