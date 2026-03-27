@@ -885,6 +885,9 @@ for available options.</p></li>
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.ema.EmaCallback.resume_from_checkpoint">
 <span class="sig-name descname"><span class="pre">resume_from_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resumption_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.ema.EmaCallback.resume_from_checkpoint" title="Link to this definition">¶</a></dt>
 <dd><p>Resume EMA state from a checkpoint.</p>
+<p>Tries <code class="docutils literal notranslate"><span class="pre">cp=latest</span></code> first (written by periodic saves), then <code class="docutils literal notranslate"><span class="pre">cp=last</span></code> (written by
+<code class="docutils literal notranslate"><span class="pre">after_training</span></code>, e.g. on graceful signal interrupt). If neither exists, falls back to
+initializing EMA from the current model weights.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

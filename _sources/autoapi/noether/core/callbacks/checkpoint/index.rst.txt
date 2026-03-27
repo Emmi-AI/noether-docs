@@ -284,6 +284,10 @@ Package Contents
 
       Resume EMA state from a checkpoint.
 
+      Tries ``cp=latest`` first (written by periodic saves), then ``cp=last`` (written by
+      ``after_training``, e.g. on graceful signal interrupt). If neither exists, falls back to
+      initializing EMA from the current model weights.
+
       :param resumption_paths: :class:`~noether.core.providers.path.PathProvider` with paths to checkpoint files.
       :param model: Model to resume EMA state for.
 

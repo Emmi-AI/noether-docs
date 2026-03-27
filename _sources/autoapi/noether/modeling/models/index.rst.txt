@@ -23,6 +23,7 @@ Classes
 
    noether.modeling.models.AnchoredBranchedUPT
    noether.modeling.models.Transformer
+   noether.modeling.models.Transolver
    noether.modeling.models.UPT
 
 
@@ -152,6 +153,20 @@ Package Contents
       :returns: Output tensor after processing through the Transformer model.
       :rtype: torch.Tensor
 
+
+
+.. py:class:: Transolver(config)
+
+   Bases: :py:obj:`noether.modeling.models.Transformer`
+
+
+   Implementation of the Transolver model.
+   Reference code: https://github.com/thuml/Transolver/
+   Paper: https://arxiv.org/abs/2402.02366
+   Transolver is a Transformer with a special physics attention mechanism. Hence, we extend the Transformer class,
+   and configure it accordingly.
+
+   :param config: Configuration of the Transolver model.
 
 
 .. py:class:: UPT(config)
