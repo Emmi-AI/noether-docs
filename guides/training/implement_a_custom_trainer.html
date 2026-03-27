@@ -836,7 +836,7 @@
 </div>
 <p>The default <code class="docutils literal notranslate"><span class="pre">train_step</span></code> implementation of the BaseTrainer calls the <code class="docutils literal notranslate"><span class="pre">loss_compute</span></code> method to calculate the loss.
 Best practice is to return a dictionary of losses from the <code class="docutils literal notranslate"><span class="pre">loss_compute</span></code> method, where each key is a loss name and the value is the corresponding loss tensor.
-However, you can also return a single tensor, list or tuple, but then there is no propper naming of the individual losses for logging purposes.
+However, you can also return a single tensor, list or tuple, but then there is no proper naming of the individual losses for logging purposes.
 Example YAML configuration:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">trainer</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path.to.CustomTrainer</span>

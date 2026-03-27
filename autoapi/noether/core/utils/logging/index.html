@@ -845,7 +845,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.utils.logging.log_from_all_ranks" title="noether.core.utils.logging.log_from_all_ranks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_from_all_ranks</span></code></a>()</p></td>
 <td><p>ContextManager that changes the log level to Info for all ranks and resets it to CRITICAL for non-rank0 ranks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.utils.logging.dict_to_string" title="noether.core.utils.logging.dict_to_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict_to_string</span></code></a>(obj[, item_seperator])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.utils.logging.dict_to_string" title="noether.core.utils.logging.dict_to_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict_to_string</span></code></a>(obj[, item_separator])</p></td>
 <td><p>Convert a dictionary to a string representation.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.utils.logging.float_to_scientific_notation" title="noether.core.utils.logging.float_to_scientific_notation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">float_to_scientific_notation</span></code></a>(value, max_precision[, ...])</p></td>
@@ -1084,14 +1084,14 @@ This also adds a MessageCounter handler to count the number of messages logged a
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.utils.logging.dict_to_string">
-<span class="sig-prename descclassname"><span class="pre">noether.core.utils.logging.</span></span><span class="sig-name descname"><span class="pre">dict_to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_seperator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.utils.logging.dict_to_string" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">noether.core.utils.logging.</span></span><span class="sig-name descname"><span class="pre">dict_to_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">item_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.utils.logging.dict_to_string" title="Link to this definition">¶</a></dt>
 <dd><p>Convert a dictionary to a string representation.</p>
 <p>Example: {epoch: 5, batch_size: 64} -&gt; epoch=5-batchsize=64</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>obj</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>]</em>) – The dictionary to convert.</p></li>
-<li><p><strong>item_seperator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The separator to use between items.</p></li>
+<li><p><strong>item_separator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The separator to use between items.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

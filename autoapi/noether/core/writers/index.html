@@ -892,9 +892,9 @@ the “training_iteration” field of that checkpoint contains “E13_U…_S…�
 <dt class="sig sig-object py" id="noether.core.writers.CheckpointWriter.save_model_checkpoint">
 <span class="sig-name descname"><span class="pre">save_model_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">extra</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.writers.CheckpointWriter.save_model_checkpoint" title="Link to this definition">¶</a></dt>
 <dd><p>Save a checkpoint to disk.</p>
-<p>The ouput name of the checkpoint will be constructed as <cite>{model_name}{model_info}_cp={checkpoint}_model.th</cite> (where model_info is an optional string and will be empty if not provided).
+<p>The output name of the checkpoint will be constructed as <cite>{model_name}{model_info}_cp={checkpoint}_model.th</cite> (where model_info is an optional string and will be empty if not provided).
 For example, if model_name is “autoencoder.encoder” and checkpoint is “E10_U200_S800”, the output name will be “autoencoder.encoder_cp=E10_U200_S800_model.th”.
-However, if we store different model that the current one that is trained, for example, the EMA model, we can also provide additional info in the output name.
+However, if we store a different model than the current one that is trained, for example, the EMA model, we can also provide additional info in the output name.
 For example, if model_name is “autoencoder.encoder” and model_info is “ema”, and checkpoint is “E10_U200_S800”, the output name will be “autoencoder.encoder_ema_cp=E10_U200_S800_model.th”.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -956,8 +956,8 @@ training finished, the logs are written to disk (writing repeatedly to disk take
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path_provider</strong> (<a class="reference internal" href="../providers/index.html#noether.core.providers.PathProvider" title="noether.core.providers.PathProvider"><em>noether.core.providers.PathProvider</em></a>) – Provides the path to store all logs to the disk after training.</p></li>
-<li><p><strong>update_counter</strong> (<a class="reference internal" href="../utils/training/index.html#noether.core.utils.training.UpdateCounter" title="noether.core.utils.training.UpdateCounter"><em>noether.core.utils.training.UpdateCounter</em></a>) – Provides the current training progress add the current epoch/update/sample to every log entry.
-This allows, e.g., changing the x-axis to “epoch” in online visiualization tools.</p></li>
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../utils/training/index.html#noether.core.utils.training.UpdateCounter" title="noether.core.utils.training.UpdateCounter"><em>noether.core.utils.training.UpdateCounter</em></a>) – Provides the current training progress and the current epoch/update/sample to every log entry.
+This allows, e.g., changing the x-axis to “epoch” in online visualization tools.</p></li>
 <li><p><strong>tracker</strong> (<a class="reference internal" href="../trackers/index.html#noether.core.trackers.BaseTracker" title="noether.core.trackers.BaseTracker"><em>noether.core.trackers.BaseTracker</em></a>) – Provides an interface for logging to an online experiment tracking platform.</p></li>
 </ul>
 </dd>

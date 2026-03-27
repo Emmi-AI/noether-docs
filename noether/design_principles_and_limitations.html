@@ -835,7 +835,7 @@ The <code class="docutils literal notranslate"><span class="pre">Factory.instant
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get kind from the config:</span>
 <span class="n">kind</span> <span class="o">=</span> <span class="n">object_config</span><span class="o">.</span><span class="n">kind</span>
 
-<span class="c1"># Factory logic: get the class contructor and pass the config to the class when instantiating</span>
+<span class="c1"># Factory logic: get the class constructor and pass the config to the class when instantiating</span>
 <span class="n">class_constructor</span> <span class="o">=</span> <span class="n">class_constructor_from_class_path</span><span class="p">(</span><span class="n">kind</span><span class="p">)</span>
 <span class="n">instance</span> <span class="o">=</span> <span class="n">class_constructor</span><span class="p">(</span><span class="n">object_config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
@@ -910,7 +910,7 @@ the <strong>Configuration Schema</strong>, and the <strong>Factory</strong> logi
 </dl>
 </li>
 <li><dl class="simple">
-<dt><strong>Nested Configuration Schema complexity:</strong></dt><dd><p>In our root config schule, we define the modules needed for the <cite>Noether Framework</cite>, each module having their own config schema.
+<dt><strong>Nested Configuration Schema complexity:</strong></dt><dd><p>In our root config schema, we define the modules needed for the <cite>Noether Framework</cite>, each module having their own config schema.
 This can lead to deeply nested configurations that can be hard to navigate and understand in the beginning, especially for new users.</p>
 </dd>
 </dl>

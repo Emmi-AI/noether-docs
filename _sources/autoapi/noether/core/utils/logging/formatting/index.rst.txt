@@ -184,14 +184,14 @@ Module Contents
    :returns: The string representation of the tensor or list.
 
 
-.. py:function:: dict_to_string(obj, item_seperator = '-')
+.. py:function:: dict_to_string(obj, item_separator = '-')
 
    Convert a dictionary to a string representation.
 
    Example: {epoch: 5, batch_size: 64} -> epoch=5-batchsize=64
 
    :param obj: The dictionary to convert.
-   :param item_seperator: The separator to use between items.
+   :param item_separator: The separator to use between items.
 
    :returns: The string representation of the dictionary.
 

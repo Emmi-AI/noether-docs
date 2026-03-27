@@ -831,7 +831,7 @@ run is resumed), there are two ways to implement loading the callback state:</p>
 <li><p><cite>state_dict</cite>: write current state into a state dict. When the trainer saves the current checkpoint to the disk,
 it will also store the <cite>state_dict</cite> of all callbacks within the trainer <cite>state_dict</cite>. Once a run is resumed, a
 callback can load its state from the previously stored <cite>state_dict</cite> by overwriting the <cite>load_state_dict</cite>.</p></li>
-<li><p><cite>resume_from_checkpoint</cite>: If a callback is storing large files onto the disk, it would be redudant to also
+<li><p><cite>resume_from_checkpoint</cite>: If a callback is storing large files onto the disk, it would be redundant to also
 store them within its <cite>state_dict</cite>. Therefore, this method is called on resume to allow callbacks to load their
 state from files on the disk.</p></li>
 </ul>

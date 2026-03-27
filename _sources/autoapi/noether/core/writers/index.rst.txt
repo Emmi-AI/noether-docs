@@ -73,9 +73,9 @@ Package Contents
 
       Save a checkpoint to disk.
 
-      The ouput name of the checkpoint will be constructed as `{model_name}{model_info}_cp={checkpoint}_model.th` (where model_info is an optional string and will be empty if not provided).
+      The output name of the checkpoint will be constructed as `{model_name}{model_info}_cp={checkpoint}_model.th` (where model_info is an optional string and will be empty if not provided).
       For example, if model_name is "autoencoder.encoder" and checkpoint is "E10_U200_S800", the output name will be "autoencoder.encoder_cp=E10_U200_S800_model.th".
-      However, if we store different model that the current one that is trained, for example, the EMA model, we can also provide additional info in the output name.
+      However, if we store a different model than the current one that is trained, for example, the EMA model, we can also provide additional info in the output name.
       For example, if model_name is "autoencoder.encoder" and model_info is "ema", and checkpoint is "E10_U200_S800", the output name will be "autoencoder.encoder_ema_cp=E10_U200_S800_model.th".
 
       :param model_name: Name of the model.
@@ -115,8 +115,8 @@ Package Contents
    training finished, the logs are written to disk (writing repeatedly to disk takes a long time).
 
    :param path_provider: Provides the path to store all logs to the disk after training.
-   :param update_counter: Provides the current training progress add the current epoch/update/sample to every log entry.
-                          This allows, e.g., changing the x-axis to "epoch" in online visiualization tools.
+   :param update_counter: Provides the current training progress and the current epoch/update/sample to every log entry.
+                          This allows, e.g., changing the x-axis to "epoch" in online visualization tools.
    :param tracker: Provides an interface for logging to an online experiment tracking platform.
 
 

@@ -831,8 +831,8 @@ training finished, the logs are written to disk (writing repeatedly to disk take
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path_provider</strong> (<a class="reference internal" href="../../providers/index.html#noether.core.providers.PathProvider" title="noether.core.providers.PathProvider"><em>noether.core.providers.PathProvider</em></a>) – Provides the path to store all logs to the disk after training.</p></li>
-<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/index.html#noether.core.utils.training.UpdateCounter" title="noether.core.utils.training.UpdateCounter"><em>noether.core.utils.training.UpdateCounter</em></a>) – Provides the current training progress add the current epoch/update/sample to every log entry.
-This allows, e.g., changing the x-axis to “epoch” in online visiualization tools.</p></li>
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/index.html#noether.core.utils.training.UpdateCounter" title="noether.core.utils.training.UpdateCounter"><em>noether.core.utils.training.UpdateCounter</em></a>) – Provides the current training progress and the current epoch/update/sample to every log entry.
+This allows, e.g., changing the x-axis to “epoch” in online visualization tools.</p></li>
 <li><p><strong>tracker</strong> (<a class="reference internal" href="../../trackers/index.html#noether.core.trackers.BaseTracker" title="noether.core.trackers.BaseTracker"><em>noether.core.trackers.BaseTracker</em></a>) – Provides an interface for logging to an online experiment tracking platform.</p></li>
 </ul>
 </dd>
