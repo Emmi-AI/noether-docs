@@ -4,6 +4,16 @@ noether.modeling.models.ab_upt
 .. py:module:: noether.modeling.models.ab_upt
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.modeling.models.ab_upt.KVPair
+   noether.modeling.models.ab_upt.LayerCache
+   noether.modeling.models.ab_upt.ModelKVCache
+
+
 Classes
 -------
 
@@ -14,6 +24,12 @@ Classes
 
 Module Contents
 ---------------
+
+.. py:data:: KVPair
+
+.. py:data:: LayerCache
+
+.. py:data:: ModelKVCache
 
 .. py:class:: AnchoredBranchedUPT(config)
 
@@ -77,26 +93,28 @@ Module Contents
 
 
 
-   .. py:method:: physics_blocks_forward(surface_position_all, volume_position_all, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition)
+   .. py:method:: physics_blocks_forward(surface_position_all, volume_position_all, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition, kv_cache = None)
 
       Forward pass through the physics blocks of the model.
-      Allthough in the AB-UPT paper we only have a perceiver block a the first block, it is possible to have more perceiver blocks in the physics blocks that attend to the geometry encoding.
+      Although in the AB-UPT paper we only have a perceiver block as the first block, it is possible to have more perceiver blocks in the physics blocks that attend to the geometry encoding.
 
 
 
-   .. py:method:: decoder_blocks_forward(x_physics, physics_token_specs, surface_token_specs, volume_token_specs, surface_position_all, volume_position_all, surface_decoder_attn_kwargs, volume_decoder_attn_kwargs, condition)
+   .. py:method:: decoder_blocks_forward(x_physics, physics_token_specs, surface_token_specs, volume_token_specs, surface_decoder_attn_kwargs, volume_decoder_attn_kwargs, condition, kv_cache = None, surface_position_all = None, volume_position_all = None)
 
-      Forward pass through the decoder blocks of the model. We have a separate decoder for surface and volume tokens.
+      Forward pass through the decoder blocks of the model.
+
+      :returns: Tuple of (surface_predictions, volume_predictions, new_surface_cache, new_volume_cache).
 
 
 
-   .. py:method:: create_rope_frequencies(geometry_position, geometry_supernode_idx, surface_position_all, volume_position_all)
+   .. py:method:: create_rope_frequencies(surface_position_all, volume_position_all, geometry_position = None, geometry_supernode_idx = None)
 
       Create RoPE frequencies for all relevant positions.
 
 
 
-   .. py:method:: forward(geometry_position, geometry_supernode_idx, geometry_batch_idx, surface_anchor_position, volume_anchor_position, geometry_design_parameters = None, inflow_design_parameters = None, query_surface_position = None, query_volume_position = None)
+   .. py:method:: forward(geometry_position = None, geometry_supernode_idx = None, geometry_batch_idx = None, surface_anchor_position = None, volume_anchor_position = None, geometry_design_parameters = None, inflow_design_parameters = None, query_surface_position = None, query_volume_position = None, kv_cache = None)
 
       Forward pass of the AB-UPT model.
 
@@ -109,9 +127,10 @@ Module Contents
       :param inflow_design_parameters: Design parameters related to the inflow to condition on. Tensor of shape (B, D_inflow).
       :param query_surface_position: Coordinates of the query surface points.
       :param query_volume_position: Coordinates of the query volume points.
+      :param kv_cache: KV cache from a previous forward call. When provided, anchor K/V are loaded
+                       from the cache and geometry/anchor inputs are not required.
 
-      :returns: A dictionary containing the predictions for surface and volume fields, sliced according to the data specifications.
-      :rtype: dict[str, torch.Tensor]
+      :returns: Tuple of (predictions, kv_cache). Predictions is a dictionary containing the predictions for surface and volume fields, sliced according to the data specifications.
 
 
 

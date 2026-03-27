@@ -60,7 +60,8 @@ Module Contents
                         feature-wise with predicted values from this vector.
       :param attn_kwargs: Dict with arguments for the attention (such as the attention mask or rope frequencies). Defaults to None.
 
-      :returns: Tensor after the forward pass of the transformer block.
+      :returns: Tuple of (output_tensor, kv_cache). ``kv_cache`` is ``None`` when the attention module
+                does not return a cache (e.g. standard ``DotProductAttention``).
 
 
 

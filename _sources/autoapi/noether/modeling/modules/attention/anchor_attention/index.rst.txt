@@ -103,7 +103,7 @@ Package Contents
 
 
 
-   .. py:method:: forward(x, token_specs, key_padding_mask = None, freqs = None)
+   .. py:method:: forward(x, token_specs, key_padding_mask = None, freqs = None, kv_cache = None)
 
       Apply attention using the patterns defined by the subclass.
 

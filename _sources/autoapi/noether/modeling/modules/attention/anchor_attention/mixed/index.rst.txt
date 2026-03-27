@@ -30,6 +30,10 @@ Module Contents
    This is achieved by splitting the main Q, K, V tensors based on the token specs
    and then performing separate attention computations for each pattern.
 
+   Supports KV caching for efficient inference. When a ``TokenSpec`` has ``size=None``,
+   its key/value representations are loaded from the provided ``kv_cache`` instead of
+   being computed from the input tensor.
+
    Example input structure (forward pass signature) for implementing Anchor Attention:
 
    .. code-block:: python
@@ -50,21 +54,29 @@ Module Contents
                   :class:`~noether.core.schemas.modules.attention.MixedAttentionConfig` for the available options.
 
 
-   .. py:method:: forward(x, token_specs, attention_patterns, key_padding_mask = None, freqs = None)
+   .. py:method:: forward(x, token_specs, attention_patterns, key_padding_mask = None, freqs = None, kv_cache = None)
 
       Apply mixed attention with flexible token-name-based patterns.
 
-      :param x: Input tensor [batch_size, n_tokens, dim]
-      :param token_specs: Sequence of token specifications defining the input structure: assumes that the input
-                          x is a concatenation of tokens in the order of token_specs.
+      :param x: Input tensor [batch_size, n_tokens, dim]. Only contains tokens with
+                ``size is not None`` in ``token_specs``.
+      :param token_specs: Sequence of token specifications defining the input structure.
+                          Tokens with ``size=None`` are loaded from ``kv_cache``.
       :param attention_patterns: Sequence of attention patterns to apply. Each pattern defines which
                                  token groups (queries) attend to which other token groups (keys/values).
                                  The provided patterns must be exhaustive and non-overlapping. This means every
-                                 token group defined in `token_specs` must be a query in exactly one pattern.
+                                 input (non-cached) token group must be a query in exactly one pattern.
       :param key_padding_mask: Optional boolean mask of shape ``(batch_size, n_tokens)``.
                                ``True`` indicates a real token; ``False`` indicates a padding token that should not be attended to.
                                The mask is sliced per attention pattern to cover only the key/value tokens of that pattern.
-      :param freqs: RoPE frequencies for positional encoding
+                               Not supported when using KV cache (cached tokens are assumed to be valid).
+      :param freqs: RoPE frequencies for positional encoding (only for input tokens).
+      :param kv_cache: KV cache from a previous forward pass. Structure:
+                       ``{token_name: {"k": tensor, "v": tensor}}``.
+
+      :returns: Tuple of (output, new_kv_cache). Output has the same shape as ``x`` (only input tokens).
+                ``new_kv_cache`` contains anchor K/V for future cached inference, or ``None`` when
+                using cached tokens.
 
 
 

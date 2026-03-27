@@ -65,17 +65,20 @@ Package Contents
    .. py:attribute:: drop_path2
 
 
-   .. py:method:: forward(q, kv, condition = None, attn_kwargs = None)
+   .. py:method:: forward(q, kv = None, condition = None, attn_kwargs = None)
 
       Forward pass of the PerceiverBlock.
 
       :param q: Input tensor with shape (batch_size, seqlen/num_tokens, hidden_dim) for the query representations.
       :param kv: Input tensor with shape (batch_size, seqlen/num_tokens, hidden_dim) for the key and value representations.
+                 Can be ``None`` when a ``kv_cache`` is provided in ``attn_kwargs``.
       :param condition: Conditioning vector. If provided, the attention and MLP will be scaled, shifted and gated
                         feature-wise with predicted values from this vector.
-      :param attn_kwargs: Dict with arguments for the attention (such as the attention mask or rope frequencies). Defaults to None.
+      :param attn_kwargs: Dict with arguments for the attention (such as the attention mask, rope frequencies,
+                          or kv_cache). Defaults to None.
 
-      :returns: Tensor after the forward pass of the PerceiverBlock.
+      :returns: Tuple of (output_tensor, kv_cache). ``kv_cache`` contains cached K/V from the
+                perceiver attention, or ``None`` when loading from cache.
 
 
 
@@ -124,7 +127,8 @@ Package Contents
                         feature-wise with predicted values from this vector.
       :param attn_kwargs: Dict with arguments for the attention (such as the attention mask or rope frequencies). Defaults to None.
 
-      :returns: Tensor after the forward pass of the transformer block.
+      :returns: Tuple of (output_tensor, kv_cache). ``kv_cache`` is ``None`` when the attention module
+                does not return a cache (e.g. standard ``DotProductAttention``).
 
 
 

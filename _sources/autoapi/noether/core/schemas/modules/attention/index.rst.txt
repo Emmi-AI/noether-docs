@@ -337,6 +337,9 @@ Module Contents
 
    Specification for a token type in the attention mechanism.
 
+   When ``size`` is ``None``, the token group is not present in the input tensor and its
+   key/value representations will be loaded from a KV cache instead.
+
    Create a new model by parsing and validating input data from keyword arguments.
 
    Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
@@ -346,11 +349,11 @@ Module Contents
 
 
    .. py:attribute:: name
-      :type:  Literal['surface_anchors', 'volume_anchors', 'surface_queries', 'volume_queries']
+      :type:  str
 
 
    .. py:attribute:: size
-      :type:  int
+      :type:  int | None
       :value: None
 
 
