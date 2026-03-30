@@ -63,14 +63,16 @@ Module Contents
 
 
    .. py:attribute:: physics_blocks
-      :type:  list[Literal['shared', 'cross', 'joint', 'perceiver']]
+      :type:  list[Literal['self', 'shared', 'cross', 'joint', 'perceiver']]
 
       Types of physics blocks to use in the model.
-      Options are "shared", "cross", "joint", and "perceiver".
-      Shared: Self-attention within a branch (surface or volume). Attention blocks share weights between surface and volume.
-      Cross: Cross-attention between surface and volume branches. Weights are shared between surface and volume.
+      Options are "self", "cross", "joint", and "perceiver".
+      Self: Self-attention within a branch (surface or volume). Attention weights are shared between branches.
+      Cross: Cross-attention between surface and volume branches. Weights are shared between branches.
       Joint: Joint attention over surface and volume points. I.e. full self-attention over both surface and volume points.
-      Perceiver: Perceiver-style attention blocks.
+      Perceiver: Perceiver-style cross-attention to geometry encoding.
+
+      Note: "shared" is a deprecated alias for "self" and will be removed in a future release.
 
 
    .. py:attribute:: num_surface_blocks
@@ -109,6 +111,12 @@ Module Contents
       :type:  noether.core.schemas.dataset.AeroDataSpecs
 
       Data specifications for the model.
+
+
+   .. py:method:: migrate_shared_to_self()
+
+      Migrate deprecated 'shared' block type to 'self'.
+
 
 
    .. py:method:: set_condition_dim()

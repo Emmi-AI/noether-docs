@@ -893,13 +893,14 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.physics_blocks">
-<span class="sig-name descname"><span class="pre">physics_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'shared'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.physics_blocks" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">physics_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'self'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'shared'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.physics_blocks" title="Link to this definition">¶</a></dt>
 <dd><p>Types of physics blocks to use in the model.
-Options are “shared”, “cross”, “joint”, and “perceiver”.
-Shared: Self-attention within a branch (surface or volume). Attention blocks share weights between surface and volume.
-Cross: Cross-attention between surface and volume branches. Weights are shared between surface and volume.
+Options are “self”, “cross”, “joint”, and “perceiver”.
+Self: Self-attention within a branch (surface or volume). Attention weights are shared between branches.
+Cross: Cross-attention between surface and volume branches. Weights are shared between branches.
 Joint: Joint attention over surface and volume points. I.e. full self-attention over both surface and volume points.
-Perceiver: Perceiver-style attention blocks.</p>
+Perceiver: Perceiver-style cross-attention to geometry encoding.</p>
+<p>Note: “shared” is a deprecated alias for “self” and will be removed in a future release.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -930,6 +931,17 @@ Perceiver: Perceiver-style attention blocks.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.data_specs">
 <span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs" title="noether.core.schemas.dataset.AeroDataSpecs"><span class="pre">noether.core.schemas.dataset.AeroDataSpecs</span></a></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd><p>Data specifications for the model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.migrate_shared_to_self">
+<span class="sig-name descname"><span class="pre">migrate_shared_to_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.migrate_shared_to_self" title="Link to this definition">¶</a></dt>
+<dd><p>Migrate deprecated ‘shared’ block type to ‘self’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig" title="noether.core.schemas.models.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1421,6 +1433,7 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.init_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.drop_path_rate"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.drop_path_rate</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.data_specs"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.data_specs</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.migrate_shared_to_self"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.migrate_shared_to_self()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.set_condition_dim"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.set_condition_dim()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.rope_frequency_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.rope_frequency_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.pos_embed_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.pos_embed_config()</span></code></a></li>
