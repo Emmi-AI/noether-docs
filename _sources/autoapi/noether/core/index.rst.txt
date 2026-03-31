@@ -19,6 +19,7 @@ Submodules
    /autoapi/noether/core/initializers/index
    /autoapi/noether/core/models/index
    /autoapi/noether/core/optimizer/index
+   /autoapi/noether/core/presets/index
    /autoapi/noether/core/providers/index
    /autoapi/noether/core/schedules/index
    /autoapi/noether/core/schemas/index

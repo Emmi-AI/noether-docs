@@ -71,6 +71,12 @@ Package Contents
    :raises FileNotFoundError: If data directory does not exist
 
 
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
+
+
    .. py:attribute:: split
 
 

@@ -1,0 +1,85 @@
+noether.training.trainers.weighted_loss
+=======================================
+
+.. py:module:: noether.training.trainers.weighted_loss
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.training.trainers.weighted_loss.LOSS_REGISTRY
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.training.trainers.weighted_loss.WeightedLossTrainer
+
+
+Module Contents
+---------------
+
+.. py:data:: LOSS_REGISTRY
+   :type:  dict[str, collections.abc.Callable[Ellipsis, torch.Tensor]]
+
+.. py:class:: WeightedLossTrainer(trainer_config, **kwargs)
+
+   Bases: :py:obj:`noether.training.trainers.base.BaseTrainer`
+
+
+   Generic trainer that computes weighted loss per output field.
+
+   Expects the model forward to return ``dict[str, Tensor]`` with keys matching
+   ``field_weights`` keys, and the batch to contain ``<field_name>_target`` keys.
+
+   The loss function defaults to MSE and can be changed via the ``loss_fn`` config
+   parameter. Use a built-in short name or a dotted import path for custom losses.
+
+   Built-in losses::
+
+       trainer_params = dict(field_weights={"pressure": 1.0}, loss_fn="l1")
+
+   Custom loss function from your project::
+
+       trainer_params = dict(
+           field_weights={"pressure": 1.0},
+           loss_fn="my_project.losses.weighted_huber",
+       )
+
+   The custom callable must have the signature ``(input, target) -> Tensor``,
+   matching ``torch.nn.functional`` loss functions.
+
+   :param config: Configuration for the trainer. See :class:`~noether.core.schemas.BaseTrainerConfig` for the available options.
+   :param data_container: The :class:`~noether.data.container.DataContainer` which includes the data and dataloader.
+   :param device: The device to use for training (e.g., "cuda"). It is assumed that the process was configured such
+                  that only 1 device is visible (e.g., via the `CUDA_VISIBLE_DEVICES` environment variable).
+   :param main_sampler_kwargs: Kwargs passed to instantiate the main sampler.
+   :param tracker: The tracker to use for training.
+   :param path_provider: The :class:`~noether.core.providers.PathProvider` to use for training.
+   :param metric_property_provider: The :class:`~noether.core.providers.MetricPropertyProvider` to use for training.
+
+
+   .. py:attribute:: loss_items
+      :type:  list[tuple[str, float]]
+      :value: []
+
+
+
+   .. py:method:: loss_compute(forward_output, targets)
+
+      Each trainer that extends this class needs to implement a custom loss computation using the targets and the model output.
+
+      :param forward_output: Output of the model after the forward pass.
+      :param targets: Dict with target tensors needed to compute the loss for this trainer.
+
+      :returns: A dict with the (weighted) sub-losses to log. Or a tuple of (losses, additional_outputs) where additional_outputs is
+                a dict with additional information about the model forward pass that is passed to the track_after_accumulation_step method of the callbacks, e.g., the logits and targets to calculate a training accuracy in a callback).
+
+      Note: If a tuple is returned, the second element will be passed as additional_outputs in the TrainerResult returned by the train_step method.
+
+
+

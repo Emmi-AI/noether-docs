@@ -1,0 +1,265 @@
+noether.core.presets
+====================
+
+.. py:module:: noether.core.presets
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/core/presets/base/index
+   /autoapi/noether/core/presets/model_defaults/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.presets.DomainPreset
+
+
+Package Contents
+----------------
+
+.. py:class:: DomainPreset
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Base class for domain-specific configuration presets.
+
+   A preset encapsulates domain knowledge - data specs, dataset statistics, normalizer conventions, pipeline defaults
+   - so that training scripts only specify what's unique to the experiment (model architecture, hyperparameters,
+   dataset path).
+
+   Subclasses must define:
+       - ``data_specs``: property returning the domain's data specification object
+       - ``dataset_statistics``: property returning pre-computed dataset statistics
+       - ``normalizer_spec``: property returning a declarative normalizer mapping
+       - ``excluded_properties``: properties to exclude from dataset loading
+       - ``target_properties``: list of target property names for this domain
+
+   Subclasses should also set class attributes:
+       - ``dataset_kind``: fully qualified dataset class path
+       - ``stats``: raw statistics dict
+       - ``pipeline_defaults``: default pipeline parameters
+       - ``pipeline_model_overrides``: per-model pipeline parameter overrides
+       - ``forward_properties_map``: per-model forward property lists (with ``"_default"`` fallback)
+
+   The ``build_normalizers``, ``build_pipeline``, ``build_dataset``, ``build_model``, ``forward_properties``,
+   ``standard_callbacks``, and ``build_config`` methods have default implementations that can be overridden when
+   needed.
+
+
+   .. py:attribute:: dataset_kind
+      :type:  str
+      :value: ''
+
+
+
+   .. py:attribute:: stats
+      :type:  dict[str, list[float]]
+
+
+   .. py:attribute:: stats_file
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: pipeline_defaults
+      :type:  dict[str, Any]
+
+
+   .. py:attribute:: pipeline_model_overrides
+      :type:  dict[str, dict[str, Any]]
+
+
+   .. py:attribute:: forward_properties_map
+      :type:  dict[str, list[str]]
+
+
+   .. py:property:: data_specs
+      :type: Any
+
+      :abstractmethod:
+
+
+      Return the domain's data specification (e.g., AeroDataSpecs).
+
+
+   .. py:property:: dataset_statistics
+      :type: dict[str, list[float] | float]
+
+
+      Return pre-computed dataset statistics as a flat dict.
+
+      Resolution order:
+      1. If ``stats_file`` is set on the preset, loads from that YAML file.
+      2. If ``stats`` dict is set on the preset, returns a copy.
+      3. If ``dataset_kind`` points to a class with a ``STATS_FILE`` attribute, loads from that.
+
+      Subclasses can override this property for custom logic.
+
+
+   .. py:property:: normalizer_spec
+      :type: dict[str, str | tuple[str, dict[str, Any]]]
+
+      :abstractmethod:
+
+
+      Declarative normalizer mapping.
+
+      Keys are data source names (e.g., ``"surface_pressure"``).
+      Values are either:
+          - ``"mean_std"`` - auto-builds MeanStdNormalizerConfig from stats
+          - ``("position", {"scale": 1000})`` - auto-builds PositionNormalizerConfig
+
+      Stats are resolved by convention: for a key ``"surface_pressure"`` with type ``"mean_std"``, the builder
+      looks up ``"surface_pressure_mean"`` and ``"surface_pressure_std"`` in ``dataset_statistics``.
+
+
+   .. py:property:: excluded_properties
+      :type: set[str] | None
+
+      :abstractmethod:
+
+
+      Properties to exclude from dataset loading, or None.
+
+
+   .. py:method:: target_properties()
+      :abstractmethod:
+
+
+      Return the list of target property names for this domain.
+
+
+
+   .. py:method:: forward_properties(model_kind)
+
+      Return the list of forward properties for the given model architecture.
+
+      Looks up ``forward_properties_map`` by model kind, falling back to ``"_default"``.
+
+
+
+   .. py:method:: build_pipeline(model_kind, **overrides)
+
+      Build a pipeline config by merging defaults, model overrides, and user overrides.
+
+      Subclasses must override this to construct the appropriate pipeline config.
+      The default implementation merges ``pipeline_defaults``, model-specific overrides from
+      ``pipeline_model_overrides``, and any caller-provided overrides into a single dict and returns it.
+      Subclasses should call ``super()`` to get the merged params.
+
+
+
+   .. py:method:: build_dataset(*, split, root, model_kind, wrappers = None, **overrides)
+      :abstractmethod:
+
+
+      Build a dataset config for the given split.
+
+
+
+   .. py:method:: build_normalizers()
+
+      Build normalizer configs from the declarative ``normalizer_spec``.
+
+      Uses naming conventions to look up statistics:
+          - ``"mean_std"`` -> looks for ``{key}_mean`` and ``{key}_std``
+          - ``"position"`` -> looks for ``raw_pos_min`` and ``raw_pos_max``
+
+      :returns: Dict mapping data source names to lists of normalizer configs.
+
+
+
+   .. py:method:: standard_callbacks(*, log_every_n_epochs = 1, save_every_n_epochs = 10, eval_dataset_key = 'test', batch_size = 1, ema = True, ema_factors = None, best_metric_key = 'loss/test/total')
+      :staticmethod:
+
+
+      Build a standard set of training callbacks.
+
+      Returns a list containing:
+          - CheckpointCallback (periodic checkpoints)
+          - OfflineLossCallback (validation loss)
+          - BestCheckpointCallback (saves best model by metric)
+          - EmaCallback (optional exponential moving average)
+
+      :param log_every_n_epochs: frequency for loss logging and validation.
+      :param save_every_n_epochs: frequency for checkpoint saving and EMA.
+      :param eval_dataset_key: dataset key for offline evaluation.
+      :param batch_size: batch size for evaluation callbacks.
+      :param ema: whether to include EMA callback.
+      :param ema_factors: EMA decay factors. Defaults to None, numerically it will be {0.9999}.
+      :param best_metric_key: metric key for best checkpoint selection.
+
+
+
+   .. py:method:: build_optimizer(*, kind = OPTIMIZER_LION, lr = 5e-05, weight_decay = 0.05, clip_grad_norm = 1.0, warmup_percent = 0.05, end_lr = 1e-06)
+
+      Build an optimizer config with sensible defaults.
+
+      :param kind: optimizer class path.
+      :param lr: learning rate.
+      :param weight_decay: weight decay.
+      :param clip_grad_norm: gradient clipping norm. None to disable.
+      :param warmup_percent: fraction of training for linear warmup.
+      :param end_lr: final learning rate for cosine decay. None to disable scheduling.
+
+
+
+   .. py:method:: build_model(*, model_kind, optimizer = None, **model_params)
+
+      Build a model config from the model kind and parameters.
+
+      Automatically injects ``data_specs``, ``forward_properties``, ``optimizer_config``, and ``kind`` so the user
+      only provides architecture knobs.
+
+      If the model kind has registered defaults in ``_MODEL_DEFAULTS``, those are applied before constructing
+      the config (e.g., AB-UPT sub-configs).
+
+      :param model_kind: fully qualified class path of the model.
+      :param optimizer: optimizer config. Uses ``build_optimizer()`` defaults if None.
+      :param \*\*model_params: model-specific parameters (e.g., ``hidden_dim``, ``num_heads``).
+
+      :returns: A model config object.
+
+
+
+   .. py:method:: build_config(*, model_kind, model_params = None, model_config = None, optimizer = None, trainer_kind, trainer_params = None, dataset_root, output_path = None, datasets = None, extra_datasets = None, callbacks_override = None, extra_callbacks = None, accelerator = None, max_epochs = 500, batch_size = 1, seed = 42, **config_overrides)
+
+      Assemble a complete ConfigSchema with all domain defaults filled in.
+
+      Provide either ``model_config`` (pre-built) or ``model_params`` (dict of architecture knobs like ``hidden_dim``,
+      ``num_heads``). If ``model_params`` is used, ``build_model()`` is called automatically.
+
+      :param model_kind: fully qualified class path of the model.
+      :param model_params: model architecture parameters (used with ``build_model``).
+      :param model_config: pre-built model config object. Mutually exclusive with ``model_params``.
+      :param optimizer: optimizer config. Defaults to Lion with cosine decay via ``build_optimizer()``.
+      :param trainer_kind: fully qualified class path of the trainer.
+      :param trainer_params: additional trainer-specific parameters (e.g., loss weights).
+      :param dataset_root: root directory of the dataset.
+      :param output_path: output directory. Defaults to ``{dataset_root}/outputs``.
+      :param datasets: splits to create. Either a list of split names (e.g., ``["train", "test"]``)
+                       where keys equal splits, or a dict mapping keys to splits for custom naming
+                       (e.g., ``{"my_train": "train"}``). Defaults to ``["train", "test"]``.
+      :param extra_datasets: additional pre-built dataset configs to merge in (e.g., repeated test sets).
+      :param callbacks_override: replace the default callback list entirely. Defaults to ``standard_callbacks()``.
+      :param extra_callbacks: additional callbacks appended to the default (or overridden) list.
+      :param accelerator: "cpu", "gpu", or "mps". Auto-detected if None.
+      :param max_epochs: maximum training epochs.
+      :param batch_size: effective batch size.
+      :param seed: random seed.
+      :param \*\*config_overrides: additional fields passed to ConfigSchema.
+
+      :returns: A fully populated ConfigSchema ready for ``HydraRunner().main()``.
+
+
+

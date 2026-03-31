@@ -9,12 +9,28 @@ Functions
 
 .. autoapisummary::
 
+   noether.core.schemas.lib.resolve_config_class
    noether.core.schemas.lib.Discriminated
    noether.core.schemas.lib.ConfiguredBy
 
 
 Module Contents
 ---------------
+
+.. py:function:: resolve_config_class(kind, base_cls)
+
+   Resolve a config class from a dotted kind string.
+
+   Resolution order:
+       1. If the imported class is already a ``base_cls`` subclass, return it directly.
+       2. Check for a ``_config_class`` attribute (set by ``@ConfiguredBy``).
+       3. Inspect ``__init__`` type hints for the first parameter that is a ``base_cls`` subclass.
+
+   :param kind: fully qualified dotted path (e.g., ``"noether.training.trainers.WeightedLossTrainer"``).
+   :param base_cls: the base config class to resolve against.
+
+   :raises ValueError: if the config class cannot be determined.
+
 
 .. py:function:: Discriminated(registry_cls)
 

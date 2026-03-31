@@ -1,0 +1,138 @@
+noether.core.schemas.aero.pipeline
+==================================
+
+.. py:module:: noether.core.schemas.aero.pipeline
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.aero.pipeline.AeroCFDPipelineConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: AeroCFDPipelineConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.PipelineConfig`
+
+
+   Pipeline configuration for aerodynamic CFD datasets.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: num_surface_points
+      :type:  int
+
+      Number of surface points to sample as input for the model.
+
+
+   .. py:attribute:: num_volume_points
+      :type:  int
+
+      Number of volume points to sample as input for the model.
+
+
+   .. py:attribute:: num_surface_queries
+      :type:  int | None
+      :value: None
+
+
+      Number of surface queries for the output function. If 0 or None, no query points are sampled.
+
+
+   .. py:attribute:: num_volume_queries
+      :type:  int | None
+      :value: None
+
+
+      Number of volume queries for the output function. If 0 or None, no query points are sampled.
+
+
+   .. py:attribute:: use_physics_features
+      :type:  bool
+      :value: False
+
+
+      Whether to use physics features (SDF, normals) alongside input coordinates.
+
+
+   .. py:attribute:: dataset_statistics
+      :type:  noether.core.schemas.statistics.AeroStatsSchema | None
+      :value: None
+
+
+      Dataset statistics for normalization of input features.
+
+
+   .. py:attribute:: sample_query_points
+      :type:  bool
+      :value: True
+
+
+      Whether to sample query points. If False, query points are duplicated from encoder inputs.
+
+
+   .. py:attribute:: num_supernodes
+      :type:  int
+      :value: 0
+
+
+      Number of supernodes (for UPT).
+
+
+   .. py:attribute:: num_geometry_supernodes
+      :type:  int | None
+      :value: None
+
+
+      Number of geometry supernodes (for AB-UPT).
+
+
+   .. py:attribute:: num_geometry_points
+      :type:  int | None
+      :value: None
+
+
+      Number of geometry points to sample (for AB-UPT).
+
+
+   .. py:attribute:: num_volume_anchor_points
+      :type:  int | None
+      :value: 0
+
+
+      Number of volume anchor points to sample for AB-UPT.
+
+
+   .. py:attribute:: num_surface_anchor_points
+      :type:  int | None
+      :value: 0
+
+
+      Number of surface anchor points to sample for AB-UPT.
+
+
+   .. py:attribute:: seed
+      :type:  int | None
+      :value: None
+
+
+      Random seed for sampling processes.
+
+
+   .. py:attribute:: data_specs
+      :type:  noether.core.schemas.dataset.AeroDataSpecs
+
+      Data specifications for the pipeline.
+
+

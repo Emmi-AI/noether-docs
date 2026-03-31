@@ -49,6 +49,12 @@ Package Contents
    :param dataset_config: Configuration for the dataset.
 
 
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
+
+
    .. py:property:: get_dataset_splits
       :type: noether.core.schemas.dataset.DatasetSplitIDs
 
@@ -121,6 +127,12 @@ Package Contents
    Initialize the DrivaerML dataset.
 
    :param dataset_config: Configuration for the dataset.
+
+
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
 
 
    .. py:property:: get_dataset_splits
@@ -203,6 +215,12 @@ Package Contents
    :param filemap: FileMap object defining the mapping of data properties to filenames. See :class:`~noether.data.datasets.cfd.caeml.filemap.FileMap` for details.
 
 
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
+
+
    .. py:attribute:: FILEMAP
 
 
@@ -225,6 +243,12 @@ Package Contents
 
    :param dataset_config: Configuration for the dataset. See :class:`~noether.core.schemas.dataset.DatasetBaseConfig` for available options.
    :param filemap: FileMap object defining the mapping of data properties to filenames. See :class:`~noether.data.datasets.cfd.caeml.filemap.FileMap` for details.
+
+
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
 
 
    .. py:attribute:: split
@@ -308,6 +332,12 @@ Package Contents
 
    :raises ValueError: If configuration is invalid or split is unknown
    :raises FileNotFoundError: If data directory does not exist
+
+
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
 
 
    .. py:attribute:: split

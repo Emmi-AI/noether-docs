@@ -43,6 +43,12 @@ Module Contents
    :param filemap: FileMap object defining the mapping of data properties to filenames. See :class:`~noether.data.datasets.cfd.caeml.filemap.FileMap` for details.
 
 
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
+
+
    .. py:attribute:: split
 
 

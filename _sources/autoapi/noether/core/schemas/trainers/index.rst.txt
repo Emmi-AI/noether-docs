@@ -19,6 +19,7 @@ Classes
 
    noether.core.schemas.trainers.CheckpointConfig
    noether.core.schemas.trainers.BaseTrainerConfig
+   noether.core.schemas.trainers.WeightedLossTrainerConfig
 
 
 Module Contents
@@ -296,6 +297,52 @@ Module Contents
 
       Ensures that exactly one frequency ('every_n_*') is specified and
       that 'batch_size' is present if 'every_n_samples' is used.
+
+
+
+.. py:class:: WeightedLossTrainerConfig(/, **data)
+
+   Bases: :py:obj:`BaseTrainerConfig`
+
+
+   Config for a generic trainer that computes weighted loss per output field.
+
+   ``field_weights`` maps output field names to their loss weights. Keys must match model output dict keys.
+   Target keys in the batch are expected to follow the ``<field_name>_target`` convention.
+
+   Built-in loss example::
+
+       WeightedLossTrainerConfig(
+           kind="noether.training.trainers.WeightedLossTrainer",
+           field_weights={"surface_pressure": 1.0, "volume_velocity": 1.0},
+           loss_fn="l1",
+       )
+
+   Custom loss function from a downstream project::
+
+       WeightedLossTrainerConfig(
+           kind="noether.training.trainers.WeightedLossTrainer",
+           field_weights={"surface_pressure": 1.0},
+           loss_fn="my_project.losses.weighted_huber",
+       )
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: field_weights
+      :type:  dict[str, float]
+      :value: None
+
+
+
+   .. py:attribute:: loss_fn
+      :type:  str
+      :value: None
 
 
 

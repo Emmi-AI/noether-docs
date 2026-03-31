@@ -1,0 +1,20 @@
+noether.core.presets.model_defaults
+===================================
+
+.. py:module:: noether.core.presets.model_defaults
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.core.presets.model_defaults.MODEL_DEFAULTS
+
+
+Module Contents
+---------------
+
+.. py:data:: MODEL_DEFAULTS
+   :type:  dict[str, Any]
+

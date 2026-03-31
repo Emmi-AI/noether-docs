@@ -11,6 +11,7 @@ Submodules
    :maxdepth: 1
 
    /autoapi/noether/modeling/models/ab_upt/index
+   /autoapi/noether/modeling/models/aerodynamics/index
    /autoapi/noether/modeling/models/transformer/index
    /autoapi/noether/modeling/models/transolver/index
    /autoapi/noether/modeling/models/upt/index
@@ -22,6 +23,12 @@ Classes
 .. autoapisummary::
 
    noether.modeling.models.AnchoredBranchedUPT
+   noether.modeling.models.AeroABUPT
+   noether.modeling.models.AeroTransformer
+   noether.modeling.models.AeroTransformerConfig
+   noether.modeling.models.AeroTransolver
+   noether.modeling.models.AeroTransolverConfig
+   noether.modeling.models.AeroUPT
    noether.modeling.models.Transformer
    noether.modeling.models.Transolver
    noether.modeling.models.UPT
@@ -131,6 +138,201 @@ Package Contents
 
       :returns: Tuple of (predictions, kv_cache). Predictions is a dictionary containing the predictions for surface and volume fields, sliced according to the data specifications.
 
+
+
+.. py:class:: AeroABUPT(model_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.models.Model`
+
+
+   Aerodynamic Anchored-Branched UPT wrapper.
+
+   Bridges the factory's ``(config, **kwargs)`` instantiation pattern to the core model.
+
+   Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
+
+   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
+   :param is_frozen: If true, will set `requires_grad` of all parameters to false. Will also put the model into eval
+                     mode (e.g., to put Dropout or BatchNorm into eval mode).
+   :param path_provider: :class:`~noether.core.providers.PathProvider` used by the initializer to store or retrieve checkpoints.
+   :param data_container: :class:`~noether.data.container.DataContainer` which includes the data and dataloader.
+                          This is currently unused but helpful for quick prototyping only, evaluating forward in debug mode, etc.
+
+
+   .. py:attribute:: backbone
+
+
+   .. py:method:: forward(**kwargs)
+
+
+.. py:class:: AeroTransformer(model_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.models.Model`
+
+
+   Aerodynamic Transformer wrapper.
+
+   End-to-end forward for aero CFD: positional encoding, optional RoPE, optional physics features,
+   surface/volume bias, Transformer backbone, output projection, and output gathering.
+
+   Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
+
+   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
+   :param is_frozen: If true, will set `requires_grad` of all parameters to false. Will also put the model into eval
+                     mode (e.g., to put Dropout or BatchNorm into eval mode).
+   :param path_provider: :class:`~noether.core.providers.PathProvider` used by the initializer to store or retrieve checkpoints.
+   :param data_container: :class:`~noether.data.container.DataContainer` which includes the data and dataloader.
+                          This is currently unused but helpful for quick prototyping only, evaluating forward in debug mode, etc.
+
+
+   .. py:attribute:: data_specs
+
+
+   .. py:attribute:: use_rope
+
+
+   .. py:attribute:: pos_embed
+
+
+   .. py:attribute:: surface_bias
+
+
+   .. py:attribute:: volume_bias
+
+
+   .. py:attribute:: use_physics_features
+
+
+   .. py:attribute:: backbone
+
+
+   .. py:attribute:: norm
+
+
+   .. py:attribute:: out
+
+
+   .. py:method:: forward(surface_position, volume_position, surface_features = None, volume_features = None)
+
+
+.. py:class:: AeroTransformerConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.models.TransformerConfig`
+
+
+   Transformer config extended with aerodynamic data specifications.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: data_specs
+      :type:  noether.core.schemas.dataset.AeroDataSpecs
+
+
+.. py:class:: AeroTransolver(model_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.models.Model`
+
+
+   Aerodynamic Transolver wrapper.
+
+   Like ``AeroTransformer`` but adds the Transolver-specific learnable placeholder parameter.
+
+   Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
+
+   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
+   :param is_frozen: If true, will set `requires_grad` of all parameters to false. Will also put the model into eval
+                     mode (e.g., to put Dropout or BatchNorm into eval mode).
+   :param path_provider: :class:`~noether.core.providers.PathProvider` used by the initializer to store or retrieve checkpoints.
+   :param data_container: :class:`~noether.data.container.DataContainer` which includes the data and dataloader.
+                          This is currently unused but helpful for quick prototyping only, evaluating forward in debug mode, etc.
+
+
+   .. py:attribute:: data_specs
+
+
+   .. py:attribute:: pos_embed
+
+
+   .. py:attribute:: surface_bias
+
+
+   .. py:attribute:: volume_bias
+
+
+   .. py:attribute:: use_physics_features
+
+
+   .. py:attribute:: placeholder
+
+
+   .. py:attribute:: backbone
+
+
+   .. py:attribute:: norm
+
+
+   .. py:attribute:: out
+
+
+   .. py:method:: forward(surface_position, volume_position, surface_features = None, volume_features = None)
+
+
+.. py:class:: AeroTransolverConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.models.TransolverConfig`
+
+
+   Transolver config extended with aerodynamic data specifications.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: data_specs
+      :type:  noether.core.schemas.dataset.AeroDataSpecs
+
+
+.. py:class:: AeroUPT(model_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.models.Model`
+
+
+   Aerodynamic UPT wrapper.
+
+   Combines separate surface/volume query positions into the single ``query_position``
+   that the core UPT expects, and splits outputs using ``AeroDataSpecs``.
+
+   Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
+
+   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
+   :param is_frozen: If true, will set `requires_grad` of all parameters to false. Will also put the model into eval
+                     mode (e.g., to put Dropout or BatchNorm into eval mode).
+   :param path_provider: :class:`~noether.core.providers.PathProvider` used by the initializer to store or retrieve checkpoints.
+   :param data_container: :class:`~noether.data.container.DataContainer` which includes the data and dataloader.
+                          This is currently unused but helpful for quick prototyping only, evaluating forward in debug mode, etc.
+
+
+   .. py:attribute:: backbone
+
+
+   .. py:attribute:: data_specs
+
+
+   .. py:method:: forward(surface_position_batch_idx, surface_position_supernode_idx, surface_position, surface_query_position, volume_query_position)
 
 
 .. py:class:: Transformer(config)

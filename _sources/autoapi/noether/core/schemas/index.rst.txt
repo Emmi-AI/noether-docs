@@ -10,6 +10,7 @@ Submodules
 .. toctree::
    :maxdepth: 1
 
+   /autoapi/noether/core/schemas/aero/index
    /autoapi/noether/core/schemas/callbacks/index
    /autoapi/noether/core/schemas/dataset/index
    /autoapi/noether/core/schemas/filemap/index

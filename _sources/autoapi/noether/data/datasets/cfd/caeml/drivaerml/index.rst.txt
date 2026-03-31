@@ -40,6 +40,12 @@ Package Contents
    :param dataset_config: Configuration for the dataset.
 
 
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
+
+
    .. py:property:: get_dataset_splits
       :type: noether.core.schemas.dataset.DatasetSplitIDs
 
