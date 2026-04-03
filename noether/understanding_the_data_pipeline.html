@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Key Concepts" href="key_concepts.html" /><link rel="prev" title="Introduction to Noether Framework" href="introduction_to_noether_framework.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Prerequisites" href="../tutorials/prerequisites.html" /><link rel="prev" title="Noether Dataset Zoo" href="dataset_zoo.html" />
         <link rel="prefetch" href="../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>Design Principles and Limitations - Noether Framework documentation</title>
+        <title>Understanding the Data Pipeline - Noether Framework documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
@@ -261,11 +261,11 @@
   <p class="caption" role="heading"><span class="caption-text">The Noether Framework</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction_to_noether_framework.html">Introduction to Noether Framework</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Design Principles and Limitations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design_principles_and_limitations.html">Design Principles and Limitations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="key_concepts.html">Key Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model_zoo.html">Noether Model Zoo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataset_zoo.html">Noether Dataset Zoo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="understanding_the_data_pipeline.html">Understanding the Data Pipeline</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Understanding the Data Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
 <ul>
@@ -794,12 +794,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/noether/design_principles_and_limitations.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/noether/understanding_the_data_pipeline.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/noether/design_principles_and_limitations.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/noether/understanding_the_data_pipeline.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -818,119 +818,249 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="design-principles-and-limitations">
-<h1>Design Principles and Limitations<a class="headerlink" href="#design-principles-and-limitations" title="Link to this heading">¶</a></h1>
-<p>This document outlines the core design principles, architectural patterns, and known limitations of the Noether
-Framework. It serves as a guide for developers to understand the “why” behind the code structure.</p>
-<section id="design-principles">
-<h2>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading">¶</a></h2>
-<p>The framework is built upon five major pillars aimed at robustness, reproducibility, and clear separation of concerns.</p>
-<section id="configuration-driven-development-cdd">
-<h3>1. Configuration-Driven Development (CDD)<a class="headerlink" href="#configuration-driven-development-cdd" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Behavior is strictly separated from implementation.</p>
-<p>Almost every component in the system (Datasets, Models, Layers) is instantiated via a specific <strong>Configuration Object</strong>
-rather than raw arguments.</p>
-<p><strong>Implementation:</strong>
-We rely heavily on Pydantic models (e.g., <code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code>, <code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig</span></code>) to define the expected
-inputs. Components are rarely instantiated directly; instead, they are built by passing a config object
-to a constructor or factory.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example: A TransformerBlock receives a full config object, not individual args.</span>
-<span class="n">block</span> <span class="o">=</span> <span class="n">TransformerBlock</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">my_block_config</span><span class="p">)</span>
+          <section id="understanding-the-data-pipeline">
+<h1>Understanding the Data Pipeline<a class="headerlink" href="#understanding-the-data-pipeline" title="Link to this heading">¶</a></h1>
+<p>This document describes how data flows from files on disk to training batches, with a focus on CFD
+aerodynamics datasets. It covers how point clouds are subsampled, what an epoch means when working with
+large meshes, and how shuffling is organized.</p>
+<p>For a hands-on walkthrough that shows how to configure and run an end-to-end training pipeline, see
+the <a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/tutorial/README.MD">tutorial README</a>.</p>
+<section id="from-disk-to-batch">
+<h2>From Disk to Batch<a class="headerlink" href="#from-disk-to-batch" title="Link to this heading">¶</a></h2>
+<p>A single training step involves four stages:</p>
+<ol class="arabic simple">
+<li><p><strong>Dataset</strong> – loads individual tensors from <code class="docutils literal notranslate"><span class="pre">.pt</span></code> files on disk via <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> methods.</p></li>
+<li><p><strong>Sample processors</strong> – transform each sample independently (subsample points, normalize, concatenate features).</p></li>
+<li><p><strong>Collation</strong> – combines a list of processed samples into a batched dictionary of tensors.</p></li>
+<li><p><strong>Batch processors</strong> – optional post-collation transforms on the full batch.</p></li>
+</ol>
+<p>Stages 2–4 are orchestrated by <a class="reference internal" href="../autoapi/noether/data/pipeline/index.html#noether.data.pipeline.MultiStagePipeline" title="noether.data.pipeline.MultiStagePipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiStagePipeline</span></code></a>, which acts as
+the <code class="docutils literal notranslate"><span class="pre">collate_fn</span></code> of the PyTorch <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Dataset.__getitem__(idx)
+    |  torch.load() per property, @with_normalizers
+    v
+Sample dict  {&quot;surface_position&quot;: (N, 3), &quot;volume_velocity&quot;: (M, 3), ...}
+    |
+    |  Sample processors (per sample, sequentially)
+    v
+Processed sample dict  {&quot;surface_position&quot;: (n, 3), ...}
+    |
+    |  Collation (list of dicts -&gt; dict of tensors)
+    v
+Batch dict  {&quot;surface_position&quot;: (B, n, 3), ...}
 </pre></div>
 </div>
 </section>
-<section id="factory-pattern-dynamic-instantiation">
-<h3>2. Factory Pattern &amp; Dynamic Instantiation<a class="headerlink" href="#factory-pattern-dynamic-instantiation" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Decoupling configuration from import logic.</p>
-<p>The framework uses a centralized “Factory” mechanism to build objects. It relies on <strong>Class Paths</strong> (strings)
-to resolve classes at runtime, avoiding heavy import chains at the top level.</p>
-<p><strong>Implementation:</strong>
-The <code class="docutils literal notranslate"><span class="pre">Factory.instantiate</span></code> method uses the <code class="docutils literal notranslate"><span class="pre">kind</span></code> field in configurations to locate the correct class constructor.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get kind from the config:</span>
-<span class="n">kind</span> <span class="o">=</span> <span class="n">object_config</span><span class="o">.</span><span class="n">kind</span>
-
-<span class="c1"># Factory logic: get the class constructor and pass the config to the class when instantiating</span>
-<span class="n">class_constructor</span> <span class="o">=</span> <span class="n">class_constructor_from_class_path</span><span class="p">(</span><span class="n">kind</span><span class="p">)</span>
-<span class="n">instance</span> <span class="o">=</span> <span class="n">class_constructor</span><span class="p">(</span><span class="n">object_config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<section id="the-decomposed-getitem-pattern">
+<h2>The Decomposed <code class="docutils literal notranslate"><span class="pre">getitem</span></code> Pattern<a class="headerlink" href="#the-decomposed-getitem-pattern" title="Link to this heading">¶</a></h2>
+<p>Each dataset implements one <code class="docutils literal notranslate"><span class="pre">getitem_&lt;property&gt;</span></code> method per tensor it provides. The base
+<a class="reference internal" href="../autoapi/noether/data/index.html#noether.data.Dataset" title="noether.data.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a> discovers all such methods via introspection and calls them when
+<code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> is invoked:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># simplified from base/dataset.py</span>
+<span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="n">idx</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">getitem_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all_getitem_names</span><span class="p">():</span>
+        <span class="n">getitem_fn</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">getitem_name</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="n">getitem_name</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;getitem_&quot;</span><span class="p">):]]</span> <span class="o">=</span> <span class="n">getitem_fn</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>By default, every <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> call invokes <strong>all</strong> <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> methods and therefore loads all
+properties from disk. To avoid unnecessary I/O, we provide two ways to restrict which properties are
+loaded:</p>
+<ul class="simple">
+<li><p><strong>Config-level</strong>: set <code class="docutils literal notranslate"><span class="pre">excluded_properties</span></code> (or <code class="docutils literal notranslate"><span class="pre">included_properties</span></code>) on the dataset config.
+This creates a <a class="reference internal" href="../autoapi/noether/data/base/wrappers/index.html#noether.data.base.wrappers.PropertySubsetWrapper" title="noether.data.base.wrappers.PropertySubsetWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">PropertySubsetWrapper</span></code></a> internally.</p></li>
+<li><p><strong>Code-level</strong>: wrap the dataset explicitly with
+<a class="reference internal" href="../autoapi/noether/data/base/wrappers/index.html#noether.data.base.wrappers.PropertySubsetWrapper" title="noether.data.base.wrappers.PropertySubsetWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">PropertySubsetWrapper</span></code></a>.</p></li>
+</ul>
+<p>For more details on implementing your own dataset, see <a class="reference internal" href="../guides/data/how_to_make_a_custom_dataset.html"><span class="doc">How to Implement a Custom Dataset</span></a>.</p>
+</section>
+<section id="point-sampling">
+<h2>Point Sampling<a class="headerlink" href="#point-sampling" title="Link to this heading">¶</a></h2>
+<p>CFD meshes can contain tens of thousands to millions of points. To make training feasible, we
+subsample points on-the-fly using
+<a class="reference internal" href="../autoapi/noether/data/pipeline/sample_processors/index.html#noether.data.pipeline.sample_processors.PointSamplingSampleProcessor" title="noether.data.pipeline.sample_processors.PointSamplingSampleProcessor"><code class="xref py py-class docutils literal notranslate"><span class="pre">PointSamplingSampleProcessor</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PointSamplingSampleProcessor</span><span class="p">(</span>
+    <span class="n">items</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;volume_position&quot;</span><span class="p">,</span> <span class="s2">&quot;volume_velocity&quot;</span><span class="p">},</span>
+    <span class="n">num_points</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1"># stochastic for training, fixed int for eval</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The processor generates a random permutation and takes the first <code class="docutils literal notranslate"><span class="pre">num_points</span></code> indices:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">perm</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randperm</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">generator</span><span class="p">)[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_points</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">items</span><span class="p">:</span>
+    <span class="n">output_sample</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_sample</span><span class="p">[</span><span class="n">item</span><span class="p">][</span><span class="n">perm</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>All items in the <code class="docutils literal notranslate"><span class="pre">items</span></code> set share the same permutation, so position-to-field correspondence is
+preserved (<code class="docutils literal notranslate"><span class="pre">position[i]</span></code> always matches <code class="docutils literal notranslate"><span class="pre">velocity[i]</span></code>).</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">seed</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code>, a fresh random permutation is drawn every call. When <code class="docutils literal notranslate"><span class="pre">seed</span></code> is an
+integer, the processor uses <code class="docutils literal notranslate"><span class="pre">sample_index</span> <span class="pre">+</span> <span class="pre">seed</span></code> to produce a deterministic permutation per
+sample, ensuring reproducible evaluation.</p>
+<section id="two-levels-of-subsampling">
+<h3>Two Levels of Subsampling<a class="headerlink" href="#two-levels-of-subsampling" title="Link to this heading">¶</a></h3>
+<p>Some datasets apply subsampling at two stages:</p>
+<ol class="arabic simple">
+<li><p><strong>Preprocessing time</strong> (offline, one-off): for datasets with very large raw meshes (e.g. AhmedML
+and DrivAerML with millions of cells), the preprocessing script reduces the stored point count by
+a <code class="docutils literal notranslate"><span class="pre">subsample_factor</span></code> (default 10). This uses a deterministic permutation seeded by the
+simulation run ID.</p></li>
+<li><p><strong>Training time</strong> (online, every access): <code class="docutils literal notranslate"><span class="pre">PointSamplingSampleProcessor</span></code> further subsamples the
+stored points to the target count (e.g. 4096).</p></li>
+</ol>
+<p>For datasets with smaller meshes (e.g. ShapeNet Car, where the volume has ~28k points), only
+training-time subsampling is used.</p>
+<p>For details on writing custom sample processors, see
+<a class="reference internal" href="../guides/data/how_to_write_a_sample_processor.html"><span class="doc">How to Implement a Custom Sample Processor</span></a>.</p>
+</section>
+</section>
+<section id="epochs-and-subsampling">
+<h2>Epochs and Subsampling<a class="headerlink" href="#epochs-and-subsampling" title="Link to this heading">¶</a></h2>
+<p>An epoch is one complete pass over the <strong>samples</strong> in the training dataset – not over
+individual points within those samples.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># InterleavedSampler.__init__</span>
+<span class="k">if</span> <span class="n">drop_last</span><span class="p">:</span>
+    <span class="n">samples_per_epoch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">main_sampler</span><span class="p">)</span> <span class="o">//</span> <span class="n">batch_size</span> <span class="o">*</span> <span class="n">batch_size</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">samples_per_epoch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">main_sampler</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">drop_last=True</span></code> (the default), the last incomplete batch is discarded, so
+<code class="docutils literal notranslate"><span class="pre">samples_per_epoch</span></code> is the largest multiple of <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> that fits.</p>
+<section id="point-level-coverage">
+<h3>Point-level coverage<a class="headerlink" href="#point-level-coverage" title="Link to this heading">¶</a></h3>
+<p>Because <code class="docutils literal notranslate"><span class="pre">PointSamplingSampleProcessor</span></code> uses <code class="docutils literal notranslate"><span class="pre">seed=None</span></code> during training, each sample receives a
+different random subset of points every epoch. This has two consequences:</p>
+<ul class="simple">
+<li><p><strong>Implicit data augmentation</strong>: the model never sees exactly the same point set twice for a given
+sample. Across epochs, it learns from many overlapping views.</p></li>
+<li><p><strong>No systematic coverage</strong>: there is no mechanism that tracks which points have been visited. For a
+sample with 28,504 volume points sampled at 4,096 per epoch, each point has a ~14.4% chance of
+being selected per epoch (4096/28504). After <em>E</em> epochs the expected coverage is
+<code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">4096/28504)^E</span></code>, which gives ~87% after 13 epochs and ~95% after about 19 epochs.</p></li>
+</ul>
+<p>In other words, an epoch guarantees that every <strong>sample</strong> is visited once, but says nothing about
+which <strong>points</strong> within each sample are selected.</p>
+</section>
+<section id="repeatwrapper-for-robust-evaluation">
+<h3>RepeatWrapper for robust evaluation<a class="headerlink" href="#repeatwrapper-for-robust-evaluation" title="Link to this heading">¶</a></h3>
+<p>Since point subsampling is stochastic, a single evaluation pass may not give a stable estimate of
+model performance. <a class="reference internal" href="../autoapi/noether/data/base/wrappers/index.html#noether.data.base.wrappers.RepeatWrapper" title="noether.data.base.wrappers.RepeatWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">RepeatWrapper</span></code></a> addresses this by tiling
+the dataset indices <em>N</em> times:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RepeatWrapper</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">RepeatWrapperConfig</span><span class="p">(</span><span class="n">repetitions</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">dataset</span><span class="o">=</span><span class="n">test_dataset</span><span class="p">)</span>
+<span class="c1"># 100 test samples -&gt; 1000 (each sample visited 10 times)</span>
+</pre></div>
+</div>
+<p>When the pipeline’s <code class="docutils literal notranslate"><span class="pre">seed</span></code> is <code class="docutils literal notranslate"><span class="pre">None</span></code> (the default), each sample is evaluated with 10 different
+random point subsets, giving a more robust average. This is typically run less frequently (e.g., every
+500 epochs) to amortize the cost.</p>
+</section>
+</section>
+<section id="shuffling">
+<h2>Shuffling<a class="headerlink" href="#shuffling" title="Link to this heading">¶</a></h2>
+<p>Data ordering is controlled at two independent levels.</p>
+<section id="dataset-level-shuffle">
+<h3>Dataset-level shuffle<a class="headerlink" href="#dataset-level-shuffle" title="Link to this heading">¶</a></h3>
+<p><a class="reference internal" href="../autoapi/noether/data/base/wrappers/index.html#noether.data.base.wrappers.ShuffleWrapper" title="noether.data.base.wrappers.ShuffleWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShuffleWrapper</span></code></a> applies a one-time, fixed permutation of
+sample indices at dataset construction time. This does <strong>not</strong> re-shuffle between epochs. Its typical
+use is to randomize order before taking a deterministic subset (e.g., shuffle, then slice the first
+80% for training).</p>
+</section>
+<section id="sampler-level-shuffle">
+<h3>Sampler-level shuffle<a class="headerlink" href="#sampler-level-shuffle" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">DataContainer</span></code> creates a <code class="docutils literal notranslate"><span class="pre">RandomSampler</span></code> (single-GPU) or <code class="docutils literal notranslate"><span class="pre">DistributedSampler</span></code>
+(multi-GPU) as the main sampler. These produce a fresh random ordering of indices every epoch.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">DistributedSampler</span></code>, the <a class="reference internal" href="../autoapi/noether/data/samplers/index.html#noether.data.samplers.InterleavedSampler" title="noether.data.samplers.InterleavedSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">InterleavedSampler</span></code></a> calls
+<code class="docutils literal notranslate"><span class="pre">set_epoch(epoch)</span></code> at the start of each epoch to re-seed the shuffle. For <code class="docutils literal notranslate"><span class="pre">RandomSampler</span></code>,
+calling <code class="docutils literal notranslate"><span class="pre">iter()</span></code> produces a new permutation.</p>
+</section>
+</section>
+<section id="interleaved-sampling">
+<h2>Interleaved Sampling<a class="headerlink" href="#interleaved-sampling" title="Link to this heading">¶</a></h2>
+<p>A typical PyTorch training loop uses separate <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> instances for training and evaluation.
+The Noether Framework takes a different approach: it uses a <strong>single DataLoader</strong> that serves both
+training and evaluation batches. We call this <em>interleaved sampling</em>.</p>
+<section id="how-it-works">
+<h3>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h3>
+<p>The <a class="reference internal" href="../autoapi/noether/data/samplers/index.html#noether.data.samplers.InterleavedSampler" title="noether.data.samplers.InterleavedSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">InterleavedSampler</span></code></a> concatenates all datasets (train, test,
+test_repeat, etc.) into one <code class="docutils literal notranslate"><span class="pre">ConcatDataset</span></code>. It then produces a stream of index tuples from a
+single iterator:</p>
+<ol class="arabic simple">
+<li><p>Most of the time, it yields indices from the main (training) sampler (e.g. <code class="docutils literal notranslate"><span class="pre">RandomSampler</span></code>).</p></li>
+<li><p>When a configured interval is reached (e.g. end of an epoch), it <strong>pauses</strong> the training sampler,
+yields <strong>all</strong> indices from a callback sampler (e.g. <code class="docutils literal notranslate"><span class="pre">SequentialSampler</span></code> over the test set),
+and then <strong>resumes</strong> training where it left off.</p></li>
+</ol>
+<p>Because all datasets live in one <code class="docutils literal notranslate"><span class="pre">ConcatDataset</span></code>, callback indices are offset so they map to the
+correct sub-dataset. For example, if the training set has 789 samples, test index 0 becomes global
+index 789. An <code class="docutils literal notranslate"><span class="pre">_InterleavedCollator</span></code> inspects which sub-dataset each batch comes from and applies
+the corresponding pipeline (collation function).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The training loop just iterates -- the sampler handles the rest:</span>
+<span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">interleaved_loader</span><span class="p">:</span>
+    <span class="c1"># Most batches come from the training set.</span>
+    <span class="c1"># Periodically, evaluation batches are interleaved in.</span>
+    <span class="n">process</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="strict-type-safety-runtime-validation">
-<h3>3. Strict Type Safety &amp; Runtime Validation<a class="headerlink" href="#strict-type-safety-runtime-validation" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Catch errors at initialization, not during training.</p>
-<p>We use Python type hints (<code class="docutils literal notranslate"><span class="pre">list[torch.Tensor]</span></code>, <code class="docutils literal notranslate"><span class="pre">Literal</span></code>) and Pydantic validators to ensure invalid
-states are impossible to represent.</p>
-<p><strong>Implementation:</strong></p>
+<section id="configuring-callbacks">
+<h3>Configuring callbacks<a class="headerlink" href="#configuring-callbacks" title="Link to this heading">¶</a></h3>
+<p>Each callback sampler is wrapped in a
+<a class="reference internal" href="../autoapi/noether/data/samplers/index.html#noether.data.samplers.SamplerIntervalConfig" title="noether.data.samplers.SamplerIntervalConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">SamplerIntervalConfig</span></code></a> that specifies when it should run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SamplerIntervalConfig</span><span class="p">(</span>
+    <span class="n">sampler</span><span class="o">=</span><span class="n">SequentialSampler</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">),</span>
+    <span class="n">pipeline</span><span class="o">=</span><span class="n">eval_pipeline</span><span class="p">,</span>
+    <span class="n">every_n_epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Intervals can be epoch-based, update-based, or sample-based (mutually exclusive per callback).
+Each callback can use its own <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> and <code class="docutils literal notranslate"><span class="pre">batch_size</span></code>.</p>
+<p>Training stops when any configured limit is reached first: <code class="docutils literal notranslate"><span class="pre">max_epochs</span></code>, <code class="docutils literal notranslate"><span class="pre">max_updates</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">max_samples</span></code>. Resume is supported via <code class="docutils literal notranslate"><span class="pre">start_epoch</span></code>, <code class="docutils literal notranslate"><span class="pre">start_update</span></code>, or <code class="docutils literal notranslate"><span class="pre">start_sample</span></code>,
+including mid-epoch resume.</p>
+</section>
+</section>
+<section id="loading-and-performance">
+<h2>Loading and Performance<a class="headerlink" href="#loading-and-performance" title="Link to this heading">¶</a></h2>
+<p>Every <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> call reads the full tensor from disk via <code class="docutils literal notranslate"><span class="pre">torch.load</span></code>. There is currently no
+caching, memory-mapping, or partial-read support. For a ShapeNet Car volume property, this means
+loading ~28k points to ultimately keep 4,096 after point sampling.</p>
+<p>The <a class="reference internal" href="../autoapi/noether/data/pipeline/index.html#noether.data.pipeline.MultiStagePipeline" title="noether.data.pipeline.MultiStagePipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiStagePipeline</span></code></a> deep-copies every sample before applying
+processors, so the original dataset tensors are never mutated.</p>
+<p>Several mechanisms help keep loading efficient in practice:</p>
 <ul class="simple">
-<li><p><strong>Pydantic Validators:</strong> <code class="docutils literal notranslate"><span class="pre">&#64;model_validator(mode=&quot;after&quot;)</span></code> ensures fields like, for example, <code class="docutils literal notranslate"><span class="pre">ndim</span></code> are valid (e.g., only 1, 2,
-or 3).</p></li>
-<li><p><strong>Type Guards:</strong> Utility functions like <code class="docutils literal notranslate"><span class="pre">validate_path</span></code> allow strictly typed filesystem operations.</p></li>
+<li><p><strong>Property filtering</strong> via <code class="docutils literal notranslate"><span class="pre">excluded_properties</span></code> prevents loading tensors that are not needed for
+the current training run.</p></li>
+<li><p><strong>DataLoader workers</strong>: with <code class="docutils literal notranslate"><span class="pre">num_workers</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>, loading runs in parallel subprocesses overlapped
+with GPU computation. The default is <code class="docutils literal notranslate"><span class="pre">(#CPUs</span> <span class="pre">/</span> <span class="pre">#GPUs)</span> <span class="pre">-</span> <span class="pre">1</span></code> workers.</p></li>
+<li><p><strong>Preprocessing-time subsampling</strong>: for CAEML datasets, the stored files are already 10x smaller
+than the raw mesh thanks to the offline <code class="docutils literal notranslate"><span class="pre">subsample_factor</span></code>.</p></li>
+<li><p><strong>File sizes</strong>: for ShapeNet Car, individual <code class="docutils literal notranslate"><span class="pre">.pt</span></code> files are under 1 MB each, so per-read cost is
+modest.</p></li>
 </ul>
+<p>The design prioritizes simplicity and flexibility – any sample processor can operate on the full
+point cloud – over minimal I/O.</p>
 </section>
-<section id="defensive-programming">
-<h3>4. Defensive Programming<a class="headerlink" href="#defensive-programming" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Do not trust the input.</p>
-<p>The code frequently asserts state validity and checks types explicitly at runtime, even when type hints are present,
-to prevent silent failures in complex pipelines.</p>
-<p><strong>Implementation:</strong></p>
-<ul class="simple">
-<li><p>Explicit <code class="docutils literal notranslate"><span class="pre">isinstance</span></code> checks in factories.</p></li>
-<li><p>State guards (e.g., <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">self._stats</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code>) in stateful classes like <code class="docutils literal notranslate"><span class="pre">RunningMoments</span></code>.</p></li>
-</ul>
-</section>
-<section id="composition-over-inheritance">
-<h3>5. Composition over Inheritance<a class="headerlink" href="#composition-over-inheritance" title="Link to this heading">¶</a></h3>
-<p><strong>Principle:</strong> Complex behaviors are built by wrapping simple objects.
-We avoid deep inheritance trees. Instead, we use wrappers and composition to add functionality like caching,
-normalization, or logging.</p>
-<p><strong>Implementation:</strong>
-The <code class="docutils literal notranslate"><span class="pre">DatasetFactory</span></code> does not subclass datasets to add features; it wraps a base dataset with a list of
-<code class="docutils literal notranslate"><span class="pre">dataset_wrappers</span></code> (e.g., normalizers).</p>
-</section>
-<section id="limitations-trade-offs">
-<h3>Limitations &amp; Trade-offs<a class="headerlink" href="#limitations-trade-offs" title="Link to this heading">¶</a></h3>
-<p>While the architecture ensures robustness, it introduces specific trade-offs that developers must be aware of.</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt><strong>Tight Coupling of Configs to Code:</strong></dt><dd><p>Many classes accept a single <code class="docutils literal notranslate"><span class="pre">config</span></code> object in their <code class="docutils literal notranslate"><span class="pre">__init__</span></code>. This makes it difficult to use these modules
-“standalone” (e.g., in a notebook) without first constructing the specific Pydantic configuration object they
-expect.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>Circular Dependency Risks:</strong></dt><dd><p>Configuration schemas need to know about classes (for validation), and classes need to know about schemas
-(for typing). This occasionally forces the use of string-based class resolution instead of direct imports to avoid
-cycles.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>“Stringly” Typed Architecture:</strong></dt><dd><p>The reliance on string paths (e.g., <code class="docutils literal notranslate"><span class="pre">kind=&quot;torch.optim.SGD&quot;</span></code>) for instantiation means that automated
-refactoring tools (like “Rename Class” in IDEs) may miss references in YAML or Config files.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>Factory Indirection:</strong></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">Factory.instantiate</span></code> method contains implicit logic (e.g., checking kwargs for “kind” if the config is None).
-This “magic” can sometimes obscure how exactly an object is being created during debugging.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>Boilerplate Overhead:</strong></dt><dd><p>Adding a simple new feature often requires modifying three distinct files: the <strong>Implementation Class</strong>,
-the <strong>Configuration Schema</strong>, and the <strong>Factory</strong> logic. This favors stability over rapid prototyping speed.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><strong>Nested Configuration Schema complexity:</strong></dt><dd><p>In our root config schema, we define the modules needed for the <cite>Noether Framework</cite>, each module having their own config schema.
-This can lead to deeply nested configurations that can be hard to navigate and understand in the beginning, especially for new users.</p>
-</dd>
-</dl>
-</li>
-</ul>
-</section>
+<section id="dataset-statistics">
+<h2>Dataset Statistics<a class="headerlink" href="#dataset-statistics" title="Link to this heading">¶</a></h2>
+<p>Normalizing inputs and targets requires dataset-wide statistics (mean, standard deviation, min, max).
+We compute these in a single pass using Welford’s online algorithm via
+<a class="reference internal" href="../autoapi/noether/data/stats/index.html#noether.data.stats.RunningMoments" title="noether.data.stats.RunningMoments"><code class="xref py py-class docutils literal notranslate"><span class="pre">RunningMoments</span></code></a>, which operates in float64 for numerical stability
+and avoids loading the entire dataset into memory at once.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">noether-dataset-stats</span></code> CLI automates this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-dataset-stats<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--dataset_kind<span class="o">=</span>noether.data.datasets.cfd.shapenet_car.ShapeNetCarDataset<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--split<span class="o">=</span>train<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--root<span class="o">=</span>/path/to/data<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exclude_attributes<span class="o">=</span>surface_friction,volume_pressure,volume_vorticity
+</pre></div>
+</div>
+<p>The tool sets <code class="docutils literal notranslate"><span class="pre">compute_statistics=True</span></code> on the dataset, which disables <code class="docutils literal notranslate"><span class="pre">&#64;with_normalizers</span></code> so
+that raw (unnormalized) values are processed. The output statistics are then used to populate
+normalizer configs for training.</p>
 </section>
 </section>
 
@@ -939,23 +1069,23 @@ This can lead to deeply nested configurations that can be hard to navigate and u
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="key_concepts.html">
+          <a class="next-page" href="../tutorials/prerequisites.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Key Concepts</div>
+                <div class="title">Prerequisites</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="introduction_to_noether_framework.html">
+          <a class="prev-page" href="dataset_zoo.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Introduction to Noether Framework</div>
+                <div class="title">Noether Dataset Zoo</div>
                 
               </div>
             </a>
@@ -1013,16 +1143,30 @@ This can lead to deeply nested configurations that can be hard to navigate and u
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Design Principles and Limitations</a><ul>
-<li><a class="reference internal" href="#design-principles">Design Principles</a><ul>
-<li><a class="reference internal" href="#configuration-driven-development-cdd">1. Configuration-Driven Development (CDD)</a></li>
-<li><a class="reference internal" href="#factory-pattern-dynamic-instantiation">2. Factory Pattern &amp; Dynamic Instantiation</a></li>
-<li><a class="reference internal" href="#strict-type-safety-runtime-validation">3. Strict Type Safety &amp; Runtime Validation</a></li>
-<li><a class="reference internal" href="#defensive-programming">4. Defensive Programming</a></li>
-<li><a class="reference internal" href="#composition-over-inheritance">5. Composition over Inheritance</a></li>
-<li><a class="reference internal" href="#limitations-trade-offs">Limitations &amp; Trade-offs</a></li>
+<li><a class="reference internal" href="#">Understanding the Data Pipeline</a><ul>
+<li><a class="reference internal" href="#from-disk-to-batch">From Disk to Batch</a></li>
+<li><a class="reference internal" href="#the-decomposed-getitem-pattern">The Decomposed <code class="docutils literal notranslate"><span class="pre">getitem</span></code> Pattern</a></li>
+<li><a class="reference internal" href="#point-sampling">Point Sampling</a><ul>
+<li><a class="reference internal" href="#two-levels-of-subsampling">Two Levels of Subsampling</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#epochs-and-subsampling">Epochs and Subsampling</a><ul>
+<li><a class="reference internal" href="#point-level-coverage">Point-level coverage</a></li>
+<li><a class="reference internal" href="#repeatwrapper-for-robust-evaluation">RepeatWrapper for robust evaluation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#shuffling">Shuffling</a><ul>
+<li><a class="reference internal" href="#dataset-level-shuffle">Dataset-level shuffle</a></li>
+<li><a class="reference internal" href="#sampler-level-shuffle">Sampler-level shuffle</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interleaved-sampling">Interleaved Sampling</a><ul>
+<li><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li><a class="reference internal" href="#configuring-callbacks">Configuring callbacks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#loading-and-performance">Loading and Performance</a></li>
+<li><a class="reference internal" href="#dataset-statistics">Dataset Statistics</a></li>
 </ul>
 </li>
 </ul>
