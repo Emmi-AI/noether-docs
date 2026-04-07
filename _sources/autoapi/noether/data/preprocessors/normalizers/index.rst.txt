@@ -12,6 +12,7 @@ Classes
    noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer
    noether.data.preprocessors.normalizers.MeanStdNormalization
    noether.data.preprocessors.normalizers.PositionNormalizer
+   noether.data.preprocessors.normalizers.FieldNormalizer
 
 
 Module Contents
@@ -100,5 +101,33 @@ Module Contents
 
 
    .. py:attribute:: resizing_scale
+
+
+.. py:class:: FieldNormalizer(normalizer_config, statistics, **kwargs)
+
+   Bases: :py:obj:`noether.data.preprocessors.PreProcessor`
+
+
+   Preprocessor that normalizes a field based on a specified strategy and dataset statistics.
+
+   :param normalizer_config: Configuration containing the normalization strategy and logscale flag. See :class:`~noether.core.schemas.normalizers.FieldNormalizerConfig` for details.
+   :param statistics: A dictionary containing the dataset statistics needed for normalization (e.g., mean, std, raw_pos_min, raw_pos_max).
+   :param \*\*kwargs: Additional arguments passed to the parent class.
+
+   :raises ValueError: If the required statistics for the chosen strategy are not present in the `statistics` dictionary.
+   :raises ValueError: If the normalization strategy is not supported.
+
+
+   .. py:attribute:: normalizer
+      :type:  noether.data.preprocessors.PreProcessor
+
+
+   .. py:method:: denormalize(x)
+
+      Denormalizes the input data. This method should be overridden by subclasses if denormalization is supported.
+      If denormalization is not supported, it raises NotImplementedError or decide to implement the identity function.
+
+      :param x: The input tensor to denormalize.
+
 
 

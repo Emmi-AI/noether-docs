@@ -107,7 +107,7 @@ Package Contents
 
 
    .. py:property:: normalizer_spec
-      :type: dict[str, str | tuple[str, dict[str, Any]]]
+      :type: dict[str, noether.core.schemas.normalizers.FieldNormalizerConfig]
 
       :abstractmethod:
 
@@ -115,12 +115,20 @@ Package Contents
       Declarative normalizer mapping.
 
       Keys are data source names (e.g., ``"surface_pressure"``).
-      Values are either:
-          - ``"mean_std"`` - auto-builds MeanStdNormalizerConfig from stats
-          - ``("position", {"scale": 1000})`` - auto-builds PositionNormalizerConfig
+      Values are ``FieldNormalizerConfig`` instances that declare the normalization strategy.
+      Statistics are resolved at runtime by the dataset from its ``STATS_FILE``.
 
-      Stats are resolved by convention: for a key ``"surface_pressure"`` with type ``"mean_std"``, the builder
-      looks up ``"surface_pressure_mean"`` and ``"surface_pressure_std"`` in ``dataset_statistics``.
+      Example::
+
+          {
+              "surface_pressure": FieldNormalizerConfig(strategy="mean_std"),
+              "surface_position": FieldNormalizerConfig(strategy="position", scale=1000),
+              "volume_vorticity": FieldNormalizerConfig(
+                  strategy="mean_std",
+                  logscale=True,
+                  stat_keys={"mean": "volume_vorticity_logscale_mean", "std": "volume_vorticity_logscale_std"},
+              ),
+          }
 
 
    .. py:property:: excluded_properties
@@ -171,9 +179,8 @@ Package Contents
 
       Build normalizer configs from the declarative ``normalizer_spec``.
 
-      Uses naming conventions to look up statistics:
-          - ``"mean_std"`` -> looks for ``{key}_mean`` and ``{key}_std``
-          - ``"position"`` -> looks for ``raw_pos_min`` and ``raw_pos_max``
+      Wraps each ``FieldNormalizerConfig`` from the spec into a single-element list,
+      matching the format expected by ``DatasetBaseConfig.dataset_normalizers``.
 
       :returns: Dict mapping data source names to lists of normalizer configs.
 

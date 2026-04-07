@@ -1,0 +1,8 @@
+train_wing.yaml
+===============
+
+``recipes/aero_cfd/configs/train_wing.yaml``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/configs/train_wing.yaml
+   :language: yaml
+   :linenos:

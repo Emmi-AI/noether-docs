@@ -1,0 +1,8 @@
+train_drivaerml.job
+===================
+
+``recipes/aero_cfd/jobs/train_drivaerml.job``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/jobs/train_drivaerml.job
+   :language: text
+   :linenos:

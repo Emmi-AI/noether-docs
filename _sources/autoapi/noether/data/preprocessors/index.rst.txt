@@ -46,7 +46,7 @@ Functions
 Package Contents
 ----------------
 
-.. py:class:: PreProcessor(normalization_key)
+.. py:class:: PreProcessor(normalization_key, **kwargs)
 
    Base class for all data preprocessors.
    Example:

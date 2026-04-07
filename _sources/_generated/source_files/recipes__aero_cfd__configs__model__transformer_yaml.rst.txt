@@ -1,0 +1,8 @@
+transformer.yaml
+================
+
+``recipes/aero_cfd/configs/model/transformer.yaml``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/configs/model/transformer.yaml
+   :language: yaml
+   :linenos:

@@ -1,0 +1,8 @@
+train_shapenet.yaml
+===================
+
+``recipes/aero_cfd/configs/train_shapenet.yaml``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/configs/train_shapenet.yaml
+   :language: yaml
+   :linenos:

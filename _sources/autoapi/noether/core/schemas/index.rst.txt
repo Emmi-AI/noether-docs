@@ -10,7 +10,6 @@ Submodules
 .. toctree::
    :maxdepth: 1
 
-   /autoapi/noether/core/schemas/aero/index
    /autoapi/noether/core/schemas/callbacks/index
    /autoapi/noether/core/schemas/dataset/index
    /autoapi/noether/core/schemas/filemap/index
@@ -62,6 +61,7 @@ Classes
    noether.core.schemas.PreviousRunInitializerConfig
    noether.core.schemas.ResumeInitializerConfig
    noether.core.schemas.ModelBaseConfig
+   noether.core.schemas.FieldNormalizerConfig
    noether.core.schemas.OptimizerConfig
    noether.core.schemas.ParamGroupModifierConfig
    noether.core.schemas.ConstantScheduleConfig
@@ -983,6 +983,74 @@ Package Contents
 
 
 .. py:data:: AnyNormalizer
+
+.. py:class:: FieldNormalizerConfig(/, **data)
+
+   Bases: :py:obj:`NormalizerConfig`
+
+
+   Declarative normalizer config that references dataset statistics by convention.
+
+   Instead of embedding numeric values (mean, std, etc.) directly, this config declares
+   *how* to normalize a field. The actual statistics are resolved at runtime from the
+   dataset's statistics file.
+
+   For ``"mean_std"`` normalization, the builder looks up ``{field}_mean`` and
+   ``{field}_std`` in the dataset statistics (customizable via ``stat_keys``).
+
+   For ``"position"`` normalization, the builder looks up ``raw_pos_min`` and
+   ``raw_pos_max`` (customizable via ``stat_keys``).
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: 'noether.data.preprocessors.normalizers.FieldNormalizer'
+
+
+      Kind of normalizer to use, i.e. class path
+
+
+   .. py:attribute:: strategy
+      :type:  Literal['mean_std', 'position']
+      :value: 'mean_std'
+
+
+      Normalization strategy. ``"mean_std"`` for mean/std normalization, ``"position"`` for position normalization.
+
+
+   .. py:attribute:: logscale
+      :type:  bool
+      :value: False
+
+
+      If true, the input data is converted to log scale before normalization. Only used for ``"mean_std"``.
+
+
+   .. py:attribute:: stat_keys
+      :type:  dict[str, str] | None
+      :value: None
+
+
+      ``{"mean": "custom_mean_key", "std": "custom_std_key"}``.
+      For ``"position"``: ``{"min": "custom_min_key", "max": "custom_max_key"}``.
+
+      :type: Optional overrides for statistic key lookup. For ``"mean_std"``
+
+
+   .. py:attribute:: scale
+      :type:  float
+      :value: None
+
+
+      Scaling factor for position normalization. Coordinates are scaled to [0, scale]. Only used for ``"position"``.
+
 
 .. py:class:: OptimizerConfig(/, **data)
 

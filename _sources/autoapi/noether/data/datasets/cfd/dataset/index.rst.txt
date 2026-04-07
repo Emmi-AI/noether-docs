@@ -81,6 +81,12 @@ Module Contents
 
 
 
+   .. py:method:: getitem_surface_sdf(idx)
+
+      Retrieve signed distance field at surface points. This is always 0.0, but we still create a sample processor for it to be able to easily concatenate it with the surface normals.
+
+
+
    .. py:method:: getitem_volume_normals(idx)
 
       Retrieve normal vectors at volume points.

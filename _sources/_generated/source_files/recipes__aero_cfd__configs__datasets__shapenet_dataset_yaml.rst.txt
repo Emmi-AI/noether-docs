@@ -1,0 +1,8 @@
+shapenet_dataset.yaml
+=====================
+
+``recipes/aero_cfd/configs/datasets/shapenet_dataset.yaml``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/configs/datasets/shapenet_dataset.yaml
+   :language: yaml
+   :linenos:

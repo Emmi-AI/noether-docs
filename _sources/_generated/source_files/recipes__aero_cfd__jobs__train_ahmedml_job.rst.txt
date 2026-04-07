@@ -1,0 +1,8 @@
+train_ahmedml.job
+=================
+
+``recipes/aero_cfd/jobs/train_ahmedml.job``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/jobs/train_ahmedml.job
+   :language: text
+   :linenos:

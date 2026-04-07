@@ -121,6 +121,17 @@ Package Contents
 
 
 
+   .. py:method:: fetch_statistics()
+
+      Load and cache dataset statistics from the dataset's STATS_FILE.
+
+      By default looks for a ``STATS_FILE`` class attribute on the dataset class (or its ancestors).
+      The file should be a YAML file mapping stat names to scalar or list values.
+
+      :returns: Dict mapping stat names to float values or lists of floats.
+
+
+
    .. py:property:: pipeline
       :type: noether.data.pipeline.Collator | None
 

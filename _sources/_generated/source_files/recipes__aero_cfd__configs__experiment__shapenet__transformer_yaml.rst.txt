@@ -1,0 +1,8 @@
+transformer.yaml
+================
+
+``recipes/aero_cfd/configs/experiment/shapenet/transformer.yaml``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/configs/experiment/shapenet/transformer.yaml
+   :language: yaml
+   :linenos:

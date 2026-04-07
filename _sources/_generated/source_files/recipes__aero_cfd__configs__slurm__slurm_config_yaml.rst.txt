@@ -1,0 +1,8 @@
+slurm_config.yaml
+=================
+
+``recipes/aero_cfd/configs/slurm/slurm_config.yaml``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/configs/slurm/slurm_config.yaml
+   :language: yaml
+   :linenos:

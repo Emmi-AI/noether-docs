@@ -1,0 +1,8 @@
+shapenet_dataset_normalizers.yaml
+=================================
+
+``recipes/aero_cfd/configs/dataset_normalizers/shapenet_dataset_normalizers.yaml``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/configs/dataset_normalizers/shapenet_dataset_normalizers.yaml
+   :language: yaml
+   :linenos:
