@@ -1034,7 +1034,7 @@ directly in the <code class="docutils literal notranslate"><span class="pre">Hyd
         <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;noether.data.datasets.cfd.ShapeNetCarDataset&quot;</span><span class="p">,</span>
         <span class="n">root</span><span class="o">=</span><span class="n">dataset_root</span><span class="p">,</span>
         <span class="n">pipeline</span><span class="o">=</span><span class="n">AeroCFDPipelineConfig</span><span class="p">(</span>
-            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tutorial.pipeline.AeroMultistagePipeline&quot;</span><span class="p">,</span>
+            <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;recipes.aero_cfd.pipeline.multistage_pipelines.aero_multistage.AeroMultistagePipeline&quot;</span><span class="p">,</span>
             <span class="n">num_surface_points</span><span class="o">=</span><span class="mi">3586</span><span class="p">,</span> <span class="c1"># max = 3586</span>
             <span class="n">num_volume_points</span><span class="o">=</span><span class="mi">4096</span><span class="p">,</span>   <span class="c1"># max = 28504</span>
             <span class="n">num_surface_queries</span><span class="o">=</span><span class="mi">3586</span><span class="p">,</span>
@@ -1065,7 +1065,7 @@ config-driven workflow.</p>
     <span class="n">save_and_ema_every_n_epochs</span> <span class="o">=</span> <span class="mi">10</span>
 
     <span class="k">return</span> <span class="n">AerodynamicsCfdTrainerConfig</span><span class="p">(</span>
-        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tutorial.trainers.AutomotiveAerodynamicsCFDTrainer&quot;</span><span class="p">,</span>
+        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;recipes.aero_cfd.trainers.aerodynamics_cfd.AerodynamicsCFDTrainer&quot;</span><span class="p">,</span>
         <span class="n">surface_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
         <span class="n">volume_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
         <span class="n">surface_pressure_weight</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
@@ -1097,14 +1097,14 @@ config-driven workflow.</p>
             <span class="p">),</span>
             <span class="c1"># test loss</span>
             <span class="n">AeroMetricsCallbackConfig</span><span class="p">(</span>
-                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tutorial.callbacks.AeroMetricsCallback&quot;</span><span class="p">,</span>
+                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;recipes.aero_cfd.callbacks.aero_metrics.AeroMetricsCallback&quot;</span><span class="p">,</span>
                 <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">every_n_epochs</span><span class="o">=</span><span class="n">loss_and_log_every_n_epochs</span><span class="p">,</span>
                 <span class="n">dataset_key</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
                 <span class="n">forward_properties</span><span class="o">=</span><span class="n">model_forward_properties</span><span class="p">,</span>
             <span class="p">),</span>
             <span class="n">AeroMetricsCallbackConfig</span><span class="p">(</span>
-                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tutorial.callbacks.AeroMetricsCallback&quot;</span><span class="p">,</span>
+                <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;recipes.aero_cfd.callbacks.aero_metrics.AeroMetricsCallback&quot;</span><span class="p">,</span>
                 <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
                 <span class="n">every_n_epochs</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
                 <span class="n">dataset_key</span><span class="o">=</span><span class="s2">&quot;test_repeat&quot;</span><span class="p">,</span>
