@@ -36,7 +36,7 @@ Module Contents
 
 
    .. py:attribute:: data_specs
-      :type:  noether.core.schemas.dataset.AeroDataSpecs
+      :type:  noether.core.schemas.dataset.ModelDataSpecs
 
 
 .. py:class:: AeroTransolverConfig(/, **data)
@@ -55,7 +55,7 @@ Module Contents
 
 
    .. py:attribute:: data_specs
-      :type:  noether.core.schemas.dataset.AeroDataSpecs
+      :type:  noether.core.schemas.dataset.ModelDataSpecs
 
 
 .. py:class:: AeroTransformer(model_config, **kwargs)
@@ -167,7 +167,8 @@ Module Contents
    Aerodynamic UPT wrapper.
 
    Combines separate surface/volume query positions into the single ``query_position``
-   that the core UPT expects, and splits outputs using ``AeroDataSpecs``.
+   that the core UPT expects, and splits outputs using ``ModelDataSpecs``.
+   Supports optional surface/volume bias layers and physics feature projection on queries.
 
    Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
 
@@ -186,7 +187,13 @@ Module Contents
    .. py:attribute:: data_specs
 
 
-   .. py:method:: forward(surface_position_batch_idx, surface_position_supernode_idx, surface_position, surface_query_position, volume_query_position)
+   .. py:attribute:: use_bias_layers
+
+
+   .. py:attribute:: use_physics_features
+
+
+   .. py:method:: forward(surface_position_batch_idx, surface_position_supernode_idx, surface_position, surface_query_position, volume_query_position, surface_features = None, volume_features = None)
 
 
 .. py:class:: AeroABUPT(model_config, **kwargs)
@@ -197,6 +204,8 @@ Module Contents
    Aerodynamic Anchored-Branched UPT wrapper.
 
    Bridges the factory's ``(config, **kwargs)`` instantiation pattern to the core model.
+   Converts flat kwargs (``surface_anchor_position``, ``volume_anchor_position``, ...)
+   into the domain-dict format expected by :class:`AnchoredBranchedUPT`.
 
    Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
 

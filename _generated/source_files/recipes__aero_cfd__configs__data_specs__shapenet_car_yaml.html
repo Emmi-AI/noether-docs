@@ -829,17 +829,20 @@
 <h1>shapenet_car.yaml<a class="headerlink" href="#shapenet-car-yaml" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">recipes/aero_cfd/configs/data_specs/shapenet_car.yaml</span></code></p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">position_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="linenos"> 2</span><span class="nt">surface_feature_dim</span><span class="p">:</span>
-<span class="linenos"> 3</span><span class="w">  </span><span class="nt">surface_sdf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="linenos"> 4</span><span class="w">  </span><span class="nt">surface_normals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="linenos"> 5</span><span class="nt">volume_feature_dim</span><span class="p">:</span>
-<span class="linenos"> 6</span><span class="w">  </span><span class="nt">volume_sdf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="linenos"> 7</span><span class="w">  </span><span class="nt">volume_normals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="linenos"> 8</span><span class="nt">surface_output_dims</span><span class="p">:</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="nt">pressure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="linenos">10</span><span class="nt">volume_output_dims</span><span class="p">:</span>
-<span class="linenos">11</span><span class="w">  </span><span class="nt">velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="linenos">12</span><span class="nt">use_physics_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${trainer.use_physics_features}</span>
+<span class="linenos"> 2</span><span class="nt">use_physics_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${trainer.use_physics_features}</span>
+<span class="linenos"> 3</span><span class="nt">domains</span><span class="p">:</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="nt">surface</span><span class="p">:</span>
+<span class="linenos"> 5</span><span class="w">    </span><span class="nt">output_dims</span><span class="p">:</span>
+<span class="linenos"> 6</span><span class="w">      </span><span class="nt">pressure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="nt">feature_dim</span><span class="p">:</span>
+<span class="linenos"> 8</span><span class="w">      </span><span class="nt">surface_sdf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="linenos"> 9</span><span class="w">      </span><span class="nt">surface_normals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nt">volume</span><span class="p">:</span>
+<span class="linenos">11</span><span class="w">    </span><span class="nt">output_dims</span><span class="p">:</span>
+<span class="linenos">12</span><span class="w">      </span><span class="nt">velocity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="linenos">13</span><span class="w">    </span><span class="nt">feature_dim</span><span class="p">:</span>
+<span class="linenos">14</span><span class="w">      </span><span class="nt">volume_sdf</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="linenos">15</span><span class="w">      </span><span class="nt">volume_normals</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </pre></div>
 </div>
 </section>

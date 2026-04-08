@@ -46,24 +46,23 @@ Module Contents
    .. py:attribute:: prediction_layer
 
 
-   .. py:method:: compute_rope_args(surface_position_batch_idx, surface_position, surface_position_supernode_idx, query_position)
+   .. py:method:: compute_rope_args(geometry_batch_idx, geometry_position, geometry_supernode_idx, query_position)
 
-      Compute the RoPE frequency arguments for the surface_position and query_position. If we don't use RoPE,
-      return empty dicts.
+      Compute the RoPE frequency arguments for the geometry and query positions.
+      If RoPE is not used, return empty dicts.
 
 
 
-   .. py:method:: forward(surface_position_batch_idx, surface_position_supernode_idx, surface_position, query_position)
+   .. py:method:: forward(geometry_batch_idx, geometry_supernode_idx, geometry_position, query_position)
 
       Forward pass of the UPT model.
 
-      :param surface_position_batch_idx: Batch indices for the surface positions, since the surface positions are
-                                         a sparse tensor for the supernode pooling.
-      :param surface_position_supernode_idx: Supernode indices for the surface positions.
-      :param surface_position: Input coordinates of the surface points.
+      :param geometry_batch_idx: Batch indices for the geometry positions.
+      :param geometry_supernode_idx: Supernode indices for the geometry positions.
+      :param geometry_position: Input coordinates of the geometry mesh points.
       :param query_position: Input coordinates of the query points.
 
-      :returns: Output tensor containing the predictions for the surface and volume fields, sliced according to the data specifications.
+      :returns: Output tensor containing the predictions at query positions.
       :rtype: torch.Tensor
 
 

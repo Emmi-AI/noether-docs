@@ -917,23 +917,22 @@ validated to form a valid model.</p>
 <span class="sig-name descname"><span class="pre">physics_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'self'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'shared'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.physics_blocks" title="Link to this definition">¶</a></dt>
 <dd><p>Types of physics blocks to use in the model.
 Options are “self”, “cross”, “joint”, and “perceiver”.
-Self: Self-attention within a branch (surface or volume). Attention weights are shared between branches.
-Cross: Cross-attention between surface and volume branches. Weights are shared between branches.
-Joint: Joint attention over surface and volume points. I.e. full self-attention over both surface and volume points.
+Self: Self-attention within a branch. Attention weights are shared between all domains.
+Cross: Cross-attention between domains. Each domain attends to all other domains’ anchors.
+Joint: Joint attention over all domain points. Full self-attention over all points.
 Perceiver: Perceiver-style cross-attention to geometry encoding.</p>
 <p>Note: “shared” is a deprecated alias for “self” and will be removed in a future release.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.num_surface_blocks">
-<span class="sig-name descname"><span class="pre">num_surface_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.num_surface_blocks" title="Link to this definition">¶</a></dt>
-<dd><p>Number of transformer blocks in the surface decoder. Weights are not shared with the volume decoder.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.num_volume_blocks">
-<span class="sig-name descname"><span class="pre">num_volume_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.num_volume_blocks" title="Link to this definition">¶</a></dt>
-<dd><p>Number of transformer blocks in the volume decoder. Weights are not shared with the surface decoder.</p>
+<dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.num_domain_decoder_blocks">
+<span class="sig-name descname"><span class="pre">num_domain_decoder_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.num_domain_decoder_blocks" title="Link to this definition">¶</a></dt>
+<dd><p>2, “volume”: 2}.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number of final domain-specific decoder blocks with self attention and no weight sharing, e.g. {“surface”</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py attribute">
@@ -950,7 +949,7 @@ Perceiver: Perceiver-style cross-attention to geometry encoding.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.data_specs">
-<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs" title="noether.core.schemas.dataset.AeroDataSpecs"><span class="pre">noether.core.schemas.dataset.AeroDataSpecs</span></a></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.data_specs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><span class="pre">noether.core.schemas.dataset.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd><p>Data specifications for the model.</p>
 </dd></dl>
 
@@ -1017,21 +1016,12 @@ Perceiver: Perceiver-style cross-attention to geometry encoding.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.surface_decoder_config">
-<span class="sig-name descname"><span class="pre">surface_decoder_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.surface_decoder_config" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.domain_decoder_configs">
+<span class="sig-name descname"><span class="pre">domain_decoder_configs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.domain_decoder_configs" title="Link to this definition">¶</a></dt>
+<dd><p>Per-domain decoder projection configs, keyed by domain name.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../modules/layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig">noether.core.schemas.modules.layers.LinearProjectionConfig</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.models.AnchorBranchedUPTConfig.volume_decoder_config">
-<span class="sig-name descname"><span class="pre">volume_decoder_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.volume_decoder_config" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../modules/layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig">noether.core.schemas.modules.layers.LinearProjectionConfig</a> | None</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="../modules/layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig">noether.core.schemas.modules.layers.LinearProjectionConfig</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1285,7 +1275,7 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.UPTConfig.data_specs">
-<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs" title="noether.core.schemas.dataset.AeroDataSpecs"><span class="pre">noether.core.schemas.dataset.AeroDataSpecs</span></a></em><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.data_specs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><span class="pre">noether.core.schemas.dataset.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1312,17 +1302,6 @@ validated to form a valid model.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.models.UPTConfig.validate_rope_usage">
 <span class="sig-name descname"><span class="pre">validate_rope_usage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.validate_rope_usage" title="Link to this definition">¶</a></dt>
 <dd><p>Ensure that if use_rope is True in the main config, it is also True in the approximator_config.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.models.UPTConfig" title="noether.core.schemas.models.UPTConfig">UPTConfig</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.models.UPTConfig.update_supernode_pooling_config">
-<span class="sig-name descname"><span class="pre">update_supernode_pooling_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.UPTConfig.update_supernode_pooling_config" title="Link to this definition">¶</a></dt>
-<dd><p>Inject shared fields into supernode_pooling_config.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.models.UPTConfig" title="noether.core.schemas.models.UPTConfig">UPTConfig</a></p>
@@ -1449,8 +1428,7 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.geometry_depth"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.geometry_depth</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.hidden_dim</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.physics_blocks"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.physics_blocks</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.num_surface_blocks"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.num_surface_blocks</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.num_volume_blocks"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.num_volume_blocks</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.num_domain_decoder_blocks"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.num_domain_decoder_blocks</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.init_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.drop_path_rate"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.drop_path_rate</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.data_specs"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.data_specs</span></code></a></li>
@@ -1460,8 +1438,7 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.pos_embed_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.pos_embed_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.bias_mlp_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.bias_mlp_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.perceiver_block_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.perceiver_block_config()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.surface_decoder_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.surface_decoder_config()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.volume_decoder_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.volume_decoder_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.domain_decoder_configs"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.domain_decoder_configs()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.AnchorBranchedUPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.validate_parameters()</span></code></a></li>
 </ul>
 </li>
@@ -1508,7 +1485,6 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.models.UPTConfig.linear_output_projection_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.linear_output_projection_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.UPTConfig.rope_frequency_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.rope_frequency_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.UPTConfig.validate_rope_usage"><code class="docutils literal notranslate"><span class="pre">UPTConfig.validate_rope_usage()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.models.UPTConfig.update_supernode_pooling_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.update_supernode_pooling_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.UPTConfig.pos_embedding_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.pos_embedding_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.UPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">UPTConfig.validate_parameters()</span></code></a></li>
 </ul>

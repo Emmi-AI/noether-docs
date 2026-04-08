@@ -872,7 +872,7 @@ validated to form a valid model.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroTransformerConfig.data_specs">
-<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs" title="noether.core.schemas.dataset.AeroDataSpecs"><span class="pre">noether.core.schemas.dataset.AeroDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransformerConfig.data_specs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><span class="pre">noether.core.schemas.dataset.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransformerConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -893,7 +893,7 @@ validated to form a valid model.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroTransolverConfig.data_specs">
-<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs" title="noether.core.schemas.dataset.AeroDataSpecs"><span class="pre">noether.core.schemas.dataset.AeroDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransolverConfig.data_specs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><span class="pre">noether.core.schemas.dataset.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransolverConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1075,7 +1075,8 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <dd><p>Bases: <a class="reference internal" href="../../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
 <p>Aerodynamic UPT wrapper.</p>
 <p>Combines separate surface/volume query positions into the single <code class="docutils literal notranslate"><span class="pre">query_position</span></code>
-that the core UPT expects, and splits outputs using <code class="docutils literal notranslate"><span class="pre">AeroDataSpecs</span></code>.</p>
+that the core UPT expects, and splits outputs using <code class="docutils literal notranslate"><span class="pre">ModelDataSpecs</span></code>.
+Supports optional surface/volume bias layers and physics feature projection on queries.</p>
 <p>Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1100,9 +1101,19 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <span class="sig-name descname"><span class="pre">data_specs</span></span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroUPT.data_specs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroUPT.use_bias_layers">
+<span class="sig-name descname"><span class="pre">use_bias_layers</span></span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroUPT.use_bias_layers" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroUPT.use_physics_features">
+<span class="sig-name descname"><span class="pre">use_physics_features</span></span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroUPT.use_physics_features" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroUPT.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface_position_batch_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_position_supernode_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_query_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume_query_position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroUPT.forward" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface_position_batch_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_position_supernode_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_query_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume_query_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">volume_features</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroUPT.forward" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1111,6 +1122,8 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <li><p><strong>surface_position</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
 <li><p><strong>surface_query_position</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
 <li><p><strong>volume_query_position</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
+<li><p><strong>surface_features</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>volume_features</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> | </em><em>None</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1126,7 +1139,9 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.aerodynamics.</span></span><span class="sig-name descname"><span class="pre">AeroABUPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroABUPT" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
 <p>Aerodynamic Anchored-Branched UPT wrapper.</p>
-<p>Bridges the factory’s <code class="docutils literal notranslate"><span class="pre">(config,</span> <span class="pre">**kwargs)</span></code> instantiation pattern to the core model.</p>
+<p>Bridges the factory’s <code class="docutils literal notranslate"><span class="pre">(config,</span> <span class="pre">**kwargs)</span></code> instantiation pattern to the core model.
+Converts flat kwargs (<code class="docutils literal notranslate"><span class="pre">surface_anchor_position</span></code>, <code class="docutils literal notranslate"><span class="pre">volume_anchor_position</span></code>, …)
+into the domain-dict format expected by <code class="xref py py-class docutils literal notranslate"><span class="pre">AnchoredBranchedUPT</span></code>.</p>
 <p>Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1280,6 +1295,8 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <li><a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroUPT"><code class="docutils literal notranslate"><span class="pre">AeroUPT</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroUPT.backbone"><code class="docutils literal notranslate"><span class="pre">AeroUPT.backbone</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroUPT.data_specs"><code class="docutils literal notranslate"><span class="pre">AeroUPT.data_specs</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroUPT.use_bias_layers"><code class="docutils literal notranslate"><span class="pre">AeroUPT.use_bias_layers</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroUPT.use_physics_features"><code class="docutils literal notranslate"><span class="pre">AeroUPT.use_physics_features</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroUPT.forward"><code class="docutils literal notranslate"><span class="pre">AeroUPT.forward()</span></code></a></li>
 </ul>
 </li>

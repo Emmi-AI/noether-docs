@@ -874,8 +874,11 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldDimSpec</span></code></a></p></td>
 <td><p>A specification for a group of named data fields and their dimensions.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs" title="noether.core.schemas.dataset.AeroDataSpecs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroDataSpecs</span></code></a></p></td>
-<td><p>Defines the complete data specification for a surrogate model.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec" title="noether.core.schemas.dataset.DomainDataSpec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DomainDataSpec</span></code></a></p></td>
+<td><p>Data specification for a single domain (e.g., surface, volume, wake).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelDataSpecs</span></code></a></p></td>
+<td><p>Base data specification for models that operate on arbitrary named domains.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1220,10 +1223,10 @@ validated to form a valid model.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">AeroDataSpecs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.DomainDataSpec">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">DomainDataSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.DomainDataSpec" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Defines the complete data specification for a surrogate model.</p>
+<p>Data specification for a single domain (e.g., surface, volume, wake).</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
 validated to form a valid model.</p>
@@ -1234,45 +1237,68 @@ validated to form a valid model.</p>
 </dd>
 </dl>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.position_dim">
-<span class="sig-name descname"><span class="pre">position_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.position_dim" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.DomainDataSpec.output_dims">
+<span class="sig-name descname"><span class="pre">output_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.DomainDataSpec.output_dims" title="Link to this definition">¶</a></dt>
+<dd><p>1, “velocity”: 3}.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Output fields and their dimensions for this domain, e.g. {“pressure”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.DomainDataSpec.feature_dim">
+<span class="sig-name descname"><span class="pre">feature_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DomainDataSpec.feature_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Input feature fields and their dimensions for this domain.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">ModelDataSpecs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Base data specification for models that operate on arbitrary named domains.</p>
+<p>This is the minimal interface that model configs need from data specifications:
+position dimensions, available conditioning, and per-domain data descriptions.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.position_dim">
+<span class="sig-name descname"><span class="pre">position_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.position_dim" title="Link to this definition">¶</a></dt>
 <dd><p>Dimension of the input position vectors.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.surface_feature_dim">
-<span class="sig-name descname"><span class="pre">surface_feature_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_feature_dim" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.conditioning_dims">
+<span class="sig-name descname"><span class="pre">conditioning_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.conditioning_dims" title="Link to this definition">¶</a></dt>
+<dd><p>Available conditioning features and their dimensions.</p>
+</dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.volume_feature_dim">
-<span class="sig-name descname"><span class="pre">volume_feature_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_feature_dim" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.domains">
+<span class="sig-name descname"><span class="pre">domains</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec" title="noether.core.schemas.dataset.DomainDataSpec"><span class="pre">DomainDataSpec</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.domains" title="Link to this definition">¶</a></dt>
+<dd><p>Per-domain data specifications keyed by domain name.</p>
+</dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.surface_output_dims">
-<span class="sig-name descname"><span class="pre">surface_output_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_output_dims" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.volume_output_dims">
-<span class="sig-name descname"><span class="pre">volume_output_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_output_dims" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.conditioning_dims">
-<span class="sig-name descname"><span class="pre">conditioning_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.conditioning_dims" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.use_physics_features">
-<span class="sig-name descname"><span class="pre">use_physics_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.use_physics_features" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.use_physics_features">
+<span class="sig-name descname"><span class="pre">use_physics_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.use_physics_features" title="Link to this definition">¶</a></dt>
+<dd><p>Whether physics features are used as input.</p>
+</dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.surface_feature_dim_total">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">surface_feature_dim_total</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_feature_dim_total" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates the total surface feature dimension.</p>
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.total_output_dim">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">total_output_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.total_output_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the total output dimension across all domains.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
@@ -1281,31 +1307,9 @@ validated to form a valid model.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.volume_feature_dim_total">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">volume_feature_dim_total</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_feature_dim_total" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates the total volume feature dimension.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.total_output_dim">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">total_output_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.total_output_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates the total output dimension by summing surface and volume output dimensions.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.volume_targets">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">volume_targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_targets" title="Link to this definition">¶</a></dt>
-<dd><p>Returns the list of volume target field names.</p>
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.all_targets">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all_targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.all_targets" title="Link to this definition">¶</a></dt>
+<dd><p>Returns all target field names across all domains, prefixed by domain name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)">set</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
@@ -1314,31 +1318,9 @@ validated to form a valid model.</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.surface_targets">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">surface_targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_targets" title="Link to this definition">¶</a></dt>
-<dd><p>Returns the list of surface target field names.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)">set</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.surface_features">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">surface_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_features" title="Link to this definition">¶</a></dt>
-<dd><p>Returns the list of surface feature field names.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)">set</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.AeroDataSpecs.volume_features">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">volume_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_features" title="Link to this definition">¶</a></dt>
-<dd><p>Returns the list of volume feature field names.</p>
+<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.all_features">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.all_features" title="Link to this definition">¶</a></dt>
+<dd><p>Returns all feature field names across all domains.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)">set</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
@@ -1498,21 +1480,19 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec.items"><code class="docutils literal notranslate"><span class="pre">FieldDimSpec.items()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.position_dim"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.position_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_feature_dim"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.surface_feature_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_feature_dim"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.volume_feature_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_output_dims"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.surface_output_dims</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_output_dims"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.volume_output_dims</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.conditioning_dims"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.conditioning_dims</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.use_physics_features"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.use_physics_features</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_feature_dim_total"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.surface_feature_dim_total</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_feature_dim_total"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.volume_feature_dim_total</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.total_output_dim"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.total_output_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_targets"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.volume_targets</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_targets"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.surface_targets</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.surface_features"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.surface_features</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.AeroDataSpecs.volume_features"><code class="docutils literal notranslate"><span class="pre">AeroDataSpecs.volume_features</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec"><code class="docutils literal notranslate"><span class="pre">DomainDataSpec</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec.output_dims"><code class="docutils literal notranslate"><span class="pre">DomainDataSpec.output_dims</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec.feature_dim"><code class="docutils literal notranslate"><span class="pre">DomainDataSpec.feature_dim</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.position_dim"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.position_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.conditioning_dims"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.conditioning_dims</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.domains"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.domains</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.use_physics_features"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.use_physics_features</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.total_output_dim"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.total_output_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.all_targets"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.all_targets</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.all_features"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.all_features</span></code></a></li>
 </ul>
 </li>
 </ul>

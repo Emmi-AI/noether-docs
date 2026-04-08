@@ -888,15 +888,15 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.modeling.models.upt.UPT.compute_rope_args">
-<span class="sig-name descname"><span class="pre">compute_rope_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface_position_batch_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_position_supernode_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.upt.UPT.compute_rope_args" title="Link to this definition">¶</a></dt>
-<dd><p>Compute the RoPE frequency arguments for the surface_position and query_position. If we don’t use RoPE,
-return empty dicts.</p>
+<span class="sig-name descname"><span class="pre">compute_rope_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_batch_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry_supernode_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.upt.UPT.compute_rope_args" title="Link to this definition">¶</a></dt>
+<dd><p>Compute the RoPE frequency arguments for the geometry and query positions.
+If RoPE is not used, return empty dicts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>surface_position_batch_idx</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
-<li><p><strong>surface_position</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
-<li><p><strong>surface_position_supernode_idx</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
+<li><p><strong>geometry_batch_idx</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
+<li><p><strong>geometry_position</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
+<li><p><strong>geometry_supernode_idx</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
 <li><p><strong>query_position</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
 </ul>
 </dd>
@@ -908,20 +908,19 @@ return empty dicts.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.modeling.models.upt.UPT.forward">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">surface_position_batch_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_position_supernode_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.upt.UPT.forward" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_batch_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry_supernode_idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geometry_position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.upt.UPT.forward" title="Link to this definition">¶</a></dt>
 <dd><p>Forward pass of the UPT model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>surface_position_batch_idx</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Batch indices for the surface positions, since the surface positions are
-a sparse tensor for the supernode pooling.</p></li>
-<li><p><strong>surface_position_supernode_idx</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Supernode indices for the surface positions.</p></li>
-<li><p><strong>surface_position</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input coordinates of the surface points.</p></li>
+<li><p><strong>geometry_batch_idx</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Batch indices for the geometry positions.</p></li>
+<li><p><strong>geometry_supernode_idx</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Supernode indices for the geometry positions.</p></li>
+<li><p><strong>geometry_position</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input coordinates of the geometry mesh points.</p></li>
 <li><p><strong>query_position</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input coordinates of the query points.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Output tensor containing the predictions for the surface and volume fields, sliced according to the data specifications.</p>
+<dd class="field-even"><p>Output tensor containing the predictions at query positions.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>

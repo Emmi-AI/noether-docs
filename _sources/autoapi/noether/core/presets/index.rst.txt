@@ -89,7 +89,7 @@ Package Contents
       :abstractmethod:
 
 
-      Return the domain's data specification (e.g., AeroDataSpecs).
+      Return the domain's data specification (e.g., ModelDataSpecs).
 
 
    .. py:property:: dataset_statistics

@@ -56,15 +56,14 @@ Module Contents
    .. py:attribute:: geometry_blocks
 
 
-   .. py:attribute:: surface_bias
+   .. py:attribute:: domain_names
+      :type:  list[str]
 
 
-   .. py:attribute:: volume_bias
+   .. py:attribute:: domain_biases
 
 
-   .. py:attribute:: num_perceivers
-      :value: 0
-
+   .. py:attribute:: hidden_dim
 
 
    .. py:attribute:: physics_blocks
@@ -75,16 +74,10 @@ Module Contents
 
 
 
-   .. py:attribute:: surface_decoder_blocks
+   .. py:attribute:: domain_decoder_blocks
 
 
-   .. py:attribute:: volume_decoder_blocks
-
-
-   .. py:attribute:: surface_decoder
-
-
-   .. py:attribute:: volume_decoder
+   .. py:attribute:: domain_decoder_projections
 
 
    .. py:method:: geometry_branch_forward(geometry_position, geometry_supernode_idx, geometry_batch_idx, condition, geometry_attn_kwargs)
@@ -93,44 +86,53 @@ Module Contents
 
 
 
-   .. py:method:: physics_blocks_forward(surface_position_all, volume_position_all, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition, kv_cache = None)
+   .. py:method:: physics_blocks_forward(domain_positions_all, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition, kv_cache = None)
 
       Forward pass through the physics blocks of the model.
-      Although in the AB-UPT paper we only have a perceiver block as the first block, it is possible to have more perceiver blocks in the physics blocks that attend to the geometry encoding.
 
 
 
-   .. py:method:: decoder_blocks_forward(x_physics, physics_token_specs, surface_token_specs, volume_token_specs, surface_decoder_attn_kwargs, volume_decoder_attn_kwargs, condition, kv_cache = None, surface_position_all = None, volume_position_all = None)
+   .. py:method:: decoder_blocks_forward(x_physics, physics_token_specs, per_domain_token_specs, decoder_attn_kwargs, condition, kv_cache = None, domain_positions_all = None)
 
-      Forward pass through the decoder blocks of the model.
+      Forward pass through the per-domain decoder blocks.
 
-      :returns: Tuple of (surface_predictions, volume_predictions, new_surface_cache, new_volume_cache).
+      :returns: Tuple of (domain_predictions, new_domain_caches).
 
 
 
-   .. py:method:: create_rope_frequencies(surface_position_all, volume_position_all, geometry_position = None, geometry_supernode_idx = None)
+   .. py:method:: create_rope_frequencies(domain_positions_all, geometry_position = None, geometry_supernode_idx = None)
 
       Create RoPE frequencies for all relevant positions.
 
+      :returns: Tuple of (geometry_attn_kwargs, decoder_attn_kwargs, physics_perceiver_attn_kwargs, physics_attn_kwargs).
+                decoder_attn_kwargs is keyed by domain name.
 
 
-   .. py:method:: forward(geometry_position = None, geometry_supernode_idx = None, geometry_batch_idx = None, surface_anchor_position = None, volume_anchor_position = None, geometry_design_parameters = None, inflow_design_parameters = None, query_surface_position = None, query_volume_position = None, kv_cache = None)
+
+   .. py:method:: forward(geometry_position = None, geometry_supernode_idx = None, geometry_batch_idx = None, domain_anchor_positions = None, domain_query_positions = None, domain_features = None, conditioning_inputs = None, kv_cache = None)
 
       Forward pass of the AB-UPT model.
 
-      :param geometry_position: Coordinates of the geometry mesh. Tensor of shape (B * N_geometry, D_pos), sparse tensor
-      :param geometry_supernode_idx: Indices of the supernodes for the geometry points. Tensor of shape (B * number of super nodes,)
-      :param geometry_batch_idx: Batch indices for the geometry points. Tensor of shape (B * N_geometry,). If None, assumes all points belong to the same batch.
-      :param surface_anchor_position: Coordinates of the surface anchor points. Tensor of shape (B, N_surface_anchor, D_pos)
-      :param volume_anchor_position: Coordinates of the volume anchor points. Tensor of shape (B, N_volume_anchor, D_pos)
-      :param geometry_design_parameters: Design parameters related to the geometry to condition on. Tensor of shape (B, D_geom)
-      :param inflow_design_parameters: Design parameters related to the inflow to condition on. Tensor of shape (B, D_inflow).
-      :param query_surface_position: Coordinates of the query surface points.
-      :param query_volume_position: Coordinates of the query volume points.
-      :param kv_cache: KV cache from a previous forward call. When provided, anchor K/V are loaded
-                       from the cache and geometry/anchor inputs are not required.
+      Example::
 
-      :returns: Tuple of (predictions, kv_cache). Predictions is a dictionary containing the predictions for surface and volume fields, sliced according to the data specifications.
+          model(
+              geometry_position=...,
+              geometry_supernode_idx=...,
+              geometry_batch_idx=...,
+              domain_anchor_positions={"surface": surface_pos, "volume": volume_pos},
+              domain_query_positions={"surface": query_pos},
+              conditioning_inputs={"geometry_design_parameters": design_params},
+          )
+
+      :param geometry_position: Coordinates of the geometry mesh. Tensor of shape (B * N_geometry, D_pos).
+      :param geometry_supernode_idx: Supernode indices for the geometry points.
+      :param geometry_batch_idx: Batch indices for the geometry points.
+      :param domain_anchor_positions: Per-domain anchor positions, e.g. ``{"surface": (B, N, D), "volume": (B, M, D)}``.
+      :param domain_query_positions: Per-domain query positions (optional).
+      :param conditioning_inputs: Conditioning tensors, e.g. ``{"geometry_design_parameters": (B, D)}``.
+      :param kv_cache: KV cache from a previous forward call.
+
+      :returns: Tuple of (predictions, kv_cache).
 
 
 

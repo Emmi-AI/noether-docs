@@ -934,8 +934,6 @@
         </ul></li>
         <li><a href="autoapi/noether/data/datasets/cfd/dataset/index.html#noether.data.datasets.cfd.dataset.AeroDataset">AeroDataset (class in noether.data.datasets.cfd.dataset)</a>
 </li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs">AeroDataSpecs (class in noether.core.schemas.dataset)</a>
-</li>
         <li><a href="autoapi/noether/core/schemas/statistics/index.html#noether.core.schemas.statistics.AeroStatsSchema">AeroStatsSchema (class in noether.core.schemas.statistics)</a>
 </li>
         <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransformer">AeroTransformer (class in noether.modeling.models)</a>
@@ -1064,20 +1062,22 @@
 </li>
         <li><a href="autoapi/noether/core/factory/utils/index.html#noether.core.factory.utils.all_ctor_kwarg_names">all_ctor_kwarg_names() (in module noether.core.factory.utils)</a>
 </li>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs.all_features">all_features (noether.core.schemas.dataset.ModelDataSpecs property)</a>
+</li>
         <li><a href="autoapi/noether/core/distributed/index.html#noether.core.distributed.all_gather_grad">all_gather_grad() (in module noether.core.distributed)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/distributed/gather/index.html#noether.core.distributed.gather.all_gather_grad">(in module noether.core.distributed.gather)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/distributed/index.html#noether.core.distributed.all_gather_nograd">all_gather_nograd() (in module noether.core.distributed)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/distributed/gather/index.html#noether.core.distributed.gather.all_gather_nograd">(in module noether.core.distributed.gather)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/distributed/index.html#noether.core.distributed.all_gather_nograd_clipped">all_gather_nograd_clipped() (in module noether.core.distributed)</a>
 
         <ul>
@@ -1116,6 +1116,8 @@
           <li><a href="autoapi/noether/core/distributed/reduce/index.html#noether.core.distributed.reduce.all_reduce_sum_nograd">(in module noether.core.distributed.reduce)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs.all_targets">all_targets (noether.core.schemas.dataset.ModelDataSpecs property)</a>
+</li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.MultiBranchAnchorAttentionConfig.anchor_suffix">anchor_suffix (noether.core.schemas.modules.attention.MultiBranchAnchorAttentionConfig attribute)</a>
 
         <ul>
@@ -2088,7 +2090,7 @@
           <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.ScalarsConditioner.condition_dim">(noether.modeling.modules.layers.ScalarsConditioner attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.conditioning_dims">conditioning_dims (noether.core.schemas.dataset.AeroDataSpecs attribute)</a>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs.conditioning_dims">conditioning_dims (noether.core.schemas.dataset.ModelDataSpecs attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/optimizer/optimizer_wrapper/index.html#noether.core.optimizer.optimizer_wrapper.OptimizerWrapper.config">config (noether.core.optimizer.optimizer_wrapper.OptimizerWrapper attribute)</a>
 
@@ -2670,8 +2672,6 @@
           <li><a href="autoapi/noether/data/pipeline/collators/default/index.html#noether.data.pipeline.collators.default.DefaultCollator">(class in noether.data.pipeline.collators.default)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/index.html#noether.data.pipeline.sample_processors.DefaultTensorSampleProcessor">DefaultTensorSampleProcessor (class in noether.data.pipeline.sample_processors)</a>
 
         <ul>
@@ -2686,6 +2686,8 @@
           <li><a href="autoapi/noether/core/schedules/index.html#noether.core.schedules.ProgressSchedule.delta">(noether.core.schedules.ProgressSchedule attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/index.html#noether.data.BatchProcessor.denormalize">denormalize() (noether.data.BatchProcessor method)</a>
 
         <ul>
@@ -2806,12 +2808,46 @@
         </ul></li>
         <li><a href="autoapi/noether/io/cli/cli_aws/index.html#noether.io.cli.cli_aws.docs">docs() (in module noether.io.cli.cli_aws)</a>
 </li>
+        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.domain_biases">domain_biases (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.domain_biases">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.domain_decoder_blocks">domain_decoder_blocks (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.domain_decoder_blocks">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/ab_upt/index.html#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.domain_decoder_configs">domain_decoder_configs() (noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig.domain_decoder_configs">(noether.core.schemas.models.AnchorBranchedUPTConfig method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.domain_decoder_projections">domain_decoder_projections (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.domain_decoder_projections">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.domain_names">domain_names (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.domain_names">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.DomainDataSpec">DomainDataSpec (class in noether.core.schemas.dataset)</a>
+</li>
         <li><a href="autoapi/noether/core/presets/index.html#noether.core.presets.DomainPreset">DomainPreset (class in noether.core.presets)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/presets/base/index.html#noether.core.presets.base.DomainPreset">(class in noether.core.presets.base)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs.domains">domains (noether.core.schemas.dataset.ModelDataSpecs attribute)</a>
+</li>
         <li><a href="autoapi/noether/modeling/modules/index.html#noether.modeling.modules.DotProductAttention">DotProductAttention (class in noether.modeling.modules)</a>
 
         <ul>
@@ -3510,9 +3546,11 @@
           <li><a href="autoapi/noether/modeling/modules/index.html#noether.modeling.modules.UpActDownMlp.fc2">(noether.modeling.modules.UpActDownMlp attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/data/pipeline/sample_processors/default_tensor/index.html#noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor.feature_dim">feature_dim (noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor attribute)</a>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.DomainDataSpec.feature_dim">feature_dim (noether.core.schemas.dataset.DomainDataSpec attribute)</a>
 
         <ul>
+          <li><a href="autoapi/noether/data/pipeline/sample_processors/default_tensor/index.html#noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor.feature_dim">(noether.data.pipeline.sample_processors.default_tensor.DefaultTensorSampleProcessor attribute)</a>
+</li>
           <li><a href="autoapi/noether/data/pipeline/sample_processors/index.html#noether.data.pipeline.sample_processors.DefaultTensorSampleProcessor.feature_dim">(noether.data.pipeline.sample_processors.DefaultTensorSampleProcessor attribute)</a>
 </li>
         </ul></li>
@@ -4414,6 +4452,10 @@
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.TransformerBlockConfig.hidden_dim">(noether.core.schemas.modules.TransformerBlockConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.UpActDownMLPConfig.hidden_dim">(noether.core.schemas.modules.UpActDownMLPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.hidden_dim">(noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.hidden_dim">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/index.html#noether.modeling.modules.ContinuousSincosEmbed.hidden_dim">(noether.modeling.modules.ContinuousSincosEmbed attribute)</a>
 </li>
@@ -6518,6 +6560,8 @@
           <li><a href="autoapi/noether/core/schemas/models/base/index.html#noether.core.schemas.models.base.ModelBaseConfig">(class in noether.core.schemas.models.base)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs">ModelDataSpecs (class in noether.core.schemas.dataset)</a>
+</li>
         <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.ModelKVCache">ModelKVCache (in module noether.modeling.models.ab_upt)</a>
 </li>
         <li><a href="autoapi/noether/core/trackers/wandb_tracker/index.html#noether.core.trackers.wandb_tracker.WandBTracker.MODES">MODES (noether.core.trackers.wandb_tracker.WandBTracker attribute)</a>
@@ -8530,6 +8574,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/drivaerml/index.html#module-noether.data.datasets.cfd.caeml.drivaerml">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.caeml.drivaerml.dataset
 
@@ -8537,8 +8583,6 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/drivaerml/dataset/index.html#module-noether.data.datasets.cfd.caeml.drivaerml.dataset">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.caeml.drivaerml.split
 
@@ -9727,6 +9771,12 @@
           <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.ntasks_per_node">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/ab_upt/index.html#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.num_domain_decoder_blocks">num_domain_decoder_blocks (noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig.num_domain_decoder_blocks">(noether.core.schemas.models.AnchorBranchedUPTConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/modeling/modules/layers/transformer_batchnorm/index.html#noether.modeling.modules.layers.transformer_batchnorm.TransformerBatchNorm.num_features">num_features (noether.modeling.modules.layers.transformer_batchnorm.TransformerBatchNorm attribute)</a>
 
         <ul>
@@ -9781,12 +9831,6 @@
           <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/preprocessing/index.html#noether.data.datasets.cfd.shapenet_car.preprocessing.NUM_PARAM_FOLDERS">(in module noether.data.datasets.cfd.shapenet_car.preprocessing)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.num_perceivers">num_perceivers (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.num_perceivers">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
-</li>
-        </ul></li>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/point_sampling/index.html#noether.data.pipeline.sample_processors.point_sampling.PointSamplingSampleProcessor.num_points">num_points (noether.data.pipeline.sample_processors.point_sampling.PointSamplingSampleProcessor attribute)</a>
 
         <ul>
@@ -9811,18 +9855,6 @@
 
         <ul>
           <li><a href="autoapi/noether/data/pipeline/sample_processors/index.html#noether.data.pipeline.sample_processors.SupernodeSamplingSampleProcessor.num_supernodes">(noether.data.pipeline.sample_processors.SupernodeSamplingSampleProcessor attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="autoapi/noether/core/schemas/models/ab_upt/index.html#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.num_surface_blocks">num_surface_blocks (noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig attribute)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig.num_surface_blocks">(noether.core.schemas.models.AnchorBranchedUPTConfig attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="autoapi/noether/core/schemas/models/ab_upt/index.html#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.num_volume_blocks">num_volume_blocks (noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig attribute)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig.num_volume_blocks">(noether.core.schemas.models.AnchorBranchedUPTConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.ConfigSchema.num_workers">num_workers (noether.core.schemas.ConfigSchema attribute)</a>
@@ -10063,6 +10095,8 @@
           <li><a href="autoapi/noether/modeling/modules/index.html#noether.modeling.modules.SupernodePooling.output_dim">(noether.modeling.modules.SupernodePooling attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.DomainDataSpec.output_dims">output_dims (noether.core.schemas.dataset.DomainDataSpec attribute)</a>
+</li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.ConfigSchema.output_path">output_path (noether.core.schemas.ConfigSchema attribute)</a>
 
         <ul>
@@ -10607,7 +10641,7 @@
           <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.UPTConfig.pos_embedding_config">(noether.core.schemas.models.UPTConfig method)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.position_dim">position_dim (noether.core.schemas.dataset.AeroDataSpecs attribute)</a>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs.position_dim">position_dim (noether.core.schemas.dataset.ModelDataSpecs attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/pipeline/collators/field_decoder/index.html#noether.data.pipeline.collators.field_decoder.FieldDecoderCollator.position_item">position_item (noether.data.pipeline.collators.field_decoder.FieldDecoderCollator attribute)</a>
 
@@ -11949,6 +11983,8 @@
           <li><a href="autoapi/noether/core/schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema.slurm">(noether.core.schemas.schema.ConfigSchema attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig">SlurmConfig (class in noether.core.schemas)</a>
 
         <ul>
@@ -11973,8 +12009,6 @@
           <li><a href="autoapi/noether/modeling/modules/activations/index.html#noether.modeling.modules.activations.Activation.SOFTPLUS">(noether.modeling.modules.activations.Activation attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.FileRecord.source">source (noether.io.verification.FileRecord attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/pipeline/sample_processors/replace_key/index.html#noether.data.pipeline.sample_processors.replace_key.ReplaceKeySampleProcessor.source_key">source_key (noether.data.pipeline.sample_processors.replace_key.ReplaceKeySampleProcessor attribute)</a>
@@ -12523,47 +12557,19 @@
           <li><a href="autoapi/noether/data/datasets/cfd/index.html#noether.data.datasets.cfd.EmmiWingDataset.supported_splits">(noether.data.datasets.cfd.EmmiWingDataset property)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.surface_bias">surface_bias (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
+        <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroTransformer.surface_bias">surface_bias (noether.modeling.models.aerodynamics.AeroTransformer attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroTransformer.surface_bias">(noether.modeling.models.aerodynamics.AeroTransformer attribute)</a>
-</li>
           <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroTransolver.surface_bias">(noether.modeling.models.aerodynamics.AeroTransolver attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransformer.surface_bias">(noether.modeling.models.AeroTransformer attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransolver.surface_bias">(noether.modeling.models.AeroTransolver attribute)</a>
 </li>
-          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.surface_bias">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.surface_decoder">surface_decoder (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.surface_decoder">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.surface_decoder_blocks">surface_decoder_blocks (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.surface_decoder_blocks">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="autoapi/noether/core/schemas/models/ab_upt/index.html#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.surface_decoder_config">surface_decoder_config() (noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig method)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig.surface_decoder_config">(noether.core.schemas.models.AnchorBranchedUPTConfig method)</a>
-</li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/statistics/index.html#noether.core.schemas.statistics.AeroStatsSchema.surface_domain_max">surface_domain_max (noether.core.schemas.statistics.AeroStatsSchema attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/statistics/index.html#noether.core.schemas.statistics.AeroStatsSchema.surface_domain_min">surface_domain_min (noether.core.schemas.statistics.AeroStatsSchema attribute)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.surface_feature_dim">surface_feature_dim (noether.core.schemas.dataset.AeroDataSpecs attribute)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.surface_feature_dim_total">surface_feature_dim_total (noether.core.schemas.dataset.AeroDataSpecs property)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.surface_features">surface_features (noether.core.schemas.dataset.AeroDataSpecs property)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/filemap/index.html#noether.core.schemas.filemap.FileMap.surface_friction">surface_friction (noether.core.schemas.filemap.FileMap attribute)</a>
 </li>
@@ -12574,8 +12580,6 @@
         <li><a href="autoapi/noether/core/schemas/filemap/index.html#noether.core.schemas.filemap.FileMap.surface_normals">surface_normals (noether.core.schemas.filemap.FileMap attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/filemap/index.html#noether.data.datasets.cfd.shapenet_car.filemap.SURFACE_NORMALS_FILE">SURFACE_NORMALS_FILE (in module noether.data.datasets.cfd.shapenet_car.filemap)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.surface_output_dims">surface_output_dims (noether.core.schemas.dataset.AeroDataSpecs attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/filemap/index.html#noether.data.datasets.cfd.shapenet_car.filemap.SURFACE_POINTS_FILE">SURFACE_POINTS_FILE (in module noether.data.datasets.cfd.shapenet_car.filemap)</a>
 </li>
@@ -12596,8 +12600,6 @@
         <li><a href="autoapi/noether/core/schemas/statistics/index.html#noether.core.schemas.statistics.AeroStatsSchema.surface_pressure_mean">surface_pressure_mean (noether.core.schemas.statistics.AeroStatsSchema attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/statistics/index.html#noether.core.schemas.statistics.AeroStatsSchema.surface_pressure_std">surface_pressure_std (noether.core.schemas.statistics.AeroStatsSchema attribute)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.surface_targets">surface_targets (noether.core.schemas.dataset.AeroDataSpecs property)</a>
 </li>
         <li><a href="autoapi/noether/core/utils/common/index.html#noether.core.utils.common.Stopwatch.sync">sync() (noether.core.utils.common.Stopwatch static method)</a>
 
@@ -12915,7 +12917,7 @@
           <li><a href="autoapi/noether/training/trainers/types/index.html#noether.training.trainers.types.TrainerResult.total_loss">(noether.training.trainers.types.TrainerResult attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.total_output_dim">total_output_dim (noether.core.schemas.dataset.AeroDataSpecs property)</a>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs.total_output_dim">total_output_dim (noether.core.schemas.dataset.ModelDataSpecs property)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/default/eta/index.html#noether.core.callbacks.default.eta.EtaCallback.total_time">total_time (noether.core.callbacks.default.eta.EtaCallback attribute)</a>
 
@@ -13401,20 +13403,14 @@
           <li><a href="autoapi/noether/core/trackers/index.html#noether.core.trackers.BaseTracker.update_summary">(noether.core.trackers.BaseTracker method)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/schemas/models/upt/index.html#noether.core.schemas.models.upt.UPTConfig.update_supernode_pooling_config">update_supernode_pooling_config() (noether.core.schemas.models.upt.UPTConfig method)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.UPTConfig.update_supernode_pooling_config">(noether.core.schemas.models.UPTConfig method)</a>
-</li>
-        </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/training/index.html#noether.core.utils.training.UpdateCounter">UpdateCounter (class in noether.core.utils.training)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter">(class in noether.core.utils.training.counter)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter.updates_per_epoch">updates_per_epoch (noether.core.utils.training.counter.UpdateCounter attribute)</a>
 
         <ul>
@@ -13459,6 +13455,12 @@
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.TransolverPlusPlusAttentionConfig.use_adaptive_temperature">(noether.core.schemas.modules.TransolverPlusPlusAttentionConfig attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroUPT.use_bias_layers">use_bias_layers (noether.modeling.models.aerodynamics.AeroUPT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroUPT.use_bias_layers">(noether.modeling.models.AeroUPT attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.use_geometry_branch">use_geometry_branch (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
 
         <ul>
@@ -13479,16 +13481,20 @@
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.TransolverPlusPlusAttentionConfig.use_overparameterization">(noether.core.schemas.modules.TransolverPlusPlusAttentionConfig attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.use_physics_features">use_physics_features (noether.core.schemas.dataset.AeroDataSpecs attribute)</a>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs.use_physics_features">use_physics_features (noether.core.schemas.dataset.ModelDataSpecs attribute)</a>
 
         <ul>
           <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroTransformer.use_physics_features">(noether.modeling.models.aerodynamics.AeroTransformer attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroTransolver.use_physics_features">(noether.modeling.models.aerodynamics.AeroTransolver attribute)</a>
 </li>
+          <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroUPT.use_physics_features">(noether.modeling.models.aerodynamics.AeroUPT attribute)</a>
+</li>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransformer.use_physics_features">(noether.modeling.models.AeroTransformer attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransolver.use_physics_features">(noether.modeling.models.AeroTransolver attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroUPT.use_physics_features">(noether.modeling.models.AeroUPT attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/models/upt/index.html#noether.core.schemas.models.upt.UPTConfig.use_rope">use_rope (noether.core.schemas.models.upt.UPTConfig attribute)</a>
@@ -13797,36 +13803,14 @@
 </li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.verify_tree">verify_tree() (in module noether.io.verification)</a>
 </li>
-        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.volume_bias">volume_bias (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
+        <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroTransformer.volume_bias">volume_bias (noether.modeling.models.aerodynamics.AeroTransformer attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroTransformer.volume_bias">(noether.modeling.models.aerodynamics.AeroTransformer attribute)</a>
-</li>
           <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroTransolver.volume_bias">(noether.modeling.models.aerodynamics.AeroTransolver attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransformer.volume_bias">(noether.modeling.models.AeroTransformer attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransolver.volume_bias">(noether.modeling.models.AeroTransolver attribute)</a>
-</li>
-          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.volume_bias">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.volume_decoder">volume_decoder (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.volume_decoder">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.volume_decoder_blocks">volume_decoder_blocks (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.volume_decoder_blocks">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
-</li>
-        </ul></li>
-        <li><a href="autoapi/noether/core/schemas/models/ab_upt/index.html#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.volume_decoder_config">volume_decoder_config() (noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig method)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig.volume_decoder_config">(noether.core.schemas.models.AnchorBranchedUPTConfig method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/filemap/index.html#noether.core.schemas.filemap.FileMap.volume_distance_to_surface">volume_distance_to_surface (noether.core.schemas.filemap.FileMap attribute)</a>
@@ -13835,19 +13819,11 @@
 </li>
         <li><a href="autoapi/noether/core/schemas/statistics/index.html#noether.core.schemas.statistics.AeroStatsSchema.volume_domain_min">volume_domain_min (noether.core.schemas.statistics.AeroStatsSchema attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.volume_feature_dim">volume_feature_dim (noether.core.schemas.dataset.AeroDataSpecs attribute)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.volume_feature_dim_total">volume_feature_dim_total (noether.core.schemas.dataset.AeroDataSpecs property)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.volume_features">volume_features (noether.core.schemas.dataset.AeroDataSpecs property)</a>
-</li>
         <li><a href="autoapi/noether/core/schemas/filemap/index.html#noether.core.schemas.filemap.FileMap.volume_friction">volume_friction (noether.core.schemas.filemap.FileMap attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/filemap/index.html#noether.core.schemas.filemap.FileMap.volume_normals">volume_normals (noether.core.schemas.filemap.FileMap attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/filemap/index.html#noether.data.datasets.cfd.shapenet_car.filemap.VOLUME_NORMALS_FILE">VOLUME_NORMALS_FILE (in module noether.data.datasets.cfd.shapenet_car.filemap)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.volume_output_dims">volume_output_dims (noether.core.schemas.dataset.AeroDataSpecs attribute)</a>
 </li>
         <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/filemap/index.html#noether.data.datasets.cfd.shapenet_car.filemap.VOLUME_POINTS_FILE">VOLUME_POINTS_FILE (in module noether.data.datasets.cfd.shapenet_car.filemap)</a>
 </li>
@@ -13868,8 +13844,6 @@
         <li><a href="autoapi/noether/core/schemas/statistics/index.html#noether.core.schemas.statistics.AeroStatsSchema.volume_sdf_mean">volume_sdf_mean (noether.core.schemas.statistics.AeroStatsSchema attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/statistics/index.html#noether.core.schemas.statistics.AeroStatsSchema.volume_sdf_std">volume_sdf_std (noether.core.schemas.statistics.AeroStatsSchema attribute)</a>
-</li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.AeroDataSpecs.volume_targets">volume_targets (noether.core.schemas.dataset.AeroDataSpecs property)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/filemap/index.html#noether.core.schemas.filemap.FileMap.volume_velocity">volume_velocity (noether.core.schemas.filemap.FileMap attribute)</a>
 </li>

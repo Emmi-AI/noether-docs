@@ -891,7 +891,7 @@ runtime. These configs are Pydantic models, so if something is wrong you will ge
     <span class="n">EmaCallbackConfig</span><span class="p">,</span>
     <span class="n">OfflineLossCallbackConfig</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">AeroDataSpecs</span><span class="p">,</span> <span class="n">StandardDatasetConfig</span><span class="p">,</span> <span class="n">DatasetWrappers</span><span class="p">,</span> <span class="n">RepeatWrapperConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelDataSpecs</span><span class="p">,</span> <span class="n">StandardDatasetConfig</span><span class="p">,</span> <span class="n">DatasetWrappers</span><span class="p">,</span> <span class="n">RepeatWrapperConfig</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.modules</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">DeepPerceiverDecoderConfig</span><span class="p">,</span>
     <span class="n">SupernodePoolingConfig</span><span class="p">,</span>
@@ -1018,14 +1018,14 @@ directly in the <code class="docutils literal notranslate"><span class="pre">Hyd
     <span class="k">return</span> <span class="n">AeroStatsSchema</span><span class="p">(</span><span class="o">**</span><span class="n">DATASET_STATS</span><span class="p">)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">build_specs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AeroDataSpecs</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">AeroDataSpecs</span><span class="p">(</span><span class="o">**</span><span class="n">DATA_SPECS</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_specs</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">ModelDataSpecs</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">ModelDataSpecs</span><span class="p">(</span><span class="o">**</span><span class="n">DATA_SPECS</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">build_dataset_config</span><span class="p">(</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">],</span>
     <span class="n">dataset_root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-    <span class="n">data_specs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">AeroDataSpecs</span><span class="p">,</span>
+    <span class="n">data_specs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">ModelDataSpecs</span><span class="p">,</span>
     <span class="n">dataset_statistics</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
     <span class="n">dataset_normalizer</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="n">AnyNormalizer</span><span class="p">]],</span>
     <span class="n">dataset_wrappers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">DatasetWrappers</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -1043,7 +1043,7 @@ directly in the <code class="docutils literal notranslate"><span class="pre">Hyd
             <span class="n">sample_query_points</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">use_physics_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">dataset_statistics</span><span class="o">=</span><span class="n">AeroStatsSchema</span><span class="p">(</span><span class="o">**</span><span class="n">dataset_statistics</span><span class="p">),</span>
-            <span class="n">data_specs</span><span class="o">=</span><span class="n">data_specs</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_specs</span><span class="p">,</span> <span class="n">AeroDataSpecs</span><span class="p">)</span> <span class="k">else</span> <span class="n">AeroDataSpecs</span><span class="p">(</span><span class="o">**</span><span class="n">data_specs</span><span class="p">),</span>
+            <span class="n">data_specs</span><span class="o">=</span><span class="n">data_specs</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_specs</span><span class="p">,</span> <span class="n">ModelDataSpecs</span><span class="p">)</span> <span class="k">else</span> <span class="n">ModelDataSpecs</span><span class="p">(</span><span class="o">**</span><span class="n">data_specs</span><span class="p">),</span>
         <span class="p">),</span>
         <span class="n">split</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
         <span class="n">dataset_normalizers</span><span class="o">=</span><span class="n">dataset_normalizer</span><span class="p">,</span>

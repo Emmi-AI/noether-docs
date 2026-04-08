@@ -27,7 +27,8 @@ Classes
    noether.core.schemas.dataset.StandardDatasetConfig
    noether.core.schemas.dataset.DatasetSplitIDs
    noether.core.schemas.dataset.FieldDimSpec
-   noether.core.schemas.dataset.AeroDataSpecs
+   noether.core.schemas.dataset.DomainDataSpec
+   noether.core.schemas.dataset.ModelDataSpecs
 
 
 Module Contents
@@ -343,12 +344,46 @@ Module Contents
    .. py:method:: items()
 
 
-.. py:class:: AeroDataSpecs(/, **data)
+.. py:class:: DomainDataSpec(/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`
 
 
-   Defines the complete data specification for a surrogate model.
+   Data specification for a single domain (e.g., surface, volume, wake).
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: output_dims
+      :type:  FieldDimSpec
+
+      1, "velocity": 3}.
+
+      :type: Output fields and their dimensions for this domain, e.g. {"pressure"
+
+
+   .. py:attribute:: feature_dim
+      :type:  FieldDimSpec | None
+      :value: None
+
+
+      Input feature fields and their dimensions for this domain.
+
+
+.. py:class:: ModelDataSpecs(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Base data specification for models that operate on arbitrary named domains.
+
+   This is the minimal interface that model configs need from data specifications:
+   position dimensions, available conditioning, and per-domain data descriptions.
 
    Create a new model by parsing and validating input data from keyword arguments.
 
@@ -366,32 +401,20 @@ Module Contents
       Dimension of the input position vectors.
 
 
-   .. py:attribute:: surface_feature_dim
-      :type:  FieldDimSpec | None
-      :value: None
-
-
-
-   .. py:attribute:: volume_feature_dim
-      :type:  FieldDimSpec | None
-      :value: None
-
-
-
-   .. py:attribute:: surface_output_dims
-      :type:  FieldDimSpec
-
-
-   .. py:attribute:: volume_output_dims
-      :type:  FieldDimSpec | None
-      :value: None
-
-
-
    .. py:attribute:: conditioning_dims
       :type:  FieldDimSpec | None
       :value: None
 
+
+      Available conditioning features and their dimensions.
+
+
+   .. py:attribute:: domains
+      :type:  dict[str, DomainDataSpec]
+      :value: None
+
+
+      Per-domain data specifications keyed by domain name.
 
 
    .. py:attribute:: use_physics_features
@@ -399,53 +422,27 @@ Module Contents
       :value: False
 
 
-
-   .. py:property:: surface_feature_dim_total
-      :type: int
-
-
-      Calculates the total surface feature dimension.
-
-
-   .. py:property:: volume_feature_dim_total
-      :type: int
-
-
-      Calculates the total volume feature dimension.
+      Whether physics features are used as input.
 
 
    .. py:property:: total_output_dim
       :type: int
 
 
-      Calculates the total output dimension by summing surface and volume output dimensions.
+      Calculates the total output dimension across all domains.
 
 
-   .. py:property:: volume_targets
+   .. py:property:: all_targets
       :type: set[str]
 
 
-      Returns the list of volume target field names.
+      Returns all target field names across all domains, prefixed by domain name.
 
 
-   .. py:property:: surface_targets
+   .. py:property:: all_features
       :type: set[str]
 
 
-      Returns the list of surface target field names.
-
-
-   .. py:property:: surface_features
-      :type: set[str]
-
-
-      Returns the list of surface feature field names.
-
-
-   .. py:property:: volume_features
-      :type: set[str]
-
-
-      Returns the list of volume feature field names.
+      Returns all feature field names across all domains.
 
 

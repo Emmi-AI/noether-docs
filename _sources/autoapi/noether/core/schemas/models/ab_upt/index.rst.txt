@@ -67,28 +67,20 @@ Module Contents
 
       Types of physics blocks to use in the model.
       Options are "self", "cross", "joint", and "perceiver".
-      Self: Self-attention within a branch (surface or volume). Attention weights are shared between branches.
-      Cross: Cross-attention between surface and volume branches. Weights are shared between branches.
-      Joint: Joint attention over surface and volume points. I.e. full self-attention over both surface and volume points.
+      Self: Self-attention within a branch. Attention weights are shared between all domains.
+      Cross: Cross-attention between domains. Each domain attends to all other domains' anchors.
+      Joint: Joint attention over all domain points. Full self-attention over all points.
       Perceiver: Perceiver-style cross-attention to geometry encoding.
 
       Note: "shared" is a deprecated alias for "self" and will be removed in a future release.
 
 
-   .. py:attribute:: num_surface_blocks
-      :type:  int
-      :value: None
+   .. py:attribute:: num_domain_decoder_blocks
+      :type:  dict[str, int]
 
+      2, "volume": 2}.
 
-      Number of transformer blocks in the surface decoder. Weights are not shared with the volume decoder.
-
-
-   .. py:attribute:: num_volume_blocks
-      :type:  int
-      :value: None
-
-
-      Number of transformer blocks in the volume decoder. Weights are not shared with the surface decoder.
+      :type: Number of final domain-specific decoder blocks with self attention and no weight sharing, e.g. {"surface"
 
 
    .. py:attribute:: init_weights
@@ -108,7 +100,7 @@ Module Contents
 
 
    .. py:attribute:: data_specs
-      :type:  noether.core.schemas.dataset.AeroDataSpecs
+      :type:  noether.core.schemas.dataset.ModelDataSpecs
 
       Data specifications for the model.
 
@@ -137,10 +129,10 @@ Module Contents
    .. py:method:: perceiver_block_config()
 
 
-   .. py:method:: surface_decoder_config()
+   .. py:method:: domain_decoder_configs()
 
+      Per-domain decoder projection configs, keyed by domain name.
 
-   .. py:method:: volume_decoder_config()
 
 
    .. py:method:: validate_parameters()
