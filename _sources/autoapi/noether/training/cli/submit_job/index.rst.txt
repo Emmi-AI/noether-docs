@@ -37,7 +37,7 @@ Module Contents
    Example:
    .. code-block:: bash
 
-      noether-submit-job --hp configs/train_shapenet.yaml +seed=1 tracker=disabled
-      noether-submit-job --hp configs/train_shapenet.yaml --dry-run
+      noether-train-submit-job --hp configs/train_shapenet.yaml +seed=1 tracker=disabled
+      noether-train-submit-job --hp configs/train_shapenet.yaml --dry-run
 
 

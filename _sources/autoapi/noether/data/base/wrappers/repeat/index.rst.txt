@@ -22,7 +22,7 @@ Module Contents
 
    Repeats the wrapped dataset `repetitions` times.
 
-   Example:
+   .. rubric:: Example
 
    .. code-block:: python
 
@@ -34,6 +34,12 @@ Module Contents
        repeat_dataset = RepeatWrapper(dataset, repetitions=3)
        len(repeat_dataset)
        30
+
+   .. code-block:: yaml
+
+           dataset_wrappers:
+               kind: noether.data.base.wrappers.RepeatWrapper
+               repetitions: 3
 
    :param config: Configuration for the RepeatWrapper. See :class:`~noether.core.schemas.dataset.RepeatWrapperConfig`
                   for available options.
