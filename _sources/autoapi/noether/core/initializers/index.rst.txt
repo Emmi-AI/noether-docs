@@ -23,7 +23,6 @@ Classes
 
    noether.core.initializers.InitializerBase
    noether.core.initializers.CheckpointInitializer
-   noether.core.initializers.PreviousRunInitializer
    noether.core.initializers.ResumeInitializer
 
 
@@ -146,57 +145,6 @@ Package Contents
       of type `Model` or a nested `CompositeModel`.
 
       :param model: a model to initialize the optimizer for. Assumes the model has an attribute optim.
-
-
-
-.. py:class:: PreviousRunInitializer(initializer_config, **kwargs)
-
-   Bases: :py:obj:`noether.core.initializers.CheckpointInitializer`
-
-
-   Initializes a model from a checkpoint of a previous run (specified by the run_id), this initializers hence only loads model weights.
-   When a previous run should be resumed for further training, use ResumeInitializer instead.
-   This initializer needs to be initialized as part of a model config.
-   It is possible to remove certain keys or patterns from the checkpoint before loading it into the model, or to rename certain patterns.
-
-   For example:
-
-   .. code-block:: yaml
-
-       model:
-         kind: path.to.MyModelClass
-         param1: value1
-         name: my_model
-         initializers:
-           - kind: noether.core.initializers.PreviousRunInitializer
-           run_id: <run_id>
-           model_name: transformer
-           stage_name: train
-           checkpoint_tag: last
-           keys_to_remove:
-               - encoder.block1.weight
-
-   :param initializer_config: Configuration for the initializer. See :class:`~noether.core.schemas.initializers.PreviousRunInitializerConfig` for available options.
-   :param \*\*kwargs: additional arguments to pass to the parent class.
-
-
-   .. py:attribute:: keys_to_remove
-
-
-   .. py:attribute:: patterns_to_remove
-
-
-   .. py:attribute:: patterns_to_rename
-
-
-   .. py:attribute:: patterns_to_instantiate
-
-
-   .. py:method:: init_weights(model, model_name = None)
-
-      Initialize the model weights from the checkpoint.
-
-      :param model: the model to load the weights into.
 
 
 

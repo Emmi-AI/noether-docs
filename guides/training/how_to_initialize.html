@@ -879,7 +879,7 @@ Do not use the fully specified checkpoint filename here (e.g., <code class="docu
 </section>
 <section id="initializing-model-weights-from-a-previous-run">
 <h2>Initializing Model Weights from a Previous Run<a class="headerlink" href="#initializing-model-weights-from-a-previous-run" title="Link to this heading">¶</a></h2>
-<p>To initialize only the model weights (without resuming the full training state), use the <a class="reference internal" href="../../autoapi/noether/core/initializers/index.html#noether.core.initializers.PreviousRunInitializer" title="noether.core.initializers.PreviousRunInitializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code></a>
+<p>To initialize only the model weights (without resuming the full training state), use the <code class="xref py py-class docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code>
 in your model configuration:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">model</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_model</span>
@@ -906,7 +906,7 @@ in your model configuration:</p>
 <dt><strong>Full Training Resumption</strong></dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">resume_run_id</span></code> and <code class="docutils literal notranslate"><span class="pre">resume_stage_name</span></code> when you need to continue training exactly where it left off,
 preserving optimizer state, callback states (if any), and training/trainer progress/state.</p>
 </dd>
-<dt><strong>Weight Initialization Only</strong></dt><dd><p>Use <a class="reference internal" href="../../autoapi/noether/core/initializers/index.html#noether.core.initializers.PreviousRunInitializer" title="noether.core.initializers.PreviousRunInitializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code></a> when you want to start a training from scratch with
+<dt><strong>Weight Initialization Only</strong></dt><dd><p>Use <code class="xref py py-class docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code> when you want to start a training from scratch with
 pretrained weights.</p>
 </dd>
 </dl>
