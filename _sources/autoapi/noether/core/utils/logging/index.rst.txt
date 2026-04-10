@@ -286,7 +286,7 @@ Package Contents
    :returns: The string representation of the tensor or list.
 
 
-.. py:class:: NoopTqdm(iterable)
+.. py:class:: NoopTqdm(iterable, **kwargs)
 
    A no-operation (noop) version of tqdm that does not display a progress bar.
 
