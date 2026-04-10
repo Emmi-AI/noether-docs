@@ -57,7 +57,9 @@ Package Contents
 
 
    .. py:attribute:: supernode_pooling_config
-      :type:  Annotated[noether.core.schemas.modules.encoders.SupernodePoolingConfig, noether.core.schemas.mixins.Shared]
+      :type:  Annotated[noether.core.schemas.modules.encoders.SupernodePoolingConfig, noether.core.schemas.mixins.Shared] | None
+      :value: None
+
 
 
    .. py:attribute:: transformer_block_config

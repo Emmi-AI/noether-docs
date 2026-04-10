@@ -55,12 +55,6 @@ Package Contents
    .. py:attribute:: pos_embed
 
 
-   .. py:attribute:: encoder
-
-
-   .. py:attribute:: geometry_blocks
-
-
    .. py:attribute:: domain_names
       :type:  list[str]
 
