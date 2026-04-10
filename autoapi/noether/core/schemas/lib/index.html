@@ -827,6 +827,18 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.core.schemas.lib">
 <span id="noether-core-schemas-lib"></span><h1>noether.core.schemas.lib<a class="headerlink" href="#module-noether.core.schemas.lib" title="Link to this heading">¶</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.lib.T" title="noether.core.schemas.lib.T"><code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
@@ -847,6 +859,11 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.core.schemas.lib.T">
+<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.lib.</span></span><span class="sig-name descname"><span class="pre">T</span></span><a class="headerlink" href="#noether.core.schemas.lib.T" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.schemas.lib.resolve_config_class">
 <span class="sig-prename descclassname"><span class="pre">noether.core.schemas.lib.</span></span><span class="sig-name descname"><span class="pre">resolve_config_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.lib.resolve_config_class" title="Link to this definition">¶</a></dt>
@@ -863,14 +880,14 @@
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>kind</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – fully qualified dotted path (e.g., <code class="docutils literal notranslate"><span class="pre">&quot;noether.training.trainers.WeightedLossTrainer&quot;</span></code>).</p></li>
-<li><p><strong>base_cls</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.14)"><em>type</em></a><em>[</em><em>pydantic.BaseModel</em><em>]</em>) – the base config class to resolve against.</p></li>
+<li><p><strong>base_cls</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.14)"><em>type</em></a><em>[</em><em>resolve_config_class.T</em><em>]</em>) – the base config class to resolve against.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – if the config class cannot be determined.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.14)">type</a>[pydantic.BaseModel]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.14)">type</a>[resolve_config_class.T]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -989,8 +1006,10 @@ class MyClass:</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">noether.core.schemas.lib</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.lib.T"><code class="docutils literal notranslate"><span class="pre">T</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.lib.resolve_config_class"><code class="docutils literal notranslate"><span class="pre">resolve_config_class()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.lib.Discriminated"><code class="docutils literal notranslate"><span class="pre">Discriminated()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.lib.ConfiguredBy"><code class="docutils literal notranslate"><span class="pre">ConfiguredBy()</span></code></a></li>
