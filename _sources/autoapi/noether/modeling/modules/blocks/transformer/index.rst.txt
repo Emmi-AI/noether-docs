@@ -27,6 +27,9 @@ Module Contents
                   for available options.
 
 
+   .. py:attribute:: config
+
+
    .. py:attribute:: norm1
 
 

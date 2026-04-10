@@ -3305,6 +3305,17 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.BaseTrainerConfig.validate_max_training_criteria">
+<span class="sig-name descname"><span class="pre">validate_max_training_criteria</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.BaseTrainerConfig.validate_max_training_criteria" title="Link to this definition">¶</a></dt>
+<dd><p>Ensures that exactly one of max_epochs, max_updates, or max_samples is specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig" title="noether.core.schemas.BaseTrainerConfig">BaseTrainerConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -3769,6 +3780,7 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.model_config"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.model_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.dataloader_prefetch_factor"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.dataloader_prefetch_factor</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.validate_callback_frequency"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.validate_callback_frequency()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.validate_max_training_criteria"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.validate_max_training_criteria()</span></code></a></li>
 </ul>
 </li>
 </ul>

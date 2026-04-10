@@ -300,6 +300,12 @@ Module Contents
 
 
 
+   .. py:method:: validate_max_training_criteria()
+
+      Ensures that exactly one of max_epochs, max_updates, or max_samples is specified.
+
+
+
 .. py:class:: WeightedLossTrainerConfig(/, **data)
 
    Bases: :py:obj:`BaseTrainerConfig`
