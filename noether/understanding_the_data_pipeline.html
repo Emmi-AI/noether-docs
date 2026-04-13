@@ -866,12 +866,32 @@ Batch dict  {&quot;surface_position&quot;: (B, n, 3), ...}
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># simplified from base/dataset.py</span>
 <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="n">idx</span><span class="p">}</span>
-    <span class="k">for</span> <span class="n">getitem_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all_getitem_names</span><span class="p">():</span>
-        <span class="n">getitem_fn</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">getitem_name</span><span class="p">)</span>
-        <span class="n">result</span><span class="p">[</span><span class="n">getitem_name</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;getitem_&quot;</span><span class="p">):]]</span> <span class="o">=</span> <span class="n">getitem_fn</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+    <span class="n">pre</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_getitem</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+    <span class="n">extra_kwargs</span> <span class="o">=</span> <span class="n">pre</span> <span class="k">if</span> <span class="n">pre</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">getitem_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_all_getitem_names</span><span class="p">():</span>
+            <span class="n">getitem_fn</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">getitem_name</span><span class="p">)</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">getitem_name</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;getitem_&quot;</span><span class="p">):]]</span> <span class="o">=</span> <span class="n">getitem_fn</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="o">**</span><span class="n">extra_kwargs</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">post_getitem</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">pre</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
+<section id="pre-getitem-post-getitem-hooks">
+<h3><code class="docutils literal notranslate"><span class="pre">pre_getitem</span></code> / <code class="docutils literal notranslate"><span class="pre">post_getitem</span></code> hooks<a class="headerlink" href="#pre-getitem-post-getitem-hooks" title="Link to this heading">¶</a></h3>
+<p>The base class provides two optional lifecycle hooks around the <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> calls:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../autoapi/noether/data/index.html#noether.data.Dataset.pre_getitem" title="noether.data.Dataset.pre_getitem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pre_getitem()</span></code></a> is called <strong>once</strong> before any <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> method.
+It can return a dictionary whose entries are forwarded as keyword arguments to every <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code>
+method that accepts them.  This is useful when multiple properties live in the same file (e.g. an
+HDF5 container): <code class="docutils literal notranslate"><span class="pre">pre_getitem</span></code> opens the file once, and each getter reads its field without
+re-opening.</p></li>
+<li><p><a class="reference internal" href="../autoapi/noether/data/index.html#noether.data.Dataset.post_getitem" title="noether.data.Dataset.post_getitem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">post_getitem()</span></code></a> is called <strong>once</strong> after all <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> methods
+have finished (or if one of them raises).  It receives the value returned by <code class="docutils literal notranslate"><span class="pre">pre_getitem</span></code> so
+that cleanup logic (e.g. closing a file handle) can access the same resources.  The call is
+wrapped in a <code class="docutils literal notranslate"><span class="pre">finally</span></code> block, so cleanup runs even on error.</p></li>
+</ul>
+<p>Both hooks default to no-ops, so existing datasets are unaffected.</p>
 <p>By default, every <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> call invokes <strong>all</strong> <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> methods and therefore loads all
 properties from disk. To avoid unnecessary I/O, we provide two ways to restrict which properties are
 loaded:</p>
@@ -882,6 +902,7 @@ This creates a <a class="reference internal" href="../autoapi/noether/data/base/
 <a class="reference internal" href="../autoapi/noether/data/base/wrappers/index.html#noether.data.base.wrappers.PropertySubsetWrapper" title="noether.data.base.wrappers.PropertySubsetWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">PropertySubsetWrapper</span></code></a>.</p></li>
 </ul>
 <p>For more details on implementing your own dataset, see <a class="reference internal" href="../guides/data/how_to_make_a_custom_dataset.html"><span class="doc">How to Implement a Custom Dataset</span></a>.</p>
+</section>
 </section>
 <section id="point-sampling">
 <h2>Point Sampling<a class="headerlink" href="#point-sampling" title="Link to this heading">¶</a></h2>
@@ -1152,7 +1173,10 @@ normalizer configs for training.</p>
             <ul>
 <li><a class="reference internal" href="#">Understanding the Data Pipeline</a><ul>
 <li><a class="reference internal" href="#from-disk-to-batch">From Disk to Batch</a></li>
-<li><a class="reference internal" href="#the-decomposed-getitem-pattern">The Decomposed <code class="docutils literal notranslate"><span class="pre">getitem</span></code> Pattern</a></li>
+<li><a class="reference internal" href="#the-decomposed-getitem-pattern">The Decomposed <code class="docutils literal notranslate"><span class="pre">getitem</span></code> Pattern</a><ul>
+<li><a class="reference internal" href="#pre-getitem-post-getitem-hooks"><code class="docutils literal notranslate"><span class="pre">pre_getitem</span></code> / <code class="docutils literal notranslate"><span class="pre">post_getitem</span></code> hooks</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#point-sampling">Point Sampling</a><ul>
 <li><a class="reference internal" href="#two-levels-of-subsampling">Two Levels of Subsampling</a></li>
 </ul>

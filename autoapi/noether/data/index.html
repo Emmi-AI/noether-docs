@@ -1038,6 +1038,49 @@ The file should be a YAML file mapping stat names to scalar or list values.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="noether.data.Dataset.pre_getitem">
+<span class="sig-name descname"><span class="pre">pre_getitem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.Dataset.pre_getitem" title="Link to this definition">¶</a></dt>
+<dd><p>Optional hook called once before the individual <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> methods.</p>
+<p>Override this to load shared data (e.g. an HDF5 file that contains
+multiple fields) and return it as a dictionary.  The returned dict is
+forwarded as keyword arguments to every <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> call for the
+same sample, so each getter can pull its field without re-opening the
+file.</p>
+<p>The default implementation returns an empty dict</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any] | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.data.Dataset.post_getitem">
+<span class="sig-name descname"><span class="pre">post_getitem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pre</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.Dataset.post_getitem" title="Link to this definition">¶</a></dt>
+<dd><p>Optional hook called once after all <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> methods have run.</p>
+<p>Override this to perform per-sample cleanup (e.g. closing a file
+handle that was opened in <a class="reference internal" href="#noether.data.Dataset.pre_getitem" title="noether.data.Dataset.pre_getitem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pre_getitem()</span></code></a>).</p>
+<p>The <em>pre</em> argument is the value originally returned by
+<a class="reference internal" href="#noether.data.Dataset.pre_getitem" title="noether.data.Dataset.pre_getitem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pre_getitem()</span></code></a> so that the cleanup logic can access the same
+resources.</p>
+<p>The default implementation does nothing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>pre</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="noether.data.Dataset.get_all_getitem_names">
 <span class="sig-name descname"><span class="pre">get_all_getitem_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.Dataset.get_all_getitem_names" title="Link to this definition">¶</a></dt>
 <dd><p>Returns all names of getitem functions that are implemented. E.g., image classification has getitem_x and
@@ -1992,6 +2035,8 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.data.Dataset.compute_statistics"><code class="docutils literal notranslate"><span class="pre">Dataset.compute_statistics</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.Dataset.fetch_statistics"><code class="docutils literal notranslate"><span class="pre">Dataset.fetch_statistics()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.Dataset.pipeline"><code class="docutils literal notranslate"><span class="pre">Dataset.pipeline</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.Dataset.pre_getitem"><code class="docutils literal notranslate"><span class="pre">Dataset.pre_getitem()</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.Dataset.post_getitem"><code class="docutils literal notranslate"><span class="pre">Dataset.post_getitem()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.Dataset.get_all_getitem_names"><code class="docutils literal notranslate"><span class="pre">Dataset.get_all_getitem_names()</span></code></a></li>
 </ul>
 </li>

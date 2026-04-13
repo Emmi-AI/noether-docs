@@ -237,7 +237,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -819,7 +819,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -885,6 +885,47 @@ The key provided to the decorator must match the key of the configured normalize
 <span class="w">      </span><span class="nt">std</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
 </pre></div>
 </div>
+<section id="using-pre-getitem-post-getitem-hooks">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">pre_getitem</span></code> / <code class="docutils literal notranslate"><span class="pre">post_getitem</span></code> Hooks<a class="headerlink" href="#using-pre-getitem-post-getitem-hooks" title="Link to this heading">¶</a></h2>
+<p>When multiple properties are stored inside a single file (e.g. an HDF5 container), opening the file
+separately in every <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> method is wasteful.  Override
+<a class="reference internal" href="../../autoapi/noether/data/index.html#noether.data.Dataset.pre_getitem" title="noether.data.Dataset.pre_getitem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pre_getitem()</span></code></a> to load shared data once, and optionally
+<a class="reference internal" href="../../autoapi/noether/data/index.html#noether.data.Dataset.post_getitem" title="noether.data.Dataset.post_getitem"><code class="xref py py-meth docutils literal notranslate"><span class="pre">post_getitem()</span></code></a> for cleanup.  The dictionary returned by
+<code class="docutils literal notranslate"><span class="pre">pre_getitem</span></code> is forwarded as keyword arguments to every <code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> method that declares
+matching parameters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">DatasetBaseConfig</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HDF5DatasetConfig</span><span class="p">(</span><span class="n">DatasetBaseConfig</span><span class="p">):</span>
+    <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;path.to.HDF5Dataset&quot;</span>
+    <span class="n">file_paths</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HDF5Dataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">HDF5DatasetConfig</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_paths</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">file_paths</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_paths</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pre_getitem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="c1"># Open the file once per sample</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;h5file&quot;</span><span class="p">:</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_paths</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s2">&quot;r&quot;</span><span class="p">)}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">post_getitem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">pre</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Guaranteed to run, even if a getitem_* method raises</span>
+        <span class="k">if</span> <span class="n">pre</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pre</span><span class="p">[</span><span class="s2">&quot;h5file&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">getitem_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">h5file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">h5file</span><span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">][:])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">getitem_pressure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">h5file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">h5file</span><span class="p">[</span><span class="s2">&quot;pressure&quot;</span><span class="p">][:])</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">getitem_*</span></code> methods that only accept <code class="docutils literal notranslate"><span class="pre">idx</span></code> (like the basic example above) continue to work
+unchanged – they simply won’t receive the extra keyword arguments.</p>
 <p>Let’s say we run a training pipeline with the above dataset configuration and a batch size of 4.
 Then the output will be a list of 4 dictionaries (a batch), where each dictionary has the following structure:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
@@ -896,6 +937,7 @@ Then the output will be a list of 4 dictionaries (a batch), where each dictionar
 <span class="p">]</span>
 </pre></div>
 </div>
+</section>
 </section>
 
         </article>
@@ -965,8 +1007,27 @@ Then the output will be a list of 4 dictionaries (a batch), where each dictionar
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">How to Implement a Custom Dataset</a><ul>
+<li><a class="reference internal" href="#using-pre-getitem-post-getitem-hooks">Using <code class="docutils literal notranslate"><span class="pre">pre_getitem</span></code> / <code class="docutils literal notranslate"><span class="pre">post_getitem</span></code> Hooks</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

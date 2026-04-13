@@ -159,6 +159,35 @@ Module Contents
       Returns the pipeline for the dataset.
 
 
+   .. py:method:: pre_getitem(idx)
+
+      Optional hook called once before the individual ``getitem_*`` methods.
+
+      Override this to load shared data (e.g. an HDF5 file that contains
+      multiple fields) and return it as a dictionary.  The returned dict is
+      forwarded as keyword arguments to every ``getitem_*`` call for the
+      same sample, so each getter can pull its field without re-opening the
+      file.
+
+      The default implementation returns an empty dict
+
+
+
+   .. py:method:: post_getitem(idx, pre)
+
+      Optional hook called once after all ``getitem_*`` methods have run.
+
+      Override this to perform per-sample cleanup (e.g. closing a file
+      handle that was opened in :meth:`pre_getitem`).
+
+      The *pre* argument is the value originally returned by
+      :meth:`pre_getitem` so that the cleanup logic can access the same
+      resources.
+
+      The default implementation does nothing.
+
+
+
    .. py:method:: get_all_getitem_names()
 
       Returns all names of getitem functions that are implemented. E.g., image classification has getitem_x and
