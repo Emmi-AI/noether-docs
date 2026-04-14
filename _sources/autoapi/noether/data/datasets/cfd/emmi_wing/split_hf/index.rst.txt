@@ -1,0 +1,44 @@
+noether.data.datasets.cfd.emmi_wing.split_hf
+============================================
+
+.. py:module:: noether.data.datasets.cfd.emmi_wing.split_hf
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.emmi_wing.split_hf.WingHFSplitIDs
+
+
+Module Contents
+---------------
+
+.. py:class:: WingHFSplitIDs(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+
+
+   Emmi-Wing HuggingFace subset splits (248 cases: 200 train / 24 val / 24 test).
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: train
+      :type:  set[int]
+
+
+   .. py:attribute:: val
+      :type:  set[int]
+
+
+   .. py:attribute:: test
+      :type:  set[int]
+
+

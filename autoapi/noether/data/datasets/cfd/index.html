@@ -562,7 +562,9 @@
 </li>
 <li class="toctree-l5 has-children"><a class="reference internal" href="emmi_wing/index.html">noether.data.datasets.cfd.emmi_wing</a><input class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" role="switch" type="checkbox"/><label for="toctree-checkbox-45"><div class="visually-hidden">Toggle navigation of noether.data.datasets.cfd.emmi_wing</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l6"><a class="reference internal" href="emmi_wing/dataset/index.html">noether.data.datasets.cfd.emmi_wing.dataset</a></li>
+<li class="toctree-l6"><a class="reference internal" href="emmi_wing/dataset_hf/index.html">noether.data.datasets.cfd.emmi_wing.dataset_hf</a></li>
 <li class="toctree-l6"><a class="reference internal" href="emmi_wing/split/index.html">noether.data.datasets.cfd.emmi_wing.split</a></li>
+<li class="toctree-l6"><a class="reference internal" href="emmi_wing/split_hf/index.html">noether.data.datasets.cfd.emmi_wing.split_hf</a></li>
 </ul>
 </li>
 <li class="toctree-l5 has-children"><a class="reference internal" href="shapenet_car/index.html">noether.data.datasets.cfd.shapenet_car</a><input class="toctree-checkbox" id="toctree-checkbox-46" name="toctree-checkbox-46" role="switch" type="checkbox"/><label for="toctree-checkbox-46"><div class="visually-hidden">Toggle navigation of noether.data.datasets.cfd.shapenet_car</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -862,10 +864,13 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingDataset" title="noether.data.datasets.cfd.EmmiWingDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmmiWingDataset</span></code></a></p></td>
 <td><p>Dataset implementation for aerodynamic datasets with volume and surface fields.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.datasets.cfd.ShapeNetCarDataset" title="noether.data.datasets.cfd.ShapeNetCarDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShapeNetCarDataset</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingHFDataset" title="noether.data.datasets.cfd.EmmiWingHFDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmmiWingHFDataset</span></code></a></p></td>
+<td><p>Emmi-Wing dataset loaded from the HuggingFace subset.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.datasets.cfd.ShapeNetCarDataset" title="noether.data.datasets.cfd.ShapeNetCarDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShapeNetCarDataset</span></code></a></p></td>
 <td><p>Dataset implementation for ShapeNet Car CFD simulations.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.datasets.cfd.ShapeNetCarDefaultSplitIDs" title="noether.data.datasets.cfd.ShapeNetCarDefaultSplitIDs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShapeNetCarDefaultSplitIDs</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.datasets.cfd.ShapeNetCarDefaultSplitIDs" title="noether.data.datasets.cfd.ShapeNetCarDefaultSplitIDs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShapeNetCarDefaultSplitIDs</span></code></a></p></td>
 <td><p>Default split IDs for ShapeNet Car dataset with validation.</p></td>
 </tr>
 </tbody>
@@ -1201,6 +1206,62 @@ is configured through constructor parameters, allowing for easy extension to new
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.data.datasets.cfd.EmmiWingHFDataset">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.datasets.cfd.</span></span><span class="sig-name descname"><span class="pre">EmmiWingHFDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.datasets.cfd.EmmiWingHFDataset" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="emmi_wing/dataset/index.html#noether.data.datasets.cfd.emmi_wing.dataset.EmmiWingDataset" title="noether.data.datasets.cfd.emmi_wing.dataset.EmmiWingDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.datasets.cfd.emmi_wing.dataset.EmmiWingDataset</span></code></a></p>
+<p>Emmi-Wing dataset loaded from the HuggingFace subset.</p>
+<p>Uses the 248-case evaluation scan subset with its own train/val/test splits.
+The dataset can be auto-downloaded from HuggingFace using <a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingHFDataset.download" title="noether.data.datasets.cfd.EmmiWingHFDataset.download"><code class="xref py py-func docutils literal notranslate"><span class="pre">download()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset_config</strong> (<a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.StandardDatasetConfig" title="noether.core.schemas.dataset.StandardDatasetConfig"><em>noether.core.schemas.dataset.StandardDatasetConfig</em></a>) – Configuration for the dataset. See <a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>filemap</strong> – FileMap object defining the mapping of data properties to filenames. See <code class="xref py py-class docutils literal notranslate"><span class="pre">FileMap</span></code> for details.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.data.datasets.cfd.EmmiWingHFDataset.get_dataset_splits">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_dataset_splits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.DatasetSplitIDs" title="noether.core.schemas.dataset.DatasetSplitIDs"><span class="pre">noether.core.schemas.dataset.DatasetSplitIDs</span></a></em><a class="headerlink" href="#noether.data.datasets.cfd.EmmiWingHFDataset.get_dataset_splits" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.DatasetSplitIDs" title="noether.core.schemas.dataset.DatasetSplitIDs">noether.core.schemas.dataset.DatasetSplitIDs</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.data.datasets.cfd.EmmiWingHFDataset.supported_splits">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">supported_splits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.data.datasets.cfd.EmmiWingHFDataset.supported_splits" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)">set</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.data.datasets.cfd.EmmiWingHFDataset.download">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">local_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.datasets.cfd.EmmiWingHFDataset.download" title="Link to this definition">¶</a></dt>
+<dd><p>Download and extract the HF subset to a local directory.</p>
+<p>Downloads <code class="docutils literal notranslate"><span class="pre">scans.zip</span></code> from HuggingFace, extracts the nested <code class="docutils literal notranslate"><span class="pre">run_N.zip</span></code> archives into <code class="docutils literal notranslate"><span class="pre">&lt;local_dir&gt;/run_N/</span></code>
+directories, and cleans up the zip files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>local_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Destination directory.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the extracted dataset root.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.data.datasets.cfd.ShapeNetCarDataset">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.datasets.cfd.</span></span><span class="sig-name descname"><span class="pre">ShapeNetCarDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.datasets.cfd.ShapeNetCarDataset" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="dataset/index.html#noether.data.datasets.cfd.dataset.AeroDataset" title="noether.data.datasets.cfd.dataset.AeroDataset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.datasets.cfd.dataset.AeroDataset</span></code></a></p>
@@ -1486,6 +1547,12 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingDataset.supported_splits"><code class="docutils literal notranslate"><span class="pre">EmmiWingDataset.supported_splits</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingDataset.getitem_geometry_design_parameters"><code class="docutils literal notranslate"><span class="pre">EmmiWingDataset.getitem_geometry_design_parameters()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingDataset.getitem_inflow_design_parameters"><code class="docutils literal notranslate"><span class="pre">EmmiWingDataset.getitem_inflow_design_parameters()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingHFDataset"><code class="docutils literal notranslate"><span class="pre">EmmiWingHFDataset</span></code></a><ul>
+<li><a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingHFDataset.get_dataset_splits"><code class="docutils literal notranslate"><span class="pre">EmmiWingHFDataset.get_dataset_splits</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingHFDataset.supported_splits"><code class="docutils literal notranslate"><span class="pre">EmmiWingHFDataset.supported_splits</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.datasets.cfd.EmmiWingHFDataset.download"><code class="docutils literal notranslate"><span class="pre">EmmiWingHFDataset.download()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.data.datasets.cfd.ShapeNetCarDataset"><code class="docutils literal notranslate"><span class="pre">ShapeNetCarDataset</span></code></a><ul>

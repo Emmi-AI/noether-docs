@@ -1,0 +1,71 @@
+noether.data.datasets.cfd.emmi_wing.dataset_hf
+==============================================
+
+.. py:module:: noether.data.datasets.cfd.emmi_wing.dataset_hf
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.emmi_wing.dataset_hf.logger
+   noether.data.datasets.cfd.emmi_wing.dataset_hf.HF_REPO_ID
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.emmi_wing.dataset_hf.EmmiWingHFDataset
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:data:: HF_REPO_ID
+   :value: 'EmmiAI/Emmi-Wing'
+
+
+.. py:class:: EmmiWingHFDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.emmi_wing.dataset.EmmiWingDataset`
+
+
+   Emmi-Wing dataset loaded from the HuggingFace subset.
+
+   Uses the 248-case evaluation scan subset with its own train/val/test splits.
+   The dataset can be auto-downloaded from HuggingFace using :func:`download`.
+
+   :param dataset_config: Configuration for the dataset. See :class:`~noether.core.schemas.dataset.DatasetBaseConfig` for available options.
+   :param filemap: FileMap object defining the mapping of data properties to filenames. See :class:`~noether.data.datasets.cfd.caeml.filemap.FileMap` for details.
+
+
+   .. py:property:: get_dataset_splits
+      :type: noether.core.schemas.dataset.DatasetSplitIDs
+
+
+
+   .. py:property:: supported_splits
+      :type: set[str]
+
+
+
+   .. py:method:: download(local_dir)
+      :staticmethod:
+
+
+      Download and extract the HF subset to a local directory.
+
+      Downloads ``scans.zip`` from HuggingFace, extracts the nested ``run_N.zip`` archives into ``<local_dir>/run_N/``
+      directories, and cleans up the zip files.
+
+      :param local_dir: Destination directory.
+
+      :returns: Path to the extracted dataset root.
+
+
+
