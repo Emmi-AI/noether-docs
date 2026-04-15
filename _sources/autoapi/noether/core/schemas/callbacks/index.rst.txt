@@ -28,6 +28,7 @@ Classes
    noether.core.schemas.callbacks.OfflineLossCallbackConfig
    noether.core.schemas.callbacks.MetricEarlyStopperConfig
    noether.core.schemas.callbacks.FixedEarlyStopperConfig
+   noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig
 
 
 Module Contents
@@ -612,6 +613,140 @@ Module Contents
 
       Ensures that exactly one stop ('stop_at_*') is specified
 
+
+
+.. py:class:: PyTorchProfilerCallbackConfig(/, **data)
+
+   Bases: :py:obj:`CallBackBaseConfig`
+
+
+   Configuration for the PyTorch profiler callback.
+
+   The profiler uses ``torch.profiler.profile`` with a scheduled trace. Profiling is driven off of
+   ``track_after_update_step`` hooks, i.e. the profiler is stepped once per optimizer update. The
+   resulting traces are written to ``<run_output_path>/profiler`` and can be opened in
+   TensorBoard or chrome://tracing.
+
+   Recommended usage: limit training with ``trainer.max_updates`` to a value slightly larger than
+   ``wait + warmup + active`` (times ``repeat`` if > 1).
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: 'aero_cfd.callbacks.PyTorchProfilerCallback'
+
+
+
+   .. py:attribute:: wait
+      :type:  int
+      :value: None
+
+
+      Number of steps to idle before warming up.
+
+
+   .. py:attribute:: warmup
+      :type:  int
+      :value: None
+
+
+      Number of warmup steps (profiler runs but traces are discarded).
+
+
+   .. py:attribute:: active
+      :type:  int
+      :value: None
+
+
+      Number of active steps that are recorded in the trace.
+
+
+   .. py:attribute:: repeat
+      :type:  int
+      :value: None
+
+
+      Number of times the (wait, warmup, active) cycle is repeated. 0 means repeat indefinitely.
+
+
+   .. py:attribute:: record_shapes
+      :type:  bool
+      :value: None
+
+
+      Whether to record input tensor shapes for each op.
+
+
+   .. py:attribute:: profile_memory
+      :type:  bool
+      :value: None
+
+
+      Whether to profile tensor memory usage (can add significant overhead).
+
+
+   .. py:attribute:: with_stack
+      :type:  bool
+      :value: None
+
+
+      Whether to record Python call stacks for each op (can add significant overhead).
+
+
+   .. py:attribute:: with_flops
+      :type:  bool
+      :value: None
+
+
+      Whether to record estimated FLOPs for each op.
+
+
+   .. py:attribute:: with_modules
+      :type:  bool
+      :value: None
+
+
+      Whether to record nn.Module hierarchy for each op.
+
+
+   .. py:attribute:: profile_cuda
+      :type:  bool
+      :value: None
+
+
+      Whether to profile CUDA operations. If False, only CPU operations are profiled.
+
+
+   .. py:attribute:: profile_cpu
+      :type:  bool
+      :value: None
+
+
+      Whether to profile CPU operations. If False, only CUDA operations are profiled.
+
+
+   .. py:attribute:: trace_subdir
+      :type:  str
+      :value: None
+
+
+      Subdirectory (relative to ``run_output_path``) where the trace files are written.
+
+
+   .. py:attribute:: rank0_only
+      :type:  bool
+      :value: None
+
+
+      If True, only rank 0 profiles (noop on other ranks). Avoids noisy/conflicting traces in
+      multi-GPU runs.
 
 
 .. py:data:: CallbacksConfig

@@ -762,6 +762,7 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../../training/index.html">noether.training</a><input class="toctree-checkbox" id="toctree-checkbox-75" name="toctree-checkbox-75" role="switch" type="checkbox"/><label for="toctree-checkbox-75"><div class="visually-hidden">Toggle navigation of noether.training</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../training/callbacks/index.html">noether.training.callbacks</a><input class="toctree-checkbox" id="toctree-checkbox-76" name="toctree-checkbox-76" role="switch" type="checkbox"/><label for="toctree-checkbox-76"><div class="visually-hidden">Toggle navigation of noether.training.callbacks</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../training/callbacks/offline_loss/index.html">noether.training.callbacks.offline_loss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../training/callbacks/profiler/index.html">noether.training.callbacks.profiler</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-77" name="toctree-checkbox-77" role="switch" type="checkbox"/><label for="toctree-checkbox-77"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -878,6 +879,9 @@
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.FixedEarlyStopperConfig" title="noether.core.schemas.callbacks.FixedEarlyStopperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig</span></code></a></p></td>
 <td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig" title="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig</span></code></a></p></td>
+<td><p>Configuration for the PyTorch profiler callback.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1432,6 +1436,112 @@ validated to form a valid model.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">PyTorchProfilerCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a></p>
+<p>Configuration for the PyTorch profiler callback.</p>
+<p>The profiler uses <code class="docutils literal notranslate"><span class="pre">torch.profiler.profile</span></code> with a scheduled trace. Profiling is driven off of
+<code class="docutils literal notranslate"><span class="pre">track_after_update_step</span></code> hooks, i.e. the profiler is stepped once per optimizer update. The
+resulting traces are written to <code class="docutils literal notranslate"><span class="pre">&lt;run_output_path&gt;/profiler</span></code> and can be opened in
+TensorBoard or chrome://tracing.</p>
+<p>Recommended usage: limit training with <code class="docutils literal notranslate"><span class="pre">trainer.max_updates</span></code> to a value slightly larger than
+<code class="docutils literal notranslate"><span class="pre">wait</span> <span class="pre">+</span> <span class="pre">warmup</span> <span class="pre">+</span> <span class="pre">active</span></code> (times <code class="docutils literal notranslate"><span class="pre">repeat</span></code> if &gt; 1).</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'aero_cfd.callbacks.PyTorchProfilerCallback'</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.kind" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.wait">
+<span class="sig-name descname"><span class="pre">wait</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.wait" title="Link to this definition">¶</a></dt>
+<dd><p>Number of steps to idle before warming up.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.warmup">
+<span class="sig-name descname"><span class="pre">warmup</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.warmup" title="Link to this definition">¶</a></dt>
+<dd><p>Number of warmup steps (profiler runs but traces are discarded).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.active">
+<span class="sig-name descname"><span class="pre">active</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.active" title="Link to this definition">¶</a></dt>
+<dd><p>Number of active steps that are recorded in the trace.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.repeat">
+<span class="sig-name descname"><span class="pre">repeat</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.repeat" title="Link to this definition">¶</a></dt>
+<dd><p>Number of times the (wait, warmup, active) cycle is repeated. 0 means repeat indefinitely.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.record_shapes">
+<span class="sig-name descname"><span class="pre">record_shapes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.record_shapes" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to record input tensor shapes for each op.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.profile_memory">
+<span class="sig-name descname"><span class="pre">profile_memory</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.profile_memory" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to profile tensor memory usage (can add significant overhead).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.with_stack">
+<span class="sig-name descname"><span class="pre">with_stack</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.with_stack" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to record Python call stacks for each op (can add significant overhead).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.with_flops">
+<span class="sig-name descname"><span class="pre">with_flops</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.with_flops" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to record estimated FLOPs for each op.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.with_modules">
+<span class="sig-name descname"><span class="pre">with_modules</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.with_modules" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to record nn.Module hierarchy for each op.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.profile_cuda">
+<span class="sig-name descname"><span class="pre">profile_cuda</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.profile_cuda" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to profile CUDA operations. If False, only CPU operations are profiled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.profile_cpu">
+<span class="sig-name descname"><span class="pre">profile_cpu</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.profile_cpu" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to profile CPU operations. If False, only CUDA operations are profiled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.trace_subdir">
+<span class="sig-name descname"><span class="pre">trace_subdir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.trace_subdir" title="Link to this definition">¶</a></dt>
+<dd><p>Subdirectory (relative to <code class="docutils literal notranslate"><span class="pre">run_output_path</span></code>) where the trace files are written.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.rank0_only">
+<span class="sig-name descname"><span class="pre">rank0_only</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.rank0_only" title="Link to this definition">¶</a></dt>
+<dd><p>If True, only rank 0 profiles (noop on other ranks). Avoids noisy/conflicting traces in
+multi-GPU runs.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="noether.core.schemas.callbacks.CallbacksConfig">
 <span class="sig-prename descclassname"><span class="pre">noether.core.schemas.callbacks.</span></span><span class="sig-name descname"><span class="pre">CallbacksConfig</span></span><a class="headerlink" href="#noether.core.schemas.callbacks.CallbacksConfig" title="Link to this definition">¶</a></dt>
@@ -1608,6 +1718,23 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.FixedEarlyStopperConfig.stop_at_update"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig.stop_at_update</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.FixedEarlyStopperConfig.stop_at_epoch"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig.stop_at_epoch</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.FixedEarlyStopperConfig.validate_callback_frequency"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig.validate_callback_frequency()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.kind"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.wait"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.wait</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.warmup"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.warmup</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.active"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.active</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.repeat"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.repeat</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.record_shapes"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.record_shapes</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.profile_memory"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.profile_memory</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.with_stack"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.with_stack</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.with_flops"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.with_flops</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.with_modules"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.with_modules</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.profile_cuda"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.profile_cuda</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.profile_cpu"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.profile_cpu</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.trace_subdir"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.trace_subdir</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.rank0_only"><code class="docutils literal notranslate"><span class="pre">PyTorchProfilerCallbackConfig.rank0_only</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.callbacks.CallbacksConfig"><code class="docutils literal notranslate"><span class="pre">CallbacksConfig</span></code></a></li>

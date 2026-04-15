@@ -1,0 +1,128 @@
+noether.training.callbacks.profiler
+===================================
+
+.. py:module:: noether.training.callbacks.profiler
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.training.callbacks.profiler.PyTorchProfilerCallback
+
+
+Module Contents
+---------------
+
+.. py:class:: PyTorchProfilerCallback(callback_config, **kwargs)
+
+   Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
+
+
+   Profiles the training loop with :class:`torch.profiler.profile`.
+
+   The profiler is entered in :meth:`before_training`, stepped once per optimizer update in
+   :meth:`track_after_update_step`, and exited in :meth:`after_training`. Traces are written to
+   ``<run_output_path>/<trace_subdir>`` via ``tensorboard_trace_handler`` and can be loaded in
+   TensorBoard (``tensorboard --logdir <path>``) or inspected in ``chrome://tracing``.
+
+   .. note::
+
+      ``every_n_updates=1`` must be set so that ``track_after_update_step`` is called on every
+      update (any ``every_n_*`` value works — it only gates the unused ``periodic_callback``
+      hook, not the tracking hooks).
+
+   .. rubric:: Example
+
+   .. code-block:: yaml
+
+       callbacks:
+       - kind: callbacks.PyTorchProfilerCallback
+           every_n_updates: 1
+           wait: 1
+           warmup: 1
+           active: 3
+           repeat: 2
+           record_shapes: true
+           profile_memory: false
+           with_stack: false
+           with_flops: false
+           with_modules: true
+           activities:
+           - cpu
+           - cuda
+
+   :param callback_config: Configuration for the callback. See
+                           :class:`~noether.core.schemas.callbacks.CallBackBaseConfig`
+                           for available options.
+   :param trainer: Trainer of the current run.
+   :param model: Model of the current run.
+   :param data_container: :class:`~noether.data.container.DataContainer` instance that provides access to all datasets.
+   :param tracker: :class:`~noether.core.trackers.BaseTracker` instance to log metrics to stdout/disk/online platform.
+   :param log_writer: :class:`~noether.core.writers.LogWriter` instance to log metrics.
+   :param checkpoint_writer: :class:`~noether.core.writers.CheckpointWriter` instance to save checkpoints.
+   :param metric_property_provider: :class:`~noether.core.providers.MetricPropertyProvider` instance to access properties of metrics.
+   :param name: Name of the callback.
+
+
+   .. py:method:: before_training(*, update_counter)
+
+      Hook called once before the training loop starts.
+
+      This method is intended to be overridden by derived classes to perform initialization
+      tasks before training begins. Common use cases include:
+
+      * Initializing experiment tracking (e.g., logging hyperparameters)
+      * Printing model summaries or architecture details
+      * Initializing specific data structures or buffers needed during training
+      * Performing sanity checks on the data or configuration
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+
+
+
+   .. py:method:: track_after_update_step(*, update_counter, times)
+
+      Hook called after each optimizer update step.
+
+      This method is invoked after a successful optimizer step and parameter update.
+      It is typically used for tracking metrics that should be recorded once per update
+      cycle, such as:
+
+      * Latest loss values
+      * Learning rates
+      * Model parameter statistics (norms, etc.)
+      * Training throughput and timing measurements
+
+      Unlike :meth:`periodic_callback`, this hook is called on every update step, making it
+      suitable for maintaining running averages or high-frequency telemetry.
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+      :param times: Dictionary containing time measurements for various parts of the training
+                    step (e.g., 'data_time', 'forward_time', 'backward_time', 'update_time').
+
+
+
+   .. py:method:: after_training(*, update_counter)
+
+      Hook called once after the training loop finishes.
+
+      This method is intended to be overridden by derived classes to perform cleanup or
+      final reporting tasks after training is complete. Common use cases include:
+
+      * Performing a final evaluation on the test set
+      * Saving final model weights or artifacts
+      * Sending notifications (e.g., via Slack or email) about the completed run
+      * Closing or finalizing experiment tracking sessions
+
+      .. note:: This method is executed within a ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+
+
+
