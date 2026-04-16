@@ -300,14 +300,14 @@ Package Contents
       Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
 
 
-   .. py:attribute:: attention_constructor
-      :type:  Literal['transolver', 'transolver_plusplus']
-      :value: 'transolver'
-
-
-
    .. py:attribute:: attention_arguments
       :type:  dict
+
+
+   .. py:method:: set_attention_constructor()
+
+      Set attention_constructor in transformer_block_config based on data_specs.
+
 
 
 .. py:class:: TransolverPlusPlusConfig(/, **data)
@@ -325,9 +325,9 @@ Package Contents
    `self` is explicitly positional-only to allow `self` as a field name.
 
 
-   .. py:attribute:: attention_constructor
-      :type:  Literal['transolver_plusplus']
-      :value: 'transolver_plusplus'
+   .. py:method:: set_attention_constructor()
+
+      Set attention_constructor in transformer_block_config based on data_specs.
 
 
 
