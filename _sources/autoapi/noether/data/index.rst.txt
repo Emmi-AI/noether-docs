@@ -201,6 +201,22 @@ Package Contents
 
 
 
+   .. py:method:: denormalize(key, data)
+
+      Denormalize data using the appropriate normalizer.
+
+      This method finds the specific normalizer for the given key and uses it to denormalize,
+      instead of calling pipeline.denormalize which would process the entire pipeline.
+
+      :param key: Key to identify the normalizer for denormalization
+      :param data: Data to denormalize
+
+      :returns: Denormalized data
+
+      :raises KeyError: If no normalizer is found for the given key
+
+
+
 .. py:class:: DatasetWrapper(dataset)
 
    Wrapper around arbitrary noether.data.Dataset instances to generically change something about the dataset.

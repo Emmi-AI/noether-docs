@@ -1,0 +1,94 @@
+noether.data.datasets.cfd.simshift_heatsink.config
+==================================================
+
+.. py:module:: noether.data.datasets.cfd.simshift_heatsink.config
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.simshift_heatsink.config.SimshiftHeatsinkConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: SimshiftHeatsinkConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.dataset.DatasetBaseConfig`
+
+
+   Configuration for the SIMSHIFT Heatsink dataset.
+
+   This dataset uses HDF5 files from the SIMSHIFT benchmark for unsupervised domain adaptation
+   of neural surrogates for physical simulations.
+
+   If ``root`` is not set, the dataset is automatically downloaded from the HuggingFace Hub
+   (``simshift/SIMSHIFT_data``, ``heatsink.zip``) and cached locally.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: 'noether.data.datasets.cfd.SimshiftHeatsinkDataset'
+
+
+      Kind of dataset to use.
+
+
+   .. py:attribute:: root
+      :type:  str | None
+      :value: None
+
+
+      Root directory of the dataset. If None, auto-downloads from HuggingFace Hub.
+
+
+   .. py:attribute:: split
+      :type:  Literal['train', 'val', 'test']
+
+      Which split of the dataset to use. Must be one of "train", "val", or "test".
+
+
+   .. py:attribute:: difficulty
+      :type:  Literal['easy', 'medium', 'hard'] | None
+      :value: None
+
+
+      Domain-gap difficulty level between source and target domains. If None, load all difficulties.
+
+
+   .. py:attribute:: domain
+      :type:  Literal['source', 'target'] | None
+      :value: None
+
+
+      source (in-distribution) or target (shifted). If None, load both.
+
+      :type: Which domain to load
+
+
+   .. py:attribute:: splits_path
+      :type:  str | None
+      :value: None
+
+
+      Path to the splits.json file. If None, defaults to {root}/splits.json.
+
+
+   .. py:attribute:: metadata_path
+      :type:  str | None
+      :value: None
+
+
+      Path to the metadata.csv file. If None, defaults to {root}/metadata.csv.
+
+

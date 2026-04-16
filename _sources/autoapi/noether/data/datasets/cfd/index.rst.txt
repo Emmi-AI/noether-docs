@@ -15,6 +15,7 @@ Submodules
    /autoapi/noether/data/datasets/cfd/drivaernet/index
    /autoapi/noether/data/datasets/cfd/emmi_wing/index
    /autoapi/noether/data/datasets/cfd/shapenet_car/index
+   /autoapi/noether/data/datasets/cfd/simshift_heatsink/index
 
 
 Classes
@@ -31,6 +32,7 @@ Classes
    noether.data.datasets.cfd.EmmiWingHFDataset
    noether.data.datasets.cfd.ShapeNetCarDataset
    noether.data.datasets.cfd.ShapeNetCarDefaultSplitIDs
+   noether.data.datasets.cfd.SimshiftHeatsinkDataset
 
 
 Package Contents
@@ -448,5 +450,87 @@ Package Contents
 
    .. py:attribute:: test
       :type:  set[str]
+
+
+.. py:class:: SimshiftHeatsinkDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.Dataset`
+
+
+   Dataset for the SIMSHIFT Heatsink CFD benchmark.
+
+   The SIMSHIFT Heatsink dataset contains conjugate heat transfer simulations of heatsink
+   geometries with varying fin configurations. Data is stored in HDF5 format with mesh
+   coordinates and element-level physical fields (velocity, temperature, pressure).
+
+   The dataset supports source/target domain splits at different difficulty levels
+   for unsupervised domain adaptation experiments.
+
+   When ``root`` is not provided the dataset is downloaded from HuggingFace Hub and
+   read directly from the zip archive (no extraction needed).
+
+   Reference: https://arxiv.org/abs/2506.12007
+
+   :param dataset_config: Configuration for the dataset. See :class:`~noether.core.schemas.dataset.DatasetBaseConfig`
+                          for available options including dataset normalizers.
+
+
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
+
+
+   .. py:attribute:: difficulty
+
+
+   .. py:attribute:: domain
+
+
+   .. py:attribute:: split
+
+
+   .. py:method:: pre_getitem(idx)
+
+      Load all fields for sample *idx* from its HDF5 file.
+
+      The returned dict is forwarded as kwargs to every ``getitem_*`` method.
+
+
+
+   .. py:method:: getitem_volume_position(idx, *, position, **_)
+
+      Element centre coordinates of the volume mesh (num_elements, 3).
+
+
+
+   .. py:method:: getitem_volume_velocity(idx, *, velocity, **_)
+
+      Velocity field at element centres (num_elements, 3).
+
+
+
+   .. py:method:: getitem_volume_temperature(idx, *, temperature, **_)
+
+      Temperature field at element centres (num_elements, 1).
+
+
+
+   .. py:method:: getitem_volume_pressure(idx, *, pressure, **_)
+
+      Pressure (p_rgh) field at element centres (num_elements, 1).
+
+
+
+   .. py:method:: getitem_simulation_parameters(idx)
+
+      Geometry design parameters conditioning vector (num_params,).
+
+
+
+   .. py:method:: sample_info(idx)
+
+      Get information about a sample such as its path, sample ID, etc.
+
 
 
