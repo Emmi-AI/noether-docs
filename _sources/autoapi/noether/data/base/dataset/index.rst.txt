@@ -4,6 +4,14 @@ noether.data.base.dataset
 .. py:module:: noether.data.base.dataset
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.base.dataset.logger
+
+
 Classes
 -------
 
@@ -22,6 +30,8 @@ Functions
 
 Module Contents
 ---------------
+
+.. py:data:: logger
 
 .. py:function:: with_normalizers(_func_or_key = None)
 

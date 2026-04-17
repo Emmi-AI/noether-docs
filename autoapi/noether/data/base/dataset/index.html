@@ -304,6 +304,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/experiment_tracking.html">Experiment Tracking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/launch_job.html">How to launch a SLURM job from the command line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/development_cli.html">Noether Development CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../guides/training/development_cli.html#running-a-full-training-with-the-development-setup">Running a full training with the development setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 </li>
@@ -773,6 +775,7 @@
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-78" name="toctree-checkbox-78" role="switch" type="checkbox"/><label for="toctree-checkbox-78"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../training/cli/development/index.html">noether.training.cli.development</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../training/cli/main_train/index.html">noether.training.cli.main_train</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../training/cli/submit_job/index.html">noether.training.cli.submit_job</a></li>
 </ul>
@@ -837,6 +840,18 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.data.base.dataset">
 <span id="noether-data-base-dataset"></span><h1>noether.data.base.dataset<a class="headerlink" href="#module-noether.data.base.dataset" title="Link to this heading">¶</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.base.dataset.logger" title="noether.data.base.dataset.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
@@ -863,6 +878,11 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.data.base.dataset.logger">
+<span class="sig-prename descclassname"><span class="pre">noether.data.base.dataset.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#noether.data.base.dataset.logger" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.data.base.dataset.with_normalizers">
 <span class="sig-prename descclassname"><span class="pre">noether.data.base.dataset.</span></span><span class="sig-name descname"><span class="pre">with_normalizers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_func_or_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.base.dataset.with_normalizers" title="Link to this definition">¶</a></dt>
@@ -1173,9 +1193,11 @@ instead of calling pipeline.denormalize which would process the entire pipeline.
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">noether.data.base.dataset</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.data.base.dataset.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.base.dataset.with_normalizers"><code class="docutils literal notranslate"><span class="pre">with_normalizers()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.base.dataset.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul>
 <li><a class="reference internal" href="#noether.data.base.dataset.Dataset.logger"><code class="docutils literal notranslate"><span class="pre">Dataset.logger</span></code></a></li>

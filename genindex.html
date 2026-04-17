@@ -302,6 +302,8 @@
 <li class="toctree-l2"><a class="reference internal" href="guides/training/experiment_tracking.html">Experiment Tracking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides/training/launch_job.html">How to launch a SLURM job from the command line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides/training/how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/training/development_cli.html">Noether Development CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/training/development_cli.html#running-a-full-training-with-the-development-setup">Running a full training with the development setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 </li>
@@ -771,6 +773,7 @@
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-78" name="toctree-checkbox-78" role="switch" type="checkbox"/><label for="toctree-checkbox-78"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/training/cli/development/index.html">noether.training.cli.development</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/training/cli/main_train/index.html">noether.training.cli.main_train</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/training/cli/submit_job/index.html">noether.training.cli.submit_job</a></li>
 </ul>
@@ -5790,6 +5793,10 @@
           <li><a href="autoapi/noether/core/utils/logging/index.html#noether.core.utils.logging.MessageCounter.log">(noether.core.utils.logging.MessageCounter method)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/training/cli/development/index.html#noether.training.cli.development.log_batch">log_batch() (in module noether.training.cli.development)</a>
+</li>
+        <li><a href="autoapi/noether/training/cli/development/index.html#noether.training.cli.development.log_batch_diff">log_batch_diff() (in module noether.training.cli.development)</a>
+</li>
         <li><a href="autoapi/noether/core/writers/log_writer/index.html#noether.core.writers.log_writer.LogWriter.log_cache">log_cache (noether.core.writers.log_writer.LogWriter attribute)</a>
 
         <ul>
@@ -5888,6 +5895,8 @@
           <li><a href="autoapi/noether/core/utils/seed/index.html#noether.core.utils.seed.logger">(in module noether.core.utils.seed)</a>
 </li>
           <li><a href="autoapi/noether/core/utils/torch/amp/index.html#noether.core.utils.torch.amp.logger">(in module noether.core.utils.torch.amp)</a>
+</li>
+          <li><a href="autoapi/noether/data/base/dataset/index.html#noether.data.base.dataset.logger">(in module noether.data.base.dataset)</a>
 </li>
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/ahmedml/dataset/index.html#noether.data.datasets.cfd.caeml.ahmedml.dataset.logger">(in module noether.data.datasets.cfd.caeml.ahmedml.dataset)</a>
 </li>
@@ -6116,6 +6125,8 @@
           <li><a href="autoapi/noether/io/cli/cli/index.html#noether.io.cli.cli.main">(in module noether.io.cli.cli)</a>
 </li>
           <li><a href="autoapi/noether/scaffold/cli/index.html#noether.scaffold.cli.main">(in module noether.scaffold.cli)</a>
+</li>
+          <li><a href="autoapi/noether/training/cli/development/index.html#noether.training.cli.development.main">(in module noether.training.cli.development)</a>
 </li>
           <li><a href="autoapi/noether/training/cli/main_train/index.html#noether.training.cli.main_train.main">(in module noether.training.cli.main_train)</a>
 </li>
@@ -7321,6 +7332,8 @@
           <li><a href="autoapi/noether/training/callbacks/profiler/index.html#module-noether.training.callbacks.profiler">noether.training.callbacks.profiler</a>
 </li>
           <li><a href="autoapi/noether/training/cli/index.html#module-noether.training.cli">noether.training.cli</a>
+</li>
+          <li><a href="autoapi/noether/training/cli/development/index.html#module-noether.training.cli.development">noether.training.cli.development</a>
 </li>
           <li><a href="autoapi/noether/training/cli/main_train/index.html#module-noether.training.cli.main_train">noether.training.cli.main_train</a>
 </li>
@@ -8709,8 +8722,6 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/filemap/index.html#module-noether.data.datasets.cfd.caeml.filemap">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.caeml.preprocessing
 
@@ -8718,6 +8729,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/preprocessing/index.html#module-noether.data.datasets.cfd.caeml.preprocessing">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.dataset
 
@@ -9731,6 +9744,13 @@
 
         <ul>
           <li><a href="autoapi/noether/training/cli/index.html#module-noether.training.cli">module</a>
+</li>
+        </ul></li>
+        <li>
+    noether.training.cli.development
+
+        <ul>
+          <li><a href="autoapi/noether/training/cli/development/index.html#module-noether.training.cli.development">module</a>
 </li>
         </ul></li>
         <li>
@@ -11611,10 +11631,10 @@
           <li><a href="autoapi/noether/data/samplers/index.html#noether.data.samplers.SamplerIntervalConfig.sampler">(noether.data.samplers.SamplerIntervalConfig attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id6">sampler_config (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.sampler_config">[1]</a>
+        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.sampler_config">sampler_config (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>
 
         <ul>
-          <li><a href="autoapi/noether/core/callbacks/index.html#id6">(noether.core.callbacks.PeriodicDataIteratorCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.PeriodicDataIteratorCallback.sampler_config">[1]</a>
+          <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.PeriodicDataIteratorCallback.sampler_config">(noether.core.callbacks.PeriodicDataIteratorCallback attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/data/index.html#noether.data.SamplerIntervalConfig">SamplerIntervalConfig (class in noether.data)</a>

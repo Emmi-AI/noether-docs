@@ -304,6 +304,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../guides/training/experiment_tracking.html">Experiment Tracking</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../guides/training/launch_job.html">How to launch a SLURM job from the command line</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../guides/training/how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../guides/training/development_cli.html">Noether Development CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../guides/training/development_cli.html#running-a-full-training-with-the-development-setup">Running a full training with the development setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 </li>
@@ -773,6 +775,7 @@
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../training/cli/index.html">noether.training.cli</a><input class="toctree-checkbox" id="toctree-checkbox-78" name="toctree-checkbox-78" role="switch" type="checkbox"/><label for="toctree-checkbox-78"><div class="visually-hidden">Toggle navigation of noether.training.cli</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../training/cli/development/index.html">noether.training.cli.development</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../training/cli/main_train/index.html">noether.training.cli.main_train</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../training/cli/submit_job/index.html">noether.training.cli.submit_job</a></li>
 </ul>
@@ -3177,7 +3180,7 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.callbacks.PeriodicDataIteratorCallback">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.</span></span><span class="sig-name descname"><span class="pre">PeriodicDataIteratorCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_property_provider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.PeriodicDataIteratorCallback" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.</span></span><span class="sig-name descname"><span class="pre">PeriodicDataIteratorCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_property_provider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">development</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.PeriodicDataIteratorCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.core.callbacks.PeriodicCallback" title="noether.core.callbacks.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeriodicCallback</span></code></a></p>
 <p>Base class for callbacks that perform periodic iterations over a dataset.</p>
 <p>PeriodicDataIteratorCallback extends <a class="reference internal" href="#noether.core.callbacks.PeriodicCallback" title="noether.core.callbacks.PeriodicCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicCallback</span></code></a> to support evaluations or computations that require
@@ -3312,6 +3315,7 @@ for available options.</p></li>
 <li><p><strong>checkpoint_writer</strong> (<a class="reference internal" href="../writers/index.html#noether.core.writers.CheckpointWriter" title="noether.core.writers.CheckpointWriter"><em>noether.core.writers.CheckpointWriter</em></a>) – <a class="reference internal" href="../writers/index.html#noether.core.writers.CheckpointWriter" title="noether.core.writers.CheckpointWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">CheckpointWriter</span></code></a> instance to save checkpoints.</p></li>
 <li><p><strong>metric_property_provider</strong> (<a class="reference internal" href="../providers/index.html#noether.core.providers.MetricPropertyProvider" title="noether.core.providers.MetricPropertyProvider"><em>noether.core.providers.MetricPropertyProvider</em></a>) – <a class="reference internal" href="../providers/index.html#noether.core.providers.MetricPropertyProvider" title="noether.core.providers.MetricPropertyProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricPropertyProvider</span></code></a> instance to access properties of metrics.</p></li>
 <li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Name of the callback.</p></li>
+<li><p><strong>development</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -3323,11 +3327,6 @@ for available options.</p></li>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id5">
 <span class="sig-name descname"><span class="pre">total_data_time</span></span><a class="headerlink" href="#id5" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="id6">
-<span class="sig-name descname"><span class="pre">sampler_config</span></span><a class="headerlink" href="#id6" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -3730,7 +3729,6 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.PeriodicDataIteratorCallback.total_data_time"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.total_data_time</span></code></a></li>
 <li><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.dataset_key</span></code></a></li>
 <li><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.total_data_time</span></code></a></li>
-<li><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.sampler_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.PeriodicDataIteratorCallback._sampler_config_from_key"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback._sampler_config_from_key()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.PeriodicDataIteratorCallback.process_data"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.process_data()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.PeriodicDataIteratorCallback.process_results"><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback.process_results()</span></code></a></li>

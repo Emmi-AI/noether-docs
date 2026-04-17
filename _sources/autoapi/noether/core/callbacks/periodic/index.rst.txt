@@ -299,7 +299,7 @@ Module Contents
 
 
 
-.. py:class:: PeriodicDataIteratorCallback(callback_config, trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None)
+.. py:class:: PeriodicDataIteratorCallback(callback_config, trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None, development = False)
 
    Bases: :py:obj:`PeriodicCallback`
 
@@ -436,9 +436,6 @@ Module Contents
 
 
    .. py:attribute:: total_data_time
-
-
-   .. py:attribute:: sampler_config
 
 
    .. py:method:: _sampler_config_from_key(key, properties = None, max_size = None)

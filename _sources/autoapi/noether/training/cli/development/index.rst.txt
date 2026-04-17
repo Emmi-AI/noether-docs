@@ -1,0 +1,25 @@
+noether.training.cli.development
+================================
+
+.. py:module:: noether.training.cli.development
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.training.cli.development.log_batch
+   noether.training.cli.development.log_batch_diff
+   noether.training.cli.development.main
+
+
+Module Contents
+---------------
+
+.. py:function:: log_batch(batch, title='BATCH CONTENTS')
+
+.. py:function:: log_batch_diff(batch, collated_batch)
+
+.. py:function:: main(hydra_config)
+
