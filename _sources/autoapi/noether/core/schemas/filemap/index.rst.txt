@@ -57,6 +57,12 @@ Module Contents
 
 
 
+   .. py:attribute:: surface_area
+      :type:  str | None
+      :value: None
+
+
+
    .. py:attribute:: volume_position
       :type:  str | None
       :value: None

@@ -286,6 +286,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../../../tutorials/walkthrough/models.html">Models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../../tutorials/walkthrough/callbacks.html">Callbacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../../tutorials/walkthrough/running_experiments.html">Running the Experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../../tutorials/walkthrough/showcase.html">AB-UPT Showcase</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../tutorials/scaffolding_a_new_project.html">Scaffolding a New Project</a></li>
@@ -1025,6 +1026,20 @@ is configured through constructor parameters, allowing for easy extension to new
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.data.datasets.cfd.dataset.AeroDataset.getitem_surface_area">
+<span class="sig-name descname"><span class="pre">getitem_surface_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idx</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.datasets.cfd.dataset.AeroDataset.getitem_surface_area" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve surface cell areas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1125,6 +1140,7 @@ is configured through constructor parameters, allowing for easy extension to new
 <li><a class="reference internal" href="#noether.data.datasets.cfd.dataset.AeroDataset.getitem_surface_sdf"><code class="docutils literal notranslate"><span class="pre">AeroDataset.getitem_surface_sdf()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.datasets.cfd.dataset.AeroDataset.getitem_volume_normals"><code class="docutils literal notranslate"><span class="pre">AeroDataset.getitem_volume_normals()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.datasets.cfd.dataset.AeroDataset.getitem_surface_normals"><code class="docutils literal notranslate"><span class="pre">AeroDataset.getitem_surface_normals()</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.datasets.cfd.dataset.AeroDataset.getitem_surface_area"><code class="docutils literal notranslate"><span class="pre">AeroDataset.getitem_surface_area()</span></code></a></li>
 </ul>
 </li>
 </ul>

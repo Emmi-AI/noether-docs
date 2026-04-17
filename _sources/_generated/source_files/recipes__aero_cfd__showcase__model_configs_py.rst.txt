@@ -1,0 +1,8 @@
+model_configs.py
+================
+
+``recipes/aero_cfd/showcase/model_configs.py``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/showcase/model_configs.py
+   :language: python
+   :linenos:

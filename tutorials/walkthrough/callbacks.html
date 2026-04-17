@@ -286,6 +286,7 @@
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Callbacks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running_experiments.html">Running the Experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="showcase.html">AB-UPT Showcase</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../scaffolding_a_new_project.html">Scaffolding a New Project</a></li>
@@ -895,6 +896,12 @@ Weights &amp; Biases.</p>
     <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluation_modes</span><span class="p">:</span>
         <span class="n">metrics</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_compute_mode_metrics</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
 
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_forces</span><span class="p">:</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_compute_force_metrics</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_save_predictions</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_collect_predictions</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">metrics</span>
 </pre></div>
 </div>
@@ -964,13 +971,13 @@ the <code class="docutils literal notranslate"><span class="pre">batch_size</spa
 executed by the dataset, we retrieve the data normalizers via the <code class="docutils literal notranslate"><span class="pre">DataContainer</span></code>. In the
 <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of the callback we implement, we use the available <code class="docutils literal notranslate"><span class="pre">self.data_container</span></code>
 to get the correct dataset used for this callback and retrieve the normalizers:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callback_config</span><span class="p">:</span> <span class="n">AeroMetricsCallbackConfig</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">callback_config</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Args</span><span class="p">:</span>
+    <span class="n">callback_config</span><span class="p">:</span> <span class="n">Configuration</span> <span class="k">for</span> <span class="n">the</span> <span class="n">callback</span> <span class="n">including</span> <span class="n">dataset</span> <span class="n">key</span><span class="p">,</span>
+        <span class="n">forward</span> <span class="n">properties</span><span class="p">,</span> <span class="ow">and</span> <span class="n">chunking</span> <span class="n">settings</span><span class="o">.</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Additional</span> <span class="n">arguments</span> <span class="n">passed</span> <span class="n">to</span> <span class="n">parent</span> <span class="n">class</span><span class="o">.</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">callback_config</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">dataset_key</span> <span class="o">=</span> <span class="n">callback_config</span><span class="o">.</span><span class="n">dataset_key</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">evaluation_modes</span> <span class="o">=</span> <span class="n">DEFAULT_EVALUATION_MODES</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">dataset_normalizers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_container</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_key</span><span class="p">)</span><span class="o">.</span><span class="n">normalizers</span>
+<span class="n">Attributes</span><span class="p">:</span>
 </pre></div>
 </div>
 <p>To denormalize predictions, the <code class="docutils literal notranslate"><span class="pre">_denormalize</span></code> method looks up the normalizer by key and
