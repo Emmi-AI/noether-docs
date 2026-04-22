@@ -2044,11 +2044,11 @@ Package Contents
 
 
    .. py:attribute:: timeout_min
-      :type:  int | None
-      :value: None
+      :type:  int
+      :value: 0
 
 
-      Wall-clock limit in minutes.
+      Wall-clock limit in minutes. Use 0 for no time limit
 
 
    .. py:attribute:: stderr_to_stdout
