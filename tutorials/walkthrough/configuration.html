@@ -878,6 +878,7 @@ Let’s break down its key components:</p>
 <span class="nt">dataset_kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.data.datasets.cfd.ShapeNetCarDataset</span>
 <span class="nt">excluded_properties</span><span class="p">:</span><span class="w"> </span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">surface_friction</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">surface_area</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_pressure</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_vorticity</span>
 <span class="nt">defaults</span><span class="p">:</span>
@@ -895,7 +896,6 @@ Let’s break down its key components:</p>
 
 <span class="nt">stage_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
 <span class="nt">store_code_in_output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="nt">output_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./outputs</span>
 </pre></div>
 </div>
 <p>Each entry like <code class="docutils literal notranslate"><span class="pre">dataset_normalizers:</span> <span class="pre">shapenet_dataset_normalizers</span></code> tells Hydra to load

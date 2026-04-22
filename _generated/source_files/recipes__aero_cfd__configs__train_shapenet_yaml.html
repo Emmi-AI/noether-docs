@@ -848,43 +848,44 @@
 <span class="linenos"> 5</span><span class="nt">dataset_kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.data.datasets.cfd.ShapeNetCarDataset</span>
 <span class="linenos"> 6</span><span class="nt">excluded_properties</span><span class="p">:</span><span class="w"> </span>
 <span class="linenos"> 7</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">surface_friction</span>
-<span class="linenos"> 8</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_pressure</span>
-<span class="linenos"> 9</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_vorticity</span>
-<span class="linenos">10</span><span class="nt">defaults</span><span class="p">:</span>
-<span class="linenos">11</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">data_specs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_car</span>
-<span class="linenos">12</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dataset_normalizers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_dataset_normalizers</span>
-<span class="linenos">13</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">???</span><span class="w"> </span><span class="c1"># models are undefined and will be defined per experiment </span>
-<span class="linenos">14</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">trainer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_trainer</span>
-<span class="linenos">15</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">datasets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_dataset</span>
-<span class="linenos">16</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tracker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">??</span><span class="w"> </span><span class="c1"># trackers are undefined and will be defined depending on either development, training or evaluation</span>
-<span class="linenos">17</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">callbacks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">training_callbacks_shapenet</span>
-<span class="linenos">18</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_pipeline</span>
-<span class="linenos">19</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">optimizer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adamw</span>
-<span class="linenos">20</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">slurm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slurm_config</span><span class="w"> </span>
-<span class="linenos">21</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_self_</span>
-<span class="linenos">22</span>
-<span class="linenos">23</span><span class="nt">stage_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
-<span class="linenos">24</span><span class="nt">store_code_in_output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="linenos">25</span><span class="nt">output_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./outputs</span>
-<span class="linenos">26</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">surface_area</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_pressure</span>
+<span class="linenos">10</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_vorticity</span>
+<span class="linenos">11</span><span class="nt">defaults</span><span class="p">:</span>
+<span class="linenos">12</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">data_specs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_car</span>
+<span class="linenos">13</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dataset_normalizers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_dataset_normalizers</span>
+<span class="linenos">14</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">???</span><span class="w"> </span><span class="c1"># models are undefined and will be defined per experiment </span>
+<span class="linenos">15</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">trainer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_trainer</span>
+<span class="linenos">16</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">datasets</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_dataset</span>
+<span class="linenos">17</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tracker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">??</span><span class="w"> </span><span class="c1"># trackers are undefined and will be defined depending on either development, training or evaluation</span>
+<span class="linenos">18</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">callbacks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">training_callbacks_shapenet</span>
+<span class="linenos">19</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pipeline</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_pipeline</span>
+<span class="linenos">20</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">optimizer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adamw</span>
+<span class="linenos">21</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">slurm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">slurm_config</span><span class="w"> </span>
+<span class="linenos">22</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_self_</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="nt">stage_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
+<span class="linenos">25</span><span class="nt">store_code_in_output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="linenos">26</span><span class="nt">output_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./outputs</span>
 <span class="linenos">27</span>
-<span class="linenos">28</span><span class="c1"># to continue training from a previous run checkpoint (which has not eneded yet), specify the run_id and stage_name to resume from. </span>
-<span class="linenos">29</span><span class="c1">#The model will be initialized from the lastest checkpoint of the specified stage if no checkpoint is specified.</span>
-<span class="linenos">30</span><span class="c1">#resume_run_id: 2026-02-19_f7dy0</span>
-<span class="linenos">31</span><span class="c1">#resume_stage_name: train</span>
-<span class="linenos">32</span><span class="c1">#` stage_name: continue_training # optional, only needed if you want to use a different stage name for the continued training run. If not specified, the stage name will be the same as the stage name of the previous run (train in this case).</span>
-<span class="linenos">33</span><span class="c1">#resume_checkpoint: E3 #If a full checkpoint path is E3_U5523_S5523. Either E*, U*, S* need to be provided</span>
-<span class="linenos">34</span>
-<span class="linenos">35</span><span class="c1"># example of how to use the PreviousRunInitializer to initialize the model from a previous run.</span>
-<span class="linenos">36</span>
-<span class="linenos">37</span><span class="c1">#model:</span>
-<span class="linenos">38</span><span class="c1">#  initializers:</span>
-<span class="linenos">39</span><span class="c1">#    - kind: noether.core.initializers.PreviousRunInitializer</span>
-<span class="linenos">40</span><span class="c1">#      run_id: 2026-02-19_f7dy0</span>
-<span class="linenos">41</span><span class="c1">#      model_name: transformer</span>
-<span class="linenos">42</span><span class="c1">#      stage_name: train # only when a stage name is used for the previous run</span>
-<span class="linenos">43</span><span class="c1">#      checkpoint_tag: E4_U3156_S3156 # can be `latest`, `last`, `best`, or a specific epoch like E3_U100_S1000</span>
-<span class="linenos">44</span><span class="c1">#      model_info: ema=0.9999 # only needed when a checkoint has additional model info</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="c1"># to continue training from a previous run checkpoint (which has not eneded yet), specify the run_id and stage_name to resume from. </span>
+<span class="linenos">30</span><span class="c1">#The model will be initialized from the lastest checkpoint of the specified stage if no checkpoint is specified.</span>
+<span class="linenos">31</span><span class="c1">#resume_run_id: 2026-02-19_f7dy0</span>
+<span class="linenos">32</span><span class="c1">#resume_stage_name: train</span>
+<span class="linenos">33</span><span class="c1">#` stage_name: continue_training # optional, only needed if you want to use a different stage name for the continued training run. If not specified, the stage name will be the same as the stage name of the previous run (train in this case).</span>
+<span class="linenos">34</span><span class="c1">#resume_checkpoint: E3 #If a full checkpoint path is E3_U5523_S5523. Either E*, U*, S* need to be provided</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="c1"># example of how to use the PreviousRunInitializer to initialize the model from a previous run.</span>
+<span class="linenos">37</span>
+<span class="linenos">38</span><span class="c1">#model:</span>
+<span class="linenos">39</span><span class="c1">#  initializers:</span>
+<span class="linenos">40</span><span class="c1">#    - kind: noether.core.initializers.PreviousRunInitializer</span>
+<span class="linenos">41</span><span class="c1">#      run_id: 2026-02-19_f7dy0</span>
+<span class="linenos">42</span><span class="c1">#      model_name: transformer</span>
+<span class="linenos">43</span><span class="c1">#      stage_name: train # only when a stage name is used for the previous run</span>
+<span class="linenos">44</span><span class="c1">#      checkpoint_tag: E4_U3156_S3156 # can be `latest`, `last`, `best`, or a specific epoch like E3_U100_S1000</span>
+<span class="linenos">45</span><span class="c1">#      model_info: ema=0.9999 # only needed when a checkoint has additional model info</span>
 </pre></div>
 </div>
 </section>
