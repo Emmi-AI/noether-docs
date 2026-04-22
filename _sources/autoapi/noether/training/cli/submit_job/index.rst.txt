@@ -18,26 +18,21 @@ Module Contents
 
 .. py:function:: validate_config(config)
 
-   Validate the configuration using the specified schema.
+   Validate the configuration using the schema declared by ``config_schema_kind``.
 
-   :param config: The Hydra configuration to validate
+   :param config: The composed Hydra configuration to validate.
 
-   :returns: The validated configuration schema
+   :returns: The validated configuration schema instance.
 
-   :raises ValueError: If the configuration is missing required fields
-   :raises RuntimeError: If the schema class cannot be loaded
+   :raises ImportError: If the schema class cannot be imported.
+   :raises ValidationError: If the configuration does not satisfy the schema.
 
 
-.. py:function:: main(config)
+.. py:function:: main()
 
-   Main entry point for SLURM job submission.
+   Entry point for ``noether-train-submit-job``.
 
-   Validates a Hydra config and submits a training job via ``sbatch``.
-
-   Example:
-   .. code-block:: bash
-
-      noether-train-submit-job --hp configs/train_shapenet.yaml +seed=1 tracker=disabled
-      noether-train-submit-job --hp configs/train_shapenet.yaml --dry-run
+   Validates a Hydra config (and every multirun combination thereof) and submits
+   a training job — or a SLURM array job — via :mod:`submitit`.
 
 

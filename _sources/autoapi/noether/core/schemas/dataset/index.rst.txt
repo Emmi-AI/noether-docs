@@ -130,7 +130,7 @@ Module Contents
 
 .. py:data:: TPipelineConfig
 
-.. py:class:: DatasetBaseConfig(/, **data)
+.. py:class:: DatasetBaseConfig[TPipelineConfig: PipelineConfig](/, **data)
 
    Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
 
@@ -157,7 +157,7 @@ Module Contents
 
 
    .. py:attribute:: pipeline
-      :type:  Annotated[DatasetBaseConfig.TPipelineConfig | None, Discriminated(PipelineConfig)]
+      :type:  Annotated[TPipelineConfig | None, Discriminated(PipelineConfig)]
       :value: None
 
 

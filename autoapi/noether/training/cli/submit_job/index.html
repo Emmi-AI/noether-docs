@@ -846,10 +846,10 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.training.cli.submit_job.validate_config" title="noether.training.cli.submit_job.validate_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_config</span></code></a>(config)</p></td>
-<td><p>Validate the configuration using the specified schema.</p></td>
+<td><p>Validate the configuration using the schema declared by <code class="docutils literal notranslate"><span class="pre">config_schema_kind</span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.training.cli.submit_job.main" title="noether.training.cli.submit_job.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>(config)</p></td>
-<td><p>Main entry point for SLURM job submission.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.training.cli.submit_job.main" title="noether.training.cli.submit_job.main"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main</span></code></a>()</p></td>
+<td><p>Entry point for <code class="docutils literal notranslate"><span class="pre">noether-train-submit-job</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -860,18 +860,18 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.training.cli.submit_job.validate_config">
 <span class="sig-prename descclassname"><span class="pre">noether.training.cli.submit_job.</span></span><span class="sig-name descname"><span class="pre">validate_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.cli.submit_job.validate_config" title="Link to this definition">¶</a></dt>
-<dd><p>Validate the configuration using the specified schema.</p>
+<dd><p>Validate the configuration using the schema declared by <code class="docutils literal notranslate"><span class="pre">config_schema_kind</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<em>omegaconf.DictConfig</em>) – The Hydra configuration to validate</p>
+<dd class="field-odd"><p><strong>config</strong> (<em>omegaconf.DictConfig</em>) – The composed Hydra configuration to validate.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The validated configuration schema</p>
+<dd class="field-even"><p>The validated configuration schema instance.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – If the configuration is missing required fields</p></li>
-<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If the schema class cannot be loaded</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ImportError" title="(in Python v3.14)"><strong>ImportError</strong></a> – If the schema class cannot be imported.</p></li>
+<li><p><strong>ValidationError</strong> – If the configuration does not satisfy the schema.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -882,18 +882,13 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.training.cli.submit_job.main">
-<span class="sig-prename descclassname"><span class="pre">noether.training.cli.submit_job.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.cli.submit_job.main" title="Link to this definition">¶</a></dt>
-<dd><p>Main entry point for SLURM job submission.</p>
-<p>Validates a Hydra config and submits a training job via <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
-<p>Example:
-.. code-block:: bash</p>
-<blockquote>
-<div><p>noether-train-submit-job –hp configs/train_shapenet.yaml +seed=1 tracker=disabled
-noether-train-submit-job –hp configs/train_shapenet.yaml –dry-run</p>
-</div></blockquote>
+<span class="sig-prename descclassname"><span class="pre">noether.training.cli.submit_job.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.cli.submit_job.main" title="Link to this definition">¶</a></dt>
+<dd><p>Entry point for <code class="docutils literal notranslate"><span class="pre">noether-train-submit-job</span></code>.</p>
+<p>Validates a Hydra config (and every multirun combination thereof) and submits
+a training job — or a SLURM array job — via <code class="xref py py-mod docutils literal notranslate"><span class="pre">submitit</span></code>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<em>omegaconf.DictConfig</em>)</p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>

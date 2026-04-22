@@ -50,7 +50,7 @@ Module Contents
 
 .. py:data:: TCallbackConfig
 
-.. py:class:: BaseTrainerConfig(/, **data)
+.. py:class:: BaseTrainerConfig[TCallbackConfig: noether.core.schemas.callbacks.CallBackBaseConfig](/, **data)
 
    Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
 
@@ -139,7 +139,7 @@ Module Contents
 
 
    .. py:attribute:: callbacks
-      :type:  list[Annotated[BaseTrainerConfig.TCallbackConfig, Discriminated(CallBackBaseConfig)]] | None
+      :type:  list[Annotated[TCallbackConfig, Discriminated(CallBackBaseConfig)]] | None
       :value: None
 
 

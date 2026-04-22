@@ -995,7 +995,7 @@
 <td><p>Root configuration schema for all experiments in Noether.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.SlurmConfig" title="noether.core.schemas.SlurmConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SlurmConfig</span></code></a></p></td>
-<td><p>Configuration for SLURM job submission via sbatch.</p></td>
+<td><p>Configuration for SLURM job submission via <code class="xref py py-mod docutils literal notranslate"><span class="pre">submitit</span></code>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.WandBTrackerSchema" title="noether.core.schemas.WandBTrackerSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WandBTrackerSchema</span></code></a></p></td>
 <td><p>Base configuration for experiment trackers. All tracker configs should inherit from this class.</p></td>
@@ -1534,7 +1534,7 @@ validated to form a valid model.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.DatasetBaseConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.</span></span><span class="sig-name descname"><span class="pre">DatasetBaseConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.DatasetBaseConfig" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.</span></span><span class="sig-name descname"><span class="pre">DatasetBaseConfig</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">TPipelineConfig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dataset/index.html#noether.core.schemas.dataset.PipelineConfig" title="noether.core.schemas.dataset.PipelineConfig"><span class="pre">PipelineConfig</span></a></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.DatasetBaseConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.lib._RegistryBase</span></code></p>
 <p>Internal base class for all registry-based configs.</p>
 <p>Provides auto-registration via __init_subclass__.
@@ -1556,7 +1556,7 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.DatasetBaseConfig.pipeline">
-<span class="sig-name descname"><span class="pre">pipeline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">DatasetBaseConfig.TPipelineConfig</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="dataset/index.html#noether.core.schemas.dataset.PipelineConfig" title="noether.core.schemas.dataset.PipelineConfig"><span class="pre">PipelineConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.DatasetBaseConfig.pipeline" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">pipeline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">TPipelineConfig</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="dataset/index.html#noether.core.schemas.dataset.PipelineConfig" title="noether.core.schemas.dataset.PipelineConfig"><span class="pre">PipelineConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.DatasetBaseConfig.pipeline" title="Link to this definition">¶</a></dt>
 <dd><p>Config of the pipeline to use for the dataset.</p>
 </dd></dl>
 
@@ -2608,7 +2608,7 @@ This is a model-level validator that runs after individual field validation.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.</span></span><span class="sig-name descname"><span class="pre">ConfigSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.ConfigSchema" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.</span></span><span class="sig-name descname"><span class="pre">ConfigSchema</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">TModelConfig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><span class="pre">noether.core.schemas.models.ModelBaseConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">TDatasetConfig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><span class="pre">noether.core.schemas.dataset.DatasetBaseConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">TTrainerConfig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig" title="noether.core.schemas.trainers.BaseTrainerConfig"><span class="pre">noether.core.schemas.trainers.BaseTrainerConfig</span></a></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.ConfigSchema" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
 <p>Root configuration schema for all experiments in Noether.</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
@@ -2689,7 +2689,9 @@ validated to form a valid model.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.run_id">
 <span class="sig-name descname"><span class="pre">run_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.run_id" title="Link to this definition">¶</a></dt>
-<dd><p>Unique identifier for the run. If None, a new ID will be generated.</p>
+<dd><p>Unique identifier for the run. When running under SLURM and not set explicitly,
+defaults to the SLURM job ID (e.g. <code class="docutils literal notranslate"><span class="pre">12345_2</span></code> for array task 2 of job 12345).
+Otherwise a new ID is generated at runtime.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2718,7 +2720,7 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.datasets">
-<span class="sig-name descname"><span class="pre">datasets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigSchema.TDatasetConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#noether.core.schemas.DatasetBaseConfig" title="noether.core.schemas.DatasetBaseConfig"><span class="pre">DatasetBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.datasets" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">datasets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">TDatasetConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#noether.core.schemas.DatasetBaseConfig" title="noether.core.schemas.DatasetBaseConfig"><span class="pre">DatasetBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.datasets" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for datasets. The key is the dataset and value is the configuration for that dataset.
 See <a class="reference internal" href="dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a> for available options.
 The key “train” is reserved for the training dataset, but if not provided, the first dataset will be used as training dataset by default,
@@ -2727,13 +2729,13 @@ other keys are arbitrary and can be used to identify datasets for different stag
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.model">
-<span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigSchema.TModelConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#noether.core.schemas.ModelBaseConfig" title="noether.core.schemas.ModelBaseConfig"><span class="pre">ModelBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.model" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">TModelConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#noether.core.schemas.ModelBaseConfig" title="noether.core.schemas.ModelBaseConfig"><span class="pre">ModelBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.model" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for the model. See <a class="reference internal" href="models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.trainer">
-<span class="sig-name descname"><span class="pre">trainer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigSchema.TTrainerConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig" title="noether.core.schemas.BaseTrainerConfig"><span class="pre">BaseTrainerConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.trainer" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">trainer</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">TTrainerConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig" title="noether.core.schemas.BaseTrainerConfig"><span class="pre">BaseTrainerConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.trainer" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for the trainer. See <a class="reference internal" href="trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig" title="noether.core.schemas.trainers.BaseTrainerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrainerConfig</span></code></a> for available options.</p>
 </dd></dl>
 
@@ -2751,8 +2753,10 @@ other keys are arbitrary and can be used to identify datasets for different stag
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.output_path">
-<span class="sig-name descname"><span class="pre">output_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">pathlib.Path</span></a></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.output_path" title="Link to this definition">¶</a></dt>
-<dd><p>Path to output directory.</p>
+<span class="sig-name descname"><span class="pre">output_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">pathlib.Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.ConfigSchema.output_path" title="Link to this definition">¶</a></dt>
+<dd><p>Path to output directory. When omitted, defaults to <code class="docutils literal notranslate"><span class="pre">slurm.folder</span></code> if a
+<code class="docutils literal notranslate"><span class="pre">slurm</span></code> section is present. Raises a validation error when neither
+<code class="docutils literal notranslate"><span class="pre">output_path</span></code> nor <code class="docutils literal notranslate"><span class="pre">slurm</span></code> is provided.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -2782,20 +2786,6 @@ other keys are arbitrary and can be used to identify datasets for different stag
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.validate_output_path">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_output_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.ConfigSchema.validate_output_path" title="Link to this definition">¶</a></dt>
-<dd><p>Validates that the output path is valid.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>pathlib.Path</em></a>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)">pathlib.Path</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="noether.core.schemas.ConfigSchema.serialize_output_path">
 <span class="sig-name descname"><span class="pre">serialize_output_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.ConfigSchema.serialize_output_path" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -2803,7 +2793,7 @@ other keys are arbitrary and can be used to identify datasets for different stag
 <dd class="field-odd"><p><strong>value</strong> (<em>Any</em>)</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Any</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a> | None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2839,9 +2829,18 @@ other keys are arbitrary and can be used to identify datasets for different stag
 <dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.</span></span><span class="sig-name descname"><span class="pre">SlurmConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.SlurmConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Configuration for SLURM job submission via sbatch.</p>
-<p>All fields are optional and default to None, meaning the cluster default will be used.
-This schema covers all sbatch directives available in SLURM.</p>
+<p>Configuration for SLURM job submission via <code class="xref py py-mod docutils literal notranslate"><span class="pre">submitit</span></code>.</p>
+<p>Field names mirror the keyword arguments accepted by
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">submitit.AutoExecutor.update_parameters()</span></code>. All fields are optional
+and default to <code class="docutils literal notranslate"><span class="pre">None</span></code>, meaning the cluster default is used.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Job stdout/stderr is owned by submitit and written to <code class="docutils literal notranslate"><span class="pre">&lt;folder&gt;/&lt;job_id&gt;_log.out</span></code>
+/ <code class="docutils literal notranslate"><span class="pre">&lt;folder&gt;/&lt;job_id&gt;_log.err</span></code>. Use the <code class="docutils literal notranslate"><span class="pre">folder</span></code> field to control where these
+files land. SLURM <code class="docutils literal notranslate"><span class="pre">--output</span></code>/<code class="docutils literal notranslate"><span class="pre">--error</span></code> directives are intentionally not
+exposed; pass them via <code class="docutils literal notranslate"><span class="pre">slurm_additional_parameters</span></code> if you really need to
+override submitit’s defaults (this disables <code class="docutils literal notranslate"><span class="pre">job.stdout()</span></code> helpers).</p>
+</div>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
 validated to form a valid model.</p>
@@ -2858,221 +2857,106 @@ validated to form a valid model.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.job_name">
-<span class="sig-name descname"><span class="pre">job_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.job_name" title="Link to this definition">¶</a></dt>
-<dd><p>Name of the job (–job-name).</p>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.folder">
+<span class="sig-name descname"><span class="pre">folder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'submitit_logs'</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.folder" title="Link to this definition">¶</a></dt>
+<dd><p>Directory where submitit writes the job script, pickled task, and stdout/stderr logs.
+Per-job files are named <code class="docutils literal notranslate"><span class="pre">&lt;job_id&gt;_log.out</span></code> etc. inside this directory.
+This is also used as the default <code class="docutils literal notranslate"><span class="pre">output_path</span></code> for training runs (see
+<a class="reference internal" href="#noether.core.schemas.ConfigSchema.output_path" title="noether.core.schemas.ConfigSchema.output_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ConfigSchema.output_path</span></code></a>).</p>
+<p>Supports <code class="docutils literal notranslate"><span class="pre">%u</span></code> (current username) interpolation, e.g.
+<code class="docutils literal notranslate"><span class="pre">/home/%u/logs/experiment</span></code>. SLURM job-time patterns like <code class="docutils literal notranslate"><span class="pre">%j</span></code> are
+<strong>not</strong> supported because submitit needs the directory to exist before
+submission.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.partition">
-<span class="sig-name descname"><span class="pre">partition</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.partition" title="Link to this definition">¶</a></dt>
-<dd><p>Partition to submit the job to (–partition). Multiple partitions can be comma-separated.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.reservation">
-<span class="sig-name descname"><span class="pre">reservation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.reservation" title="Link to this definition">¶</a></dt>
-<dd><p>Reserve resources from a named reservation (–reservation).</p>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.name" title="Link to this definition">¶</a></dt>
+<dd><p>Job name (SLURM <code class="docutils literal notranslate"><span class="pre">--job-name</span></code>).</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.nodes">
-<span class="sig-name descname"><span class="pre">nodes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.nodes" title="Link to this definition">¶</a></dt>
-<dd><p>Number of nodes to allocate (–nodes). Can be an integer or a range like ‘2-4’.</p>
+<span class="sig-name descname"><span class="pre">nodes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.nodes" title="Link to this definition">¶</a></dt>
+<dd><p>Number of nodes to allocate.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.ntasks">
-<span class="sig-name descname"><span class="pre">ntasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.ntasks" title="Link to this definition">¶</a></dt>
-<dd><p>Total number of tasks to launch (–ntasks).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.ntasks_per_node">
-<span class="sig-name descname"><span class="pre">ntasks_per_node</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.ntasks_per_node" title="Link to this definition">¶</a></dt>
-<dd><p>Number of tasks per allocated node (–ntasks-per-node).</p>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.tasks_per_node">
+<span class="sig-name descname"><span class="pre">tasks_per_node</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.tasks_per_node" title="Link to this definition">¶</a></dt>
+<dd><p>Number of tasks per allocated node.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.cpus_per_task">
 <span class="sig-name descname"><span class="pre">cpus_per_task</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.cpus_per_task" title="Link to this definition">¶</a></dt>
-<dd><p>Number of CPUs per task (–cpus-per-task).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.mem">
-<span class="sig-name descname"><span class="pre">mem</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.mem" title="Link to this definition">¶</a></dt>
-<dd><p>Memory per node (–mem), e.g. ‘4G’, ‘512M’, ‘0’ for all available memory.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.gpus">
-<span class="sig-name descname"><span class="pre">gpus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.gpus" title="Link to this definition">¶</a></dt>
-<dd><p>count’, e.g. ‘v100:2’.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Total GPUs for the job (–gpus). Can be a count or ‘type</p>
-</dd>
-</dl>
+<dd><p>Number of CPUs per task.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.gpus_per_node">
-<span class="sig-name descname"><span class="pre">gpus_per_node</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.gpus_per_node" title="Link to this definition">¶</a></dt>
-<dd><p>count’, e.g. ‘a100:4’.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>GPUs per node (–gpus-per-node). Can be a count or ‘type</p>
-</dd>
-</dl>
+<span class="sig-name descname"><span class="pre">gpus_per_node</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.gpus_per_node" title="Link to this definition">¶</a></dt>
+<dd><p>GPUs per node. Accepts a count or <code class="docutils literal notranslate"><span class="pre">type:count</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;a100:4&quot;</span></code>).</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.gres">
-<span class="sig-name descname"><span class="pre">gres</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.gres" title="Link to this definition">¶</a></dt>
-<dd><p>2,shard:1’.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Generic consumable resources (–gres), e.g. ‘gpu</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.mem_gb">
+<span class="sig-name descname"><span class="pre">mem_gb</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.mem_gb" title="Link to this definition">¶</a></dt>
+<dd><p>Memory per node in gigabytes.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.time">
-<span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.time" title="Link to this definition">¶</a></dt>
-<dd><p>‘minutes’, ‘MM:SS’, ‘HH:MM:SS’, ‘D-HH’, ‘D-HH:MM’, ‘D-HH:MM:SS’.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Wall clock time limit (–time). Formats</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.timeout_min">
+<span class="sig-name descname"><span class="pre">timeout_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.timeout_min" title="Link to this definition">¶</a></dt>
+<dd><p>Wall-clock limit in minutes.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.begin">
-<span class="sig-name descname"><span class="pre">begin</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.begin" title="Link to this definition">¶</a></dt>
-<dd><p>00:00’, ‘now+1hour’.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Defer job start until the specified time (–begin), e.g. ‘2024-01-15T10</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.stderr_to_stdout">
+<span class="sig-name descname"><span class="pre">stderr_to_stdout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.stderr_to_stdout" title="Link to this definition">¶</a></dt>
+<dd><p>If True, merge stderr into stdout.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.output">
-<span class="sig-name descname"><span class="pre">output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.output" title="Link to this definition">¶</a></dt>
-<dd><p>%j (job ID), %x (job name), %A (array master ID), %a (array task ID), %N (node name), %u (user name).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>File path for stdout (–output). Supports replacement symbols</p>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.slurm_partition">
+<span class="sig-name descname"><span class="pre">slurm_partition</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.slurm_partition" title="Link to this definition">¶</a></dt>
+<dd><p>Partition to submit the job to.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.error">
-<span class="sig-name descname"><span class="pre">error</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.error" title="Link to this definition">¶</a></dt>
-<dd><p>File path for stderr (–error). Same replacement symbols as output.</p>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.slurm_array_parallelism">
+<span class="sig-name descname"><span class="pre">slurm_array_parallelism</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.slurm_array_parallelism" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum number of array tasks running concurrently (SLURM <code class="docutils literal notranslate"><span class="pre">%N</span></code> in <code class="docutils literal notranslate"><span class="pre">--array</span></code>).</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.array">
-<span class="sig-name descname"><span class="pre">array</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.array" title="Link to this definition">¶</a></dt>
-<dd><p>Job array specification (–array), e.g. ‘0-15’, ‘1,3,5,7’, ‘1-7%2’ (max 2 concurrent).</p>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.slurm_setup">
+<span class="sig-name descname"><span class="pre">slurm_setup</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.slurm_setup" title="Link to this definition">¶</a></dt>
+<dd><p>Shell commands run inside the job before the main command, e.g.
+<code class="docutils literal notranslate"><span class="pre">[&quot;source</span> <span class="pre">.venv/bin/activate&quot;]</span></code>.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.kill_on_invalid_dep">
-<span class="sig-name descname"><span class="pre">kill_on_invalid_dep</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.kill_on_invalid_dep" title="Link to this definition">¶</a></dt>
-<dd><p>Kill the job if any dependency is invalid (–kill-on-invalid-dep).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.nice">
-<span class="sig-name descname"><span class="pre">nice</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.nice" title="Link to this definition">¶</a></dt>
-<dd><p>Scheduling priority adjustment (–nice). Positive values lower priority.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.chdir">
-<span class="sig-name descname"><span class="pre">chdir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.chdir" title="Link to this definition">¶</a></dt>
-<dd><p>Working directory for the job (–chdir).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.env_path">
-<span class="sig-name descname"><span class="pre">env_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.env_path" title="Link to this definition">¶</a></dt>
-<dd><p>Shell command to source before running the job (e.g. for activating a virtual environment) which should be used as ‘source env_path’.</p>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.slurm_additional_parameters">
+<span class="sig-name descname"><span class="pre">slurm_additional_parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.SlurmConfig.slurm_additional_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Escape hatch for SLURM directives not exposed as first-class fields, e.g.
+<code class="docutils literal notranslate"><span class="pre">{&quot;nice&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;reservation&quot;:</span> <span class="pre">&quot;my_res&quot;,</span> <span class="pre">&quot;chdir&quot;:</span> <span class="pre">&quot;/work&quot;}</span></code>. Keys are passed as
+<code class="docutils literal notranslate"><span class="pre">--key=value</span></code> to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.to_srun_args">
-<span class="sig-name descname"><span class="pre">to_srun_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.SlurmConfig.to_srun_args" title="Link to this definition">¶</a></dt>
-<dd><p>Return a string of srun arguments for all non-None SLURM fields.</p>
-<p>Fields that are not actual srun directives (<code class="docutils literal notranslate"><span class="pre">experiment_file</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>)
-are excluded. Boolean fields are rendered as bare flags when <code class="docutils literal notranslate"><span class="pre">True</span></code> and
-omitted when <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.to_executor_kwargs">
+<span class="sig-name descname"><span class="pre">to_executor_kwargs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.SlurmConfig.to_executor_kwargs" title="Link to this definition">¶</a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">(folder,</span> <span class="pre">update_parameters_kwargs)</span></code> for <code class="xref py py-class docutils literal notranslate"><span class="pre">submitit.AutoExecutor</span></code>.</p>
+<p>Generic fields are passed under their bare name; everything else keeps its
+<code class="docutils literal notranslate"><span class="pre">slurm_</span></code> prefix so submitit routes it to the slurm executor.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.validate_time_format">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_time_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.SlurmConfig.validate_time_format" title="Link to this definition">¶</a></dt>
-<dd><p>Validate SLURM time format.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(folder,</span> <span class="pre">kwargs)</span></code> where <code class="docutils literal notranslate"><span class="pre">folder</span></code> is the executor’s log directory
+and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> is the dict to splat into <code class="docutils literal notranslate"><span class="pre">executor.update_parameters(**kwargs)</span></code>.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a> | None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.validate_memory_format">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_memory_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.SlurmConfig.validate_memory_format" title="Link to this definition">¶</a></dt>
-<dd><p>Validate SLURM memory format (number with optional K/M/G/T suffix).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a> | None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.validate_array_format">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_array_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.SlurmConfig.validate_array_format" title="Link to this definition">¶</a></dt>
-<dd><p>Validate SLURM array specification.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a> | None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.SlurmConfig.validate_gpu_spec">
-<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">validate_gpu_spec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.SlurmConfig.validate_gpu_spec" title="Link to this definition">¶</a></dt>
-<dd><p>Validate GPU specification (count or type:count).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a> | None</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -3115,7 +2999,7 @@ validated to form a valid model.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.BaseTrainerConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.</span></span><span class="sig-name descname"><span class="pre">BaseTrainerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.BaseTrainerConfig" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.</span></span><span class="sig-name descname"><span class="pre">BaseTrainerConfig</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">TCallbackConfig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><span class="pre">noether.core.schemas.callbacks.CallBackBaseConfig</span></a></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.BaseTrainerConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.lib._RegistryBase</span></code></p>
 <p>Internal base class for all registry-based configs.</p>
 <p>Provides auto-registration via __init_subclass__.
@@ -3189,7 +3073,7 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.BaseTrainerConfig.callbacks">
-<span class="sig-name descname"><span class="pre">callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseTrainerConfig.TCallbackConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#noether.core.schemas.CallBackBaseConfig" title="noether.core.schemas.CallBackBaseConfig"><span class="pre">CallBackBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.BaseTrainerConfig.callbacks" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">TCallbackConfig</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#noether.core.schemas.CallBackBaseConfig" title="noether.core.schemas.CallBackBaseConfig"><span class="pre">CallBackBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.BaseTrainerConfig.callbacks" title="Link to this definition">¶</a></dt>
 <dd><p>The callbacks to use for training.</p>
 </dd></dl>
 
@@ -3721,7 +3605,6 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.core.schemas.ConfigSchema.master_port"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.master_port</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.ConfigSchema.slurm"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.slurm</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.ConfigSchema.empty_dict_is_none"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.empty_dict_is_none()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.ConfigSchema.validate_output_path"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.validate_output_path()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.ConfigSchema.serialize_output_path"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.serialize_output_path()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.ConfigSchema.get_env_master_port"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.get_env_master_port()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.ConfigSchema.config_schema_kind"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.config_schema_kind</span></code></a></li>
@@ -3729,31 +3612,20 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.SlurmConfig"><code class="docutils literal notranslate"><span class="pre">SlurmConfig</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.model_config"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.model_config</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.job_name"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.job_name</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.partition"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.partition</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.reservation"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.reservation</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.folder"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.folder</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.name"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.name</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.nodes"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.nodes</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.ntasks"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.ntasks</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.ntasks_per_node"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.ntasks_per_node</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.tasks_per_node"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.tasks_per_node</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.cpus_per_task"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.cpus_per_task</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.mem"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.mem</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.gpus"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.gpus</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.gpus_per_node"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.gpus_per_node</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.gres"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.gres</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.time"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.time</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.begin"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.begin</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.output"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.output</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.error"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.error</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.array"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.array</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.kill_on_invalid_dep"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.kill_on_invalid_dep</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.nice"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.nice</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.chdir"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.chdir</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.env_path"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.env_path</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.to_srun_args"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.to_srun_args()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.validate_time_format"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.validate_time_format()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.validate_memory_format"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.validate_memory_format()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.validate_array_format"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.validate_array_format()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.validate_gpu_spec"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.validate_gpu_spec()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.mem_gb"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.mem_gb</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.timeout_min"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.timeout_min</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.stderr_to_stdout"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.stderr_to_stdout</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.slurm_partition"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_partition</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.slurm_array_parallelism"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_array_parallelism</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.slurm_setup"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_setup</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.slurm_additional_parameters"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_additional_parameters</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.SlurmConfig.to_executor_kwargs"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.to_executor_kwargs()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.WandBTrackerSchema"><code class="docutils literal notranslate"><span class="pre">WandBTrackerSchema</span></code></a><ul>

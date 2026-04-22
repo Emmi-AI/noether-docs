@@ -53,7 +53,7 @@ Module Contents
 
 .. py:data:: TTrainerConfig
 
-.. py:class:: ConfigSchema(/, **data)
+.. py:class:: ConfigSchema[TModelConfig: noether.core.schemas.models.ModelBaseConfig, TDatasetConfig: noether.core.schemas.dataset.DatasetBaseConfig, TTrainerConfig: noether.core.schemas.trainers.BaseTrainerConfig](/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`
 
@@ -161,7 +161,9 @@ Module Contents
       :value: None
 
 
-      Unique identifier for the run. If None, a new ID will be generated.
+      Unique identifier for the run. When running under SLURM and not set explicitly,
+      defaults to the SLURM job ID (e.g. ``12345_2`` for array task 2 of job 12345).
+      Otherwise a new ID is generated at runtime.
 
 
    .. py:attribute:: devices
@@ -197,7 +199,7 @@ Module Contents
 
 
    .. py:attribute:: datasets
-      :type:  dict[str, Annotated[ConfigSchema.TDatasetConfig, Discriminated(DatasetBaseConfig)]]
+      :type:  dict[str, Annotated[TDatasetConfig, Discriminated(DatasetBaseConfig)]]
       :value: None
 
 
@@ -208,7 +210,7 @@ Module Contents
 
 
    .. py:attribute:: model
-      :type:  Annotated[ConfigSchema.TModelConfig, Discriminated(ModelBaseConfig)]
+      :type:  Annotated[TModelConfig, Discriminated(ModelBaseConfig)]
       :value: None
 
 
@@ -216,7 +218,7 @@ Module Contents
 
 
    .. py:attribute:: trainer
-      :type:  Annotated[ConfigSchema.TTrainerConfig, Discriminated(BaseTrainerConfig)]
+      :type:  Annotated[TTrainerConfig, Discriminated(BaseTrainerConfig)]
       :value: None
 
 
@@ -240,9 +242,13 @@ Module Contents
 
 
    .. py:attribute:: output_path
-      :type:  pathlib.Path
+      :type:  pathlib.Path | None
+      :value: None
 
-      Path to output directory.
+
+      Path to output directory. When omitted, defaults to ``slurm.folder`` if a
+      ``slurm`` section is present. Raises a validation error when neither
+      ``output_path`` nor ``slurm`` is provided.
 
 
    .. py:attribute:: master_port
@@ -266,14 +272,6 @@ Module Contents
 
 
       Pre-processes tracker input before validation.
-
-
-
-   .. py:method:: validate_output_path(value)
-      :classmethod:
-
-
-      Validates that the output path is valid.
 
 
 

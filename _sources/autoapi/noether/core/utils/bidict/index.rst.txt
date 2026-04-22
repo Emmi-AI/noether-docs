@@ -28,7 +28,7 @@ Module Contents
 
 .. py:data:: VT
 
-.. py:class:: Bidict(forward = None)
+.. py:class:: Bidict[KT, VT](forward = None)
 
    A bidirectional dictionary that allows for two-way lookups.
 

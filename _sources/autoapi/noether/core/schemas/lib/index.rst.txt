@@ -27,7 +27,7 @@ Module Contents
 
 .. py:data:: T
 
-.. py:function:: resolve_config_class(kind, base_cls)
+.. py:function:: resolve_config_class[T](kind, base_cls)
 
    Resolve a config class from a dotted kind string.
 

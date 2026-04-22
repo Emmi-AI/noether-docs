@@ -237,7 +237,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -832,7 +832,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -840,30 +840,102 @@
         <article role="main" id="furo-main-content">
           <section id="how-to-launch-a-slurm-job-from-the-command-line">
 <h1>How to launch a SLURM job from the command line<a class="headerlink" href="#how-to-launch-a-slurm-job-from-the-command-line" title="Link to this heading">¶</a></h1>
-<p>Via the <code class="docutils literal notranslate"><span class="pre">noether-train-submit-job</span></code> command, you can launch a training job directly from the command line.
-You can specify the path to your config file, override any config options.
-The script will first validate the config, then create a SLURM job command and submit it to the cluster.</p>
-<p>For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-train-submit-job<span class="w"> </span>/path/to/noether/recipes/aero_cfd/configs/train_shapenet.yaml<span class="w">  </span>+experiment/shapenet<span class="o">=</span>transformer<span class="w"> </span>+seed<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">tracker</span><span class="o">=</span>disabled<span class="w"> </span><span class="nv">dataset_root</span><span class="o">=</span>/path/to/datasets/shapenet_car/
+<p>The <code class="docutils literal notranslate"><span class="pre">noether-train-submit-job</span></code> command validates a Hydra training config and
+submits it to SLURM via <a class="reference external" href="https://github.com/facebookincubator/submitit">submitit</a>.
+You pass the config path, optionally with Hydra-style overrides; the script
+validates the result against your schema before any job is sent.</p>
+<section id="single-job-submission">
+<h2>Single-job submission<a class="headerlink" href="#single-job-submission" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-train-submit-job<span class="w"> </span>/path/to/recipes/aero_cfd/configs/train_shapenet.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+experiment/shapenet<span class="o">=</span>transformer<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+seed<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">tracker</span><span class="o">=</span>disabled<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">dataset_root</span><span class="o">=</span>/path/to/datasets/shapenet_car/
 </pre></div>
 </div>
-<p>The SLURM variables used for the job (e.g., number of GPUs, number of CPUs, etc.) have to be defined in the config schema under the <code class="docutils literal notranslate"><span class="pre">slurm</span></code> key.</p>
-<p>An example of the SLURM config in YAML looks like this:</p>
+</section>
+<section id="sweeping-with-multirun-slurm-array-jobs">
+<h2>Sweeping with <code class="docutils literal notranslate"><span class="pre">--multirun</span></code> (SLURM array jobs)<a class="headerlink" href="#sweeping-with-multirun-slurm-array-jobs" title="Link to this heading">¶</a></h2>
+<p>Add <code class="docutils literal notranslate"><span class="pre">--multirun</span></code> (or <code class="docutils literal notranslate"><span class="pre">-m</span></code>) and use Hydra’s comma sweep syntax to launch a
+single SLURM array job whose tasks span the cross-product of overrides. Every
+combination is validated upfront on the login node — submission is aborted on
+the first invalid combo, before SLURM sees anything.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-train-submit-job<span class="w"> </span>--hp<span class="w"> </span>configs/train_shapenet.yaml<span class="w"> </span>-m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+seed<span class="o">=</span><span class="m">1</span>,2,3<span class="w"> </span>trainer.lr<span class="o">=</span>1e-3,1e-4
+</pre></div>
+</div>
+<p>The example above produces a 6-task SLURM array. Cap the concurrency with
+<code class="docutils literal notranslate"><span class="pre">slurm.slurm_array_parallelism</span></code>.</p>
+<p>Sweeping over fields under <code class="docutils literal notranslate"><span class="pre">slurm:</span></code> is <strong>not</strong> supported — the SLURM
+allocation must be identical across all array tasks. The submitter rejects
+configs whose <code class="docutils literal notranslate"><span class="pre">slurm</span></code> section differs between sweep combinations.</p>
+</section>
+<section id="previewing-without-submitting">
+<h2>Previewing without submitting<a class="headerlink" href="#previewing-without-submitting" title="Link to this heading">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-train-submit-job<span class="w"> </span>--hp<span class="w"> </span>configs/train_shapenet.yaml<span class="w"> </span>--dry-run
+</pre></div>
+</div>
+<p>Prints the resolved submitit parameters and per-task command(s) without
+contacting SLURM.</p>
+</section>
+<section id="the-slurm-section-of-the-config">
+<h2>The <code class="docutils literal notranslate"><span class="pre">slurm</span></code> section of the config<a class="headerlink" href="#the-slurm-section-of-the-config" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">slurm</span></code> section is required. Field names mirror the keyword arguments
+accepted by <code class="xref py py-meth docutils literal notranslate"><span class="pre">submitit.AutoExecutor.update_parameters()</span></code>. An example:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">slurm</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/%u/logs/shapenet_car</span><span class="w">   </span><span class="c1"># %u = username; also default output_path</span>
+<span class="w">   </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_experiment</span>
+<span class="w">   </span><span class="nt">slurm_partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute</span>
 <span class="w">   </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">   </span><span class="nt">tasks_per_node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 <span class="w">   </span><span class="nt">cpus_per_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">28</span>
-<span class="w">   </span><span class="nt">partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute</span>
 <span class="w">   </span><span class="nt">gpus_per_node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">   </span><span class="nt">ntasks_per_node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">   </span><span class="nt">mem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64GB</span>
-<span class="w">   </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/%u/logs/shapenet_car/%x_%j.out</span>
-<span class="w">   </span><span class="nt">nice</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
-<span class="w">   </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shapenet_experiment</span>
-<span class="w">   </span><span class="nt">chdir</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional, if not set, the job will be launched from the current working directory</span>
-<span class="w">   </span><span class="nt">env_path</span><span class="p">:</span><span class="w"> </span><span class="c1"># path to a environment file to source before launching the job, e.g., /home/user/.bashrc could be absolute or relative the to chdir path</span>
+<span class="w">   </span><span class="nt">mem_gb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64</span><span class="w">                              </span><span class="c1"># gigabytes (float)</span>
+<span class="w">   </span><span class="nt">timeout_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">720</span><span class="w">                        </span><span class="c1"># wall-clock minutes (int)</span>
+<span class="w">   </span><span class="nt">slurm_setup</span><span class="p">:</span><span class="w">                            </span><span class="c1"># commands run before the main task</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source .venv/bin/activate</span>
+<span class="w">   </span><span class="nt">slurm_additional_parameters</span><span class="p">:</span><span class="w">            </span><span class="c1"># escape hatch for any sbatch flag</span>
+<span class="w">      </span><span class="nt">nice</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 </pre></div>
 </div>
-<p>See the ShapeNet-Car config in the tutorial for a full example to setup the SLURM config.</p>
+<p>Common fields:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">folder</span></code> — directory where submitit writes the job script, pickled task,
+and stdout/stderr logs. Supports <code class="docutils literal notranslate"><span class="pre">%u</span></code> (current username) interpolation.
+Also serves as the default <code class="docutils literal notranslate"><span class="pre">output_path</span></code> for training runs when
+<code class="docutils literal notranslate"><span class="pre">output_path</span></code> is not set in the config. SLURM job-time patterns
+(<code class="docutils literal notranslate"><span class="pre">%j</span></code>, <code class="docutils literal notranslate"><span class="pre">%A</span></code>, etc.) are not supported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> — job name (<code class="docutils literal notranslate"><span class="pre">--job-name</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm_partition</span></code> — partition to submit to.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nodes</span></code> / <code class="docutils literal notranslate"><span class="pre">tasks_per_node</span></code> / <code class="docutils literal notranslate"><span class="pre">cpus_per_task</span></code> / <code class="docutils literal notranslate"><span class="pre">gpus_per_node</span></code> —
+resource allocation per the obvious <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> flags. <code class="docutils literal notranslate"><span class="pre">gpus_per_node</span></code>
+accepts <code class="docutils literal notranslate"><span class="pre">&quot;a100:4&quot;</span></code>-style specs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mem_gb</span></code> — memory per node in <strong>gigabytes</strong> (float).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeout_min</span></code> — wall-clock limit in <strong>minutes</strong> (int).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm_array_parallelism</span></code> — cap concurrent tasks for <code class="docutils literal notranslate"><span class="pre">--multirun</span></code> arrays.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm_setup</span></code> — list of shell commands run inside the job before the main
+command (replaces the previous <code class="docutils literal notranslate"><span class="pre">env_path</span></code> field).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slurm_additional_parameters</span></code> — dict for any other sbatch directive
+(<code class="docutils literal notranslate"><span class="pre">nice</span></code>, <code class="docutils literal notranslate"><span class="pre">reservation</span></code>, <code class="docutils literal notranslate"><span class="pre">chdir</span></code>, <code class="docutils literal notranslate"><span class="pre">account</span></code>, <code class="docutils literal notranslate"><span class="pre">constraint</span></code>, …).
+Keys are passed as <code class="docutils literal notranslate"><span class="pre">--key=value</span></code> to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Job log files are owned by submitit.</strong> The <code class="docutils literal notranslate"><span class="pre">--output</span></code> and <code class="docutils literal notranslate"><span class="pre">--error</span></code>
+sbatch directives are intentionally <em>not</em> exposed as first-class fields.
+Submitit writes the job’s stdout/stderr to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;slurm.folder&gt;/&lt;job_id&gt;_log.out</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;slurm.folder&gt;/&lt;job_id&gt;_log.err</span></code></p></li>
+</ul>
+<p>For array jobs, <code class="docutils literal notranslate"><span class="pre">&lt;job_id&gt;</span></code> becomes <code class="docutils literal notranslate"><span class="pre">&lt;array_master_id&gt;_&lt;task_idx&gt;</span></code> (e.g.
+<code class="docutils literal notranslate"><span class="pre">42_0_log.out</span></code>). To direct logs to a per-experiment location, point
+<code class="docutils literal notranslate"><span class="pre">slurm.folder</span></code> at it. If you absolutely must override SLURM’s output
+paths yourself, pass <code class="docutils literal notranslate"><span class="pre">output</span></code>/<code class="docutils literal notranslate"><span class="pre">error</span></code> via <code class="docutils literal notranslate"><span class="pre">slurm_additional_parameters</span></code>
+— but be aware this disables submitit’s log-tailing helpers such as
+<code class="docutils literal notranslate"><span class="pre">job.stdout()</span></code> and <code class="docutils literal notranslate"><span class="pre">job.stderr()</span></code>.</p>
+</div>
+</section>
 </section>
 
         </article>
@@ -933,8 +1005,30 @@ The script will first validate the config, then create a SLURM job command and s
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">How to launch a SLURM job from the command line</a><ul>
+<li><a class="reference internal" href="#single-job-submission">Single-job submission</a></li>
+<li><a class="reference internal" href="#sweeping-with-multirun-slurm-array-jobs">Sweeping with <code class="docutils literal notranslate"><span class="pre">--multirun</span></code> (SLURM array jobs)</a></li>
+<li><a class="reference internal" href="#previewing-without-submitting">Previewing without submitting</a></li>
+<li><a class="reference internal" href="#the-slurm-section-of-the-config">The <code class="docutils literal notranslate"><span class="pre">slurm</span></code> section of the config</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
