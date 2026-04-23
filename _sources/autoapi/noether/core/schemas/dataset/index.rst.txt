@@ -284,27 +284,33 @@ Module Contents
 
 
    .. py:attribute:: train
-      :type:  set[int]
+      :type:  list[int]
 
 
    .. py:attribute:: val
-      :type:  set[int]
+      :type:  list[int]
 
 
    .. py:attribute:: test
-      :type:  set[int]
+      :type:  list[int]
 
 
    .. py:attribute:: extrap
-      :type:  set[int]
+      :type:  list[int]
+      :value: []
+
 
 
    .. py:attribute:: interp
-      :type:  set[int]
+      :type:  list[int]
+      :value: []
+
 
 
    .. py:attribute:: train_subset
-      :type:  set[int]
+      :type:  list[int]
+      :value: []
+
 
 
    .. py:method:: validate_splits()

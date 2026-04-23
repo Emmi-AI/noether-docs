@@ -894,7 +894,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.Transformer" title="noether.modeling.models.Transformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transformer</span></code></a></p></td>
 <td><p>Implementation of a Transformer model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.UPT" title="noether.modeling.models.UPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UPT</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.Transolver" title="noether.modeling.models.Transolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transolver</span></code></a></p></td>
+<td><p>Implementation of the Transolver model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.UPT" title="noether.modeling.models.UPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UPT</span></code></a></p></td>
 <td><p>Implementation of the UPT (Universal Physics Transformer) model.</p></td>
 </tr>
 </tbody>
@@ -1446,6 +1449,22 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.Transolver">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">Transolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.Transolver" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.modeling.models.Transformer" title="noether.modeling.models.Transformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.Transformer</span></code></a></p>
+<p>Implementation of the Transolver model.
+Reference code: <a class="reference external" href="https://github.com/thuml/Transolver/">https://github.com/thuml/Transolver/</a>
+Paper: <a class="reference external" href="https://arxiv.org/abs/2402.02366">https://arxiv.org/abs/2402.02366</a>
+Transolver is a Transformer with a special physics attention mechanism. Hence, we extend the Transformer class,
+and configure it accordingly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.TransolverConfig" title="noether.core.schemas.models.TransolverConfig"><em>noether.core.schemas.models.TransolverConfig</em></a>) – Configuration of the Transolver model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.UPT">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">UPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.UPT" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
@@ -1690,6 +1709,7 @@ If RoPE is not used, return empty dicts.</p>
 <li><a class="reference internal" href="#noether.modeling.models.Transformer.forward"><code class="docutils literal notranslate"><span class="pre">Transformer.forward()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.modeling.models.Transolver"><code class="docutils literal notranslate"><span class="pre">Transolver</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.UPT"><code class="docutils literal notranslate"><span class="pre">UPT</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.models.UPT.use_rope"><code class="docutils literal notranslate"><span class="pre">UPT.use_rope</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.UPT.encoder"><code class="docutils literal notranslate"><span class="pre">UPT.encoder</span></code></a></li>

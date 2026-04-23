@@ -56,14 +56,20 @@ Module Contents
 
 
    .. py:attribute:: train
-      :type:  set[str]
+      :type:  list[str]
+      :value: ['param1/1dc58be25e1b6e5675cad724c63e222e', 'param1/1dc757e77f3cfad0253c03b7df20edd5',...
+
 
 
    .. py:attribute:: val
-      :type:  set[str]
+      :type:  list[str]
+      :value: []
+
 
 
    .. py:attribute:: test
-      :type:  set[str]
+      :type:  list[str]
+      :value: ['param0/100715345ee54d7ae38b52b4ee9d36a3', 'param0/10247b51a42b41603ffe0e5069bf1eb5',...
+
 
 

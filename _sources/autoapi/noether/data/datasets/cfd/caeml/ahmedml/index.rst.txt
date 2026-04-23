@@ -87,15 +87,21 @@ Package Contents
 
 
    .. py:attribute:: train
-      :type:  set[int]
+      :type:  list[int]
+      :value: [1, 2, 3, 5, 6, 7, 8, 9, 10, 13, 14, 15, 16, 17, 18, 21, 23, 25, 27, 28, 30, 31, 32, 33, 34, 35,...
+
 
 
    .. py:attribute:: val
-      :type:  set[int]
+      :type:  list[int]
+      :value: [24, 26, 29, 38, 41, 55, 59, 104, 108, 124, 133, 142, 158, 173, 180, 188, 196, 197, 199, 205,...
+
 
 
    .. py:attribute:: test
-      :type:  set[int]
+      :type:  list[int]
+      :value: [4, 11, 12, 19, 20, 22, 56, 109, 127, 150, 165, 177, 187, 191, 203, 208, 215, 228, 234, 241,...
+
 
 
    .. py:method:: create_split()
