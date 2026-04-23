@@ -76,7 +76,13 @@ Package Contents
    .. py:attribute:: proj_dropout
 
 
-   .. py:attribute:: qkv
+   .. py:attribute:: q
+
+
+   .. py:attribute:: k
+
+
+   .. py:attribute:: v
 
 
    .. py:attribute:: proj
@@ -127,7 +133,10 @@ Package Contents
 
 
 
-   .. py:attribute:: kv
+   .. py:attribute:: k
+
+
+   .. py:attribute:: v
 
 
    .. py:attribute:: q
@@ -200,7 +209,13 @@ Package Contents
    .. py:attribute:: in_project_slice
 
 
-   .. py:attribute:: qkv
+   .. py:attribute:: q
+
+
+   .. py:attribute:: k
+
+
+   .. py:attribute:: v
 
 
    .. py:attribute:: proj
@@ -274,7 +289,13 @@ Package Contents
    .. py:attribute:: in_project_slice
 
 
-   .. py:attribute:: qkv
+   .. py:attribute:: q
+
+
+   .. py:attribute:: k
+
+
+   .. py:attribute:: v
 
 
    .. py:attribute:: to_out

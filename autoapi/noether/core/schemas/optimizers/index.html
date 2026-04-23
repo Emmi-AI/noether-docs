@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/core/schemas/optimizers/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Classes: Module Contents:" />
+<meta property="og:description" content="Attributes: Classes: Module Contents:" />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Classes: Module Contents:" />
+<meta name="description" content="Attributes: Classes: Module Contents:" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -406,6 +406,7 @@
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../optimizer/index.html">noether.core.optimizer</a><input class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle navigation of noether.core.optimizer</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../optimizer/lion/index.html">noether.core.optimizer.lion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/muon_composite/index.html">noether.core.optimizer.muon_composite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../optimizer/optimizer_wrapper/index.html">noether.core.optimizer.optimizer_wrapper</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../optimizer/param_group_modifiers/index.html">noether.core.optimizer.param_group_modifiers</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle navigation of noether.core.optimizer.param_group_modifiers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/base/index.html">noether.core.optimizer.param_group_modifiers.base</a></li>
@@ -852,6 +853,18 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.core.schemas.optimizers">
 <span id="noether-core-schemas-optimizers"></span><h1>noether.core.schemas.optimizers<a class="headerlink" href="#module-noether.core.schemas.optimizers" title="Link to this heading">¶</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.optimizers.AnyOptimizerConfig" title="noether.core.schemas.optimizers.AnyOptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnyOptimizerConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
@@ -860,8 +873,20 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.optimizers.ParamGroupModifierConfig" title="noether.core.schemas.optimizers.ParamGroupModifierConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParamGroupModifierConfig</span></code></a></p></td>
 <td><p>Configuration for a parameter group modifier. Both for the LrScaleByNameModifier and the WeightDecayByNameModifier,</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.optimizers.OptimizerConfig" title="noether.core.schemas.optimizers.OptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OptimizerConfig</span></code></a></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig" title="noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MuonSecondaryOptimizerConfig</span></code></a></p></td>
+<td><p>Configuration of the secondary optimizer in <a class="reference internal" href="../../optimizer/index.html#noether.core.optimizer.MuonComposite" title="noether.core.optimizer.MuonComposite"><code class="xref py py-class docutils literal notranslate"><span class="pre">MuonComposite</span></code></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.optimizers.OptimizerConfig" title="noether.core.schemas.optimizers.OptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OptimizerConfig</span></code></a></p></td>
+<td><p>Base configuration for optimizers.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.optimizers.AdamOptimizerConfig" title="noether.core.schemas.optimizers.AdamOptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AdamOptimizerConfig</span></code></a></p></td>
+<td><p>Configuration for Adam-family optimizers (AdamW, Lion).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.optimizers.SGDOptimizerConfig" title="noether.core.schemas.optimizers.SGDOptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SGDOptimizerConfig</span></code></a></p></td>
+<td><p>Configuration for SGD.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.optimizers.MuonOptimizerConfig" title="noether.core.schemas.optimizers.MuonOptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MuonOptimizerConfig</span></code></a></p></td>
+<td><p>Configuration for <a class="reference internal" href="../../optimizer/index.html#noether.core.optimizer.MuonComposite" title="noether.core.optimizer.MuonComposite"><code class="xref py py-class docutils literal notranslate"><span class="pre">MuonComposite</span></code></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -922,9 +947,68 @@ This is a model-level validator that runs after individual field validation.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.optimizers.</span></span><span class="sig-name descname"><span class="pre">MuonSecondaryOptimizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Configuration of the secondary optimizer in <a class="reference internal" href="../../optimizer/index.html#noether.core.optimizer.MuonComposite" title="noether.core.optimizer.MuonComposite"><code class="xref py py-class docutils literal notranslate"><span class="pre">MuonComposite</span></code></a>.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The class path of the torch optimizer to use. E.g., ‘torch.optim.Lion’.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.lr">
+<span class="sig-name descname"><span class="pre">lr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.lr" title="Link to this definition">¶</a></dt>
+<dd><p>The learning rate for the optimizer. Falls back to the primary lr if not set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.weight_decay">
+<span class="sig-name descname"><span class="pre">weight_decay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.weight_decay" title="Link to this definition">¶</a></dt>
+<dd><p>The weight decay. Falls back to the primary weight_decay if not set.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.momentum">
+<span class="sig-name descname"><span class="pre">momentum</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.momentum" title="Link to this definition">¶</a></dt>
+<dd><p>Momentum factor for optimizers like SGD.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.betas">
+<span class="sig-name descname"><span class="pre">betas</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.betas" title="Link to this definition">¶</a></dt>
+<dd><p>Beta coefficients for Adam-style optimizers.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.optimizers.OptimizerConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.optimizers.</span></span><span class="sig-name descname"><span class="pre">OptimizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.optimizers.OptimizerConfig" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Base configuration for optimizers.</p>
+<p>Holds fields common to all optimizers plus the wrapper-level options. Optimizer-specific
+fields live on the dedicated subclasses.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -951,7 +1035,7 @@ This is a model-level validator that runs after individual field validation.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.optimizers.OptimizerConfig.weight_decay">
 <span class="sig-name descname"><span class="pre">weight_decay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.OptimizerConfig.weight_decay" title="Link to this definition">¶</a></dt>
-<dd><p>The weight decay (L2 penalty) for the optimizer.</p>
+<dd><p>The weight decay. Falls back to the primary weight_decay if not set.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1005,6 +1089,119 @@ This is a model-level validator that runs after individual field validation.</p>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.AdamOptimizerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.optimizers.</span></span><span class="sig-name descname"><span class="pre">AdamOptimizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.optimizers.AdamOptimizerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.optimizers.OptimizerConfig" title="noether.core.schemas.optimizers.OptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OptimizerConfig</span></code></a></p>
+<p>Configuration for Adam-family optimizers (AdamW, Lion).</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.AdamOptimizerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'torch.optim.AdamW'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'noether.core.optimizer.Lion'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'torch.optim.AdamW'</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.AdamOptimizerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The class path of the torch optimizer to use. E.g., ‘torch.optim.AdamW’.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.AdamOptimizerConfig.betas">
+<span class="sig-name descname"><span class="pre">betas</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.AdamOptimizerConfig.betas" title="Link to this definition">¶</a></dt>
+<dd><p>Beta coefficients for Adam-style optimizers.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.SGDOptimizerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.optimizers.</span></span><span class="sig-name descname"><span class="pre">SGDOptimizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.optimizers.SGDOptimizerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.optimizers.OptimizerConfig" title="noether.core.schemas.optimizers.OptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OptimizerConfig</span></code></a></p>
+<p>Configuration for SGD.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.SGDOptimizerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'torch.optim.SGD'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'torch.optim.SGD'</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.SGDOptimizerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The class path of the torch optimizer to use. E.g., ‘torch.optim.AdamW’.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.SGDOptimizerConfig.momentum">
+<span class="sig-name descname"><span class="pre">momentum</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.SGDOptimizerConfig.momentum" title="Link to this definition">¶</a></dt>
+<dd><p>Momentum factor.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonOptimizerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.optimizers.</span></span><span class="sig-name descname"><span class="pre">MuonOptimizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.optimizers.MuonOptimizerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.optimizers.OptimizerConfig" title="noether.core.schemas.optimizers.OptimizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OptimizerConfig</span></code></a></p>
+<p>Configuration for <a class="reference internal" href="../../optimizer/index.html#noether.core.optimizer.MuonComposite" title="noether.core.optimizer.MuonComposite"><code class="xref py py-class docutils literal notranslate"><span class="pre">MuonComposite</span></code></a>.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonOptimizerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.optimizer.MuonComposite'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.optimizer.MuonComposite'</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The class path of the torch optimizer to use. E.g., ‘torch.optim.AdamW’.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonOptimizerConfig.momentum">
+<span class="sig-name descname"><span class="pre">momentum</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.momentum" title="Link to this definition">¶</a></dt>
+<dd><p>Momentum factor for the Muon optimizer.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonOptimizerConfig.secondary">
+<span class="sig-name descname"><span class="pre">secondary</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig" title="noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig"><span class="pre">MuonSecondaryOptimizerConfig</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.secondary" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration of the secondary optimizer in <a class="reference internal" href="../../optimizer/index.html#noether.core.optimizer.MuonComposite" title="noether.core.optimizer.MuonComposite"><code class="xref py py-class docutils literal notranslate"><span class="pre">MuonComposite</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonOptimizerConfig.nesterov">
+<span class="sig-name descname"><span class="pre">nesterov</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.nesterov" title="Link to this definition">¶</a></dt>
+<dd><p>Enable Nesterov momentum in Muon. None uses Muon’s default (True).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonOptimizerConfig.ns_steps">
+<span class="sig-name descname"><span class="pre">ns_steps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.ns_steps" title="Link to this definition">¶</a></dt>
+<dd><p>Number of Newton-Schulz iteration steps. None uses Muon’s default (5).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.MuonOptimizerConfig.adjust_lr_fn">
+<span class="sig-name descname"><span class="pre">adjust_lr_fn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'original'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'match_rms_adamw'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.adjust_lr_fn" title="Link to this definition">¶</a></dt>
+<dd><p>Per-matrix LR adjustment strategy. None uses Muon’s default (<code class="docutils literal notranslate"><span class="pre">&quot;original&quot;</span></code>).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.core.schemas.optimizers.AnyOptimizerConfig">
+<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.optimizers.</span></span><span class="sig-name descname"><span class="pre">AnyOptimizerConfig</span></span><a class="headerlink" href="#noether.core.schemas.optimizers.AnyOptimizerConfig" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -1089,6 +1286,7 @@ This is a model-level validator that runs after individual field validation.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">noether.core.schemas.optimizers</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.optimizers.ParamGroupModifierConfig"><code class="docutils literal notranslate"><span class="pre">ParamGroupModifierConfig</span></code></a><ul>
@@ -1097,6 +1295,15 @@ This is a model-level validator that runs after individual field validation.</p>
 <li><a class="reference internal" href="#noether.core.schemas.optimizers.ParamGroupModifierConfig.value"><code class="docutils literal notranslate"><span class="pre">ParamGroupModifierConfig.value</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.optimizers.ParamGroupModifierConfig.name"><code class="docutils literal notranslate"><span class="pre">ParamGroupModifierConfig.name</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.optimizers.ParamGroupModifierConfig.check_scale_or_value_exclusive"><code class="docutils literal notranslate"><span class="pre">ParamGroupModifierConfig.check_scale_or_value_exclusive()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig"><code class="docutils literal notranslate"><span class="pre">MuonSecondaryOptimizerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.model_config"><code class="docutils literal notranslate"><span class="pre">MuonSecondaryOptimizerConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.kind"><code class="docutils literal notranslate"><span class="pre">MuonSecondaryOptimizerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.lr"><code class="docutils literal notranslate"><span class="pre">MuonSecondaryOptimizerConfig.lr</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.weight_decay"><code class="docutils literal notranslate"><span class="pre">MuonSecondaryOptimizerConfig.weight_decay</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.momentum"><code class="docutils literal notranslate"><span class="pre">MuonSecondaryOptimizerConfig.momentum</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonSecondaryOptimizerConfig.betas"><code class="docutils literal notranslate"><span class="pre">MuonSecondaryOptimizerConfig.betas</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.optimizers.OptimizerConfig"><code class="docutils literal notranslate"><span class="pre">OptimizerConfig</span></code></a><ul>
@@ -1114,6 +1321,26 @@ This is a model-level validator that runs after individual field validation.</p>
 <li><a class="reference internal" href="#noether.core.schemas.optimizers.OptimizerConfig.return_optim_wrapper_args"><code class="docutils literal notranslate"><span class="pre">OptimizerConfig.return_optim_wrapper_args()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.AdamOptimizerConfig"><code class="docutils literal notranslate"><span class="pre">AdamOptimizerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.AdamOptimizerConfig.kind"><code class="docutils literal notranslate"><span class="pre">AdamOptimizerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.AdamOptimizerConfig.betas"><code class="docutils literal notranslate"><span class="pre">AdamOptimizerConfig.betas</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.SGDOptimizerConfig"><code class="docutils literal notranslate"><span class="pre">SGDOptimizerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.SGDOptimizerConfig.kind"><code class="docutils literal notranslate"><span class="pre">SGDOptimizerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.SGDOptimizerConfig.momentum"><code class="docutils literal notranslate"><span class="pre">SGDOptimizerConfig.momentum</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonOptimizerConfig"><code class="docutils literal notranslate"><span class="pre">MuonOptimizerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.kind"><code class="docutils literal notranslate"><span class="pre">MuonOptimizerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.momentum"><code class="docutils literal notranslate"><span class="pre">MuonOptimizerConfig.momentum</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.secondary"><code class="docutils literal notranslate"><span class="pre">MuonOptimizerConfig.secondary</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.nesterov"><code class="docutils literal notranslate"><span class="pre">MuonOptimizerConfig.nesterov</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.ns_steps"><code class="docutils literal notranslate"><span class="pre">MuonOptimizerConfig.ns_steps</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.MuonOptimizerConfig.adjust_lr_fn"><code class="docutils literal notranslate"><span class="pre">MuonOptimizerConfig.adjust_lr_fn</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schemas.optimizers.AnyOptimizerConfig"><code class="docutils literal notranslate"><span class="pre">AnyOptimizerConfig</span></code></a></li>
 </ul>
 </li>
 </ul>

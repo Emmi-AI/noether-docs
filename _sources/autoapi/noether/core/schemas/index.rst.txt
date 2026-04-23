@@ -36,6 +36,7 @@ Attributes
    noether.core.schemas.CallbacksConfig
    noether.core.schemas.AnyInitializer
    noether.core.schemas.AnyNormalizer
+   noether.core.schemas.AnyOptimizerConfig
    noether.core.schemas.AnyScheduleConfig
 
 
@@ -62,8 +63,11 @@ Classes
    noether.core.schemas.ResumeInitializerConfig
    noether.core.schemas.ModelBaseConfig
    noether.core.schemas.FieldNormalizerConfig
+   noether.core.schemas.AdamOptimizerConfig
+   noether.core.schemas.MuonOptimizerConfig
    noether.core.schemas.OptimizerConfig
    noether.core.schemas.ParamGroupModifierConfig
+   noether.core.schemas.SGDOptimizerConfig
    noether.core.schemas.ConstantScheduleConfig
    noether.core.schemas.CustomScheduleConfig
    noether.core.schemas.DecreasingProgressScheduleConfig
@@ -939,7 +943,7 @@ Package Contents
 
 
    .. py:attribute:: optimizer_config
-      :type:  noether.core.schemas.optimizers.OptimizerConfig | None
+      :type:  noether.core.schemas.optimizers.AnyOptimizerConfig | None
       :value: None
 
 
@@ -1052,9 +1056,118 @@ Package Contents
       Scaling factor for position normalization. Coordinates are scaled to [0, scale]. Only used for ``"position"``.
 
 
+.. py:class:: AdamOptimizerConfig(/, **data)
+
+   Bases: :py:obj:`OptimizerConfig`
+
+
+   Configuration for Adam-family optimizers (AdamW, Lion).
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  Literal['torch.optim.AdamW', 'noether.core.optimizer.Lion']
+      :value: 'torch.optim.AdamW'
+
+
+      The class path of the torch optimizer to use. E.g., 'torch.optim.AdamW'.
+
+
+   .. py:attribute:: betas
+      :type:  tuple[float, float] | None
+      :value: None
+
+
+      Beta coefficients for Adam-style optimizers.
+
+
+.. py:data:: AnyOptimizerConfig
+
+.. py:class:: MuonOptimizerConfig(/, **data)
+
+   Bases: :py:obj:`OptimizerConfig`
+
+
+   Configuration for :class:`~noether.core.optimizer.MuonComposite`.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.optimizer.MuonComposite']
+      :value: 'noether.core.optimizer.MuonComposite'
+
+
+      The class path of the torch optimizer to use. E.g., 'torch.optim.AdamW'.
+
+
+   .. py:attribute:: momentum
+      :type:  float | None
+      :value: None
+
+
+      Momentum factor for the Muon optimizer.
+
+
+   .. py:attribute:: secondary
+      :type:  MuonSecondaryOptimizerConfig | None
+      :value: None
+
+
+      Configuration of the secondary optimizer in :class:`~noether.core.optimizer.MuonComposite`.
+
+
+   .. py:attribute:: nesterov
+      :type:  bool | None
+      :value: None
+
+
+      Enable Nesterov momentum in Muon. None uses Muon's default (True).
+
+
+   .. py:attribute:: ns_steps
+      :type:  int | None
+      :value: None
+
+
+      Number of Newton-Schulz iteration steps. None uses Muon's default (5).
+
+
+   .. py:attribute:: adjust_lr_fn
+      :type:  Literal['original', 'match_rms_adamw'] | None
+      :value: None
+
+
+      Per-matrix LR adjustment strategy. None uses Muon's default (``"original"``).
+
+
 .. py:class:: OptimizerConfig(/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Base configuration for optimizers.
+
+   Holds fields common to all optimizers plus the wrapper-level options. Optimizer-specific
+   fields live on the dedicated subclasses.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
    .. py:attribute:: model_config
@@ -1083,7 +1196,7 @@ Package Contents
       :value: None
 
 
-      The weight decay (L2 penalty) for the optimizer.
+      The weight decay. Falls back to the primary weight_decay if not set.
 
 
    .. py:attribute:: clip_grad_value
@@ -1191,6 +1304,37 @@ Package Contents
       Validates that either 'scale' or 'value' is provided, but not both.
       This is a model-level validator that runs after individual field validation.
 
+
+
+.. py:class:: SGDOptimizerConfig(/, **data)
+
+   Bases: :py:obj:`OptimizerConfig`
+
+
+   Configuration for SGD.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  Literal['torch.optim.SGD']
+      :value: 'torch.optim.SGD'
+
+
+      The class path of the torch optimizer to use. E.g., 'torch.optim.AdamW'.
+
+
+   .. py:attribute:: momentum
+      :type:  float | None
+      :value: None
+
+
+      Momentum factor.
 
 
 .. py:data:: AnyScheduleConfig

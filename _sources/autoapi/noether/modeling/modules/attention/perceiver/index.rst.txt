@@ -48,7 +48,10 @@ Module Contents
 
 
 
-   .. py:attribute:: kv
+   .. py:attribute:: k
+
+
+   .. py:attribute:: v
 
 
    .. py:attribute:: q

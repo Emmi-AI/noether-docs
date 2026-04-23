@@ -197,7 +197,7 @@ Package Contents
 
 
    .. py:attribute:: optimizer_config
-      :type:  noether.core.schemas.optimizers.OptimizerConfig | None
+      :type:  noether.core.schemas.optimizers.AnyOptimizerConfig | None
       :value: None
 
 

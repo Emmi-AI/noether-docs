@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/core/optimizer/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Submodules: noether.core.optimizer.lion, noether.core.optimizer.optimizer_wrapper, noether.core.optimizer.param_group_modifiers. Classes: Package Contents:" />
+<meta property="og:description" content="Submodules: noether.core.optimizer.lion, noether.core.optimizer.muon_composite, noether.core.optimizer.optimizer_wrapper, noether.core.optimizer.param_group_modifiers. Classes: Package Contents:" />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Submodules: noether.core.optimizer.lion, noether.core.optimizer.optimizer_wrapper, noether.core.optimizer.param_group_modifiers. Classes: Package Contents:" />
+<meta name="description" content="Submodules: noether.core.optimizer.lion, noether.core.optimizer.muon_composite, noether.core.optimizer.optimizer_wrapper, noether.core.optimizer.param_group_modifiers. Classes: Package Contents:" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -406,6 +406,7 @@
 </li>
 <li class="toctree-l3 current has-children current-page"><a class="current reference internal" href="#">noether.core.optimizer</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><div class="visually-hidden">Toggle navigation of noether.core.optimizer</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="lion/index.html">noether.core.optimizer.lion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="muon_composite/index.html">noether.core.optimizer.muon_composite</a></li>
 <li class="toctree-l4"><a class="reference internal" href="optimizer_wrapper/index.html">noether.core.optimizer.optimizer_wrapper</a></li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="param_group_modifiers/index.html">noether.core.optimizer.param_group_modifiers</a><input class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><div class="visually-hidden">Toggle navigation of noether.core.optimizer.param_group_modifiers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l5"><a class="reference internal" href="param_group_modifiers/base/index.html">noether.core.optimizer.param_group_modifiers.base</a></li>
@@ -857,6 +858,7 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="lion/index.html">noether.core.optimizer.lion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="muon_composite/index.html">noether.core.optimizer.muon_composite</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizer_wrapper/index.html">noether.core.optimizer.optimizer_wrapper</a></li>
 <li class="toctree-l1"><a class="reference internal" href="param_group_modifiers/index.html">noether.core.optimizer.param_group_modifiers</a></li>
 </ul>
@@ -870,16 +872,19 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.optimizer.Lion" title="noether.core.optimizer.Lion"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Lion</span></code></a></p></td>
 <td><p>Implements Lion algorithm.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper" title="noether.core.optimizer.OptimizerWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OptimizerWrapper</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.optimizer.MuonComposite" title="noether.core.optimizer.MuonComposite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MuonComposite</span></code></a></p></td>
+<td><p>Composite optimizer using torch.optim.Muon for 2D weight matrices</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper" title="noether.core.optimizer.OptimizerWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OptimizerWrapper</span></code></a></p></td>
 <td><p>Wrapper around an <cite>torch.optim.Optimizer</cite> that allows</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.optimizer.LrScaleByNameModifier" title="noether.core.optimizer.LrScaleByNameModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LrScaleByNameModifier</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.optimizer.LrScaleByNameModifier" title="noether.core.optimizer.LrScaleByNameModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LrScaleByNameModifier</span></code></a></p></td>
 <td><p>Scales the learning rate of a certain parameter.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.optimizer.ParamGroupModifierBase" title="noether.core.optimizer.ParamGroupModifierBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParamGroupModifierBase</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.optimizer.ParamGroupModifierBase" title="noether.core.optimizer.ParamGroupModifierBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParamGroupModifierBase</span></code></a></p></td>
 <td><p>Generic implementation to change properties of optimizer parameter groups.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.optimizer.WeightDecayByNameModifier" title="noether.core.optimizer.WeightDecayByNameModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WeightDecayByNameModifier</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.optimizer.WeightDecayByNameModifier" title="noether.core.optimizer.WeightDecayByNameModifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WeightDecayByNameModifier</span></code></a></p></td>
 <td><p>Changes the weight decay value for a single parameter. Use-cases:</p></td>
 </tr>
 </tbody>
@@ -920,6 +925,54 @@
 </dd>
 </dl>
 </dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.optimizer.MuonComposite">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.optimizer.</span></span><span class="sig-name descname"><span class="pre">MuonComposite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">momentum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.95</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_decay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secondary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nesterov</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ns_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adjust_lr_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.optimizer.MuonComposite" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/optim.html#torch.optim.Optimizer" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.optim.Optimizer</span></code></a></p>
+<p>Composite optimizer using torch.optim.Muon for 2D weight matrices
+and a configurable secondary optimizer for all other parameters (biases, norms, embeddings).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> – Iterable of parameter groups.</p></li>
+<li><p><strong>lr</strong> – Learning rate for the Muon optimizer.</p></li>
+<li><p><strong>momentum</strong> – Momentum factor for the Muon optimizer.</p></li>
+<li><p><strong>weight_decay</strong> – Weight decay for the Muon optimizer.</p></li>
+<li><p><strong>secondary</strong> – Configuration dict for the secondary optimizer (biases, norms, embeddings).</p></li>
+<li><p><strong>nesterov</strong> – Enable Nesterov momentum in Muon. None uses Muon’s default (True).</p></li>
+<li><p><strong>ns_steps</strong> – Number of Newton-Schulz iteration steps. None uses Muon’s default (5).</p></li>
+<li><p><strong>adjust_lr_fn</strong> – Per-matrix LR adjustment strategy for Muon. One of <code class="docutils literal notranslate"><span class="pre">&quot;original&quot;</span></code>
+or <code class="docutils literal notranslate"><span class="pre">&quot;match_rms_adamw&quot;</span></code>. None uses Muon’s default (<code class="docutils literal notranslate"><span class="pre">&quot;original&quot;</span></code>).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.optimizer.MuonComposite.param_groups">
+<span class="sig-name descname"><span class="pre">param_groups</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#noether.core.optimizer.MuonComposite.param_groups" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.optimizer.MuonComposite.step">
+<span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">closure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.optimizer.MuonComposite.step" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.optimizer.MuonComposite.zero_grad">
+<span class="sig-name descname"><span class="pre">zero_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">set_to_none</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.optimizer.MuonComposite.zero_grad" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.optimizer.MuonComposite.state_dict">
+<span class="sig-name descname"><span class="pre">state_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.optimizer.MuonComposite.state_dict" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.optimizer.MuonComposite.load_state_dict">
+<span class="sig-name descname"><span class="pre">load_state_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.optimizer.MuonComposite.load_state_dict" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1301,6 +1354,14 @@ for a layerwise learning rate decay).</p></li>
 <li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.optimizer.Lion"><code class="docutils literal notranslate"><span class="pre">Lion</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.optimizer.Lion.step"><code class="docutils literal notranslate"><span class="pre">Lion.step()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.optimizer.MuonComposite"><code class="docutils literal notranslate"><span class="pre">MuonComposite</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.optimizer.MuonComposite.param_groups"><code class="docutils literal notranslate"><span class="pre">MuonComposite.param_groups</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.optimizer.MuonComposite.step"><code class="docutils literal notranslate"><span class="pre">MuonComposite.step()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.optimizer.MuonComposite.zero_grad"><code class="docutils literal notranslate"><span class="pre">MuonComposite.zero_grad()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.optimizer.MuonComposite.state_dict"><code class="docutils literal notranslate"><span class="pre">MuonComposite.state_dict()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.optimizer.MuonComposite.load_state_dict"><code class="docutils literal notranslate"><span class="pre">MuonComposite.load_state_dict()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper</span></code></a><ul>

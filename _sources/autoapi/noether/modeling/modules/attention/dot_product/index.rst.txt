@@ -52,7 +52,13 @@ Module Contents
    .. py:attribute:: proj_dropout
 
 
-   .. py:attribute:: qkv
+   .. py:attribute:: q
+
+
+   .. py:attribute:: k
+
+
+   .. py:attribute:: v
 
 
    .. py:attribute:: proj

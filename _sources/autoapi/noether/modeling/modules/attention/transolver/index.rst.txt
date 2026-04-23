@@ -52,7 +52,13 @@ Module Contents
    .. py:attribute:: in_project_slice
 
 
-   .. py:attribute:: qkv
+   .. py:attribute:: q
+
+
+   .. py:attribute:: k
+
+
+   .. py:attribute:: v
 
 
    .. py:attribute:: proj
