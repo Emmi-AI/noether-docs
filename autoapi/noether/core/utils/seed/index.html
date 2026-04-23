@@ -873,6 +873,9 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.utils.seed.set_seed" title="noether.core.utils.seed.set_seed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_seed</span></code></a>(seed)</p></td>
 <td><p>Set the seed for random number generation for Python <cite>random</cite>, numpy,</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.utils.seed.seed_worker" title="noether.core.utils.seed.seed_worker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seed_worker</span></code></a>(worker_id)</p></td>
+<td><p>DataLoader <code class="docutils literal notranslate"><span class="pre">worker_init_fn</span></code> that re-seeds Python <code class="docutils literal notranslate"><span class="pre">random</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -892,6 +895,30 @@ torch and torch.cuda, if available.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Seed value.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.utils.seed.seed_worker">
+<span class="sig-prename descclassname"><span class="pre">noether.core.utils.seed.</span></span><span class="sig-name descname"><span class="pre">seed_worker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">worker_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.utils.seed.seed_worker" title="Link to this definition">¶</a></dt>
+<dd><p>DataLoader <code class="docutils literal notranslate"><span class="pre">worker_init_fn</span></code> that re-seeds Python <code class="docutils literal notranslate"><span class="pre">random</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code>
+inside each worker.</p>
+<p>PyTorch already derives a per-worker torch seed from the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>’s
+<code class="docutils literal notranslate"><span class="pre">generator</span></code> (or <code class="docutils literal notranslate"><span class="pre">base_seed</span></code>) combined with <code class="docutils literal notranslate"><span class="pre">worker_id</span></code>, so
+<code class="docutils literal notranslate"><span class="pre">torch.randperm</span></code>, <code class="docutils literal notranslate"><span class="pre">torch.randn</span></code>, etc. inside workers are deterministic
+as long as the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> receives a seeded <code class="docutils literal notranslate"><span class="pre">generator</span></code>. However,
+<code class="docutils literal notranslate"><span class="pre">random</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> are forked from the main process unseeded
+per-worker, which makes any code using them in a worker non-deterministic
+across runs. This function pulls the torch worker seed and uses it to
+reseed <code class="docutils literal notranslate"><span class="pre">random</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy</span></code> so the whole worker is deterministic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>worker_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Worker id passed by the DataLoader. Unused; kept to match
+the <code class="docutils literal notranslate"><span class="pre">worker_init_fn</span></code> signature.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -987,6 +1014,7 @@ torch and torch.cuda, if available.</p>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.utils.seed.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.utils.seed.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.utils.seed.seed_worker"><code class="docutils literal notranslate"><span class="pre">seed_worker()</span></code></a></li>
 </ul>
 </li>
 </ul>

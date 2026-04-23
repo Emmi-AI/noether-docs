@@ -886,7 +886,7 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.data.container.DataContainer">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.container.</span></span><span class="sig-name descname"><span class="pre">DataContainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pin_memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.container.DataContainer" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.container.</span></span><span class="sig-name descname"><span class="pre">DataContainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pin_memory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.container.DataContainer" title="Link to this definition">¶</a></dt>
 <dd><p>Container that holds datasets and provides utilities for datasets and data loading.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -895,6 +895,10 @@
 <li><p><strong>num_workers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Number of data loading workers to use. If None, will use (#CPUs / #GPUs - 1) workers.
 The <cite>-1</cite> keeps 1 CPU free for the main process. Defaults to None.</p></li>
 <li><p><strong>pin_memory</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – Is passed as <cite>pin_memory</cite> to <cite>torch.utils.data.DataLoader</cite>. Defaults to True.</p></li>
+<li><p><strong>seed</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>) – Optional seed used to initialize a <code class="docutils literal notranslate"><span class="pre">torch.Generator</span></code> for the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> and
+to reseed <code class="docutils literal notranslate"><span class="pre">random</span></code>/<code class="docutils literal notranslate"><span class="pre">numpy</span></code> inside each worker via <code class="docutils literal notranslate"><span class="pre">worker_init_fn</span></code>. When None,
+no generator is attached and workers are not explicitly reseeded (matches legacy behavior).
+Typically the training seed (already rank-offset) should be passed here.</p></li>
 </ul>
 </dd>
 </dl>
@@ -916,6 +920,11 @@ The <cite>-1</cite> keeps 1 CPU free for the main process. Defaults to None.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.data.container.DataContainer.pin_memory">
 <span class="sig-name descname"><span class="pre">pin_memory</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#noether.data.container.DataContainer.pin_memory" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.container.DataContainer.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.data.container.DataContainer.seed" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1094,6 +1103,7 @@ Default: None (no wrapping)</p></li>
 <li><a class="reference internal" href="#noether.data.container.DataContainer.datasets"><code class="docutils literal notranslate"><span class="pre">DataContainer.datasets</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.container.DataContainer.num_workers"><code class="docutils literal notranslate"><span class="pre">DataContainer.num_workers</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.container.DataContainer.pin_memory"><code class="docutils literal notranslate"><span class="pre">DataContainer.pin_memory</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.container.DataContainer.seed"><code class="docutils literal notranslate"><span class="pre">DataContainer.seed</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.container.DataContainer.get_dataset"><code class="docutils literal notranslate"><span class="pre">DataContainer.get_dataset()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.container.DataContainer.get_main_sampler"><code class="docutils literal notranslate"><span class="pre">DataContainer.get_main_sampler()</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.container.DataContainer.get_data_loader"><code class="docutils literal notranslate"><span class="pre">DataContainer.get_data_loader()</span></code></a></li>

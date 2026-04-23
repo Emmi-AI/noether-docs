@@ -27,7 +27,7 @@ Module Contents
    :value: '__meta_time_collate'
 
 
-.. py:class:: DataContainer(datasets, num_workers = None, pin_memory = True)
+.. py:class:: DataContainer(datasets, num_workers = None, pin_memory = True, seed = None)
 
    Container that holds datasets and provides utilities for datasets and data loading.
 
@@ -35,6 +35,10 @@ Module Contents
    :param num_workers: Number of data loading workers to use. If None, will use (#CPUs / #GPUs - 1) workers.
                        The `-1` keeps 1 CPU free for the main process. Defaults to None.
    :param pin_memory: Is passed as `pin_memory` to `torch.utils.data.DataLoader`. Defaults to True.
+   :param seed: Optional seed used to initialize a ``torch.Generator`` for the ``DataLoader`` and
+                to reseed ``random``/``numpy`` inside each worker via ``worker_init_fn``. When None,
+                no generator is attached and workers are not explicitly reseeded (matches legacy behavior).
+                Typically the training seed (already rank-offset) should be passed here.
 
 
    .. py:attribute:: logger
@@ -50,6 +54,11 @@ Module Contents
 
    .. py:attribute:: pin_memory
       :value: True
+
+
+
+   .. py:attribute:: seed
+      :value: None
 
 
 
