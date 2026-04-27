@@ -959,6 +959,17 @@ validated to form a valid model.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.max_wavelength">
+<span class="sig-name descname"><span class="pre">max_wavelength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.max_wavelength" title="Link to this definition">¶</a></dt>
+<dd><p>10_000</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Theta parameter for the transformer sine/cosine embedding. Default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.attention_arguments">
 <span class="sig-name descname"><span class="pre">attention_arguments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.attention_arguments" title="Link to this definition">¶</a></dt>
 <dd><p>Additional arguments for the attention module that are only needed for a specific attention implementation.</p>
@@ -967,6 +978,11 @@ validated to form a valid model.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.set_mlp_hidden_dim">
 <span class="sig-name descname"><span class="pre">set_mlp_hidden_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.set_mlp_hidden_dim" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.set_wavelength_for_rope">
+<span class="sig-name descname"><span class="pre">set_wavelength_for_rope</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.set_wavelength_for_rope" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1172,8 +1188,10 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.eps"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.eps</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.init_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.use_rope"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.use_rope</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.max_wavelength"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.max_wavelength</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.attention_arguments"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.attention_arguments</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.set_mlp_hidden_dim"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.set_mlp_hidden_dim()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.set_wavelength_for_rope"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.set_wavelength_for_rope()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.linear_projection_config"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.linear_projection_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.layerscale_config"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.layerscale_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.drop_path_config"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.drop_path_config()</span></code></a></li>

@@ -514,6 +514,16 @@ Package Contents
       Whether to use Rotary Positional Embeddings (RoPE).
 
 
+   .. py:attribute:: max_wavelength
+      :type:  int | None
+      :value: None
+
+
+      10_000
+
+      :type: Theta parameter for the transformer sine/cosine embedding. Default
+
+
    .. py:attribute:: attention_arguments
       :type:  dict
 
@@ -521,6 +531,9 @@ Package Contents
 
 
    .. py:method:: set_mlp_hidden_dim()
+
+
+   .. py:method:: set_wavelength_for_rope()
 
 
    .. py:method:: linear_projection_config()

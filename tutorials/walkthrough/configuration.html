@@ -1170,6 +1170,9 @@ Transformer models looks like:</p>
     <span class="n">use_rope</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to use Rotary Positional Embeddings (RoPE).&quot;&quot;&quot;</span>
 
+    <span class="n">max_wavelength</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Theta parameter for the transformer sine/cosine embedding. Default: 10_000&quot;&quot;&quot;</span>
+
     <span class="n">attention_arguments</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Additional arguments for the attention module that are only needed for a specific attention implementation.&quot;&quot;&quot;</span>
 
@@ -1183,6 +1186,12 @@ Transformer models looks like:</p>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_expansion_factor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Either &#39;mlp_hidden_dim&#39; or &#39;mlp_expansion_factor&#39; must be provided.&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">mlp_hidden_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_expansion_factor</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_wavelength_for_rope</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_rope</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_wavelength</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;max_wavelength must be provided when use_rope is True.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="nd">@computed_field</span>
