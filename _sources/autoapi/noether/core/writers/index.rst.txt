@@ -12,6 +12,7 @@ Submodules
 
    /autoapi/noether/core/writers/checkpoint_writer/index
    /autoapi/noether/core/writers/log_writer/index
+   /autoapi/noether/core/writers/prefixed_log_writer/index
 
 
 Classes
@@ -21,6 +22,7 @@ Classes
 
    noether.core.writers.CheckpointWriter
    noether.core.writers.LogWriter
+   noether.core.writers.PrefixedLogWriter
 
 
 Package Contents
@@ -186,6 +188,37 @@ Package Contents
       Adds a non-scalar value to the log.
       :param key: Metric identifier.
       :param value: Non-scalar value that should be logged (e.g., wandb.Image, wandb.Histogram, ...).
+
+
+
+.. py:class:: PrefixedLogWriter(inner, prefix)
+
+   Proxy over :class:`LogWriter` that prepends a prefix to every logged key.
+
+   Used by composite callbacks (e.g. :class:`~noether.core.callbacks.checkpoint.ema.EmaCallback`) that run
+   child evaluation callbacks under alternate model weights, so that the child's metric keys don't collide
+   with the live-model metrics. All non-logging methods (``flush``, ``__enter__``/``__exit__``, etc.) are
+   delegated to the wrapped writer so the underlying cache/history stay consistent.
+
+   :param inner: The underlying :class:`LogWriter` to delegate to.
+   :param prefix: Prefix to prepend to every key (trailing slashes are stripped).
+
+
+   .. py:method:: add_scalar(key, value, logger = None, format_str = None)
+
+      Forward to the underlying writer with the key prefixed.
+
+
+
+   .. py:method:: add_nonscalar(key, value)
+
+      Forward to the underlying writer with the key prefixed.
+
+
+
+   .. py:method:: get_all_metric_values(key)
+
+      Look up values under the prefixed key.
 
 
 

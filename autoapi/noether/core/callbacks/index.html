@@ -534,6 +534,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../writers/index.html">noether.core.writers</a><input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><div class="visually-hidden">Toggle navigation of noether.core.writers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../writers/checkpoint_writer/index.html">noether.core.writers.checkpoint_writer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../writers/log_writer/index.html">noether.core.writers.log_writer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../writers/prefixed_log_writer/index.html">noether.core.writers.prefixed_log_writer</a></li>
 </ul>
 </li>
 </ul>
@@ -1043,6 +1044,25 @@ are always executed within a torch.no_grad() context.</p>
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.CallbackBase.name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.CallbackBase.get_children">
+<span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.CallbackBase.get_children" title="Link to this definition">¶</a></dt>
+<dd><p>Return nested callbacks owned by this callback, if any.</p>
+<p>Composite callbacks (e.g. <a class="reference internal" href="checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback" title="noether.core.callbacks.checkpoint.ema.EmaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmaCallback</span></code></a> when it owns
+<code class="docutils literal notranslate"><span class="pre">eval_callbacks</span></code>) use this to expose their children to the trainer so nested
+<a class="reference internal" href="periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback</span></code></a> instances still get their
+samplers registered on the shared data loader. Dispatch of lifecycle hooks on the children remains
+the responsibility of the owning callback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of child callbacks (empty by default).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="#noether.core.callbacks.CallbackBase" title="noether.core.callbacks.CallbackBase">CallbackBase</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="noether.core.callbacks.CallbackBase.checkpoint_key">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checkpoint_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.callbacks.CallbackBase.checkpoint_key" title="Link to this definition">¶</a></dt>
@@ -1520,6 +1540,12 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.</span></span><span class="sig-name descname"><span class="pre">EmaCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a></p>
 <p>Callback for exponential moving average (EMA) of model weights.</p>
+<p>In addition to maintaining and checkpointing EMA weights, this callback can optionally own a list of
+child evaluation callbacks via <code class="docutils literal notranslate"><span class="pre">eval_callbacks</span></code>. At each eval-time hook (<code class="docutils literal notranslate"><span class="pre">after_epoch</span></code>,
+<code class="docutils literal notranslate"><span class="pre">after_update</span></code>, <code class="docutils literal notranslate"><span class="pre">at_eval</span></code>) the EMA weights are swapped into the live model, the children are
+dispatched, and the live weights are restored. Children are dispatched once per <code class="docutils literal notranslate"><span class="pre">target_factor</span></code> and
+their metric keys are automatically prefixed with <code class="docutils literal notranslate"><span class="pre">ema=&lt;factor&gt;/</span></code> to avoid collisions with live-model
+metrics.</p>
 <p>Example config:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.callbacks.EmaCallback</span>
 <span class="w">  </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
@@ -1529,6 +1555,10 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <span class="w">  </span><span class="nt">target_factors</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9999</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EmaCallback</span>
+<span class="w">  </span><span class="nt">eval_callbacks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.training.callbacks.OfflineLossCallback</span>
+<span class="w">      </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">dataset_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">val</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1576,6 +1606,25 @@ for available options.</p></li>
 <span class="sig-name descname"><span class="pre">buffers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.callbacks.EmaCallback.buffers" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.EmaCallback.eval_callbacks">
+<span class="sig-name descname"><span class="pre">eval_callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><span class="pre">noether.core.callbacks.base.CallbackBase</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.callbacks.EmaCallback.eval_callbacks" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.EmaCallback.get_children">
+<span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.get_children" title="Link to this definition">¶</a></dt>
+<dd><p>Flat list of child eval callbacks (across all <code class="docutils literal notranslate"><span class="pre">target_factors</span></code>).</p>
+<p>Exposed to the trainer so nested <code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback</span></code> instances have their samplers
+registered on the shared data loader. The EMA callback remains responsible for dispatching lifecycle
+hooks to its children.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase">noether.core.callbacks.base.CallbackBase</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.EmaCallback.resume_from_checkpoint">
 <span class="sig-name descname"><span class="pre">resume_from_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resumption_paths</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.resume_from_checkpoint" title="Link to this definition">¶</a></dt>
@@ -1598,7 +1647,7 @@ initializing EMA from the current model weights.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.EmaCallback.before_training">
-<span class="sig-name descname"><span class="pre">before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.before_training" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.before_training" title="Link to this definition">¶</a></dt>
 <dd><p>Hook called once before the training loop starts.</p>
 <p>This method is intended to be overridden by derived classes to perform initialization
 tasks before training begins. Common use cases include:</p>
@@ -1662,6 +1711,55 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.EmaCallback.after_epoch">
+<span class="sig-name descname"><span class="pre">after_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.after_epoch" title="Link to this definition">¶</a></dt>
+<dd><p>Invoked after every epoch to check if callback should be invoked.</p>
+<p>Applies <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.EmaCallback.after_update">
+<span class="sig-name descname"><span class="pre">after_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.after_update" title="Link to this definition">¶</a></dt>
+<dd><p>Invoked after every update to check if callback should be invoked.</p>
+<p>Applies <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>update_counter</strong> (<a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.EmaCallback.at_eval">
+<span class="sig-name descname"><span class="pre">at_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.at_eval" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>update_counter</strong> (<a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.EmaCallback.periodic_callback">
 <span class="sig-name descname"><span class="pre">periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.periodic_callback" title="Link to this definition">¶</a></dt>
 <dd><p>Hook called periodically based on the configured intervals.</p>
@@ -1686,7 +1784,7 @@ or <code class="docutils literal notranslate"><span class="pre">every_n_samples<
 <li><p><strong>update_counter</strong> – <a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance providing details about
 the current training progress (epoch, update, sample counts).</p></li>
 <li><p><strong>**kwargs</strong> – Additional keyword arguments passed from the triggering hook
-(e.g., from <code class="xref py py-meth docutils literal notranslate"><span class="pre">after_epoch()</span></code> or <code class="xref py py-meth docutils literal notranslate"><span class="pre">after_update()</span></code>).</p></li>
+(e.g., from <a class="reference internal" href="#noether.core.callbacks.EmaCallback.after_epoch" title="noether.core.callbacks.EmaCallback.after_epoch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">after_epoch()</span></code></a> or <a class="reference internal" href="#noether.core.callbacks.EmaCallback.after_update" title="noether.core.callbacks.EmaCallback.after_update"><code class="xref py py-meth docutils literal notranslate"><span class="pre">after_update()</span></code></a>).</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
@@ -1697,7 +1795,7 @@ the current training progress (epoch, update, sample counts).</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.EmaCallback.after_training">
-<span class="sig-name descname"><span class="pre">after_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.after_training" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">after_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.EmaCallback.after_training" title="Link to this definition">¶</a></dt>
 <dd><p>Hook called once after the training loop finishes.</p>
 <p>This method is intended to be overridden by derived classes to perform cleanup or
 final reporting tasks after training is complete. Common use cases include:</p>
@@ -3566,6 +3664,7 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.metric_property_provider"><code class="docutils literal notranslate"><span class="pre">CallbackBase.metric_property_provider</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.checkpoint_writer"><code class="docutils literal notranslate"><span class="pre">CallbackBase.checkpoint_writer</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.name"><code class="docutils literal notranslate"><span class="pre">CallbackBase.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.get_children"><code class="docutils literal notranslate"><span class="pre">CallbackBase.get_children()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.checkpoint_key"><code class="docutils literal notranslate"><span class="pre">CallbackBase.checkpoint_key</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.validate_checkpoint_keys"><code class="docutils literal notranslate"><span class="pre">CallbackBase.validate_checkpoint_keys()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.CallbackBase.build_callback_state_dict"><code class="docutils literal notranslate"><span class="pre">CallbackBase.build_callback_state_dict()</span></code></a></li>
@@ -3613,10 +3712,15 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.save_latest_weights"><code class="docutils literal notranslate"><span class="pre">EmaCallback.save_latest_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.parameters"><code class="docutils literal notranslate"><span class="pre">EmaCallback.parameters</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.buffers"><code class="docutils literal notranslate"><span class="pre">EmaCallback.buffers</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.eval_callbacks"><code class="docutils literal notranslate"><span class="pre">EmaCallback.eval_callbacks</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.get_children"><code class="docutils literal notranslate"><span class="pre">EmaCallback.get_children()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.resume_from_checkpoint"><code class="docutils literal notranslate"><span class="pre">EmaCallback.resume_from_checkpoint()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.before_training"><code class="docutils literal notranslate"><span class="pre">EmaCallback.before_training()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.apply_ema"><code class="docutils literal notranslate"><span class="pre">EmaCallback.apply_ema()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.track_after_update_step"><code class="docutils literal notranslate"><span class="pre">EmaCallback.track_after_update_step()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.after_epoch"><code class="docutils literal notranslate"><span class="pre">EmaCallback.after_epoch()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.after_update"><code class="docutils literal notranslate"><span class="pre">EmaCallback.after_update()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.at_eval"><code class="docutils literal notranslate"><span class="pre">EmaCallback.at_eval()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.periodic_callback"><code class="docutils literal notranslate"><span class="pre">EmaCallback.periodic_callback()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.EmaCallback.after_training"><code class="docutils literal notranslate"><span class="pre">EmaCallback.after_training()</span></code></a></li>
 </ul>

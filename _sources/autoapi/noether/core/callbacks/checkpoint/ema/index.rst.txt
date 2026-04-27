@@ -22,6 +22,13 @@ Module Contents
 
    Callback for exponential moving average (EMA) of model weights.
 
+   In addition to maintaining and checkpointing EMA weights, this callback can optionally own a list of
+   child evaluation callbacks via ``eval_callbacks``. At each eval-time hook (``after_epoch``,
+   ``after_update``, ``at_eval``) the EMA weights are swapped into the live model, the children are
+   dispatched, and the live weights are restored. Children are dispatched once per ``target_factor`` and
+   their metric keys are automatically prefixed with ``ema=<factor>/`` to avoid collisions with live-model
+   metrics.
+
    Example config:
 
    .. code-block:: yaml
@@ -34,6 +41,10 @@ Module Contents
          target_factors:
            - 0.9999
          name: EmaCallback
+         eval_callbacks:
+           - kind: noether.training.callbacks.OfflineLossCallback
+             every_n_epochs: 1
+             dataset_key: val
 
    :param callback_config: Configuration for the callback. See
                            :class:`~noether.core.schemas.callbacks.EmaCallbackConfig`
@@ -64,6 +75,20 @@ Module Contents
       :type:  dict[str | None, dict[str, torch.Tensor]]
 
 
+   .. py:attribute:: eval_callbacks
+      :type:  dict[float, list[noether.core.callbacks.base.CallbackBase]]
+
+
+   .. py:method:: get_children()
+
+      Flat list of child eval callbacks (across all ``target_factors``).
+
+      Exposed to the trainer so nested ``PeriodicDataIteratorCallback`` instances have their samplers
+      registered on the shared data loader. The EMA callback remains responsible for dispatching lifecycle
+      hooks to its children.
+
+
+
    .. py:method:: resume_from_checkpoint(resumption_paths, model)
 
       Resume EMA state from a checkpoint.
@@ -77,7 +102,7 @@ Module Contents
 
 
 
-   .. py:method:: before_training(**_)
+   .. py:method:: before_training(**kwargs)
 
       Hook called once before the training loop starts.
 
@@ -125,6 +150,31 @@ Module Contents
 
 
 
+   .. py:method:: after_epoch(update_counter, **kwargs)
+
+      Invoked after every epoch to check if callback should be invoked.
+
+      Applies ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+      :param \*\*kwargs: Additional keyword arguments.
+
+
+
+   .. py:method:: after_update(update_counter, **kwargs)
+
+      Invoked after every update to check if callback should be invoked.
+
+      Applies ``torch.no_grad()`` context.
+
+      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
+      :param \*\*kwargs: Additional keyword arguments.
+
+
+
+   .. py:method:: at_eval(update_counter, **kwargs)
+
+
    .. py:method:: periodic_callback(*, interval_type, update_counter, **_)
 
       Hook called periodically based on the configured intervals.
@@ -150,7 +200,7 @@ Module Contents
 
 
 
-   .. py:method:: after_training(**_)
+   .. py:method:: after_training(**kwargs)
 
       Hook called once after the training loop finishes.
 

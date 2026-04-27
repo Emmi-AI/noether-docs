@@ -534,6 +534,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../writers/index.html">noether.core.writers</a><input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><div class="visually-hidden">Toggle navigation of noether.core.writers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../writers/checkpoint_writer/index.html">noether.core.writers.checkpoint_writer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../writers/log_writer/index.html">noether.core.writers.log_writer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../writers/prefixed_log_writer/index.html">noether.core.writers.prefixed_log_writer</a></li>
 </ul>
 </li>
 </ul>
@@ -964,6 +965,25 @@ are always executed within a torch.no_grad() context.</p>
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase.name" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.base.CallbackBase.get_children">
+<span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase.get_children" title="Link to this definition">¶</a></dt>
+<dd><p>Return nested callbacks owned by this callback, if any.</p>
+<p>Composite callbacks (e.g. <a class="reference internal" href="../checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback" title="noether.core.callbacks.checkpoint.ema.EmaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmaCallback</span></code></a> when it owns
+<code class="docutils literal notranslate"><span class="pre">eval_callbacks</span></code>) use this to expose their children to the trainer so nested
+<a class="reference internal" href="../periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback</span></code></a> instances still get their
+samplers registered on the shared data loader. Dispatch of lifecycle hooks on the children remains
+the responsibility of the owning callback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of child callbacks (empty by default).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase">CallbackBase</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="noether.core.callbacks.base.CallbackBase.checkpoint_key">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">checkpoint_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.callbacks.base.CallbackBase.checkpoint_key" title="Link to this definition">¶</a></dt>
@@ -1244,6 +1264,7 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.metric_property_provider"><code class="docutils literal notranslate"><span class="pre">CallbackBase.metric_property_provider</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.checkpoint_writer"><code class="docutils literal notranslate"><span class="pre">CallbackBase.checkpoint_writer</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.name"><code class="docutils literal notranslate"><span class="pre">CallbackBase.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.get_children"><code class="docutils literal notranslate"><span class="pre">CallbackBase.get_children()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.checkpoint_key"><code class="docutils literal notranslate"><span class="pre">CallbackBase.checkpoint_key</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.validate_checkpoint_keys"><code class="docutils literal notranslate"><span class="pre">CallbackBase.validate_checkpoint_keys()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.base.CallbackBase.build_callback_state_dict"><code class="docutils literal notranslate"><span class="pre">CallbackBase.build_callback_state_dict()</span></code></a></li>

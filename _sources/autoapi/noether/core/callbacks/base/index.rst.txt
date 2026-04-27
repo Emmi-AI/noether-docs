@@ -112,6 +112,20 @@ Module Contents
 
 
 
+   .. py:method:: get_children()
+
+      Return nested callbacks owned by this callback, if any.
+
+      Composite callbacks (e.g. :class:`~noether.core.callbacks.checkpoint.ema.EmaCallback` when it owns
+      ``eval_callbacks``) use this to expose their children to the trainer so nested
+      :class:`~noether.core.callbacks.periodic.PeriodicDataIteratorCallback` instances still get their
+      samplers registered on the shared data loader. Dispatch of lifecycle hooks on the children remains
+      the responsibility of the owning callback.
+
+      :returns: List of child callbacks (empty by default).
+
+
+
    .. py:property:: checkpoint_key
       :type: str
 

@@ -421,6 +421,20 @@ Package Contents
       Save the latest EMA weights. Note that the latest weights are always overwritten on the next invocation of this callback.
 
 
+   .. py:attribute:: eval_callbacks
+      :type:  list[Annotated[Any, Discriminated(CallBackBaseConfig)]] | None
+      :value: None
+
+
+      Optional nested periodic callbacks to run against EMA weights. Each child retains its own schedule
+      (``every_n_epochs`` etc.); the EMA callback swaps its stored EMA parameters into the live model around
+      eval-time hooks (``after_epoch``, ``after_update``, ``at_eval``) and restores the live weights on exit.
+      Children are dispatched once per ``target_factor`` and their metric keys are automatically prefixed with
+      ``ema=<factor>/`` to avoid collisions with live-model metrics. Note: ``before_training`` and
+      ``after_training`` are forwarded without swapping, so EMA initialization and the final save see live
+      weights.
+
+
 .. py:class:: FixedEarlyStopperConfig(/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`

@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/core/writers/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Submodules: noether.core.writers.checkpoint_writer, noether.core.writers.log_writer. Classes: Package Contents:" />
+<meta property="og:description" content="Submodules: noether.core.writers.checkpoint_writer, noether.core.writers.log_writer, noether.core.writers.prefixed_log_writer. Classes: Package Contents:" />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Submodules: noether.core.writers.checkpoint_writer, noether.core.writers.log_writer. Classes: Package Contents:" />
+<meta name="description" content="Submodules: noether.core.writers.checkpoint_writer, noether.core.writers.log_writer, noether.core.writers.prefixed_log_writer. Classes: Package Contents:" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -534,6 +534,7 @@
 <li class="toctree-l3 current has-children current-page"><a class="current reference internal" href="#">noether.core.writers</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><div class="visually-hidden">Toggle navigation of noether.core.writers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="checkpoint_writer/index.html">noether.core.writers.checkpoint_writer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="log_writer/index.html">noether.core.writers.log_writer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="prefixed_log_writer/index.html">noether.core.writers.prefixed_log_writer</a></li>
 </ul>
 </li>
 </ul>
@@ -860,6 +861,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="checkpoint_writer/index.html">noether.core.writers.checkpoint_writer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="log_writer/index.html">noether.core.writers.log_writer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prefixed_log_writer/index.html">noether.core.writers.prefixed_log_writer</a></li>
 </ul>
 </div>
 </section>
@@ -873,6 +875,9 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.writers.LogWriter" title="noether.core.writers.LogWriter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogWriter</span></code></a></p></td>
 <td><p>Writes logs into a local file and (optionally) to an online webinterface (identified via the <cite>tracker</cite>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.writers.PrefixedLogWriter" title="noether.core.writers.PrefixedLogWriter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PrefixedLogWriter</span></code></a></p></td>
+<td><p>Proxy over <a class="reference internal" href="#noether.core.writers.LogWriter" title="noether.core.writers.LogWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogWriter</span></code></a> that prepends a prefix to every logged key.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1129,6 +1134,74 @@ called after every update and if no metrics were logged, it simply does nothing.
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.writers.PrefixedLogWriter">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.writers.</span></span><span class="sig-name descname"><span class="pre">PrefixedLogWriter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.writers.PrefixedLogWriter" title="Link to this definition">¶</a></dt>
+<dd><p>Proxy over <a class="reference internal" href="#noether.core.writers.LogWriter" title="noether.core.writers.LogWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogWriter</span></code></a> that prepends a prefix to every logged key.</p>
+<p>Used by composite callbacks (e.g. <a class="reference internal" href="../callbacks/checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback" title="noether.core.callbacks.checkpoint.ema.EmaCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmaCallback</span></code></a>) that run
+child evaluation callbacks under alternate model weights, so that the child’s metric keys don’t collide
+with the live-model metrics. All non-logging methods (<code class="docutils literal notranslate"><span class="pre">flush</span></code>, <code class="docutils literal notranslate"><span class="pre">__enter__</span></code>/<code class="docutils literal notranslate"><span class="pre">__exit__</span></code>, etc.) are
+delegated to the wrapped writer so the underlying cache/history stay consistent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inner</strong> (<a class="reference internal" href="log_writer/index.html#noether.core.writers.log_writer.LogWriter" title="noether.core.writers.log_writer.LogWriter"><em>noether.core.writers.log_writer.LogWriter</em></a>) – The underlying <a class="reference internal" href="#noether.core.writers.LogWriter" title="noether.core.writers.LogWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogWriter</span></code></a> to delegate to.</p></li>
+<li><p><strong>prefix</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Prefix to prepend to every key (trailing slashes are stripped).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.writers.PrefixedLogWriter.add_scalar">
+<span class="sig-name descname"><span class="pre">add_scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_str</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.writers.PrefixedLogWriter.add_scalar" title="Link to this definition">¶</a></dt>
+<dd><p>Forward to the underlying writer with the key prefixed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> | </em><em>numpy.generic</em><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p></li>
+<li><p><strong>logger</strong> (<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.Logger" title="(in Python v3.14)"><em>logging.Logger</em></a><em> | </em><em>None</em>)</p></li>
+<li><p><strong>format_str</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.writers.PrefixedLogWriter.add_nonscalar">
+<span class="sig-name descname"><span class="pre">add_nonscalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.writers.PrefixedLogWriter.add_nonscalar" title="Link to this definition">¶</a></dt>
+<dd><p>Forward to the underlying writer with the key prefixed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
+<li><p><strong>value</strong> (<em>Any</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.writers.PrefixedLogWriter.get_all_metric_values">
+<span class="sig-name descname"><span class="pre">get_all_metric_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.writers.PrefixedLogWriter.get_all_metric_values" title="Link to this definition">¶</a></dt>
+<dd><p>Look up values under the prefixed key.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -1236,6 +1309,12 @@ called after every update and if no metrics were logged, it simply does nothing.
 <li><a class="reference internal" href="#noether.core.writers.LogWriter.flush"><code class="docutils literal notranslate"><span class="pre">LogWriter.flush()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.writers.LogWriter.add_scalar"><code class="docutils literal notranslate"><span class="pre">LogWriter.add_scalar()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.writers.LogWriter.add_nonscalar"><code class="docutils literal notranslate"><span class="pre">LogWriter.add_nonscalar()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.writers.PrefixedLogWriter"><code class="docutils literal notranslate"><span class="pre">PrefixedLogWriter</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.writers.PrefixedLogWriter.add_scalar"><code class="docutils literal notranslate"><span class="pre">PrefixedLogWriter.add_scalar()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.writers.PrefixedLogWriter.add_nonscalar"><code class="docutils literal notranslate"><span class="pre">PrefixedLogWriter.add_nonscalar()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.writers.PrefixedLogWriter.get_all_metric_values"><code class="docutils literal notranslate"><span class="pre">PrefixedLogWriter.get_all_metric_values()</span></code></a></li>
 </ul>
 </li>
 </ul>

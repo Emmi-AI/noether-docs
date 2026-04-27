@@ -521,6 +521,7 @@
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/core/writers/index.html">noether.core.writers</a><input class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><div class="visually-hidden">Toggle navigation of noether.core.writers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/writers/checkpoint_writer/index.html">noether.core.writers.checkpoint_writer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/writers/log_writer/index.html">noether.core.writers.log_writer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/core/writers/prefixed_log_writer/index.html">noether.core.writers.prefixed_log_writer</a></li>
 </ul>
 </li>
 </ul>
@@ -925,6 +926,10 @@
         <ul>
           <li><a href="autoapi/noether/core/writers/index.html#noether.core.writers.LogWriter.add_nonscalar">(noether.core.writers.LogWriter method)</a>
 </li>
+          <li><a href="autoapi/noether/core/writers/prefixed_log_writer/index.html#noether.core.writers.prefixed_log_writer.PrefixedLogWriter.add_nonscalar">(noether.core.writers.prefixed_log_writer.PrefixedLogWriter method)</a>
+</li>
+          <li><a href="autoapi/noether/core/writers/index.html#noether.core.writers.PrefixedLogWriter.add_nonscalar">(noether.core.writers.PrefixedLogWriter method)</a>
+</li>
         </ul></li>
         <li><a href="autoapi/noether/core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter.add_samples">add_samples() (noether.core.utils.training.counter.UpdateCounter method)</a>
 
@@ -936,6 +941,10 @@
 
         <ul>
           <li><a href="autoapi/noether/core/writers/index.html#noether.core.writers.LogWriter.add_scalar">(noether.core.writers.LogWriter method)</a>
+</li>
+          <li><a href="autoapi/noether/core/writers/prefixed_log_writer/index.html#noether.core.writers.prefixed_log_writer.PrefixedLogWriter.add_scalar">(noether.core.writers.prefixed_log_writer.PrefixedLogWriter method)</a>
+</li>
+          <li><a href="autoapi/noether/core/writers/index.html#noether.core.writers.PrefixedLogWriter.add_scalar">(noether.core.writers.PrefixedLogWriter method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.BaseTrainerConfig.add_trainer_callbacks">add_trainer_callbacks (noether.core.schemas.BaseTrainerConfig attribute)</a>
@@ -1002,9 +1011,15 @@
           <li><a href="autoapi/noether/data/pipeline/sample_processors/index.html#noether.data.pipeline.sample_processors.DropOutliersSampleProcessor.affected_items">(noether.data.pipeline.sample_processors.DropOutliersSampleProcessor attribute)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.after_epoch">after_epoch() (noether.core.callbacks.periodic.PeriodicCallback method)</a>
+        <li><a href="autoapi/noether/core/callbacks/checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback.after_epoch">after_epoch() (noether.core.callbacks.checkpoint.ema.EmaCallback method)</a>
 
         <ul>
+          <li><a href="autoapi/noether/core/callbacks/checkpoint/index.html#noether.core.callbacks.checkpoint.EmaCallback.after_epoch">(noether.core.callbacks.checkpoint.EmaCallback method)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.EmaCallback.after_epoch">(noether.core.callbacks.EmaCallback method)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.after_epoch">(noether.core.callbacks.periodic.PeriodicCallback method)</a>
+</li>
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.PeriodicCallback.after_epoch">(noether.core.callbacks.PeriodicCallback method)</a>
 </li>
         </ul></li>
@@ -1050,9 +1065,15 @@
           <li><a href="autoapi/noether/training/callbacks/profiler/index.html#noether.training.callbacks.profiler.PyTorchProfilerCallback.after_training">(noether.training.callbacks.profiler.PyTorchProfilerCallback method)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.after_update">after_update() (noether.core.callbacks.periodic.PeriodicCallback method)</a>
+        <li><a href="autoapi/noether/core/callbacks/checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback.after_update">after_update() (noether.core.callbacks.checkpoint.ema.EmaCallback method)</a>
 
         <ul>
+          <li><a href="autoapi/noether/core/callbacks/checkpoint/index.html#noether.core.callbacks.checkpoint.EmaCallback.after_update">(noether.core.callbacks.checkpoint.EmaCallback method)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.EmaCallback.after_update">(noether.core.callbacks.EmaCallback method)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.after_update">(noether.core.callbacks.periodic.PeriodicCallback method)</a>
+</li>
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.PeriodicCallback.after_update">(noether.core.callbacks.PeriodicCallback method)</a>
 </li>
         </ul></li>
@@ -1090,10 +1111,10 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/ahmedml/split/index.html#noether.data.datasets.cfd.caeml.ahmedml.split.AhmedMLDefaultSplitIDs">(class in noether.data.datasets.cfd.caeml.ahmedml.split)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/modeling/functional/init/index.html#noether.modeling.functional.init.ALL_CONVS">ALL_CONVS (in module noether.modeling.functional.init)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/modeling/functional/init/index.html#noether.modeling.functional.init.ALL_CONVS">ALL_CONVS (in module noether.modeling.functional.init)</a>
+</li>
         <li><a href="autoapi/noether/core/factory/utils/index.html#noether.core.factory.utils.all_ctor_kwarg_names">all_ctor_kwarg_names() (in module noether.core.factory.utils)</a>
 </li>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs.all_features">all_features (noether.core.schemas.dataset.ModelDataSpecs property)</a>
@@ -1254,9 +1275,15 @@
         </ul></li>
         <li><a href="autoapi/noether/data/datasets/cfd/caeml/preprocessing/index.html#noether.data.datasets.cfd.caeml.preprocessing.assert_same_length">assert_same_length() (in module noether.data.datasets.cfd.caeml.preprocessing)</a>
 </li>
-        <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.at_eval">at_eval() (noether.core.callbacks.periodic.PeriodicCallback method)</a>
+        <li><a href="autoapi/noether/core/callbacks/checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback.at_eval">at_eval() (noether.core.callbacks.checkpoint.ema.EmaCallback method)</a>
 
         <ul>
+          <li><a href="autoapi/noether/core/callbacks/checkpoint/index.html#noether.core.callbacks.checkpoint.EmaCallback.at_eval">(noether.core.callbacks.checkpoint.EmaCallback method)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.EmaCallback.at_eval">(noether.core.callbacks.EmaCallback method)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.at_eval">(noether.core.callbacks.periodic.PeriodicCallback method)</a>
+</li>
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.PeriodicCallback.at_eval">(noether.core.callbacks.PeriodicCallback method)</a>
 </li>
         </ul></li>
@@ -3320,12 +3347,24 @@
           <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.FileRecord.etag">(noether.io.verification.FileRecord attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer.eval">eval() (noether.training.trainers.base.BaseTrainer method)</a>
 
         <ul>
           <li><a href="autoapi/noether/training/trainers/index.html#noether.training.trainers.BaseTrainer.eval">(noether.training.trainers.BaseTrainer method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/callbacks/checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback.eval_callbacks">eval_callbacks (noether.core.callbacks.checkpoint.ema.EmaCallback attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/callbacks/checkpoint/index.html#noether.core.callbacks.checkpoint.EmaCallback.eval_callbacks">(noether.core.callbacks.checkpoint.EmaCallback attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.EmaCallback.eval_callbacks">(noether.core.callbacks.EmaCallback attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.EmaCallbackConfig.eval_callbacks">(noether.core.schemas.callbacks.EmaCallbackConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.EmaCallbackConfig.eval_callbacks">(noether.core.schemas.EmaCallbackConfig attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/data/index.html#noether.data.InterleavedSamplerConfig.evaluation">evaluation (noether.data.InterleavedSamplerConfig attribute)</a>
@@ -4027,11 +4066,27 @@
         <ul>
           <li><a href="autoapi/noether/core/writers/index.html#noether.core.writers.LogWriter.get_all_metric_values">(noether.core.writers.LogWriter method)</a>
 </li>
+          <li><a href="autoapi/noether/core/writers/prefixed_log_writer/index.html#noether.core.writers.prefixed_log_writer.PrefixedLogWriter.get_all_metric_values">(noether.core.writers.prefixed_log_writer.PrefixedLogWriter method)</a>
+</li>
+          <li><a href="autoapi/noether/core/writers/index.html#noether.core.writers.PrefixedLogWriter.get_all_metric_values">(noether.core.writers.PrefixedLogWriter method)</a>
+</li>
         </ul></li>
         <li><a href="autoapi/noether/core/distributed/utils/index.html#noether.core.distributed.utils.get_backend">get_backend() (in module noether.core.distributed.utils)</a>
 </li>
         <li><a href="autoapi/noether/core/distributed/gather/index.html#noether.core.distributed.gather.get_bool_gather_supported">get_bool_gather_supported() (in module noether.core.distributed.gather)</a>
 </li>
+        <li><a href="autoapi/noether/core/callbacks/base/index.html#noether.core.callbacks.base.CallbackBase.get_children">get_children() (noether.core.callbacks.base.CallbackBase method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.CallbackBase.get_children">(noether.core.callbacks.CallbackBase method)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/checkpoint/ema/index.html#noether.core.callbacks.checkpoint.ema.EmaCallback.get_children">(noether.core.callbacks.checkpoint.ema.EmaCallback method)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/checkpoint/index.html#noether.core.callbacks.checkpoint.EmaCallback.get_children">(noether.core.callbacks.checkpoint.EmaCallback method)</a>
+</li>
+          <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.EmaCallback.get_children">(noether.core.callbacks.EmaCallback method)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/utils/platform/index.html#noether.core.utils.platform.get_cli_command">get_cli_command() (in module noether.core.utils.platform)</a>
 
         <ul>
@@ -7014,6 +7069,8 @@
 </li>
           <li><a href="autoapi/noether/core/writers/log_writer/index.html#module-noether.core.writers.log_writer">noether.core.writers.log_writer</a>
 </li>
+          <li><a href="autoapi/noether/core/writers/prefixed_log_writer/index.html#module-noether.core.writers.prefixed_log_writer">noether.core.writers.prefixed_log_writer</a>
+</li>
           <li><a href="autoapi/noether/data/index.html#module-noether.data">noether.data</a>
 </li>
           <li><a href="autoapi/noether/data/base/index.html#module-noether.data.base">noether.data.base</a>
@@ -8615,6 +8672,13 @@
 
         <ul>
           <li><a href="autoapi/noether/core/writers/log_writer/index.html#module-noether.core.writers.log_writer">module</a>
+</li>
+        </ul></li>
+        <li>
+    noether.core.writers.prefixed_log_writer
+
+        <ul>
+          <li><a href="autoapi/noether/core/writers/prefixed_log_writer/index.html#module-noether.core.writers.prefixed_log_writer">module</a>
 </li>
         </ul></li>
         <li>
@@ -10935,6 +10999,12 @@
         </ul></li>
         <li><a href="autoapi/noether/io/interfaces/s3_uploader/index.html#id2">prefix (noether.io.interfaces.s3_uploader.S3FileUploader attribute)</a>, <a href="autoapi/noether/io/interfaces/s3_uploader/index.html#noether.io.interfaces.s3_uploader.S3FileUploader.prefix">[1]</a>
 </li>
+        <li><a href="autoapi/noether/core/writers/index.html#noether.core.writers.PrefixedLogWriter">PrefixedLogWriter (class in noether.core.writers)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/writers/prefixed_log_writer/index.html#noether.core.writers.prefixed_log_writer.PrefixedLogWriter">(class in noether.core.writers.prefixed_log_writer)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/dataset/index.html#noether.data.datasets.cfd.shapenet_car.dataset.PREPROCESSED_FOLDER_NAME">PREPROCESSED_FOLDER_NAME (in module noether.data.datasets.cfd.shapenet_car.dataset)</a>
 </li>
         <li><a href="autoapi/noether/data/index.html#noether.data.PreProcessor">PreProcessor (class in noether.data)</a>
