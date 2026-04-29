@@ -1,0 +1,334 @@
+noether.modeling.modules.untied
+===============================
+
+.. py:module:: noether.modeling.modules.untied
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.untied.UntiedLinear
+   noether.modeling.modules.untied.UntiedMixedAttention
+   noether.modeling.modules.untied.UntiedPerceiverAttention
+   noether.modeling.modules.untied.UntiedMLP
+   noether.modeling.modules.untied.UntiedTransformerBlock
+   noether.modeling.modules.untied.UntiedPerceiverBlock
+
+
+Module Contents
+---------------
+
+.. py:class:: UntiedLinear(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Linear layer with per-domain weight banks.
+
+   Groups token specs by :attr:`TokenSpec.domain` and applies a separate
+   ``F.linear`` per domain. Automatically picks the fastest strategy at runtime:
+
+   1. ``torch._grouped_mm`` (CUDA, equal-size groups)
+   2. Reshape + single ``torch.bmm`` (equal-size groups, any device)
+   3. Padded ``torch.bmm`` (moderate skew)
+   4. Split + ``F.linear`` loop (heavy skew or very few groups)
+
+   Per-type weights are stored as independent 2D :class:`nn.Parameter` entries
+   in an :class:`nn.ParameterList` (one matrix per type). The bmm-based fast
+   paths stack them into a 3D tensor on the fly. Storing them as 2D is what
+   lets :class:`torch.optim.Muon` (which rejects non-2D parameters) update each
+   type's weight matrix independently.
+
+   Domains must be strictly consecutive in ``token_specs``.
+
+   :param config: Number of types and shared linear-projection geometry.
+
+
+   .. py:attribute:: bias
+      :type:  torch.nn.ParameterList | None
+
+
+   .. py:attribute:: num_types
+
+
+   .. py:attribute:: init_weights
+
+
+   .. py:attribute:: input_dim
+
+
+   .. py:attribute:: output_dim
+
+
+   .. py:attribute:: weight
+
+
+   .. py:method:: reset_parameters()
+
+      Initialize the per-type weight banks following :class:`LinearProjection`'s scheme.
+
+      Supported modes (from ``config.linear_projection.init_weights``):
+      ``"torch"`` (PyTorch ``nn.Linear`` defaults, applied per type),
+      ``"truncnormal"`` / ``"truncnormal002"`` (truncated normal, std=0.02, zero bias),
+      ``"zeros"`` (zero weight and bias).
+
+
+
+   .. py:method:: forward(x, token_specs)
+
+      Apply per-domain linear projections.
+
+      :param x: Input tensor ``(B, S, D_in)`` with tokens concatenated in
+                ``token_specs`` order.  Specs for the same domain must be adjacent.
+      :param token_specs: Token specifications whose sizes sum to ``S``.
+
+      :returns: Output tensor ``(B, S, D_out)`` in the same positional order as ``x``.
+
+
+
+.. py:class:: UntiedMixedAttention(config)
+
+   Bases: :py:obj:`noether.modeling.modules.attention.anchor_attention.mixed.MixedAttention`
+
+
+   Multi-head attention with per-type QKV and output projections.
+
+   Each token type has its own QKV and output projection weights (via
+   :class:`UntiedLinear`). The attention computation is pattern-aware, mirroring
+   :class:`~noether.modeling.modules.attention.anchor_attention.mixed.MixedAttention`:
+
+   - If ``attention_patterns`` is supplied (typically by a wrapping
+     :class:`~noether.modeling.modules.attention.anchor_attention.multi_branch.MultiBranchAnchorAttention`
+     such as ``SelfAnchorAttention``/``CrossAnchorAttention``/``JointAnchorAttention``),
+     those patterns are honored.
+   - If no patterns are supplied (standalone usage), it falls back to a single
+     all-to-all pattern — every token attends to every other token.
+
+   This lets the same module act as either a drop-in pattern-free attention or
+   the inner workhorse of a multi-branch anchor attention, while keeping QKV
+   and output projection weights untied per token type.
+
+   :param config: Configuration specifying attention dims and ``num_types``.
+
+   :param config: Configuration for the MixedAttention module. See
+                  :class:`~noether.core.schemas.modules.attention.MixedAttentionConfig` for the available options.
+
+
+   .. py:attribute:: q
+
+
+   .. py:attribute:: k
+
+
+   .. py:attribute:: v
+
+
+   .. py:attribute:: proj
+
+
+   .. py:method:: forward(x, token_specs, attention_patterns, key_padding_mask = None, freqs = None, kv_cache = None)
+
+      Apply attention with per-type QKV/output projections.
+
+      Positional argument order matches :meth:`MixedAttention.forward` so this
+      module is a drop-in replacement for the shared ``MixedAttention`` that
+      :class:`MultiBranchAnchorAttention` owns — a wrapping anchor attention
+      can call ``self.mixed_attention(x, token_specs, patterns, ...)`` unchanged.
+
+      :param x: Input tensor ``(B, S, D)`` with tokens concatenated in ``token_specs`` order.
+                ``S`` must equal the sum of ``token_specs`` sizes.
+      :param token_specs: Token specifications defining the input structure.
+      :param attention_patterns: Optional attention patterns. When ``None``,
+                                 falls back to a single all-to-all pattern over every name in
+                                 ``token_specs`` (standalone usage).
+      :param key_padding_mask: Optional boolean mask ``(B, S)``. ``True`` = real token.
+      :param freqs: RoPE frequencies for positional encoding.
+      :param kv_cache: Optional dictionary for caching key/value tensors. Not yet supported.
+
+      :returns: Output tensor ``(B, S, D)``.
+
+
+
+.. py:class:: UntiedPerceiverAttention(config, num_types)
+
+   Bases: :py:obj:`noether.modeling.modules.attention.perceiver.PerceiverAttention`
+
+
+   Perceiver cross-attention with per-type Q and output projections.
+
+   The Q and output projections are :class:`UntiedLinear` layers (one weight
+   bank per token type), while the KV projection remains a shared
+   ``nn.Linear`` since it operates on a single source (e.g. geometry encoding).
+
+   :param config: Attention configuration (``AttentionConfig``-compatible).
+   :param num_types: Number of distinct token types for per-type projections.
+
+   :param config: Configuration for the PerceiverAttention module. See
+                  :class:`~noether.core.schemas.modules.AttentionConfig` for available options.
+
+
+   .. py:attribute:: q
+
+
+   .. py:attribute:: proj
+
+
+   .. py:method:: forward(q, token_specs, kv = None, attn_mask = None, q_freqs = None, k_freqs = None, kv_cache = None)
+
+      Forward pass with per-type Q and output projections.
+
+      :param q: Query tensor ``(B, S, hidden_dim)`` with tokens concatenated
+                in ``token_specs`` order.
+      :param token_specs: Token specifications defining the per-type structure.
+      :param kv: Key/value tensor from a single source (e.g. geometry).
+                 Can be ``None`` when ``kv_cache`` is provided.
+      :param attn_mask: Optional attention mask.
+      :param q_freqs: RoPE frequencies for queries.
+      :param k_freqs: RoPE frequencies for keys.
+      :param kv_cache: Cached K/V tensors from a previous forward pass.
+
+      :returns: Tuple of (output, new_kv_cache).
+
+
+
+.. py:class:: UntiedMLP(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Multi-layer perceptron with per-type weights.
+
+   Mirrors the topology of :class:`MLP` (input -> [hidden]*(num_layers+1) -> output,
+   with activations between layers), but uses :class:`UntiedLinear` for every
+   linear layer so each token type learns independent weights.
+
+   :param config: Configuration for the untied MLP.
+
+
+   .. py:attribute:: layers
+
+
+   .. py:attribute:: activation
+
+
+   .. py:method:: forward(x, token_specs)
+
+      Apply the untied MLP.
+
+      :param x: Input tensor ``(B, S, mlp_config.input_dim)``.
+      :param token_specs: Token specifications defining the input structure.
+
+      :returns: Output tensor ``(B, S, mlp_config.output_dim)``.
+
+
+
+.. py:class:: UntiedTransformerBlock(config)
+
+   Bases: :py:obj:`noether.modeling.modules.blocks.transformer.TransformerBlock`
+
+
+   Pre-norm transformer block with per-type (untied) attention and MLP weights.
+
+   Same architecture and control flow as :class:`TransformerBlock`; only the
+   attention and MLP sub-modules differ. The parent's ``__init__`` builds all
+   the shared plumbing (norms, modulation, layer scale, drop path, and the
+   full forward pass) — including whichever attention module the configured
+   ``attention_constructor`` selects. This subclass then:
+
+   1. Replaces ``self.mlp`` with :class:`UntiedMLP`.
+   2. Injects per-type QKV/output projections into the attention sub-layer
+      **without disturbing its attention pattern**:
+
+      - When the parent built a
+        :class:`~noether.modeling.modules.attention.anchor_attention.multi_branch.MultiBranchAnchorAttention`
+        (``SelfAnchorAttention`` / ``CrossAnchorAttention`` / ``JointAnchorAttention``),
+        only its inner ``mixed_attention`` is swapped for
+        :class:`UntiedMixedAttention`. The outer wrapper keeps emitting the
+        correct per-branch attention patterns — so ``self_untied`` behaves
+        like ``self`` with untied weights (not like a joint attention).
+      - Otherwise (default ``dot_product`` attention, or any other non-multi-branch
+        constructor) ``self.attention_block`` is replaced outright with
+        :class:`UntiedMixedAttention`, which falls back to a single all-to-all
+        pattern.
+
+   3. Overrides :meth:`_mlp_forward` to route ``token_specs`` from
+      ``attn_kwargs`` into :class:`UntiedMLP`.
+
+   Attention receives ``token_specs`` automatically because the parent's
+   forward passes ``**attn_kwargs`` to ``self.attention_block``, which in turn
+   forwards them on to the inner :class:`UntiedMixedAttention`.
+
+   :param config: Configuration for the untied transformer block.
+
+   :param config: Configuration for the transformer block. See
+                  :class:`~noether.core.schemas.modules.blocks.TransformerBlockConfig`
+                  for available options.
+
+
+   .. py:attribute:: num_types
+
+
+   .. py:attribute:: mlp
+
+
+   .. py:method:: forward(x, condition = None, attn_kwargs = None)
+
+      Validate ``token_specs`` upfront, then delegate to :meth:`TransformerBlock.forward`.
+
+      The untied weight banks are indexed by name-order in ``token_specs``, so
+      duplicates would silently merge types and missing types would index out
+      of range. We check here (before attention runs) to surface a clear error.
+
+
+
+.. py:class:: UntiedPerceiverBlock(config)
+
+   Bases: :py:obj:`noether.modeling.modules.blocks.perceiver.PerceiverBlock`
+
+
+   Perceiver block with per-type (untied) Q/output projections and MLP weights.
+
+   Same architecture and control flow as :class:`PerceiverBlock`; the Q and
+   output projections in the attention module become per-type via
+   :class:`UntiedPerceiverAttention`, and the feed-forward MLP becomes
+   :class:`UntiedMLP`. The KV projection remains shared since it operates on
+   a single source (e.g. geometry encoding).
+
+   ``token_specs`` must be provided via ``attn_kwargs["token_specs"]``.
+
+   :param config: Configuration for the untied perceiver block.
+
+   :param config: Configuration of the PerceiverBlock. See :class:`~noether.core.schemas.modules.blocks.PerceiverBlockConfig`
+   :param for available options.:
+
+
+   .. py:attribute:: num_types
+
+
+   .. py:attribute:: attn
+
+
+   .. py:attribute:: mlp
+
+
+   .. py:method:: forward(q, kv = None, condition = None, attn_kwargs = None)
+
+      Forward pass with per-type Q/output projections and MLP.
+
+      Validates ``token_specs`` upfront, then runs the same perceiver block
+      logic as the parent with ``token_specs`` routed to the untied sub-modules.
+
+      :param q: Query tensor ``(B, S, hidden_dim)`` with tokens from all domains
+                concatenated in ``token_specs`` order.
+      :param kv: Key/value tensor from a single source (e.g. geometry encoding).
+                 Can be ``None`` when ``kv_cache`` is provided in ``attn_kwargs``.
+      :param condition: Optional conditioning vector for modulation.
+      :param attn_kwargs: Must contain ``"token_specs"`` key. Other entries
+                          (``kv_cache``, RoPE frequencies, masks) are forwarded to attention.
+
+      :returns: Tuple of (output, kv_cache).
+
+
+

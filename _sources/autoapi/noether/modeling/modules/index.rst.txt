@@ -17,6 +17,7 @@ Submodules
    /autoapi/noether/modeling/modules/encoders/index
    /autoapi/noether/modeling/modules/layers/index
    /autoapi/noether/modeling/modules/mlp/index
+   /autoapi/noether/modeling/modules/untied/index
 
 
 Classes

@@ -51,6 +51,14 @@ Package Contents
    `self` is explicitly positional-only to allow `self` as a field name.
 
 
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: 'noether.core.schemas.models.AnchorBranchedUPTConfig'
+
+
+      Kind of model to use, i.e. class path
+
+
    .. py:attribute:: model_config
 
       Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
@@ -83,14 +91,18 @@ Package Contents
 
 
    .. py:attribute:: physics_blocks
-      :type:  list[Literal['self', 'shared', 'cross', 'joint', 'perceiver']]
+      :type:  list[Literal['self', 'shared', 'cross', 'joint', 'perceiver', 'self_untied', 'cross_untied', 'joint_untied', 'perceiver_untied']]
 
       Types of physics blocks to use in the model.
-      Options are "self", "cross", "joint", and "perceiver".
-      Self: Self-attention within a branch. Attention weights are shared between all domains.
-      Cross: Cross-attention between domains. Each domain attends to all other domains' anchors.
-      Joint: Joint attention over all domain points. Full self-attention over all points.
-      Perceiver: Perceiver-style cross-attention to geometry encoding.
+
+      self/shared: Self-attention within a branch/domain. Weights are shared between all domains.
+      cross: Cross-attention between domains. Each domain attends to all other domains' anchors, weights are shared.
+      joint: Joint attention over all domain points. Full self-attention over all points, weights are shared.
+      perceiver: Perceiver-style cross-attention to geometry encoding.
+      self_untied: Self-attention within a branch with untied weights for each domain.
+      cross_untied: Cross-attention between domains with untied weights for each domain.
+      joint_untied: Joint attention over all domain points with untied weights for each domain.
+      perceiver_untied: Perceiver cross-attention with geometry encoding and untied weights per domain.
 
       Note: "shared" is a deprecated alias for "self" and will be removed in a future release.
 

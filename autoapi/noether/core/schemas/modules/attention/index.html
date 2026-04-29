@@ -469,6 +469,7 @@
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="../mlp/index.html">noether.core.schemas.modules.mlp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../untied/index.html">noether.core.schemas.modules.untied</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../normalizers/index.html">noether.core.schemas.normalizers</a></li>
@@ -772,6 +773,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../modeling/modules/mlp/upactdown_mlp/index.html">noether.modeling.modules.mlp.upactdown_mlp</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modeling/modules/untied/index.html">noether.modeling.modules.untied</a></li>
 </ul>
 </li>
 </ul>
@@ -1233,6 +1235,28 @@ validated to form a valid model.</p>
 </dl>
 </dd></dl>
 
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.core.schemas.modules.attention.TokenSpec.domain">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">domain</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.modules.attention.TokenSpec.domain" title="Link to this definition">¶</a></dt>
+<dd><p>Extract token domain from the name (e.g., “surface” from “surface_anchors”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.core.schemas.modules.attention.TokenSpec.attn_type">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">attn_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.modules.attention.TokenSpec.attn_type" title="Link to this definition">¶</a></dt>
+<dd><p>Extract attention type from the name (e.g., “anchors” from “surface_anchors”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1411,6 +1435,8 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.modules.attention.TokenSpec.size"><code class="docutils literal notranslate"><span class="pre">TokenSpec.size</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.attention.TokenSpec.from_dict"><code class="docutils literal notranslate"><span class="pre">TokenSpec.from_dict()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.attention.TokenSpec.to_dict"><code class="docutils literal notranslate"><span class="pre">TokenSpec.to_dict()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.modules.attention.TokenSpec.domain"><code class="docutils literal notranslate"><span class="pre">TokenSpec.domain</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.modules.attention.TokenSpec.attn_type"><code class="docutils literal notranslate"><span class="pre">TokenSpec.attn_type</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.attention.AttentionPattern"><code class="docutils literal notranslate"><span class="pre">AttentionPattern</span></code></a><ul>

@@ -372,6 +372,20 @@ Module Contents
 
 
 
+   .. py:property:: domain
+      :type: str
+
+
+      Extract token domain from the name (e.g., "surface" from "surface_anchors").
+
+
+   .. py:property:: attn_type
+      :type: str
+
+
+      Extract attention type from the name (e.g., "anchors" from "surface_anchors").
+
+
 .. py:class:: AttentionPattern(/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`

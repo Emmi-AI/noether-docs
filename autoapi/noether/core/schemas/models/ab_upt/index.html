@@ -469,6 +469,7 @@
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="../../modules/mlp/index.html">noether.core.schemas.modules.mlp</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../modules/untied/index.html">noether.core.schemas.modules.untied</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../normalizers/index.html">noether.core.schemas.normalizers</a></li>
@@ -772,6 +773,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../modeling/modules/mlp/upactdown_mlp/index.html">noether.modeling.modules.mlp.upactdown_mlp</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../modeling/modules/untied/index.html">noether.modeling.modules.untied</a></li>
 </ul>
 </li>
 </ul>
@@ -886,6 +888,12 @@ validated to form a valid model.</p>
 </dd>
 </dl>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schemas.models.AnchorBranchedUPTConfig'</span></em><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Kind of model to use, i.e. class path</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.model_config">
 <span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.model_config" title="Link to this definition">¶</a></dt>
 <dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
@@ -915,13 +923,16 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.physics_blocks">
-<span class="sig-name descname"><span class="pre">physics_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'self'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'shared'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.physics_blocks" title="Link to this definition">¶</a></dt>
-<dd><p>Types of physics blocks to use in the model.
-Options are “self”, “cross”, “joint”, and “perceiver”.
-Self: Self-attention within a branch. Attention weights are shared between all domains.
-Cross: Cross-attention between domains. Each domain attends to all other domains’ anchors.
-Joint: Joint attention over all domain points. Full self-attention over all points.
-Perceiver: Perceiver-style cross-attention to geometry encoding.</p>
+<span class="sig-name descname"><span class="pre">physics_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'self'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'shared'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'self_untied'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross_untied'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint_untied'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver_untied'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.physics_blocks" title="Link to this definition">¶</a></dt>
+<dd><p>Types of physics blocks to use in the model.</p>
+<p>self/shared: Self-attention within a branch/domain. Weights are shared between all domains.
+cross: Cross-attention between domains. Each domain attends to all other domains’ anchors, weights are shared.
+joint: Joint attention over all domain points. Full self-attention over all points, weights are shared.
+perceiver: Perceiver-style cross-attention to geometry encoding.
+self_untied: Self-attention within a branch with untied weights for each domain.
+cross_untied: Cross-attention between domains with untied weights for each domain.
+joint_untied: Joint attention over all domain points with untied weights for each domain.
+perceiver_untied: Perceiver cross-attention with geometry encoding and untied weights per domain.</p>
 <p>Note: “shared” is a deprecated alias for “self” and will be removed in a future release.</p>
 </dd></dl>
 
@@ -1128,6 +1139,7 @@ Note: transformer_block_config validates hidden_dim % num_heads == 0 in its own 
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.kind"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.kind</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.model_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.model_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.supernode_pooling_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.supernode_pooling_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.ab_upt.AnchorBranchedUPTConfig.transformer_block_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.transformer_block_config</span></code></a></li>
