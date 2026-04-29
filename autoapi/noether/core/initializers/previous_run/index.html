@@ -939,6 +939,23 @@ It is possible to remove certain keys or patterns from the checkpoint before loa
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.initializers.previous_run.PreviousRunInitializer.init_callbacks">
+<span class="sig-name descname"><span class="pre">init_callbacks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callbacks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.initializers.previous_run.PreviousRunInitializer.init_callbacks" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the callbacks from the checkpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callbacks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="../../callbacks/base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><em>noether.core.callbacks.base.CallbackBase</em></a><em>]</em>) – the callbacks to initialize.</p></li>
+<li><p><strong>model</strong> (<a class="reference internal" href="../../models/index.html#noether.core.models.ModelBase" title="noether.core.models.ModelBase"><em>noether.core.models.ModelBase</em></a>) – the model to initialize the callbacks for.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1032,6 +1049,7 @@ It is possible to remove certain keys or patterns from the checkpoint before loa
 <li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializer.patterns_to_rename"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializer.patterns_to_rename</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializer.patterns_to_instantiate"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializer.patterns_to_instantiate</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializer.init_weights"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializer.init_weights()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializer.init_callbacks"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializer.init_callbacks()</span></code></a></li>
 </ul>
 </li>
 </ul>

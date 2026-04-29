@@ -66,3 +66,12 @@ Module Contents
 
 
 
+   .. py:method:: init_callbacks(callbacks, model)
+
+      Initialize the callbacks from the checkpoint.
+
+      :param callbacks: the callbacks to initialize.
+      :param model: the model to initialize the callbacks for.
+
+
+
