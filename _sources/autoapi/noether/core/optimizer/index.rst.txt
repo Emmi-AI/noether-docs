@@ -149,6 +149,12 @@ Package Contents
 
 
 
+   .. py:attribute:: last_grad_norm
+      :type:  torch.Tensor | None
+      :value: None
+
+
+
    .. py:method:: step(grad_scaler = None)
 
       Wrapper around `torch.optim.Optimizer.step` which automatically handles:

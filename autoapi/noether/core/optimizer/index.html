@@ -1051,6 +1051,11 @@ rate or the weight decay.</p></li>
 <span class="sig-name descname"><span class="pre">all_parameters</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.optimizer.OptimizerWrapper.all_parameters" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.optimizer.OptimizerWrapper.last_grad_norm">
+<span class="sig-name descname"><span class="pre">last_grad_norm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.optimizer.OptimizerWrapper.last_grad_norm" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.optimizer.OptimizerWrapper.step">
 <span class="sig-name descname"><span class="pre">step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grad_scaler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.optimizer.OptimizerWrapper.step" title="Link to this definition">¶</a></dt>
@@ -1378,6 +1383,7 @@ for a layerwise learning rate decay).</p></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.param_idx_to_name"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.param_idx_to_name</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.torch_optim"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.torch_optim</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.all_parameters"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.all_parameters</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.last_grad_norm"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.last_grad_norm</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.step"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.step()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.schedule_step"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.schedule_step()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.zero_grad"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.zero_grad()</span></code></a></li>
