@@ -86,6 +86,14 @@ Module Contents
       Tracking mode. Can be 'disabled', 'online', or 'offline'.
 
 
+   .. py:attribute:: tags
+      :type:  list[str] | None
+      :value: None
+
+
+      Optional tags for the W&B run.
+
+
 .. py:class:: TrackioTrackerSchema(/, **data)
 
    Bases: :py:obj:`BaseTrackerConfig`

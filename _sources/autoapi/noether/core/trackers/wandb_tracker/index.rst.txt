@@ -62,3 +62,6 @@ Module Contents
    .. py:attribute:: project
 
 
+   .. py:attribute:: tags
+
+
