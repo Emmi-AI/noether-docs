@@ -3,23 +3,23 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="transformer.yaml" />
+<meta property="og:title" content="How to run distributed training jobs" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://noether-docs.emmi.ai/_generated/source_files/recipes__aero_cfd__configs__model__transformer_yaml.html" />
+<meta property="og:url" content="https://noether-docs.emmi.ai/guides/training/distributed_training.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="recipes/aero_cfd/configs/model/transformer.yaml" />
+<meta property="og:description" content="Noether supports data-parallel (PyTorch DDP) training across multiple GPUs and multiple nodes. There are two ways to launch a distributed run: Unmanaged: you run noether-train directly on a host wi..." />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="recipes/aero_cfd/configs/model/transformer.yaml" />
+<meta name="description" content="Noether supports data-parallel (PyTorch DDP) training across multiple GPUs and multiple nodes. There are two ways to launch a distributed run: Unmanaged: you run noether-train directly on a host wi..." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
-        <link rel="canonical" href="https://noether-docs.emmi.ai/_generated/source_files/recipes__aero_cfd__configs__model__transformer_yaml.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Noether Development CLI" href="development_cli.html" /><link rel="prev" title="How to continue Training from a Checkpoint" href="how_to_initialize.html" />
+        <link rel="canonical" href="https://noether-docs.emmi.ai/guides/training/distributed_training.html" />
         <link rel="prefetch" href="../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>transformer.yaml - Noether Framework Documentation</title>
+        <title>How to run distributed training jobs - Noether Framework Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -250,7 +250,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -304,24 +304,24 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorials/scaffolding_a_new_project.html">Scaffolding a New Project</a></li>
 </ul>
-<ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../guides/index.html">How-to Guides</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of How-to Guides</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/linux_cuda_setup.html">Advanced Linux &amp; NVIDIA Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/working_with_cli.html">Working with the CLI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/data/how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/implement_a_custom_model.html">How to Implement a Custom Model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/use_callbacks.html">How to Use and Build Callbacks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/experiment_tracking.html">Experiment Tracking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/launch_job.html">How to launch a SLURM job from the command line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/distributed_training.html">How to run distributed training jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/development_cli.html">Noether Development CLI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/development_cli.html#running-a-full-training-with-the-development-setup">Running a full training with the development setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/training/configuring_ab_upt.html">Configuring AB-UPT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">How-to Guides</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of How-to Guides</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../linux_cuda_setup.html">Advanced Linux &amp; NVIDIA Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_cli.html">Working with the CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/how_to_use_private_data_source.html">How to Use Private Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/how_to_make_a_custom_dataset.html">How to Implement a Custom Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data/how_to_write_a_multistage_pipeline.html">How to Implement a Custom Multistage Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implement_a_custom_model.html">How to Implement a Custom Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implement_a_custom_trainer.html">How to Implement a Custom Trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_callbacks.html">How to Use and Build Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="experiment_tracking.html">Experiment Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="launch_job.html">How to launch a SLURM job from the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_to_initialize.html">How to continue Training from a Checkpoint</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">How to run distributed training jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_cli.html">Noether Development CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development_cli.html#running-a-full-training-with-the-development-setup">Running a full training with the development setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring_ab_upt.html">Configuring AB-UPT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
 </ul>
 </li>
 </ul>
@@ -833,12 +833,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/_generated/source_files/recipes__aero_cfd__configs__model__transformer_yaml.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/guides/training/distributed_training.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/_generated/source_files/recipes__aero_cfd__configs__model__transformer_yaml.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/guides/training/distributed_training.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -851,32 +851,143 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="transformer-yaml">
-<h1>transformer.yaml<a class="headerlink" href="#transformer-yaml" title="Link to this heading">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">recipes/aero_cfd/configs/model/transformer.yaml</span></code></p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.modeling.models.AeroTransformer</span>
-<span class="linenos"> 2</span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">transformer</span>
-<span class="linenos"> 3</span><span class="nt">hidden_dim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192</span>
-<span class="linenos"> 4</span><span class="nt">transformer_block_config</span><span class="p">:</span><span class="w"> </span>
-<span class="linenos"> 5</span><span class="w">  </span><span class="nt">num_heads</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="linenos"> 6</span><span class="w">  </span><span class="nt">mlp_expansion_factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
-<span class="linenos"> 7</span><span class="w">  </span><span class="nt">use_rope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="linenos"> 8</span><span class="nt">depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
-<span class="linenos"> 9</span><span class="nt">optimizer_config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${optimizer}</span>
-<span class="linenos">10</span><span class="nt">data_specs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${data_specs}</span>
-<span class="linenos">11</span><span class="nt">forward_properties</span><span class="p">:</span>
-<span class="linenos">12</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">surface_position</span>
-<span class="linenos">13</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_position</span>
-<span class="linenos">14</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">surface_features</span>
-<span class="linenos">15</span><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_features</span>
+          <section id="how-to-run-distributed-training-jobs">
+<h1>How to run distributed training jobs<a class="headerlink" href="#how-to-run-distributed-training-jobs" title="Link to this heading">¶</a></h1>
+<p>Noether supports data-parallel (PyTorch DDP) training across multiple GPUs and multiple
+nodes. There are two ways to launch a distributed run:</p>
+<ul class="simple">
+<li><p><strong>Unmanaged</strong>: you run <code class="docutils literal notranslate"><span class="pre">noether-train</span></code> directly on a host with several
+GPUs. Noether spawns one worker process per device for you.</p></li>
+<li><p><strong>Managed (SLURM)</strong>: SLURM launches one worker per GPU. You can either
+write your own <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script or use the
+<a class="reference internal" href="launch_job.html"><span class="doc">noether-train-submit-job</span></a> helper.</p></li>
+</ul>
+<p>Whichever path you take, the same scaling rule applies to the trainer config:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><code class="docutils literal notranslate"><span class="pre">trainer.effective_batch_size</span></code> is the <strong>global batch size</strong> used for each
+gradient step (summed across all ranks). It must be a multiple of the total
+number of GPUs (<code class="docutils literal notranslate"><span class="pre">world_size</span></code>). Per-device batch size is
+<code class="docutils literal notranslate"><span class="pre">effective_batch_size</span> <span class="pre">/</span> <span class="pre">world_size</span></code>; if that exceeds
+<code class="docutils literal notranslate"><span class="pre">trainer.max_batch_size</span></code>, the trainer inserts gradient accumulation steps
+automatically.</p>
+<p>Example: 8 GPUs with <code class="docutils literal notranslate"><span class="pre">effective_batch_size=64</span></code> → each rank processes 8
+samples per gradient step.</p>
+</div>
+<section id="unmanaged-single-node-multiple-gpus">
+<h2>Unmanaged: single node, multiple GPUs<a class="headerlink" href="#unmanaged-single-node-multiple-gpus" title="Link to this heading">¶</a></h2>
+<p>On a workstation without SLURM, just run <code class="docutils literal notranslate"><span class="pre">noether-train</span></code>. Noether
+detects how many devices are visible to the process and spawns one worker per
+device using <code class="docutils literal notranslate"><span class="pre">torch.multiprocessing.spawn</span></code> — no <code class="docutils literal notranslate"><span class="pre">torchrun</span></code> or external
+launcher required.</p>
+<p>Use all visible GPUs (default):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>noether-train<span class="w"> </span>--hp<span class="w"> </span>configs/train_shapenet.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+experiment/shapenet<span class="o">=</span>upt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+accelerator<span class="o">=</span>gpu<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">dataset_root</span><span class="o">=</span>/home/user/data/shapenet_car
 </pre></div>
 </div>
+<p>Pin to a subset of GPUs with <code class="docutils literal notranslate"><span class="pre">devices</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>noether-train<span class="w"> </span>--hp<span class="w"> </span>configs/train_shapenet.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+experiment/shapenet<span class="o">=</span>upt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+accelerator<span class="o">=</span>gpu<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+devices<span class="o">=</span><span class="se">\&quot;</span><span class="m">0</span>,1,2,3<span class="se">\&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">dataset_root</span><span class="o">=</span>/home/user/data/shapenet_car
+</pre></div>
+</div>
+<p>A few notes for the unmanaged path:</p>
+<ul class="simple">
+<li><p>All target devices must be visible to the launching process. If you set
+<code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code> outside Noether, only those GPUs are eligible; the
+<code class="docutils literal notranslate"><span class="pre">devices</span></code> override then selects from that masked set.</p></li>
+<li><p>Multi-process unmanaged runs are <strong>single-node only</strong> — <code class="docutils literal notranslate"><span class="pre">MASTER_ADDR</span></code> is
+hard-coded to <code class="docutils literal notranslate"><span class="pre">localhost</span></code>. Use SLURM (or another launcher) for multi-node.</p></li>
+<li><p>The rendezvous port can be set via <code class="docutils literal notranslate"><span class="pre">master_port</span></code> in the config or the
+<code class="docutils literal notranslate"><span class="pre">MASTER_PORT</span></code> environment variable.</p></li>
+</ul>
+</section>
+<section id="managed-slurm">
+<h2>Managed: SLURM<a class="headerlink" href="#managed-slurm" title="Link to this heading">¶</a></h2>
+<p>Noether enters “managed” mode automatically whenever <code class="docutils literal notranslate"><span class="pre">SLURM_PROCID</span></code> is set in
+the environment (i.e. the process was launched by <code class="docutils literal notranslate"><span class="pre">srun</span></code>). In that case
+Noether reads <code class="docutils literal notranslate"><span class="pre">SLURM_NTASKS_PER_NODE</span></code>, <code class="docutils literal notranslate"><span class="pre">SLURM_PROCID</span></code>, <code class="docutils literal notranslate"><span class="pre">SLURM_JOB_NODELIST</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">SLURM_JOB_ID</span></code> to set up the process group — it does <strong>not</strong> spawn
+worker processes itself.</p>
+<p>This means SLURM must launch <strong>one task per GPU</strong>:</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In managed mode you must set <code class="docutils literal notranslate"><span class="pre">gpus_per_node</span></code>, and <code class="docutils literal notranslate"><span class="pre">tasks_per_node</span></code> must
+equal <code class="docutils literal notranslate"><span class="pre">gpus_per_node</span></code> (one rank per GPU). If you only set
+<code class="docutils literal notranslate"><span class="pre">gpus_per_node</span></code> via <a class="reference internal" href="launch_job.html"><span class="doc">noether-train-submit-job</span></a>,
+<code class="docutils literal notranslate"><span class="pre">tasks_per_node</span></code> is auto-derived to match. With a hand-written
+<code class="docutils literal notranslate"><span class="pre">sbatch</span></code>/<code class="docutils literal notranslate"><span class="pre">srun</span></code> script you have to set both yourself — Noether will
+refuse to start if the count of visible devices does not match
+<code class="docutils literal notranslate"><span class="pre">SLURM_NTASKS_PER_NODE</span></code>.</p>
+</div>
+<section id="option-a-custom-sbatch-script">
+<h3>Option A — custom <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script<a class="headerlink" href="#option-a-custom-sbatch-script" title="Link to this heading">¶</a></h3>
+<p>Use this when you already have a cluster job template, or need SLURM
+directives that aren’t exposed through <code class="docutils literal notranslate"><span class="pre">submitit</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=noether-train</span>
+<span class="c1">#SBATCH --partition=gpu</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --gpus-per-node=4</span>
+<span class="c1">#SBATCH --ntasks-per-node=4         # MUST equal --gpus-per-node</span>
+<span class="c1">#SBATCH --cpus-per-task=16</span>
+<span class="c1">#SBATCH --mem=256G</span>
+<span class="c1">#SBATCH --time=12:00:00</span>
+<span class="c1">#SBATCH --output=logs/%j.out</span>
+
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+
+srun<span class="w"> </span>uv<span class="w"> </span>run<span class="w"> </span>noether-train<span class="w"> </span>--hp<span class="w"> </span>configs/train_shapenet.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+experiment/shapenet<span class="o">=</span>upt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+accelerator<span class="o">=</span>gpu<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">dataset_root</span><span class="o">=</span>/data/shapenet_car
+</pre></div>
+</div>
+<p>The combination <code class="docutils literal notranslate"><span class="pre">nodes=2</span></code> × <code class="docutils literal notranslate"><span class="pre">gpus_per_node=4</span></code> × <code class="docutils literal notranslate"><span class="pre">tasks_per_node=4</span></code> gives
+<code class="docutils literal notranslate"><span class="pre">world_size=8</span></code>; <code class="docutils literal notranslate"><span class="pre">trainer.effective_batch_size</span></code> must be a multiple of 8.</p>
+</section>
+<section id="option-b-noether-train-submit-job">
+<h3>Option B — <code class="docutils literal notranslate"><span class="pre">noether-train-submit-job</span></code><a class="headerlink" href="#option-b-noether-train-submit-job" title="Link to this heading">¶</a></h3>
+<p>For configs that already declare a <code class="docutils literal notranslate"><span class="pre">slurm:</span></code> section, the submitter validates
+the config on the login node and submits via <code class="docutils literal notranslate"><span class="pre">submitit</span></code>. See
+<a class="reference internal" href="launch_job.html"><span class="doc">How to launch a SLURM job from the command line</span></a> for the full reference.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># configs/train_shapenet.yaml</span>
+<span class="nt">slurm</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/%u/logs/shapenet</span>
+<span class="w">   </span><span class="nt">slurm_partition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu</span>
+<span class="w">   </span><span class="nt">nodes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">   </span><span class="nt">gpus_per_node</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w">        </span><span class="c1"># tasks_per_node defaults to 4 (= gpus_per_node)</span>
+<span class="w">   </span><span class="nt">cpus_per_task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">   </span><span class="nt">mem_gb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256</span>
+<span class="w">   </span><span class="nt">timeout_min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">720</span>
+<span class="w">   </span><span class="nt">slurm_setup</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source .venv/bin/activate</span>
+
+<span class="nt">trainer</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">effective_batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64</span><span class="w">   </span><span class="c1"># multiple of world_size = nodes * gpus_per_node = 8</span>
+<span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>noether-train-submit-job<span class="w"> </span>--hp<span class="w"> </span>configs/train_shapenet.yaml<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>+experiment/shapenet<span class="o">=</span>upt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">dataset_root</span><span class="o">=</span>/data/shapenet_car
+</pre></div>
+</div>
+<p>If you set <code class="docutils literal notranslate"><span class="pre">tasks_per_node</span></code> explicitly in the <code class="docutils literal notranslate"><span class="pre">slurm:</span></code> section, it must
+match <code class="docutils literal notranslate"><span class="pre">gpus_per_node</span></code>; otherwise Noether will fail at startup when the
+visible-device count does not match <code class="docutils literal notranslate"><span class="pre">SLURM_NTASKS_PER_NODE</span></code>.</p>
+</section>
+</section>
 </section>
 
         </article>
@@ -884,8 +995,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="development_cli.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Noether Development CLI</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="how_to_initialize.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">How to continue Training from a Checkpoint</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -928,8 +1057,32 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">How to run distributed training jobs</a><ul>
+<li><a class="reference internal" href="#unmanaged-single-node-multiple-gpus">Unmanaged: single node, multiple GPUs</a></li>
+<li><a class="reference internal" href="#managed-slurm">Managed: SLURM</a><ul>
+<li><a class="reference internal" href="#option-a-custom-sbatch-script">Option A — custom <code class="docutils literal notranslate"><span class="pre">sbatch</span></code> script</a></li>
+<li><a class="reference internal" href="#option-b-noether-train-submit-job">Option B — <code class="docutils literal notranslate"><span class="pre">noether-train-submit-job</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
