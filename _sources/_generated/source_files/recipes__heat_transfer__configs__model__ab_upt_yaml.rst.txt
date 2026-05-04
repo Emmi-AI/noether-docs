@@ -1,0 +1,8 @@
+ab_upt.yaml
+===========
+
+``recipes/heat_transfer/configs/model/ab_upt.yaml``
+
+.. literalinclude:: ../../../../recipes/heat_transfer/configs/model/ab_upt.yaml
+   :language: yaml
+   :linenos:

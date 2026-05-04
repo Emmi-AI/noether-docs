@@ -1,0 +1,8 @@
+ab_upt.yaml
+===========
+
+``recipes/aero_cfd/configs/model/ab_upt.yaml``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/configs/model/ab_upt.yaml
+   :language: yaml
+   :linenos:

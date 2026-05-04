@@ -36,7 +36,18 @@ Module Contents
    Bases: :py:obj:`torch.nn.Module`
 
 
-   Implementation of the Anchored Branched UPT model. Including input embedding and output projection, so this is an off-the-shelf model that can be used directly by providing the appropriate input tensors.
+   Implementation of the Anchored Branched UPT (AB-UPT) model.
+
+   This is an off-the-shelf model — it includes input embedding and output projection,
+   so it can be used directly by providing the appropriate input tensors. See
+   :meth:`forward` for the expected inputs.
+
+   The architecture is fully driven by
+   :class:`~noether.core.schemas.models.AnchorBranchedUPTConfig`: the geometry encoder
+   depth, the ordering and type of physics blocks, and the per-domain decoder depths
+   are all configured there. For a walkthrough of how to assemble a config (and
+   concrete YAML examples from the ``aero_cfd`` and ``heat_transfer`` recipes), see
+   :doc:`/guides/training/configuring_ab_upt`.
 
    :param config: Configuration for the AB-UPT model. See :class:`~noether.core.schemas.models.AnchorBranchedUPTConfig` for details.
 
