@@ -193,7 +193,7 @@ Module Contents
    .. py:attribute:: use_physics_features
 
 
-   .. py:method:: forward(surface_position_batch_idx, surface_position_supernode_idx, surface_position, surface_query_position, volume_query_position, surface_features = None, volume_features = None)
+   .. py:method:: forward(surface_position_batch_idx, surface_position_supernode_idx, surface_position, surface_query_position, volume_query_position, surface_query_features = None, volume_query_features = None)
 
 
 .. py:class:: AeroABUPT(model_config, **kwargs)

@@ -425,7 +425,7 @@ Module Contents
 
    .. py:attribute:: use_physics_features
       :type:  bool
-      :value: False
+      :value: True
 
 
       Whether physics features are used as input.
@@ -450,5 +450,8 @@ Module Contents
 
 
       Returns all feature field names across all domains.
+
+
+   .. py:method:: remove_feature_fields()
 
 
