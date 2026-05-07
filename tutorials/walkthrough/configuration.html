@@ -1332,25 +1332,7 @@ your model architecture.</p>
 Each component (model, trainer, dataset, etc.) has a corresponding config class that inherits
 from a base schema.</p>
 <p>For example, the trainer config schema for this recipe is defined in
-<a class="reference internal" href="../../_generated/source_files/recipes__aero_cfd__trainers__aerodynamics_cfd_py.html"><span class="doc">trainers/aerodynamics_cfd.py</span></a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AerodynamicsCfdTrainerConfig</span><span class="p">(</span><span class="n">BaseTrainerConfig</span><span class="p">):</span>
-    <span class="n">surface_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Weight of the predicted values on the surface mesh. Defaults to 1.0..&quot;&quot;&quot;</span>
-    <span class="n">volume_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values in the volume. Defaults to 1.0.&quot;&quot;&quot;</span>
-    <span class="n">surface_pressure_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the surface pressure. Defaults to 1.0.&quot;&quot;&quot;</span>
-    <span class="n">surface_friction_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the surface wall shear stress. Defaults to 0.0.&quot;&quot;&quot;</span>
-    <span class="n">volume_velocity_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the volume velocity. Defaults to 1.0.&quot;&quot;&quot;</span>
-    <span class="n">volume_pressure_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the volume total pressure coefficient. Defaults to 0.0.&quot;&quot;&quot;</span>
-    <span class="n">volume_vorticity_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the volume vorticity. Defaults to 0.0.&quot;&quot;&quot;</span>
-    <span class="n">use_physics_features</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-</pre></div>
-</div>
+<span>trainers/aerodynamics_cfd.py</span>:</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">kind</span></code> field in most configs specifies the class path for instantiation. The Factory
 pattern uses this to dynamically import and instantiate the correct class with the validated
 configuration.</p>

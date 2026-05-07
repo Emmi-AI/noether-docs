@@ -936,11 +936,11 @@ runtime. These configs are Pydantic models, so if something is wrong you will ge
 <span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">AeroStatsSchema</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.models.upt</span><span class="w"> </span><span class="kn">import</span> <span class="n">UPTConfig</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">noether.training.runners</span><span class="w"> </span><span class="kn">import</span> <span class="n">HydraRunner</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">recipes.aero_cfd.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aero_cfd.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">AeroMetricsCallbackConfig</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">recipes.aero_cfd.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">AeroCFDPipelineConfig</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">recipes.aero_cfd.trainers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AerodynamicsCfdTrainerConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aero_cfd.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">AeroCFDPipelineConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">aero_cfd.trainers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AerodynamicsCfdTrainerConfig</span>
 </pre></div>
 </div>
 <p>Let’s go over each group to better understand the outline:</p>

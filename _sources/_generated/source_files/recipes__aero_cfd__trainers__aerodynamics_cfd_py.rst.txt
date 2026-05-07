@@ -1,8 +1,0 @@
-aerodynamics_cfd.py
-===================
-
-``recipes/aero_cfd/trainers/aerodynamics_cfd.py``
-
-.. literalinclude:: ../../../../recipes/aero_cfd/trainers/aerodynamics_cfd.py
-   :language: python
-   :linenos:

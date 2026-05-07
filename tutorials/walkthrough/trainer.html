@@ -970,7 +970,7 @@ which tensors are part of the <code class="docutils literal notranslate"><span c
 <p><strong>Full trainer configuration:</strong></p>
 <p>The complete trainer config for ShapeNet-Car is defined in <a class="reference internal" href="../../_generated/source_files/recipes__aero_cfd__configs__trainer__shapenet_trainer_yaml.html"><span class="doc">configs/trainer/shapenet_trainer.yaml</span></a>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">#BaseTrainerConfig</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trainers.AerodynamicsCFDTrainer</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aero_cfd.trainers.AerodynamicsCFDTrainer</span>
 <span class="nt">precision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bfloat16</span>
 <span class="nt">max_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500</span>
 <span class="nt">effective_batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -1007,32 +1007,6 @@ The <code class="docutils literal notranslate"><span class="pre">output_modes</s
 which of these potential losses should be computed during training.</p>
 <p><strong>Custom loss calculation (loss_compute):</strong></p>
 <p>This method contains the core logic of the trainer for computing the loss:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">loss_compute</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">forward_output</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">targets</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Given the output of the model and the targets, compute the losses.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        forward_output The output of the model, containing the predictions for each output mode.</span>
-<span class="sd">        targets: Dict containing all target values to compute the loss.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        A dictionary containing the computed losses for each output mode.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">losses</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">group_weight</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_items</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">weight</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">group_weight</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">forward_output</span><span class="p">:</span>
-            <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">_target&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Target for &#39;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">&#39; not found in targets. Ensure the targets contain the correct keys.&quot;</span>
-                <span class="p">)</span>
-            <span class="n">losses</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">_loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">_target&quot;</span><span class="p">],</span> <span class="n">forward_output</span><span class="p">[</span><span class="n">item</span><span class="p">])</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">group_weight</span>
-            <span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No losses computed, check your output keys and loss function.&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">losses</span>
-</pre></div>
-</div>
 <p>It iterates through the <code class="docutils literal notranslate"><span class="pre">loss_items</span></code> configured during initialization. For each
 item (like <code class="docutils literal notranslate"><span class="pre">surface_pressure</span></code>), it checks that its weight is non-zero and that the model
 produced a corresponding output key.</p>
