@@ -936,30 +936,6 @@ Package Contents
 
 
 
-   .. py:method:: track_after_update_step(*, update_counter, times)
-
-      Hook called after each optimizer update step.
-
-      This method is invoked after a successful optimizer step and parameter update.
-      It is typically used for tracking metrics that should be recorded once per update
-      cycle, such as:
-
-      * Latest loss values
-      * Learning rates
-      * Model parameter statistics (norms, etc.)
-      * Training throughput and timing measurements
-
-      Unlike :meth:`periodic_callback`, this hook is called on every update step, making it
-      suitable for maintaining running averages or high-frequency telemetry.
-
-      .. note:: This method is executed within a ``torch.no_grad()`` context.
-
-      :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
-      :param times: Dictionary containing time measurements for various parts of the training
-                    step (e.g., 'data_time', 'forward_time', 'backward_time', 'update_time').
-
-
-
 .. py:class:: OnlineLossCallback(callback_config, **kwargs)
 
    Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`

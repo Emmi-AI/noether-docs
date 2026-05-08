@@ -349,6 +349,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../callbacks/default/peak_memory/index.html">noether.core.callbacks.default.peak_memory</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../callbacks/default/progress/index.html">noether.core.callbacks.default.progress</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../callbacks/default/train_time/index.html">noether.core.callbacks.default.train_time</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../callbacks/default/training_diagnostics/index.html">noether.core.callbacks.default.training_diagnostics</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../callbacks/early_stoppers/index.html">noether.core.callbacks.early_stoppers</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.early_stoppers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -3359,6 +3360,18 @@ validated to form a valid model.</p>
 <dd><p>The <cite>prefetch_factor</cite> to use for the training dataloader. This controls how many batches are prefetched by each worker process in the dataloader. Increasing this can speed up training if data loading is a bottleneck, but also increases memory usage.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.BaseTrainerConfig.monitor_training_stability">
+<span class="sig-name descname"><span class="pre">monitor_training_stability</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.BaseTrainerConfig.monitor_training_stability" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to monitor training stability by logging gradient norms, model norms and grad scaler scale at regular intervals using the TrainingStabilityCallback. This can be useful for diagnosing issues with exploding or vanishing gradients.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.BaseTrainerConfig.monitor_interval">
+<span class="sig-name descname"><span class="pre">monitor_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.BaseTrainerConfig.monitor_interval" title="Link to this definition">¶</a></dt>
+<dd><p>The interval (in updates) at which to monitor training stability when <cite>monitor_training_stability</cite> is True. This controls how often the TrainingStabilityCallback logs gradient norms, model norms and grad scaler scale.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.schemas.BaseTrainerConfig.validate_callback_frequency">
 <span class="sig-name descname"><span class="pre">validate_callback_frequency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.BaseTrainerConfig.validate_callback_frequency" title="Link to this definition">¶</a></dt>
@@ -3855,6 +3868,8 @@ that ‘batch_size’ is present if ‘every_n_samples’ is used.</p>
 <li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.target_properties"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.target_properties</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.model_config"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.model_config</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.dataloader_prefetch_factor"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.dataloader_prefetch_factor</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.monitor_training_stability"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.monitor_training_stability</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.monitor_interval"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.monitor_interval</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.validate_callback_frequency"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.validate_callback_frequency()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.BaseTrainerConfig.validate_max_training_criteria"><code class="docutils literal notranslate"><span class="pre">BaseTrainerConfig.validate_max_training_criteria()</span></code></a></li>
 </ul>

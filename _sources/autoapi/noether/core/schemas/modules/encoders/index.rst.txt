@@ -110,6 +110,14 @@ Module Contents
       Number of input features per point. None will fall back to a version without features. Defaults to None, which means no input features.
 
 
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias in the linear layers. Defaults to True.
+
+
    .. py:method:: validate_radius_and_k()
 
 

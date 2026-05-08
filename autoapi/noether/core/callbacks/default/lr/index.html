@@ -349,6 +349,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../peak_memory/index.html">noether.core.callbacks.default.peak_memory</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../progress/index.html">noether.core.callbacks.default.progress</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../train_time/index.html">noether.core.callbacks.default.train_time</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../training_diagnostics/index.html">noether.core.callbacks.default.training_diagnostics</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../early_stoppers/index.html">noether.core.callbacks.early_stoppers</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.early_stoppers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -933,39 +934,6 @@ the current training progress (epoch, update, sample counts).</p></li>
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.callbacks.default.lr.LrCallback.track_after_update_step">
-<span class="sig-name descname"><span class="pre">track_after_update_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.lr.LrCallback.track_after_update_step" title="Link to this definition">¶</a></dt>
-<dd><p>Hook called after each optimizer update step.</p>
-<p>This method is invoked after a successful optimizer step and parameter update.
-It is typically used for tracking metrics that should be recorded once per update
-cycle, such as:</p>
-<ul class="simple">
-<li><p>Latest loss values</p></li>
-<li><p>Learning rates</p></li>
-<li><p>Model parameter statistics (norms, etc.)</p></li>
-<li><p>Training throughput and timing measurements</p></li>
-</ul>
-<p>Unlike <a class="reference internal" href="#noether.core.callbacks.default.lr.LrCallback.periodic_callback" title="noether.core.callbacks.default.lr.LrCallback.periodic_callback"><code class="xref py py-meth docutils literal notranslate"><span class="pre">periodic_callback()</span></code></a>, this hook is called on every update step, making it
-suitable for maintaining running averages or high-frequency telemetry.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This method is executed within a <code class="docutils literal notranslate"><span class="pre">torch.no_grad()</span></code> context.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>update_counter</strong> (<a class="reference internal" href="../../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a>) – <a class="reference internal" href="../../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> instance to access current training progress.</p></li>
-<li><p><strong>times</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>]</em>) – Dictionary containing time measurements for various parts of the training
-step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_time’).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 </section>
@@ -1055,7 +1023,6 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.callbacks.default.lr.LrCallback"><code class="docutils literal notranslate"><span class="pre">LrCallback</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.callbacks.default.lr.LrCallback.periodic_callback"><code class="docutils literal notranslate"><span class="pre">LrCallback.periodic_callback()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.callbacks.default.lr.LrCallback.track_after_update_step"><code class="docutils literal notranslate"><span class="pre">LrCallback.track_after_update_step()</span></code></a></li>
 </ul>
 </li>
 </ul>

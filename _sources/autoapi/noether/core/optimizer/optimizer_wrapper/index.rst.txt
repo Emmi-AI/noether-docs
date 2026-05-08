@@ -66,12 +66,25 @@ Module Contents
 
 
    .. py:attribute:: all_parameters
+      :type:  list[torch.nn.Parameter] | None
       :value: None
 
 
 
    .. py:attribute:: last_grad_norm
       :type:  torch.Tensor | None
+      :value: None
+
+
+
+   .. py:attribute:: last_scaled_param_norms
+      :type:  list[torch.Tensor] | None
+      :value: None
+
+
+
+   .. py:attribute:: last_unscaled_param_norms
+      :type:  list[torch.Tensor] | None
       :value: None
 
 

@@ -69,6 +69,14 @@ Module Contents
       Weight initialization method.
 
 
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias in the linear layers.
+
+
 .. py:class:: UpActDownMLPConfig(/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`

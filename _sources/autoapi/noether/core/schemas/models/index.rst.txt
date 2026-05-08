@@ -434,6 +434,14 @@ Package Contents
 
 
 
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias terms in the model's linear layers.
+
+
    .. py:attribute:: supernode_pooling_config
       :type:  Annotated[noether.core.schemas.modules.SupernodePoolingConfig, noether.core.schemas.mixins.Shared]
 

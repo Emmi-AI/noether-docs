@@ -336,6 +336,7 @@
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/callbacks/default/peak_memory/index.html">noether.core.callbacks.default.peak_memory</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/callbacks/default/progress/index.html">noether.core.callbacks.default.progress</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/callbacks/default/train_time/index.html">noether.core.callbacks.default.train_time</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/callbacks/default/training_diagnostics/index.html">noether.core.callbacks.default.training_diagnostics</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="autoapi/noether/core/callbacks/early_stoppers/index.html">noether.core.callbacks.early_stoppers</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.early_stoppers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1569,8 +1570,6 @@
           <li><a href="autoapi/noether/training/callbacks/profiler/index.html#noether.training.callbacks.profiler.PyTorchProfilerCallback.before_training">(noether.training.callbacks.profiler.PyTorchProfilerCallback method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/io/diskcache/cache_benchmark/index.html#noether.io.diskcache.cache_benchmark.benchmark">benchmark() (in module noether.io.diskcache.cache_benchmark)</a>
 </li>
         <li><a href="autoapi/noether/core/presets/base/index.html#noether.core.presets.base.BEST_CHECKPOINT_CALLBACK">BEST_CHECKPOINT_CALLBACK (in module noether.core.presets.base)</a>
@@ -1583,6 +1582,8 @@
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.MetricEarlyStopper.best_metric">(noether.core.callbacks.MetricEarlyStopper attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.BestCheckpointCallback.best_metric_value">best_metric_value (noether.core.callbacks.BestCheckpointCallback attribute)</a>
 
         <ul>
@@ -1635,12 +1636,18 @@
         </ul></li>
         <li><a href="autoapi/noether/core/utils/torch/amp/index.html#noether.core.utils.torch.amp.BFLOAT16_ALIASES">BFLOAT16_ALIASES (in module noether.core.utils.torch.amp)</a>
 </li>
-        <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig.bias">bias (noether.core.schemas.modules.attention.AttentionConfig attribute)</a>
+        <li><a href="autoapi/noether/core/schemas/models/upt/index.html#noether.core.schemas.models.upt.UPTConfig.bias">bias (noether.core.schemas.models.upt.UPTConfig attribute)</a>
 
         <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.UPTConfig.bias">(noether.core.schemas.models.UPTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig.bias">(noether.core.schemas.modules.attention.AttentionConfig attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig.bias">(noether.core.schemas.modules.AttentionConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig.bias">(noether.core.schemas.modules.blocks.TransformerBlockConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/modules/encoders/index.html#noether.core.schemas.modules.encoders.SupernodePoolingConfig.bias">(noether.core.schemas.modules.encoders.SupernodePoolingConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/layers/linear_projection/index.html#noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig.bias">(noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig attribute)</a>
 </li>
@@ -1648,7 +1655,13 @@
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.LinearProjectionConfig.bias">(noether.core.schemas.modules.LinearProjectionConfig attribute)</a>
 </li>
+          <li><a href="autoapi/noether/core/schemas/modules/mlp/index.html#noether.core.schemas.modules.mlp.MLPConfig.bias">(noether.core.schemas.modules.mlp.MLPConfig attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/schemas/modules/mlp/index.html#noether.core.schemas.modules.mlp.UpActDownMLPConfig.bias">(noether.core.schemas.modules.mlp.UpActDownMLPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.MLPConfig.bias">(noether.core.schemas.modules.MLPConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.SupernodePoolingConfig.bias">(noether.core.schemas.modules.SupernodePoolingConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.TransformerBlockConfig.bias">(noether.core.schemas.modules.TransformerBlockConfig attribute)</a>
 </li>
@@ -5719,6 +5732,18 @@
           <li><a href="autoapi/noether/core/utils/common/stopwatch/index.html#noether.core.utils.common.stopwatch.Stopwatch.last_lap_time">(noether.core.utils.common.stopwatch.Stopwatch property)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/optimizer/optimizer_wrapper/index.html#noether.core.optimizer.optimizer_wrapper.OptimizerWrapper.last_scaled_param_norms">last_scaled_param_norms (noether.core.optimizer.optimizer_wrapper.OptimizerWrapper attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/optimizer/index.html#noether.core.optimizer.OptimizerWrapper.last_scaled_param_norms">(noether.core.optimizer.OptimizerWrapper attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/optimizer/optimizer_wrapper/index.html#noether.core.optimizer.optimizer_wrapper.OptimizerWrapper.last_unscaled_param_norms">last_unscaled_param_norms (noether.core.optimizer.optimizer_wrapper.OptimizerWrapper attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/optimizer/index.html#noether.core.optimizer.OptimizerWrapper.last_unscaled_param_norms">(noether.core.optimizer.OptimizerWrapper attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.LayerCache">LayerCache (in module noether.modeling.models.ab_upt)</a>
 </li>
         <li><a href="autoapi/noether/modeling/modules/untied/index.html#noether.modeling.modules.untied.UntiedMLP.layers">layers (noether.modeling.modules.untied.UntiedMLP attribute)</a>
@@ -5975,14 +6000,14 @@
           <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.log_every_n_updates">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/logging/index.html#noether.core.utils.logging.log_from_all_ranks">log_from_all_ranks() (in module noether.core.utils.logging)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/utils/logging/base/index.html#noether.core.utils.logging.base.log_from_all_ranks">(in module noether.core.utils.logging.base)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.log_output">log_output (noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback attribute)</a>
 
         <ul>
@@ -6889,6 +6914,8 @@
 </li>
           <li><a href="autoapi/noether/core/callbacks/default/train_time/index.html#module-noether.core.callbacks.default.train_time">noether.core.callbacks.default.train_time</a>
 </li>
+          <li><a href="autoapi/noether/core/callbacks/default/training_diagnostics/index.html#module-noether.core.callbacks.default.training_diagnostics">noether.core.callbacks.default.training_diagnostics</a>
+</li>
           <li><a href="autoapi/noether/core/callbacks/early_stoppers/index.html#module-noether.core.callbacks.early_stoppers">noether.core.callbacks.early_stoppers</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/early_stoppers/base/index.html#module-noether.core.callbacks.early_stoppers.base">noether.core.callbacks.early_stoppers.base</a>
@@ -7540,6 +7567,18 @@
           <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SGDOptimizerConfig.momentum">(noether.core.schemas.SGDOptimizerConfig attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.BaseTrainerConfig.monitor_interval">monitor_interval (noether.core.schemas.BaseTrainerConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.monitor_interval">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.BaseTrainerConfig.monitor_training_stability">monitor_training_stability (noether.core.schemas.BaseTrainerConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.monitor_training_stability">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/utils/torch/index.html#noether.core.utils.torch.move_items_to_device">move_items_to_device() (in module noether.core.utils.torch)</a>
 
         <ul>
@@ -7841,6 +7880,13 @@
 
         <ul>
           <li><a href="autoapi/noether/core/callbacks/default/train_time/index.html#module-noether.core.callbacks.default.train_time">module</a>
+</li>
+        </ul></li>
+        <li>
+    noether.core.callbacks.default.training_diagnostics
+
+        <ul>
+          <li><a href="autoapi/noether/core/callbacks/default/training_diagnostics/index.html#module-noether.core.callbacks.default.training_diagnostics">module</a>
 </li>
         </ul></li>
         <li>
@@ -8942,6 +8988,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/caeml/preprocessing/index.html#module-noether.data.datasets.cfd.caeml.preprocessing">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.dataset
 
@@ -8949,8 +8997,6 @@
           <li><a href="autoapi/noether/data/datasets/cfd/dataset/index.html#module-noether.data.datasets.cfd.dataset">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.drivaernet
 
@@ -10854,6 +10900,8 @@
 </li>
           <li><a href="autoapi/noether/core/callbacks/default/train_time/index.html#noether.core.callbacks.default.train_time.TrainTimeCallback.periodic_callback">(noether.core.callbacks.default.train_time.TrainTimeCallback method)</a>
 </li>
+          <li><a href="autoapi/noether/core/callbacks/default/training_diagnostics/index.html#noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback.periodic_callback">(noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback method)</a>
+</li>
           <li><a href="autoapi/noether/core/callbacks/default/index.html#noether.core.callbacks.default.TrainTimeCallback.periodic_callback">(noether.core.callbacks.default.TrainTimeCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/early_stoppers/base/index.html#noether.core.callbacks.early_stoppers.base.EarlyStopperBase.periodic_callback">(noether.core.callbacks.early_stoppers.base.EarlyStopperBase method)</a>
@@ -10951,14 +10999,14 @@
           <li><a href="autoapi/noether/data/samplers/index.html#noether.data.samplers.SamplerIntervalConfig.pipeline">(noether.data.samplers.SamplerIntervalConfig attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/presets/base/index.html#noether.core.presets.base.DomainPreset.pipeline_defaults">pipeline_defaults (noether.core.presets.base.DomainPreset attribute)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/presets/index.html#noether.core.presets.DomainPreset.pipeline_defaults">(noether.core.presets.DomainPreset attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/presets/base/index.html#noether.core.presets.base.DomainPreset.pipeline_model_overrides">pipeline_model_overrides (noether.core.presets.base.DomainPreset attribute)</a>
 
         <ul>
@@ -13546,6 +13594,8 @@
         <ul>
           <li><a href="autoapi/noether/core/callbacks/default/index.html#noether.core.callbacks.default.OnlineLossCallback.track_after_accumulation_step">(noether.core.callbacks.default.OnlineLossCallback method)</a>
 </li>
+          <li><a href="autoapi/noether/core/callbacks/default/training_diagnostics/index.html#noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback.track_after_accumulation_step">(noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback method)</a>
+</li>
           <li><a href="autoapi/noether/core/callbacks/online/track_outputs/index.html#noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback.track_after_accumulation_step">(noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/online/index.html#noether.core.callbacks.online.TrackAdditionalOutputsCallback.track_after_accumulation_step">(noether.core.callbacks.online.TrackAdditionalOutputsCallback method)</a>
@@ -13568,10 +13618,6 @@
 </li>
           <li><a href="autoapi/noether/core/callbacks/default/index.html#noether.core.callbacks.default.EtaCallback.track_after_update_step">(noether.core.callbacks.default.EtaCallback method)</a>
 </li>
-          <li><a href="autoapi/noether/core/callbacks/default/lr/index.html#noether.core.callbacks.default.lr.LrCallback.track_after_update_step">(noether.core.callbacks.default.lr.LrCallback method)</a>
-</li>
-          <li><a href="autoapi/noether/core/callbacks/default/index.html#noether.core.callbacks.default.LrCallback.track_after_update_step">(noether.core.callbacks.default.LrCallback method)</a>
-</li>
           <li><a href="autoapi/noether/core/callbacks/default/progress/index.html#noether.core.callbacks.default.progress.ProgressCallback.track_after_update_step">(noether.core.callbacks.default.progress.ProgressCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/default/index.html#noether.core.callbacks.default.ProgressCallback.track_after_update_step">(noether.core.callbacks.default.ProgressCallback method)</a>
@@ -13583,8 +13629,6 @@
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.EmaCallback.track_after_update_step">(noether.core.callbacks.EmaCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.EtaCallback.track_after_update_step">(noether.core.callbacks.EtaCallback method)</a>
-</li>
-          <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.LrCallback.track_after_update_step">(noether.core.callbacks.LrCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback.track_after_update_step">(noether.core.callbacks.periodic.PeriodicCallback method)</a>
 </li>
@@ -13772,6 +13816,8 @@
         <li><a href="autoapi/noether/core/constants/index.html#noether.core.constants.TRAINING_UPDATE_TIME">TRAINING_UPDATE_TIME (in module noether.core.constants)</a>
 </li>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.TrainingContextFilter">TrainingContextFilter (class in noether.training.trainers.base)</a>
+</li>
+        <li><a href="autoapi/noether/core/callbacks/default/training_diagnostics/index.html#noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback">TrainingDiagnosticsCallback (class in noether.core.callbacks.default.training_diagnostics)</a>
 </li>
         <li><a href="autoapi/noether/core/utils/training/index.html#noether.core.utils.training.TrainingIteration">TrainingIteration (class in noether.core.utils.training)</a>
 

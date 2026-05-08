@@ -349,6 +349,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../callbacks/default/peak_memory/index.html">noether.core.callbacks.default.peak_memory</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../callbacks/default/progress/index.html">noether.core.callbacks.default.progress</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../callbacks/default/train_time/index.html">noether.core.callbacks.default.train_time</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../callbacks/default/training_diagnostics/index.html">noether.core.callbacks.default.training_diagnostics</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../callbacks/early_stoppers/index.html">noether.core.callbacks.early_stoppers</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><div class="visually-hidden">Toggle navigation of noether.core.callbacks.early_stoppers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1050,12 +1051,22 @@ rate or the weight decay.</p></li>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.optimizer.OptimizerWrapper.all_parameters">
-<span class="sig-name descname"><span class="pre">all_parameters</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.optimizer.OptimizerWrapper.all_parameters" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">all_parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.nn.Parameter</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.optimizer.OptimizerWrapper.all_parameters" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.optimizer.OptimizerWrapper.last_grad_norm">
 <span class="sig-name descname"><span class="pre">last_grad_norm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.optimizer.OptimizerWrapper.last_grad_norm" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.optimizer.OptimizerWrapper.last_scaled_param_norms">
+<span class="sig-name descname"><span class="pre">last_scaled_param_norms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.optimizer.OptimizerWrapper.last_scaled_param_norms" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.optimizer.OptimizerWrapper.last_unscaled_param_norms">
+<span class="sig-name descname"><span class="pre">last_unscaled_param_norms</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.optimizer.OptimizerWrapper.last_unscaled_param_norms" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1386,6 +1397,8 @@ for a layerwise learning rate decay).</p></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.torch_optim"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.torch_optim</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.all_parameters"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.all_parameters</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.last_grad_norm"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.last_grad_norm</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.last_scaled_param_norms"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.last_scaled_param_norms</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.last_unscaled_param_norms"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.last_unscaled_param_norms</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.step"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.step()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.schedule_step"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.schedule_step()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.optimizer.OptimizerWrapper.zero_grad"><code class="docutils literal notranslate"><span class="pre">OptimizerWrapper.zero_grad()</span></code></a></li>
