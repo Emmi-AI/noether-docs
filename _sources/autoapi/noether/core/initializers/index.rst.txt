@@ -133,9 +133,6 @@ Package Contents
    .. py:attribute:: stage_name
 
 
-   .. py:attribute:: init_run_path_provider
-
-
    .. py:method:: init_optimizer(model)
 
       Initialize the optimizer for the model if it is derived from Model.

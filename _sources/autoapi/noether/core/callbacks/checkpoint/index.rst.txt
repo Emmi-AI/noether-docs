@@ -112,7 +112,7 @@ Package Contents
 
 
 
-   .. py:method:: periodic_callback(**_)
+   .. py:method:: periodic_callback(*, interval_type, **_)
 
       Execute the periodic callback to check and save best model.
 

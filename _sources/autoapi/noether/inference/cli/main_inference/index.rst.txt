@@ -4,31 +4,38 @@ noether.inference.cli.main_inference
 .. py:module:: noether.inference.cli.main_inference
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.inference.cli.main_inference.logger
+
+
 Functions
 ---------
 
 .. autoapisummary::
 
-   noether.inference.cli.main_inference.convert_sets_to_lists
    noether.inference.cli.main_inference.main
 
 
 Module Contents
 ---------------
 
-.. py:function:: convert_sets_to_lists(obj)
+.. py:data:: logger
 
-.. py:function:: main(inference_config)
+.. py:function:: main(eval_config)
 
-   Main entry point for inference.
+   Entry point for ``noether-eval``.
 
-   This script is wrapped in a hydra function to allow for easy configuration.
-   It supports passing the configuration file as a positional argument or via the --hp flag.
+   The training run's ``hp_resolved.yaml`` has already been wired in as the Hydra base config (see
+   :func:`_inject_hp_resolved_into_argv`), so this function only needs to set the resume fields and dispatch.
 
-   .. rubric:: Example
+   .. rubric:: Examples
 
-   python main_inference.py configs/my_inference_config.yaml
-   python main_inference.py --hp configs/my_inference_config.yaml
-   python main_inference.py configs/my_inference_config.yaml input_dir=/path/to/run
+   noether-eval run_dir=outputs/2026-01-10_abc12/train
+   noether-eval run_dir=outputs/2026-01-10_abc12/train resume_checkpoint=best
+   noether-eval run_dir=outputs/2026-01-10_abc12/train tracker=disabled trainer.max_epochs=1
 
 

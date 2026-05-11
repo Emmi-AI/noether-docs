@@ -116,6 +116,14 @@ Module Contents
       which checkpoint to load. If a string is provided, must be one of ("latest", "best_loss"). If a dictionary is provided, must contain keys "epoch", "update", "sample" to identify the checkpoint.
 
 
+   .. py:attribute:: output_path
+      :type:  pathlib.Path | None
+      :value: None
+
+
+      Output root where the source run (identified by ``run_id``/``stage_name``) lives. When ``None``, the current run's path provider is used to locate it, which assumes the source shares this run's ``output_path``. Set explicitly by ``noether-eval`` so that overriding ``output_path`` for the eval run doesn't redirect source-checkpoint lookup.
+
+
 .. py:class:: ResumeInitializerConfig(/, **data)
 
    Bases: :py:obj:`CheckpointInitializerConfig`

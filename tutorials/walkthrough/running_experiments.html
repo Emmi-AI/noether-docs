@@ -321,7 +321,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../guides/training/development_cli.html">Noether Development CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/training/development_cli.html#running-a-full-training-with-the-development-setup">Running a full training with the development setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/training/configuring_ab_upt.html">Configuring AB-UPT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Inference and Evaluation on Trained Models</a></li>
 </ul>
 </li>
 </ul>
@@ -949,11 +949,39 @@ the number of GPUs used. Multi-node training is currently not supported.</p>
 </pre></div>
 </div>
 </section>
-<section id="running-inference">
-<h2>Running inference<a class="headerlink" href="#running-inference" title="Link to this heading">¶</a></h2>
-<p>To run evaluation callbacks on trained models, use the <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> CLI tool.</p>
-<p>For detailed instructions on running inference with trained models, refer to
-<a class="reference internal" href="../../guides/inference/how_to_run_evaluation_on_trained_models.html"><span class="doc">How to Run Evaluation on Trained Models</span></a>.</p>
+<section id="running-inference-and-evaluation-on-a-trained-model">
+<h2>Running inference and evaluation on a trained model<a class="headerlink" href="#running-inference-and-evaluation-on-a-trained-model" title="Link to this heading">¶</a></h2>
+<p>Once a training run finishes, you can re-run its callbacks against any saved
+checkpoint with <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code>. Point it at the run output directory (the
+folder that contains <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/&lt;run_id&gt;/train
+</pre></div>
+</div>
+<p>That single argument is enough — <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> reads the original training
+config from <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code>, restores the latest checkpoint, and re-runs
+the configured callbacks. Whether that yields metric numbers, saved
+predictions, or visualizations depends on which callbacks were configured —
+the runner is a thin post-training callback executor and doesn’t care.</p>
+<p>Common overrides:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the best checkpoint instead of the latest. The tag is</span>
+<span class="c1"># `best_model.&lt;metric&gt;` (slashes flattened to dots); the metric comes from</span>
+<span class="c1"># the run&#39;s BestCheckpointCallback config — e.g. `loss/test/total`:</span>
+uv<span class="w"> </span>run<span class="w"> </span>noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/&lt;run_id&gt;/train<span class="w"> </span><span class="nv">resume_checkpoint</span><span class="o">=</span>best_model.loss.test.total
+
+<span class="c1"># Disable experiment tracking for a one-off run</span>
+uv<span class="w"> </span>run<span class="w"> </span>noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/&lt;run_id&gt;/train<span class="w"> </span><span class="nv">tracker</span><span class="o">=</span>disabled
+</pre></div>
+</div>
+<p>Any training-time config key (<code class="docutils literal notranslate"><span class="pre">trainer.*</span></code>, <code class="docutils literal notranslate"><span class="pre">tracker.*</span></code>, <code class="docutils literal notranslate"><span class="pre">model.*</span></code>, etc.)
+can be overridden the same way — no Hydra <code class="docutils literal notranslate"><span class="pre">+</span></code> prefix needed. To plug in
+extra callbacks for evaluation, prediction saving, or visualization, drop
+them into a small YAML and pass it via <code class="docutils literal notranslate"><span class="pre">--hp</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/&lt;run_id&gt;/train<span class="w"> </span>--hp<span class="w"> </span>configs/eval_extra.yaml
+</pre></div>
+</div>
+<p>For the full reference (custom output directories, hardware overrides,
+prediction-saving callback examples), see
+<a class="reference internal" href="../../guides/inference/how_to_run_evaluation_on_trained_models.html"><span class="doc">How to Run Inference and Evaluation on Trained Models</span></a>.</p>
 </section>
 <section id="resuming-training-after-interruption">
 <h2>Resuming training after interruption<a class="headerlink" href="#resuming-training-after-interruption" title="Link to this heading">¶</a></h2>
@@ -1119,7 +1147,7 @@ updating the model weights.</p></li>
 <li><a class="reference internal" href="#running-slurm-jobs">Running SLURM jobs</a></li>
 <li><a class="reference internal" href="#running-a-single-experiment">Running a single experiment</a></li>
 <li><a class="reference internal" href="#running-multi-gpu-experiments">Running multi-GPU experiments</a></li>
-<li><a class="reference internal" href="#running-inference">Running inference</a></li>
+<li><a class="reference internal" href="#running-inference-and-evaluation-on-a-trained-model">Running inference and evaluation on a trained model</a></li>
 <li><a class="reference internal" href="#resuming-training-after-interruption">Resuming training after interruption</a></li>
 <li><a class="reference internal" href="#initializing-model-weights">Initializing model weights</a></li>
 <li><a class="reference internal" href="#wandb-tracker">WandB tracker</a></li>

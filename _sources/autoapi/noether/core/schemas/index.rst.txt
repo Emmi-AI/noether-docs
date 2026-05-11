@@ -783,6 +783,14 @@ Package Contents
       which checkpoint to load. If a string is provided, must be one of ("latest", "best_loss"). If a dictionary is provided, must contain keys "epoch", "update", "sample" to identify the checkpoint.
 
 
+   .. py:attribute:: output_path
+      :type:  pathlib.Path | None
+      :value: None
+
+
+      Output root where the source run (identified by ``run_id``/``stage_name``) lives. When ``None``, the current run's path provider is used to locate it, which assumes the source shares this run's ``output_path``. Set explicitly by ``noether-eval`` so that overriding ``output_path`` for the eval run doesn't redirect source-checkpoint lookup.
+
+
 .. py:class:: InitializerConfig(/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`
@@ -1942,6 +1950,14 @@ Package Contents
 
 
       Path to checkpoint to resume from. If None, the 'latest' checkpoint will be used.
+
+
+   .. py:attribute:: resume_output_path
+      :type:  pathlib.Path | None
+      :value: None
+
+
+      Output root where the resume source run lives, when different from this run's ``output_path``. Set automatically by ``noether-eval`` (read from the source ``hp_resolved.yaml``) so that overriding ``output_path`` for the eval run does not break source-checkpoint lookup. Leave unset for ordinary training resume, which keeps writing alongside the original run.
 
 
    .. py:attribute:: seed

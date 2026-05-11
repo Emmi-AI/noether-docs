@@ -3,14 +3,14 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="How to Run Evaluation on Trained Models" />
+<meta property="og:title" content="How to Run Inference and Evaluation on Trained Models" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/guides/inference/how_to_run_evaluation_on_trained_models.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="The evaluation pipeline allow you to run inference and compute metrics on a model that has been previously trained. This is useful for evaluating best checkpoints on test sets, generating visualiza..." />
+<meta property="og:description" content="noether-eval is the post-training callback runner: point it at a finished training run, pick a checkpoint, and it re-executes the configured callbacks against those weights. Whether that means eval..." />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="The evaluation pipeline allow you to run inference and compute metrics on a model that has been previously trained. This is useful for evaluating best checkpoints on test sets, generating visualiza..." />
+<meta name="description" content="noether-eval is the post-training callback runner: point it at a finished training run, pick a checkpoint, and it re-executes the configured callbacks against those weights. Whether that means eval..." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -19,7 +19,7 @@
         <link rel="prefetch" href="../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>How to Run Evaluation on Trained Models - Noether Framework Documentation</title>
+        <title>How to Run Inference and Evaluation on Trained Models - Noether Framework Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -321,7 +321,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../training/development_cli.html">Noether Development CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../training/development_cli.html#running-a-full-training-with-the-development-setup">Running a full training with the development setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../training/configuring_ab_upt.html">Configuring AB-UPT</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">How to Run Evaluation on Trained Models</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">How to Run Inference and Evaluation on Trained Models</a></li>
 </ul>
 </li>
 </ul>
@@ -858,86 +858,244 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="how-to-run-evaluation-on-trained-models">
-<h1>How to Run Evaluation on Trained Models<a class="headerlink" href="#how-to-run-evaluation-on-trained-models" title="Link to this heading">¶</a></h1>
-<p>The evaluation pipeline allow you to run inference and compute metrics on a model that has been previously trained. This is useful for evaluating best checkpoints on test sets, generating visualizations, or performing late-stage analysis without starting a full training run.</p>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
-<p>The evaluation process uses the <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> CLI command, which:
-1. Loads the original training configuration from the run directory (provided as <cite>input_dir</cite>).
-2. Merges it with an inference-specific configuration.
-3. Initializes the model using weights from a specified checkpoint.
-4. Executes the configured trainer’s <code class="docutils literal notranslate"><span class="pre">eval()</span></code> method, which runs all configured callbacks.</p>
-<p>The outputs are stored in a <em>new</em> directory separate from the training outputs, preserving the original run data.</p>
-</section>
-<section id="the-cli-noether-eval">
-<h2>The CLI: <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code><a class="headerlink" href="#the-cli-noether-eval" title="Link to this heading">¶</a></h2>
-<p>The command is installed via the <code class="docutils literal notranslate"><span class="pre">noether</span></code> package. It utilizes Hydra for configuration management and supports merging multiple YAML files or command-line overrides.</p>
-<section id="required-arguments">
-<h3>Required Arguments<a class="headerlink" href="#required-arguments" title="Link to this heading">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> is also using Hydra. Config can be provided via the <code class="docutils literal notranslate"><span class="pre">--hp</span></code> flag or directly as CLI arguments. The following argument is required:</p>
+          <section id="how-to-run-inference-and-evaluation-on-trained-models">
+<h1>How to Run Inference and Evaluation on Trained Models<a class="headerlink" href="#how-to-run-inference-and-evaluation-on-trained-models" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> is the post-training callback runner: point it at a finished
+training run, pick a checkpoint, and it re-executes the configured callbacks
+against those weights. Whether that means <em>evaluation</em> (computing metrics on
+a held-out split) or <em>inference</em> (writing predictions to disk for downstream
+analysis) depends entirely on which callbacks are configured — the runner
+itself doesn’t care, and most projects use it for both.</p>
+<section id="what-this-is-good-for">
+<h2>What this is good for<a class="headerlink" href="#what-this-is-good-for" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">input_dir</span></code>: The absolute or relative path to the directory of root of the outputs of the training run you wish to evaluate (without the <cite>run_id</cite>).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">run_id</span></code>: The specific run ID to evaluate a model from.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stage_name</span></code>: The stage of the training run to evaluate (optional and can be empty). This is used to locate the correct checkpoint and configuration files.</p></li>
+<li><p><strong>Evaluating on a held-out split</strong> — load the best checkpoint, re-run
+metric callbacks against the test set without re-training.</p></li>
+<li><p><strong>Generating predictions for downstream analysis</strong> — configure a callback
+with <code class="docutils literal notranslate"><span class="pre">save_predictions=True</span></code> (e.g.
+<code class="xref py py-class docutils literal notranslate"><span class="pre">AeroMetricsCallback</span></code> in
+<code class="docutils literal notranslate"><span class="pre">recipes/aero_cfd/</span></code>) and write per-sample model outputs to disk for VTK
+export, force-coefficient computation, or reporting.</p></li>
+<li><p><strong>Visualizing model behavior</strong> — re-run plotting/visualization callbacks
+on demand, against any checkpoint.</p></li>
+<li><p><strong>Re-running with different callbacks</strong> — keep the trained model and
+pipeline fixed, swap the callback list to a custom YAML for one-off
+analysis.</p></li>
 </ul>
-<p>The folder <cite>input_dir/run_id/stage_name</cite> should contain the desired checkpoint files and the resolved configuration file (<cite>hp_resolved.yaml</cite>).</p>
-</section>
-<section id="supported-callbacks">
-<h3>Supported Callbacks<a class="headerlink" href="#supported-callbacks" title="Link to this heading">¶</a></h3>
-<p>All callbacks that are compatible with evaluation mode can be used here. This includes metric computation callbacks, visualization callbacks, and any custom callbacks you may have implemented.</p>
-<p>Not all callbacks are suitable for evaluation, for example the checkpoint saving callbacks are not relevant during evaluation and will be ignored.</p>
-<p>Callbacks can check whether they are running in evaluation mode by checking <code class="docutils literal notranslate"><span class="pre">interval_type</span> <span class="pre">==</span> <span class="pre">&quot;eval&quot;</span></code> in the <code class="xref py py-meth docutils literal notranslate"><span class="pre">_periodic_callback()</span></code> method. More details on how to implement custom callbacks can be found in <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a> and <code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicIteratorCallback</span></code>.</p>
-</section>
-<section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h3>
-<p>Basic evaluation using the latest checkpoint. This runs the same callbacks as configured during training:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs/<span class="w"> </span>+run_id<span class="o">=</span><span class="m">2026</span>-01-10/10-00-00<span class="w"> </span>+stage_name<span class="o">=</span>train
+<p>Despite the binary name, treat <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> as the generic
+inference/evaluation entry point — it has no eval-only logic baked in.</p>
+<section id="quick-start">
+<h3>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h3>
+<p>Point <code class="docutils literal notranslate"><span class="pre">run_dir</span></code> at the training run output directory (the folder that
+contains <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code> and a <code class="docutils literal notranslate"><span class="pre">checkpoints/</span></code> subfolder):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12
 </pre></div>
 </div>
-<p>Evaluation on a specific checkpoint:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs<span class="w"> </span><span class="nv">run_id</span><span class="o">=</span><span class="m">2026</span>-01-10/10-00-00<span class="w"> </span><span class="nv">resume_checkpoint</span><span class="o">=</span>best_accuracy<span class="w"> </span><span class="se">\</span>
---hp<span class="w"> </span>configs/inference/visualization.yaml
+<p>That’s the whole minimum invocation. By default it loads the <em>latest</em>
+checkpoint, reuses every callback that was active during training, and writes
+outputs alongside the original training run.</p>
+</section>
+</section>
+<section id="what-run-dir-should-point-at">
+<h2>What <code class="docutils literal notranslate"><span class="pre">run_dir</span></code> should point at<a class="headerlink" href="#what-run-dir-should-point-at" title="Link to this heading">¶</a></h2>
+<p>A training run is laid out as <code class="docutils literal notranslate"><span class="pre">output_path/run_id[/stage_name]</span></code>. <code class="docutils literal notranslate"><span class="pre">run_dir</span></code>
+is the deepest directory in that chain — the one that contains
+<code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>outputs/
+  2026-01-10_abc12/        ← run_id
+    train/                 ← stage_name (optional)
+      hp_resolved.yaml     ← run_dir = outputs/2026-01-10_abc12/train
+      checkpoints/
+      tracker/
 </pre></div>
 </div>
-<p>Run evaluation with modified callbacks, for example to calculate offline losses on the test set:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># configs/inference/custom_eval_callbacks.yaml</span>
+<p>If the run was trained without a <code class="docutils literal notranslate"><span class="pre">stage_name</span></code>, the <code class="docutils literal notranslate"><span class="pre">run_id</span></code> directory
+itself is the <code class="docutils literal notranslate"><span class="pre">run_dir</span></code>.</p>
+<section id="overriding-the-training-config">
+<h3>Overriding the training config<a class="headerlink" href="#overriding-the-training-config" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> is intentionally flexible: the resolved training config is
+re-used as the base, and <strong>any</strong> key in it can be overridden on the command
+line — no Hydra <code class="docutils literal notranslate"><span class="pre">+</span></code> prefix needed, exactly the same syntax as
+<code class="docutils literal notranslate"><span class="pre">noether-train</span></code>. A handful of common patterns follow.</p>
+</section>
+</section>
+<section id="pick-a-different-checkpoint">
+<h2>Pick a different checkpoint<a class="headerlink" href="#pick-a-different-checkpoint" title="Link to this heading">¶</a></h2>
+<p>By default <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> loads the latest checkpoint. To pick another:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The best checkpoint, by metric. BestCheckpointCallback writes files like</span>
+<span class="c1"># `&lt;model&gt;_cp=best_model.&lt;metric_with_slashes_flattened_to_dots&gt;_model.th`,</span>
+<span class="c1"># so the tag is `best_model.&lt;metric&gt;`. Look up the configured `metric_key`</span>
+<span class="c1"># in the run&#39;s hp_resolved.yaml — for `metric_key: loss/test/total`:</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span><span class="nv">resume_checkpoint</span><span class="o">=</span>best_model.loss.test.total
+
+<span class="c1"># An exponential-moving-average snapshot</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span><span class="nv">resume_checkpoint</span><span class="o">=</span><span class="nv">latest_ema</span><span class="o">=</span><span class="m">0</span>.9999
+
+<span class="c1"># A specific epoch / update / step</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span><span class="nv">resume_checkpoint</span><span class="o">=</span>E100_U5000_S5000
+</pre></div>
+</div>
+</section>
+<section id="send-outputs-somewhere-else">
+<h2>Send outputs somewhere else<a class="headerlink" href="#send-outputs-somewhere-else" title="Link to this heading">¶</a></h2>
+<p>The run writes outputs to <code class="docutils literal notranslate"><span class="pre">output_path/run_id/stage_name</span></code> — by default the
+same folder as the training run. Override <code class="docutils literal notranslate"><span class="pre">output_path</span></code>, <code class="docutils literal notranslate"><span class="pre">stage_name</span></code> (or
+both) to redirect:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sibling stage next to the training run</span>
+<span class="c1"># → outputs/2026-01-10_abc12/eval/</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12/train<span class="w"> </span><span class="nv">stage_name</span><span class="o">=</span><span class="nb">eval</span>
+
+<span class="c1"># Different output root</span>
+<span class="c1"># → /scratch/eval_runs/2026-01-10_abc12/train/</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12/train<span class="w"> </span><span class="nv">output_path</span><span class="o">=</span>/scratch/eval_runs
+
+<span class="c1"># Both — different root and stage</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12/train<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">output_path</span><span class="o">=</span>/scratch/eval_runs<span class="w"> </span><span class="nv">stage_name</span><span class="o">=</span><span class="nb">eval</span>
+</pre></div>
+</div>
+<p>In every case <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> still loads the checkpoint from <code class="docutils literal notranslate"><span class="pre">run_dir</span></code> —
+only the <em>output</em> location changes.</p>
+</section>
+<section id="run-on-different-hardware">
+<h2>Run on different hardware<a class="headerlink" href="#run-on-different-hardware" title="Link to this heading">¶</a></h2>
+<p>You don’t have to re-run on the same accelerator as training. Override
+<code class="docutils literal notranslate"><span class="pre">accelerator</span></code> (and optionally <code class="docutils literal notranslate"><span class="pre">devices</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apple Silicon</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span><span class="nv">accelerator</span><span class="o">=</span>mps
+
+<span class="c1"># CPU-only spot check</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span><span class="nv">accelerator</span><span class="o">=</span>cpu
+
+<span class="c1"># A specific subset of GPUs</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span><span class="nv">devices</span><span class="o">=</span><span class="s2">&quot;0,1&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="switch-experiment-tracking">
+<h2>Switch experiment tracking<a class="headerlink" href="#switch-experiment-tracking" title="Link to this heading">¶</a></h2>
+<p>Replace the training-time tracker with a disabled or local one for a quick
+re-run, or send results to a different W&amp;B project:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span><span class="nv">tracker</span><span class="o">=</span>disabled
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span>tracker.project<span class="o">=</span>eval-only
+</pre></div>
+</div>
+</section>
+<section id="tweak-any-other-training-time-key">
+<h2>Tweak any other training-time key<a class="headerlink" href="#tweak-any-other-training-time-key" title="Link to this heading">¶</a></h2>
+<p>The same dot-path syntax works for nested keys:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Re-evaluate at a smaller batch size</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span>trainer.effective_batch_size<span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># Point at a different dataset root (e.g. moved data)</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span><span class="nv">dataset_root</span><span class="o">=</span>/new/data/path
+</pre></div>
+</div>
+<p>Most callbacks honor these overrides because they reuse the same trainer
+config keys they did at training time.</p>
+<section id="customizing-the-callbacks">
+<h3>Customizing the callbacks<a class="headerlink" href="#customizing-the-callbacks" title="Link to this heading">¶</a></h3>
+<p>By default <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> reuses the callbacks from training. To add
+post-training-only callbacks — whether for extra metrics, prediction saving,
+or visualization — write a small YAML and pass it via <code class="docutils literal notranslate"><span class="pre">--hp</span></code>.</p>
+<p><strong>Evaluation example</strong> — add an offline test-set loss:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># configs/eval_extra.yaml</span>
 <span class="nt">trainer</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">callbacks</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.training.callbacks.OfflineLossCallback</span>
-<span class="w">    </span><span class="nt">dataset_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OfflineLossCallback</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.training.callbacks.OfflineLossCallback</span>
+<span class="w">      </span><span class="nt">dataset_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">      </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span>+input_dir<span class="o">=</span>outputs<span class="w"> </span><span class="nv">run_id</span><span class="o">=</span><span class="m">2026</span>-01-10/10-00-00<span class="w"> </span>--hp<span class="w"> </span>configs/inference/custom_eval_callbacks.yaml
+<p><strong>Inference example</strong> — save denormalized predictions to disk for downstream
+analysis (VTK export, force coefficient computation, plotting):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># configs/save_predictions.yaml</span>
+<span class="nt">trainer</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">callbacks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aero_cfd.callbacks.AeroMetricsCallback</span>
+<span class="w">      </span><span class="nt">dataset_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">      </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">forward_properties</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${model.forward_properties}</span>
+<span class="w">      </span><span class="nt">save_predictions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">predictions_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./predictions</span>
 </pre></div>
 </div>
+<p>Run with either:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span>--hp<span class="w"> </span>configs/eval_extra.yaml
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/2026-01-10_abc12<span class="w"> </span>--hp<span class="w"> </span>configs/save_predictions.yaml
+</pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">--hp</span></code> is supplied, that file becomes the Hydra base config — use this
+escape hatch for power users composing their own inference/eval pipeline. The
+<code class="docutils literal notranslate"><span class="pre">run_dir</span></code> argument and CLI overrides above still work the same way.</p>
+<p><strong>Flipping a flag on an existing callback (no YAML)</strong> — when the change is
+just enabling a feature already supported by a configured callback (e.g.
+turning on <code class="docutils literal notranslate"><span class="pre">save_predictions</span></code> for an <code class="docutils literal notranslate"><span class="pre">AeroMetricsCallback</span></code> that was
+trained with metrics-only), use a dotted index override. Hydra’s <code class="docutils literal notranslate"><span class="pre">++</span></code>
+prefix is required because the keys aren’t in the loaded yaml (training left
+them at defaults):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Index 4 = position of AeroMetricsCallback in trainer.callbacks</span>
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>outputs/&lt;run_id&gt;/train<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>++trainer.callbacks.4.save_predictions<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>++trainer.callbacks.4.predictions_path<span class="o">=</span>/path/to/preds
+</pre></div>
+</div>
+<p>The list index reflects the callback’s position in the source’s
+<code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code> <code class="docutils literal notranslate"><span class="pre">trainer.callbacks</span></code> list — open the file to confirm.</p>
 </section>
-</section>
-<section id="configuration-merging">
-<h2>Configuration Merging<a class="headerlink" href="#configuration-merging" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> performs a deep merge of configurations:</p>
+<section id="how-it-works">
+<h3>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> is a thin post-training callback runner. Under the hood it:</p>
 <ol class="arabic simple">
-<li><p><strong>Base</strong>: The stored config from the <code class="docutils literal notranslate"><span class="pre">input_dir</span></code> (looked up from``hp_resolved.yaml``)</p></li>
-<li><p><strong>Override</strong>: The configuration provided via <code class="docutils literal notranslate"><span class="pre">--hp</span></code> or direct CLI arguments.</p></li>
+<li><p>Reads <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code> from <code class="docutils literal notranslate"><span class="pre">run_dir</span></code>, which captures the full,
+resolved training configuration.</p></li>
+<li><p>Wires that config in as the Hydra base, so every training-time key is a
+valid override target on the command line.</p></li>
+<li><p>Forces <code class="docutils literal notranslate"><span class="pre">resume_run_id</span></code> / <code class="docutils literal notranslate"><span class="pre">resume_stage_name</span></code> to point at the
+training run, defaults <code class="docutils literal notranslate"><span class="pre">resume_checkpoint</span></code> to <code class="docutils literal notranslate"><span class="pre">latest</span></code>, and applies any
+user overrides on top.</p></li>
+<li><p>Hands the resolved config to <code class="xref py py-class docutils literal notranslate"><span class="pre">InferenceRunner</span></code>,
+which sets up the trainer/model/tracker the same way training does but uses
+<code class="xref py py-class docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code> to load <em>only</em>
+the model weights (no optimizer/scheduler state), then calls
+<code class="docutils literal notranslate"><span class="pre">trainer.eval(model)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">trainer.train(model)</span></code>.</p></li>
 </ol>
-<p>This allows you to easily switch datasets, modify callback parameters, or change evaluation settings while keeping the model architecture and other training-time settings intact.</p>
+<p><code class="docutils literal notranslate"><span class="pre">trainer.eval()</span></code> simply iterates the configured callbacks against the
+restored weights — there is no separate eval loop, and nothing in the runner
+distinguishes “evaluation” from “inference”. Whichever callbacks are
+configured (metric computation, prediction saving, visualization) decide what
+the run actually produces. Callbacks that aren’t meaningful here (e.g.
+checkpoint saving) are no-ops; callbacks can branch on <code class="docutils literal notranslate"><span class="pre">interval_type</span> <span class="pre">==</span>
+<span class="pre">&quot;eval&quot;</span></code> inside
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">_periodic_callback()</span></code>
+if they need to behave differently outside of training. See
+<a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicIteratorCallback</span></code> for the
+callback protocol.</p>
 </section>
-<section id="inference-runner">
-<h2>Inference Runner<a class="headerlink" href="#inference-runner" title="Link to this heading">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">InferenceRunner</span></code> (found in <code class="docutils literal notranslate"><span class="pre">src/noether/inference/runners/inference_runner.py</span></code>) is responsible for setting up the environment similarly to the training runner but with key differences:</p>
-<ul class="simple">
-<li><p><strong>Weight Loading</strong>: It uses the <code class="docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code>, which only loads model weights and skips optimizer/scheduler states.</p></li>
-<li><p><strong>Eval Mode</strong>: It calls <code class="docutils literal notranslate"><span class="pre">trainer.eval(model)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">trainer.train(model)</span></code>.</p></li>
-</ul>
 </section>
-<section id="trainer-evaluation-mode">
-<h2>Trainer Evaluation Mode<a class="headerlink" href="#trainer-evaluation-mode" title="Link to this heading">¶</a></h2>
-<p>All evaluation mode is doing, is executing the configured callbacks on the saved model weights.</p>
-<p>This way we can reuse the same callback implementations for both training and evaluation, ensuring consistency in metrics computation and visualization generation.</p>
-<p>By default the same callbacks used during training are also used during evaluation.
-However, you can customize this by modifying the configuration passed to <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> to include different or additional callbacks as needed.
-This way you can, for example, add extra visualization callbacks or change metric logging behavior specifically for evaluation runs.</p>
+<section id="recipe-code-on-pythonpath">
+<h2>Recipe code on PYTHONPATH<a class="headerlink" href="#recipe-code-on-pythonpath" title="Link to this heading">¶</a></h2>
+<p>If the training run referenced classes from a recipe (e.g.
+<code class="docutils literal notranslate"><span class="pre">aero_cfd.pipeline.AeroMultistagePipeline</span></code>), run <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> from a
+working directory where those imports resolve — typically the recipe folder
+itself, or with <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> set:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>recipes/aero_cfd
+noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="o">=</span>/path/to/outputs/2026-01-10_abc12<span class="w"> </span><span class="nv">tracker</span><span class="o">=</span>disabled
+</pre></div>
+</div>
+<p>Each run directory also contains a <code class="docutils literal notranslate"><span class="pre">code.tar.gz</span></code> snapshot of the codebase at
+training time, useful when the source tree has drifted.</p>
+<section id="a-note-on-help-and-the-binary-name">
+<h3>A note on <code class="docutils literal notranslate"><span class="pre">--help</span></code> and the binary name<a class="headerlink" href="#a-note-on-help-and-the-binary-name" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> is built on Hydra rather than Typer, so <code class="docutils literal notranslate"><span class="pre">noether-eval</span> <span class="pre">--help</span></code>
+prints Hydra’s generic help text rather than a curated list of arguments —
+this guide is the practical reference. The binary is also still spelled
+<code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> for brevity even though the underlying machinery
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">InferenceRunner</span></code>, the
+<code class="docutils literal notranslate"><span class="pre">noether.inference</span></code> module) reflects its broader inference + evaluation
+scope.</p>
+</section>
 </section>
 </section>
 
@@ -1020,17 +1178,28 @@ This way you can, for example, add extra visualization callbacks or change metri
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">How to Run Evaluation on Trained Models</a><ul>
-<li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#the-cli-noether-eval">The CLI: <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code></a><ul>
-<li><a class="reference internal" href="#required-arguments">Required Arguments</a></li>
-<li><a class="reference internal" href="#supported-callbacks">Supported Callbacks</a></li>
-<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#">How to Run Inference and Evaluation on Trained Models</a><ul>
+<li><a class="reference internal" href="#what-this-is-good-for">What this is good for</a><ul>
+<li><a class="reference internal" href="#quick-start">Quick start</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#configuration-merging">Configuration Merging</a></li>
-<li><a class="reference internal" href="#inference-runner">Inference Runner</a></li>
-<li><a class="reference internal" href="#trainer-evaluation-mode">Trainer Evaluation Mode</a></li>
+<li><a class="reference internal" href="#what-run-dir-should-point-at">What <code class="docutils literal notranslate"><span class="pre">run_dir</span></code> should point at</a><ul>
+<li><a class="reference internal" href="#overriding-the-training-config">Overriding the training config</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pick-a-different-checkpoint">Pick a different checkpoint</a></li>
+<li><a class="reference internal" href="#send-outputs-somewhere-else">Send outputs somewhere else</a></li>
+<li><a class="reference internal" href="#run-on-different-hardware">Run on different hardware</a></li>
+<li><a class="reference internal" href="#switch-experiment-tracking">Switch experiment tracking</a></li>
+<li><a class="reference internal" href="#tweak-any-other-training-time-key">Tweak any other training-time key</a><ul>
+<li><a class="reference internal" href="#customizing-the-callbacks">Customizing the callbacks</a></li>
+<li><a class="reference internal" href="#how-it-works">How it works</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#recipe-code-on-pythonpath">Recipe code on PYTHONPATH</a><ul>
+<li><a class="reference internal" href="#a-note-on-help-and-the-binary-name">A note on <code class="docutils literal notranslate"><span class="pre">--help</span></code> and the binary name</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

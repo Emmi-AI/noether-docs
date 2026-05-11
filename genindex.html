@@ -308,7 +308,7 @@
 <li class="toctree-l2"><a class="reference internal" href="guides/training/development_cli.html">Noether Development CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides/training/development_cli.html#running-a-full-training-with-the-development-setup">Running a full training with the development setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="guides/training/configuring_ab_upt.html">Configuring AB-UPT</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Evaluation on Trained Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guides/inference/how_to_run_evaluation_on_trained_models.html">How to Run Inference and Evaluation on Trained Models</a></li>
 </ul>
 </li>
 </ul>
@@ -2278,8 +2278,6 @@
           <li><a href="autoapi/noether/core/schemas/modules/layers/continuous_sincos_embedding/index.html#noether.core.schemas.modules.layers.continuous_sincos_embedding.ContinuousSincosEmbeddingConfig">(class in noether.core.schemas.modules.layers.continuous_sincos_embedding)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/inference/cli/main_inference/index.html#noether.inference.cli.main_inference.convert_sets_to_lists">convert_sets_to_lists() (in module noether.inference.cli.main_inference)</a>
-</li>
         <li><a href="autoapi/noether/core/utils/training/training_iteration/index.html#noether.core.utils.training.training_iteration.TrainingIteration.copy">copy() (noether.core.utils.training.training_iteration.TrainingIteration method)</a>
 
         <ul>
@@ -4874,12 +4872,6 @@
           <li><a href="autoapi/noether/core/initializers/index.html#noether.core.initializers.ResumeInitializer.init_optimizer">(noether.core.initializers.ResumeInitializer method)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/initializers/checkpoint/index.html#noether.core.initializers.checkpoint.CheckpointInitializer.init_run_path_provider">init_run_path_provider (noether.core.initializers.checkpoint.CheckpointInitializer attribute)</a>
-
-        <ul>
-          <li><a href="autoapi/noether/core/initializers/index.html#noether.core.initializers.CheckpointInitializer.init_run_path_provider">(noether.core.initializers.CheckpointInitializer attribute)</a>
-</li>
-        </ul></li>
         <li><a href="autoapi/noether/core/initializers/base/index.html#noether.core.initializers.base.InitializerBase.init_trainer">init_trainer() (noether.core.initializers.base.InitializerBase method)</a>
 
         <ul>
@@ -6076,6 +6068,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/shapenet_car/preprocessing/index.html#noether.data.datasets.cfd.shapenet_car.preprocessing.logger">(in module noether.data.datasets.cfd.shapenet_car.preprocessing)</a>
 </li>
           <li><a href="autoapi/noether/data/datasets/cfd/simshift_heatsink/dataset/index.html#noether.data.datasets.cfd.simshift_heatsink.dataset.logger">(in module noether.data.datasets.cfd.simshift_heatsink.dataset)</a>
+</li>
+          <li><a href="autoapi/noether/inference/cli/main_inference/index.html#noether.inference.cli.main_inference.logger">(in module noether.inference.cli.main_inference)</a>
 </li>
           <li><a href="autoapi/noether/inference/runners/inference_runner/index.html#noether.inference.runners.inference_runner.logger">(in module noether.inference.runners.inference_runner)</a>
 </li>
@@ -10557,9 +10551,13 @@
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.DomainDataSpec.output_dims">output_dims (noether.core.schemas.dataset.DomainDataSpec attribute)</a>
 </li>
-        <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.ConfigSchema.output_path">output_path (noether.core.schemas.ConfigSchema attribute)</a>
+        <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.CheckpointInitializerConfig.output_path">output_path (noether.core.schemas.CheckpointInitializerConfig attribute)</a>
 
         <ul>
+          <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.ConfigSchema.output_path">(noether.core.schemas.ConfigSchema attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/initializers/index.html#noether.core.schemas.initializers.CheckpointInitializerConfig.output_path">(noether.core.schemas.initializers.CheckpointInitializerConfig attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema.output_path">(noether.core.schemas.schema.ConfigSchema attribute)</a>
 </li>
         </ul></li>
@@ -11653,14 +11651,14 @@
           <li><a href="autoapi/noether/data/pipeline/sample_processors/replace_key/index.html#noether.data.pipeline.sample_processors.replace_key.ReplaceKeySampleProcessor">(class in noether.data.pipeline.sample_processors.replace_key)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/logging/index.html#noether.core.utils.logging.CustomFormatter.RESET">RESET (noether.core.utils.logging.CustomFormatter attribute)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/utils/logging/formatting/index.html#noether.core.utils.logging.formatting.CustomFormatter.RESET">(noether.core.utils.logging.formatting.CustomFormatter attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/stats/index.html#noether.data.stats.RunningMoments.reset">reset() (noether.data.stats.RunningMoments method)</a>
 </li>
         <li><a href="autoapi/noether/modeling/modules/layers/linear_projection/index.html#noether.modeling.modules.layers.linear_projection.LinearProjection.reset_parameters">reset_parameters() (noether.modeling.modules.layers.linear_projection.LinearProjection method)</a>
@@ -11711,6 +11709,12 @@
           <li><a href="autoapi/noether/core/callbacks/checkpoint/index.html#noether.core.callbacks.checkpoint.EmaCallback.resume_from_checkpoint">(noether.core.callbacks.checkpoint.EmaCallback method)</a>
 </li>
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.EmaCallback.resume_from_checkpoint">(noether.core.callbacks.EmaCallback method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.ConfigSchema.resume_output_path">resume_output_path (noether.core.schemas.ConfigSchema attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema.resume_output_path">(noether.core.schemas.schema.ConfigSchema attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.ConfigSchema.resume_run_id">resume_run_id (noether.core.schemas.ConfigSchema attribute)</a>
