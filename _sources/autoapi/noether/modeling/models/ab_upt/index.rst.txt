@@ -19,6 +19,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.models.ab_upt.ReadoutLayer
    noether.modeling.models.ab_upt.AnchoredBranchedUPT
 
 
@@ -30,6 +31,28 @@ Module Contents
 .. py:data:: LayerCache
 
 .. py:data:: ModelKVCache
+
+.. py:class:: ReadoutLayer(decoder_config, hidden_dim, condition_dim = None)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   The final readout layer for AB-UPT, which applies an AdaLN-style modulation followed by a linear projection to the desired output dimension.
+
+
+   .. py:attribute:: norm_final
+
+
+   .. py:attribute:: linear
+
+
+   .. py:attribute:: modulation
+      :value: None
+
+
+
+   .. py:method:: forward(x, condition)
+
 
 .. py:class:: AnchoredBranchedUPT(config)
 
@@ -141,7 +164,7 @@ Module Contents
 
 
 
-   .. py:method:: forward(geometry_position = None, geometry_supernode_idx = None, geometry_batch_idx = None, domain_anchor_positions = None, domain_query_positions = None, domain_anchor_features = None, domain_query_features = None, conditioning_inputs = None, kv_cache = None)
+   .. py:method:: forward(geometry_position = None, geometry_supernode_idx = None, geometry_batch_idx = None, domain_anchor_positions = None, domain_query_positions = None, domain_anchor_features = None, domain_query_features = None, conditioning_inputs = None, geometry_conditioning_inputs = None, kv_cache = None)
 
       Forward pass of the AB-UPT model.
 
@@ -153,6 +176,8 @@ Module Contents
               geometry_batch_idx=...,
               domain_anchor_positions={"surface": surface_pos, "volume": volume_pos},
               domain_query_positions={"surface": query_pos},
+              domain_anchor_features={"surface": surface_features, "volume": volume_features},
+              domain_query_features={"surface": query_features},
               conditioning_inputs={"geometry_design_parameters": design_params},
           )
 
@@ -163,7 +188,15 @@ Module Contents
       :param domain_query_positions: Per-domain query positions (optional).
       :param domain_anchor_features: Per-domain anchor input features (optional), matching the shape of ``domain_anchor_positions``.
       :param domain_query_features: Per-domain query input features (optional), matching the shape of ``domain_query_positions``.
-      :param conditioning_inputs: Conditioning tensors, e.g. ``{"geometry_design_parameters": (B, D)}``.
+      :param conditioning_inputs: Conditioning tensors for physics + decoder blocks,
+                                  e.g. ``{"geometry_design_parameters": (B, D)}``.
+      :param geometry_conditioning_inputs: Conditioning tensors for the geometry
+                                           branch. When ``None`` and ``conditioning_inputs`` is set, the
+                                           geometry branch automatically reuses ``conditioning_inputs``
+                                           if the configured ``geometry_conditioning_dims`` matches
+                                           ``data_specs.conditioning_dims`` (the common case). Pass an
+                                           explicit dict to feed a different conditioning to geometry,
+                                           or leave it ``None`` when the geometry branch is unconditioned.
       :param kv_cache: KV cache from a previous forward call.
 
       :returns: Tuple of (predictions, kv_cache).

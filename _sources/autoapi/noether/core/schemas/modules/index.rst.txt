@@ -733,12 +733,38 @@ Package Contents
       Dimensionality of the input coordinates.
 
 
+   .. py:attribute:: mode
+      :type:  Literal['wavelength', 'nerf']
+      :value: None
+
+
+      Frequency schedule.
+
+      - ``"wavelength"`` (default): transformer-style geometric wavelengths from ``1`` to
+        ``max_wavelength``. Suitable for integer / unnormalized coordinates.
+      - ``"nerf"``: NeRF-style log-spaced frequencies from ``π`` to ``π * max_frequency``.
+        Suitable for coordinates normalized to ``[-1, 1]``. The ``L`` available bands
+        are distributed evenly in log-frequency across this range.
+
+
    .. py:attribute:: max_wavelength
       :type:  int
       :value: None
 
 
-      Maximum wavelength for the sine-cosine embeddings.
+      Maximum wavelength. Only used when ``mode == "wavelength"``.
+
+
+   .. py:attribute:: max_frequency
+      :type:  float | None
+      :value: None
+
+
+      Highest frequency band for NeRF mode, in units of ``π``. The ``L`` frequencies
+      are log-spaced between ``π`` (wavelength 2, spans the ``[-1, 1]`` domain) and
+      ``π * max_frequency`` (wavelength ``2 / max_frequency``). Required when
+      ``mode == "nerf"``; pick based on the smallest spatial scale you need to resolve
+      in normalized coordinates (rough heuristic: ``1 / typical_point_spacing``).
 
 
 .. py:class:: LayerScaleConfig(/, **data)

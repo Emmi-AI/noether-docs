@@ -469,6 +469,7 @@
 <li class="toctree-l6"><a class="reference internal" href="../../../core/schemas/modules/layers/linear_projection/index.html">noether.core.schemas.modules.layers.linear_projection</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../../../core/schemas/modules/layers/rope_frequency/index.html">noether.core.schemas.modules.layers.rope_frequency</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../../../core/schemas/modules/layers/scalar_conditioner/index.html">noether.core.schemas.modules.layers.scalar_conditioner</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../core/schemas/modules/layers/vectors_conditioner/index.html">noether.core.schemas.modules.layers.vectors_conditioner</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="../../../core/schemas/modules/mlp/index.html">noether.core.schemas.modules.mlp</a></li>
@@ -769,6 +770,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/rope_frequency/index.html">noether.modeling.modules.layers.rope_frequency</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../modeling/modules/mlp/index.html">noether.modeling.modules.mlp</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.mlp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -872,7 +874,7 @@
 <td><p>Normalizes data using mean and standard deviation. It shifts the data by subtracting the mean and scales it by dividing by the standard deviation.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer" title="noether.data.preprocessors.normalizers.PositionNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PositionNormalizer</span></code></a></p></td>
-<td><p>Normalizes position data to a range of [0, scale]. It inherits from ShiftAndScaleNormalizer and applies a shift and scale based on the provided raw position min and max values.</p></td>
+<td><p>Normalizes position data to a range of [0, scale], or [-scale, scale] when <code class="docutils literal notranslate"><span class="pre">zero_center</span></code> is True. It inherits from ShiftAndScaleNormalizer and applies a shift and scale based on the provided raw position min and max values.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizer" title="noether.data.preprocessors.normalizers.FieldNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldNormalizer</span></code></a></p></td>
 <td><p>Preprocessor that normalizes a field based on a specified strategy and dataset statistics.</p></td>
@@ -978,11 +980,11 @@
 <dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizer">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">PositionNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalizer_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizer" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer" title="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizer</span></code></a></p>
-<p>Normalizes position data to a range of [0, scale]. It inherits from ShiftAndScaleNormalizer and applies a shift and scale based on the provided raw position min and max values.</p>
+<p>Normalizes position data to a range of [0, scale], or [-scale, scale] when <code class="docutils literal notranslate"><span class="pre">zero_center</span></code> is True. It inherits from ShiftAndScaleNormalizer and applies a shift and scale based on the provided raw position min and max values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.PositionNormalizerConfig" title="noether.core.schemas.normalizers.PositionNormalizerConfig"><em>noether.core.schemas.normalizers.PositionNormalizerConfig</em></a>) – Configuration containing raw position min, max, and scale values. See <a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.PositionNormalizerConfig" title="noether.core.schemas.normalizers.PositionNormalizerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PositionNormalizerConfig</span></code></a> for details.</p></li>
+<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.PositionNormalizerConfig" title="noether.core.schemas.normalizers.PositionNormalizerConfig"><em>noether.core.schemas.normalizers.PositionNormalizerConfig</em></a>) – Configuration containing raw position min, max, scale, and zero_center values. See <a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.PositionNormalizerConfig" title="noether.core.schemas.normalizers.PositionNormalizerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PositionNormalizerConfig</span></code></a> for details.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
 </dd>
@@ -995,6 +997,11 @@
 </dd>
 </dl>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizer.EPSILON">
+<span class="sig-name descname"><span class="pre">EPSILON</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1e-06</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizer.EPSILON" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizer.raw_pos_min">
 <span class="sig-name descname"><span class="pre">raw_pos_min</span></span><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizer.raw_pos_min" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1002,6 +1009,11 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizer.raw_pos_max">
 <span class="sig-name descname"><span class="pre">raw_pos_max</span></span><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizer.raw_pos_max" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizer.zero_center">
+<span class="sig-name descname"><span class="pre">zero_center</span></span><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizer.zero_center" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1152,8 +1164,10 @@ If denormalization is not supported, it raises NotImplementedError or decide to 
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer"><code class="docutils literal notranslate"><span class="pre">PositionNormalizer</span></code></a><ul>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer.EPSILON"><code class="docutils literal notranslate"><span class="pre">PositionNormalizer.EPSILON</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer.raw_pos_min"><code class="docutils literal notranslate"><span class="pre">PositionNormalizer.raw_pos_min</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer.raw_pos_max"><code class="docutils literal notranslate"><span class="pre">PositionNormalizer.raw_pos_max</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer.zero_center"><code class="docutils literal notranslate"><span class="pre">PositionNormalizer.zero_center</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer.resizing_scale"><code class="docutils literal notranslate"><span class="pre">PositionNormalizer.resizing_scale</span></code></a></li>
 </ul>
 </li>

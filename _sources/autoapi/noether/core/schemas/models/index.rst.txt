@@ -121,6 +121,12 @@ Package Contents
       Hidden dimension of the model.
 
 
+   .. py:attribute:: condition_dim
+      :type:  int | None
+      :value: None
+
+
+
    .. py:attribute:: physics_blocks
       :type:  list[Literal['self', 'shared', 'cross', 'joint', 'perceiver', 'self_untied', 'cross_untied', 'joint_untied', 'perceiver_untied']]
 
@@ -164,6 +170,19 @@ Package Contents
       Drop path rate for stochastic depth. Defaults to 0.0 (no drop path).
 
 
+   .. py:attribute:: geometry_conditioning_dims
+      :type:  noether.core.schemas.dataset.FieldDimSpec | None
+      :value: None
+
+
+      Per-named-field conditioning spec for geometry transformer blocks. When
+      left unset, defaults to ``data_specs.conditioning_dims`` so the geometry
+      branch sees the same conditioning as the rest of the model. An explicit
+      empty :class:`FieldDimSpec` (``total_dim == 0``) opts out — useful for
+      diffusion, where timestep modulation should touch physics + per-domain
+      decoders but not the geometry branch (geometry is invariant to noise level).
+
+
    .. py:attribute:: data_specs
       :type:  noether.core.schemas.dataset.ModelDataSpecs
 
@@ -173,12 +192,6 @@ Package Contents
    .. py:method:: migrate_shared_to_self()
 
       Migrate deprecated 'shared' block type to 'self'.
-
-
-
-   .. py:method:: set_condition_dim()
-
-      Set condition_dim in transformer_block_config based on data_specs.
 
 
 
@@ -197,6 +210,30 @@ Package Contents
    .. py:method:: domain_decoder_configs()
 
       Per-domain decoder projection configs, keyed by domain name.
+
+
+
+   .. py:method:: conditioner_config()
+
+      Configuration for the scalar conditioner module.
+
+
+
+   .. py:method:: set_condition_dim()
+
+      Set condition_dim in transformer_block_config based on data_specs.
+
+
+
+   .. py:method:: geometry_transformer_block_config()
+
+      Transformer block config for geometry encoder, with condition_dim set to geometry_conditioning_dims.
+
+
+
+   .. py:method:: geometry_conditioner_config()
+
+      Configuration for the scalar conditioner module.
 
 
 

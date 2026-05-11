@@ -157,7 +157,15 @@ Module Contents
       :value: None
 
 
-      Scaling factor, the coordinates will be scaled linearly between [0, scale]. Defaults to 1000.
+      Scaling factor, the coordinates will be scaled linearly between [0, scale] (or [-scale, scale] if ``zero_center`` is True). Defaults to 1000.
+
+
+   .. py:attribute:: zero_center
+      :type:  bool
+      :value: False
+
+
+      If True, coordinates are scaled to [-scale, scale] instead of [0, scale].
 
 
    .. py:method:: check_min_max()
@@ -225,8 +233,8 @@ Module Contents
    For ``"mean_std"`` normalization, the builder looks up ``{field}_mean`` and
    ``{field}_std`` in the dataset statistics (customizable via ``stat_keys``).
 
-   For ``"position"`` normalization, the builder looks up ``raw_pos_min`` and
-   ``raw_pos_max`` (customizable via ``stat_keys``).
+   For ``"min_max"`` normalization, the builder looks up ``{field}_min`` and
+   ``{field}_max`` (customizable via ``stat_keys``).
 
    Create a new model by parsing and validating input data from keyword arguments.
 
@@ -245,11 +253,11 @@ Module Contents
 
 
    .. py:attribute:: strategy
-      :type:  Literal['mean_std', 'position']
+      :type:  Literal['mean_std', 'position', 'min_max']
       :value: 'mean_std'
 
 
-      Normalization strategy. ``"mean_std"`` for mean/std normalization, ``"position"`` for position normalization.
+      Normalization strategy. ``"mean_std"`` for mean/std normalization, ``"min_max"`` for min/max normalization.``"position"`` is an alias for min_max,
 
 
    .. py:attribute:: logscale
@@ -266,7 +274,7 @@ Module Contents
 
 
       ``{"mean": "custom_mean_key", "std": "custom_std_key"}``.
-      For ``"position"``: ``{"min": "custom_min_key", "max": "custom_max_key"}``.
+      For ``"min_max/position"``: ``{"min": "custom_min_key", "max": "custom_max_key"}``.
 
       :type: Optional overrides for statistic key lookup. For ``"mean_std"``
 
@@ -277,6 +285,14 @@ Module Contents
 
 
       Scaling factor for position normalization. Coordinates are scaled to [0, scale]. Only used for ``"position"``.
+
+
+   .. py:attribute:: zero_center
+      :type:  bool
+      :value: False
+
+
+      If True, position normalization is zero-centered (scaled to [-scale, scale]) instead of [0, scale]. Only used for ``"position"``.
 
 
 .. py:data:: AnyNormalizer

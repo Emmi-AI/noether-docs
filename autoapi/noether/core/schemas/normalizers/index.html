@@ -469,6 +469,7 @@
 <li class="toctree-l6"><a class="reference internal" href="../modules/layers/linear_projection/index.html">noether.core.schemas.modules.layers.linear_projection</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../modules/layers/rope_frequency/index.html">noether.core.schemas.modules.layers.rope_frequency</a></li>
 <li class="toctree-l6"><a class="reference internal" href="../modules/layers/scalar_conditioner/index.html">noether.core.schemas.modules.layers.scalar_conditioner</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../modules/layers/vectors_conditioner/index.html">noether.core.schemas.modules.layers.vectors_conditioner</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="../modules/mlp/index.html">noether.core.schemas.modules.mlp</a></li>
@@ -769,6 +770,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/rope_frequency/index.html">noether.modeling.modules.layers.rope_frequency</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../modeling/modules/mlp/index.html">noether.modeling.modules.mlp</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.mlp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1050,7 +1052,13 @@ validated to form a valid model.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.normalizers.PositionNormalizerConfig.scale">
 <span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.normalizers.PositionNormalizerConfig.scale" title="Link to this definition">¶</a></dt>
-<dd><p>Scaling factor, the coordinates will be scaled linearly between [0, scale]. Defaults to 1000.</p>
+<dd><p>Scaling factor, the coordinates will be scaled linearly between [0, scale] (or [-scale, scale] if <code class="docutils literal notranslate"><span class="pre">zero_center</span></code> is True). Defaults to 1000.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.normalizers.PositionNormalizerConfig.zero_center">
+<span class="sig-name descname"><span class="pre">zero_center</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.core.schemas.normalizers.PositionNormalizerConfig.zero_center" title="Link to this definition">¶</a></dt>
+<dd><p>If True, coordinates are scaled to [-scale, scale] instead of [0, scale].</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1127,8 +1135,8 @@ Assumed in log scale if logscale is True.</p>
 dataset’s statistics file.</p>
 <p>For <code class="docutils literal notranslate"><span class="pre">&quot;mean_std&quot;</span></code> normalization, the builder looks up <code class="docutils literal notranslate"><span class="pre">{field}_mean</span></code> and
 <code class="docutils literal notranslate"><span class="pre">{field}_std</span></code> in the dataset statistics (customizable via <code class="docutils literal notranslate"><span class="pre">stat_keys</span></code>).</p>
-<p>For <code class="docutils literal notranslate"><span class="pre">&quot;position&quot;</span></code> normalization, the builder looks up <code class="docutils literal notranslate"><span class="pre">raw_pos_min</span></code> and
-<code class="docutils literal notranslate"><span class="pre">raw_pos_max</span></code> (customizable via <code class="docutils literal notranslate"><span class="pre">stat_keys</span></code>).</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">&quot;min_max&quot;</span></code> normalization, the builder looks up <code class="docutils literal notranslate"><span class="pre">{field}_min</span></code> and
+<code class="docutils literal notranslate"><span class="pre">{field}_max</span></code> (customizable via <code class="docutils literal notranslate"><span class="pre">stat_keys</span></code>).</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
 validated to form a valid model.</p>
@@ -1146,8 +1154,8 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.normalizers.FieldNormalizerConfig.strategy">
-<span class="sig-name descname"><span class="pre">strategy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'mean_std'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'position'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mean_std'</span></em><a class="headerlink" href="#noether.core.schemas.normalizers.FieldNormalizerConfig.strategy" title="Link to this definition">¶</a></dt>
-<dd><p>Normalization strategy. <code class="docutils literal notranslate"><span class="pre">&quot;mean_std&quot;</span></code> for mean/std normalization, <code class="docutils literal notranslate"><span class="pre">&quot;position&quot;</span></code> for position normalization.</p>
+<span class="sig-name descname"><span class="pre">strategy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'mean_std'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'position'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'min_max'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mean_std'</span></em><a class="headerlink" href="#noether.core.schemas.normalizers.FieldNormalizerConfig.strategy" title="Link to this definition">¶</a></dt>
+<dd><p>Normalization strategy. <code class="docutils literal notranslate"><span class="pre">&quot;mean_std&quot;</span></code> for mean/std normalization, <code class="docutils literal notranslate"><span class="pre">&quot;min_max&quot;</span></code> for min/max normalization.``”position”`` is an alias for min_max,</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1160,7 +1168,7 @@ validated to form a valid model.</p>
 <dt class="sig sig-object py" id="noether.core.schemas.normalizers.FieldNormalizerConfig.stat_keys">
 <span class="sig-name descname"><span class="pre">stat_keys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.normalizers.FieldNormalizerConfig.stat_keys" title="Link to this definition">¶</a></dt>
 <dd><p><code class="docutils literal notranslate"><span class="pre">{&quot;mean&quot;:</span> <span class="pre">&quot;custom_mean_key&quot;,</span> <span class="pre">&quot;std&quot;:</span> <span class="pre">&quot;custom_std_key&quot;}</span></code>.
-For <code class="docutils literal notranslate"><span class="pre">&quot;position&quot;</span></code>: <code class="docutils literal notranslate"><span class="pre">{&quot;min&quot;:</span> <span class="pre">&quot;custom_min_key&quot;,</span> <span class="pre">&quot;max&quot;:</span> <span class="pre">&quot;custom_max_key&quot;}</span></code>.</p>
+For <code class="docutils literal notranslate"><span class="pre">&quot;min_max/position&quot;</span></code>: <code class="docutils literal notranslate"><span class="pre">{&quot;min&quot;:</span> <span class="pre">&quot;custom_min_key&quot;,</span> <span class="pre">&quot;max&quot;:</span> <span class="pre">&quot;custom_max_key&quot;}</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Optional overrides for statistic key lookup. For <code class="docutils literal notranslate"><span class="pre">&quot;mean_std&quot;</span></code></p>
@@ -1172,6 +1180,12 @@ For <code class="docutils literal notranslate"><span class="pre">&quot;position&
 <dt class="sig sig-object py" id="noether.core.schemas.normalizers.FieldNormalizerConfig.scale">
 <span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.normalizers.FieldNormalizerConfig.scale" title="Link to this definition">¶</a></dt>
 <dd><p>Scaling factor for position normalization. Coordinates are scaled to [0, scale]. Only used for <code class="docutils literal notranslate"><span class="pre">&quot;position&quot;</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.normalizers.FieldNormalizerConfig.zero_center">
+<span class="sig-name descname"><span class="pre">zero_center</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.core.schemas.normalizers.FieldNormalizerConfig.zero_center" title="Link to this definition">¶</a></dt>
+<dd><p>If True, position normalization is zero-centered (scaled to [-scale, scale]) instead of [0, scale]. Only used for <code class="docutils literal notranslate"><span class="pre">&quot;position&quot;</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1289,6 +1303,7 @@ For <code class="docutils literal notranslate"><span class="pre">&quot;position&
 <li><a class="reference internal" href="#noether.core.schemas.normalizers.PositionNormalizerConfig.raw_pos_min"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.raw_pos_min</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.normalizers.PositionNormalizerConfig.raw_pos_max"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.raw_pos_max</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.normalizers.PositionNormalizerConfig.scale"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.scale</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.normalizers.PositionNormalizerConfig.zero_center"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.zero_center</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.normalizers.PositionNormalizerConfig.check_min_max"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.check_min_max()</span></code></a></li>
 </ul>
 </li>
@@ -1306,6 +1321,7 @@ For <code class="docutils literal notranslate"><span class="pre">&quot;position&
 <li><a class="reference internal" href="#noether.core.schemas.normalizers.FieldNormalizerConfig.logscale"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.logscale</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.normalizers.FieldNormalizerConfig.stat_keys"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.stat_keys</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.normalizers.FieldNormalizerConfig.scale"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.scale</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.normalizers.FieldNormalizerConfig.zero_center"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.zero_center</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.normalizers.AnyNormalizer"><code class="docutils literal notranslate"><span class="pre">AnyNormalizer</span></code></a></li>

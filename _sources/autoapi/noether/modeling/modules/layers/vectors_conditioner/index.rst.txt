@@ -1,0 +1,92 @@
+noether.modeling.modules.layers.vectors_conditioner
+===================================================
+
+.. py:module:: noether.modeling.modules.layers.vectors_conditioner
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.layers.vectors_conditioner.VectorsConditioner
+
+
+Module Contents
+---------------
+
+.. py:class:: VectorsConditioner(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   
+   Embeds a set of named vectors into a single conditioning vector.
+
+   Each input vector named in ``config.conditioning_spec`` is encoded with a
+   NeRF-mode :class:`ContinuousSincosEmbed` followed by a per-vector MLP. The
+   resulting per-vector embeddings are concatenated and projected to
+   ``condition_dim`` by a shared MLP.
+
+   .. note::
+
+       All input vectors must be normalized to ``[-1, 1]``. The underlying
+       sine-cosine embedding uses NeRF-style frequencies tuned for that range;
+       values outside it will alias and produce uninformative embeddings.
+
+   :param config: configuration for the VectorsConditioner. See :class:`~noether.core.schemas.modules.layers.vectors_conditioner.VectorsConditionerConfig` for available options.
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: condition_dim
+
+
+   .. py:attribute:: conditioning_spec
+
+
+   .. py:attribute:: embedder
+
+
+   .. py:attribute:: shared_mlp
+
+
+   .. py:method:: forward(**conditioning_inputs)
+
+      Embed a set of named vectors into a single conditioning vector.
+
+      All vectors declared in ``config.conditioning_spec`` must be supplied as
+      keyword arguments matching the spec names. Inputs must be normalized to
+      ``[-1, 1]``.
+
+      :param \*\*conditioning_inputs: Vectors with shape ``(batch_size, num_features)``,
+                                      keyed by the names declared in ``config.conditioning_spec``. The
+                                      ``num_features`` of each vector must match the dimension declared in
+                                      the spec. All inputs must share the same ``batch_size``.
+
+      :returns: Conditioning vector with shape ``(batch_size, condition_dim)``.
+
+      :raises ValueError: If the supplied inputs don't match the spec (wrong number of
+          vectors, missing key, wrong rank, or wrong feature dimension).
+
+      .. rubric:: Example
+
+      .. code-block:: python
+
+          conditioner = VectorsConditioner(
+              VectorsConditionerConfig(
+                  hidden_dim=64,
+                  conditioning_spec={"angle": 1, "shape_params": 3},
+                  condition_dim=128,
+                  max_frequency=1024,
+              )
+          )
+          # Inputs normalized to [-1, 1].
+          angle = torch.tensor([[0.5], [-0.2]])  # shape (batch_size, 1)
+          shape_params = torch.tensor([[0.1, -0.3, 0.7], [-0.5, 0.2, -0.8]])  # shape (batch_size, 3)
+          condition = conditioner(angle=angle, shape_params=shape_params)
+          # condition.shape == (2, 128)
+
+
+

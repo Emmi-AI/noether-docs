@@ -84,9 +84,9 @@ Module Contents
    Bases: :py:obj:`ShiftAndScaleNormalizer`
 
 
-   Normalizes position data to a range of [0, scale]. It inherits from ShiftAndScaleNormalizer and applies a shift and scale based on the provided raw position min and max values.
+   Normalizes position data to a range of [0, scale], or [-scale, scale] when ``zero_center`` is True. It inherits from ShiftAndScaleNormalizer and applies a shift and scale based on the provided raw position min and max values.
 
-   :param normalizer_config: Configuration containing raw position min, max, and scale values. See :class:`~noether.core.schemas.normalizers.PositionNormalizerConfig` for details.
+   :param normalizer_config: Configuration containing raw position min, max, scale, and zero_center values. See :class:`~noether.core.schemas.normalizers.PositionNormalizerConfig` for details.
    :param \*\*kwargs: Additional arguments passed to the parent class.
 
    :raises ValueError: If `raw_pos_min` and `raw_pos_max` do not have the same length.
@@ -94,10 +94,18 @@ Module Contents
    :raises ValueError: If `scale` is not a positive number.
 
 
+   .. py:attribute:: EPSILON
+      :value: 1e-06
+
+
+
    .. py:attribute:: raw_pos_min
 
 
    .. py:attribute:: raw_pos_max
+
+
+   .. py:attribute:: zero_center
 
 
    .. py:attribute:: resizing_scale

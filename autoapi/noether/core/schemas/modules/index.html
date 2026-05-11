@@ -469,6 +469,7 @@
 <li class="toctree-l6"><a class="reference internal" href="layers/linear_projection/index.html">noether.core.schemas.modules.layers.linear_projection</a></li>
 <li class="toctree-l6"><a class="reference internal" href="layers/rope_frequency/index.html">noether.core.schemas.modules.layers.rope_frequency</a></li>
 <li class="toctree-l6"><a class="reference internal" href="layers/scalar_conditioner/index.html">noether.core.schemas.modules.layers.scalar_conditioner</a></li>
+<li class="toctree-l6"><a class="reference internal" href="layers/vectors_conditioner/index.html">noether.core.schemas.modules.layers.vectors_conditioner</a></li>
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="mlp/index.html">noether.core.schemas.modules.mlp</a></li>
@@ -769,6 +770,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/rope_frequency/index.html">noether.modeling.modules.layers.rope_frequency</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../modeling/modules/mlp/index.html">noether.modeling.modules.mlp</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.mlp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -1631,9 +1633,32 @@ validated to form a valid model.</p>
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'wavelength'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'nerf'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.mode" title="Link to this definition">¶</a></dt>
+<dd><p>Frequency schedule.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;wavelength&quot;</span></code> (default): transformer-style geometric wavelengths from <code class="docutils literal notranslate"><span class="pre">1</span></code> to
+<code class="docutils literal notranslate"><span class="pre">max_wavelength</span></code>. Suitable for integer / unnormalized coordinates.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;nerf&quot;</span></code>: NeRF-style log-spaced frequencies from <code class="docutils literal notranslate"><span class="pre">π</span></code> to <code class="docutils literal notranslate"><span class="pre">π</span> <span class="pre">*</span> <span class="pre">max_frequency</span></code>.
+Suitable for coordinates normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>. The <code class="docutils literal notranslate"><span class="pre">L</span></code> available bands
+are distributed evenly in log-frequency across this range.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.max_wavelength">
 <span class="sig-name descname"><span class="pre">max_wavelength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.max_wavelength" title="Link to this definition">¶</a></dt>
-<dd><p>Maximum wavelength for the sine-cosine embeddings.</p>
+<dd><p>Maximum wavelength. Only used when <code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">==</span> <span class="pre">&quot;wavelength&quot;</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.max_frequency">
+<span class="sig-name descname"><span class="pre">max_frequency</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.max_frequency" title="Link to this definition">¶</a></dt>
+<dd><p>Highest frequency band for NeRF mode, in units of <code class="docutils literal notranslate"><span class="pre">π</span></code>. The <code class="docutils literal notranslate"><span class="pre">L</span></code> frequencies
+are log-spaced between <code class="docutils literal notranslate"><span class="pre">π</span></code> (wavelength 2, spans the <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> domain) and
+<code class="docutils literal notranslate"><span class="pre">π</span> <span class="pre">*</span> <span class="pre">max_frequency</span></code> (wavelength <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">/</span> <span class="pre">max_frequency</span></code>). Required when
+<code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">==</span> <span class="pre">&quot;nerf&quot;</span></code>; pick based on the smallest spatial scale you need to resolve
+in normalized coordinates (rough heuristic: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">typical_point_spacing</span></code>).</p>
 </dd></dl>
 
 </dd></dl>
@@ -2291,7 +2316,9 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.modules.ContinuousSincosEmbeddingConfig"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.hidden_dim</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.input_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.mode"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.mode</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.max_wavelength"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.max_wavelength</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.modules.ContinuousSincosEmbeddingConfig.max_frequency"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.max_frequency</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.LayerScaleConfig"><code class="docutils literal notranslate"><span class="pre">LayerScaleConfig</span></code></a><ul>

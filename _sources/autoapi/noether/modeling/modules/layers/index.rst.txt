@@ -17,6 +17,7 @@ Submodules
    /autoapi/noether/modeling/modules/layers/rope_frequency/index
    /autoapi/noether/modeling/modules/layers/scalar_conditioner/index
    /autoapi/noether/modeling/modules/layers/transformer_batchnorm/index
+   /autoapi/noether/modeling/modules/layers/vectors_conditioner/index
 
 
 Classes
@@ -45,6 +46,13 @@ Package Contents
    The original implementation from the Attenion is All You Need paper, deals with descrete 1D cordinates (i.e., a sequence).
    Howerver, this implementation is able to deal with 2D and 3D coordinate systems as well.
 
+   Two frequency schedules are supported via ``config.mode``:
+
+   - ``"wavelength"`` (default): geometric wavelengths from ``1`` to
+     ``max_wavelength``, matching the original Transformer encoding. Use this for
+     integer / unnormalized coordinates.
+   - ``"nerf"``: log-spaced frequencies from ``π`` to ``π * max_frequency``. Use this
+     for coordinates normalized to ``[-1, 1]``.
 
    :param config: Configuration for the ContinuousSincosEmbed module. See :class:`~noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig` for the available options.
 
@@ -69,7 +77,13 @@ Package Contents
    .. py:attribute:: sincos_padding
 
 
+   .. py:attribute:: mode
+
+
    .. py:attribute:: max_wavelength
+
+
+   .. py:attribute:: max_frequency
 
 
    .. py:attribute:: padding
@@ -287,7 +301,7 @@ Package Contents
                   hidden_dim=64,
                   num_scalars=2,
                   condition_dim=128,
-                  init_weights="gaussian",
+                  init_weights="truncnormal002",
               )
           )
           geometry_angle = torch.tensor([75.3, 80.1])  # shape (batch_size,)
