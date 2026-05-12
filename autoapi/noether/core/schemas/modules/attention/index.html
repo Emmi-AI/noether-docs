@@ -973,6 +973,12 @@ validated to form a valid model.</p>
 <dd><p>Dimensionality of each attention head.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.modules.attention.AttentionConfig.qk_norm">
+<span class="sig-name descname"><span class="pre">qk_norm</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.attention.AttentionConfig.qk_norm" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to apply layer normalization to the query and key features before computing attention scores.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.schemas.modules.attention.AttentionConfig.validate_hidden_dim_and_num_heads">
 <span class="sig-name descname"><span class="pre">validate_hidden_dim_and_num_heads</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.attention.AttentionConfig.validate_hidden_dim_and_num_heads" title="Link to this definition">¶</a></dt>
@@ -1400,6 +1406,7 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.modules.attention.AttentionConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">AttentionConfig.init_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.attention.AttentionConfig.bias"><code class="docutils literal notranslate"><span class="pre">AttentionConfig.bias</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.attention.AttentionConfig.head_dim"><code class="docutils literal notranslate"><span class="pre">AttentionConfig.head_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.modules.attention.AttentionConfig.qk_norm"><code class="docutils literal notranslate"><span class="pre">AttentionConfig.qk_norm</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.modules.attention.AttentionConfig.validate_hidden_dim_and_num_heads"><code class="docutils literal notranslate"><span class="pre">AttentionConfig.validate_hidden_dim_and_num_heads()</span></code></a></li>
 </ul>
 </li>

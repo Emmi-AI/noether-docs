@@ -104,6 +104,14 @@ Module Contents
       Dimensionality of each attention head.
 
 
+   .. py:attribute:: qk_norm
+      :type:  bool
+      :value: None
+
+
+      Whether to apply layer normalization to the query and key features before computing attention scores.
+
+
    .. py:method:: validate_hidden_dim_and_num_heads()
 
 
