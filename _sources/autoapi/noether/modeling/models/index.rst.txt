@@ -118,13 +118,17 @@ Package Contents
 
 
 
-   .. py:method:: physics_blocks_forward(x_physics, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition, kv_cache = None)
+   .. py:method:: physics_blocks_forward(x_physics, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition, physics_blocks_cache = None)
 
       Run the physics-block stack on a pre-built input tensor.
 
+      Perceiver blocks always re-project K/V from ``geometry_encoding`` and
+      contribute ``None`` to the returned cache; only transformer blocks
+      cache their anchor self-attention K/V.
 
 
-   .. py:method:: decoder_blocks_forward(x_physics, physics_token_specs, per_domain_token_specs, decoder_attn_kwargs, condition, kv_cache = None)
+
+   .. py:method:: decoder_blocks_forward(x_physics, physics_token_specs, per_domain_token_specs, decoder_attn_kwargs, condition, decoders_cache = None)
 
       Forward pass through the per-domain decoder blocks.
 
@@ -132,7 +136,7 @@ Package Contents
 
 
 
-   .. py:method:: create_rope_frequencies(physics_positions, geometry_position = None, geometry_supernode_idx = None)
+   .. py:method:: create_rope_frequencies(physics_positions, geometry_position = None, geometry_supernode_idx = None, geometry_rope = None)
 
       Create RoPE frequencies for all relevant positions.
 
@@ -140,9 +144,15 @@ Package Contents
                                 positions, as returned by :meth:`build_physics_input`.
       :param geometry_position: Geometry mesh coordinates (optional).
       :param geometry_supernode_idx: Geometry supernode indices (optional).
+      :param geometry_rope: Precomputed geometry-supernode RoPE. When provided,
+                            bypasses ``geometry_position`` / ``geometry_supernode_idx`` for
+                            the perceiver ``k_freqs`` (needed in queries-only mode where
+                            geometry inputs aren't available).
 
-      :returns: Tuple of (geometry_attn_kwargs, decoder_attn_kwargs, physics_perceiver_attn_kwargs, physics_attn_kwargs).
-                decoder_attn_kwargs is keyed by domain name.
+      :returns: Tuple of (geometry_attn_kwargs, decoder_attn_kwargs,
+                physics_perceiver_attn_kwargs, physics_attn_kwargs, geometry_rope).
+                ``geometry_rope`` is the rope tensor used / computed (or ``None``
+                when there's no geometry branch).
 
 
 

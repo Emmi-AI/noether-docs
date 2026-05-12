@@ -11,7 +11,6 @@ Attributes
 
    noether.modeling.models.ab_upt.KVPair
    noether.modeling.models.ab_upt.LayerCache
-   noether.modeling.models.ab_upt.ModelKVCache
 
 
 Classes
@@ -19,6 +18,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.models.ab_upt.ModelKVCache
    noether.modeling.models.ab_upt.ReadoutLayer
    noether.modeling.models.ab_upt.AnchoredBranchedUPT
 
@@ -30,7 +30,46 @@ Module Contents
 
 .. py:data:: LayerCache
 
-.. py:data:: ModelKVCache
+.. py:class:: ModelKVCache
+
+   Bases: :py:obj:`TypedDict`
+
+
+   Caches that let a forward call skip work it has already done.
+
+   All keys are independent — pass any subset. ``geometry_encoding`` and
+   ``geometry_rope`` travel together (both depend only on the geometry mesh)
+   and are what diffusion sampling reuses across Euler steps.
+
+   * ``geometry_encoding`` — output of :meth:`AnchoredBranchedUPT.geometry_branch_forward`.
+     When present, the geometry encoder + transformer stack are skipped.
+   * ``geometry_rope`` — RoPE of the geometry supernode positions, used by
+     perceiver blocks as ``k_freqs``. Cached alongside ``geometry_encoding``
+     so subsequent calls don't need ``geometry_position``.
+   * ``physics_blocks`` — per-block anchor self-attention K/V (``None`` for
+     perceiver blocks, which always re-project from ``geometry_encoding``).
+     When present, anchors are not re-encoded; the call is decode-only.
+   * ``decoders`` — per-domain anchor K/V for each decoder block. Symmetric
+     with ``physics_blocks`` for the per-domain decoder stage.
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: geometry_encoding
+      :type:  torch.Tensor
+
+
+   .. py:attribute:: geometry_rope
+      :type:  torch.Tensor
+
+
+   .. py:attribute:: physics_blocks
+      :type:  list[LayerCache | None]
+
+
+   .. py:attribute:: decoders
+      :type:  dict[str, list[LayerCache]]
+
 
 .. py:class:: ReadoutLayer(decoder_config, hidden_dim, condition_dim = None)
 
@@ -136,13 +175,17 @@ Module Contents
 
 
 
-   .. py:method:: physics_blocks_forward(x_physics, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition, kv_cache = None)
+   .. py:method:: physics_blocks_forward(x_physics, geometry_encoding, physics_token_specs, physics_attn_kwargs, physics_perceiver_attn_kwargs, condition, physics_blocks_cache = None)
 
       Run the physics-block stack on a pre-built input tensor.
 
+      Perceiver blocks always re-project K/V from ``geometry_encoding`` and
+      contribute ``None`` to the returned cache; only transformer blocks
+      cache their anchor self-attention K/V.
 
 
-   .. py:method:: decoder_blocks_forward(x_physics, physics_token_specs, per_domain_token_specs, decoder_attn_kwargs, condition, kv_cache = None)
+
+   .. py:method:: decoder_blocks_forward(x_physics, physics_token_specs, per_domain_token_specs, decoder_attn_kwargs, condition, decoders_cache = None)
 
       Forward pass through the per-domain decoder blocks.
 
@@ -150,7 +193,7 @@ Module Contents
 
 
 
-   .. py:method:: create_rope_frequencies(physics_positions, geometry_position = None, geometry_supernode_idx = None)
+   .. py:method:: create_rope_frequencies(physics_positions, geometry_position = None, geometry_supernode_idx = None, geometry_rope = None)
 
       Create RoPE frequencies for all relevant positions.
 
@@ -158,9 +201,15 @@ Module Contents
                                 positions, as returned by :meth:`build_physics_input`.
       :param geometry_position: Geometry mesh coordinates (optional).
       :param geometry_supernode_idx: Geometry supernode indices (optional).
+      :param geometry_rope: Precomputed geometry-supernode RoPE. When provided,
+                            bypasses ``geometry_position`` / ``geometry_supernode_idx`` for
+                            the perceiver ``k_freqs`` (needed in queries-only mode where
+                            geometry inputs aren't available).
 
-      :returns: Tuple of (geometry_attn_kwargs, decoder_attn_kwargs, physics_perceiver_attn_kwargs, physics_attn_kwargs).
-                decoder_attn_kwargs is keyed by domain name.
+      :returns: Tuple of (geometry_attn_kwargs, decoder_attn_kwargs,
+                physics_perceiver_attn_kwargs, physics_attn_kwargs, geometry_rope).
+                ``geometry_rope`` is the rope tensor used / computed (or ``None``
+                when there's no geometry branch).
 
 
 
