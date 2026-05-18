@@ -34,6 +34,29 @@ Module Contents
 
 
 
+   .. py:method:: load_resolved(file_uri)
+      :staticmethod:
+
+
+      Inverse of :meth:`save_resolved` — load a previously-saved resolved config.
+
+      Reads the YAML with ``yaml.full_load`` (preserves ``!!python/tuple``
+      tags emitted for tuple-typed fields like dataset statistics), resolves
+      the ``config_schema_kind`` marker written by ``save_resolved`` to the
+      concrete :class:`ConfigSchema` subclass, and validates the rest of
+      the dict through Pydantic.
+
+      :param file_uri: Path to the YAML file produced by ``save_resolved``
+                       (typically ``<run_dir>/hp_resolved.yaml``).
+
+      :returns: The validated config schema instance.
+
+      :raises FileNotFoundError: if ``file_uri`` doesn't exist.
+      :raises pydantic.ValidationError: if the file is missing required fields
+          or the config schema's validators reject it.
+
+
+
    .. py:method:: log(stage_hyperparameters)
       :staticmethod:
 

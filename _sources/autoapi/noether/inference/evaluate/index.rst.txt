@@ -1,0 +1,86 @@
+noether.inference.evaluate
+==========================
+
+.. py:module:: noether.inference.evaluate
+
+.. autoapi-nested-parse::
+
+   Programmatic eval API — Python-side equivalent of ``noether-eval``.
+
+   The CLI does its work in :mod:`noether.inference.cli.main_inference`: it
+   loads ``<run_dir>/hp_resolved.yaml`` as the Hydra base config, injects
+   ``resume_*`` overrides, and dispatches through :class:`InferenceRunner`. This
+   module exposes the same flow as a normal function so Python callers (e.g.
+   notebooks, sweep scripts) don't have to shell out.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.inference.evaluate.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.inference.evaluate.evaluate
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: evaluate(run_dir, *, resume_checkpoint = 'latest', stage_name = None, callbacks = None, device = 'cuda', disable_tracker = False)
+
+   Run evaluation against a training run directory.
+
+   Programmatic equivalent of::
+
+       noether-eval run_dir=<run_dir> resume_checkpoint=<...> ...
+
+   Loads ``<run_dir>/hp_resolved.yaml`` via :meth:`Hyperparameters.load_resolved`,
+   wires the ``resume_*`` fields so checkpoints are read from the training
+   run, optionally replaces the trainer callback list, and dispatches through
+   :meth:`InferenceRunner.main` (single-process, no Hydra/CLI involvement).
+
+   :param run_dir: Training run output directory — the one that contains
+                   ``hp_resolved.yaml``. Typically ``<output_path>/<run_id>[/<stage_name>]``.
+   :param resume_checkpoint: Checkpoint tag to load. Examples: ``"latest"``,
+                             ``"best_model.<metric>"``, ``"E100"`` (epoch 100), ``"U2500"``
+                             (update 2500), ``"S40000"`` (sample 40000).
+   :param stage_name: Optional sub-stage name for *this* eval run's outputs.
+                      Logs / wandb / saved metrics land under
+                      ``<run_dir>/<stage_name>/``, separate from the training outputs.
+                      Leave ``None`` to write alongside the training run.
+   :param callbacks: If provided, replaces ``config.trainer.callbacks`` for the
+                     eval run. Pass the exact callbacks that should execute (e.g. a
+                     single sampling/rollout callback) — nothing from the training
+                     config's callback list is kept.
+   :param device: Device string passed to the trainer (default ``"cuda"``).
+                  For multi-GPU eval use the ``noether-eval`` CLI; this function
+                  is single-process.
+   :param disable_tracker: If ``True``, drop the saved tracker config so eval
+                           doesn't create a new wandb run.
+
+   :raises FileNotFoundError: if ``run_dir`` doesn't contain ``hp_resolved.yaml``.
+
+   Example::
+
+       from noether.inference import evaluate
+       from my_recipe.callbacks import SamplingCallbackConfig
+
+       for steps in [1, 2, 4, 8, 16]:
+           evaluate(
+               run_dir="outputs/abupt_diffusion/30035_2026-05-11_spk1e",
+               resume_checkpoint="best_model.loss.test.total",
+               stage_name=f"eval_steps{steps:02d}",
+               callbacks=[SamplingCallbackConfig(every_n_epochs=1, sampling_steps=steps)],
+           )
+
+

@@ -667,6 +667,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../inference/cli/main_inference/index.html">noether.inference.cli.main_inference</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../inference/evaluate/index.html">noether.inference.evaluate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../inference/run/index.html">noether.inference.run</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../inference/runners/index.html">noether.inference.runners</a><input class="toctree-checkbox" id="toctree-checkbox-57" name="toctree-checkbox-57" role="switch" type="checkbox"/><label for="toctree-checkbox-57"><div class="visually-hidden">Toggle navigation of noether.inference.runners</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../inference/runners/inference_runner/index.html">noether.inference.runners.inference_runner</a></li>
@@ -905,6 +906,36 @@
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="noether.core.configs.hyperparameters.Hyperparameters.load_resolved">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load_resolved</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_uri</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.configs.hyperparameters.Hyperparameters.load_resolved" title="Link to this definition">¶</a></dt>
+<dd><p>Inverse of <a class="reference internal" href="#noether.core.configs.hyperparameters.Hyperparameters.save_resolved" title="noether.core.configs.hyperparameters.Hyperparameters.save_resolved"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_resolved()</span></code></a> — load a previously-saved resolved config.</p>
+<p>Reads the YAML with <code class="docutils literal notranslate"><span class="pre">yaml.full_load</span></code> (preserves <code class="docutils literal notranslate"><span class="pre">!!python/tuple</span></code>
+tags emitted for tuple-typed fields like dataset statistics), resolves
+the <code class="docutils literal notranslate"><span class="pre">config_schema_kind</span></code> marker written by <code class="docutils literal notranslate"><span class="pre">save_resolved</span></code> to the
+concrete <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigSchema</span></code> subclass, and validates the rest of
+the dict through Pydantic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_uri</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>pathlib.Path</em></a>) – Path to the YAML file produced by <code class="docutils literal notranslate"><span class="pre">save_resolved</span></code>
+(typically <code class="docutils literal notranslate"><span class="pre">&lt;run_dir&gt;/hp_resolved.yaml</span></code>).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The validated config schema instance.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#FileNotFoundError" title="(in Python v3.14)"><strong>FileNotFoundError</strong></a> – if <code class="docutils literal notranslate"><span class="pre">file_uri</span></code> doesn’t exist.</p></li>
+<li><p><strong>pydantic.ValidationError</strong> – if the file is missing required fields
+or the config schema’s validators reject it.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../../schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema" title="noether.core.schemas.schema.ConfigSchema">noether.core.schemas.schema.ConfigSchema</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="noether.core.configs.hyperparameters.Hyperparameters.log">
 <em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage_hyperparameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.configs.hyperparameters.Hyperparameters.log" title="Link to this definition">¶</a></dt>
 <dd><p>Logs the stage hyperparameters in YAML format without trailing newlines.</p>
@@ -1010,6 +1041,7 @@
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.configs.hyperparameters.Hyperparameters"><code class="docutils literal notranslate"><span class="pre">Hyperparameters</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.configs.hyperparameters.Hyperparameters.save_resolved"><code class="docutils literal notranslate"><span class="pre">Hyperparameters.save_resolved()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.configs.hyperparameters.Hyperparameters.load_resolved"><code class="docutils literal notranslate"><span class="pre">Hyperparameters.load_resolved()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.configs.hyperparameters.Hyperparameters.log"><code class="docutils literal notranslate"><span class="pre">Hyperparameters.log()</span></code></a></li>
 </ul>
 </li>
