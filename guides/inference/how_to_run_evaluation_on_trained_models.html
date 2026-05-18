@@ -667,6 +667,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/inference/cli/main_inference/index.html">noether.inference.cli.main_inference</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/noether/inference/run/index.html">noether.inference.run</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/noether/inference/runners/index.html">noether.inference.runners</a><input class="toctree-checkbox" id="toctree-checkbox-57" name="toctree-checkbox-57" role="switch" type="checkbox"/><label for="toctree-checkbox-57"><div class="visually-hidden">Toggle navigation of noether.inference.runners</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/inference/runners/inference_runner/index.html">noether.inference.runners.inference_runner</a></li>
 </ul>
@@ -889,6 +890,9 @@ analysis.</p></li>
 </ul>
 <p>Despite the binary name, treat <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> as the generic
 inference/evaluation entry point — it has no eval-only logic baked in.</p>
+<p>For <strong>interactive</strong> work (notebooks, prototyping, debugging) where you don’t
+need callbacks, logging, or reproducibility, see <a class="reference internal" href="#loading-a-run-in-python"><span class="std std-ref">Loading a run in Python (notebooks, prototyping)</span></a>
+below — that path skips Hydra and the trainer entirely.</p>
 <section id="quick-start">
 <h3>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading">¶</a></h3>
 <p>Point <code class="docutils literal notranslate"><span class="pre">run_dir</span></code> at the training run output directory (the folder that
@@ -1091,6 +1095,91 @@ noether-eval<span class="w"> </span><span class="nv">run_dir</span><span class="
 </div>
 <p>Each run directory also contains a <code class="docutils literal notranslate"><span class="pre">code.tar.gz</span></code> snapshot of the codebase at
 training time, useful when the source tree has drifted.</p>
+<section id="loading-a-run-in-python-notebooks-prototyping">
+<span id="loading-a-run-in-python"></span><h3>Loading a run in Python (notebooks, prototyping)<a class="headerlink" href="#loading-a-run-in-python-notebooks-prototyping" title="Link to this heading">¶</a></h3>
+<p>When you want to poke at a trained model in a notebook — inspect predictions
+on a single sample, prototype a new visualization, debug a head-scratcher —
+<code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> is overkill: it stands up Hydra, the trainer, the tracker,
+and the callback loop just to give you a model and a dataset.</p>
+<p>The <a class="reference internal" href="../../autoapi/noether/inference/index.html#module-noether.inference" title="noether.inference"><code class="xref py py-mod docutils literal notranslate"><span class="pre">noether.inference</span></code></a> package exposes a single <code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code> class
+for that case. The model, normalizers, and (optionally) dataset are built
+on demand — no Hydra, no trainer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Run</span></code> has two construction modes, picked by which constructor you call:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Run(run_dir)</span></code> — open a full training output directory
+(<code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code> + <code class="docutils literal notranslate"><span class="pre">checkpoints/</span></code>). Everything below is available.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Run.from_checkpoint(path)</span></code> — open just a single <code class="docutils literal notranslate"><span class="pre">..._model.th</span></code> file.
+Every checkpoint written by noether embeds the model config and the
+per-field normalizer specs + statistics, which is enough for <code class="docutils literal notranslate"><span class="pre">model()</span></code>
+and <code class="docutils literal notranslate"><span class="pre">normalizers()</span></code> on their own. <code class="docutils literal notranslate"><span class="pre">dataset()</span></code>, <code class="docutils literal notranslate"><span class="pre">config</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">statistics</span></code> raise in this mode.</p></li>
+</ul>
+<p><strong>Run-dir mode</strong> — full access to config + dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.inference</span><span class="w"> </span><span class="kn">import</span> <span class="n">Run</span>
+
+<span class="n">run</span> <span class="o">=</span> <span class="n">Run</span><span class="p">(</span><span class="s2">&quot;/path/to/outputs/2026-01-10_abc12&quot;</span><span class="p">)</span>
+
+<span class="c1"># Optional: patch the config before building artifacts —</span>
+<span class="c1"># typically to point dataset paths at this machine&#39;s data.</span>
+<span class="k">for</span> <span class="n">ds_cfg</span> <span class="ow">in</span> <span class="n">run</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">ds_cfg</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="s2">&quot;/local/path/to/data&quot;</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">dataset</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">checkpoint</span><span class="o">=</span><span class="s2">&quot;latest&quot;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="c1"># checkpoint examples: &quot;latest&quot;, &quot;best_model.&lt;metric&gt;&quot;, &quot;E10&quot;, &quot;latest_ema=0.9999&quot;</span>
+</pre></div>
+</div>
+<p><strong>Checkpoint-only mode</strong> — just the model + normalizers, from a single
+<code class="docutils literal notranslate"><span class="pre">.th</span></code> file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.inference</span><span class="w"> </span><span class="kn">import</span> <span class="n">Run</span>
+
+<span class="n">run</span> <span class="o">=</span> <span class="n">Run</span><span class="o">.</span><span class="n">from_checkpoint</span><span class="p">(</span><span class="s2">&quot;/path/to/.../checkpoints/ab_upt_cp=latest_model.th&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">norms</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">normalizers</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Run</span></code> exposes three lazy methods, all independent — you don’t have to
+call them in order, and you don’t have to call them all. Pick whichever
+fit your use case:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">run.model(...)</span></code> — the trained model with checkpoint weights loaded.
+Works in <strong>both</strong> modes; works on <strong>any</strong> tensor dict you can construct.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run.normalizers(split)</span></code> — the field normalizers (e.g. for converting
+model predictions back to physical units). Works in <strong>both</strong> modes; the
+<code class="docutils literal notranslate"><span class="pre">split</span></code> argument is ignored in checkpoint-only mode (the normalizer
+payload embedded in the checkpoint is global). Built without
+instantiating the dataset; the data files do not need to be present.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run.dataset(split)</span></code> — the dataset, with the same collator the trainer
+wired. <strong>Run-dir mode only</strong> — this is the one that needs the original
+data files on disk. Accessing <code class="docutils literal notranslate"><span class="pre">run.config</span></code> and <code class="docutils literal notranslate"><span class="pre">run.statistics</span></code> also
+requires run-dir mode.</p></li>
+</ul>
+<p>That separation matters in particular for the <strong>bring-your-own-data</strong> flow
+— applying a trained model to a CAD mesh, a custom point cloud, or any
+data that isn’t packaged as a noether <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>. Checkpoint-only mode is
+the natural entry point: no run directory, no <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code>, no
+stats file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="o">=</span> <span class="n">Run</span><span class="o">.</span><span class="n">from_checkpoint</span><span class="p">(</span><span class="s2">&quot;/path/to/.../checkpoints/ab_upt_cp=latest_model.th&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">norms</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">normalizers</span><span class="p">()</span>
+
+<span class="c1"># You build the input dict yourself, matching the model&#39;s forward signature.</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">inference_mode</span><span class="p">():</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">my_inputs</span><span class="p">)</span>
+
+<span class="c1"># Same normalizers the training data used — denormalize the prediction.</span>
+<span class="n">pressure_phys</span> <span class="o">=</span> <span class="n">norms</span><span class="p">[</span><span class="s2">&quot;surface_pressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="s2">&quot;surface_pressure&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This is <strong>not</strong> a substitute for <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code>: there are no metrics,
+no callbacks, no run output directory, and no reproducibility guarantees.
+Use it for interactive work; use <code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> for everything else.</p>
+<p>A worked example — load a trained AB-UPT / DrivAerML run via both
+<code class="docutils literal notranslate"><span class="pre">Run.from_checkpoint</span></code> (checkpoint-only flow, end-to-end with raw
+tensors) and <code class="docutils literal notranslate"><span class="pre">Run(run_dir)</span></code> (full Dataset/Pipeline flow), and plot
+predictions vs. ground truth — lives at
+<code class="docutils literal notranslate"><span class="pre">notebooks/ab_upt_drivaerml_inference.ipynb</span></code>.</p>
+</section>
 <section id="a-note-on-help-and-the-binary-name">
 <h3>A note on <code class="docutils literal notranslate"><span class="pre">--help</span></code> and the binary name<a class="headerlink" href="#a-note-on-help-and-the-binary-name" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">noether-eval</span></code> is built on Hydra rather than Typer, so <code class="docutils literal notranslate"><span class="pre">noether-eval</span> <span class="pre">--help</span></code>
@@ -1202,6 +1291,7 @@ scope.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#recipe-code-on-pythonpath">Recipe code on PYTHONPATH</a><ul>
+<li><a class="reference internal" href="#loading-a-run-in-python-notebooks-prototyping">Loading a run in Python (notebooks, prototyping)</a></li>
 <li><a class="reference internal" href="#a-note-on-help-and-the-binary-name">A note on <code class="docutils literal notranslate"><span class="pre">--help</span></code> and the binary name</a></li>
 </ul>
 </li>

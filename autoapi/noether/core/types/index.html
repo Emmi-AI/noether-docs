@@ -667,6 +667,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../inference/cli/main_inference/index.html">noether.inference.cli.main_inference</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../inference/run/index.html">noether.inference.run</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../inference/runners/index.html">noether.inference.runners</a><input class="toctree-checkbox" id="toctree-checkbox-57" name="toctree-checkbox-57" role="switch" type="checkbox"/><label for="toctree-checkbox-57"><div class="visually-hidden">Toggle navigation of noether.inference.runners</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../inference/runners/inference_runner/index.html">noether.inference.runners.inference_runner</a></li>
 </ul>
@@ -956,6 +957,18 @@
 <dd><p>The state dict of the grad scaler (if used).</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.types.CheckpointKeys.NORMALIZER_CONFIGS">
+<span class="sig-name descname"><span class="pre">NORMALIZER_CONFIGS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'normalizer_configs'</span></em><a class="headerlink" href="#noether.core.types.CheckpointKeys.NORMALIZER_CONFIGS" title="Link to this definition">¶</a></dt>
+<dd><p>Per-field preprocessor configs for normalization (serialized dict of the test split’s <code class="docutils literal notranslate"><span class="pre">dataset_normalizers</span></code>).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.types.CheckpointKeys.NORMALIZER_STATISTICS">
+<span class="sig-name descname"><span class="pre">NORMALIZER_STATISTICS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'normalizer_statistics'</span></em><a class="headerlink" href="#noether.core.types.CheckpointKeys.NORMALIZER_STATISTICS" title="Link to this definition">¶</a></dt>
+<dd><p>Resolved statistics dict (means/stds/bounds) loaded from the dataset class’s <code class="docutils literal notranslate"><span class="pre">STATS_FILE</span></code> at write time.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1055,6 +1068,8 @@
 <li><a class="reference internal" href="#noether.core.types.CheckpointKeys.CONFIG_KIND"><code class="docutils literal notranslate"><span class="pre">CheckpointKeys.CONFIG_KIND</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.types.CheckpointKeys.CALLBACK_STATE_DICT"><code class="docutils literal notranslate"><span class="pre">CheckpointKeys.CALLBACK_STATE_DICT</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.types.CheckpointKeys.GRAD_SCALER"><code class="docutils literal notranslate"><span class="pre">CheckpointKeys.GRAD_SCALER</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.types.CheckpointKeys.NORMALIZER_CONFIGS"><code class="docutils literal notranslate"><span class="pre">CheckpointKeys.NORMALIZER_CONFIGS</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.types.CheckpointKeys.NORMALIZER_STATISTICS"><code class="docutils literal notranslate"><span class="pre">CheckpointKeys.NORMALIZER_STATISTICS</span></code></a></li>
 </ul>
 </li>
 </ul>

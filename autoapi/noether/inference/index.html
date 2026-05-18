@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/inference/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Submodules: noether.inference.cli, noether.inference.runners." />
+<meta property="og:description" content="Submodules: noether.inference.cli, noether.inference.run, noether.inference.runners. Classes: Package Contents:" />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Submodules: noether.inference.cli, noether.inference.runners." />
+<meta name="description" content="Submodules: noether.inference.cli, noether.inference.run, noether.inference.runners. Classes: Package Contents:" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -667,6 +667,7 @@
 <li class="toctree-l4"><a class="reference internal" href="cli/main_inference/index.html">noether.inference.cli.main_inference</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="run/index.html">noether.inference.run</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="runners/index.html">noether.inference.runners</a><input class="toctree-checkbox" id="toctree-checkbox-57" name="toctree-checkbox-57" role="switch" type="checkbox"/><label for="toctree-checkbox-57"><div class="visually-hidden">Toggle navigation of noether.inference.runners</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="runners/inference_runner/index.html">noether.inference.runners.inference_runner</a></li>
 </ul>
@@ -870,9 +871,250 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="cli/index.html">noether.inference.cli</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run/index.html">noether.inference.run</a></li>
 <li class="toctree-l1"><a class="reference internal" href="runners/index.html">noether.inference.runners</a></li>
 </ul>
 </div>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.inference.Run" title="noether.inference.Run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Run</span></code></a></p></td>
+<td><p>Handle to a trained run.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.inference.Run">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.inference.</span></span><span class="sig-name descname"><span class="pre">Run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.inference.Run" title="Link to this definition">¶</a></dt>
+<dd><p>Handle to a trained run.</p>
+<p>Two construction modes, picked by which constructor you use:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#noether.inference.Run" title="noether.inference.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> (<code class="docutils literal notranslate"><span class="pre">run_dir</span></code>) — full run directory: reads <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code> and validates it against
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigSchema</span></code>. All accessors below are available.</p></li>
+<li><p><a class="reference internal" href="#noether.inference.Run.from_checkpoint" title="noether.inference.Run.from_checkpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Run.from_checkpoint()</span></code></a> (<code class="docutils literal notranslate"><span class="pre">path</span></code>) — just a single <code class="docutils literal notranslate"><span class="pre">..._model.th</span></code> file: reads embedded model config +
+normalizer payload. <a class="reference internal" href="#noether.inference.Run.model" title="noether.inference.Run.model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">model()</span></code></a> and <a class="reference internal" href="#noether.inference.Run.normalizers" title="noether.inference.Run.normalizers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">normalizers()</span></code></a> work; <a class="reference internal" href="#noether.inference.Run.dataset" title="noether.inference.Run.dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dataset()</span></code></a>, <a class="reference internal" href="#noether.inference.Run.config" title="noether.inference.Run.config"><code class="xref py py-attr docutils literal notranslate"><span class="pre">config</span></code></a>, and
+<a class="reference internal" href="#noether.inference.Run.statistics" title="noether.inference.Run.statistics"><code class="xref py py-attr docutils literal notranslate"><span class="pre">statistics</span></code></a> raise.</p></li>
+</ul>
+<p>Mutate <a class="reference internal" href="#noether.inference.Run.config" title="noether.inference.Run.config"><code class="xref py py-attr docutils literal notranslate"><span class="pre">config</span></code></a> between construction and the lazy methods to override training-time values (typically dataset
+roots when the run was produced on a different machine). Only meaningful in run-dir mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>run_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>pathlib.Path</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Path to the training run output directory (the one that contains <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code> and a
+<code class="docutils literal notranslate"><span class="pre">checkpoints/</span></code> subdirectory). Typically <code class="docutils literal notranslate"><span class="pre">output_path/run_id</span></code> or <code class="docutils literal notranslate"><span class="pre">output_path/run_id/stage_name</span></code>.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.inference.Run.run_dir">
+<span class="sig-name descname"><span class="pre">run_dir</span></span><a class="headerlink" href="#noether.inference.Run.run_dir" title="Link to this definition">¶</a></dt>
+<dd><p>Resolved absolute path to the run directory in run-dir mode; <code class="docutils literal notranslate"><span class="pre">None</span></code> in checkpoint-only mode.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.inference.Run.checkpoint_path">
+<span class="sig-name descname"><span class="pre">checkpoint_path</span></span><a class="headerlink" href="#noether.inference.Run.checkpoint_path" title="Link to this definition">¶</a></dt>
+<dd><p>Resolved absolute path to the <code class="docutils literal notranslate"><span class="pre">.th</span></code> file in checkpoint-only mode; <code class="docutils literal notranslate"><span class="pre">None</span></code> in run-dir mode.</p>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#FileNotFoundError" title="(in Python v3.14)"><strong>FileNotFoundError</strong></a> – If <code class="docutils literal notranslate"><span class="pre">run_dir</span></code> does not exist or doesn’t contain <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code>.</p>
+</dd>
+<dt class="field-even">Parameters<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>run_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>pathlib.Path</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.inference</span><span class="w"> </span><span class="kn">import</span> <span class="n">Run</span>
+
+<span class="c1"># Bring-your-own-data flow: apply the trained model to a custom input dict, then denormalize the predictions.</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">Run</span><span class="o">.</span><span class="n">from_checkpoint</span><span class="p">(</span><span class="s2">&quot;/outputs/.../ab_upt_cp=last_model.th&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">norms</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">normalizers</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">inference_mode</span><span class="p">():</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">my_inputs</span><span class="p">)</span>
+<span class="n">pred_phys</span> <span class="o">=</span> <span class="n">norms</span><span class="p">[</span><span class="s2">&quot;surface_pressure&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">pred</span><span class="p">[</span><span class="s2">&quot;surface_pressure&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">run_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">pathlib.Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#id0" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">checkpoint_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">pathlib.Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id1" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.inference.Run.from_checkpoint">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.inference.Run.from_checkpoint" title="Link to this definition">¶</a></dt>
+<dd><p>Build a <a class="reference internal" href="#noether.inference.Run" title="noether.inference.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> from a single <code class="docutils literal notranslate"><span class="pre">..._model.th</span></code> file.</p>
+<p>Reads the model config (<code class="xref py py-attr docutils literal notranslate"><span class="pre">CheckpointKeys.MODEL_CONFIG</span></code>), the discriminator kind
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">CheckpointKeys.CONFIG_KIND</span></code>), and — if present — the per-field normalizer payload
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">CheckpointKeys.NORMALIZER_CONFIGS</span></code> /
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">CheckpointKeys.NORMALIZER_STATISTICS</span></code>) that <a class="reference internal" href="../core/writers/index.html#noether.core.writers.CheckpointWriter" title="noether.core.writers.CheckpointWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">CheckpointWriter</span></code></a> embeds
+in every checkpoint.</p>
+<p>The model class itself must still be importable in the current process — the kind string points at a class,
+not at its implementation. If the checkpoint references a recipe-specific model, make sure that recipe is
+installed (or on <a class="reference external" href="https://docs.python.org/3/library/sys.html#sys.path" title="(in Python v3.14)"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>) before calling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>checkpoint_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>pathlib.Path</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Path to a <code class="docutils literal notranslate"><span class="pre">..._model.th</span></code> file written by noether.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <a class="reference internal" href="#noether.inference.Run" title="noether.inference.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> in checkpoint-only mode. <a class="reference internal" href="#noether.inference.Run.model" title="noether.inference.Run.model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">model()</span></code></a> and <a class="reference internal" href="#noether.inference.Run.normalizers" title="noether.inference.Run.normalizers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">normalizers()</span></code></a> are usable;
+<a class="reference internal" href="#noether.inference.Run.dataset" title="noether.inference.Run.dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dataset()</span></code></a> and <a class="reference internal" href="#noether.inference.Run.config" title="noether.inference.Run.config"><code class="xref py py-attr docutils literal notranslate"><span class="pre">config</span></code></a> raise.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#FileNotFoundError" title="(in Python v3.14)"><strong>FileNotFoundError</strong></a> – If the checkpoint file does not exist.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> – If the checkpoint is missing any of <code class="docutils literal notranslate"><span class="pre">state_dict</span></code>, <code class="docutils literal notranslate"><span class="pre">model_config</span></code>, or <code class="docutils literal notranslate"><span class="pre">config_kind</span></code> (older
+checkpoints predate the embedded config — fall back to <code class="docutils literal notranslate"><span class="pre">Run(run_dir)</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#noether.inference.Run" title="noether.inference.Run">Run</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.inference.Run.is_checkpoint_only">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_checkpoint_only</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#noether.inference.Run.is_checkpoint_only" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if this <a class="reference internal" href="#noether.inference.Run" title="noether.inference.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> was built via <a class="reference internal" href="#noether.inference.Run.from_checkpoint" title="noether.inference.Run.from_checkpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_checkpoint()</span></code></a> (no run dir, no resolved config).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.inference.Run.config">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../core/schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema" title="noether.core.schemas.schema.ConfigSchema"><span class="pre">noether.core.schemas.schema.ConfigSchema</span></a></em><a class="headerlink" href="#noether.inference.Run.config" title="Link to this definition">¶</a></dt>
+<dd><p>Validated <code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigSchema</span></code> loaded from <code class="docutils literal notranslate"><span class="pre">hp_resolved.yaml</span></code>.</p>
+<p>Safe to mutate before calling <a class="reference internal" href="#noether.inference.Run.dataset" title="noether.inference.Run.dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dataset()</span></code></a> / <a class="reference internal" href="#noether.inference.Run.model" title="noether.inference.Run.model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">model()</span></code></a> / <a class="reference internal" href="#noether.inference.Run.normalizers" title="noether.inference.Run.normalizers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">normalizers()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If this <a class="reference internal" href="#noether.inference.Run" title="noether.inference.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> was built via <a class="reference internal" href="#noether.inference.Run.from_checkpoint" title="noether.inference.Run.from_checkpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_checkpoint()</span></code></a> — no run directory means no
+resolved config.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../core/schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema" title="noether.core.schemas.schema.ConfigSchema">noether.core.schemas.schema.ConfigSchema</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.inference.Run.statistics">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">statistics</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.inference.Run.statistics" title="Link to this definition">¶</a></dt>
+<dd><p>Training-time dataset statistics (<code class="docutils literal notranslate"><span class="pre">config.dataset_statistics</span></code> or <code class="docutils literal notranslate"><span class="pre">{}</span></code>).</p>
+<p>Convenience accessor for the stat values the training run computed — typically per-field means/stds used by the
+trainer’s pipeline. Returns an empty dict if the run didn’t compute any stats.</p>
+<p>Note: this is separate from the dataset class’s static <code class="docutils literal notranslate"><span class="pre">STATS_FILE</span></code>, which <a class="reference internal" href="#noether.inference.Run.normalizers" title="noether.inference.Run.normalizers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">normalizers()</span></code></a> reads in
+run-dir mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – In checkpoint-only mode (no resolved config).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a> | <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.inference.Run.normalizers">
+<span class="sig-name descname"><span class="pre">normalizers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'test'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.inference.Run.normalizers" title="Link to this definition">¶</a></dt>
+<dd><p>Build the trained run’s field normalizers without instantiating its dataset.</p>
+<p>In <strong>run-dir mode</strong>, reads the dataset class’s <code class="docutils literal notranslate"><span class="pre">STATS_FILE</span></code> (looked up from <code class="docutils literal notranslate"><span class="pre">config.datasets[split].kind</span></code>)
+and constructs each normalizer from <code class="docutils literal notranslate"><span class="pre">config.datasets[split].dataset_normalizers</span></code>. The data root is never
+touched.</p>
+<p>In <strong>checkpoint-only mode</strong>, reads the per-field preprocessor configs and resolved statistics that
+<code class="docutils literal notranslate"><span class="pre">CheckpointWriter</span></code> embeds in every checkpoint (<code class="docutils literal notranslate"><span class="pre">NORMALIZER_CONFIGS</span></code> / <code class="docutils literal notranslate"><span class="pre">NORMALIZER_STATISTICS</span></code>).
+The <code class="docutils literal notranslate"><span class="pre">split</span></code> argument is ignored — only the writer-side split (typically <code class="docutils literal notranslate"><span class="pre">test</span></code>) was captured.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>split</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Dataset key to source the normalizer configs from. Splits typically share normalizers;
+the arg is provided for parity with <a class="reference internal" href="#noether.inference.Run.dataset" title="noether.inference.Run.dataset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dataset()</span></code></a>. Ignored in checkpoint-only mode.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dict mapping field name (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;surface_pressure&quot;</span></code>) to a <code class="xref py py-class docutils literal notranslate"><span class="pre">ComposePreProcess</span></code>.
+Empty dict if no normalizers are available for this split.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> – In run-dir mode, if <code class="docutils literal notranslate"><span class="pre">split</span></code> is not in <code class="docutils literal notranslate"><span class="pre">self.config.datasets</span></code>. In checkpoint-only mode, if the
+checkpoint predates the embedded normalizer keys.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="../data/preprocessors/compose/index.html#noether.data.preprocessors.compose.ComposePreProcess" title="noether.data.preprocessors.compose.ComposePreProcess">noether.data.preprocessors.compose.ComposePreProcess</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.inference.Run.dataset">
+<span class="sig-name descname"><span class="pre">dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'test'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.inference.Run.dataset" title="Link to this definition">¶</a></dt>
+<dd><p>Instantiate the dataset for <code class="docutils literal notranslate"><span class="pre">split</span></code>.</p>
+<p>Wires up the collator (<code class="docutils literal notranslate"><span class="pre">dataset.pipeline</span></code>) the same way the trainer does, so the dataset can be plugged into a
+<a class="reference external" href="https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader" title="(in PyTorch v2.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.utils.data.DataLoader</span></code></a> for batched forward passes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>split</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Dataset key (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;train&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;val&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;test&quot;</span></code>).</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – In checkpoint-only mode (the checkpoint doesn’t know about the original dataset configuration).</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> – If <code class="docutils literal notranslate"><span class="pre">split</span></code> is not in <code class="docutils literal notranslate"><span class="pre">self.config.datasets</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../data/base/dataset/index.html#noether.data.base.dataset.Dataset" title="noether.data.base.dataset.Dataset">noether.data.base.dataset.Dataset</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.inference.Run.model">
+<span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'latest'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.inference.Run.model" title="Link to this definition">¶</a></dt>
+<dd><p>Instantiate the model and load checkpoint weights.</p>
+<p>Unlike the training/eval flow, this does <strong>not</strong> set up an optimizer, apply initializers, or attach the model to
+a trainer — it just builds the model, loads the state dict, moves it to <code class="docutils literal notranslate"><span class="pre">device</span></code>, and puts it in eval mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>checkpoint</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Checkpoint tag (run-dir mode only). Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;latest&quot;</span></code>. Other examples: <code class="docutils literal notranslate"><span class="pre">&quot;E10&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;best_model.loss.test.total&quot;</span></code>. Ignored in checkpoint-only mode — the file was already fixed at
+<a class="reference internal" href="#noether.inference.Run.from_checkpoint" title="noether.inference.Run.from_checkpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_checkpoint()</span></code></a> time.</p></li>
+<li><p><strong>device</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(in PyTorch v2.12)"><em>torch.device</em></a>) – Torch device (or string) to move the model to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The model in eval mode with weights loaded.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#FileNotFoundError" title="(in Python v3.14)"><strong>FileNotFoundError</strong></a> – If the checkpoint file does not exist (run-dir mode).</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> – If the checkpoint is missing <code class="docutils literal notranslate"><span class="pre">state_dict</span></code>.</p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If loading the state dict did not actually change the model weights (sanity check against
+silently missing or mismatched keys).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)">torch.nn.Module</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -957,6 +1199,24 @@
             <ul>
 <li><a class="reference internal" href="#">noether.inference</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li><a class="reference internal" href="#noether.inference.Run"><code class="docutils literal notranslate"><span class="pre">Run</span></code></a><ul>
+<li><a class="reference internal" href="#noether.inference.Run.run_dir"><code class="docutils literal notranslate"><span class="pre">Run.run_dir</span></code></a></li>
+<li><a class="reference internal" href="#noether.inference.Run.checkpoint_path"><code class="docutils literal notranslate"><span class="pre">Run.checkpoint_path</span></code></a></li>
+<li><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Run.run_dir</span></code></a></li>
+<li><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Run.checkpoint_path</span></code></a></li>
+<li><a class="reference internal" href="#noether.inference.Run.from_checkpoint"><code class="docutils literal notranslate"><span class="pre">Run.from_checkpoint()</span></code></a></li>
+<li><a class="reference internal" href="#noether.inference.Run.is_checkpoint_only"><code class="docutils literal notranslate"><span class="pre">Run.is_checkpoint_only</span></code></a></li>
+<li><a class="reference internal" href="#noether.inference.Run.config"><code class="docutils literal notranslate"><span class="pre">Run.config</span></code></a></li>
+<li><a class="reference internal" href="#noether.inference.Run.statistics"><code class="docutils literal notranslate"><span class="pre">Run.statistics</span></code></a></li>
+<li><a class="reference internal" href="#noether.inference.Run.normalizers"><code class="docutils literal notranslate"><span class="pre">Run.normalizers()</span></code></a></li>
+<li><a class="reference internal" href="#noether.inference.Run.dataset"><code class="docutils literal notranslate"><span class="pre">Run.dataset()</span></code></a></li>
+<li><a class="reference internal" href="#noether.inference.Run.model"><code class="docutils literal notranslate"><span class="pre">Run.model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

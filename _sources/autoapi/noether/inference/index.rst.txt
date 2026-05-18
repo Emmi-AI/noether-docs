@@ -11,6 +11,191 @@ Submodules
    :maxdepth: 1
 
    /autoapi/noether/inference/cli/index
+   /autoapi/noether/inference/run/index
    /autoapi/noether/inference/runners/index
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.inference.Run
+
+
+Package Contents
+----------------
+
+.. py:class:: Run(run_dir)
+
+   Handle to a trained run.
+
+   Two construction modes, picked by which constructor you use:
+
+   - :class:`Run` (``run_dir``) — full run directory: reads ``hp_resolved.yaml`` and validates it against
+     :class:`ConfigSchema`. All accessors below are available.
+   - :meth:`Run.from_checkpoint` (``path``) — just a single ``..._model.th`` file: reads embedded model config +
+     normalizer payload. :meth:`model` and :meth:`normalizers` work; :meth:`dataset`, :attr:`config`, and
+     :attr:`statistics` raise.
+
+   Mutate :attr:`config` between construction and the lazy methods to override training-time values (typically dataset
+   roots when the run was produced on a different machine). Only meaningful in run-dir mode.
+
+   :param run_dir: Path to the training run output directory (the one that contains ``hp_resolved.yaml`` and a
+                   ``checkpoints/`` subdirectory). Typically ``output_path/run_id`` or ``output_path/run_id/stage_name``.
+
+   .. attribute:: run_dir
+
+      Resolved absolute path to the run directory in run-dir mode; ``None`` in checkpoint-only mode.
+
+   .. attribute:: checkpoint_path
+
+      Resolved absolute path to the ``.th`` file in checkpoint-only mode; ``None`` in run-dir mode.
+
+   :raises FileNotFoundError: If ``run_dir`` does not exist or doesn't contain ``hp_resolved.yaml``.
+
+   .. rubric:: Example
+
+   .. testcode::
+       :skipif: True  # requires a real run directory
+
+       from noether.inference import Run
+
+       # Bring-your-own-data flow: apply the trained model to a custom input dict, then denormalize the predictions.
+       run = Run.from_checkpoint("/outputs/.../ab_upt_cp=last_model.th")
+       model = run.model(device="cuda")
+       norms = run.normalizers()
+       with torch.inference_mode():
+           pred = model(**my_inputs)
+       pred_phys = norms["surface_pressure"].inverse(pred["surface_pressure"])
+
+
+   .. py:attribute:: run_dir
+      :type:  pathlib.Path | None
+
+
+   .. py:attribute:: checkpoint_path
+      :type:  pathlib.Path | None
+      :value: None
+
+
+
+   .. py:method:: from_checkpoint(checkpoint_path)
+      :classmethod:
+
+
+      Build a :class:`Run` from a single ``..._model.th`` file.
+
+      Reads the model config (:attr:`CheckpointKeys.MODEL_CONFIG`), the discriminator kind
+      (:attr:`CheckpointKeys.CONFIG_KIND`), and — if present — the per-field normalizer payload
+      (:attr:`CheckpointKeys.NORMALIZER_CONFIGS` /
+      :attr:`CheckpointKeys.NORMALIZER_STATISTICS`) that :class:`~noether.core.writers.CheckpointWriter` embeds
+      in every checkpoint.
+
+      The model class itself must still be importable in the current process — the kind string points at a class,
+      not at its implementation. If the checkpoint references a recipe-specific model, make sure that recipe is
+      installed (or on :data:`sys.path`) before calling.
+
+      :param checkpoint_path: Path to a ``..._model.th`` file written by noether.
+
+      :returns: A :class:`Run` in checkpoint-only mode. :meth:`model` and :meth:`normalizers` are usable;
+                :meth:`dataset` and :attr:`config` raise.
+
+      :raises FileNotFoundError: If the checkpoint file does not exist.
+      :raises KeyError: If the checkpoint is missing any of ``state_dict``, ``model_config``, or ``config_kind`` (older
+          checkpoints predate the embedded config — fall back to ``Run(run_dir)``).
+
+
+
+   .. py:property:: is_checkpoint_only
+      :type: bool
+
+
+      ``True`` if this :class:`Run` was built via :meth:`from_checkpoint` (no run dir, no resolved config).
+
+
+   .. py:property:: config
+      :type: noether.core.schemas.schema.ConfigSchema
+
+
+      Validated :class:`ConfigSchema` loaded from ``hp_resolved.yaml``.
+
+      Safe to mutate before calling :meth:`dataset` / :meth:`model` / :meth:`normalizers`.
+
+      :raises RuntimeError: If this :class:`Run` was built via :meth:`from_checkpoint` — no run directory means no
+          resolved config.
+
+
+   .. py:property:: statistics
+      :type: dict[str, list[float | int]]
+
+
+      Training-time dataset statistics (``config.dataset_statistics`` or ``{}``).
+
+      Convenience accessor for the stat values the training run computed — typically per-field means/stds used by the
+      trainer's pipeline. Returns an empty dict if the run didn't compute any stats.
+
+      Note: this is separate from the dataset class's static ``STATS_FILE``, which :meth:`normalizers` reads in
+      run-dir mode.
+
+      :raises RuntimeError: In checkpoint-only mode (no resolved config).
+
+
+   .. py:method:: normalizers(split = 'test')
+
+      Build the trained run's field normalizers without instantiating its dataset.
+
+      In **run-dir mode**, reads the dataset class's ``STATS_FILE`` (looked up from ``config.datasets[split].kind``)
+      and constructs each normalizer from ``config.datasets[split].dataset_normalizers``. The data root is never
+      touched.
+
+      In **checkpoint-only mode**, reads the per-field preprocessor configs and resolved statistics that
+      ``CheckpointWriter`` embeds in every checkpoint (``NORMALIZER_CONFIGS`` / ``NORMALIZER_STATISTICS``).
+      The ``split`` argument is ignored — only the writer-side split (typically ``test``) was captured.
+
+      :param split: Dataset key to source the normalizer configs from. Splits typically share normalizers;
+                    the arg is provided for parity with :meth:`dataset`. Ignored in checkpoint-only mode.
+
+      :returns: Dict mapping field name (e.g. ``"surface_pressure"``) to a :class:`ComposePreProcess`.
+                Empty dict if no normalizers are available for this split.
+
+      :raises KeyError: In run-dir mode, if ``split`` is not in ``self.config.datasets``. In checkpoint-only mode, if the
+          checkpoint predates the embedded normalizer keys.
+
+
+
+   .. py:method:: dataset(split = 'test')
+
+      Instantiate the dataset for ``split``.
+
+      Wires up the collator (``dataset.pipeline``) the same way the trainer does, so the dataset can be plugged into a
+      :class:`torch.utils.data.DataLoader` for batched forward passes.
+
+      :param split: Dataset key (e.g. ``"train"``, ``"val"``, ``"test"``).
+
+      :raises RuntimeError: In checkpoint-only mode (the checkpoint doesn't know about the original dataset configuration).
+      :raises KeyError: If ``split`` is not in ``self.config.datasets``.
+
+
+
+   .. py:method:: model(*, checkpoint = 'latest', device = 'cpu')
+
+      Instantiate the model and load checkpoint weights.
+
+      Unlike the training/eval flow, this does **not** set up an optimizer, apply initializers, or attach the model to
+      a trainer — it just builds the model, loads the state dict, moves it to ``device``, and puts it in eval mode.
+
+      :param checkpoint: Checkpoint tag (run-dir mode only). Defaults to ``"latest"``. Other examples: ``"E10"``,
+                         ``"best_model.loss.test.total"``. Ignored in checkpoint-only mode — the file was already fixed at
+                         :meth:`from_checkpoint` time.
+      :param device: Torch device (or string) to move the model to.
+
+      :returns: The model in eval mode with weights loaded.
+
+      :raises FileNotFoundError: If the checkpoint file does not exist (run-dir mode).
+      :raises KeyError: If the checkpoint is missing ``state_dict``.
+      :raises RuntimeError: If loading the state dict did not actually change the model weights (sanity check against
+          silently missing or mismatched keys).
+
 
 

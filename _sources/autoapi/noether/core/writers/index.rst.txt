@@ -71,7 +71,7 @@ Package Contents
    .. py:attribute:: update_counter
 
 
-   .. py:method:: save_model_checkpoint(model_name, checkpoint_tag, state_dict, model_config = None, model_info = None, **extra)
+   .. py:method:: save_model_checkpoint(model_name, checkpoint_tag, state_dict, model_config = None, model_info = None, normalizer_configs = None, normalizer_statistics = None, **extra)
 
       Save a checkpoint to disk.
 

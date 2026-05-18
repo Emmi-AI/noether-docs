@@ -654,6 +654,7 @@
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/inference/cli/main_inference/index.html">noether.inference.cli.main_inference</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/noether/inference/run/index.html">noether.inference.run</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/inference/runners/index.html">noether.inference.runners</a><input class="toctree-checkbox" id="toctree-checkbox-57" name="toctree-checkbox-57" role="switch" type="checkbox"/><label for="toctree-checkbox-57"><div class="visually-hidden">Toggle navigation of noether.inference.runners</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/inference/runners/inference_runner/index.html">noether.inference.runners.inference_runner</a></li>
 </ul>
@@ -2020,6 +2021,10 @@
         <ul>
           <li><a href="autoapi/noether/core/providers/index.html#noether.core.providers.PathProvider.checkpoint_path">(noether.core.providers.PathProvider property)</a>
 </li>
+          <li><a href="autoapi/noether/inference/index.html#id1">(noether.inference.Run attribute)</a>, <a href="autoapi/noether/inference/index.html#noether.inference.Run.checkpoint_path">[1]</a>
+</li>
+          <li><a href="autoapi/noether/inference/run/index.html#id1">(noether.inference.run.Run attribute)</a>, <a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run.checkpoint_path">[1]</a>
+</li>
         </ul></li>
         <li><a href="autoapi/noether/core/initializers/checkpoint/index.html#noether.core.initializers.checkpoint.CheckpointInitializer.checkpoint_tag">checkpoint_tag (noether.core.initializers.checkpoint.CheckpointInitializer attribute)</a>
 
@@ -2249,6 +2254,10 @@
           <li><a href="autoapi/noether/data/samplers/interleaved_sampler/index.html#noether.data.samplers.interleaved_sampler.InterleavedSampler.config">(noether.data.samplers.interleaved_sampler.InterleavedSampler attribute)</a>
 </li>
           <li><a href="autoapi/noether/data/samplers/index.html#noether.data.samplers.InterleavedSampler.config">(noether.data.samplers.InterleavedSampler attribute)</a>
+</li>
+          <li><a href="autoapi/noether/inference/index.html#noether.inference.Run.config">(noether.inference.Run property)</a>
+</li>
+          <li><a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run.config">(noether.inference.run.Run property)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlock.config">(noether.modeling.modules.blocks.transformer.TransformerBlock attribute)</a>
 </li>
@@ -2613,6 +2622,12 @@
         </ul></li>
         <li><a href="autoapi/noether/io/cli/cli_huggingface/index.html#noether.io.cli.cli_huggingface.HuggingFaceRepoType.DATASET">DATASET (noether.io.cli.cli_huggingface.HuggingFaceRepoType attribute)</a>
 </li>
+        <li><a href="autoapi/noether/inference/index.html#noether.inference.Run.dataset">dataset() (noether.inference.Run method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run.dataset">(noether.inference.run.Run method)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/callbacks/periodic/index.html#id4">dataset_key (noether.core.callbacks.periodic.PeriodicDataIteratorCallback attribute)</a>, <a href="autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback.dataset_key">[1]</a>
 
         <ul>
@@ -4123,6 +4138,12 @@
           <li><a href="autoapi/noether/core/extractors/forward_hook/index.html#noether.core.extractors.forward_hook.ForwardHook">(class in noether.core.extractors.forward_hook)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/inference/index.html#noether.inference.Run.from_checkpoint">from_checkpoint() (noether.inference.Run class method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run.from_checkpoint">(noether.inference.run.Run class method)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.TokenSpec.from_dict">from_dict() (noether.core.schemas.modules.attention.TokenSpec class method)</a>
 
         <ul>
@@ -5339,6 +5360,12 @@
 
         <ul>
           <li><a href="autoapi/noether/core/utils/torch/amp/index.html#noether.core.utils.torch.amp.is_bfloat16_compatible">(in module noether.core.utils.torch.amp)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/inference/index.html#noether.inference.Run.is_checkpoint_only">is_checkpoint_only (noether.inference.Run property)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run.is_checkpoint_only">(noether.inference.run.Run property)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/utils/torch/amp/index.html#noether.core.utils.torch.amp.is_compatible">is_compatible() (in module noether.core.utils.torch.amp)</a>
@@ -6909,6 +6936,12 @@
         </ul></li>
         <li><a href="autoapi/noether/io/cli/cli_huggingface/index.html#noether.io.cli.cli_huggingface.HuggingFaceRepoType.MODEL">MODEL (noether.io.cli.cli_huggingface.HuggingFaceRepoType attribute)</a>
 </li>
+        <li><a href="autoapi/noether/inference/index.html#noether.inference.Run.model">model() (noether.inference.Run method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run.model">(noether.inference.run.Run method)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/models/base/index.html#noether.core.models.base.ModelBase.model_config">model_config (noether.core.models.base.ModelBase attribute)</a>
 
         <ul>
@@ -7548,6 +7581,8 @@
           <li><a href="autoapi/noether/inference/cli/index.html#module-noether.inference.cli">noether.inference.cli</a>
 </li>
           <li><a href="autoapi/noether/inference/cli/main_inference/index.html#module-noether.inference.cli.main_inference">noether.inference.cli.main_inference</a>
+</li>
+          <li><a href="autoapi/noether/inference/run/index.html#module-noether.inference.run">noether.inference.run</a>
 </li>
           <li><a href="autoapi/noether/inference/runners/index.html#module-noether.inference.runners">noether.inference.runners</a>
 </li>
@@ -9232,8 +9267,6 @@
           <li><a href="autoapi/noether/data/datasets/cfd/drivaernet/dataset/index.html#module-noether.data.datasets.cfd.drivaernet.dataset">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.drivaernet.preprocessing
 
@@ -9241,6 +9274,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/drivaernet/preprocessing/index.html#module-noether.data.datasets.cfd.drivaernet.preprocessing">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.emmi_wing
 
@@ -9617,6 +9652,13 @@
 
         <ul>
           <li><a href="autoapi/noether/inference/cli/main_inference/index.html#module-noether.inference.cli.main_inference">module</a>
+</li>
+        </ul></li>
+        <li>
+    noether.inference.run
+
+        <ul>
+          <li><a href="autoapi/noether/inference/run/index.html#module-noether.inference.run">module</a>
 </li>
         </ul></li>
         <li>
@@ -10437,12 +10479,16 @@
         </ul></li>
         <li><a href="autoapi/noether/data/preprocessors/normalizers/index.html#noether.data.preprocessors.normalizers.FieldNormalizer.normalizer">normalizer (noether.data.preprocessors.normalizers.FieldNormalizer attribute)</a>
 </li>
+        <li><a href="autoapi/noether/core/types/index.html#noether.core.types.CheckpointKeys.NORMALIZER_CONFIGS">NORMALIZER_CONFIGS (noether.core.types.CheckpointKeys attribute)</a>
+</li>
         <li><a href="autoapi/noether/core/presets/base/index.html#noether.core.presets.base.DomainPreset.normalizer_spec">normalizer_spec (noether.core.presets.base.DomainPreset property)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/presets/index.html#noether.core.presets.DomainPreset.normalizer_spec">(noether.core.presets.DomainPreset property)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/types/index.html#noether.core.types.CheckpointKeys.NORMALIZER_STATISTICS">NORMALIZER_STATISTICS (noether.core.types.CheckpointKeys attribute)</a>
+</li>
         <li><a href="autoapi/noether/core/schemas/normalizers/index.html#noether.core.schemas.normalizers.NormalizerConfig">NormalizerConfig (class in noether.core.schemas.normalizers)</a>
 </li>
         <li><a href="autoapi/noether/data/base/index.html#noether.data.base.Dataset.normalizers">normalizers (noether.data.base.Dataset attribute)</a>
@@ -10451,6 +10497,12 @@
           <li><a href="autoapi/noether/data/base/dataset/index.html#noether.data.base.dataset.Dataset.normalizers">(noether.data.base.dataset.Dataset attribute)</a>
 </li>
           <li><a href="autoapi/noether/data/index.html#noether.data.Dataset.normalizers">(noether.data.Dataset attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/inference/index.html#noether.inference.Run.normalizers">normalizers() (noether.inference.Run method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run.normalizers">(noether.inference.run.Run method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.MuonOptimizerConfig.ns_steps">ns_steps (noether.core.schemas.MuonOptimizerConfig attribute)</a>
@@ -11987,8 +12039,6 @@
           <li><a href="autoapi/noether/core/utils/logging/formatting/index.html#noether.core.utils.logging.formatting.CustomFormatter.RESET">(noether.core.utils.logging.formatting.CustomFormatter attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/stats/index.html#noether.data.stats.RunningMoments.reset">reset() (noether.data.stats.RunningMoments method)</a>
 </li>
         <li><a href="autoapi/noether/modeling/modules/layers/linear_projection/index.html#noether.modeling.modules.layers.linear_projection.LinearProjection.reset_parameters">reset_parameters() (noether.modeling.modules.layers.linear_projection.LinearProjection method)</a>
@@ -12013,6 +12063,8 @@
           <li><a href="autoapi/noether/modeling/modules/index.html#noether.modeling.modules.UpActDownMlp.reset_parameters">(noether.modeling.modules.UpActDownMlp method)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/preprocessors/normalizers/index.html#noether.data.preprocessors.normalizers.PositionNormalizer.resizing_scale">resizing_scale (noether.data.preprocessors.normalizers.PositionNormalizer attribute)</a>
 </li>
         <li><a href="autoapi/noether/io/checkpoint/resolver/index.html#noether.io.checkpoint.resolver.resolve_checkpoint">resolve_checkpoint() (in module noether.io.checkpoint.resolver)</a>
@@ -12139,6 +12191,12 @@
           <li><a href="autoapi/noether/core/schemas/modules/layers/rope_frequency/index.html#noether.core.schemas.modules.layers.rope_frequency.RopeFrequencyConfig">(class in noether.core.schemas.modules.layers.rope_frequency)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/inference/index.html#noether.inference.Run">Run (class in noether.inference)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run">(class in noether.inference.run)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/distributed/index.html#noether.core.distributed.run">run() (in module noether.core.distributed)</a>
 
         <ul>
@@ -12153,6 +12211,12 @@
 </li>
         <li><a href="autoapi/noether/core/scripts/validate_pytorch_compatibilities/index.html#noether.core.scripts.validate_pytorch_compatibilities.run_cuda_assertions">run_cuda_assertions() (in module noether.core.scripts.validate_pytorch_compatibilities)</a>
 </li>
+        <li><a href="autoapi/noether/inference/index.html#id0">run_dir (noether.inference.Run attribute)</a>, <a href="autoapi/noether/inference/index.html#noether.inference.Run.run_dir">[1]</a>
+
+        <ul>
+          <li><a href="autoapi/noether/inference/run/index.html#id0">(noether.inference.run.Run attribute)</a>, <a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run.run_dir">[1]</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/initializers/checkpoint/index.html#noether.core.initializers.checkpoint.CheckpointInitializer.run_id">run_id (noether.core.initializers.checkpoint.CheckpointInitializer attribute)</a>
 
         <ul>
@@ -12292,6 +12356,8 @@
         <li><a href="autoapi/noether/data/samplers/internals/index.html#noether.data.samplers.internals.SamplerOutput">SamplerOutput (class in noether.data.samplers.internals)</a>
 </li>
         <li><a href="autoapi/noether/io/cli/cli_utils/index.html#noether.io.cli.cli_utils.sanitize">sanitize() (in module noether.io.cli.cli_utils)</a>
+</li>
+        <li><a href="autoapi/noether/inference/run/index.html#noether.inference.run.sanitize_hp_resolved">sanitize_hp_resolved() (in module noether.inference.run)</a>
 </li>
         <li><a href="autoapi/noether/core/writers/checkpoint_writer/index.html#noether.core.writers.checkpoint_writer.CheckpointWriter.save">save() (noether.core.writers.checkpoint_writer.CheckpointWriter method)</a>
 
@@ -12895,14 +12961,14 @@
           <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.slurm_array_parallelism">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.slurm_partition">slurm_partition (noether.core.schemas.slurm.SlurmConfig attribute)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.SlurmConfig.slurm_partition">(noether.core.schemas.SlurmConfig attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/slurm/index.html#noether.core.schemas.slurm.SlurmConfig.slurm_setup">slurm_setup (noether.core.schemas.slurm.SlurmConfig attribute)</a>
 
         <ul>
@@ -13211,6 +13277,12 @@
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.static_graph">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/inference/index.html#noether.inference.Run.statistics">statistics (noether.inference.Run property)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/inference/run/index.html#noether.inference.run.Run.statistics">(noether.inference.run.Run property)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/presets/base/index.html#noether.core.presets.base.DomainPreset.stats">stats (noether.core.presets.base.DomainPreset attribute)</a>
