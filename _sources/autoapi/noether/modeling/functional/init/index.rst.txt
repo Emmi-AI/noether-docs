@@ -20,6 +20,7 @@ Functions
 
    noether.modeling.functional.init.init_bias_to_zero
    noether.modeling.functional.init.init_trunc_normal_zero_bias
+   noether.modeling.functional.init.init_xavier_uniform_zero_bias
    noether.modeling.functional.init.apply_init_method
 
 
@@ -44,6 +45,13 @@ Module Contents
 
    :param layer_module: An nn.Module instance, either a Linear or Conv layer.
    :param std: Standard Deviation value of the normal distribution to sample weights from. Defaults to 0.02.
+
+
+.. py:function:: init_xavier_uniform_zero_bias(layer_module)
+
+   Initialize the weight tensor of a nn.Module instance using Xavier uniform with a zero bias vector.
+
+   :param layer_module: An nn.Module instance, either a Linear or Conv layer.
 
 
 .. py:function:: apply_init_method(module, proj_weight, init_method)

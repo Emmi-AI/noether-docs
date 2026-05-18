@@ -455,6 +455,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../../core/schemas/models/transformer/index.html">noether.core.schemas.models.transformer</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../../core/schemas/models/transolver/index.html">noether.core.schemas.models.transolver</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../../core/schemas/models/upt/index.html">noether.core.schemas.models.upt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../../core/schemas/models/vit/index.html">noether.core.schemas.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../../../core/schemas/modules/index.html">noether.core.schemas.modules</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.schemas.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -730,6 +731,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../models/transformer/index.html">noether.modeling.models.transformer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../models/transolver/index.html">noether.modeling.models.transolver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../models/upt/index.html">noether.modeling.models.upt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../models/vit/index.html">noether.modeling.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current has-children"><a class="reference internal" href="../../../index.html">noether.modeling.modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
@@ -771,6 +773,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../layers/scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../layers/transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../layers/vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../layers/vit_layers/index.html">noether.modeling.modules.layers.vit_layers</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../mlp/index.html">noether.modeling.modules.mlp</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.mlp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -917,7 +920,7 @@ being computed from the input tensor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input tensor [batch_size, n_tokens, dim]. Only contains tokens with
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Input tensor [batch_size, n_tokens, dim]. Only contains tokens with
 <code class="docutils literal notranslate"><span class="pre">size</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">None</span></code> in <code class="docutils literal notranslate"><span class="pre">token_specs</span></code>.</p></li>
 <li><p><strong>token_specs</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.14)"><em>collections.abc.Sequence</em></a><em>[</em><a class="reference internal" href="../../../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.TokenSpec" title="noether.core.schemas.modules.attention.TokenSpec"><em>noether.core.schemas.modules.attention.TokenSpec</em></a><em>]</em>) – Sequence of token specifications defining the input structure.
 Tokens with <code class="docutils literal notranslate"><span class="pre">size=None</span></code> are loaded from <code class="docutils literal notranslate"><span class="pre">kv_cache</span></code>.</p></li>
@@ -925,12 +928,12 @@ Tokens with <code class="docutils literal notranslate"><span class="pre">size=No
 token groups (queries) attend to which other token groups (keys/values).
 The provided patterns must be exhaustive and non-overlapping. This means every
 input (non-cached) token group must be a query in exactly one pattern.</p></li>
-<li><p><strong>key_padding_mask</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – Optional boolean mask of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">n_tokens)</span></code>.
+<li><p><strong>key_padding_mask</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – Optional boolean mask of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">n_tokens)</span></code>.
 <code class="docutils literal notranslate"><span class="pre">True</span></code> indicates a real token; <code class="docutils literal notranslate"><span class="pre">False</span></code> indicates a padding token that should not be attended to.
 The mask is sliced per attention pattern to cover only the key/value tokens of that pattern.
 Not supported when using KV cache (cached tokens are assumed to be valid).</p></li>
-<li><p><strong>freqs</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – RoPE frequencies for positional encoding (only for input tokens).</p></li>
-<li><p><strong>kv_cache</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em>]</em><em>] </em><em>| </em><em>None</em>) – KV cache from a previous forward pass. Structure:
+<li><p><strong>freqs</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – RoPE frequencies for positional encoding (only for input tokens).</p></li>
+<li><p><strong>kv_cache</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a><em>]</em><em>] </em><em>| </em><em>None</em>) – KV cache from a previous forward pass. Structure:
 <code class="docutils literal notranslate"><span class="pre">{token_name:</span> <span class="pre">{&quot;k&quot;:</span> <span class="pre">tensor,</span> <span class="pre">&quot;v&quot;:</span> <span class="pre">tensor}}</span></code>.</p></li>
 </ul>
 </dd>
@@ -940,7 +943,7 @@ Not supported when using KV cache (cached tokens are assumed to be valid).</p></
 using cached tokens.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a>]] | None]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a>]] | None]</p>
 </dd>
 </dl>
 </dd></dl>

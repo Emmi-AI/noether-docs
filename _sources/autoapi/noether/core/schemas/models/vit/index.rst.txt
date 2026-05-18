@@ -1,0 +1,130 @@
+noether.core.schemas.models.vit
+===============================
+
+.. py:module:: noether.core.schemas.models.vit
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.core.schemas.models.vit.ViTConfig
+
+
+Module Contents
+---------------
+
+.. py:class:: ViTConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
+
+
+   Configuration for ViT model
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: coord_dim
+      :type:  int
+      :value: None
+
+
+      Coordinate dimensionality of the input grid (2 for 2D, 3 for 3D).
+
+
+   .. py:attribute:: out_channels
+      :type:  int
+      :value: None
+
+
+      Number of output channels emitted per spatial cell.
+
+
+   .. py:attribute:: patch_size
+      :type:  int
+      :value: None
+
+
+      Patch side length in cells. The grid resolution must be divisible by this value.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Token hidden dimension throughout the transformer stack.
+
+
+   .. py:attribute:: num_heads
+      :type:  int
+      :value: None
+
+
+      Number of attention heads in each transformer block.
+
+
+   .. py:attribute:: depth
+      :type:  int
+      :value: None
+
+
+      Number of stacked transformer blocks.
+
+
+   .. py:attribute:: mlp_ratio
+      :type:  int
+      :value: None
+
+
+      FFN expansion factor inside each transformer block.
+
+
+   .. py:attribute:: use_conditioning
+      :type:  bool
+      :value: True
+
+
+      If True, enable AdaLN-Zero conditioning (forward requires ``cond``); if False, plain ViT (``cond`` must be ``None``).
+
+
+   .. py:attribute:: token_dropout
+      :type:  float
+      :value: None
+
+
+      Per-patch token dropout probability used during training.
+
+
+   .. py:attribute:: attn_drop
+      :type:  float
+      :value: None
+
+
+      Dropout probability inside attention.
+
+
+   .. py:attribute:: use_conv_output_head
+      :type:  bool
+      :value: True
+
+
+      If True, decode via a cascaded PixelShuffle conv head; if False, decode via a linear unpatchify.
+
+
+   .. py:property:: transformer_block_config
+      :type: noether.core.schemas.modules.blocks.TransformerBlockConfig
+
+
+

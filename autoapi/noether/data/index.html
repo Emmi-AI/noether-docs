@@ -455,6 +455,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../core/schemas/models/transformer/index.html">noether.core.schemas.models.transformer</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../core/schemas/models/transolver/index.html">noether.core.schemas.models.transolver</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../core/schemas/models/upt/index.html">noether.core.schemas.models.upt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../core/schemas/models/vit/index.html">noether.core.schemas.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../core/schemas/modules/index.html">noether.core.schemas.modules</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.schemas.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -730,6 +731,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../modeling/models/transformer/index.html">noether.modeling.models.transformer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../modeling/models/transolver/index.html">noether.modeling.models.transolver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../modeling/models/upt/index.html">noether.modeling.models.upt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../modeling/models/vit/index.html">noether.modeling.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../modeling/modules/index.html">noether.modeling.modules</a><input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -771,6 +773,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../modeling/modules/layers/scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../modeling/modules/layers/transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../modeling/modules/layers/vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../modeling/modules/layers/vit_layers/index.html">noether.modeling.modules.layers.vit_layers</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../modeling/modules/mlp/index.html">noether.modeling.modules.mlp</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.mlp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -966,7 +969,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.data.Dataset">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.</span></span><span class="sig-name descname"><span class="pre">Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset_config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.Dataset" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.Dataset" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.Dataset" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code></a></p>
 <p>Noether dataset implementation, which is a wrapper around torch.utils.data.Dataset that can hold a dataset_config_provider.
 A dataset should map a key (i.e., an index) to its corresponding data.
 Each sub-class should implement individual getitem_* methods, where * is the name of an item in the dataset.
@@ -1437,7 +1440,7 @@ done for the denormalization, this method should simply return the passed key/va
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The name of the item.</p></li>
-<li><p><strong>value</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – The value of the item.</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – The value of the item.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1559,7 +1562,7 @@ are no sample processors.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The name of the item.</p></li>
-<li><p><strong>value</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – The value of the item.</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – The value of the item.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1687,10 +1690,10 @@ Example:</p>
 If denormalization is not supported, it raises NotImplementedError or decide to implement the identity function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – The input tensor to denormalize.</p>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – The input tensor to denormalize.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a> | numpy.typing.NDArray</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a> | numpy.typing.NDArray</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1711,7 +1714,7 @@ If denormalization is not supported, it raises NotImplementedError or decide to 
 <dd class="field-odd"><p><strong>data</strong> (<em>noether.data.preprocessors.types.ScalarOrSequence</em>) – The input data to convert. Can be a sequence of floats, a torch.Tensor, or None.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
 </dd>
 </dl>
 <p>Returns: The input data as a torch.Tensor if it was a sequence, the original tensor if it was already a torch.Tensor, or None if the input was None.
@@ -1808,7 +1811,7 @@ optionally a different batch_size to use for the interleaved batches.</p></li>
 <dd class="field-even"><p>DataLoader that uses the InterleavedSampler with the accordingly configured dataset.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader" title="(in PyTorch v2.11)">torch.utils.data.DataLoader</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader" title="(in PyTorch v2.12)">torch.utils.data.DataLoader</a></p>
 </dd>
 </dl>
 </dd></dl>

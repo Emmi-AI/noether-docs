@@ -455,6 +455,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../core/schemas/models/transformer/index.html">noether.core.schemas.models.transformer</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../core/schemas/models/transolver/index.html">noether.core.schemas.models.transolver</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../../core/schemas/models/upt/index.html">noether.core.schemas.models.upt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../core/schemas/models/vit/index.html">noether.core.schemas.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../../core/schemas/modules/index.html">noether.core.schemas.modules</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.schemas.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -730,6 +731,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../models/transformer/index.html">noether.modeling.models.transformer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../models/transolver/index.html">noether.modeling.models.transolver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../models/upt/index.html">noether.modeling.models.upt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../models/vit/index.html">noether.modeling.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current has-children"><a class="reference internal" href="../../index.html">noether.modeling.modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
@@ -771,6 +773,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../layers/scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../layers/transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../layers/vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../layers/vit_layers/index.html">noether.modeling.modules.layers.vit_layers</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../mlp/index.html">noether.modeling.modules.mlp</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.mlp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -879,7 +882,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.attention.transolver_plusplus.</span></span><span class="sig-name descname"><span class="pre">TransolverPlusPlusAttention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>Transolver++ Attention module as implemented in <a class="reference external" href="https://github.com/thuml/Transolver_plus/blob/main/models/Transolver_plus.py">https://github.com/thuml/Transolver_plus/blob/main/models/Transolver_plus.py</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -959,8 +962,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input tensor with shape (batch_size, seqlen, hidden_dim).</p></li>
-<li><p><strong>attn_mask</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – Attention mask tensor with shape (batch_size). Defaults to None.</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Input tensor with shape (batch_size, seqlen, hidden_dim).</p></li>
+<li><p><strong>attn_mask</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – Attention mask tensor with shape (batch_size). Defaults to None.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

@@ -1,0 +1,127 @@
+noether.modeling.modules.layers.vit_layers
+==========================================
+
+.. py:module:: noether.modeling.modules.layers.vit_layers
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.modules.layers.vit_layers.AvgPool2DPatchify
+   noether.modeling.modules.layers.vit_layers.MaskPatchify
+   noether.modeling.modules.layers.vit_layers.FinalLayer
+   noether.modeling.modules.layers.vit_layers.ConvOutputHead
+
+
+Module Contents
+---------------
+
+.. py:class:: AvgPool2DPatchify(patch_size = 16)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Tokenize a 2D grid by average-pooling each ``patch_size``×``patch_size`` patch.
+
+
+   .. py:attribute:: patch_size
+      :value: 16
+
+
+
+   .. py:attribute:: patch
+
+
+   .. py:method:: forward(x)
+
+      Pool spatial features into patches.
+
+      :param x: Input grid with shape ``(B, H, W, C)``.
+
+      :returns: Pooled patch grid of shape ``(B, H // patch_size, W // patch_size, C)``.
+
+
+
+.. py:class:: MaskPatchify(patch_size)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Downsample a boolean mask to patch resolution via max-pooling (``True`` = at least one valid cell).
+
+
+   .. py:attribute:: patch_size
+
+
+   .. py:method:: forward(mask)
+
+      Downsample boolean mask to patch resolution.
+
+      :param mask: Boolean mask of shape ``(B, H, W)``.
+
+      :returns: Flat boolean mask of shape ``(B, (H // patch_size) * (W // patch_size))``.
+
+
+
+.. py:class:: FinalLayer(hidden_size, patch_size, out_channels, use_modulation = True)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Final unpatchify projection with optional AdaLN modulation conditioned on a global vector ``c``.
+
+
+   .. py:attribute:: norm_final
+
+
+   .. py:attribute:: linear
+
+
+   .. py:attribute:: adaLN_modulation
+      :type:  torch.nn.Linear | None
+
+
+   .. py:method:: forward(x, c = None)
+
+      Apply (optionally AdaLN-modulated) norm then linear projection.
+
+      :param x: Tokens of shape ``(B, L, hidden_size)``.
+      :param c: Conditioning vector of shape ``(B, hidden_size)`` when ``use_modulation=True``;
+                must be ``None`` when ``use_modulation=False``. The caller is responsible for any
+                upstream activation (e.g. SiLU) — this layer applies the AdaLN linear directly.
+
+      :returns: Tensor of shape ``(B, L, patch_size**2 * out_channels)``.
+
+
+
+.. py:class:: ConvOutputHead(hidden_dim, out_channels, patch_size, mid_channels = 64)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Conv output head decodes tokens to spatial output
+
+
+   .. py:attribute:: patch_size
+
+
+   .. py:attribute:: out_channels
+
+
+   .. py:attribute:: stages
+
+
+   .. py:method:: forward(x, grid_h, grid_w)
+
+      Decode tokens to spatial output via cascaded PixelShuffle stages.
+
+      :param x: Flattened tokens of shape ``(B, grid_h * grid_w, hidden_dim)``.
+      :param grid_h: Patch grid height (``H // patch_size``).
+      :param grid_w: Patch grid width (``W // patch_size``).
+
+      :returns: Spatial tensor of shape ``(B, H, W, out_channels)`` after upsampling.
+
+
+

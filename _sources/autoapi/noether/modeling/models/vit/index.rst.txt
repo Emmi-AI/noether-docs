@@ -1,0 +1,103 @@
+noether.modeling.models.vit
+===========================
+
+.. py:module:: noether.modeling.models.vit
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.models.vit.ViT
+
+
+Module Contents
+---------------
+
+.. py:class:: ViT(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   Vision Transformer for spatial regression on continuous-coordinate grids.
+
+   Based on the ViT paper (https://arxiv.org/pdf/2010.11929) with several modifications, such as:
+
+   - Continuous coordinate inputs with sincos positional embedding and RoPE (vs. learned 1D position embeddings).
+   - Optional AdaLN-Zero conditioning, à la DiT (https://arxiv.org/abs/2212.09748).
+   - RMSNorm and QK-norm in attention (vs. LayerNorm only).
+
+   :param config: Configuration for the ViT model. See
+                  :class:`~noether.core.schemas.models.ViTConfig` for available options.
+
+
+   .. py:attribute:: coord_dim
+
+
+   .. py:attribute:: out_channels
+
+
+   .. py:attribute:: patch_size
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: num_heads
+
+
+   .. py:attribute:: token_dropout
+
+
+   .. py:attribute:: use_conditioning
+
+
+   .. py:attribute:: pool_patch
+
+
+   .. py:attribute:: mask_patchify
+
+
+   .. py:attribute:: pos_embedding
+
+
+   .. py:attribute:: rope
+
+
+   .. py:attribute:: backbone
+
+
+   .. py:attribute:: use_conv_output_head
+
+
+   .. py:method:: initialize_weights()
+
+      Initialize backbone weights
+
+
+
+   .. py:method:: unpatchify(x, grid_h, grid_w)
+
+      Linear unpatchify: ``(B, L, p²·C_out) → (B, H, W, C_out)``.
+
+
+
+   .. py:method:: forward(x, coords, mask = None, cond = None, return_tokens = False)
+
+      Run the standard ViT.
+
+      :param x: Optional pre-computed patch embeddings of shape ``(B, L, hidden_dim)``. When
+                ``None``, tokens come purely from positional encoding.
+      :param coords: Per-cell coordinates of shape ``(B, H, W, coord_dim)``.
+      :param mask: Optional per-cell fluid mask of shape ``(B, H, W)``.
+      :param cond: AdaLN conditioning vector of shape ``(B, hidden_dim)``. Required when the ViT
+                   was built with ``use_conditioning=True`` (the default); must be ``None`` otherwise.
+      :param return_tokens: If True, return raw post-FinalLayer tokens plus ``(grid_h, grid_w)``
+                            instead of the decoded spatial output.
+
+      :returns: Either ``(B, H, W, out_channels)`` or ``(tokens, (grid_h, grid_w))`` if
+                ``return_tokens``.
+
+
+

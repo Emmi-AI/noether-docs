@@ -455,6 +455,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/schemas/models/transformer/index.html">noether.core.schemas.models.transformer</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../core/schemas/models/transolver/index.html">noether.core.schemas.models.transolver</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../core/schemas/models/upt/index.html">noether.core.schemas.models.upt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../core/schemas/models/vit/index.html">noether.core.schemas.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../core/schemas/modules/index.html">noether.core.schemas.modules</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.schemas.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -730,6 +731,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../models/transformer/index.html">noether.modeling.models.transformer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../models/transolver/index.html">noether.modeling.models.transolver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../models/upt/index.html">noether.modeling.models.upt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../models/vit/index.html">noether.modeling.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current has-children"><a class="reference internal" href="../index.html">noether.modeling.modules</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
@@ -771,6 +773,7 @@
 <li class="toctree-l5"><a class="reference internal" href="scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l5"><a class="reference internal" href="transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
 <li class="toctree-l5"><a class="reference internal" href="vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
+<li class="toctree-l5"><a class="reference internal" href="vit_layers/index.html">noether.modeling.modules.layers.vit_layers</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../mlp/index.html">noether.modeling.modules.mlp</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.mlp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -874,6 +877,7 @@
 <li class="toctree-l1"><a class="reference internal" href="scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vit_layers/index.html">noether.modeling.modules.layers.vit_layers</a></li>
 </ul>
 </div>
 </section>
@@ -903,6 +907,18 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.layers.TransformerBatchNorm" title="noether.modeling.modules.layers.TransformerBatchNorm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerBatchNorm</span></code></a></p></td>
 <td><p>Wrapper around <cite>torch.nn.BatchNorm1d</cite> that considers all tokens of a single sample as the full batch.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.layers.AvgPool2DPatchify" title="noether.modeling.modules.layers.AvgPool2DPatchify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AvgPool2DPatchify</span></code></a></p></td>
+<td><p>Tokenize a 2D grid by average-pooling each <code class="docutils literal notranslate"><span class="pre">patch_size``×``patch_size</span></code> patch.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.layers.ConvOutputHead" title="noether.modeling.modules.layers.ConvOutputHead"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConvOutputHead</span></code></a></p></td>
+<td><p>Conv output head decodes tokens to spatial output</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.layers.FinalLayer" title="noether.modeling.modules.layers.FinalLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FinalLayer</span></code></a></p></td>
+<td><p>Final unpatchify projection with optional AdaLN modulation conditioned on a global vector <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.layers.MaskPatchify" title="noether.modeling.modules.layers.MaskPatchify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MaskPatchify</span></code></a></p></td>
+<td><p>Downsample a boolean mask to patch resolution via max-pooling (<code class="docutils literal notranslate"><span class="pre">True</span></code> = at least one valid cell).</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -912,7 +928,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.ContinuousSincosEmbed">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">ContinuousSincosEmbed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.ContinuousSincosEmbed" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>Embedding layer for continuous coordinates using sine and cosine functions.
 The original implementation from the Attenion is All You Need paper, deals with descrete 1D cordinates (i.e., a sequence).
 Howerver, this implementation is able to deal with 2D and 3D coordinate systems as well.</p>
@@ -931,12 +947,12 @@ for coordinates normalized to <code class="docutils literal notranslate"><span c
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.ContinuousSincosEmbed.omega">
-<span class="sig-name descname"><span class="pre">omega</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#noether.modeling.modules.layers.ContinuousSincosEmbed.omega" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">omega</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#noether.modeling.modules.layers.ContinuousSincosEmbed.omega" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.ContinuousSincosEmbed.padding_tensor">
-<span class="sig-name descname"><span class="pre">padding_tensor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#noether.modeling.modules.layers.ContinuousSincosEmbed.padding_tensor" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">padding_tensor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#noether.modeling.modules.layers.ContinuousSincosEmbed.padding_tensor" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -985,7 +1001,7 @@ for coordinates normalized to <code class="docutils literal notranslate"><span c
 <dd><p>Forward method of the ContinuousSincosEmbed layer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>coords</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Tensor of coordinates. The shape of the tensor should be [batch size, number of points, coordinate dimension] or [number of points, coordinate dimension].</p>
+<dd class="field-odd"><p><strong>coords</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Tensor of coordinates. The shape of the tensor should be [batch size, number of points, coordinate dimension] or [number of points, coordinate dimension].</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.14)"><strong>NotImplementedError</strong></a> – Only supports sparse (i.e. [number of points, coordinate dimension]) or dense (i.e. [batch size, number of points, coordinate dimension]) coordinates systems.</p>
@@ -994,7 +1010,7 @@ for coordinates normalized to <code class="docutils literal notranslate"><span c
 <dd class="field-odd"><p>Tensor with embedded coordinates.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1004,7 +1020,7 @@ for coordinates normalized to <code class="docutils literal notranslate"><span c
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.UnquantizedDropPath">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">UnquantizedDropPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.UnquantizedDropPath" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>Unquantized drop path (Stochastic Depth, <a class="reference external" href="https://arxiv.org/abs/1603.09382">https://arxiv.org/abs/1603.09382</a>) per sample. Unquantized means
 that dropped paths are still calculated. Number of dropped paths is fully stochastic, i.e., it can happen that
 not a single path is dropped or that all paths are dropped. In a quantized drop path, the same amount of
@@ -1045,7 +1061,7 @@ consider using a quantized version if large drop_prob values are used.</p>
 <dd><p>Forward function of the UnquantizedDropPath module.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Tensor to apply the drop path. Shape: (batch_size, …).</p>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Tensor to apply the drop path. Shape: (batch_size, …).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>(batch_size, …). If drop_prob is 0, the input tensor is returned. If drop_prob is 1, a tensor with zeros is returned.</p>
@@ -1072,7 +1088,7 @@ consider using a quantized version if large drop_prob values are used.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.LayerScale">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">LayerScale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.LayerScale" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>LayerScale module scales the input tensor by a learnable parameter gamma.</p>
 <p>Initialize the LayerScale module.
 :param config: Configuration for the LayerScale module. See <a class="reference internal" href="../../../core/schemas/modules/layers/index.html#noether.core.schemas.modules.layers.LayerScaleConfig" title="noether.core.schemas.modules.layers.LayerScaleConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">LayerScaleConfig</span></code></a> for details.</p>
@@ -1087,13 +1103,13 @@ consider using a quantized version if large drop_prob values are used.</p>
 <dd><p>Forward function of the LayerScale module.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input tensor to be scaled.</p>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Input tensor to be scaled.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Tensor scaled by the gamma parameter.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1103,7 +1119,7 @@ consider using a quantized version if large drop_prob values are used.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.LinearProjection">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">LinearProjection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.LinearProjection" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>LinearProjection is a linear projection layer that can be used for 1D, 2D, and 3D data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1115,7 +1131,7 @@ consider using a quantized version if large drop_prob values are used.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.LinearProjection.project">
-<span class="sig-name descname"><span class="pre">project</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear" title="(in PyTorch v2.11)"><span class="pre">torch.nn.Linear</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv1d.html#torch.nn.Conv1d" title="(in PyTorch v2.11)"><span class="pre">torch.nn.Conv1d</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html#torch.nn.Conv2d" title="(in PyTorch v2.11)"><span class="pre">torch.nn.Conv2d</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv3d.html#torch.nn.Conv3d" title="(in PyTorch v2.11)"><span class="pre">torch.nn.Conv3d</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Identity.html#torch.nn.Identity" title="(in PyTorch v2.11)"><span class="pre">torch.nn.Identity</span></a></em><a class="headerlink" href="#noether.modeling.modules.layers.LinearProjection.project" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">project</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear" title="(in PyTorch v2.12)"><span class="pre">torch.nn.Linear</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv1d.html#torch.nn.Conv1d" title="(in PyTorch v2.12)"><span class="pre">torch.nn.Conv1d</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv2d.html#torch.nn.Conv2d" title="(in PyTorch v2.12)"><span class="pre">torch.nn.Conv2d</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Conv3d.html#torch.nn.Conv3d" title="(in PyTorch v2.12)"><span class="pre">torch.nn.Conv3d</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Identity.html#torch.nn.Identity" title="(in PyTorch v2.12)"><span class="pre">torch.nn.Identity</span></a></em><a class="headerlink" href="#noether.modeling.modules.layers.LinearProjection.project" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1146,13 +1162,13 @@ consider using a quantized version if large drop_prob values are used.</p>
 <dd><p>Forward function of the LinearProjection.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Input tensor to the LinearProjection.</p>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Input tensor to the LinearProjection.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Output tensor from the LinearProjection.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1162,7 +1178,7 @@ consider using a quantized version if large drop_prob values are used.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.RopeFrequency">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">RopeFrequency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.RopeFrequency" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>Creates frequencies for rotary embeddings (RoPE) from <a class="reference external" href="https://arxiv.org/abs/2104.09864">https://arxiv.org/abs/2104.09864</a> for variable positions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1171,7 +1187,7 @@ consider using a quantized version if large drop_prob values are used.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.RopeFrequency.omega">
-<span class="sig-name descname"><span class="pre">omega</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#noether.modeling.modules.layers.RopeFrequency.omega" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">omega</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><span class="pre">torch.Tensor</span></a></em><a class="headerlink" href="#noether.modeling.modules.layers.RopeFrequency.omega" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -1214,10 +1230,10 @@ consider using a quantized version if large drop_prob values are used.</p>
 <span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coords</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.RopeFrequency.forward" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>coords</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – coordinates to create RoPE frequencies for. Expected shape is (…, input_dim).</p>
+<dd class="field-odd"><p><strong>coords</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – coordinates to create RoPE frequencies for. Expected shape is (…, input_dim).</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a>, Ellipsis]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a> | <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a>, Ellipsis]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1227,7 +1243,7 @@ consider using a quantized version if large drop_prob values are used.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.ScalarsConditioner">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">ScalarsConditioner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.ScalarsConditioner" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>Embeds num_scalars scalars into a single conditioning vector via first encoding every scalar with
 sine-cosine embeddings followed by a mlp (per scalar). These vectors are then concatenated and projected down
 to condition_dim with an MLP.</p>
@@ -1280,12 +1296,12 @@ locations in the code. Recommended usage: condition = conditioner(geometry_angle
 </dd>
 <dt class="field-even">Parameters<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>args</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
-<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>)</p></li>
+<li><p><strong>args</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>)</p></li>
+<li><p><strong>kwargs</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>)</p></li>
 </ul>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
 </dd>
 </dl>
 <p>Example:
@@ -1318,7 +1334,7 @@ condition = conditioner(</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.TransformerBatchNorm">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">TransformerBatchNorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elementwise_affine</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.TransformerBatchNorm" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.11)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>Wrapper around <cite>torch.nn.BatchNorm1d</cite> that considers all tokens of a single sample as the full batch.
 Additionally remaps <cite>affine</cite> to <cite>elementwise_affine</cite> and supports disabling bias to comply with the
 <cite>torch.nn.LayerNorm</cite> interface. Does not use any nn.BatchNorm1d modules to avoid errors with nn.SyncBatchnorm.</p>
@@ -1353,13 +1369,193 @@ Additionally remaps <cite>affine</cite> to <cite>elementwise_affine</cite> and s
 <dd><p>BatchNorm1d where all tokens of a single sample correspond to a full batch.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)"><em>torch.Tensor</em></a>) – Tensor of shape (batch_size, seqlen, dim).</p>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Tensor of shape (batch_size, seqlen, dim).</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Normalized x of shape (batch_size, seqlen, dim).</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.11)">torch.Tensor</a></p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.AvgPool2DPatchify">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">AvgPool2DPatchify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.AvgPool2DPatchify" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<p>Tokenize a 2D grid by average-pooling each <code class="docutils literal notranslate"><span class="pre">patch_size``×``patch_size</span></code> patch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>patch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.AvgPool2DPatchify.patch_size">
+<span class="sig-name descname"><span class="pre">patch_size</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></em><a class="headerlink" href="#noether.modeling.modules.layers.AvgPool2DPatchify.patch_size" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.AvgPool2DPatchify.patch">
+<span class="sig-name descname"><span class="pre">patch</span></span><a class="headerlink" href="#noether.modeling.modules.layers.AvgPool2DPatchify.patch" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.AvgPool2DPatchify.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.AvgPool2DPatchify.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Pool spatial features into patches.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Input grid with shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">C)</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pooled patch grid of shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">H</span> <span class="pre">//</span> <span class="pre">patch_size,</span> <span class="pre">W</span> <span class="pre">//</span> <span class="pre">patch_size,</span> <span class="pre">C)</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.ConvOutputHead">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">ConvOutputHead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mid_channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.ConvOutputHead" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<p>Conv output head decodes tokens to spatial output</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hidden_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>out_channels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>patch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>mid_channels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.ConvOutputHead.patch_size">
+<span class="sig-name descname"><span class="pre">patch_size</span></span><a class="headerlink" href="#noether.modeling.modules.layers.ConvOutputHead.patch_size" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.ConvOutputHead.out_channels">
+<span class="sig-name descname"><span class="pre">out_channels</span></span><a class="headerlink" href="#noether.modeling.modules.layers.ConvOutputHead.out_channels" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.ConvOutputHead.stages">
+<span class="sig-name descname"><span class="pre">stages</span></span><a class="headerlink" href="#noether.modeling.modules.layers.ConvOutputHead.stages" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.ConvOutputHead.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_w</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.ConvOutputHead.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Decode tokens to spatial output via cascaded PixelShuffle stages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Flattened tokens of shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">grid_h</span> <span class="pre">*</span> <span class="pre">grid_w,</span> <span class="pre">hidden_dim)</span></code>.</p></li>
+<li><p><strong>grid_h</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Patch grid height (<code class="docutils literal notranslate"><span class="pre">H</span> <span class="pre">//</span> <span class="pre">patch_size</span></code>).</p></li>
+<li><p><strong>grid_w</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Patch grid width (<code class="docutils literal notranslate"><span class="pre">W</span> <span class="pre">//</span> <span class="pre">patch_size</span></code>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Spatial tensor of shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">H,</span> <span class="pre">W,</span> <span class="pre">out_channels)</span></code> after upsampling.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.FinalLayer">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">FinalLayer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hidden_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_modulation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.FinalLayer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<p>Final unpatchify projection with optional AdaLN modulation conditioned on a global vector <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hidden_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>patch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>out_channels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
+<li><p><strong>use_modulation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.FinalLayer.norm_final">
+<span class="sig-name descname"><span class="pre">norm_final</span></span><a class="headerlink" href="#noether.modeling.modules.layers.FinalLayer.norm_final" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.FinalLayer.linear">
+<span class="sig-name descname"><span class="pre">linear</span></span><a class="headerlink" href="#noether.modeling.modules.layers.FinalLayer.linear" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.FinalLayer.adaLN_modulation">
+<span class="sig-name descname"><span class="pre">adaLN_modulation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear" title="(in PyTorch v2.12)"><span class="pre">torch.nn.Linear</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#noether.modeling.modules.layers.FinalLayer.adaLN_modulation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.FinalLayer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.FinalLayer.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Apply (optionally AdaLN-modulated) norm then linear projection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Tokens of shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">L,</span> <span class="pre">hidden_size)</span></code>.</p></li>
+<li><p><strong>c</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a><em> | </em><em>None</em>) – Conditioning vector of shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">hidden_size)</span></code> when <code class="docutils literal notranslate"><span class="pre">use_modulation=True</span></code>;
+must be <code class="docutils literal notranslate"><span class="pre">None</span></code> when <code class="docutils literal notranslate"><span class="pre">use_modulation=False</span></code>. The caller is responsible for any
+upstream activation (e.g. SiLU) — this layer applies the AdaLN linear directly.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor of shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">L,</span> <span class="pre">patch_size**2</span> <span class="pre">*</span> <span class="pre">out_channels)</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.MaskPatchify">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.</span></span><span class="sig-name descname"><span class="pre">MaskPatchify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patch_size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.MaskPatchify" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
+<p>Downsample a boolean mask to patch resolution via max-pooling (<code class="docutils literal notranslate"><span class="pre">True</span></code> = at least one valid cell).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>patch_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.MaskPatchify.patch_size">
+<span class="sig-name descname"><span class="pre">patch_size</span></span><a class="headerlink" href="#noether.modeling.modules.layers.MaskPatchify.patch_size" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.MaskPatchify.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.MaskPatchify.forward" title="Link to this definition">¶</a></dt>
+<dd><p>Downsample boolean mask to patch resolution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mask</strong> (<a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)"><em>torch.Tensor</em></a>) – Boolean mask of shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">H,</span> <span class="pre">W)</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Flat boolean mask of shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">(H</span> <span class="pre">//</span> <span class="pre">patch_size)</span> <span class="pre">*</span> <span class="pre">(W</span> <span class="pre">//</span> <span class="pre">patch_size))</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1512,6 +1708,31 @@ Additionally remaps <cite>affine</cite> to <cite>elementwise_affine</cite> and s
 <li><a class="reference internal" href="#noether.modeling.modules.layers.TransformerBatchNorm.eps"><code class="docutils literal notranslate"><span class="pre">TransformerBatchNorm.eps</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.layers.TransformerBatchNorm.elementwise_affine"><code class="docutils literal notranslate"><span class="pre">TransformerBatchNorm.elementwise_affine</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.layers.TransformerBatchNorm.forward"><code class="docutils literal notranslate"><span class="pre">TransformerBatchNorm.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.AvgPool2DPatchify"><code class="docutils literal notranslate"><span class="pre">AvgPool2DPatchify</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.AvgPool2DPatchify.patch_size"><code class="docutils literal notranslate"><span class="pre">AvgPool2DPatchify.patch_size</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.AvgPool2DPatchify.patch"><code class="docutils literal notranslate"><span class="pre">AvgPool2DPatchify.patch</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.AvgPool2DPatchify.forward"><code class="docutils literal notranslate"><span class="pre">AvgPool2DPatchify.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.ConvOutputHead"><code class="docutils literal notranslate"><span class="pre">ConvOutputHead</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.ConvOutputHead.patch_size"><code class="docutils literal notranslate"><span class="pre">ConvOutputHead.patch_size</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.ConvOutputHead.out_channels"><code class="docutils literal notranslate"><span class="pre">ConvOutputHead.out_channels</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.ConvOutputHead.stages"><code class="docutils literal notranslate"><span class="pre">ConvOutputHead.stages</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.ConvOutputHead.forward"><code class="docutils literal notranslate"><span class="pre">ConvOutputHead.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.FinalLayer"><code class="docutils literal notranslate"><span class="pre">FinalLayer</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.FinalLayer.norm_final"><code class="docutils literal notranslate"><span class="pre">FinalLayer.norm_final</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.FinalLayer.linear"><code class="docutils literal notranslate"><span class="pre">FinalLayer.linear</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.FinalLayer.adaLN_modulation"><code class="docutils literal notranslate"><span class="pre">FinalLayer.adaLN_modulation</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.FinalLayer.forward"><code class="docutils literal notranslate"><span class="pre">FinalLayer.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.MaskPatchify"><code class="docutils literal notranslate"><span class="pre">MaskPatchify</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.MaskPatchify.patch_size"><code class="docutils literal notranslate"><span class="pre">MaskPatchify.patch_size</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.MaskPatchify.forward"><code class="docutils literal notranslate"><span class="pre">MaskPatchify.forward()</span></code></a></li>
 </ul>
 </li>
 </ul>

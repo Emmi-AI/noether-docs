@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/core/schemas/models/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Submodules: noether.core.schemas.models.ab_upt, noether.core.schemas.models.base, noether.core.schemas.models.transformer, noether.core.schemas.models.transolver, noether.core.schemas.models.upt. C..." />
+<meta property="og:description" content="Submodules: noether.core.schemas.models.ab_upt, noether.core.schemas.models.base, noether.core.schemas.models.transformer, noether.core.schemas.models.transolver, noether.core.schemas.models.upt, n..." />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Submodules: noether.core.schemas.models.ab_upt, noether.core.schemas.models.base, noether.core.schemas.models.transformer, noether.core.schemas.models.transolver, noether.core.schemas.models.upt. C..." />
+<meta name="description" content="Submodules: noether.core.schemas.models.ab_upt, noether.core.schemas.models.base, noether.core.schemas.models.transformer, noether.core.schemas.models.transolver, noether.core.schemas.models.upt, n..." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -455,6 +455,7 @@
 <li class="toctree-l5"><a class="reference internal" href="transformer/index.html">noether.core.schemas.models.transformer</a></li>
 <li class="toctree-l5"><a class="reference internal" href="transolver/index.html">noether.core.schemas.models.transolver</a></li>
 <li class="toctree-l5"><a class="reference internal" href="upt/index.html">noether.core.schemas.models.upt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="vit/index.html">noether.core.schemas.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../modules/index.html">noether.core.schemas.modules</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.schemas.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -730,6 +731,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../modeling/models/transformer/index.html">noether.modeling.models.transformer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../modeling/models/transolver/index.html">noether.modeling.models.transolver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../modeling/models/upt/index.html">noether.modeling.models.upt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../modeling/models/vit/index.html">noether.modeling.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../modeling/modules/index.html">noether.modeling.modules</a><input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -771,6 +773,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
 <li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../modeling/modules/layers/vit_layers/index.html">noether.modeling.modules.layers.vit_layers</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="../../../modeling/modules/mlp/index.html">noether.modeling.modules.mlp</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.mlp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -871,6 +874,7 @@
 <li class="toctree-l1"><a class="reference internal" href="transformer/index.html">noether.core.schemas.models.transformer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="transolver/index.html">noether.core.schemas.models.transolver</a></li>
 <li class="toctree-l1"><a class="reference internal" href="upt/index.html">noether.core.schemas.models.upt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vit/index.html">noether.core.schemas.models.vit</a></li>
 </ul>
 </div>
 </section>
@@ -896,6 +900,9 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.models.UPTConfig" title="noether.core.schemas.models.UPTConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UPTConfig</span></code></a></p></td>
 <td><p>Configuration for a UPT model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.models.ViTConfig" title="noether.core.schemas.models.ViTConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViTConfig</span></code></a></p></td>
+<td><p>Configuration for ViT model</p></td>
 </tr>
 </tbody>
 </table>
@@ -1474,6 +1481,104 @@ validated to form a valid model.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.models.</span></span><span class="sig-name descname"><span class="pre">ViTConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.models.ViTConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schemas.models.base.ModelBaseConfig" title="noether.core.schemas.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.base.ModelBaseConfig</span></code></a></p>
+<p>Configuration for ViT model</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.coord_dim">
+<span class="sig-name descname"><span class="pre">coord_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.coord_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Coordinate dimensionality of the input grid (2 for 2D, 3 for 3D).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.out_channels">
+<span class="sig-name descname"><span class="pre">out_channels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.out_channels" title="Link to this definition">¶</a></dt>
+<dd><p>Number of output channels emitted per spatial cell.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.patch_size">
+<span class="sig-name descname"><span class="pre">patch_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.patch_size" title="Link to this definition">¶</a></dt>
+<dd><p>Patch side length in cells. The grid resolution must be divisible by this value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Token hidden dimension throughout the transformer stack.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.num_heads">
+<span class="sig-name descname"><span class="pre">num_heads</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.num_heads" title="Link to this definition">¶</a></dt>
+<dd><p>Number of attention heads in each transformer block.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.depth">
+<span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.depth" title="Link to this definition">¶</a></dt>
+<dd><p>Number of stacked transformer blocks.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.mlp_ratio">
+<span class="sig-name descname"><span class="pre">mlp_ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.mlp_ratio" title="Link to this definition">¶</a></dt>
+<dd><p>FFN expansion factor inside each transformer block.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.use_conditioning">
+<span class="sig-name descname"><span class="pre">use_conditioning</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.use_conditioning" title="Link to this definition">¶</a></dt>
+<dd><p>If True, enable AdaLN-Zero conditioning (forward requires <code class="docutils literal notranslate"><span class="pre">cond</span></code>); if False, plain ViT (<code class="docutils literal notranslate"><span class="pre">cond</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.token_dropout">
+<span class="sig-name descname"><span class="pre">token_dropout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.token_dropout" title="Link to this definition">¶</a></dt>
+<dd><p>Per-patch token dropout probability used during training.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.attn_drop">
+<span class="sig-name descname"><span class="pre">attn_drop</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.attn_drop" title="Link to this definition">¶</a></dt>
+<dd><p>Dropout probability inside attention.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.use_conv_output_head">
+<span class="sig-name descname"><span class="pre">use_conv_output_head</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.use_conv_output_head" title="Link to this definition">¶</a></dt>
+<dd><p>If True, decode via a cascaded PixelShuffle conv head; if False, decode via a linear unpatchify.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.core.schemas.models.ViTConfig.transformer_block_config">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transformer_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><span class="pre">noether.core.schemas.modules.blocks.TransformerBlockConfig</span></a></em><a class="headerlink" href="#noether.core.schemas.models.ViTConfig.transformer_block_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig">noether.core.schemas.modules.blocks.TransformerBlockConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -1633,6 +1738,22 @@ validated to form a valid model.</p>
 <li><a class="reference internal" href="#noether.core.schemas.models.UPTConfig.validate_rope_usage"><code class="docutils literal notranslate"><span class="pre">UPTConfig.validate_rope_usage()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.UPTConfig.pos_embedding_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.pos_embedding_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.models.UPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">UPTConfig.validate_parameters()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig"><code class="docutils literal notranslate"><span class="pre">ViTConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.model_config"><code class="docutils literal notranslate"><span class="pre">ViTConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.coord_dim"><code class="docutils literal notranslate"><span class="pre">ViTConfig.coord_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.out_channels"><code class="docutils literal notranslate"><span class="pre">ViTConfig.out_channels</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.patch_size"><code class="docutils literal notranslate"><span class="pre">ViTConfig.patch_size</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">ViTConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.num_heads"><code class="docutils literal notranslate"><span class="pre">ViTConfig.num_heads</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.depth"><code class="docutils literal notranslate"><span class="pre">ViTConfig.depth</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.mlp_ratio"><code class="docutils literal notranslate"><span class="pre">ViTConfig.mlp_ratio</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.use_conditioning"><code class="docutils literal notranslate"><span class="pre">ViTConfig.use_conditioning</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.token_dropout"><code class="docutils literal notranslate"><span class="pre">ViTConfig.token_dropout</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.attn_drop"><code class="docutils literal notranslate"><span class="pre">ViTConfig.attn_drop</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.use_conv_output_head"><code class="docutils literal notranslate"><span class="pre">ViTConfig.use_conv_output_head</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.models.ViTConfig.transformer_block_config"><code class="docutils literal notranslate"><span class="pre">ViTConfig.transformer_block_config</span></code></a></li>
 </ul>
 </li>
 </ul>

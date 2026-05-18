@@ -442,6 +442,7 @@
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/schemas/models/transformer/index.html">noether.core.schemas.models.transformer</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/schemas/models/transolver/index.html">noether.core.schemas.models.transolver</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/schemas/models/upt/index.html">noether.core.schemas.models.upt</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/noether/core/schemas/models/vit/index.html">noether.core.schemas.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="autoapi/noether/core/schemas/modules/index.html">noether.core.schemas.modules</a><input class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><div class="visually-hidden">Toggle navigation of noether.core.schemas.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -717,6 +718,7 @@
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/modeling/models/transformer/index.html">noether.modeling.models.transformer</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/modeling/models/transolver/index.html">noether.modeling.models.transolver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="autoapi/noether/modeling/models/upt/index.html">noether.modeling.models.upt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="autoapi/noether/modeling/models/vit/index.html">noether.modeling.models.vit</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="autoapi/noether/modeling/modules/index.html">noether.modeling.modules</a><input class="toctree-checkbox" id="toctree-checkbox-67" name="toctree-checkbox-67" role="switch" type="checkbox"/><label for="toctree-checkbox-67"><div class="visually-hidden">Toggle navigation of noether.modeling.modules</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -758,6 +760,7 @@
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/modeling/modules/layers/scalar_conditioner/index.html">noether.modeling.modules.layers.scalar_conditioner</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/modeling/modules/layers/transformer_batchnorm/index.html">noether.modeling.modules.layers.transformer_batchnorm</a></li>
 <li class="toctree-l5"><a class="reference internal" href="autoapi/noether/modeling/modules/layers/vectors_conditioner/index.html">noether.modeling.modules.layers.vectors_conditioner</a></li>
+<li class="toctree-l5"><a class="reference internal" href="autoapi/noether/modeling/modules/layers/vit_layers/index.html">noether.modeling.modules.layers.vit_layers</a></li>
 </ul>
 </li>
 <li class="toctree-l4 has-children"><a class="reference internal" href="autoapi/noether/modeling/modules/mlp/index.html">noether.modeling.modules.mlp</a><input class="toctree-checkbox" id="toctree-checkbox-74" name="toctree-checkbox-74" role="switch" type="checkbox"/><label for="toctree-checkbox-74"><div class="visually-hidden">Toggle navigation of noether.modeling.modules.mlp</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -912,6 +915,12 @@
 </li>
         <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.active">active (noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig attribute)</a>
 </li>
+        <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.FinalLayer.adaLN_modulation">adaLN_modulation (noether.modeling.modules.layers.FinalLayer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.FinalLayer.adaLN_modulation">(noether.modeling.modules.layers.vit_layers.FinalLayer attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.AdamOptimizerConfig">AdamOptimizerConfig (class in noether.core.schemas)</a>
 
         <ul>
@@ -1348,12 +1357,24 @@
           <li><a href="autoapi/noether/modeling/modules/untied/index.html#noether.modeling.modules.untied.UntiedPerceiverBlock.attn">(noether.modeling.modules.untied.UntiedPerceiverBlock attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.attn_drop">attn_drop (noether.core.schemas.models.vit.ViTConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.attn_drop">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.TokenSpec.attn_type">attn_type (noether.core.schemas.modules.attention.TokenSpec property)</a>
 </li>
         <li><a href="autoapi/noether/core/utils/common/index.html#noether.core.utils.common.Stopwatch.average_lap_time">average_lap_time (noether.core.utils.common.Stopwatch property)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/utils/common/stopwatch/index.html#noether.core.utils.common.stopwatch.Stopwatch.average_lap_time">(noether.core.utils.common.stopwatch.Stopwatch property)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.AvgPool2DPatchify">AvgPool2DPatchify (class in noether.modeling.modules.layers)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.AvgPool2DPatchify">(class in noether.modeling.modules.layers.vit_layers)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/io/providers/index.html#noether.io.providers.Provider.AWS">AWS (noether.io.providers.Provider attribute)</a>
@@ -1406,6 +1427,10 @@
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransolver.backbone">(noether.modeling.models.AeroTransolver attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroUPT.backbone">(noether.modeling.models.AeroUPT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.backbone">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.backbone">(noether.modeling.models.vit.ViT attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/distributed/index.html#noether.core.distributed.barrier">barrier() (in module noether.core.distributed)</a>
@@ -1576,6 +1601,8 @@
 </li>
         <li><a href="autoapi/noether/core/presets/base/index.html#noether.core.presets.base.BEST_CHECKPOINT_CALLBACK">BEST_CHECKPOINT_CALLBACK (in module noether.core.presets.base)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/early_stoppers/metric/index.html#noether.core.callbacks.early_stoppers.metric.MetricEarlyStopper.best_metric">best_metric (noether.core.callbacks.early_stoppers.metric.MetricEarlyStopper attribute)</a>
 
         <ul>
@@ -1584,8 +1611,6 @@
           <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.MetricEarlyStopper.best_metric">(noether.core.callbacks.MetricEarlyStopper attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/callbacks/index.html#noether.core.callbacks.BestCheckpointCallback.best_metric_value">best_metric_value (noether.core.callbacks.BestCheckpointCallback attribute)</a>
 
         <ul>
@@ -2144,8 +2169,6 @@
           <li><a href="autoapi/noether/modeling/modules/index.html#noether.modeling.modules.SupernodePooling.compute_src_and_dst_indices">(noether.modeling.modules.SupernodePooling method)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/base/index.html#noether.data.base.Dataset.compute_statistics">compute_statistics (noether.data.base.Dataset attribute)</a>
 
         <ul>
@@ -2154,6 +2177,8 @@
           <li><a href="autoapi/noether/data/index.html#noether.data.Dataset.compute_statistics">(noether.data.Dataset attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/data/pipeline/collators/index.html#noether.data.pipeline.collators.ConcatSparseTensorCollator">ConcatSparseTensorCollator (class in noether.data.pipeline.collators)</a>
 
         <ul>
@@ -2298,6 +2323,22 @@
           <li><a href="autoapi/noether/core/schemas/modules/layers/index.html#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig">(class in noether.core.schemas.modules.layers)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/layers/continuous_sincos_embedding/index.html#noether.core.schemas.modules.layers.continuous_sincos_embedding.ContinuousSincosEmbeddingConfig">(class in noether.core.schemas.modules.layers.continuous_sincos_embedding)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.ConvOutputHead">ConvOutputHead (class in noether.modeling.modules.layers)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.ConvOutputHead">(class in noether.modeling.modules.layers.vit_layers)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.coord_dim">coord_dim (noether.core.schemas.models.vit.ViTConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.coord_dim">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.coord_dim">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.coord_dim">(noether.modeling.models.vit.ViT attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/utils/training/training_iteration/index.html#noether.core.utils.training.training_iteration.TrainingIteration.copy">copy() (noether.core.utils.training.training_iteration.TrainingIteration method)</a>
@@ -2844,6 +2885,10 @@
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.TransformerConfig.depth">(noether.core.schemas.models.TransformerConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.depth">(noether.core.schemas.models.vit.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.depth">(noether.core.schemas.models.ViTConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/decoders/index.html#noether.core.schemas.modules.decoders.DeepPerceiverDecoderConfig.depth">(noether.core.schemas.modules.decoders.DeepPerceiverDecoderConfig attribute)</a>
 </li>
@@ -3784,6 +3829,12 @@
 </li>
         <li><a href="autoapi/noether/training/trainers/base/index.html#noether.training.trainers.base.TrainingContextFilter.filter">filter() (noether.training.trainers.base.TrainingContextFilter method)</a>
 </li>
+        <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.FinalLayer">FinalLayer (class in noether.modeling.modules.layers)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.FinalLayer">(class in noether.modeling.modules.layers.vit_layers)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/utils/training/training_iteration/index.html#noether.core.utils.training.training_iteration.TrainingIteration.find_string">find_string() (noether.core.utils.training.training_iteration.TrainingIteration static method)</a>
 
         <ul>
@@ -3901,6 +3952,10 @@
 </li>
           <li><a href="autoapi/noether/modeling/models/upt/index.html#noether.modeling.models.upt.UPT.forward">(noether.modeling.models.upt.UPT method)</a>
 </li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.forward">(noether.modeling.models.ViT method)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.forward">(noether.modeling.models.vit.ViT method)</a>
+</li>
           <li><a href="autoapi/noether/modeling/modules/attention/anchor_attention/mixed/index.html#noether.modeling.modules.attention.anchor_attention.mixed.MixedAttention.forward">(noether.modeling.modules.attention.anchor_attention.mixed.MixedAttention method)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/attention/anchor_attention/multi_branch/index.html#noether.modeling.modules.attention.anchor_attention.multi_branch.MultiBranchAnchorAttention.forward">(noether.modeling.modules.attention.anchor_attention.multi_branch.MultiBranchAnchorAttention method)</a>
@@ -3945,11 +4000,17 @@
 </li>
           <li><a href="autoapi/noether/modeling/modules/encoders/index.html#noether.modeling.modules.encoders.SupernodePooling.forward">(noether.modeling.modules.encoders.SupernodePooling method)</a>
 </li>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.AvgPool2DPatchify.forward">(noether.modeling.modules.layers.AvgPool2DPatchify method)</a>
+</li>
           <li><a href="autoapi/noether/modeling/modules/layers/continuous_sincos_embed/index.html#noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbed.forward">(noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbed method)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.ContinuousSincosEmbed.forward">(noether.modeling.modules.layers.ContinuousSincosEmbed method)</a>
 </li>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.ConvOutputHead.forward">(noether.modeling.modules.layers.ConvOutputHead method)</a>
+</li>
           <li><a href="autoapi/noether/modeling/modules/layers/drop_path/index.html#noether.modeling.modules.layers.drop_path.UnquantizedDropPath.forward">(noether.modeling.modules.layers.drop_path.UnquantizedDropPath method)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.FinalLayer.forward">(noether.modeling.modules.layers.FinalLayer method)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/layers/layer_scale/index.html#noether.modeling.modules.layers.layer_scale.LayerScale.forward">(noether.modeling.modules.layers.layer_scale.LayerScale method)</a>
 </li>
@@ -3958,6 +4019,8 @@
           <li><a href="autoapi/noether/modeling/modules/layers/linear_projection/index.html#noether.modeling.modules.layers.linear_projection.LinearProjection.forward">(noether.modeling.modules.layers.linear_projection.LinearProjection method)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.LinearProjection.forward">(noether.modeling.modules.layers.LinearProjection method)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.MaskPatchify.forward">(noether.modeling.modules.layers.MaskPatchify method)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/layers/rope_frequency/index.html#noether.modeling.modules.layers.rope_frequency.RopeFrequency.forward">(noether.modeling.modules.layers.rope_frequency.RopeFrequency method)</a>
 </li>
@@ -3974,6 +4037,14 @@
           <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.UnquantizedDropPath.forward">(noether.modeling.modules.layers.UnquantizedDropPath method)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/layers/vectors_conditioner/index.html#noether.modeling.modules.layers.vectors_conditioner.VectorsConditioner.forward">(noether.modeling.modules.layers.vectors_conditioner.VectorsConditioner method)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.AvgPool2DPatchify.forward">(noether.modeling.modules.layers.vit_layers.AvgPool2DPatchify method)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.ConvOutputHead.forward">(noether.modeling.modules.layers.vit_layers.ConvOutputHead method)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.FinalLayer.forward">(noether.modeling.modules.layers.vit_layers.FinalLayer method)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.MaskPatchify.forward">(noether.modeling.modules.layers.vit_layers.MaskPatchify method)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/index.html#noether.modeling.modules.LayerScale.forward">(noether.modeling.modules.LayerScale method)</a>
 </li>
@@ -4669,6 +4740,10 @@
 </li>
           <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.UPTConfig.hidden_dim">(noether.core.schemas.models.UPTConfig attribute)</a>
 </li>
+          <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.hidden_dim">(noether.core.schemas.models.vit.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.hidden_dim">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig.hidden_dim">(noether.core.schemas.modules.attention.AttentionConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig.hidden_dim">(noether.core.schemas.modules.AttentionConfig attribute)</a>
@@ -4714,6 +4789,10 @@
           <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.hidden_dim">(noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.hidden_dim">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.hidden_dim">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.hidden_dim">(noether.modeling.models.vit.ViT attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/index.html#noether.modeling.modules.ContinuousSincosEmbed.hidden_dim">(noether.modeling.modules.ContinuousSincosEmbed attribute)</a>
 </li>
@@ -5030,6 +5109,8 @@
           <li><a href="autoapi/noether/core/initializers/index.html#noether.core.initializers.ResumeInitializer.init_weights">(noether.core.initializers.ResumeInitializer method)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/modeling/functional/init/index.html#noether.modeling.functional.init.init_xavier_uniform_zero_bias">init_xavier_uniform_zero_bias() (in module noether.modeling.functional.init)</a>
+</li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.PeriodicBoolScheduleConfig.initial_state">initial_state (noether.core.schemas.PeriodicBoolScheduleConfig attribute)</a>
 
         <ul>
@@ -5068,6 +5149,10 @@
           <li><a href="autoapi/noether/core/models/model/index.html#noether.core.models.model.Model.initialize_weights">(noether.core.models.model.Model method)</a>
 </li>
           <li><a href="autoapi/noether/core/models/index.html#noether.core.models.ModelBase.initialize_weights">(noether.core.models.ModelBase method)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.initialize_weights">(noether.modeling.models.ViT method)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.initialize_weights">(noether.modeling.models.vit.ViT method)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/io/diskcache/cache_benchmark/index.html#noether.io.diskcache.cache_benchmark.initialize_worker">initialize_worker() (in module noether.io.diskcache.cache_benchmark)</a>
@@ -5841,7 +5926,13 @@
         <li><a href="autoapi/noether/core/scripts/validate_pytorch_compatibilities/index.html#noether.core.scripts.validate_pytorch_compatibilities.StabilityTestModel.lin_out">lin_out (noether.core.scripts.validate_pytorch_compatibilities.StabilityTestModel attribute)</a>
 </li>
         <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.ReadoutLayer.linear">linear (noether.modeling.models.ab_upt.ReadoutLayer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.FinalLayer.linear">(noether.modeling.modules.layers.FinalLayer attribute)</a>
 </li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.FinalLayer.linear">(noether.modeling.modules.layers.vit_layers.FinalLayer attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schedules/index.html#noether.core.schedules.linear">linear() (in module noether.core.schedules)</a>
 
         <ul>
@@ -6048,14 +6139,14 @@
           <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.log_every_n_samples">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.BaseTrainerConfig.log_every_n_updates">log_every_n_updates (noether.core.schemas.BaseTrainerConfig attribute)</a>
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/trainers/index.html#noether.core.schemas.trainers.BaseTrainerConfig.log_every_n_updates">(noether.core.schemas.trainers.BaseTrainerConfig attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/logging/index.html#noether.core.utils.logging.log_from_all_ranks">log_from_all_ranks() (in module noether.core.utils.logging)</a>
 
         <ul>
@@ -6376,6 +6467,18 @@
         </ul></li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.Manifest">Manifest (in module noether.io.verification)</a>
 </li>
+        <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.mask_patchify">mask_patchify (noether.modeling.models.ViT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.mask_patchify">(noether.modeling.models.vit.ViT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.MaskPatchify">MaskPatchify (class in noether.modeling.modules.layers)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.MaskPatchify">(class in noether.modeling.modules.layers.vit_layers)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.ConfigSchema.master_port">master_port (noether.core.schemas.ConfigSchema attribute)</a>
 
         <ul>
@@ -6744,6 +6847,12 @@
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.TransformerBlockConfig.mlp_hidden_dim">(noether.core.schemas.modules.TransformerBlockConfig attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.mlp_ratio">mlp_ratio (noether.core.schemas.models.vit.ViTConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.mlp_ratio">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.MLPConfig">MLPConfig (class in noether.core.schemas.modules)</a>
 
         <ul>
@@ -6840,6 +6949,10 @@
           <li><a href="autoapi/noether/core/schemas/models/upt/index.html#noether.core.schemas.models.upt.UPTConfig.model_config">(noether.core.schemas.models.upt.UPTConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.UPTConfig.model_config">(noether.core.schemas.models.UPTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.model_config">(noether.core.schemas.models.vit.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.model_config">(noether.core.schemas.models.ViTConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig.model_config">(noether.core.schemas.modules.attention.AttentionConfig attribute)</a>
 </li>
@@ -7147,6 +7260,8 @@
           <li><a href="autoapi/noether/core/schemas/models/transolver/index.html#module-noether.core.schemas.models.transolver">noether.core.schemas.models.transolver</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/models/upt/index.html#module-noether.core.schemas.models.upt">noether.core.schemas.models.upt</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/models/vit/index.html#module-noether.core.schemas.models.vit">noether.core.schemas.models.vit</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/index.html#module-noether.core.schemas.modules">noether.core.schemas.modules</a>
 </li>
@@ -7526,6 +7641,8 @@
 </li>
           <li><a href="autoapi/noether/modeling/models/upt/index.html#module-noether.modeling.models.upt">noether.modeling.models.upt</a>
 </li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#module-noether.modeling.models.vit">noether.modeling.models.vit</a>
+</li>
           <li><a href="autoapi/noether/modeling/modules/index.html#module-noether.modeling.modules">noether.modeling.modules</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/activations/index.html#module-noether.modeling.modules.activations">noether.modeling.modules.activations</a>
@@ -7583,6 +7700,8 @@
           <li><a href="autoapi/noether/modeling/modules/layers/transformer_batchnorm/index.html#module-noether.modeling.modules.layers.transformer_batchnorm">noether.modeling.modules.layers.transformer_batchnorm</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/layers/vectors_conditioner/index.html#module-noether.modeling.modules.layers.vectors_conditioner">noether.modeling.modules.layers.vectors_conditioner</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#module-noether.modeling.modules.layers.vit_layers">noether.modeling.modules.layers.vit_layers</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/mlp/index.html#module-noether.modeling.modules.mlp">noether.modeling.modules.mlp</a>
 </li>
@@ -8491,6 +8610,13 @@
 </li>
         </ul></li>
         <li>
+    noether.core.schemas.models.vit
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/vit/index.html#module-noether.core.schemas.models.vit">module</a>
+</li>
+        </ul></li>
+        <li>
     noether.core.schemas.modules
 
         <ul>
@@ -9092,8 +9218,6 @@
           <li><a href="autoapi/noether/data/datasets/cfd/dataset/index.html#module-noether.data.datasets.cfd.dataset">module</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.drivaernet
 
@@ -9108,6 +9232,8 @@
           <li><a href="autoapi/noether/data/datasets/cfd/drivaernet/dataset/index.html#module-noether.data.datasets.cfd.drivaernet.dataset">module</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li>
     noether.data.datasets.cfd.drivaernet.preprocessing
 
@@ -9816,6 +9942,13 @@
 </li>
         </ul></li>
         <li>
+    noether.modeling.models.vit
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#module-noether.modeling.models.vit">module</a>
+</li>
+        </ul></li>
+        <li>
     noether.modeling.modules
 
         <ul>
@@ -10016,6 +10149,13 @@
 
         <ul>
           <li><a href="autoapi/noether/modeling/modules/layers/vectors_conditioner/index.html#module-noether.modeling.modules.layers.vectors_conditioner">module</a>
+</li>
+        </ul></li>
+        <li>
+    noether.modeling.modules.layers.vit_layers
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#module-noether.modeling.modules.layers.vit_layers">module</a>
 </li>
         </ul></li>
         <li>
@@ -10274,7 +10414,13 @@
 </li>
         </ul></li>
         <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.ReadoutLayer.norm_final">norm_final (noether.modeling.models.ab_upt.ReadoutLayer attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.FinalLayer.norm_final">(noether.modeling.modules.layers.FinalLayer attribute)</a>
 </li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.FinalLayer.norm_final">(noether.modeling.modules.layers.vit_layers.FinalLayer attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/data/index.html#noether.data.ComposePreProcess.normalization_key">normalization_key (noether.data.ComposePreProcess attribute)</a>
 
         <ul>
@@ -10330,6 +10476,10 @@
         <ul>
           <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.UPTConfig.num_heads">(noether.core.schemas.models.UPTConfig attribute)</a>
 </li>
+          <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.num_heads">(noether.core.schemas.models.vit.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.num_heads">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
           <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig.num_heads">(noether.core.schemas.modules.attention.AttentionConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig.num_heads">(noether.core.schemas.modules.AttentionConfig attribute)</a>
@@ -10337,6 +10487,10 @@
           <li><a href="autoapi/noether/core/schemas/modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig.num_heads">(noether.core.schemas.modules.blocks.TransformerBlockConfig attribute)</a>
 </li>
           <li><a href="autoapi/noether/core/schemas/modules/index.html#noether.core.schemas.modules.TransformerBlockConfig.num_heads">(noether.core.schemas.modules.TransformerBlockConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.num_heads">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.num_heads">(noether.modeling.models.vit.ViT attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/modules/attention/dot_product/index.html#noether.modeling.modules.attention.dot_product.DotProductAttention.num_heads">(noether.modeling.modules.attention.dot_product.DotProductAttention attribute)</a>
 </li>
@@ -10581,8 +10735,6 @@
           <li><a href="autoapi/noether/core/schemas/optimizers/index.html#noether.core.schemas.optimizers.OptimizerConfig">(class in noether.core.schemas.optimizers)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/factory/index.html#noether.core.factory.OptimizerFactory">OptimizerFactory (class in noether.core.factory)</a>
 
         <ul>
@@ -10595,6 +10747,8 @@
           <li><a href="autoapi/noether/core/optimizer/optimizer_wrapper/index.html#noether.core.optimizer.optimizer_wrapper.OptimizerWrapper">(class in noether.core.optimizer.optimizer_wrapper)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/schemas/modules/layers/linear_projection/index.html#noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig.optional">optional (noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig attribute)</a>
 
         <ul>
@@ -10639,6 +10793,20 @@
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransformer.out">(noether.modeling.models.AeroTransformer attribute)</a>
 </li>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroTransolver.out">(noether.modeling.models.AeroTransolver attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.out_channels">out_channels (noether.core.schemas.models.vit.ViTConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.out_channels">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.out_channels">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.out_channels">(noether.modeling.models.vit.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.ConvOutputHead.out_channels">(noether.modeling.modules.layers.ConvOutputHead attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.ConvOutputHead.out_channels">(noether.modeling.modules.layers.vit_layers.ConvOutputHead attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/layers/linear_projection/index.html#noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig.output_dim">output_dim (noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig attribute)</a>
@@ -10839,6 +11007,34 @@
 
         <ul>
           <li><a href="autoapi/noether/core/utils/common/naming/index.html#noether.core.utils.common.naming.pascal_to_snake">(in module noether.core.utils.common.naming)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.AvgPool2DPatchify.patch">patch (noether.modeling.modules.layers.AvgPool2DPatchify attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.AvgPool2DPatchify.patch">(noether.modeling.modules.layers.vit_layers.AvgPool2DPatchify attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.patch_size">patch_size (noether.core.schemas.models.vit.ViTConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.patch_size">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.patch_size">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.patch_size">(noether.modeling.models.vit.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.AvgPool2DPatchify.patch_size">(noether.modeling.modules.layers.AvgPool2DPatchify attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.ConvOutputHead.patch_size">(noether.modeling.modules.layers.ConvOutputHead attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.MaskPatchify.patch_size">(noether.modeling.modules.layers.MaskPatchify attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.AvgPool2DPatchify.patch_size">(noether.modeling.modules.layers.vit_layers.AvgPool2DPatchify attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.ConvOutputHead.patch_size">(noether.modeling.modules.layers.vit_layers.ConvOutputHead attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.MaskPatchify.patch_size">(noether.modeling.modules.layers.vit_layers.MaskPatchify attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.FileRecord.path">path (noether.io.verification.FileRecord attribute)</a>
@@ -11167,6 +11363,12 @@
         </ul></li>
         <li><a href="autoapi/noether/io/interfaces/s3_uploader/index.html#noether.io.interfaces.s3_uploader.S3FileUploader.pool">pool (noether.io.interfaces.s3_uploader.S3FileUploader attribute)</a>
 </li>
+        <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.pool_patch">pool_patch (noether.modeling.models.ViT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.pool_patch">(noether.modeling.models.vit.ViT attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/initializers/checkpoint/index.html#noether.core.initializers.checkpoint.CheckpointInitializer.pop_ckpt_kwargs_keys">pop_ckpt_kwargs_keys (noether.core.initializers.checkpoint.CheckpointInitializer attribute)</a>
 
         <ul>
@@ -11205,6 +11407,12 @@
 
         <ul>
           <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig.pos_embed_config">(noether.core.schemas.models.AnchorBranchedUPTConfig method)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.pos_embedding">pos_embedding (noether.modeling.models.ViT attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.pos_embedding">(noether.modeling.models.vit.ViT attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/core/schemas/models/upt/index.html#noether.core.schemas.models.upt.UPTConfig.pos_embedding_config">pos_embedding_config() (noether.core.schemas.models.upt.UPTConfig method)</a>
@@ -11899,6 +12107,10 @@
 
         <ul>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AnchoredBranchedUPT.rope">(noether.modeling.models.AnchoredBranchedUPT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.rope">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.rope">(noether.modeling.models.vit.ViT attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/modeling/functional/rope/index.html#noether.modeling.functional.rope.rope">rope() (in module noether.modeling.functional.rope)</a>
@@ -12839,6 +13051,12 @@
           <li><a href="autoapi/noether/core/schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema.stage_name">(noether.core.schemas.schema.ConfigSchema attribute)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.ConvOutputHead.stages">stages (noether.modeling.modules.layers.ConvOutputHead attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/modules/layers/vit_layers/index.html#noether.modeling.modules.layers.vit_layers.ConvOutputHead.stages">(noether.modeling.modules.layers.vit_layers.ConvOutputHead attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/presets/base/index.html#noether.core.presets.base.DomainPreset.standard_callbacks">standard_callbacks() (noether.core.presets.base.DomainPreset static method)</a>
 
         <ul>
@@ -13621,6 +13839,16 @@
           <li><a href="autoapi/noether/data/preprocessors/utils/index.html#noether.data.preprocessors.utils.to_tensor">(in module noether.data.preprocessors.utils)</a>
 </li>
         </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.token_dropout">token_dropout (noether.core.schemas.models.vit.ViTConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.token_dropout">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.token_dropout">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.token_dropout">(noether.modeling.models.vit.ViT attribute)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.TokenSpec">TokenSpec (class in noether.core.schemas.modules.attention)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/early_stoppers/metric/index.html#noether.core.callbacks.early_stoppers.metric.MetricEarlyStopper.tolerance">tolerance (noether.core.callbacks.early_stoppers.metric.MetricEarlyStopper attribute)</a>
@@ -13711,10 +13939,10 @@
           <li><a href="autoapi/noether/training/trainers/index.html#noether.training.trainers.BaseTrainer.total_training_updates">(noether.training.trainers.BaseTrainer property)</a>
 </li>
         </ul></li>
-        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.TPipelineConfig">TPipelineConfig (in module noether.core.schemas.dataset)</a>
-</li>
     </ul></td>
     <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="autoapi/noether/core/schemas/dataset/index.html#noether.core.schemas.dataset.TPipelineConfig">TPipelineConfig (in module noether.core.schemas.dataset)</a>
+</li>
         <li><a href="autoapi/noether/core/schemas/callbacks/index.html#noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig.trace_subdir">trace_subdir (noether.core.schemas.callbacks.PyTorchProfilerCallbackConfig attribute)</a>
 </li>
         <li><a href="autoapi/noether/core/callbacks/default/online_loss/index.html#noether.core.callbacks.default.online_loss.OnlineLossCallback.track_after_accumulation_step">track_after_accumulation_step() (noether.core.callbacks.default.online_loss.OnlineLossCallback method)</a>
@@ -13982,6 +14210,10 @@
 </li>
           <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.TransformerConfig.transformer_block_config">(noether.core.schemas.models.TransformerConfig attribute)</a>
 </li>
+          <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.transformer_block_config">(noether.core.schemas.models.vit.ViTConfig property)</a>
+</li>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.transformer_block_config">(noether.core.schemas.models.ViTConfig property)</a>
+</li>
         </ul></li>
         <li><a href="autoapi/noether/modeling/modules/layers/index.html#noether.modeling.modules.layers.TransformerBatchNorm">TransformerBatchNorm (class in noether.modeling.modules.layers)</a>
 
@@ -14071,6 +14303,12 @@
 </li>
         <li><a href="autoapi/noether/modeling/modules/attention/anchor_attention/multi_branch/index.html#noether.modeling.modules.attention.anchor_attention.multi_branch.UnexpectedTokenError">UnexpectedTokenError</a>
 </li>
+        <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.unpatchify">unpatchify() (noether.modeling.models.ViT method)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.unpatchify">(noether.modeling.models.vit.ViT method)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/modeling/modules/index.html#noether.modeling.modules.UnquantizedDropPath">UnquantizedDropPath (class in noether.modeling.modules)</a>
 
         <ul>
@@ -14219,8 +14457,6 @@
           <li><a href="autoapi/noether/training/trainers/index.html#noether.training.trainers.BaseTrainer.update_counter">(noether.training.trainers.BaseTrainer attribute)</a>
 </li>
         </ul></li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/utils/model/index.html#noether.core.utils.model.update_ema">update_ema() (in module noether.core.utils.model)</a>
 </li>
         <li><a href="autoapi/noether/core/schedules/step/index.html#noether.core.schedules.step.StepIntervalSchedule.update_interval">update_interval (noether.core.schedules.step.StepIntervalSchedule attribute)</a>
@@ -14233,6 +14469,8 @@
           <li><a href="autoapi/noether/core/schemas/index.html#noether.core.schemas.StepIntervalScheduleConfig.update_interval">(noether.core.schemas.StepIntervalScheduleConfig attribute)</a>
 </li>
         </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="autoapi/noether/core/trackers/base/index.html#noether.core.trackers.base.BaseTracker.update_summary">update_summary() (noether.core.trackers.base.BaseTracker method)</a>
 
         <ul>
@@ -14293,6 +14531,26 @@
 
         <ul>
           <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.AeroUPT.use_bias_layers">(noether.modeling.models.AeroUPT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.use_conditioning">use_conditioning (noether.core.schemas.models.vit.ViTConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.use_conditioning">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.use_conditioning">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.use_conditioning">(noether.modeling.models.vit.ViT attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig.use_conv_output_head">use_conv_output_head (noether.core.schemas.models.vit.ViTConfig attribute)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig.use_conv_output_head">(noether.core.schemas.models.ViTConfig attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT.use_conv_output_head">(noether.modeling.models.ViT attribute)</a>
+</li>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT.use_conv_output_head">(noether.modeling.models.vit.ViT attribute)</a>
 </li>
         </ul></li>
         <li><a href="autoapi/noether/modeling/models/ab_upt/index.html#noether.modeling.models.ab_upt.AnchoredBranchedUPT.use_geometry_branch">use_geometry_branch (noether.modeling.models.ab_upt.AnchoredBranchedUPT attribute)</a>
@@ -14645,6 +14903,18 @@
 </li>
         <li><a href="autoapi/noether/io/verification/index.html#noether.io.verification.verify_tree">verify_tree() (in module noether.io.verification)</a>
 </li>
+        <li><a href="autoapi/noether/modeling/models/index.html#noether.modeling.models.ViT">ViT (class in noether.modeling.models)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/modeling/models/vit/index.html#noether.modeling.models.vit.ViT">(class in noether.modeling.models.vit)</a>
+</li>
+        </ul></li>
+        <li><a href="autoapi/noether/core/schemas/models/index.html#noether.core.schemas.models.ViTConfig">ViTConfig (class in noether.core.schemas.models)</a>
+
+        <ul>
+          <li><a href="autoapi/noether/core/schemas/models/vit/index.html#noether.core.schemas.models.vit.ViTConfig">(class in noether.core.schemas.models.vit)</a>
+</li>
+        </ul></li>
         <li><a href="autoapi/noether/modeling/models/aerodynamics/index.html#noether.modeling.models.aerodynamics.AeroTransformer.volume_bias">volume_bias (noether.modeling.models.aerodynamics.AeroTransformer attribute)</a>
 
         <ul>

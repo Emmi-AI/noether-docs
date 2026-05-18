@@ -28,12 +28,14 @@ Module Contents
    .. py:attribute:: blocks
 
 
-   .. py:method:: forward(x, attn_kwargs)
+   .. py:method:: forward(x, attn_kwargs, condition = None)
 
       Forward pass of the Transformer model.
 
       :param x: Input tensor of shape (batch_size, seq_len, hidden_dim).
       :param attn_kwargs: Additional arguments for the attention mechanism.
+      :param condition: Optional conditioning vector of shape (batch_size, condition_dim) consumed
+                        by each block's AdaLN-Zero modulation. ``None`` (default) for unconditioned models.
 
       :returns: Output tensor after processing through the Transformer model.
       :rtype: torch.Tensor
