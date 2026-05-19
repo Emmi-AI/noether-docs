@@ -259,6 +259,14 @@ Module Contents
       ``output_path`` nor ``slurm`` is provided.
 
 
+   .. py:attribute:: overwrite_output
+      :type:  bool
+      :value: False
+
+
+      Whether to overwrite the output directory if it already exists. Use with caution, as this will delete all existing outputs for the run_id/stage_name!
+
+
    .. py:attribute:: master_port
       :type:  int
       :value: None

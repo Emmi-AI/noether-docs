@@ -80,7 +80,7 @@ Package Contents
 
 
 
-.. py:class:: PathProvider(output_root_path, run_id, stage_name = None, debug = False)
+.. py:class:: PathProvider(output_root_path, run_id, stage_name = None, debug = False, force_overwrite = False)
 
    Provider that defines at which locations things are stored on the disk. The basic layout is that every training
    run is identified by a `stage_name` (e.g., "pretrain" or "finetune") and `run_id`,
@@ -109,7 +109,15 @@ Package Contents
 
 
 
+   .. py:attribute:: force_overwrite
+      :value: False
+
+
+
    .. py:method:: with_run(run_id = None, stage_name = None)
+
+
+   .. py:method:: run_path()
 
 
    .. py:property:: run_output_path

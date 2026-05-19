@@ -1119,6 +1119,12 @@ other keys are arbitrary and can be used to identify datasets for different stag
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.overwrite_output">
+<span class="sig-name descname"><span class="pre">overwrite_output</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.overwrite_output" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to overwrite the output directory if it already exists. Use with caution, as this will delete all existing outputs for the run_id/stage_name!</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schemas.schema.ConfigSchema.master_port">
 <span class="sig-name descname"><span class="pre">master_port</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.schema.ConfigSchema.master_port" title="Link to this definition">¶</a></dt>
 <dd><p>Port for distributed master node. If None, will be set from environment variable MASTER_PORT if available.</p>
@@ -1301,6 +1307,7 @@ other keys are arbitrary and can be used to identify datasets for different stag
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.debug"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.debug</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.store_code_in_output"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.store_code_in_output</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.output_path"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.output_path</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.overwrite_output"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.overwrite_output</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.master_port"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.master_port</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.slurm"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.slurm</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.schema.ConfigSchema.empty_dict_is_none"><code class="docutils literal notranslate"><span class="pre">ConfigSchema.empty_dict_is_none()</span></code></a></li>

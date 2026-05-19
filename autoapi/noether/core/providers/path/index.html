@@ -883,7 +883,7 @@
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.providers.path.PathProvider">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.providers.path.</span></span><span class="sig-name descname"><span class="pre">PathProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_root_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.providers.path.PathProvider" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.providers.path.</span></span><span class="sig-name descname"><span class="pre">PathProvider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_root_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.providers.path.PathProvider" title="Link to this definition">¶</a></dt>
 <dd><p>Provider that defines at which locations things are stored on the disk. The basic layout is that every training
 run is identified by a <cite>stage_name</cite> (e.g., “pretrain” or “finetune”) and <cite>run_id</cite>,
 a string that is unique for each training run. All outputs are stored in a directory defined in the configuration
@@ -895,6 +895,7 @@ that is located in <cite>output_path</cite>. The outputs of a single run will be
 <li><p><strong>run_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Unique identifier of the training run.</p></li>
 <li><p><strong>stage_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – Optional identifier for the training stage for easier categorization (e.g., “pretrain” or “finetune”).</p></li>
 <li><p><strong>debug</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – If <cite>True</cite>, outputs are stored in a “debug” subfolder.</p></li>
+<li><p><strong>force_overwrite</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>)</p></li>
 </ul>
 </dd>
 </dl>
@@ -918,6 +919,11 @@ that is located in <cite>output_path</cite>. The outputs of a single run will be
 <span class="sig-name descname"><span class="pre">debug</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.core.providers.path.PathProvider.debug" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.providers.path.PathProvider.force_overwrite">
+<span class="sig-name descname"><span class="pre">force_overwrite</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.core.providers.path.PathProvider.force_overwrite" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.providers.path.PathProvider.with_run">
 <span class="sig-name descname"><span class="pre">with_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stage_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.providers.path.PathProvider.with_run" title="Link to this definition">¶</a></dt>
@@ -930,6 +936,16 @@ that is located in <cite>output_path</cite>. The outputs of a single run will be
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#noether.core.providers.path.PathProvider" title="noether.core.providers.path.PathProvider">PathProvider</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.providers.path.PathProvider.run_path">
+<span class="sig-name descname"><span class="pre">run_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.providers.path.PathProvider.run_path" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)">pathlib.Path</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1129,7 +1145,9 @@ This property defines where the summary is written to.</p>
 <li><a class="reference internal" href="#noether.core.providers.path.PathProvider.stage_name"><code class="docutils literal notranslate"><span class="pre">PathProvider.stage_name</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.providers.path.PathProvider.run_id"><code class="docutils literal notranslate"><span class="pre">PathProvider.run_id</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.providers.path.PathProvider.debug"><code class="docutils literal notranslate"><span class="pre">PathProvider.debug</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.providers.path.PathProvider.force_overwrite"><code class="docutils literal notranslate"><span class="pre">PathProvider.force_overwrite</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.providers.path.PathProvider.with_run"><code class="docutils literal notranslate"><span class="pre">PathProvider.with_run()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.providers.path.PathProvider.run_path"><code class="docutils literal notranslate"><span class="pre">PathProvider.run_path()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.providers.path.PathProvider.run_output_path"><code class="docutils literal notranslate"><span class="pre">PathProvider.run_output_path</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.providers.path.PathProvider.logfile_uri"><code class="docutils literal notranslate"><span class="pre">PathProvider.logfile_uri</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.providers.path.PathProvider.checkpoint_path"><code class="docutils literal notranslate"><span class="pre">PathProvider.checkpoint_path</span></code></a></li>
