@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -931,7 +934,7 @@ run, optionally replaces the trainer callback list, and dispatches through
 Logs / wandb / saved metrics land under
 <code class="docutils literal notranslate"><span class="pre">&lt;run_dir&gt;/&lt;stage_name&gt;/</span></code>, separate from the training outputs.
 Leave <code class="docutils literal notranslate"><span class="pre">None</span></code> to write alongside the training run.</p></li>
-<li><p><strong>callbacks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="../core/schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><em>noether.core.schemas.callbacks.CallBackBaseConfig</em></a><em>] </em><em>| </em><em>None</em>) – If provided, replaces <code class="docutils literal notranslate"><span class="pre">config.trainer.callbacks</span></code> for the
+<li><p><strong>callbacks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><em>noether.core.schemas.callbacks.CallBackBaseConfig</em><em>] </em><em>| </em><em>None</em>) – If provided, replaces <code class="docutils literal notranslate"><span class="pre">config.trainer.callbacks</span></code> for the
 eval run. Pass the exact callbacks that should execute (e.g. a
 single sampling/rollout callback) — nothing from the training
 config’s callback list is kept.</p></li>

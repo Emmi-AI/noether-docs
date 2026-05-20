@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: WingParametricSplitIDs(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+   Bases: :py:obj:`noether.data.base.dataset.DatasetSplitIDs`
 
 
    Wing dataset split with OOD interpolation and extrapolation sets, 1500 inflow design parameter variations.

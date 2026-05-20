@@ -9,11 +9,71 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig
    noether.modeling.modules.layers.vectors_conditioner.VectorsConditioner
 
 
 Module Contents
 ---------------
+
+.. py:class:: VectorsConditionerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for :class:`VectorsConditioner`.
+
+   All conditioning inputs are expected to be normalized to ``[-1, 1]``; the
+   underlying sine-cosine embedding runs in NeRF mode.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimension of the per-vector embedding and per-vector MLP.
+
+
+   .. py:attribute:: conditioning_spec
+      :type:  noether.data.schemas.FieldDimSpec
+
+      Mapping from input vector name to its feature dimension, e.g.
+      ``{"angle": 1, "shape_params": 3}``.
+
+
+   .. py:attribute:: condition_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimension of the final conditioning vector. Defaults to ``hidden_dim`` if ``None``.
+
+
+   .. py:attribute:: max_frequency
+      :type:  float
+      :value: None
+
+
+      Highest frequency band, in units of ``π``, for the NeRF-mode sine-cosine
+      embedding. Pick based on the smallest spatial scale you need to resolve in
+      normalized coordinates (rough heuristic: ``1 / typical_input_spacing``).
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: 'truncnormal002'
+
+
+      Weight initialization for MLPs.
+
 
 .. py:class:: VectorsConditioner(config)
 

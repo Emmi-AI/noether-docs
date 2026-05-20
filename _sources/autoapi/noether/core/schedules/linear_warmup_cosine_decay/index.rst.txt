@@ -9,11 +9,55 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.schedules.linear_warmup_cosine_decay.LinearWarmupCosineDecayScheduleConfig
    noether.core.schedules.linear_warmup_cosine_decay.LinearWarmupCosineDecaySchedule
 
 
 Module Contents
 ---------------
+
+.. py:class:: LinearWarmupCosineDecayScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.schemas.ScheduleBaseConfig`
+
+
+   .. py:attribute:: max_value
+      :type:  float
+      :value: None
+
+
+      The maximum value of the scheduler from which to start the cosine decay phase. This should be equal to the learning rate defined in the optimizer. I.e., max value is learning rate
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.LinearWarmupCosineDecaySchedule']
+      :value: 'noether.core.schedules.LinearWarmupCosineDecaySchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: warmup_steps
+      :type:  int | None
+      :value: None
+
+
+      The number of steps to linearly increase the value from start to max.
+
+
+   .. py:attribute:: warmup_percent
+      :type:  float | None
+      :value: None
+
+
+      The percentage of steps to linearly increase the value from start to max.
+
+
+   .. py:method:: validate_warmup()
+
+      Ensures that exactly one of 'warmup_steps' or 'warmup_percent' is specified.
+
+
 
 .. py:class:: LinearWarmupCosineDecaySchedule(config)
 

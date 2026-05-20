@@ -21,6 +21,7 @@ Classes
 .. autoapisummary::
 
    noether.core.models.ModelBase
+   noether.core.models.ModelBaseConfig
    noether.core.models.CompositeModel
    noether.core.models.Model
 
@@ -190,6 +191,82 @@ Package Contents
 
 
 
+.. py:class:: ModelBaseConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+      Kind of model to use, i.e. class path
+
+
+   .. py:attribute:: name
+      :type:  str
+
+      Name of the model. Needs to be unique
+
+
+   .. py:attribute:: optimizer_config
+      :type:  noether.core.optimizer.schemas.AnyOptimizerConfig | None
+      :value: None
+
+
+      The optimizer configuration to use for training the model. When a model is used for inference only, this can be left as None.
+
+
+   .. py:attribute:: initializers
+      :type:  list[Annotated[noether.core.initializers.AnyInitializer, Field(discriminator=kind)]] | None
+      :value: None
+
+
+      List of initializers configs to use for the model.
+
+
+   .. py:attribute:: is_frozen
+      :type:  bool | None
+      :value: False
+
+
+      Whether to freeze the model parameters (i.e., not trainable).
+
+
+   .. py:attribute:: forward_properties
+      :type:  list[str] | None
+      :value: []
+
+
+      List of properties to be used as inputs for the forward pass of the model. Only relevant when the train_step of the BaseTrainer is used. When overridden in a class method, this property is ignored.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:property:: config_kind
+      :type: str
+
+
+      The fully qualified import path for the configuration class.
+
+
 .. py:class:: CompositeModel(model_config, update_counter = None, path_provider = None, data_container = None)
 
    Bases: :py:obj:`noether.core.models.base.ModelBase`
@@ -320,7 +397,7 @@ Package Contents
 
 .. py:class:: Model(model_config, is_frozen = False, update_counter = None, path_provider = None, data_container = None)
 
-   Bases: :py:obj:`noether.core.models.base.ModelBase`
+   Bases: :py:obj:`noether.core.models.ModelBase`
 
 
    Model class that should be extended by all custom models.
@@ -331,7 +408,7 @@ Package Contents
    .. code-block:: python
 
        from noether.core.models.single import Model
-       from noether.core.schemas.models import ModelBaseConfig
+       from noether.core.models.base import ModelBaseConfig
 
        class MyModelConfig(ModelBaseConfig):
            kind: path.to.MyModel
@@ -367,7 +444,7 @@ Package Contents
 
    Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
 
-   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param model_config: Model configuration. See :class:`~noether.core.models.base.ModelBaseConfig` for available options.
    :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
    :param is_frozen: If true, will set `requires_grad` of all parameters to false. Will also put the model into eval
                      mode (e.g., to put Dropout or BatchNorm into eval mode).

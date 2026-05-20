@@ -3,55 +3,11 @@ noether.core.schemas.models.transformer
 
 .. py:module:: noether.core.schemas.models.transformer
 
+.. autoapi-nested-parse::
 
-Classes
--------
+   Back-compat re-export for ``TransformerConfig``.
 
-.. autoapisummary::
+   The canonical home is :mod:`noether.modeling.models.transformer`.
 
-   noether.core.schemas.models.transformer.TransformerConfig
-
-
-Module Contents
----------------
-
-.. py:class:: TransformerConfig(/, **data)
-
-   Bases: :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`, :py:obj:`noether.core.schemas.mixins.InjectSharedFieldFromParentMixin`
-
-
-   Configuration for a Transformer model.
-
-   Create a new model by parsing and validating input data from keyword arguments.
-
-   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
-   validated to form a valid model.
-
-   `self` is explicitly positional-only to allow `self` as a field name.
-
-
-   .. py:attribute:: model_config
-
-      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
-
-
-   .. py:attribute:: hidden_dim
-      :type:  int
-      :value: None
-
-
-      Hidden dimension of the model. Used for all transformer blocks.
-
-
-   .. py:attribute:: depth
-      :type:  int
-      :value: None
-
-
-      Number of transformer blocks in the model.
-
-
-   .. py:attribute:: transformer_block_config
-      :type:  Annotated[noether.core.schemas.modules.blocks.TransformerBlockConfig, noether.core.schemas.mixins.Shared]
 
 

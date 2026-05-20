@@ -9,11 +9,31 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.schedules.custom.CustomScheduleConfig
    noether.core.schedules.custom.CustomSchedule
 
 
 Module Contents
 ---------------
+
+.. py:class:: CustomScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.schemas.ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.CustomSchedule']
+      :value: 'noether.core.schedules.CustomSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: values
+      :type:  list[float]
+
+      The list of values that will be returned for each step. Values show ben as long as the number of steps.
+
 
 .. py:class:: CustomSchedule(config)
 

@@ -20,7 +20,9 @@ Classes
 .. autoapisummary::
 
    noether.core.callbacks.online.BestMetricCallback
+   noether.core.callbacks.online.BestMetricCallbackConfig
    noether.core.callbacks.online.TrackAdditionalOutputsCallback
+   noether.core.callbacks.online.TrackAdditionalOutputsCallbackConfig
 
 
 Package Contents
@@ -95,6 +97,54 @@ Package Contents
                              the current training progress (epoch, update, sample counts).
       :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
                          (e.g., from :meth:`after_epoch` or :meth:`after_update`).
+
+
+
+.. py:class:: BestMetricCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['BestMetricCallback']
+      :value: None
+
+
+      The metric to use to dermine whether the current model obtained a new best (e.g., loss/valid/total)
+
+
+   .. py:attribute:: source_metric_key
+      :type:  str
+      :value: None
+
+
+      The metrics to keep track of (e.g., loss/test/total)
+
+
+   .. py:attribute:: target_metric_keys
+      :type:  list[str] | None
+      :value: None
+
+
+      The metrics to keep track of if they are present (useful when different model configurations log different evaluation metrics to avoid reconfiguring the callback).
+
+
+   .. py:attribute:: optional_target_metric_keys
+      :type:  list[str] | None
+      :value: None
 
 
 
@@ -192,5 +242,77 @@ Package Contents
       :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
                          (e.g., from :meth:`after_epoch` or :meth:`after_update`).
 
+
+
+.. py:class:: TrackAdditionalOutputsCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['TrackAdditionalOutputsCallback']
+      :value: None
+
+
+
+   .. py:attribute:: keys
+      :type:  list[str] | None
+      :value: None
+
+
+      List of keys to track in the additional_outputs of the TrainerResult returned by the trainer's update step.
+
+
+   .. py:attribute:: patterns
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to track in the additional_outputs of the TrainerResult returned by the trainer's update step. Matched if it is contained in one of the update_outputs keys.
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      If True uses the logger to print the tracked values otherwise uses no logger.
+
+
+   .. py:attribute:: reduce
+      :type:  Literal['mean', 'last']
+      :value: None
+
+
+      The reduction method to be applied to the tracked values to reduce to scalar. Currently supports 'mean' and 'last'.
+
+
+   .. py:attribute:: log_output
+      :type:  bool
+      :value: None
+
+
+      Whether to log the tracked scalar values.
+
+
+   .. py:attribute:: save_output
+      :type:  bool
+      :value: None
+
+
+      Whether to save the tracked scalar values to disk.
 
 

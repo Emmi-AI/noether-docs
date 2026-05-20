@@ -17,6 +17,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.trackers.tensorboard.TensorboardTrackerSchema
    noether.core.trackers.tensorboard.TensorboardTracker
 
 
@@ -27,9 +28,40 @@ Module Contents
    :value: None
 
 
+.. py:class:: TensorboardTrackerSchema(/, **data)
+
+   Bases: :py:obj:`noether.core.trackers.BaseTrackerConfig`
+
+
+   Schema for TensorboardTracker configuration.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: log_dir
+      :type:  str
+      :value: None
+
+
+      The base directory where TensorBoard event files will be stored.
+
+
+   .. py:attribute:: flush_secs
+      :type:  int
+      :value: None
+
+
+      How often, in seconds, to flush the pending events to disk.
+
+
 .. py:class:: TensorboardTracker(tracker_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+   Bases: :py:obj:`noether.core.trackers.BaseTracker`
 
 
    TensorBoard tracker for logging metrics and configuration.

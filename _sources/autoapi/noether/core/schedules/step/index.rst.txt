@@ -9,13 +9,51 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.schedules.step.StepDecreasingScheduleConfig
    noether.core.schedules.step.StepDecreasingSchedule
+   noether.core.schedules.step.StepFixedScheduleConfig
    noether.core.schedules.step.StepFixedSchedule
+   noether.core.schedules.step.StepIntervalScheduleConfig
    noether.core.schedules.step.StepIntervalSchedule
 
 
 Module Contents
 ---------------
+
+.. py:class:: StepDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.schemas.DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.StepDecreasingSchedule']
+      :value: 'noether.core.schedules.StepDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: factor
+      :type:  float
+      :value: None
+
+
+      The factor by which the value decreases.
+
+
+   .. py:attribute:: decreases_interval
+      :type:  float
+      :value: None
+
+
+      The interval in range [0, 1] at which the value decreases.
+
+
+   .. py:method:: check_interval()
+
+      Ensures that 'interval' is a float in the range (0, 1).
+
+
 
 .. py:class:: StepDecreasingSchedule(config)
 
@@ -44,6 +82,49 @@ Module Contents
 
 
    .. py:attribute:: decreases_interval
+
+
+.. py:class:: StepFixedScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.schemas.ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.StepFixedSchedule']
+      :value: 'noether.core.schedules.StepFixedSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+      The initial value of the scheduler.
+
+
+   .. py:attribute:: factor
+      :type:  float
+      :value: None
+
+
+      The factor by which the value is multiplied after reaching the next step provided in steps.
+
+
+   .. py:attribute:: steps
+      :type:  list[float]
+      :value: None
+
+
+      The steps at which the value changes, must be a list of floats in the range (0, 1).
+
+
+   .. py:method:: validate_steps()
+
+      Ensures that 'steps' is a non-empty list of floats in the range (0, 1).
+
 
 
 .. py:class:: StepFixedSchedule(config)
@@ -78,6 +159,49 @@ Module Contents
 
 
    .. py:attribute:: factor
+
+
+.. py:class:: StepIntervalScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.schemas.ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.StepIntervalSchedule']
+      :value: 'noether.core.schedules.StepIntervalSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: start_value
+      :type:  float
+      :value: None
+
+
+      The initial value of the scheduler. I.e, the learning rate at step 0.
+
+
+   .. py:attribute:: factor
+      :type:  float
+      :value: None
+
+
+      The factor by which the value is multiplied after reaching the next interval.
+
+
+   .. py:attribute:: update_interval
+      :type:  float
+      :value: None
+
+
+      The interval in range (0, 1) at which the value changes.
+
+
+   .. py:method:: check_update_interval(v)
+
+      Ensures that 'update_interval' is a float in the range (0, 1).
+
 
 
 .. py:class:: StepIntervalSchedule(config)

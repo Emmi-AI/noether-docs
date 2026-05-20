@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: NoopTracker(metric_property_provider, path_provider)
 
-   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+   Bases: :py:obj:`noether.core.trackers.BaseTracker`
 
 
    Dummy tracker that does nothing.

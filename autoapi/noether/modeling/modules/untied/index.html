@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,22 +875,37 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinear" title="noether.modeling.modules.untied.UntiedLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedLinear</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinearConfig" title="noether.modeling.modules.untied.UntiedLinearConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedLinearConfig</span></code></a></p></td>
+<td><p>Configuration for a linear layer with per-type (untied) weight banks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMixedAttentionConfig" title="noether.modeling.modules.untied.UntiedMixedAttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedMixedAttentionConfig</span></code></a></p></td>
+<td><p>Configuration for multi-head attention with per-type (untied) QKV and output projections.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLPConfig" title="noether.modeling.modules.untied.UntiedMLPConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedMLPConfig</span></code></a></p></td>
+<td><p>Configuration for an MLP with per-type (untied) weights.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig" title="noether.modeling.modules.untied.UntiedTransformerBlockConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedTransformerBlockConfig</span></code></a></p></td>
+<td><p>Configuration for a transformer block with per-type (untied) attention and MLP weights.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig" title="noether.modeling.modules.untied.UntiedPerceiverBlockConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedPerceiverBlockConfig</span></code></a></p></td>
+<td><p>Configuration for a perceiver block with per-type (untied) Q/output projections and MLP weights.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinear" title="noether.modeling.modules.untied.UntiedLinear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedLinear</span></code></a></p></td>
 <td><p>Linear layer with per-domain weight banks.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMixedAttention" title="noether.modeling.modules.untied.UntiedMixedAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedMixedAttention</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMixedAttention" title="noether.modeling.modules.untied.UntiedMixedAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedMixedAttention</span></code></a></p></td>
 <td><p>Multi-head attention with per-type QKV and output projections.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverAttention" title="noether.modeling.modules.untied.UntiedPerceiverAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedPerceiverAttention</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverAttention" title="noether.modeling.modules.untied.UntiedPerceiverAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedPerceiverAttention</span></code></a></p></td>
 <td><p>Perceiver cross-attention with per-type Q and output projections.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLP" title="noether.modeling.modules.untied.UntiedMLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedMLP</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLP" title="noether.modeling.modules.untied.UntiedMLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedMLP</span></code></a></p></td>
 <td><p>Multi-layer perceptron with per-type weights.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedTransformerBlock" title="noether.modeling.modules.untied.UntiedTransformerBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedTransformerBlock</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedTransformerBlock" title="noether.modeling.modules.untied.UntiedTransformerBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedTransformerBlock</span></code></a></p></td>
 <td><p>Pre-norm transformer block with per-type (untied) attention and MLP weights.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverBlock" title="noether.modeling.modules.untied.UntiedPerceiverBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedPerceiverBlock</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverBlock" title="noether.modeling.modules.untied.UntiedPerceiverBlock"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UntiedPerceiverBlock</span></code></a></p></td>
 <td><p>Perceiver block with per-type (untied) Q/output projections and MLP weights.</p></td>
 </tr>
 </tbody>
@@ -896,6 +914,205 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedLinearConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.untied.</span></span><span class="sig-name descname"><span class="pre">UntiedLinearConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedLinearConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Configuration for a linear layer with per-type (untied) weight banks.</p>
+<p>Composes a <code class="xref py py-class docutils literal notranslate"><span class="pre">LinearProjectionConfig</span></code> (shared across types) with a
+<code class="docutils literal notranslate"><span class="pre">num_types</span></code> field: each token type gets its own independent weight matrix
+with the geometry described by the linear projection config.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedLinearConfig.num_types">
+<span class="sig-name descname"><span class="pre">num_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.untied.UntiedLinearConfig.num_types" title="Link to this definition">¶</a></dt>
+<dd><p>Number of distinct token types, each with its own weight bank.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedLinearConfig.linear_projection">
+<span class="sig-name descname"><span class="pre">linear_projection</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../layers/linear_projection/index.html#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig" title="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig"><span class="pre">noether.modeling.modules.layers.linear_projection.LinearProjectionConfig</span></a></em><a class="headerlink" href="#noether.modeling.modules.untied.UntiedLinearConfig.linear_projection" title="Link to this definition">¶</a></dt>
+<dd><p>Shared geometry (input/output dims, bias, init) for every per-type weight bank.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedMixedAttentionConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.untied.</span></span><span class="sig-name descname"><span class="pre">UntiedMixedAttentionConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedMixedAttentionConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../attention/anchor_attention/mixed/index.html#noether.modeling.modules.attention.anchor_attention.mixed.MixedAttentionConfig" title="noether.modeling.modules.attention.anchor_attention.mixed.MixedAttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.modules.attention.anchor_attention.mixed.MixedAttentionConfig</span></code></a></p>
+<p>Configuration for multi-head attention with per-type (untied) QKV and output projections.</p>
+<p>Extends <code class="xref py py-class docutils literal notranslate"><span class="pre">MixedAttentionConfig</span></code> with a <code class="docutils literal notranslate"><span class="pre">num_types</span></code> field: the QKV and
+output projections are <a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinear" title="noether.modeling.modules.untied.UntiedLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">UntiedLinear</span></code></a> layers so each token type gets
+its own projection weights. Attention itself is still computed across all
+tokens via <code class="xref py py-meth docutils literal notranslate"><span class="pre">MixedAttention._process_pattern_batched()</span></code>.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedMixedAttentionConfig.num_types">
+<span class="sig-name descname"><span class="pre">num_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.untied.UntiedMixedAttentionConfig.num_types" title="Link to this definition">¶</a></dt>
+<dd><p>Number of distinct token types, each with its own QKV/output weight bank.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedMixedAttentionConfig.projection_config">
+<span class="sig-name descname"><span class="pre">projection_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedMixedAttentionConfig.projection_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the per-type QKV and output projections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinearConfig" title="noether.modeling.modules.untied.UntiedLinearConfig">UntiedLinearConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedMLPConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.untied.</span></span><span class="sig-name descname"><span class="pre">UntiedMLPConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedMLPConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Configuration for an MLP with per-type (untied) weights.</p>
+<p>Composes an <code class="xref py py-class docutils literal notranslate"><span class="pre">MLPConfig</span></code> (architecture: dims, activation, init) with a
+<code class="docutils literal notranslate"><span class="pre">num_types</span></code> field. The untied MLP mirrors <code class="xref py py-class docutils literal notranslate"><span class="pre">MLP</span></code>’s topology
+(<code class="docutils literal notranslate"><span class="pre">input</span> <span class="pre">-&gt;</span> <span class="pre">[hidden]*(num_layers+1)</span> <span class="pre">-&gt;</span> <span class="pre">output</span></code> with activations between layers)
+but uses <a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinear" title="noether.modeling.modules.untied.UntiedLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">UntiedLinear</span></code></a> for every linear layer.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedMLPConfig.num_types">
+<span class="sig-name descname"><span class="pre">num_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.untied.UntiedMLPConfig.num_types" title="Link to this definition">¶</a></dt>
+<dd><p>Number of distinct token types.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedMLPConfig.mlp">
+<span class="sig-name descname"><span class="pre">mlp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../mlp/mlp/index.html#noether.modeling.modules.mlp.mlp.MLPConfig" title="noether.modeling.modules.mlp.mlp.MLPConfig"><span class="pre">noether.modeling.modules.mlp.mlp.MLPConfig</span></a></em><a class="headerlink" href="#noether.modeling.modules.untied.UntiedMLPConfig.mlp" title="Link to this definition">¶</a></dt>
+<dd><p>Underlying MLP architecture (dims, activation, init).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedTransformerBlockConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.untied.</span></span><span class="sig-name descname"><span class="pre">UntiedTransformerBlockConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Configuration for a transformer block with per-type (untied) attention and MLP weights.</p>
+<p>Composes a <code class="xref py py-class docutils literal notranslate"><span class="pre">TransformerBlockConfig</span></code> (shared layout: dims, heads, layer
+scale, drop path, etc.) with a <code class="docutils literal notranslate"><span class="pre">num_types</span></code> field. Both sub-layers have
+per-type weights: <code class="xref py py-class docutils literal notranslate"><span class="pre">UntiedMultiHeadAttention</span></code> for attention and
+<a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLP" title="noether.modeling.modules.untied.UntiedMLP"><code class="xref py py-class docutils literal notranslate"><span class="pre">UntiedMLP</span></code></a> for the feed-forward.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedTransformerBlockConfig.num_types">
+<span class="sig-name descname"><span class="pre">num_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig.num_types" title="Link to this definition">¶</a></dt>
+<dd><p>Number of distinct token types for the untied MLP.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedTransformerBlockConfig.transformer_block">
+<span class="sig-name descname"><span class="pre">transformer_block</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlockConfig" title="noether.modeling.modules.blocks.transformer.TransformerBlockConfig"><span class="pre">noether.modeling.modules.blocks.transformer.TransformerBlockConfig</span></a></em><a class="headerlink" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig.transformer_block" title="Link to this definition">¶</a></dt>
+<dd><p>Shared transformer-block layout (dims, heads, layer scale, drop path, etc.).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedTransformerBlockConfig.attention_config">
+<span class="sig-name descname"><span class="pre">attention_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig.attention_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the UntiedMultiHeadAttention sub-layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMixedAttentionConfig" title="noether.modeling.modules.untied.UntiedMixedAttentionConfig">UntiedMixedAttentionConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedTransformerBlockConfig.untied_mlp_config">
+<span class="sig-name descname"><span class="pre">untied_mlp_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig.untied_mlp_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the UntiedMLP sub-layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLPConfig" title="noether.modeling.modules.untied.UntiedMLPConfig">UntiedMLPConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedPerceiverBlockConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.untied.</span></span><span class="sig-name descname"><span class="pre">UntiedPerceiverBlockConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Configuration for a perceiver block with per-type (untied) Q/output projections and MLP weights.</p>
+<p>Composes a <code class="xref py py-class docutils literal notranslate"><span class="pre">PerceiverBlockConfig</span></code> (shared layout: dims, heads, layer
+scale, drop path, etc.) with a <code class="docutils literal notranslate"><span class="pre">num_types</span></code> field. The Q and output
+projections in <code class="xref py py-class docutils literal notranslate"><span class="pre">PerceiverAttention</span></code> become per-type via
+<a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinear" title="noether.modeling.modules.untied.UntiedLinear"><code class="xref py py-class docutils literal notranslate"><span class="pre">UntiedLinear</span></code></a>, while the KV projection stays shared (it operates on
+a single geometry encoding). The MLP is also replaced with
+<a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLP" title="noether.modeling.modules.untied.UntiedMLP"><code class="xref py py-class docutils literal notranslate"><span class="pre">UntiedMLP</span></code></a>.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedPerceiverBlockConfig.num_types">
+<span class="sig-name descname"><span class="pre">num_types</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig.num_types" title="Link to this definition">¶</a></dt>
+<dd><p>Number of distinct token types for the untied projections.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedPerceiverBlockConfig.perceiver_block_config">
+<span class="sig-name descname"><span class="pre">perceiver_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../blocks/perceiver/index.html#noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig" title="noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig"><span class="pre">noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig</span></a></em><a class="headerlink" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig.perceiver_block_config" title="Link to this definition">¶</a></dt>
+<dd><p>Shared perceiver-block layout (dims, heads, kv_dim, layer scale, drop path, etc.).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedPerceiverBlockConfig.untied_mlp_config">
+<span class="sig-name descname"><span class="pre">untied_mlp_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig.untied_mlp_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the UntiedMLP sub-layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLPConfig" title="noether.modeling.modules.untied.UntiedMLPConfig">UntiedMLPConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.untied.UntiedLinear">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.untied.</span></span><span class="sig-name descname"><span class="pre">UntiedLinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.untied.UntiedLinear" title="Link to this definition">¶</a></dt>
@@ -917,7 +1134,7 @@ type’s weight matrix independently.</p>
 <p>Domains must be strictly consecutive in <code class="docutils literal notranslate"><span class="pre">token_specs</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/untied/index.html#noether.core.schemas.modules.untied.UntiedLinearConfig" title="noether.core.schemas.modules.untied.UntiedLinearConfig"><em>noether.core.schemas.modules.untied.UntiedLinearConfig</em></a>) – Number of types and shared linear-projection geometry.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinearConfig" title="noether.modeling.modules.untied.UntiedLinearConfig"><em>UntiedLinearConfig</em></a>) – Number of types and shared linear-projection geometry.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1010,9 +1227,9 @@ and output projection weights untied per token type.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/untied/index.html#noether.core.schemas.modules.untied.UntiedMixedAttentionConfig" title="noether.core.schemas.modules.untied.UntiedMixedAttentionConfig"><em>noether.core.schemas.modules.untied.UntiedMixedAttentionConfig</em></a>) – Configuration specifying attention dims and <code class="docutils literal notranslate"><span class="pre">num_types</span></code>.</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.untied.UntiedMixedAttentionConfig" title="noether.modeling.modules.untied.UntiedMixedAttentionConfig"><em>UntiedMixedAttentionConfig</em></a>) – Configuration specifying attention dims and <code class="docutils literal notranslate"><span class="pre">num_types</span></code>.</p></li>
 <li><p><strong>config</strong> – Configuration for the MixedAttention module. See
-<a class="reference internal" href="../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.MixedAttentionConfig" title="noether.core.schemas.modules.attention.MixedAttentionConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">MixedAttentionConfig</span></code></a> for the available options.</p></li>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MixedAttentionConfig</span></code> for the available options.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1136,7 +1353,7 @@ with activations between layers), but uses <a class="reference internal" href="#
 linear layer so each token type learns independent weights.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/untied/index.html#noether.core.schemas.modules.untied.UntiedMLPConfig" title="noether.core.schemas.modules.untied.UntiedMLPConfig"><em>noether.core.schemas.modules.untied.UntiedMLPConfig</em></a>) – Configuration for the untied MLP.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLPConfig" title="noether.modeling.modules.untied.UntiedMLPConfig"><em>UntiedMLPConfig</em></a>) – Configuration for the untied MLP.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1208,9 +1425,9 @@ forwards them on to the inner <a class="reference internal" href="#noether.model
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/untied/index.html#noether.core.schemas.modules.untied.UntiedTransformerBlockConfig" title="noether.core.schemas.modules.untied.UntiedTransformerBlockConfig"><em>noether.core.schemas.modules.untied.UntiedTransformerBlockConfig</em></a>) – Configuration for the untied transformer block.</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig" title="noether.modeling.modules.untied.UntiedTransformerBlockConfig"><em>UntiedTransformerBlockConfig</em></a>) – Configuration for the untied transformer block.</p></li>
 <li><p><strong>config</strong> – Configuration for the transformer block. See
-<a class="reference internal" href="../../../core/schemas/modules/blocks/index.html#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransformerBlockConfig</span></code></a>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">TransformerBlockConfig</span></code>
 for available options.</p></li>
 </ul>
 </dd>
@@ -1262,8 +1479,8 @@ a single source (e.g. geometry encoding).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/untied/index.html#noether.core.schemas.modules.untied.UntiedPerceiverBlockConfig" title="noether.core.schemas.modules.untied.UntiedPerceiverBlockConfig"><em>noether.core.schemas.modules.untied.UntiedPerceiverBlockConfig</em></a>) – Configuration for the untied perceiver block.</p></li>
-<li><p><strong>config</strong> – Configuration of the PerceiverBlock. See <a class="reference internal" href="../../../core/schemas/modules/blocks/index.html#noether.core.schemas.modules.blocks.PerceiverBlockConfig" title="noether.core.schemas.modules.blocks.PerceiverBlockConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PerceiverBlockConfig</span></code></a></p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig" title="noether.modeling.modules.untied.UntiedPerceiverBlockConfig"><em>UntiedPerceiverBlockConfig</em></a>) – Configuration for the untied perceiver block.</p></li>
+<li><p><strong>config</strong> – Configuration of the PerceiverBlock. See <code class="xref py py-class docutils literal notranslate"><span class="pre">PerceiverBlockConfig</span></code></p></li>
 <li><p><strong>options.</strong> (<em>for available</em>)</p></li>
 </ul>
 </dd>
@@ -1397,6 +1614,34 @@ Can be <code class="docutils literal notranslate"><span class="pre">None</span><
 <li><a class="reference internal" href="#">noether.modeling.modules.untied</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinearConfig"><code class="docutils literal notranslate"><span class="pre">UntiedLinearConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinearConfig.num_types"><code class="docutils literal notranslate"><span class="pre">UntiedLinearConfig.num_types</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinearConfig.linear_projection"><code class="docutils literal notranslate"><span class="pre">UntiedLinearConfig.linear_projection</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMixedAttentionConfig"><code class="docutils literal notranslate"><span class="pre">UntiedMixedAttentionConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMixedAttentionConfig.num_types"><code class="docutils literal notranslate"><span class="pre">UntiedMixedAttentionConfig.num_types</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMixedAttentionConfig.projection_config"><code class="docutils literal notranslate"><span class="pre">UntiedMixedAttentionConfig.projection_config()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLPConfig"><code class="docutils literal notranslate"><span class="pre">UntiedMLPConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLPConfig.num_types"><code class="docutils literal notranslate"><span class="pre">UntiedMLPConfig.num_types</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedMLPConfig.mlp"><code class="docutils literal notranslate"><span class="pre">UntiedMLPConfig.mlp</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig"><code class="docutils literal notranslate"><span class="pre">UntiedTransformerBlockConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig.num_types"><code class="docutils literal notranslate"><span class="pre">UntiedTransformerBlockConfig.num_types</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig.transformer_block"><code class="docutils literal notranslate"><span class="pre">UntiedTransformerBlockConfig.transformer_block</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig.attention_config"><code class="docutils literal notranslate"><span class="pre">UntiedTransformerBlockConfig.attention_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedTransformerBlockConfig.untied_mlp_config"><code class="docutils literal notranslate"><span class="pre">UntiedTransformerBlockConfig.untied_mlp_config()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig"><code class="docutils literal notranslate"><span class="pre">UntiedPerceiverBlockConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig.num_types"><code class="docutils literal notranslate"><span class="pre">UntiedPerceiverBlockConfig.num_types</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig.perceiver_block_config"><code class="docutils literal notranslate"><span class="pre">UntiedPerceiverBlockConfig.perceiver_block_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedPerceiverBlockConfig.untied_mlp_config"><code class="docutils literal notranslate"><span class="pre">UntiedPerceiverBlockConfig.untied_mlp_config()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinear"><code class="docutils literal notranslate"><span class="pre">UntiedLinear</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinear.bias"><code class="docutils literal notranslate"><span class="pre">UntiedLinear.bias</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.untied.UntiedLinear.num_types"><code class="docutils literal notranslate"><span class="pre">UntiedLinear.num_types</span></code></a></li>

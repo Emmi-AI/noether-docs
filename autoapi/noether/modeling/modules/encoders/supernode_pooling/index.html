@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,7 +875,10 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePooling" title="noether.modeling.modules.encoders.supernode_pooling.SupernodePooling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SupernodePooling</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig" title="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SupernodePoolingConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePooling" title="noether.modeling.modules.encoders.supernode_pooling.SupernodePooling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SupernodePooling</span></code></a></p></td>
 <td><p>Supernode pooling layer.</p></td>
 </tr>
 </tbody>
@@ -881,6 +887,99 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.encoders.supernode_pooling.</span></span><span class="sig-name descname"><span class="pre">SupernodePoolingConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Hidden dimension for positional embeddings, messages and the resulting output vector.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.input_dim">
+<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.input_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Number of positional dimension (e.g., input_dim=2 for a 2D position, input_dim=3 for a 3D position)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.radius">
+<span class="sig-name descname"><span class="pre">radius</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.radius" title="Link to this definition">¶</a></dt>
+<dd><p>Radius around each supernode. From points within this radius, messages are passed to the supernode.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.k">
+<span class="sig-name descname"><span class="pre">k</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.k" title="Link to this definition">¶</a></dt>
+<dd><p>Number of neighbors for each supernode. From the k-NN points, messages are passed to the supernode.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.max_degree">
+<span class="sig-name descname"><span class="pre">max_degree</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.max_degree" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum degree of the radius graph. Defaults to 32.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.spool_pos_mode">
+<span class="sig-name descname"><span class="pre">spool_pos_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'abspos'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'relpos'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'absrelpos'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.spool_pos_mode" title="Link to this definition">¶</a></dt>
+<dd><p>absolute space (“abspos”), relative space (“relpos”) or both (“absrelpos”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Type of position embedding</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.init_weights">
+<span class="sig-name descname"><span class="pre">init_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.types.InitWeightsMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.init_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Weight initialization of linear layers. Defaults to “truncnormal002”.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.readd_supernode_pos">
+<span class="sig-name descname"><span class="pre">readd_supernode_pos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.readd_supernode_pos" title="Link to this definition">¶</a></dt>
+<dd><p>If true, the absolute positional encoding of the supernode is concatenated to the supernode vector after message passing and linearly projected back to hidden_dim. Defaults to True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.aggregation">
+<span class="sig-name descname"><span class="pre">aggregation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'mean'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'sum'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.aggregation" title="Link to this definition">¶</a></dt>
+<dd><p>Aggregation for message passing (“mean” or “sum”).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.message_mode">
+<span class="sig-name descname"><span class="pre">message_mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'mlp'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'linear'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'identity'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.message_mode" title="Link to this definition">¶</a></dt>
+<dd><p>How messages are created. “mlp” (2 layer MLP), “linear” (nn.Linear), “identity” (nn.Identity). Defaults to “mlp”.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.input_features_dim">
+<span class="sig-name descname"><span class="pre">input_features_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.input_features_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Number of input features per point. None will fall back to a version without features. Defaults to None, which means no input features.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.bias" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to use bias in the linear layers. Defaults to True.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.validate_radius_and_k">
+<span class="sig-name descname"><span class="pre">validate_radius_and_k</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.validate_radius_and_k" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.encoders.supernode_pooling.SupernodePooling">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.encoders.supernode_pooling.</span></span><span class="sig-name descname"><span class="pre">SupernodePooling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePooling" title="Link to this definition">¶</a></dt>
@@ -891,8 +990,8 @@ Additionally, radius is used instead of radius_graph, which is more efficient.</
 <p>Initialize the SupernodePooling.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../../core/schemas/modules/encoders/index.html#noether.core.schemas.modules.encoders.SupernodePoolingConfig" title="noether.core.schemas.modules.encoders.SupernodePoolingConfig"><em>noether.core.schemas.modules.encoders.SupernodePoolingConfig</em></a>) – Configuration for the SupernodePooling module. See
-<a class="reference internal" href="../../../../core/schemas/modules/encoders/index.html#noether.core.schemas.modules.encoders.SupernodePoolingConfig" title="noether.core.schemas.modules.encoders.SupernodePoolingConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">SupernodePoolingConfig</span></code></a> for available options.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig" title="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig"><em>SupernodePoolingConfig</em></a>) – Configuration for the SupernodePooling module. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">SupernodePoolingConfig</span></code> for available options.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1126,6 +1225,22 @@ allowed.</p>
 <li><a class="reference internal" href="#">noether.modeling.modules.encoders.supernode_pooling</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.input_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.radius"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.radius</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.k"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.k</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.max_degree"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.max_degree</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.spool_pos_mode"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.spool_pos_mode</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.init_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.readd_supernode_pos"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.readd_supernode_pos</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.aggregation"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.aggregation</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.message_mode"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.message_mode</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.input_features_dim"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.input_features_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.bias"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.bias</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig.validate_radius_and_k"><code class="docutils literal notranslate"><span class="pre">SupernodePoolingConfig.validate_radius_and_k()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePooling"><code class="docutils literal notranslate"><span class="pre">SupernodePooling</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePooling.radius"><code class="docutils literal notranslate"><span class="pre">SupernodePooling.radius</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.encoders.supernode_pooling.SupernodePooling.k"><code class="docutils literal notranslate"><span class="pre">SupernodePooling.k</span></code></a></li>

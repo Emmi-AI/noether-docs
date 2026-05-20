@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -884,8 +887,14 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.mlp.MLP" title="noether.modeling.modules.mlp.MLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLP</span></code></a></p></td>
 <td><p>Implements a Multi-Layer Perceptron (MLP) with configurable number of layers, hidden dimension activation functions and weight initialization methods.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMlp" title="noether.modeling.modules.mlp.UpActDownMlp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UpActDownMlp</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig" title="noether.modeling.modules.mlp.MLPConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLPConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMlp" title="noether.modeling.modules.mlp.UpActDownMlp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UpActDownMlp</span></code></a></p></td>
 <td><p>UpActDownMlp is a vanilla MLP with an up-projection followed by an GELU activation function and a</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMLPConfig" title="noether.modeling.modules.mlp.UpActDownMLPConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UpActDownMLPConfig</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -904,7 +913,7 @@ When num_layers&gt;=1, the MLP has additional hidden layers, etc.</p>
 <p>Initialize the MLP.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/mlp/index.html#noether.core.schemas.modules.mlp.MLPConfig" title="noether.core.schemas.modules.mlp.MLPConfig"><em>noether.core.schemas.modules.mlp.MLPConfig</em></a>) – Configuration object for the MLP. See <a class="reference internal" href="../../../core/schemas/modules/mlp/index.html#noether.core.schemas.modules.mlp.MLPConfig" title="noether.core.schemas.modules.mlp.MLPConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">MLPConfig</span></code></a> for available options.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig" title="noether.modeling.modules.mlp.MLPConfig"><em>MLPConfig</em></a>) – Configuration object for the MLP. See <code class="xref py py-class docutils literal notranslate"><span class="pre">MLPConfig</span></code> for available options.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -954,6 +963,59 @@ When num_layers&gt;=1, the MLP has additional hidden layers, etc.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.MLPConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.mlp.</span></span><span class="sig-name descname"><span class="pre">MLPConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.mlp.MLPConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.MLPConfig.input_dim">
+<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.MLPConfig.input_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Input dimension of the MLP.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.MLPConfig.output_dim">
+<span class="sig-name descname"><span class="pre">output_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.MLPConfig.output_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Output dimension of the MLP.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.MLPConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.MLPConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Hidden dimension for each layer.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.MLPConfig.num_layers">
+<span class="sig-name descname"><span class="pre">num_layers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.MLPConfig.num_layers" title="Link to this definition">¶</a></dt>
+<dd><p>Number of hidden layers in the MLP. If 0, the MLP is a two linear layer MLP from input_dim, hidden_dim, activation to output_dim.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.MLPConfig.activation">
+<span class="sig-name descname"><span class="pre">activation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'RELU'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'GELU'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SIGMOID'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'TANH'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'LEAKY_RELU'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SOFTPLUS'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ELU'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SILU'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GELU'</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.MLPConfig.activation" title="Link to this definition">¶</a></dt>
+<dd><p>Activation function to use between layers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.MLPConfig.init_weights">
+<span class="sig-name descname"><span class="pre">init_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.types.InitWeightsMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'truncnormal002'</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.MLPConfig.init_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Weight initialization method.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.MLPConfig.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.MLPConfig.bias" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to use bias in the linear layers.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.mlp.UpActDownMlp">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.mlp.</span></span><span class="sig-name descname"><span class="pre">UpActDownMlp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.mlp.UpActDownMlp" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
@@ -962,7 +1024,7 @@ down-projection to the original input dim.</p>
 <p>Initialize the UpActDownMlp.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/mlp/index.html#noether.core.schemas.modules.mlp.UpActDownMLPConfig" title="noether.core.schemas.modules.mlp.UpActDownMLPConfig"><em>noether.core.schemas.modules.mlp.UpActDownMLPConfig</em></a>) – The configuration of the UpActDownMlp.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMLPConfig" title="noether.modeling.modules.mlp.UpActDownMLPConfig"><em>UpActDownMLPConfig</em></a>) – The configuration of the UpActDownMlp.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1015,6 +1077,55 @@ down-projection to the original input dim.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.UpActDownMLPConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.mlp.</span></span><span class="sig-name descname"><span class="pre">UpActDownMLPConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.mlp.UpActDownMLPConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.UpActDownMLPConfig.input_dim">
+<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.input_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Input dimension of the MLP.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.UpActDownMLPConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Hidden dimension of the MLP.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.UpActDownMLPConfig.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.bias" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to use bias in the MLP.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.UpActDownMLPConfig.init_weights">
+<span class="sig-name descname"><span class="pre">init_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.types.InitWeightsMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.init_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Initialization method of the weights of the MLP. Options are  “torch” (i.e., similar to the module) or  ‘truncnormal002’. Defaults to ‘truncnormal002’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.UpActDownMLPConfig.check_dims">
+<span class="sig-name descname"><span class="pre">check_dims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.check_dims" title="Link to this definition">¶</a></dt>
+<dd><p>Validator to check that hidden_dim is greater than input_dim.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.14)"><strong>ValueError</strong></a> – raised if hidden_dim is not greater than input_dim.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMLPConfig" title="noether.modeling.modules.mlp.UpActDownMLPConfig">UpActDownMLPConfig</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1114,6 +1225,16 @@ down-projection to the original input dim.</p>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.MLP.forward"><code class="docutils literal notranslate"><span class="pre">MLP.forward()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig"><code class="docutils literal notranslate"><span class="pre">MLPConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">MLPConfig.input_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig.output_dim"><code class="docutils literal notranslate"><span class="pre">MLPConfig.output_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">MLPConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig.num_layers"><code class="docutils literal notranslate"><span class="pre">MLPConfig.num_layers</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig.activation"><code class="docutils literal notranslate"><span class="pre">MLPConfig.activation</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">MLPConfig.init_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.MLPConfig.bias"><code class="docutils literal notranslate"><span class="pre">MLPConfig.bias</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMlp"><code class="docutils literal notranslate"><span class="pre">UpActDownMlp</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMlp.init_weights"><code class="docutils literal notranslate"><span class="pre">UpActDownMlp.init_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMlp.fc1"><code class="docutils literal notranslate"><span class="pre">UpActDownMlp.fc1</span></code></a></li>
@@ -1121,6 +1242,14 @@ down-projection to the original input dim.</p>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMlp.fc2"><code class="docutils literal notranslate"><span class="pre">UpActDownMlp.fc2</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMlp.reset_parameters"><code class="docutils literal notranslate"><span class="pre">UpActDownMlp.reset_parameters()</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMlp.forward"><code class="docutils literal notranslate"><span class="pre">UpActDownMlp.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMLPConfig"><code class="docutils literal notranslate"><span class="pre">UpActDownMLPConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">UpActDownMLPConfig.input_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">UpActDownMLPConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.bias"><code class="docutils literal notranslate"><span class="pre">UpActDownMLPConfig.bias</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">UpActDownMLPConfig.init_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.UpActDownMLPConfig.check_dims"><code class="docutils literal notranslate"><span class="pre">UpActDownMLPConfig.check_dims()</span></code></a></li>
 </ul>
 </li>
 </ul>

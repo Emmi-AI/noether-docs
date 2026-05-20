@@ -9,11 +9,81 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.layers.linear_projection.LinearProjectionConfig
    noether.modeling.modules.layers.linear_projection.LinearProjection
 
 
 Module Contents
 ---------------
+
+.. py:class:: LinearProjectionConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for a LinearProjection layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the linear projection.
+
+
+   .. py:attribute:: output_dim
+      :type:  int
+      :value: None
+
+
+      Output dimension of the linear projection.
+
+
+   .. py:attribute:: ndim
+      :type:  None | int
+      :value: None
+
+
+      Number of dimensions of the input domain. Either None (Linear projection),  1D (sequence), 2D, or 3D. Defaults to None.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      If true, use bias term in the linear projection. Defaults to True.
+
+
+   .. py:attribute:: optional
+      :type:  bool
+      :value: None
+
+
+      If true and input_dim==output_dim (i.e., there is no up/down projection), then the identity mapping is used. Defaults to False.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Initialization method of the weights of the MLP. Options are 'torch' (i.e., similar to the module) or 'truncnormal002', or 'zero'. Defaults to 'torch'.
+
+
+   .. py:method:: validate_ndim()
+
+      Validate the ndim field to ensure it is either None, 1, 2, or 3.
+
+
 
 .. py:class:: LinearProjection(config)
 

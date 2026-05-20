@@ -9,11 +9,39 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.initializers.resume.ResumeInitializerConfig
    noether.core.initializers.resume.ResumeInitializer
 
 
 Module Contents
 ---------------
+
+.. py:class:: ResumeInitializerConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.initializers.checkpoint.CheckpointInitializerConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.initializers.ResumeInitializer']
+      :value: None
+
+
+
+   .. py:attribute:: load_optim
+      :type:  bool
+      :value: None
+
+
+      Whether or not to load the optimizer state from the checkpoint. Default is True, as this is usually used to resume a training run
+
+
+   .. py:attribute:: model_name
+      :type:  str
+      :value: None
+
+
+      The name of the model to load. This is the model_name used in CheckpointCallback.
+
 
 .. py:class:: ResumeInitializer(initializer_config, **kwargs)
 
@@ -31,7 +59,7 @@ Module Contents
        resume_run_id: <previous_run_id>
 
 
-   :param initializer_config: configuration for the initializer. See :class:`~noether.core.schemas.initializers.ResumeInitializerConfig` for available options.
+   :param initializer_config: configuration for the initializer. See :class:`~noether.core.initializers.resume.ResumeInitializerConfig` for available options.
    :param \*\*kwargs: additional arguments to pass to the parent class.
 
 

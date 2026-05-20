@@ -9,11 +9,35 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.attention.transolver.TransolverAttentionConfig
    noether.modeling.modules.attention.transolver.TransolverAttention
 
 
 Module Contents
 ---------------
+
+.. py:class:: TransolverAttentionConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.modules.attention.AttentionConfig`
+
+
+   Configuration for the Transolver attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: num_slices
+      :type:  int
+      :value: None
+
+
+      Number of slices to project the input tokens to.
+
 
 .. py:class:: TransolverAttention(config)
 

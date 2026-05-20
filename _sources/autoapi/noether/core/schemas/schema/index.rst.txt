@@ -53,7 +53,7 @@ Module Contents
 
 .. py:data:: TTrainerConfig
 
-.. py:class:: ConfigSchema[TModelConfig: noether.core.schemas.models.ModelBaseConfig, TDatasetConfig: noether.core.schemas.dataset.DatasetBaseConfig, TTrainerConfig: noether.core.schemas.trainers.BaseTrainerConfig](/, **data)
+.. py:class:: ConfigSchema[TModelConfig: noether.core.models.base.ModelBaseConfig, TDatasetConfig: noether.data.base.dataset.DatasetBaseConfig, TTrainerConfig: noether.training.trainers.BaseTrainerConfig](/, **data)
 
    Bases: :py:obj:`pydantic.BaseModel`
 
@@ -157,7 +157,7 @@ Module Contents
 
 
    .. py:attribute:: tracker
-      :type:  Annotated[noether.core.schemas.trackers.BaseTrackerConfig, Discriminated(BaseTrackerConfig)] | None
+      :type:  Annotated[noether.core.trackers.BaseTrackerConfig, Discriminated(BaseTrackerConfig)] | None
       :value: None
 
 
@@ -276,7 +276,7 @@ Module Contents
 
 
    .. py:attribute:: slurm
-      :type:  noether.core.schemas.slurm.SlurmConfig | None
+      :type:  noether.training.cli.submit_job.SlurmConfig | None
       :value: None
 
 

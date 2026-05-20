@@ -9,15 +9,29 @@ Classes
 
 .. autoapisummary::
 
+   noether.data.base.wrappers.repeat.RepeatWrapperConfig
    noether.data.base.wrappers.repeat.RepeatWrapper
 
 
 Module Contents
 ---------------
 
+.. py:class:: RepeatWrapperConfig(/, **data)
+
+   Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapperConfig`
+
+
+   .. py:attribute:: repetitions
+      :type:  int
+      :value: None
+
+
+      The number of times to repeat the dataset.
+
+
 .. py:class:: RepeatWrapper(config, dataset)
 
-   Bases: :py:obj:`noether.data.base.Subset`
+   Bases: :py:obj:`noether.data.base.subset.Subset`
 
 
    Repeats the wrapped dataset `repetitions` times.

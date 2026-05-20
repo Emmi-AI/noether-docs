@@ -9,11 +9,108 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.callbacks.base.CallBackBaseConfig
    noether.core.callbacks.base.CallbackBase
 
 
 Module Contents
 ---------------
+
+.. py:class:: CallBackBaseConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: id
+      :type:  str | None
+      :value: None
+
+
+      Optional unique identifier for this callback instance. Required when multiple stateful callbacks of the same
+      type exist (e.g., two BestCheckpointCallbacks tracking different metrics). Used as the key when saving/loading
+      callback state dicts to ensure correct matching on resume.
+
+
+   .. py:attribute:: every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+      Epoch-based interval. Invokes the callback after every n epochs. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: every_n_updates
+      :type:  int | None
+      :value: None
+
+
+      Update-based interval. Invokes the callback after every n updates. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: every_n_samples
+      :type:  int | None
+      :value: None
+
+
+      Sample-based interval. Invokes the callback after every n samples. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: batch_size
+      :type:  int | None
+      :value: None
+
+
+      None (use the same batch_size as for training).
+
+      :type: Batch size to use for this callback. Default
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one frequency ('every_n_*') is specified and
+      that 'batch_size' is present if 'every_n_samples' is used.
+
+
+
+   .. py:method:: check_positive_values(v)
+      :classmethod:
+
+
+      Ensures that all integer-based frequency and batch size fields are positive.
+
+
+
+   .. py:method:: check_kind_is_not_empty(v)
+      :classmethod:
+
+
+      Ensures the 'kind' field is a non-empty string.
+
+
 
 .. py:class:: CallbackBase(trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None)
 

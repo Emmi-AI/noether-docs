@@ -10,6 +10,7 @@ Attributes
 .. autoapisummary::
 
    noether.data.base.dataset.logger
+   noether.data.base.dataset.TPipelineConfig
 
 
 Classes
@@ -17,6 +18,9 @@ Classes
 
 .. autoapisummary::
 
+   noether.data.base.dataset.DatasetBaseConfig
+   noether.data.base.dataset.StandardDatasetConfig
+   noether.data.base.dataset.DatasetSplitIDs
    noether.data.base.dataset.Dataset
 
 
@@ -32,6 +36,197 @@ Module Contents
 ---------------
 
 .. py:data:: logger
+
+.. py:data:: TPipelineConfig
+
+.. py:class:: DatasetBaseConfig[TPipelineConfig: noether.data.pipeline.PipelineConfig](/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+      Kind of dataset to use.
+
+
+   .. py:attribute:: pipeline
+      :type:  Annotated[TPipelineConfig | None, Discriminated(PipelineConfig)]
+      :value: None
+
+
+      Config of the pipeline to use for the dataset.
+
+
+   .. py:attribute:: dataset_normalizers
+      :type:  dict[str, list[Annotated[Any, Discriminated(NormalizerConfig)]] | Annotated[Any, Discriminated(NormalizerConfig)]] | None
+      :value: None
+
+
+      List of normalizers to apply to the dataset. The key is the data source name.
+
+
+   .. py:attribute:: dataset_wrappers
+      :type:  list[noether.data.base.wrappers.DatasetWrappers] | None
+      :value: None
+
+
+
+   .. py:attribute:: included_properties
+      :type:  set[str] | None
+      :value: None
+
+
+      Set of properties (i.e., getitem_* methods that are called) of this dataset that will be loaded, if not set all properties are loaded
+
+
+   .. py:attribute:: excluded_properties
+      :type:  set[str] | None
+      :value: None
+
+
+      Set of properties of this dataset that will NOT be loaded, even if they are present in the included list
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+.. py:class:: StandardDatasetConfig(/, **data)
+
+   Bases: :py:obj:`DatasetBaseConfig`, :py:obj:`abc.ABC`
+
+
+   Base config for datasets with fixed splits.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: root
+      :type:  str
+
+      Root directory of the dataset.
+
+
+   .. py:attribute:: split
+      :type:  Literal['train', 'val', 'test']
+
+      Which split of the dataset to use. Must be one of "train", "val", or "test".
+
+
+.. py:class:: DatasetSplitIDs(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`, :py:obj:`abc.ABC`
+
+
+   Base class for dataset split ID validation with overlap checking.
+
+   This base class provides:
+   1. Automatic validation that train/val/test splits don't have overlapping IDs
+   2. Optional size validation for datasets that have expected split sizes
+
+   Subclasses can optionally define class variables for size validation:
+   - EXPECTED_TRAIN_SIZE: Expected number of training samples
+   - EXPECTED_VAL_SIZE: Expected number of validation samples
+   - EXPECTED_TEST_SIZE: Expected number of test samples
+   - DATASET_NAME: Name of the dataset for error messages
+
+   If these are not defined, only overlap checking will be performed.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: EXPECTED_TRAIN_SIZE
+      :type:  ClassVar[int | None]
+      :value: None
+
+
+
+   .. py:attribute:: EXPECTED_VAL_SIZE
+      :type:  ClassVar[int | None]
+      :value: None
+
+
+
+   .. py:attribute:: EXPECTED_TEST_SIZE
+      :type:  ClassVar[int | None]
+      :value: None
+
+
+
+   .. py:attribute:: EXPECTED_HIDDEN_TEST_SIZE
+      :type:  ClassVar[int | None]
+      :value: None
+
+
+
+   .. py:attribute:: DATASET_NAME
+      :type:  ClassVar[str | None]
+      :value: None
+
+
+
+   .. py:attribute:: train
+      :type:  list[int]
+
+
+   .. py:attribute:: val
+      :type:  list[int]
+
+
+   .. py:attribute:: test
+      :type:  list[int]
+
+
+   .. py:attribute:: extrap
+      :type:  list[int]
+      :value: []
+
+
+
+   .. py:attribute:: interp
+      :type:  list[int]
+      :value: []
+
+
+
+   .. py:attribute:: train_subset
+      :type:  list[int]
+      :value: []
+
+
+
+   .. py:method:: validate_splits()
+
+      Validate splits and check for overlaps.
+
+
 
 .. py:function:: with_normalizers(_func_or_key = None)
 

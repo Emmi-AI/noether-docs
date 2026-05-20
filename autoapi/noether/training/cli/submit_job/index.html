@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/training/cli/submit_job/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Functions: Module Contents:" />
+<meta property="og:description" content="Classes: Functions: Module Contents:" />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Functions: Module Contents:" />
+<meta name="description" content="Classes: Functions: Module Contents:" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -867,6 +870,18 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.training.cli.submit_job">
 <span id="noether-training-cli-submit-job"></span><h1>noether.training.cli.submit_job<a class="headerlink" href="#module-noether.training.cli.submit_job" title="Link to this heading">¶</a></h1>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig" title="noether.training.cli.submit_job.SlurmConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SlurmConfig</span></code></a></p></td>
+<td><p>Configuration for SLURM job submission via <code class="xref py py-mod docutils literal notranslate"><span class="pre">submitit</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
@@ -884,6 +899,144 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.training.cli.submit_job.</span></span><span class="sig-name descname"><span class="pre">SlurmConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Configuration for SLURM job submission via <code class="xref py py-mod docutils literal notranslate"><span class="pre">submitit</span></code>.</p>
+<p>Field names mirror the keyword arguments accepted by
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">submitit.AutoExecutor.update_parameters()</span></code>. All fields are optional
+and default to <code class="docutils literal notranslate"><span class="pre">None</span></code>, meaning the cluster default is used.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Job stdout/stderr is owned by submitit and written to <code class="docutils literal notranslate"><span class="pre">&lt;folder&gt;/&lt;job_id&gt;_log.out</span></code>
+/ <code class="docutils literal notranslate"><span class="pre">&lt;folder&gt;/&lt;job_id&gt;_log.err</span></code>. Use the <code class="docutils literal notranslate"><span class="pre">folder</span></code> field to control where these
+files land. SLURM <code class="docutils literal notranslate"><span class="pre">--output</span></code>/<code class="docutils literal notranslate"><span class="pre">--error</span></code> directives are intentionally not
+exposed; pass them via <code class="docutils literal notranslate"><span class="pre">slurm_additional_parameters</span></code> if you really need to
+override submitit’s defaults (this disables <code class="docutils literal notranslate"><span class="pre">job.stdout()</span></code> helpers).</p>
+</div>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.folder">
+<span class="sig-name descname"><span class="pre">folder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'submitit_logs'</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.folder" title="Link to this definition">¶</a></dt>
+<dd><p>Directory where submitit writes the job script, pickled task, and stdout/stderr logs.
+Per-job files are named <code class="docutils literal notranslate"><span class="pre">&lt;job_id&gt;_log.out</span></code> etc. inside this directory.
+This is also used as the default <code class="docutils literal notranslate"><span class="pre">output_path</span></code> for training runs (see
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">ConfigSchema.output_path</span></code>).</p>
+<p>Supports <code class="docutils literal notranslate"><span class="pre">%u</span></code> (current username) interpolation, e.g.
+<code class="docutils literal notranslate"><span class="pre">/home/%u/logs/experiment</span></code>. SLURM job-time patterns like <code class="docutils literal notranslate"><span class="pre">%j</span></code> are
+<strong>not</strong> supported because submitit needs the directory to exist before
+submission.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.name" title="Link to this definition">¶</a></dt>
+<dd><p>Job name (SLURM <code class="docutils literal notranslate"><span class="pre">--job-name</span></code>).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.nodes">
+<span class="sig-name descname"><span class="pre">nodes</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.nodes" title="Link to this definition">¶</a></dt>
+<dd><p>Number of nodes to allocate.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.tasks_per_node">
+<span class="sig-name descname"><span class="pre">tasks_per_node</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.tasks_per_node" title="Link to this definition">¶</a></dt>
+<dd><p>Number of tasks per allocated node.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.cpus_per_task">
+<span class="sig-name descname"><span class="pre">cpus_per_task</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.cpus_per_task" title="Link to this definition">¶</a></dt>
+<dd><p>Number of CPUs per task.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.gpus_per_node">
+<span class="sig-name descname"><span class="pre">gpus_per_node</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.gpus_per_node" title="Link to this definition">¶</a></dt>
+<dd><p>GPUs per node. Accepts a count or <code class="docutils literal notranslate"><span class="pre">type:count</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;a100:4&quot;</span></code>).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.mem_gb">
+<span class="sig-name descname"><span class="pre">mem_gb</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.mem_gb" title="Link to this definition">¶</a></dt>
+<dd><p>Memory per node in gigabytes.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.timeout_min">
+<span class="sig-name descname"><span class="pre">timeout_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.timeout_min" title="Link to this definition">¶</a></dt>
+<dd><p>Wall-clock limit in minutes. Use 0 for no time limit</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.stderr_to_stdout">
+<span class="sig-name descname"><span class="pre">stderr_to_stdout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.stderr_to_stdout" title="Link to this definition">¶</a></dt>
+<dd><p>If True, merge stderr into stdout.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.slurm_partition">
+<span class="sig-name descname"><span class="pre">slurm_partition</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.slurm_partition" title="Link to this definition">¶</a></dt>
+<dd><p>Partition to submit the job to.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.slurm_array_parallelism">
+<span class="sig-name descname"><span class="pre">slurm_array_parallelism</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.slurm_array_parallelism" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum number of array tasks running concurrently (SLURM <code class="docutils literal notranslate"><span class="pre">%N</span></code> in <code class="docutils literal notranslate"><span class="pre">--array</span></code>).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.slurm_setup">
+<span class="sig-name descname"><span class="pre">slurm_setup</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.slurm_setup" title="Link to this definition">¶</a></dt>
+<dd><p>Shell commands run inside the job before the main command, e.g.
+<code class="docutils literal notranslate"><span class="pre">[&quot;source</span> <span class="pre">.venv/bin/activate&quot;]</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.slurm_additional_parameters">
+<span class="sig-name descname"><span class="pre">slurm_additional_parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.slurm_additional_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Escape hatch for SLURM directives not exposed as first-class fields, e.g.
+<code class="docutils literal notranslate"><span class="pre">{&quot;nice&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;reservation&quot;:</span> <span class="pre">&quot;my_res&quot;,</span> <span class="pre">&quot;chdir&quot;:</span> <span class="pre">&quot;/work&quot;}</span></code>. Keys are passed as
+<code class="docutils literal notranslate"><span class="pre">--key=value</span></code> to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.to_executor_kwargs">
+<span class="sig-name descname"><span class="pre">to_executor_kwargs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.to_executor_kwargs" title="Link to this definition">¶</a></dt>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">(folder,</span> <span class="pre">update_parameters_kwargs)</span></code> for <code class="xref py py-class docutils literal notranslate"><span class="pre">submitit.AutoExecutor</span></code>.</p>
+<p>Generic fields are passed under their bare name; everything else keeps its
+<code class="docutils literal notranslate"><span class="pre">slurm_</span></code> prefix so submitit routes it to the slurm executor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple <code class="docutils literal notranslate"><span class="pre">(folder,</span> <span class="pre">kwargs)</span></code> where <code class="docutils literal notranslate"><span class="pre">folder</span></code> is the executor’s log directory
+and <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> is the dict to splat into <code class="docutils literal notranslate"><span class="pre">executor.update_parameters(**kwargs)</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.training.cli.submit_job.validate_config">
 <span class="sig-prename descclassname"><span class="pre">noether.training.cli.submit_job.</span></span><span class="sig-name descname"><span class="pre">validate_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.cli.submit_job.validate_config" title="Link to this definition">¶</a></dt>
@@ -1003,8 +1156,27 @@ a training job — or a SLURM array job — via <code class="xref py py-mod docu
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">noether.training.cli.submit_job</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig"><code class="docutils literal notranslate"><span class="pre">SlurmConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.model_config"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.folder"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.folder</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.name"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.nodes"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.nodes</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.tasks_per_node"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.tasks_per_node</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.cpus_per_task"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.cpus_per_task</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.gpus_per_node"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.gpus_per_node</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.mem_gb"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.mem_gb</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.timeout_min"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.timeout_min</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.stderr_to_stdout"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.stderr_to_stdout</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.slurm_partition"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_partition</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.slurm_array_parallelism"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_array_parallelism</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.slurm_setup"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_setup</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.slurm_additional_parameters"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_additional_parameters</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.to_executor_kwargs"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.to_executor_kwargs()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.training.cli.submit_job.validate_config"><code class="docutils literal notranslate"><span class="pre">validate_config()</span></code></a></li>
 <li><a class="reference internal" href="#noether.training.cli.submit_job.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 </ul>

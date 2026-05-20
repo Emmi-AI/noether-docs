@@ -226,7 +226,7 @@ Package Contents
       :param optimizer_config: Configuration for the optimizer to create. This config contains both the
                                :class:`torch.optim.Optimizer` and the :class:`~noether.core.optimizer.OptimizerWrapper` configurations.
                                :class:`~torch.optim.Optimizer` and the :class:`~noether.core.optimizer.OptimizerWrapper` configurations.
-                               See :class:`~noether.core.schemas.optimizers.OptimizerConfig` for available options.
+                               See :class:`~noether.core.optimizer.schemas.OptimizerConfig` for available options.
 
       :returns: A callable that initializes the :class:`~noether.core.optimizer.OptimizerWrapper`.
 
@@ -247,7 +247,7 @@ Package Contents
       Creates a schedule based on the provided config and wraps it into a :class:`~noether.core.utils.training.schedule.ScheduleWrapper`.
 
       :param schedule_config: The schedule config or already instantiated schedule. See
-                              :class:`~noether.core.schemas.schedules.AnyScheduleConfig` for available options.
+                              :class:`~noether.core.schedules.AnyScheduleConfig` for available options.
       :param \*\*kwargs: Additional keyword arguments that are passed to the schedule constructor.
 
       :returns: The instantiated schedule wrapped in :class:`~noether.core.utils.training.schedule.ScheduleWrapper`.

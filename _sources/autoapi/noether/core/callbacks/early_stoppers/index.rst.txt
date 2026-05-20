@@ -30,7 +30,9 @@ Classes
 
    noether.core.callbacks.early_stoppers.EarlyStopperBase
    noether.core.callbacks.early_stoppers.FixedEarlyStopper
+   noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig
    noether.core.callbacks.early_stoppers.MetricEarlyStopper
+   noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig
 
 
 Package Contents
@@ -115,6 +117,47 @@ Package Contents
    .. py:attribute:: stop_at_epoch
 
 
+.. py:class:: FixedEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: name
+      :type:  Literal['FixedEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_sample
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_update
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_epoch
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one stop ('stop_at_*') is specified
+
+
+
 .. py:class:: MetricEarlyStopper(callback_config, **kwargs)
 
    Bases: :py:obj:`noether.core.callbacks.early_stoppers.base.EarlyStopperBase`
@@ -153,5 +196,49 @@ Package Contents
 
 
    .. py:attribute:: best_metric
+
+
+.. py:class:: MetricEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['MetricEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+
+      The key of the metric to monitor
+
+
+   .. py:attribute:: tolerance
+      :type:  int
+
+      The number of times the metric can stagnate before stopping training
+
+
+   .. py:method:: check_tolerance_positive(v)
+      :classmethod:
+
+
+      Ensures that tolerance is at least 1.
+
 
 

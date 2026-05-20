@@ -9,11 +9,57 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.mlp.upactdown_mlp.UpActDownMLPConfig
    noether.modeling.modules.mlp.upactdown_mlp.UpActDownMlp
 
 
 Module Contents
 ---------------
+
+.. py:class:: UpActDownMLPConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the MLP.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the MLP.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias in the MLP.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Initialization method of the weights of the MLP. Options are  "torch" (i.e., similar to the module) or  'truncnormal002'. Defaults to 'truncnormal002'.
+
+
+   .. py:method:: check_dims()
+
+      Validator to check that hidden_dim is greater than input_dim.
+
+      :raises ValueError: raised if hidden_dim is not greater than input_dim.
+
+
 
 .. py:class:: UpActDownMlp(config)
 

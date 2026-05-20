@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -885,10 +888,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.models.ModelBase" title="noether.core.models.ModelBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelBase</span></code></a></p></td>
 <td><p>Base class for models (<a class="reference internal" href="model/index.html#noether.core.models.model.Model" title="noether.core.models.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a> and <a class="reference internal" href="composite/index.html#noether.core.models.composite.CompositeModel" title="noether.core.models.composite.CompositeModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompositeModel</span></code></a>) that is used to define the interface for all models trainable by the <a class="reference internal" href="../../training/trainers/base/index.html#noether.training.trainers.base.BaseTrainer" title="noether.training.trainers.base.BaseTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrainer</span></code></a>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.models.CompositeModel" title="noether.core.models.CompositeModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeModel</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.models.ModelBaseConfig" title="noether.core.models.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.models.CompositeModel" title="noether.core.models.CompositeModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompositeModel</span></code></a></p></td>
 <td><p>A composite model that consists of multiple submodels of type Model. By having multiple submodels, each model can have its own optimizer and learning rate scheduler, from weights etc.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Model</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Model</span></code></a></p></td>
 <td><p>Model class that should be extended by all custom models.</p></td>
 </tr>
 </tbody>
@@ -906,12 +912,12 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="../schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><em>noether.core.schemas.models.ModelBaseConfig</em></a>) – Model configuration. See <a class="reference internal" href="../schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.core.models.ModelBaseConfig" title="noether.core.models.ModelBaseConfig"><em>ModelBaseConfig</em></a>) – Model configuration. See <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code> for available options.</p></li>
 <li><p><strong>update_counter</strong> (<a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><em>noether.core.utils.training.counter.UpdateCounter</em></a><em> | </em><em>None</em>) – The <a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>path_provider</strong> (<a class="reference internal" href="../providers/index.html#noether.core.providers.PathProvider" title="noether.core.providers.PathProvider"><em>noether.core.providers.PathProvider</em></a><em> | </em><em>None</em>) – A path <a class="reference internal" href="../providers/path/index.html#noether.core.providers.path.PathProvider" title="noether.core.providers.path.PathProvider"><code class="xref py py-class docutils literal notranslate"><span class="pre">PathProvider</span></code></a> used by the initializer to store or retrieve checkpoints.</p></li>
 <li><p><strong>data_container</strong> (<a class="reference internal" href="../../data/container/index.html#noether.data.container.DataContainer" title="noether.data.container.DataContainer"><em>noether.data.container.DataContainer</em></a><em> | </em><em>None</em>) – The <a class="reference internal" href="../../data/container/index.html#noether.data.container.DataContainer" title="noether.data.container.DataContainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataContainer</span></code></a> which includes the data and dataloader.
 This is currently unused but helpful for quick prototyping only, evaluating forward in debug mode, etc.</p></li>
-<li><p><strong>initializer_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="../schemas/initializers/index.html#noether.core.schemas.initializers.InitializerConfig" title="noether.core.schemas.initializers.InitializerConfig"><em>noether.core.schemas.initializers.InitializerConfig</em></a><em>] </em><em>| </em><em>None</em>) – The initializer config used to initialize the model e.g. from a checkpoint.</p></li>
+<li><p><strong>initializer_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference internal" href="../initializers/index.html#noether.core.initializers.InitializerConfig" title="noether.core.initializers.InitializerConfig"><em>noether.core.initializers.InitializerConfig</em></a><em>] </em><em>| </em><em>None</em>) – The initializer config used to initialize the model e.g. from a checkpoint.</p></li>
 </ul>
 </dd>
 </dl>
@@ -1125,6 +1131,77 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.models.ModelBaseConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.models.</span></span><span class="sig-name descname"><span class="pre">ModelBaseConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.models.ModelBaseConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.lib._RegistryBase</span></code></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.models.ModelBaseConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.models.ModelBaseConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Kind of model to use, i.e. class path</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.models.ModelBaseConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.models.ModelBaseConfig.name" title="Link to this definition">¶</a></dt>
+<dd><p>Name of the model. Needs to be unique</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.models.ModelBaseConfig.optimizer_config">
+<span class="sig-name descname"><span class="pre">optimizer_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.optimizer.schemas.AnyOptimizerConfig</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.models.ModelBaseConfig.optimizer_config" title="Link to this definition">¶</a></dt>
+<dd><p>The optimizer configuration to use for training the model. When a model is used for inference only, this can be left as None.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.models.ModelBaseConfig.initializers">
+<span class="sig-name descname"><span class="pre">initializers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">noether.core.initializers.AnyInitializer</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Field</span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">discriminator</span></span><span class="o"><span class="pre">=</span></span><span class="pre">kind</span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.models.ModelBaseConfig.initializers" title="Link to this definition">¶</a></dt>
+<dd><p>List of initializers configs to use for the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.models.ModelBaseConfig.is_frozen">
+<span class="sig-name descname"><span class="pre">is_frozen</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.core.models.ModelBaseConfig.is_frozen" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to freeze the model parameters (i.e., not trainable).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.models.ModelBaseConfig.forward_properties">
+<span class="sig-name descname"><span class="pre">forward_properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#noether.core.models.ModelBaseConfig.forward_properties" title="Link to this definition">¶</a></dt>
+<dd><p>List of properties to be used as inputs for the forward pass of the model. Only relevant when the train_step of the BaseTrainer is used. When overridden in a class method, this property is ignored.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.models.ModelBaseConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.core.models.ModelBaseConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.core.models.ModelBaseConfig.config_kind">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">config_kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.models.ModelBaseConfig.config_kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified import path for the configuration class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.models.CompositeModel">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.models.</span></span><span class="sig-name descname"><span class="pre">CompositeModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_container</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.models.CompositeModel" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.models.base.ModelBase" title="noether.core.models.base.ModelBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBase</span></code></a></p>
@@ -1168,7 +1245,7 @@ This is useful for multi-component models,</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="../schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><em>noether.core.schemas.models.ModelBaseConfig</em></a>)</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><em>noether.core.models.base.ModelBaseConfig</em></a>)</p></li>
 <li><p><strong>update_counter</strong> (<a class="reference internal" href="../utils/training/index.html#noether.core.utils.training.UpdateCounter" title="noether.core.utils.training.UpdateCounter"><em>noether.core.utils.training.UpdateCounter</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>path_provider</strong> (<a class="reference internal" href="../providers/path/index.html#noether.core.providers.path.PathProvider" title="noether.core.providers.path.PathProvider"><em>noether.core.providers.path.PathProvider</em></a><em> | </em><em>None</em>)</p></li>
 <li><p><strong>data_container</strong> (<a class="reference internal" href="../../data/container/index.html#noether.data.container.DataContainer" title="noether.data.container.DataContainer"><em>noether.data.container.DataContainer</em></a><em> | </em><em>None</em>)</p></li>
@@ -1326,12 +1403,12 @@ and to call all submodules’ train methods.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.models.Model">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.models.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_frozen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_container</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.models.Model" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.models.base.ModelBase" title="noether.core.models.base.ModelBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBase</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.models.ModelBase" title="noether.core.models.ModelBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.ModelBase</span></code></a></p>
 <p>Model class that should be extended by all custom models.
 Each model has its own optimizer and learning rate scheduler, which are initialized in the <cite>initialize_optimizer</cite> method.</p>
 <p>Example code (dummy code):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.models.single</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBaseConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.models.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBaseConfig</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MyModelConfig</span><span class="p">(</span><span class="n">ModelBaseConfig</span><span class="p">):</span>
     <span class="n">kind</span><span class="p">:</span> <span class="n">path</span><span class="o">.</span><span class="n">to</span><span class="o">.</span><span class="n">MyModel</span>
@@ -1370,7 +1447,7 @@ Each model has its own optimizer and learning rate scheduler, which are initiali
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="../schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><em>noether.core.schemas.models.ModelBaseConfig</em></a>) – Model configuration. See <a class="reference internal" href="../schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.core.models.ModelBaseConfig" title="noether.core.models.ModelBaseConfig"><em>noether.core.models.ModelBaseConfig</em></a>) – Model configuration. See <a class="reference internal" href="base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> (<a class="reference internal" href="../utils/training/index.html#noether.core.utils.training.UpdateCounter" title="noether.core.utils.training.UpdateCounter"><em>noether.core.utils.training.UpdateCounter</em></a><em> | </em><em>None</em>) – The <a class="reference internal" href="../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>
@@ -1406,7 +1483,7 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <dd><p>Returns a dict of {model_name: model}, e.g., to log all learning rates of all models/submodels.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="base/index.html#noether.core.models.base.ModelBase" title="noether.core.models.base.ModelBase">noether.core.models.base.ModelBase</a>]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="#noether.core.models.ModelBase" title="noether.core.models.ModelBase">noether.core.models.ModelBase</a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1624,6 +1701,17 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <li><a class="reference internal" href="#noether.core.models.ModelBase.optimizer_step"><code class="docutils literal notranslate"><span class="pre">ModelBase.optimizer_step()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.models.ModelBase.optimizer_schedule_step"><code class="docutils literal notranslate"><span class="pre">ModelBase.optimizer_schedule_step()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.models.ModelBase.optimizer_zero_grad"><code class="docutils literal notranslate"><span class="pre">ModelBase.optimizer_zero_grad()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.models.ModelBaseConfig"><code class="docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.models.ModelBaseConfig.kind"><code class="docutils literal notranslate"><span class="pre">ModelBaseConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.models.ModelBaseConfig.name"><code class="docutils literal notranslate"><span class="pre">ModelBaseConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.models.ModelBaseConfig.optimizer_config"><code class="docutils literal notranslate"><span class="pre">ModelBaseConfig.optimizer_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.models.ModelBaseConfig.initializers"><code class="docutils literal notranslate"><span class="pre">ModelBaseConfig.initializers</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.models.ModelBaseConfig.is_frozen"><code class="docutils literal notranslate"><span class="pre">ModelBaseConfig.is_frozen</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.models.ModelBaseConfig.forward_properties"><code class="docutils literal notranslate"><span class="pre">ModelBaseConfig.forward_properties</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.models.ModelBaseConfig.model_config"><code class="docutils literal notranslate"><span class="pre">ModelBaseConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.models.ModelBaseConfig.config_kind"><code class="docutils literal notranslate"><span class="pre">ModelBaseConfig.config_kind</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.models.CompositeModel"><code class="docutils literal notranslate"><span class="pre">CompositeModel</span></code></a><ul>

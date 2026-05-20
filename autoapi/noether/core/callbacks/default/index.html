@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -900,16 +903,19 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.default.OnlineLossCallback" title="noether.core.callbacks.default.OnlineLossCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OnlineLossCallback</span></code></a></p></td>
 <td><p>Callback to track the loss of the model after every gradient accumulation step and log the average loss.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.default.ParamCountCallback" title="noether.core.callbacks.default.ParamCountCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParamCountCallback</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.default.OnlineLossCallbackConfig" title="noether.core.callbacks.default.OnlineLossCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OnlineLossCallbackConfig</span></code></a></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.default.ParamCountCallback" title="noether.core.callbacks.default.ParamCountCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ParamCountCallback</span></code></a></p></td>
 <td><p>Callback to log the number of trainable and frozen parameters of the model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.default.PeakMemoryCallback" title="noether.core.callbacks.default.PeakMemoryCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeakMemoryCallback</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.default.PeakMemoryCallback" title="noether.core.callbacks.default.PeakMemoryCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PeakMemoryCallback</span></code></a></p></td>
 <td><p>Callback to log the peak memory usage of the model. Is initialized by the <a class="reference internal" href="../../../training/trainers/index.html#noether.training.trainers.BaseTrainer" title="noether.training.trainers.BaseTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrainer</span></code></a> and should not be added manually to the trainer's callbacks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.default.ProgressCallback" title="noether.core.callbacks.default.ProgressCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProgressCallback</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.default.ProgressCallback" title="noether.core.callbacks.default.ProgressCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProgressCallback</span></code></a></p></td>
 <td><p>Callback to print the progress of the training such as number of epochs and updates.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.default.TrainTimeCallback" title="noether.core.callbacks.default.TrainTimeCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrainTimeCallback</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.default.TrainTimeCallback" title="noether.core.callbacks.default.TrainTimeCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrainTimeCallback</span></code></a></p></td>
 <td><p>Callback to log the time spent on dataloading. Is initialized by the <a class="reference internal" href="../../../training/trainers/index.html#noether.training.trainers.BaseTrainer" title="noether.training.trainers.BaseTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrainer</span></code></a> and should not be added manually to the trainer's callbacks.</p></td>
 </tr>
 </tbody>
@@ -977,8 +983,8 @@ manually to the trainer’s callbacks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><em>noether.core.schemas.callbacks.CallBackBaseConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><em>noether.core.callbacks.base.CallBackBaseConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code>
 for available options.</p></li>
 <li><p><strong>trainer</strong> – Trainer of the current run.</p></li>
 <li><p><strong>model</strong> – Model of the current run.</p></li>
@@ -1164,7 +1170,7 @@ manually to the trainer’s callbacks.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>callback_config</strong> – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code>
 for available options.</p></li>
 <li><p><strong>trainer</strong> – Trainer of the current run.</p></li>
 <li><p><strong>model</strong> – Model of the current run.</p></li>
@@ -1225,8 +1231,8 @@ the current training progress (epoch, update, sample counts).</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.OnlineLossCallbackConfig" title="noether.core.schemas.callbacks.OnlineLossCallbackConfig"><em>noether.core.schemas.callbacks.OnlineLossCallbackConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.OnlineLossCallbackConfig" title="noether.core.schemas.callbacks.OnlineLossCallbackConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">OnlineLossCallbackConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="#noether.core.callbacks.default.OnlineLossCallbackConfig" title="noether.core.callbacks.default.OnlineLossCallbackConfig"><em>OnlineLossCallbackConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">OnlineLossCallbackConfig</span></code>
 for available options.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
@@ -1315,6 +1321,35 @@ the current training progress (epoch, update, sample counts).</p></li>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.callbacks.default.OnlineLossCallbackConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.default.</span></span><span class="sig-name descname"><span class="pre">OnlineLossCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.OnlineLossCallbackConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.base.CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.default.OnlineLossCallbackConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'OnlineLossCallback'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.default.OnlineLossCallbackConfig.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.default.OnlineLossCallbackConfig.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.default.OnlineLossCallbackConfig.verbose" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to also log to the (console) logger. If False, the loss will only logged to the experiment tracker.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.callbacks.default.ParamCountCallback">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.default.</span></span><span class="sig-name descname"><span class="pre">ParamCountCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trainer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tracker</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_writer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_property_provider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.ParamCountCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.base.CallbackBase</span></code></a></p>
@@ -1371,8 +1406,8 @@ tasks before training begins. Common use cases include:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><em>noether.core.schemas.callbacks.CallBackBaseConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><em>noether.core.callbacks.base.CallBackBaseConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code>
 for available options.</p></li>
 <li><p><strong>trainer</strong> – Trainer of the current run.</p></li>
 <li><p><strong>model</strong> (<a class="reference internal" href="../../models/index.html#noether.core.models.ModelBase" title="noether.core.models.ModelBase"><em>noether.core.models.ModelBase</em></a>) – Model of the current run.</p></li>
@@ -1431,8 +1466,8 @@ manually to the trainer’s callbacks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><em>noether.core.schemas.callbacks.CallBackBaseConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><em>noether.core.callbacks.base.CallBackBaseConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code>
 for available options.</p></li>
 <li><p><strong>trainer</strong> – Trainer of the current run.</p></li>
 <li><p><strong>model</strong> (<a class="reference internal" href="../../models/index.html#noether.core.models.ModelBase" title="noether.core.models.ModelBase"><em>noether.core.models.ModelBase</em></a>) – Model of the current run.</p></li>
@@ -1548,8 +1583,8 @@ step (e.g., ‘data_time’, ‘forward_time’, ‘backward_time’, ‘update_
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><em>noether.core.schemas.callbacks.CallBackBaseConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><em>noether.core.callbacks.base.CallBackBaseConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code>
 for available options.</p></li>
 <li><p><strong>trainer</strong> – Trainer of the current run.</p></li>
 <li><p><strong>model</strong> – Model of the current run.</p></li>
@@ -1781,6 +1816,11 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.default.OnlineLossCallback.tracked_losses"><code class="docutils literal notranslate"><span class="pre">OnlineLossCallback.tracked_losses</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.default.OnlineLossCallback.track_after_accumulation_step"><code class="docutils literal notranslate"><span class="pre">OnlineLossCallback.track_after_accumulation_step()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.default.OnlineLossCallback.periodic_callback"><code class="docutils literal notranslate"><span class="pre">OnlineLossCallback.periodic_callback()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.callbacks.default.OnlineLossCallbackConfig"><code class="docutils literal notranslate"><span class="pre">OnlineLossCallbackConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.callbacks.default.OnlineLossCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">OnlineLossCallbackConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.default.OnlineLossCallbackConfig.verbose"><code class="docutils literal notranslate"><span class="pre">OnlineLossCallbackConfig.verbose</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.callbacks.default.ParamCountCallback"><code class="docutils literal notranslate"><span class="pre">ParamCountCallback</span></code></a><ul>

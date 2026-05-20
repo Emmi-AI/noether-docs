@@ -1,0 +1,485 @@
+noether.data.schemas
+====================
+
+.. py:module:: noether.data.schemas
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.schemas.FieldDimSpec
+   noether.data.schemas.DomainDataSpec
+   noether.data.schemas.ModelDataSpecs
+   noether.data.schemas.FileMap
+   noether.data.schemas.AeroStatsSchema
+
+
+Module Contents
+---------------
+
+.. py:class:: FieldDimSpec
+
+   Bases: :py:obj:`pydantic.RootModel`\ [\ :py:obj:`collections.OrderedDict`\ [\ :py:obj:`str`\ , :py:obj:`int`\ ]\ ]
+
+
+   A specification for a group of named data fields and their dimensions.
+
+
+   .. py:property:: field_slices
+      :type: dict[str, slice]
+
+
+      Calculates slice indices for each field in concatenation order.
+
+
+   .. py:property:: total_dim
+      :type: int
+
+
+      Calculates the total dimension of all fields combined.
+
+
+   .. py:method:: keys()
+
+
+   .. py:method:: values()
+
+
+   .. py:method:: items()
+
+
+.. py:class:: DomainDataSpec(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Data specification for a single domain (e.g., surface, volume, wake).
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: output_dims
+      :type:  FieldDimSpec
+
+      1, "velocity": 3}.
+
+      :type: Output fields and their dimensions for this domain, e.g. {"pressure"
+
+
+   .. py:attribute:: feature_dim
+      :type:  FieldDimSpec | None
+      :value: None
+
+
+      Input feature fields and their dimensions for this domain.
+
+
+.. py:class:: ModelDataSpecs(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Base data specification for models that operate on arbitrary named domains.
+
+   This is the minimal interface that model configs need from data specifications:
+   position dimensions, available conditioning, and per-domain data descriptions.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: position_dim
+      :type:  int
+      :value: None
+
+
+      Dimension of the input position vectors.
+
+
+   .. py:attribute:: conditioning_dims
+      :type:  FieldDimSpec | None
+      :value: None
+
+
+      Available conditioning features and their dimensions.
+
+
+   .. py:attribute:: domains
+      :type:  dict[str, DomainDataSpec]
+      :value: None
+
+
+      Per-domain data specifications keyed by domain name.
+
+
+   .. py:attribute:: use_physics_features
+      :type:  bool
+      :value: True
+
+
+      Whether physics features are used as input.
+
+
+   .. py:property:: total_output_dim
+      :type: int
+
+
+      Calculates the total output dimension across all domains.
+
+
+   .. py:property:: all_targets
+      :type: set[str]
+
+
+      Returns all target field names across all domains, prefixed by domain name.
+
+
+   .. py:property:: all_features
+      :type: set[str]
+
+
+      Returns all feature field names across all domains.
+
+
+   .. py:method:: remove_feature_fields()
+
+
+.. py:class:: FileMap(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   File mapping schema for aerodynamic datasets.
+
+   Maps field names to their corresponding file names in the dataset directory.
+   This allows different datasets to use different file naming conventions while maintaining a unified interface.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: surface_position
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_pressure
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_friction
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_normals
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_area
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_position
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_pressure
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_velocity
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_vorticity
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_normals
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_position_stl
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_position_stl_resampled
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_friction
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_distance_to_surface
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: design_parameters
+      :type:  str | None
+      :value: None
+
+
+
+.. py:class:: AeroStatsSchema(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Unified statistics dataclass for aerodynamics datasets such as AhmedML, and DrivAerML, DrivAerNet++,
+   ShapeNet-Car, and Wing.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: surface_domain_min
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_domain_max
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_pos_mean
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_pos_std
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_pressure_mean
+      :type:  tuple[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_pressure_std
+      :type:  tuple[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_friction_mean
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: surface_friction_std
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_pos_mean
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_pos_std
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_pressure_mean
+      :type:  tuple[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_pressure_std
+      :type:  tuple[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_velocity_mean
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_velocity_std
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_vorticity_mean
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_vorticity_std
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_vorticity_logscale_mean
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_vorticity_logscale_std
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_vorticity_magnitude_mean
+      :type:  float | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_vorticity_magnitude_std
+      :type:  float | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_domain_min
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_domain_max
+      :type:  tuple[float, float, float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_sdf_mean
+      :type:  tuple[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: volume_sdf_std
+      :type:  tuple[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: inflow_design_parameters_min
+      :type:  collections.abc.Sequence[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: inflow_design_parameters_max
+      :type:  collections.abc.Sequence[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: inflow_design_parameters_mean
+      :type:  collections.abc.Sequence[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: inflow_design_parameters_std
+      :type:  collections.abc.Sequence[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: geometry_design_parameters_min
+      :type:  collections.abc.Sequence[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: geometry_design_parameters_max
+      :type:  collections.abc.Sequence[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: geometry_design_parameters_mean
+      :type:  collections.abc.Sequence[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: geometry_design_parameters_std
+      :type:  collections.abc.Sequence[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: raw_pos_min
+      :type:  tuple[float] | None
+      :value: None
+
+
+
+   .. py:attribute:: raw_pos_max
+      :type:  tuple[float] | None
+      :value: None
+
+
+

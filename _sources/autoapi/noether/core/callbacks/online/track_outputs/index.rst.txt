@@ -9,11 +9,84 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallbackConfig
    noether.core.callbacks.online.track_outputs.TrackAdditionalOutputsCallback
 
 
 Module Contents
 ---------------
+
+.. py:class:: TrackAdditionalOutputsCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['TrackAdditionalOutputsCallback']
+      :value: None
+
+
+
+   .. py:attribute:: keys
+      :type:  list[str] | None
+      :value: None
+
+
+      List of keys to track in the additional_outputs of the TrainerResult returned by the trainer's update step.
+
+
+   .. py:attribute:: patterns
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to track in the additional_outputs of the TrainerResult returned by the trainer's update step. Matched if it is contained in one of the update_outputs keys.
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      If True uses the logger to print the tracked values otherwise uses no logger.
+
+
+   .. py:attribute:: reduce
+      :type:  Literal['mean', 'last']
+      :value: None
+
+
+      The reduction method to be applied to the tracked values to reduce to scalar. Currently supports 'mean' and 'last'.
+
+
+   .. py:attribute:: log_output
+      :type:  bool
+      :value: None
+
+
+      Whether to log the tracked scalar values.
+
+
+   .. py:attribute:: save_output
+      :type:  bool
+      :value: None
+
+
+      Whether to save the tracked scalar values to disk.
+
 
 .. py:class:: TrackAdditionalOutputsCallback(callback_config, **kwargs)
 

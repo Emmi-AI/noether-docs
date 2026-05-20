@@ -9,11 +9,76 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.callbacks.checkpoint.checkpoint.CheckpointCallbackConfig
    noether.core.callbacks.checkpoint.checkpoint.CheckpointCallback
 
 
 Module Contents
 ---------------
+
+.. py:class:: CheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['CheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: save_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the weights of the model every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.
+
+
+   .. py:attribute:: save_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the optimizer state every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.
+
+
+   .. py:attribute:: save_latest_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest weights of the model every time this callback is invoked. Note that the latest weights are always overwritten on the next invocation of this callback.
+
+
+   .. py:attribute:: save_latest_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest optimizer state every time this callback is invoked. Note that the latest optimizer state is always overwritten on the next invocation of this callback
+
+
+   .. py:attribute:: model_names
+      :type:  list[str] | None
+      :value: None
+
+
+      The name of the model to save. If None, all models are saved.
+
 
 .. py:class:: CheckpointCallback(callback_config, **kwargs)
 

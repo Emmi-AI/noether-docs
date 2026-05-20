@@ -21,8 +21,11 @@ Classes
 .. autoapisummary::
 
    noether.core.callbacks.checkpoint.BestCheckpointCallback
+   noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig
    noether.core.callbacks.checkpoint.CheckpointCallback
+   noether.core.callbacks.checkpoint.CheckpointCallbackConfig
    noether.core.callbacks.checkpoint.EmaCallback
+   noether.core.callbacks.checkpoint.EmaCallbackConfig
 
 
 Package Contents
@@ -132,6 +135,62 @@ Package Contents
 
 
 
+.. py:class:: BestCheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['BestCheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+      :value: None
+
+
+      "The key of the metric to be used for checking the best model.
+
+
+   .. py:attribute:: save_frozen_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to also save the frozen weights of the model.
+
+
+   .. py:attribute:: tolerances
+      :type:  list[int] | None
+      :value: None
+
+
+      "If provided, this callback will produce multiple best models which differ in the amount of intervals they allow the metric to not improve. For example, tolerance=[5] with every_n_epochs=1 will store a checkpoint where at most 5 epochs have passed until the metric improved. Additionally, the best checkpoint over the whole training will always be stored (i.e., tolerance=infinite). When setting different tolerances, one can evaluate different early stopping configurations with one training run.
+
+
+   .. py:attribute:: model_names
+      :type:  list[str] | None
+      :value: None
+
+
+      Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name='encoder' here). This only applies when training a CompositeModel. If None, all models are saved.
+
+
 .. py:class:: CheckpointCallback(callback_config, **kwargs)
 
    Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
@@ -229,6 +288,70 @@ Package Contents
 
       :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
 
+
+
+.. py:class:: CheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['CheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: save_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the weights of the model every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.
+
+
+   .. py:attribute:: save_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the optimizer state every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.
+
+
+   .. py:attribute:: save_latest_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest weights of the model every time this callback is invoked. Note that the latest weights are always overwritten on the next invocation of this callback.
+
+
+   .. py:attribute:: save_latest_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest optimizer state every time this callback is invoked. Note that the latest optimizer state is always overwritten on the next invocation of this callback
+
+
+   .. py:attribute:: model_names
+      :type:  list[str] | None
+      :value: None
+
+
+      The name of the model to save. If None, all models are saved.
 
 
 .. py:class:: EmaCallback(callback_config, **kwargs)
@@ -432,5 +555,83 @@ Package Contents
 
       :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
 
+
+
+.. py:class:: EmaCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['EmaCallback']
+      :value: None
+
+
+
+   .. py:attribute:: target_factors
+      :type:  list[float]
+      :value: None
+
+
+      The factors for the EMA.
+
+
+   .. py:attribute:: model_paths
+      :type:  list[str | None] | None
+      :value: None
+
+
+      The paths to the models to apply the EMA to (i.e., composite_model.encoder/composite_model.decoder, path of the PyTorch nn.Modules in the checkpoint). If None, the EMA is applied to the whole model. When training with a CompositeModel, the paths on the submodules (i.e., 'encoder', 'decoder', etc.) should be provided via this field, otherwise the EMA will be applied to the CompositeModel as a whole which is not possible to restore later on.
+
+
+   .. py:attribute:: save_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the EMA weights.
+
+
+   .. py:attribute:: save_last_weights
+      :type:  bool
+      :value: None
+
+
+      Save the weights of the model when training is over (i.e., at the end of training, save the EMA weights).
+
+
+   .. py:attribute:: save_latest_weights
+      :type:  bool
+      :value: None
+
+
+      Save the latest EMA weights. Note that the latest weights are always overwritten on the next invocation of this callback.
+
+
+   .. py:attribute:: eval_callbacks
+      :type:  list[Annotated[Any, Discriminated(CallBackBaseConfig)]] | None
+      :value: None
+
+
+      Optional nested periodic callbacks to run against EMA weights. Each child retains its own schedule
+      (``every_n_epochs`` etc.); the EMA callback swaps its stored EMA parameters into the live model around
+      eval-time hooks (``after_epoch``, ``after_update``, ``at_eval``) and restores the live weights on exit.
+      Children are dispatched once per ``target_factor`` and their metric keys are automatically prefixed with
+      ``ema=<factor>/`` to avoid collisions with live-model metrics. Note: ``before_training`` and
+      ``after_training`` are forwarded without swapping, so EMA initialization and the final save see live
+      weights.
 
 

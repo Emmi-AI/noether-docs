@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -879,8 +882,21 @@
 <li class="toctree-l1"><a class="reference internal" href="linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="step/index.html">noether.core.schedules.step</a></li>
 </ul>
+</div>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.AnyScheduleConfig" title="noether.core.schedules.AnyScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnyScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </section>
 <section id="classes">
@@ -921,8 +937,14 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.CosineDecreasingSchedule" title="noether.core.schedules.CosineDecreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosineDecreasingSchedule</span></code></a></p></td>
 <td><p>Cosine annealing scheduler with decreasing values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.CosineIncreasingSchedule" title="noether.core.schedules.CosineIncreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosineIncreasingSchedule</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.CosineDecreasingScheduleConfig" title="noether.core.schedules.CosineDecreasingScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosineDecreasingScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.CosineIncreasingSchedule" title="noether.core.schedules.CosineIncreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosineIncreasingSchedule</span></code></a></p></td>
 <td><p>Cosine annealing scheduler with increasing values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.CosineIncreasingScheduleConfig" title="noether.core.schedules.CosineIncreasingScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CosineIncreasingScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.CustomSchedule" title="noether.core.schedules.CustomSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CustomSchedule</span></code></a></p></td>
 <td><p>Custom schedule that simply returns the values provided in the constructor.</p></td>
@@ -933,23 +955,65 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.LinearDecreasingSchedule" title="noether.core.schedules.LinearDecreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearDecreasingSchedule</span></code></a></p></td>
 <td><p>A scheduler that decreases linearly from the maximum to minimum value over the total number of steps.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.LinearIncreasingSchedule" title="noether.core.schedules.LinearIncreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearIncreasingSchedule</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.LinearDecreasingScheduleConfig" title="noether.core.schedules.LinearDecreasingScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearDecreasingScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.LinearIncreasingSchedule" title="noether.core.schedules.LinearIncreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearIncreasingSchedule</span></code></a></p></td>
 <td><p>A scheduler that increases linearly from the minimum to maximum value over the total number of steps.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.LinearIncreasingScheduleConfig" title="noether.core.schedules.LinearIncreasingScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearIncreasingScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecaySchedule" title="noether.core.schedules.LinearWarmupCosineDecaySchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearWarmupCosineDecaySchedule</span></code></a></p></td>
 <td><p>A cosine annealing scheduler with linear increasing warmup phase.&quot;</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.PolynomialDecreasingSchedule" title="noether.core.schedules.PolynomialDecreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolynomialDecreasingSchedule</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig" title="noether.core.schedules.LinearWarmupCosineDecayScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.PolynomialDecreasingSchedule" title="noether.core.schedules.PolynomialDecreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolynomialDecreasingSchedule</span></code></a></p></td>
 <td><p>A scheduler that decreases polynomially from the maximum to minimum value over the total number of steps.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.StepDecreasingSchedule" title="noether.core.schedules.StepDecreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepDecreasingSchedule</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.PolynomialDecreasingScheduleConfig" title="noether.core.schedules.PolynomialDecreasingScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolynomialDecreasingScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.PolynomialIncreasingSchedule" title="noether.core.schedules.PolynomialIncreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolynomialIncreasingSchedule</span></code></a></p></td>
+<td><p>A scheduler that increases polynomially from the minimum to maximum value over the total number of steps.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.PolynomialIncreasingScheduleConfig" title="noether.core.schedules.PolynomialIncreasingScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PolynomialIncreasingScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.DecreasingProgressScheduleConfig" title="noether.core.schedules.DecreasingProgressScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DecreasingProgressScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.IncreasingProgressScheduleConfig" title="noether.core.schedules.IncreasingProgressScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IncreasingProgressScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.ProgressScheduleConfig" title="noether.core.schedules.ProgressScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProgressScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig" title="noether.core.schedules.ScheduleBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScheduleBaseConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.SchedulerConfig" title="noether.core.schedules.SchedulerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SchedulerConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.StepDecreasingSchedule" title="noether.core.schedules.StepDecreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepDecreasingSchedule</span></code></a></p></td>
 <td><p>A scheduler that decreases exponentially from the maximum to minimum value over the total number of steps.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.StepDecreasingScheduleConfig" title="noether.core.schedules.StepDecreasingScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepDecreasingScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.StepFixedSchedule" title="noether.core.schedules.StepFixedSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepFixedSchedule</span></code></a></p></td>
 <td><p>A scheduler that progresses at fixed steps and increases or decreases by some factor at these steps.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.StepIntervalSchedule" title="noether.core.schedules.StepIntervalSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepIntervalSchedule</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.StepFixedScheduleConfig" title="noether.core.schedules.StepFixedScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepFixedScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.StepIntervalSchedule" title="noether.core.schedules.StepIntervalSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepIntervalSchedule</span></code></a></p></td>
 <td><p>A scheduler that progresses at fixed intervals and increases or decreases by some factor at these intervals.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.StepIntervalScheduleConfig" title="noether.core.schedules.StepIntervalScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StepIntervalScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -983,7 +1047,7 @@
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.DecreasingProgressScheduleConfig" title="noether.core.schemas.schedules.DecreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.DecreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.DecreasingProgressScheduleConfig" title="noether.core.schedules.schemas.DecreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.DecreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -996,7 +1060,7 @@
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.IncreasingProgressScheduleConfig" title="noether.core.schemas.schedules.IncreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.IncreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.IncreasingProgressScheduleConfig" title="noether.core.schedules.schemas.IncreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.IncreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1010,7 +1074,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.ProgressScheduleConfig" title="noether.core.schemas.schedules.ProgressScheduleConfig"><em>noether.core.schemas.schedules.ProgressScheduleConfig</em></a>) – Configuration for the progress schedule.</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.ProgressScheduleConfig" title="noether.core.schedules.schemas.ProgressScheduleConfig"><em>noether.core.schedules.schemas.ProgressScheduleConfig</em></a>) – Configuration for the progress schedule.</p></li>
 <li><p><strong>start_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – The initial value of the scheduler.</p></li>
 <li><p><strong>delta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – The total change in value over the schedule.</p></li>
 </ul>
@@ -1206,8 +1270,8 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.ConstantScheduleConfig" title="noether.core.schemas.schedules.ConstantScheduleConfig"><em>noether.core.schemas.schedules.ConstantScheduleConfig</em></a>) – Configuration of the constant schedule. See
-<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.ConstantScheduleConfig" title="noether.core.schemas.schedules.ConstantScheduleConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConstantScheduleConfig</span></code></a> for details.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.core.schedules.ConstantScheduleConfig" title="noether.core.schedules.ConstantScheduleConfig"><em>ConstantScheduleConfig</em></a>) – Configuration of the constant schedule. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ConstantScheduleConfig</span></code> for details.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1220,7 +1284,7 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schedules.ConstantScheduleConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">ConstantScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.ConstantScheduleConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">ScheduleBaseConfig</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.ScheduleBaseConfig" title="noether.core.schedules.schemas.ScheduleBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.schemas.ScheduleBaseConfig</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1255,9 +1319,26 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.DecreasingProgressScheduleConfig" title="noether.core.schemas.schedules.DecreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.DecreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.DecreasingProgressScheduleConfig" title="noether.core.schedules.schemas.DecreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.DecreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.CosineDecreasingScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">CosineDecreasingScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.CosineDecreasingScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.DecreasingProgressScheduleConfig</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.CosineDecreasingScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.CosineDecreasingSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.CosineDecreasingSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.CosineDecreasingScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1275,9 +1356,26 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.IncreasingProgressScheduleConfig" title="noether.core.schemas.schedules.IncreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.IncreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.IncreasingProgressScheduleConfig" title="noether.core.schedules.schemas.IncreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.IncreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.CosineIncreasingScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">CosineIncreasingScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.CosineIncreasingScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.IncreasingProgressScheduleConfig" title="noether.core.schedules.schemas.IncreasingProgressScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.schemas.IncreasingProgressScheduleConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.CosineIncreasingScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.CosineIncreasingSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.CosineIncreasingSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.CosineIncreasingScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1296,8 +1394,8 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.CustomScheduleConfig" title="noether.core.schemas.schedules.CustomScheduleConfig"><em>noether.core.schemas.schedules.CustomScheduleConfig</em></a>) – Configuration of the custom schedule. See
-<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.CustomScheduleConfig" title="noether.core.schemas.schedules.CustomScheduleConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomScheduleConfig</span></code></a> for details.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.core.schedules.CustomScheduleConfig" title="noether.core.schedules.CustomScheduleConfig"><em>CustomScheduleConfig</em></a>) – Configuration of the custom schedule. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CustomScheduleConfig</span></code> for details.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1310,7 +1408,7 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schedules.CustomScheduleConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">CustomScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.CustomScheduleConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">ScheduleBaseConfig</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.ScheduleBaseConfig" title="noether.core.schedules.schemas.ScheduleBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.schemas.ScheduleBaseConfig</span></code></a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
@@ -1398,9 +1496,26 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.DecreasingProgressScheduleConfig" title="noether.core.schemas.schedules.DecreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.DecreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.DecreasingProgressScheduleConfig" title="noether.core.schedules.schemas.DecreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.DecreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearDecreasingScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">LinearDecreasingScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.LinearDecreasingScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.DecreasingProgressScheduleConfig</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearDecreasingScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.LinearDecreasingSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.LinearDecreasingSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.LinearDecreasingScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1418,9 +1533,26 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.IncreasingProgressScheduleConfig" title="noether.core.schemas.schedules.IncreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.IncreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.IncreasingProgressScheduleConfig" title="noether.core.schedules.schemas.IncreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.IncreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearIncreasingScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">LinearIncreasingScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.LinearIncreasingScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.IncreasingProgressScheduleConfig</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearIncreasingScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.LinearIncreasingSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.LinearIncreasingSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.LinearIncreasingScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1439,8 +1571,8 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <p>Takes either warmup_steps or warmup_percent as argument to determine the length of the warmup phase.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig" title="noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig"><em>noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig</em></a>) – Configuration for the linear warmup cosine decay schedule. See
-<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig" title="noether.core.schemas.schedules.LinearWarmupCosineDecayScheduleConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig</span></code></a> for details.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig" title="noether.core.schedules.LinearWarmupCosineDecayScheduleConfig"><em>LinearWarmupCosineDecayScheduleConfig</em></a>) – Configuration for the linear warmup cosine decay schedule. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig</span></code> for details.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1461,14 +1593,60 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearWarmupCosineDecayScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">LinearWarmupCosineDecayScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.ScheduleBaseConfig" title="noether.core.schedules.schemas.ScheduleBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.schemas.ScheduleBaseConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.max_value">
+<span class="sig-name descname"><span class="pre">max_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.max_value" title="Link to this definition">¶</a></dt>
+<dd><p>The maximum value of the scheduler from which to start the cosine decay phase. This should be equal to the learning rate defined in the optimizer. I.e., max value is learning rate</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.LinearWarmupCosineDecaySchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.LinearWarmupCosineDecaySchedule'</span></em><a class="headerlink" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_steps">
+<span class="sig-name descname"><span class="pre">warmup_steps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_steps" title="Link to this definition">¶</a></dt>
+<dd><p>The number of steps to linearly increase the value from start to max.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_percent">
+<span class="sig-name descname"><span class="pre">warmup_percent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_percent" title="Link to this definition">¶</a></dt>
+<dd><p>The percentage of steps to linearly increase the value from start to max.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.validate_warmup">
+<span class="sig-name descname"><span class="pre">validate_warmup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.validate_warmup" title="Link to this definition">¶</a></dt>
+<dd><p>Ensures that exactly one of ‘warmup_steps’ or ‘warmup_percent’ is specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig" title="noether.core.schedules.LinearWarmupCosineDecayScheduleConfig">LinearWarmupCosineDecayScheduleConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schedules.PolynomialDecreasingSchedule">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">PolynomialDecreasingSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.PolynomialDecreasingSchedule" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schedules.base.DecreasingProgressSchedule" title="noether.core.schedules.base.DecreasingProgressSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.DecreasingProgressSchedule</span></code></a></p>
 <p>A scheduler that decreases polynomially from the maximum to minimum value over the total number of steps.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.PolynomialDecreasingScheduleConfig" title="noether.core.schemas.schedules.PolynomialDecreasingScheduleConfig"><em>noether.core.schemas.schedules.PolynomialDecreasingScheduleConfig</em></a>) – Configuration for the polynomial decreasing schedule. See
-<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.PolynomialDecreasingScheduleConfig" title="noether.core.schemas.schedules.PolynomialDecreasingScheduleConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PolynomialDecreasingScheduleConfig</span></code></a> for details.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.core.schedules.PolynomialDecreasingScheduleConfig" title="noether.core.schedules.PolynomialDecreasingScheduleConfig"><em>PolynomialDecreasingScheduleConfig</em></a>) – Configuration for the polynomial decreasing schedule. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">PolynomialDecreasingScheduleConfig</span></code> for details.</p>
 </dd>
 </dl>
 <p class="rubric">Example</p>
@@ -1482,6 +1660,296 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.core.schedules.PolynomialDecreasingSchedule.power">
 <span class="sig-name descname"><span class="pre">power</span></span><a class="headerlink" href="#noether.core.schedules.PolynomialDecreasingSchedule.power" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.PolynomialDecreasingScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">PolynomialDecreasingScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.PolynomialDecreasingScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.DecreasingProgressScheduleConfig" title="noether.core.schedules.schemas.DecreasingProgressScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.schemas.DecreasingProgressScheduleConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.PolynomialDecreasingScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.PolynomialDecreasingSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.PolynomialDecreasingSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.PolynomialDecreasingScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.PolynomialDecreasingScheduleConfig.power">
+<span class="sig-name descname"><span class="pre">power</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.PolynomialDecreasingScheduleConfig.power" title="Link to this definition">¶</a></dt>
+<dd><p>The power of the polynomial function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.PolynomialIncreasingSchedule">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">PolynomialIncreasingSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.PolynomialIncreasingSchedule" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schedules.base.IncreasingProgressSchedule" title="noether.core.schedules.base.IncreasingProgressSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.IncreasingProgressSchedule</span></code></a></p>
+<p>A scheduler that increases polynomially from the minimum to maximum value over the total number of steps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.core.schedules.PolynomialIncreasingScheduleConfig" title="noether.core.schedules.PolynomialIncreasingScheduleConfig"><em>PolynomialIncreasingScheduleConfig</em></a>) – Configuration for the polynomial increasing schedule. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">PolynomialIncreasingScheduleConfig</span></code> for details.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">schedule_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.core.schedules.PolynomialIncreasingSchedule</span>
+<span class="w">    </span><span class="nt">power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="w">    </span><span class="nt">start_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1e-6</span>
+<span class="w">    </span><span class="nt">max_value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${model.optim.lr}</span><span class="w"> </span><span class="c1"># reference to the lr defined above</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.PolynomialIncreasingSchedule.power">
+<span class="sig-name descname"><span class="pre">power</span></span><a class="headerlink" href="#noether.core.schedules.PolynomialIncreasingSchedule.power" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.PolynomialIncreasingScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">PolynomialIncreasingScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.PolynomialIncreasingScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.IncreasingProgressScheduleConfig" title="noether.core.schedules.schemas.IncreasingProgressScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.schemas.IncreasingProgressScheduleConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.PolynomialIncreasingScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.PolynomialIncreasingSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.PolynomialIncreasingSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.PolynomialIncreasingScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.PolynomialIncreasingScheduleConfig.power">
+<span class="sig-name descname"><span class="pre">power</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.PolynomialIncreasingScheduleConfig.power" title="Link to this definition">¶</a></dt>
+<dd><p>The power of the polynomial function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.DecreasingProgressScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">DecreasingProgressScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.DecreasingProgressScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schedules.ProgressScheduleConfig" title="noether.core.schedules.ProgressScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProgressScheduleConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.DecreasingProgressScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.DecreasingProgressSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.DecreasingProgressSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.DecreasingProgressScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.DecreasingProgressScheduleConfig.max_value">
+<span class="sig-name descname"><span class="pre">max_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.DecreasingProgressScheduleConfig.max_value" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum (starting) value of the schedule.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.DecreasingProgressScheduleConfig.end_value">
+<span class="sig-name descname"><span class="pre">end_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.DecreasingProgressScheduleConfig.end_value" title="Link to this definition">¶</a></dt>
+<dd><p>Minimum (ending) value of the schedule.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.IncreasingProgressScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">IncreasingProgressScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.IncreasingProgressScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schedules.ProgressScheduleConfig" title="noether.core.schedules.ProgressScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProgressScheduleConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.IncreasingProgressScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.IncreasingProgressSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.IncreasingProgressSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.IncreasingProgressScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.IncreasingProgressScheduleConfig.start_value">
+<span class="sig-name descname"><span class="pre">start_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.IncreasingProgressScheduleConfig.start_value" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.IncreasingProgressScheduleConfig.max_value">
+<span class="sig-name descname"><span class="pre">max_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.IncreasingProgressScheduleConfig.max_value" title="Link to this definition">¶</a></dt>
+<dd><p>Minimum (starting) value of the schedule.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.ProgressScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">ProgressScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.ProgressScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig" title="noether.core.schedules.ScheduleBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScheduleBaseConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ProgressScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.ProgressSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.ProgressSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.ProgressScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ProgressScheduleConfig.exclude_first">
+<span class="sig-name descname"><span class="pre">exclude_first</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ProgressScheduleConfig.exclude_first" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to exclude the first value of the schedule.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ProgressScheduleConfig.exclude_last">
+<span class="sig-name descname"><span class="pre">exclude_last</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ProgressScheduleConfig.exclude_last" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to exclude the last value of the schedule.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">ScheduleBaseConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.overhang_percent">
+<span class="sig-name descname"><span class="pre">overhang_percent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.overhang_percent" title="Link to this definition">¶</a></dt>
+<dd><p>The percentage by which the schedule is artificially prolonged. Mutually exclusive with <cite>overhang_steps</cite>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.overhang_steps">
+<span class="sig-name descname"><span class="pre">overhang_steps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.overhang_steps" title="Link to this definition">¶</a></dt>
+<dd><p>The number of steps by which the schedule is artificially prolonged. Mutually exclusive with <cite>overhang_percent</cite>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.start_value">
+<span class="sig-name descname"><span class="pre">start_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.start_value" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.end_value">
+<span class="sig-name descname"><span class="pre">end_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.end_value" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.weight_decay">
+<span class="sig-name descname"><span class="pre">weight_decay</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.weight_decay" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.start_percent">
+<span class="sig-name descname"><span class="pre">start_percent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.start_percent" title="Link to this definition">¶</a></dt>
+<dd><p>The percentage of steps at which the schedule starts.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.end_percent">
+<span class="sig-name descname"><span class="pre">end_percent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.end_percent" title="Link to this definition">¶</a></dt>
+<dd><p>The percentage of steps at which the schedule ends.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.start_step">
+<span class="sig-name descname"><span class="pre">start_step</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.start_step" title="Link to this definition">¶</a></dt>
+<dd><p>The step at which the schedule starts.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.end_step">
+<span class="sig-name descname"><span class="pre">end_step</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.end_step" title="Link to this definition">¶</a></dt>
+<dd><p>The step at which the schedule ends.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.interval">
+<span class="sig-name descname"><span class="pre">interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'update'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'epoch'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.interval" title="Link to this definition">¶</a></dt>
+<dd><p>Whether the schedule is based on updates or epochs. Interval should be either “update” or “epoch”. Default is “update”. Under the hood steps is always used. However, when “epoch” is selected here, the step count is derived from epochs via the UpdateCounter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.check_mutual_exclusion">
+<span class="sig-name descname"><span class="pre">check_mutual_exclusion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.check_mutual_exclusion" title="Link to this definition">¶</a></dt>
+<dd><p>Ensures that ‘overhang_percent’ and ‘overhang_steps’ are mutually exclusive.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig" title="noether.core.schedules.ScheduleBaseConfig">ScheduleBaseConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.validate_start_end_steps">
+<span class="sig-name descname"><span class="pre">validate_start_end_steps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.validate_start_end_steps" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig" title="noether.core.schedules.ScheduleBaseConfig">ScheduleBaseConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schedules.ScheduleBaseConfig.validate_start_end_percents">
+<span class="sig-name descname"><span class="pre">validate_start_end_percents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.ScheduleBaseConfig.validate_start_end_percents" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig" title="noether.core.schedules.ScheduleBaseConfig">ScheduleBaseConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.SchedulerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">SchedulerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.SchedulerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig" title="noether.core.schedules.ScheduleBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ScheduleBaseConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.SchedulerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.scheduler.SchedulerConfig'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.scheduler.SchedulerConfig'</span></em><a class="headerlink" href="#noether.core.schedules.SchedulerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.SchedulerConfig.warmup_percent">
+<span class="sig-name descname"><span class="pre">warmup_percent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.SchedulerConfig.warmup_percent" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.SchedulerConfig.end_value">
+<span class="sig-name descname"><span class="pre">end_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.SchedulerConfig.end_value" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1502,8 +1970,8 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <p>I.e., after each 1% of the total training steps, the value is multiplied by 0.1.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.StepDecreasingScheduleConfig" title="noether.core.schemas.schedules.StepDecreasingScheduleConfig"><em>noether.core.schemas.schedules.StepDecreasingScheduleConfig</em></a>) – The configuration for the scheduler. See
-<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.StepDecreasingScheduleConfig" title="noether.core.schemas.schedules.StepDecreasingScheduleConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">StepDecreasingScheduleConfig</span></code></a> for details.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.core.schedules.StepDecreasingScheduleConfig" title="noether.core.schedules.StepDecreasingScheduleConfig"><em>StepDecreasingScheduleConfig</em></a>) – The configuration for the scheduler. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">StepDecreasingScheduleConfig</span></code> for details.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1519,13 +1987,53 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.StepDecreasingScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">StepDecreasingScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.StepDecreasingScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.DecreasingProgressScheduleConfig" title="noether.core.schedules.schemas.DecreasingProgressScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.schemas.DecreasingProgressScheduleConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepDecreasingScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.StepDecreasingSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.StepDecreasingSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.StepDecreasingScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepDecreasingScheduleConfig.factor">
+<span class="sig-name descname"><span class="pre">factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.StepDecreasingScheduleConfig.factor" title="Link to this definition">¶</a></dt>
+<dd><p>The factor by which the value decreases.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepDecreasingScheduleConfig.decreases_interval">
+<span class="sig-name descname"><span class="pre">decreases_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.StepDecreasingScheduleConfig.decreases_interval" title="Link to this definition">¶</a></dt>
+<dd><p>The interval in range [0, 1] at which the value decreases.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schedules.StepDecreasingScheduleConfig.check_interval">
+<span class="sig-name descname"><span class="pre">check_interval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.StepDecreasingScheduleConfig.check_interval" title="Link to this definition">¶</a></dt>
+<dd><p>Ensures that ‘interval’ is a float in the range (0, 1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schedules.StepDecreasingScheduleConfig" title="noether.core.schedules.StepDecreasingScheduleConfig">StepDecreasingScheduleConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schedules.StepFixedSchedule">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">StepFixedSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.StepFixedSchedule" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schedules.base.ScheduleBase" title="noether.core.schedules.base.ScheduleBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.ScheduleBase</span></code></a></p>
 <p>A scheduler that progresses at fixed steps and increases or decreases by some factor at these steps.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.StepFixedScheduleConfig" title="noether.core.schemas.schedules.StepFixedScheduleConfig"><em>noether.core.schemas.schedules.StepFixedScheduleConfig</em></a>) – Configuration for the step fixed schedule.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.core.schedules.StepFixedScheduleConfig" title="noether.core.schedules.StepFixedScheduleConfig"><em>StepFixedScheduleConfig</em></a>) – Configuration for the step fixed schedule.</p>
 </dd>
 </dl>
 <p>Example:</p>
@@ -1558,13 +2066,59 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.StepFixedScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">StepFixedScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.StepFixedScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.ScheduleBaseConfig" title="noether.core.schedules.schemas.ScheduleBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.schemas.ScheduleBaseConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepFixedScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.StepFixedSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.StepFixedSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.StepFixedScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepFixedScheduleConfig.start_value">
+<span class="sig-name descname"><span class="pre">start_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.StepFixedScheduleConfig.start_value" title="Link to this definition">¶</a></dt>
+<dd><p>The initial value of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepFixedScheduleConfig.factor">
+<span class="sig-name descname"><span class="pre">factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.StepFixedScheduleConfig.factor" title="Link to this definition">¶</a></dt>
+<dd><p>The factor by which the value is multiplied after reaching the next step provided in steps.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepFixedScheduleConfig.steps">
+<span class="sig-name descname"><span class="pre">steps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.StepFixedScheduleConfig.steps" title="Link to this definition">¶</a></dt>
+<dd><p>The steps at which the value changes, must be a list of floats in the range (0, 1).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schedules.StepFixedScheduleConfig.validate_steps">
+<span class="sig-name descname"><span class="pre">validate_steps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.StepFixedScheduleConfig.validate_steps" title="Link to this definition">¶</a></dt>
+<dd><p>Ensures that ‘steps’ is a non-empty list of floats in the range (0, 1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schedules.StepFixedScheduleConfig" title="noether.core.schedules.StepFixedScheduleConfig">StepFixedScheduleConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schedules.StepIntervalSchedule">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">StepIntervalSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.StepIntervalSchedule" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.schedules.base.ScheduleBase" title="noether.core.schedules.base.ScheduleBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.ScheduleBase</span></code></a></p>
 <p>A scheduler that progresses at fixed intervals and increases or decreases by some factor at these intervals.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/schedules/index.html#noether.core.schemas.schedules.StepIntervalScheduleConfig" title="noether.core.schemas.schedules.StepIntervalScheduleConfig"><em>noether.core.schemas.schedules.StepIntervalScheduleConfig</em></a>) – Configuration for the step interval schedule.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.core.schedules.StepIntervalScheduleConfig" title="noether.core.schedules.StepIntervalScheduleConfig"><em>StepIntervalScheduleConfig</em></a>) – Configuration for the step interval schedule.</p>
 </dd>
 </dl>
 <p>Example:</p>
@@ -1591,6 +2145,60 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <dd></dd></dl>
 
 </dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.StepIntervalScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">StepIntervalScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.StepIntervalScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="schemas/index.html#noether.core.schedules.schemas.ScheduleBaseConfig" title="noether.core.schedules.schemas.ScheduleBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.schemas.ScheduleBaseConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepIntervalScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.StepIntervalSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.StepIntervalSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.StepIntervalScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepIntervalScheduleConfig.start_value">
+<span class="sig-name descname"><span class="pre">start_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.StepIntervalScheduleConfig.start_value" title="Link to this definition">¶</a></dt>
+<dd><p>The initial value of the scheduler. I.e, the learning rate at step 0.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepIntervalScheduleConfig.factor">
+<span class="sig-name descname"><span class="pre">factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.StepIntervalScheduleConfig.factor" title="Link to this definition">¶</a></dt>
+<dd><p>The factor by which the value is multiplied after reaching the next interval.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.StepIntervalScheduleConfig.update_interval">
+<span class="sig-name descname"><span class="pre">update_interval</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schedules.StepIntervalScheduleConfig.update_interval" title="Link to this definition">¶</a></dt>
+<dd><p>The interval in range (0, 1) at which the value changes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.schedules.StepIntervalScheduleConfig.check_update_interval">
+<span class="sig-name descname"><span class="pre">check_update_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.StepIntervalScheduleConfig.check_update_interval" title="Link to this definition">¶</a></dt>
+<dd><p>Ensures that ‘update_interval’ is a float in the range (0, 1).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.core.schedules.AnyScheduleConfig">
+<span class="sig-prename descclassname"><span class="pre">noether.core.schedules.</span></span><span class="sig-name descname"><span class="pre">AnyScheduleConfig</span></span><a class="headerlink" href="#noether.core.schedules.AnyScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -1676,6 +2284,7 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
             <ul>
 <li><a class="reference internal" href="#">noether.core.schedules</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
@@ -1726,7 +2335,15 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schedules.CosineDecreasingSchedule"><code class="docutils literal notranslate"><span class="pre">CosineDecreasingSchedule</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.CosineDecreasingScheduleConfig"><code class="docutils literal notranslate"><span class="pre">CosineDecreasingScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.CosineDecreasingScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">CosineDecreasingScheduleConfig.kind</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schedules.CosineIncreasingSchedule"><code class="docutils literal notranslate"><span class="pre">CosineIncreasingSchedule</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.CosineIncreasingScheduleConfig"><code class="docutils literal notranslate"><span class="pre">CosineIncreasingScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.CosineIncreasingScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">CosineIncreasingScheduleConfig.kind</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schedules.CustomSchedule"><code class="docutils literal notranslate"><span class="pre">CustomSchedule</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schedules.CustomSchedule.values"><code class="docutils literal notranslate"><span class="pre">CustomSchedule.values</span></code></a></li>
 </ul>
@@ -1740,20 +2357,98 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <li><a class="reference internal" href="#noether.core.schedules.linear"><code class="docutils literal notranslate"><span class="pre">linear()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schedules.polynomial"><code class="docutils literal notranslate"><span class="pre">polynomial()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schedules.LinearDecreasingSchedule"><code class="docutils literal notranslate"><span class="pre">LinearDecreasingSchedule</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.LinearDecreasingScheduleConfig"><code class="docutils literal notranslate"><span class="pre">LinearDecreasingScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.LinearDecreasingScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">LinearDecreasingScheduleConfig.kind</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schedules.LinearIncreasingSchedule"><code class="docutils literal notranslate"><span class="pre">LinearIncreasingSchedule</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.LinearIncreasingScheduleConfig"><code class="docutils literal notranslate"><span class="pre">LinearIncreasingScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.LinearIncreasingScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">LinearIncreasingScheduleConfig.kind</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecaySchedule"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecaySchedule</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecaySchedule.schedule"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecaySchedule.schedule</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecaySchedule.warmup_steps"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecaySchedule.warmup_steps</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecaySchedule.warmup_percent"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecaySchedule.warmup_percent</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.max_value"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.max_value</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_steps"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.warmup_steps</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.warmup_percent"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.warmup_percent</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.LinearWarmupCosineDecayScheduleConfig.validate_warmup"><code class="docutils literal notranslate"><span class="pre">LinearWarmupCosineDecayScheduleConfig.validate_warmup()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schedules.PolynomialDecreasingSchedule"><code class="docutils literal notranslate"><span class="pre">PolynomialDecreasingSchedule</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schedules.PolynomialDecreasingSchedule.power"><code class="docutils literal notranslate"><span class="pre">PolynomialDecreasingSchedule.power</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.PolynomialDecreasingScheduleConfig"><code class="docutils literal notranslate"><span class="pre">PolynomialDecreasingScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.PolynomialDecreasingScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">PolynomialDecreasingScheduleConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.PolynomialDecreasingScheduleConfig.power"><code class="docutils literal notranslate"><span class="pre">PolynomialDecreasingScheduleConfig.power</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.PolynomialIncreasingSchedule"><code class="docutils literal notranslate"><span class="pre">PolynomialIncreasingSchedule</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.PolynomialIncreasingSchedule.power"><code class="docutils literal notranslate"><span class="pre">PolynomialIncreasingSchedule.power</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.PolynomialIncreasingScheduleConfig"><code class="docutils literal notranslate"><span class="pre">PolynomialIncreasingScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.PolynomialIncreasingScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">PolynomialIncreasingScheduleConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.PolynomialIncreasingScheduleConfig.power"><code class="docutils literal notranslate"><span class="pre">PolynomialIncreasingScheduleConfig.power</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.DecreasingProgressScheduleConfig"><code class="docutils literal notranslate"><span class="pre">DecreasingProgressScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.DecreasingProgressScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">DecreasingProgressScheduleConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.DecreasingProgressScheduleConfig.max_value"><code class="docutils literal notranslate"><span class="pre">DecreasingProgressScheduleConfig.max_value</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.DecreasingProgressScheduleConfig.end_value"><code class="docutils literal notranslate"><span class="pre">DecreasingProgressScheduleConfig.end_value</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.IncreasingProgressScheduleConfig"><code class="docutils literal notranslate"><span class="pre">IncreasingProgressScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.IncreasingProgressScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">IncreasingProgressScheduleConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.IncreasingProgressScheduleConfig.start_value"><code class="docutils literal notranslate"><span class="pre">IncreasingProgressScheduleConfig.start_value</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.IncreasingProgressScheduleConfig.max_value"><code class="docutils literal notranslate"><span class="pre">IncreasingProgressScheduleConfig.max_value</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.ProgressScheduleConfig"><code class="docutils literal notranslate"><span class="pre">ProgressScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.ProgressScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">ProgressScheduleConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ProgressScheduleConfig.exclude_first"><code class="docutils literal notranslate"><span class="pre">ProgressScheduleConfig.exclude_first</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ProgressScheduleConfig.exclude_last"><code class="docutils literal notranslate"><span class="pre">ProgressScheduleConfig.exclude_last</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.kind"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.overhang_percent"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.overhang_percent</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.overhang_steps"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.overhang_steps</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.start_value"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.start_value</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.end_value"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.end_value</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.weight_decay"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.weight_decay</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.start_percent"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.start_percent</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.end_percent"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.end_percent</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.start_step"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.start_step</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.end_step"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.end_step</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.interval"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.interval</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.check_mutual_exclusion"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.check_mutual_exclusion()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.validate_start_end_steps"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.validate_start_end_steps()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.ScheduleBaseConfig.validate_start_end_percents"><code class="docutils literal notranslate"><span class="pre">ScheduleBaseConfig.validate_start_end_percents()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.SchedulerConfig"><code class="docutils literal notranslate"><span class="pre">SchedulerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.SchedulerConfig.kind"><code class="docutils literal notranslate"><span class="pre">SchedulerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.SchedulerConfig.warmup_percent"><code class="docutils literal notranslate"><span class="pre">SchedulerConfig.warmup_percent</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.SchedulerConfig.end_value"><code class="docutils literal notranslate"><span class="pre">SchedulerConfig.end_value</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schedules.StepDecreasingSchedule"><code class="docutils literal notranslate"><span class="pre">StepDecreasingSchedule</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schedules.StepDecreasingSchedule.factor"><code class="docutils literal notranslate"><span class="pre">StepDecreasingSchedule.factor</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schedules.StepDecreasingSchedule.decreases_interval"><code class="docutils literal notranslate"><span class="pre">StepDecreasingSchedule.decreases_interval</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.StepDecreasingScheduleConfig"><code class="docutils literal notranslate"><span class="pre">StepDecreasingScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.StepDecreasingScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">StepDecreasingScheduleConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepDecreasingScheduleConfig.factor"><code class="docutils literal notranslate"><span class="pre">StepDecreasingScheduleConfig.factor</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepDecreasingScheduleConfig.decreases_interval"><code class="docutils literal notranslate"><span class="pre">StepDecreasingScheduleConfig.decreases_interval</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepDecreasingScheduleConfig.check_interval"><code class="docutils literal notranslate"><span class="pre">StepDecreasingScheduleConfig.check_interval()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.schedules.StepFixedSchedule"><code class="docutils literal notranslate"><span class="pre">StepFixedSchedule</span></code></a><ul>
@@ -1762,12 +2457,29 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <li><a class="reference internal" href="#noether.core.schedules.StepFixedSchedule.factor"><code class="docutils literal notranslate"><span class="pre">StepFixedSchedule.factor</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.core.schedules.StepFixedScheduleConfig"><code class="docutils literal notranslate"><span class="pre">StepFixedScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.StepFixedScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">StepFixedScheduleConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepFixedScheduleConfig.start_value"><code class="docutils literal notranslate"><span class="pre">StepFixedScheduleConfig.start_value</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepFixedScheduleConfig.factor"><code class="docutils literal notranslate"><span class="pre">StepFixedScheduleConfig.factor</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepFixedScheduleConfig.steps"><code class="docutils literal notranslate"><span class="pre">StepFixedScheduleConfig.steps</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepFixedScheduleConfig.validate_steps"><code class="docutils literal notranslate"><span class="pre">StepFixedScheduleConfig.validate_steps()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schedules.StepIntervalSchedule"><code class="docutils literal notranslate"><span class="pre">StepIntervalSchedule</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.schedules.StepIntervalSchedule.start_value"><code class="docutils literal notranslate"><span class="pre">StepIntervalSchedule.start_value</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schedules.StepIntervalSchedule.factor"><code class="docutils literal notranslate"><span class="pre">StepIntervalSchedule.factor</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schedules.StepIntervalSchedule.update_interval"><code class="docutils literal notranslate"><span class="pre">StepIntervalSchedule.update_interval</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.core.schedules.StepIntervalScheduleConfig"><code class="docutils literal notranslate"><span class="pre">StepIntervalScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.StepIntervalScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">StepIntervalScheduleConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepIntervalScheduleConfig.start_value"><code class="docutils literal notranslate"><span class="pre">StepIntervalScheduleConfig.start_value</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepIntervalScheduleConfig.factor"><code class="docutils literal notranslate"><span class="pre">StepIntervalScheduleConfig.factor</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepIntervalScheduleConfig.update_interval"><code class="docutils literal notranslate"><span class="pre">StepIntervalScheduleConfig.update_interval</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.StepIntervalScheduleConfig.check_update_interval"><code class="docutils literal notranslate"><span class="pre">StepIntervalScheduleConfig.check_update_interval()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.schedules.AnyScheduleConfig"><code class="docutils literal notranslate"><span class="pre">AnyScheduleConfig</span></code></a></li>
 </ul>
 </li>
 </ul>

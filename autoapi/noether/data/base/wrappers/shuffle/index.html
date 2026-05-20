@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,7 +875,10 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.base.wrappers.shuffle.ShuffleWrapper" title="noether.data.base.wrappers.shuffle.ShuffleWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShuffleWrapper</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.base.wrappers.shuffle.ShuffleWrapperConfig" title="noether.data.base.wrappers.shuffle.ShuffleWrapperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShuffleWrapperConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.base.wrappers.shuffle.ShuffleWrapper" title="noether.data.base.wrappers.shuffle.ShuffleWrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShuffleWrapper</span></code></a></p></td>
 <td><p>Shuffles the dataset, optionally with seed.</p></td>
 </tr>
 </tbody>
@@ -882,9 +888,26 @@
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.data.base.wrappers.shuffle.ShuffleWrapperConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.base.wrappers.shuffle.</span></span><span class="sig-name descname"><span class="pre">ShuffleWrapperConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.base.wrappers.shuffle.ShuffleWrapperConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../wrapper/index.html#noether.data.base.wrapper.DatasetWrapperConfig" title="noether.data.base.wrapper.DatasetWrapperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.base.wrapper.DatasetWrapperConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.base.wrappers.shuffle.ShuffleWrapperConfig.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.data.base.wrappers.shuffle.ShuffleWrapperConfig.seed" title="Link to this definition">¶</a></dt>
+<dd><p>Random seed for shuffling. If None, a random seed is used.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.data.base.wrappers.shuffle.ShuffleWrapper">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.base.wrappers.shuffle.</span></span><span class="sig-name descname"><span class="pre">ShuffleWrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.base.wrappers.shuffle.ShuffleWrapper" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../index.html#noether.data.base.Subset" title="noether.data.base.Subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.base.Subset</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../subset/index.html#noether.data.base.subset.Subset" title="noether.data.base.subset.Subset"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.base.subset.Subset</span></code></a></p>
 <p>Shuffles the dataset, optionally with seed.</p>
 <p class="rubric">Example</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">dataset_wrappers</span><span class="p">:</span>
@@ -895,9 +918,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference internal" href="../../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.ShuffleWrapperConfig" title="noether.core.schemas.dataset.ShuffleWrapperConfig"><em>noether.core.schemas.dataset.ShuffleWrapperConfig</em></a>) – Configuration for the ShuffleWrapper. See <a class="reference internal" href="../../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.ShuffleWrapperConfig" title="noether.core.schemas.dataset.ShuffleWrapperConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShuffleWrapperConfig</span></code></a>
+<li><p><strong>config</strong> (<a class="reference internal" href="#noether.data.base.wrappers.shuffle.ShuffleWrapperConfig" title="noether.data.base.wrappers.shuffle.ShuffleWrapperConfig"><em>ShuffleWrapperConfig</em></a>) – Configuration for the ShuffleWrapper. See <code class="xref py py-class docutils literal notranslate"><span class="pre">ShuffleWrapperConfig</span></code>
 for available options.</p></li>
-<li><p><strong>dataset</strong> (<a class="reference internal" href="../../index.html#noether.data.base.Dataset" title="noether.data.base.Dataset"><em>noether.data.base.Dataset</em></a><em> | </em><a class="reference internal" href="../../index.html#noether.data.base.DatasetWrapper" title="noether.data.base.DatasetWrapper"><em>noether.data.base.DatasetWrapper</em></a>) – The dataset to shuffle. Can be a base dataset or an already wrapped dataset.</p></li>
+<li><p><strong>dataset</strong> (<a class="reference internal" href="../../dataset/index.html#noether.data.base.dataset.Dataset" title="noether.data.base.dataset.Dataset"><em>noether.data.base.dataset.Dataset</em></a><em> | </em><a class="reference internal" href="../../wrapper/index.html#noether.data.base.wrapper.DatasetWrapper" title="noether.data.base.wrapper.DatasetWrapper"><em>noether.data.base.wrapper.DatasetWrapper</em></a>) – The dataset to shuffle. Can be a base dataset or an already wrapped dataset.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -996,6 +1019,10 @@ for available options.</p></li>
 <li><a class="reference internal" href="#">noether.data.base.wrappers.shuffle</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.data.base.wrappers.shuffle.ShuffleWrapperConfig"><code class="docutils literal notranslate"><span class="pre">ShuffleWrapperConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.data.base.wrappers.shuffle.ShuffleWrapperConfig.seed"><code class="docutils literal notranslate"><span class="pre">ShuffleWrapperConfig.seed</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.data.base.wrappers.shuffle.ShuffleWrapper"><code class="docutils literal notranslate"><span class="pre">ShuffleWrapper</span></code></a><ul>
 <li><a class="reference internal" href="#noether.data.base.wrappers.shuffle.ShuffleWrapper.seed"><code class="docutils literal notranslate"><span class="pre">ShuffleWrapper.seed</span></code></a></li>
 </ul>

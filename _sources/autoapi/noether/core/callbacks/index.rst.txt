@@ -32,24 +32,34 @@ Classes
 .. autoapisummary::
 
    noether.core.callbacks.CallbackBase
+   noether.core.callbacks.CallBackBaseConfig
    noether.core.callbacks.BestCheckpointCallback
+   noether.core.callbacks.BestCheckpointCallbackConfig
    noether.core.callbacks.CheckpointCallback
+   noether.core.callbacks.CheckpointCallbackConfig
    noether.core.callbacks.EmaCallback
+   noether.core.callbacks.EmaCallbackConfig
    noether.core.callbacks.DatasetStatsCallback
    noether.core.callbacks.EtaCallback
    noether.core.callbacks.LrCallback
    noether.core.callbacks.OnlineLossCallback
+   noether.core.callbacks.OnlineLossCallbackConfig
    noether.core.callbacks.ParamCountCallback
    noether.core.callbacks.PeakMemoryCallback
    noether.core.callbacks.ProgressCallback
    noether.core.callbacks.TrainTimeCallback
    noether.core.callbacks.EarlyStopperBase
    noether.core.callbacks.FixedEarlyStopper
+   noether.core.callbacks.FixedEarlyStopperConfig
    noether.core.callbacks.MetricEarlyStopper
+   noether.core.callbacks.MetricEarlyStopperConfig
    noether.core.callbacks.BestMetricCallback
+   noether.core.callbacks.BestMetricCallbackConfig
    noether.core.callbacks.TrackAdditionalOutputsCallback
+   noether.core.callbacks.TrackAdditionalOutputsCallbackConfig
    noether.core.callbacks.PeriodicCallback
    noether.core.callbacks.PeriodicDataIteratorCallback
+   noether.core.callbacks.PeriodicDataIteratorCallbackConfig
 
 
 Package Contents
@@ -292,6 +302,102 @@ Package Contents
 
 
 
+.. py:class:: CallBackBaseConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: id
+      :type:  str | None
+      :value: None
+
+
+      Optional unique identifier for this callback instance. Required when multiple stateful callbacks of the same
+      type exist (e.g., two BestCheckpointCallbacks tracking different metrics). Used as the key when saving/loading
+      callback state dicts to ensure correct matching on resume.
+
+
+   .. py:attribute:: every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+      Epoch-based interval. Invokes the callback after every n epochs. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: every_n_updates
+      :type:  int | None
+      :value: None
+
+
+      Update-based interval. Invokes the callback after every n updates. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: every_n_samples
+      :type:  int | None
+      :value: None
+
+
+      Sample-based interval. Invokes the callback after every n samples. Mutually exclusive with other intervals.
+
+
+   .. py:attribute:: batch_size
+      :type:  int | None
+      :value: None
+
+
+      None (use the same batch_size as for training).
+
+      :type: Batch size to use for this callback. Default
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one frequency ('every_n_*') is specified and
+      that 'batch_size' is present if 'every_n_samples' is used.
+
+
+
+   .. py:method:: check_positive_values(v)
+      :classmethod:
+
+
+      Ensures that all integer-based frequency and batch size fields are positive.
+
+
+
+   .. py:method:: check_kind_is_not_empty(v)
+      :classmethod:
+
+
+      Ensures the 'kind' field is a non-empty string.
+
+
+
 .. py:class:: BestCheckpointCallback(callback_config, **kwargs)
 
    Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
@@ -396,6 +502,62 @@ Package Contents
 
 
 
+.. py:class:: BestCheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['BestCheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+      :value: None
+
+
+      "The key of the metric to be used for checking the best model.
+
+
+   .. py:attribute:: save_frozen_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to also save the frozen weights of the model.
+
+
+   .. py:attribute:: tolerances
+      :type:  list[int] | None
+      :value: None
+
+
+      "If provided, this callback will produce multiple best models which differ in the amount of intervals they allow the metric to not improve. For example, tolerance=[5] with every_n_epochs=1 will store a checkpoint where at most 5 epochs have passed until the metric improved. Additionally, the best checkpoint over the whole training will always be stored (i.e., tolerance=infinite). When setting different tolerances, one can evaluate different early stopping configurations with one training run.
+
+
+   .. py:attribute:: model_names
+      :type:  list[str] | None
+      :value: None
+
+
+      Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name='encoder' here). This only applies when training a CompositeModel. If None, all models are saved.
+
+
 .. py:class:: CheckpointCallback(callback_config, **kwargs)
 
    Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
@@ -493,6 +655,70 @@ Package Contents
 
       :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
 
+
+
+.. py:class:: CheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['CheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: save_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the weights of the model every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.
+
+
+   .. py:attribute:: save_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the optimizer state every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.
+
+
+   .. py:attribute:: save_latest_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest weights of the model every time this callback is invoked. Note that the latest weights are always overwritten on the next invocation of this callback.
+
+
+   .. py:attribute:: save_latest_optim
+      :type:  bool
+      :value: None
+
+
+      Whether to save the latest optimizer state every time this callback is invoked. Note that the latest optimizer state is always overwritten on the next invocation of this callback
+
+
+   .. py:attribute:: model_names
+      :type:  list[str] | None
+      :value: None
+
+
+      The name of the model to save. If None, all models are saved.
 
 
 .. py:class:: EmaCallback(callback_config, **kwargs)
@@ -696,6 +922,84 @@ Package Contents
 
       :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
 
+
+
+.. py:class:: EmaCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['EmaCallback']
+      :value: None
+
+
+
+   .. py:attribute:: target_factors
+      :type:  list[float]
+      :value: None
+
+
+      The factors for the EMA.
+
+
+   .. py:attribute:: model_paths
+      :type:  list[str | None] | None
+      :value: None
+
+
+      The paths to the models to apply the EMA to (i.e., composite_model.encoder/composite_model.decoder, path of the PyTorch nn.Modules in the checkpoint). If None, the EMA is applied to the whole model. When training with a CompositeModel, the paths on the submodules (i.e., 'encoder', 'decoder', etc.) should be provided via this field, otherwise the EMA will be applied to the CompositeModel as a whole which is not possible to restore later on.
+
+
+   .. py:attribute:: save_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to save the EMA weights.
+
+
+   .. py:attribute:: save_last_weights
+      :type:  bool
+      :value: None
+
+
+      Save the weights of the model when training is over (i.e., at the end of training, save the EMA weights).
+
+
+   .. py:attribute:: save_latest_weights
+      :type:  bool
+      :value: None
+
+
+      Save the latest EMA weights. Note that the latest weights are always overwritten on the next invocation of this callback.
+
+
+   .. py:attribute:: eval_callbacks
+      :type:  list[Annotated[Any, Discriminated(CallBackBaseConfig)]] | None
+      :value: None
+
+
+      Optional nested periodic callbacks to run against EMA weights. Each child retains its own schedule
+      (``every_n_epochs`` etc.); the EMA callback swaps its stored EMA parameters into the live model around
+      eval-time hooks (``after_epoch``, ``after_update``, ``at_eval``) and restores the live weights on exit.
+      Children are dispatched once per ``target_factor`` and their metric keys are automatically prefixed with
+      ``ema=<factor>/`` to avoid collisions with live-model metrics. Note: ``before_training`` and
+      ``after_training`` are forwarded without swapping, so EMA initialization and the final save see live
+      weights.
 
 
 .. py:class:: DatasetStatsCallback(trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None)
@@ -1012,6 +1316,38 @@ Package Contents
       :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
                          (e.g., from :meth:`after_epoch` or :meth:`after_update`).
 
+
+
+.. py:class:: OnlineLossCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['OnlineLossCallback']
+      :value: None
+
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      Whether to also log to the (console) logger. If False, the loss will only logged to the experiment tracker.
 
 
 .. py:class:: ParamCountCallback(trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None)
@@ -1361,6 +1697,47 @@ Package Contents
    .. py:attribute:: stop_at_epoch
 
 
+.. py:class:: FixedEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: name
+      :type:  Literal['FixedEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_sample
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_update
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_epoch
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one stop ('stop_at_*') is specified
+
+
+
 .. py:class:: MetricEarlyStopper(callback_config, **kwargs)
 
    Bases: :py:obj:`noether.core.callbacks.early_stoppers.base.EarlyStopperBase`
@@ -1399,6 +1776,50 @@ Package Contents
 
 
    .. py:attribute:: best_metric
+
+
+.. py:class:: MetricEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['MetricEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+
+      The key of the metric to monitor
+
+
+   .. py:attribute:: tolerance
+      :type:  int
+
+      The number of times the metric can stagnate before stopping training
+
+
+   .. py:method:: check_tolerance_positive(v)
+      :classmethod:
+
+
+      Ensures that tolerance is at least 1.
+
 
 
 .. py:class:: BestMetricCallback(callback_config, **kwargs)
@@ -1470,6 +1891,54 @@ Package Contents
                              the current training progress (epoch, update, sample counts).
       :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
                          (e.g., from :meth:`after_epoch` or :meth:`after_update`).
+
+
+
+.. py:class:: BestMetricCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['BestMetricCallback']
+      :value: None
+
+
+      The metric to use to dermine whether the current model obtained a new best (e.g., loss/valid/total)
+
+
+   .. py:attribute:: source_metric_key
+      :type:  str
+      :value: None
+
+
+      The metrics to keep track of (e.g., loss/test/total)
+
+
+   .. py:attribute:: target_metric_keys
+      :type:  list[str] | None
+      :value: None
+
+
+      The metrics to keep track of if they are present (useful when different model configurations log different evaluation metrics to avoid reconfiguring the callback).
+
+
+   .. py:attribute:: optional_target_metric_keys
+      :type:  list[str] | None
+      :value: None
 
 
 
@@ -1567,6 +2036,78 @@ Package Contents
       :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
                          (e.g., from :meth:`after_epoch` or :meth:`after_update`).
 
+
+
+.. py:class:: TrackAdditionalOutputsCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['TrackAdditionalOutputsCallback']
+      :value: None
+
+
+
+   .. py:attribute:: keys
+      :type:  list[str] | None
+      :value: None
+
+
+      List of keys to track in the additional_outputs of the TrainerResult returned by the trainer's update step.
+
+
+   .. py:attribute:: patterns
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to track in the additional_outputs of the TrainerResult returned by the trainer's update step. Matched if it is contained in one of the update_outputs keys.
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      If True uses the logger to print the tracked values otherwise uses no logger.
+
+
+   .. py:attribute:: reduce
+      :type:  Literal['mean', 'last']
+      :value: None
+
+
+      The reduction method to be applied to the tracked values to reduce to scalar. Currently supports 'mean' and 'last'.
+
+
+   .. py:attribute:: log_output
+      :type:  bool
+      :value: None
+
+
+      Whether to log the tracked scalar values.
+
+
+   .. py:attribute:: save_output
+      :type:  bool
+      :value: None
+
+
+      Whether to save the tracked scalar values to disk.
 
 
 .. py:class:: PeriodicCallback(callback_config, trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None)
@@ -2054,5 +2595,35 @@ Package Contents
 
       :param update_counter: :class:`~noether.core.utils.training.counter.UpdateCounter` instance to access current training progress.
 
+
+
+.. py:class:: PeriodicDataIteratorCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`, :py:obj:`abc.ABC`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  str
+
+
+   .. py:attribute:: dataset_key
+      :type:  str
+      :value: None
+
+
+      The key of the dataset to be used for the loss calculation. Can be any key that is registered in the `DataContainer`.
 
 

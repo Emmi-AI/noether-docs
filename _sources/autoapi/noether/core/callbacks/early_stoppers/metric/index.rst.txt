@@ -9,11 +9,56 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.callbacks.early_stoppers.metric.MetricEarlyStopperConfig
    noether.core.callbacks.early_stoppers.metric.MetricEarlyStopper
 
 
 Module Contents
 ---------------
+
+.. py:class:: MetricEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['MetricEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+
+      The key of the metric to monitor
+
+
+   .. py:attribute:: tolerance
+      :type:  int
+
+      The number of times the metric can stagnate before stopping training
+
+
+   .. py:method:: check_tolerance_positive(v)
+      :classmethod:
+
+
+      Ensures that tolerance is at least 1.
+
+
 
 .. py:class:: MetricEarlyStopper(callback_config, **kwargs)
 

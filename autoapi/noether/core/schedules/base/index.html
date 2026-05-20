@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -955,7 +958,7 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>config</strong> (<a class="reference internal" href="../../schemas/schedules/index.html#noether.core.schemas.schedules.ProgressScheduleConfig" title="noether.core.schemas.schedules.ProgressScheduleConfig"><em>noether.core.schemas.schedules.ProgressScheduleConfig</em></a>) – Configuration for the progress schedule.</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="../schemas/index.html#noether.core.schedules.schemas.ProgressScheduleConfig" title="noether.core.schedules.schemas.ProgressScheduleConfig"><em>noether.core.schedules.schemas.ProgressScheduleConfig</em></a>) – Configuration for the progress schedule.</p></li>
 <li><p><strong>start_value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – The initial value of the scheduler.</p></li>
 <li><p><strong>delta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – The total change in value over the schedule.</p></li>
 </ul>
@@ -991,7 +994,7 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../schemas/schedules/index.html#noether.core.schemas.schedules.DecreasingProgressScheduleConfig" title="noether.core.schemas.schedules.DecreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.DecreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/index.html#noether.core.schedules.schemas.DecreasingProgressScheduleConfig" title="noether.core.schedules.schemas.DecreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.DecreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1004,7 +1007,7 @@ Therefore, it should not be overwritten by subclasses. Instead, the _get_value m
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../schemas/schedules/index.html#noether.core.schemas.schedules.IncreasingProgressScheduleConfig" title="noether.core.schemas.schedules.IncreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.IncreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/index.html#noether.core.schedules.schemas.IncreasingProgressScheduleConfig" title="noether.core.schedules.schemas.IncreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.IncreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>

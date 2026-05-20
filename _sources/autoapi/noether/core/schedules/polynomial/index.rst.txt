@@ -9,12 +9,35 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.schedules.polynomial.PolynomialDecreasingScheduleConfig
    noether.core.schedules.polynomial.PolynomialDecreasingSchedule
+   noether.core.schedules.polynomial.PolynomialIncreasingScheduleConfig
    noether.core.schedules.polynomial.PolynomialIncreasingSchedule
 
 
 Module Contents
 ---------------
+
+.. py:class:: PolynomialDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.schemas.DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.PolynomialDecreasingSchedule']
+      :value: 'noether.core.schedules.PolynomialDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: power
+      :type:  float
+      :value: None
+
+
+      The power of the polynomial function.
+
 
 .. py:class:: PolynomialDecreasingSchedule(config)
 
@@ -38,6 +61,27 @@ Module Contents
 
 
    .. py:attribute:: power
+
+
+.. py:class:: PolynomialIncreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.schemas.IncreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.PolynomialIncreasingSchedule']
+      :value: 'noether.core.schedules.PolynomialIncreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: power
+      :type:  float
+      :value: None
+
+
+      The power of the polynomial function.
 
 
 .. py:class:: PolynomialIncreasingSchedule(config)

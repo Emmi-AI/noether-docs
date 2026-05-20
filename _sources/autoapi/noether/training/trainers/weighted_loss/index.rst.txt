@@ -17,6 +17,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.training.trainers.weighted_loss.WeightedLossTrainerConfig
    noether.training.trainers.weighted_loss.WeightedLossTrainer
 
 
@@ -26,9 +27,55 @@ Module Contents
 .. py:data:: LOSS_REGISTRY
    :type:  dict[str, collections.abc.Callable[Ellipsis, torch.Tensor]]
 
+.. py:class:: WeightedLossTrainerConfig(/, **data)
+
+   Bases: :py:obj:`noether.training.trainers.BaseTrainerConfig`
+
+
+   Config for a generic trainer that computes weighted loss per output field.
+
+   ``field_weights`` maps output field names to their loss weights. Keys must match model output dict keys.
+   Target keys in the batch are expected to follow the ``<field_name>_target`` convention.
+
+   Built-in loss example::
+
+       WeightedLossTrainerConfig(
+           kind="noether.training.trainers.WeightedLossTrainer",
+           field_weights={"surface_pressure": 1.0, "volume_velocity": 1.0},
+           loss_fn="l1",
+       )
+
+   Custom loss function from a downstream project::
+
+       WeightedLossTrainerConfig(
+           kind="noether.training.trainers.WeightedLossTrainer",
+           field_weights={"surface_pressure": 1.0},
+           loss_fn="my_project.losses.weighted_huber",
+       )
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: field_weights
+      :type:  dict[str, float]
+      :value: None
+
+
+
+   .. py:attribute:: loss_fn
+      :type:  str
+      :value: None
+
+
+
 .. py:class:: WeightedLossTrainer(trainer_config, **kwargs)
 
-   Bases: :py:obj:`noether.training.trainers.base.BaseTrainer`
+   Bases: :py:obj:`noether.training.trainers.BaseTrainer`
 
 
    Generic trainer that computes weighted loss per output field.

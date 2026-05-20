@@ -17,6 +17,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.trackers.trackio_tracker.TrackioTrackerSchema
    noether.core.trackers.trackio_tracker.TrackioTracker
 
 
@@ -27,9 +28,38 @@ Module Contents
    :value: None
 
 
+.. py:class:: TrackioTrackerSchema(/, **data)
+
+   Bases: :py:obj:`noether.core.trackers.BaseTrackerConfig`
+
+
+   Schema for TrackioTracker configuration.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: project
+      :type:  str
+
+      The project name for the Trackio project.
+
+
+   .. py:attribute:: space_id
+      :type:  str | None
+      :value: None
+
+
+      The HuggingFace space ID where to store the Trackio data.
+
+
 .. py:class:: TrackioTracker(tracker_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+   Bases: :py:obj:`noether.core.trackers.BaseTracker`
 
 
    HuggingFace Trackio tracker.

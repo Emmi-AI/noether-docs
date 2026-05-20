@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,7 +875,10 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLP" title="noether.modeling.modules.mlp.mlp.MLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLP</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig" title="noether.modeling.modules.mlp.mlp.MLPConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLPConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLP" title="noether.modeling.modules.mlp.mlp.MLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MLP</span></code></a></p></td>
 <td><p>Implements a Multi-Layer Perceptron (MLP) with configurable number of layers, hidden dimension activation functions and weight initialization methods.</p></td>
 </tr>
 </tbody>
@@ -881,6 +887,59 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.mlp.MLPConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.mlp.mlp.</span></span><span class="sig-name descname"><span class="pre">MLPConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.mlp.mlp.MLPConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.mlp.MLPConfig.input_dim">
+<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.mlp.MLPConfig.input_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Input dimension of the MLP.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.mlp.MLPConfig.output_dim">
+<span class="sig-name descname"><span class="pre">output_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.mlp.MLPConfig.output_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Output dimension of the MLP.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.mlp.MLPConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.mlp.MLPConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Hidden dimension for each layer.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.mlp.MLPConfig.num_layers">
+<span class="sig-name descname"><span class="pre">num_layers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.mlp.MLPConfig.num_layers" title="Link to this definition">¶</a></dt>
+<dd><p>Number of hidden layers in the MLP. If 0, the MLP is a two linear layer MLP from input_dim, hidden_dim, activation to output_dim.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.mlp.MLPConfig.activation">
+<span class="sig-name descname"><span class="pre">activation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'RELU'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'GELU'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SIGMOID'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'TANH'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'LEAKY_RELU'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SOFTPLUS'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ELU'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SILU'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GELU'</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.mlp.MLPConfig.activation" title="Link to this definition">¶</a></dt>
+<dd><p>Activation function to use between layers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.mlp.MLPConfig.init_weights">
+<span class="sig-name descname"><span class="pre">init_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.types.InitWeightsMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'truncnormal002'</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.mlp.MLPConfig.init_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Weight initialization method.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.mlp.mlp.MLPConfig.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.mlp.mlp.MLPConfig.bias" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to use bias in the linear layers.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.mlp.mlp.MLP">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.mlp.mlp.</span></span><span class="sig-name descname"><span class="pre">MLP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.mlp.mlp.MLP" title="Link to this definition">¶</a></dt>
@@ -892,7 +951,7 @@ When num_layers&gt;=1, the MLP has additional hidden layers, etc.</p>
 <p>Initialize the MLP.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../../core/schemas/modules/mlp/index.html#noether.core.schemas.modules.mlp.MLPConfig" title="noether.core.schemas.modules.mlp.MLPConfig"><em>noether.core.schemas.modules.mlp.MLPConfig</em></a>) – Configuration object for the MLP. See <a class="reference internal" href="../../../../core/schemas/modules/mlp/index.html#noether.core.schemas.modules.mlp.MLPConfig" title="noether.core.schemas.modules.mlp.MLPConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">MLPConfig</span></code></a> for available options.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig" title="noether.modeling.modules.mlp.mlp.MLPConfig"><em>MLPConfig</em></a>) – Configuration object for the MLP. See <code class="xref py py-class docutils literal notranslate"><span class="pre">MLPConfig</span></code> for available options.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1026,6 +1085,16 @@ When num_layers&gt;=1, the MLP has additional hidden layers, etc.</p>
 <li><a class="reference internal" href="#">noether.modeling.modules.mlp.mlp</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig"><code class="docutils literal notranslate"><span class="pre">MLPConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">MLPConfig.input_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig.output_dim"><code class="docutils literal notranslate"><span class="pre">MLPConfig.output_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">MLPConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig.num_layers"><code class="docutils literal notranslate"><span class="pre">MLPConfig.num_layers</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig.activation"><code class="docutils literal notranslate"><span class="pre">MLPConfig.activation</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">MLPConfig.init_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLPConfig.bias"><code class="docutils literal notranslate"><span class="pre">MLPConfig.bias</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLP"><code class="docutils literal notranslate"><span class="pre">MLP</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLP.init_weights"><code class="docutils literal notranslate"><span class="pre">MLP.init_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.mlp.mlp.MLP.mlp"><code class="docutils literal notranslate"><span class="pre">MLP.mlp</span></code></a></li>

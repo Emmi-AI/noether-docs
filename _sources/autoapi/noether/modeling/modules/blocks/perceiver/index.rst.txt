@@ -9,11 +9,47 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig
    noether.modeling.modules.blocks.perceiver.PerceiverBlock
 
 
 Module Contents
 ---------------
+
+.. py:class:: PerceiverBlockConfig(/, **data)
+
+   Bases: :py:obj:`noether.modeling.modules.blocks.transformer.TransformerBlockConfig`
+
+
+   Configuration for the PerceiverBlock module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kv_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimensionality of the key and value representations. Defaults to None. If None, hidden_dim is used.
+
+
+   .. py:method:: set_kv_dim()
+
+      Set kv_dim to hidden_dim if not provided.
+
+
+
+   .. py:method:: perceiver_attention_config()
+
+
+   .. py:method:: modulation_linear_projection_config()
+
 
 .. py:class:: PerceiverBlock(config)
 

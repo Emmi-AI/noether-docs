@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -899,7 +902,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroTransformerConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.aerodynamics.</span></span><span class="sig-name descname"><span class="pre">AeroTransformerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransformerConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.TransformerConfig" title="noether.core.schemas.models.TransformerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.TransformerConfig</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../transformer/index.html#noether.modeling.models.transformer.TransformerConfig" title="noether.modeling.models.transformer.TransformerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.transformer.TransformerConfig</span></code></a></p>
 <p>Transformer config extended with aerodynamic data specifications.</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
@@ -912,7 +915,7 @@ validated to form a valid model.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroTransformerConfig.data_specs">
-<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><span class="pre">noether.core.schemas.dataset.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransformerConfig.data_specs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../data/schemas/index.html#noether.data.schemas.ModelDataSpecs" title="noether.data.schemas.ModelDataSpecs"><span class="pre">noether.data.schemas.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransformerConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -920,7 +923,7 @@ validated to form a valid model.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroTransolverConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.aerodynamics.</span></span><span class="sig-name descname"><span class="pre">AeroTransolverConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransolverConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.TransolverConfig" title="noether.core.schemas.models.TransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.TransolverConfig</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../transolver/index.html#noether.modeling.models.transolver.TransolverConfig" title="noether.modeling.models.transolver.TransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.transolver.TransolverConfig</span></code></a></p>
 <p>Transolver config extended with aerodynamic data specifications.</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
@@ -933,7 +936,7 @@ validated to form a valid model.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroTransolverConfig.data_specs">
-<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><span class="pre">noether.core.schemas.dataset.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransolverConfig.data_specs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../data/schemas/index.html#noether.data.schemas.ModelDataSpecs" title="noether.data.schemas.ModelDataSpecs"><span class="pre">noether.data.schemas.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransolverConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -941,7 +944,7 @@ validated to form a valid model.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroTransformer">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.aerodynamics.</span></span><span class="sig-name descname"><span class="pre">AeroTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransformer" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../../core/models/model/index.html#noether.core.models.model.Model" title="noether.core.models.model.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.model.Model</span></code></a></p>
 <p>Aerodynamic Transformer wrapper.</p>
 <p>End-to-end forward for aero CFD: positional encoding, optional RoPE, optional physics features,
 surface/volume bias, Transformer backbone, output projection, and output gathering.</p>
@@ -949,7 +952,7 @@ surface/volume bias, Transformer backbone, output projection, and output gatheri
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroTransformerConfig" title="noether.modeling.models.aerodynamics.AeroTransformerConfig"><em>AeroTransformerConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroTransformerConfig" title="noether.modeling.models.aerodynamics.AeroTransformerConfig"><em>AeroTransformerConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> – The <a class="reference internal" href="../../../core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>
@@ -1027,14 +1030,14 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroTransolver">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.aerodynamics.</span></span><span class="sig-name descname"><span class="pre">AeroTransolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroTransolver" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../../core/models/model/index.html#noether.core.models.model.Model" title="noether.core.models.model.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.model.Model</span></code></a></p>
 <p>Aerodynamic Transolver wrapper.</p>
 <p>Like <code class="docutils literal notranslate"><span class="pre">AeroTransformer</span></code> but adds the Transolver-specific learnable placeholder parameter.</p>
 <p>Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroTransolverConfig" title="noether.modeling.models.aerodynamics.AeroTransolverConfig"><em>AeroTransolverConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.modeling.models.aerodynamics.AeroTransolverConfig" title="noether.modeling.models.aerodynamics.AeroTransolverConfig"><em>AeroTransolverConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> – The <a class="reference internal" href="../../../core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>
@@ -1112,7 +1115,7 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroUPT">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.aerodynamics.</span></span><span class="sig-name descname"><span class="pre">AeroUPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroUPT" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../../core/models/model/index.html#noether.core.models.model.Model" title="noether.core.models.model.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.model.Model</span></code></a></p>
 <p>Aerodynamic UPT wrapper.</p>
 <p>Combines separate surface/volume query positions into the single <code class="docutils literal notranslate"><span class="pre">query_position</span></code>
 that the core UPT expects, and splits outputs using <code class="docutils literal notranslate"><span class="pre">ModelDataSpecs</span></code>.
@@ -1121,7 +1124,7 @@ Supports optional surface/volume bias layers and physics feature projection on q
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.UPTConfig" title="noether.core.schemas.models.UPTConfig"><em>noether.core.schemas.models.UPTConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="../upt/index.html#noether.modeling.models.upt.UPTConfig" title="noether.modeling.models.upt.UPTConfig"><em>noether.modeling.models.upt.UPTConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> – The <a class="reference internal" href="../../../core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>
@@ -1177,7 +1180,7 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.aerodynamics.AeroABUPT">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.aerodynamics.</span></span><span class="sig-name descname"><span class="pre">AeroABUPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.aerodynamics.AeroABUPT" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../../core/models/model/index.html#noether.core.models.model.Model" title="noether.core.models.model.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.model.Model</span></code></a></p>
 <p>Aerodynamic Anchored-Branched UPT wrapper.</p>
 <p>Bridges the factory’s <code class="docutils literal notranslate"><span class="pre">(config,</span> <span class="pre">**kwargs)</span></code> instantiation pattern to the core model.
 Converts flat kwargs (<code class="docutils literal notranslate"><span class="pre">surface_anchor_position</span></code>, <code class="docutils literal notranslate"><span class="pre">volume_anchor_position</span></code>, …)
@@ -1186,7 +1189,7 @@ into the domain-dict format expected by <code class="xref py py-class docutils l
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig" title="noether.core.schemas.models.AnchorBranchedUPTConfig"><em>noether.core.schemas.models.AnchorBranchedUPTConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="../ab_upt/index.html#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig" title="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig"><em>noether.modeling.models.ab_upt.AnchorBranchedUPTConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> – The <a class="reference internal" href="../../../core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>

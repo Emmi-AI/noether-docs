@@ -3,91 +3,11 @@ noether.core.schemas.models.base
 
 .. py:module:: noether.core.schemas.models.base
 
+.. autoapi-nested-parse::
 
-Classes
--------
+   Back-compat re-export for ``ModelBaseConfig``.
 
-.. autoapisummary::
+   The canonical home is :mod:`noether.core.models.base`.
 
-   noether.core.schemas.models.base.ModelBaseConfig
-
-
-Module Contents
----------------
-
-.. py:class:: ModelBaseConfig(/, **data)
-
-   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
-
-
-   Internal base class for all registry-based configs.
-
-   Provides auto-registration via __init_subclass__.
-   Not meant to be used directly - use specific config base classes instead.
-
-   Create a new model by parsing and validating input data from keyword arguments.
-
-   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
-   validated to form a valid model.
-
-   `self` is explicitly positional-only to allow `self` as a field name.
-
-
-   .. py:attribute:: kind
-      :type:  str | None
-      :value: None
-
-
-      Kind of model to use, i.e. class path
-
-
-   .. py:attribute:: name
-      :type:  str
-
-      Name of the model. Needs to be unique
-
-
-   .. py:attribute:: optimizer_config
-      :type:  noether.core.schemas.optimizers.AnyOptimizerConfig | None
-      :value: None
-
-
-      The optimizer configuration to use for training the model. When a model is used for inference only, this can be left as None.
-
-
-   .. py:attribute:: initializers
-      :type:  list[Annotated[noether.core.schemas.initializers.AnyInitializer, Field(discriminator='kind')]] | None
-      :value: None
-
-
-      List of initializers configs to use for the model.
-
-
-   .. py:attribute:: is_frozen
-      :type:  bool | None
-      :value: False
-
-
-      Whether to freeze the model parameters (i.e., not trainable).
-
-
-   .. py:attribute:: forward_properties
-      :type:  list[str] | None
-      :value: []
-
-
-      List of properties to be used as inputs for the forward pass of the model. Only relevant when the train_step of the BaseTrainer is used. When overridden in a class method, this property is ignored.
-
-
-   .. py:attribute:: model_config
-
-      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
-
-
-   .. py:property:: config_kind
-      :type: str
-
-
-      The fully qualified import path for the configuration class.
 
 

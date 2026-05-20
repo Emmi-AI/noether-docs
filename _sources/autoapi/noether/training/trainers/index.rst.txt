@@ -21,6 +21,7 @@ Classes
 .. autoapisummary::
 
    noether.training.trainers.BaseTrainer
+   noether.training.trainers.BaseTrainerConfig
    noether.training.trainers.TrainerResult
    noether.training.trainers.WeightedLossTrainer
 
@@ -271,6 +272,278 @@ Package Contents
 
 
 
+.. py:class:: BaseTrainerConfig[TCallbackConfig: noether.core.callbacks.base.CallBackBaseConfig](/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str
+
+
+   .. py:attribute:: max_epochs
+      :type:  int | None
+      :value: None
+
+
+      The maximum number of epochs to train for. Mutually exclusive with max_updates and max_samples. If set to 0, training will be skipped and all callbacks will be invoked once (useful for evaluation-only runs).
+
+
+   .. py:attribute:: max_updates
+      :type:  int | None
+      :value: None
+
+
+      The maximum number of updates to train for. Mutually exclusive with max_epochs and max_samples. If set to 0, training will be skipped and all callbacks will be invoked once (useful for evaluation-only runs).
+
+
+   .. py:attribute:: max_samples
+      :type:  int | None
+      :value: None
+
+
+      The maximum number of samples to train for. Mutually exclusive with max_epochs and max_updates. If set to 0, training will be skipped and all callbacks will be invoked once (useful for evaluation-only runs).
+
+
+   .. py:attribute:: start_at_epoch
+      :type:  int | None
+      :value: None
+
+
+      The epoch to start training at. This means that the trainer will skip all epochs before this epoch. Learning rate and other schedulers will be stepped accordingly. Useful for resuming training from a specific epoch.
+
+
+   .. py:attribute:: add_default_callbacks
+      :type:  bool | None
+      :value: None
+
+
+      Whether to add default callbacks. Default callbacks log things like simple dataset statistics or the current value of the learning rate if it is scheduled.
+
+
+   .. py:attribute:: add_trainer_callbacks
+      :type:  bool | None
+      :value: None
+
+
+      Whether to add trainer specific callbacks (e.g., a callback to log the training accuracy for a classification task).
+
+
+   .. py:attribute:: effective_batch_size
+      :type:  int
+      :value: None
+
+
+      the "global batch size". In multi-GPU setups, the batch size per device, ("local batch size") is `effective_batch_size / number of devices`. If gradient accumulation is used, the forward-pass batch size is derived by dividing by the number of gradient accumulation steps.
+
+      :type: The effective batch size used for optimization. This is the number of samples that are processed before an update step is taken
+
+
+   .. py:attribute:: precision
+      :type:  Literal['float32', 'fp32', 'float16', 'fp16', 'bfloat16', 'bf16']
+      :value: None
+
+
+      The precision to use for training (e.g., "float32"). Mixed precision training (e.g., "float16" or "bfloat16") can be used to speed up training and reduce memory usage on supported hardware (e.g., NVIDIA GPUs).
+
+
+   .. py:attribute:: callbacks
+      :type:  list[Annotated[TCallbackConfig, Discriminated(CallBackBaseConfig)]] | None
+      :value: None
+
+
+      The callbacks to use for training.
+
+
+   .. py:attribute:: initializer
+      :type:  noether.core.initializers.InitializerConfig | None
+      :value: None
+
+
+      The initializer to use for training. Mainly used for resuming training via ResumeInitializer.
+
+
+   .. py:attribute:: log_every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+      The integer number of epochs to periodically log at.
+
+
+   .. py:attribute:: log_every_n_updates
+      :type:  int | None
+      :value: None
+
+
+      The integer number of updates to periodically log at.
+
+
+   .. py:attribute:: log_every_n_samples
+      :type:  int | None
+      :value: None
+
+
+      The integer number of samples to periodically log at.
+
+
+   .. py:attribute:: track_every_n_epochs
+      :type:  int | None
+      :value: None
+
+
+      The integer number of epochs to periodically track metrics at.
+
+
+   .. py:attribute:: track_every_n_updates
+      :type:  int | None
+      :value: None
+
+
+      The integer number of updates to periodically track metrics at.
+
+
+   .. py:attribute:: track_every_n_samples
+      :type:  int | None
+      :value: None
+
+
+      The integer number of samples to periodically track metrics at.
+
+
+   .. py:attribute:: max_batch_size
+      :type:  int | None
+      :value: None
+
+
+      The maximum batch size to use for model forward pass in training. If the effective_batch_size is larger than max_batch_size, gradient accumulation will be used to simulate the larger batch size. For example, if effective_batch_size=8 and max_batch_size=2, 4 gradient accumulation steps will be taken before each optimizer step.
+
+
+   .. py:attribute:: skip_nan_loss
+      :type:  bool
+      :value: None
+
+
+      Whether to skip NaN losses. These can sometimes occur due to unlucky coincidences. If true, NaN losses will be skipped without terminating the training up until 100 NaN losses occurred in a row.
+
+
+   .. py:attribute:: skip_nan_loss_max_count
+      :type:  int
+      :value: None
+
+
+
+   .. py:attribute:: disable_gradient_accumulation
+      :type:  bool
+      :value: None
+
+
+      Whether to disable gradient accumulation. Gradient accumulation is sometimes used to simulate larger batch sizes, but can lead to worse generalization.
+
+
+   .. py:attribute:: save_on_sigint
+      :type:  bool
+      :value: None
+
+
+      Whether to save a checkpoint on SIGINT (Ctrl+C). SIGTERM always triggers a checkpoint save. When False (default), Ctrl+C will stop training immediately without saving.
+
+
+   .. py:attribute:: use_torch_compile
+      :type:  bool
+      :value: None
+
+
+      Whether to use `torch.compile` to compile the model for faster training.
+
+
+   .. py:attribute:: find_unused_params
+      :type:  bool
+      :value: None
+
+
+      Sets the `find_unused_parameters` flag of `DistributedDataParallel`.
+
+
+   .. py:attribute:: static_graph
+      :type:  bool
+      :value: None
+
+
+      Sets the `static_graph` flag of `DistributedDataParallel`.
+
+
+   .. py:attribute:: forward_properties
+      :type:  list[str] | None
+      :value: []
+
+
+      Properties (i.e., keys from the batch dict) from the input batch that are used as inputs to the model during the forward pass.
+
+
+   .. py:attribute:: target_properties
+      :type:  list[str] | None
+      :value: []
+
+
+      Properties (i.e., keys from the batch dict) from the input batch that are used as targets for the model during the forward pass.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: dataloader_prefetch_factor
+      :type:  int | None
+      :value: None
+
+
+      The `prefetch_factor` to use for the training dataloader. This controls how many batches are prefetched by each worker process in the dataloader. Increasing this can speed up training if data loading is a bottleneck, but also increases memory usage.
+
+
+   .. py:attribute:: monitor_training_stability
+      :type:  bool
+      :value: None
+
+
+      Whether to monitor training stability by logging gradient norms, model norms and grad scaler scale at regular intervals using the TrainingStabilityCallback. This can be useful for diagnosing issues with exploding or vanishing gradients.
+
+
+   .. py:attribute:: monitor_interval
+      :type:  int | None
+      :value: None
+
+
+      The interval (in updates) at which to monitor training stability when `monitor_training_stability` is True. This controls how often the TrainingStabilityCallback logs gradient norms, model norms and grad scaler scale.
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one frequency ('every_n_*') is specified and
+      that 'batch_size' is present if 'every_n_samples' is used.
+
+
+
+   .. py:method:: validate_max_training_criteria()
+
+      Ensures that exactly one of max_epochs, max_updates, or max_samples is specified.
+
+
+
 .. py:class:: TrainerResult
 
    .. py:attribute:: total_loss
@@ -291,7 +564,7 @@ Package Contents
 
 .. py:class:: WeightedLossTrainer(trainer_config, **kwargs)
 
-   Bases: :py:obj:`noether.training.trainers.base.BaseTrainer`
+   Bases: :py:obj:`noether.training.trainers.BaseTrainer`
 
 
    Generic trainer that computes weighted loss per output field.

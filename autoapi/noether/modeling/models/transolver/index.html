@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,6 +875,12 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.transolver.TransolverConfig" title="noether.modeling.models.transolver.TransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverConfig</span></code></a></p></td>
+<td><p>Configuration for a Transolver model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.transolver.TransolverPlusPlusConfig" title="noether.modeling.models.transolver.TransolverPlusPlusConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverPlusPlusConfig</span></code></a></p></td>
+<td><p>Configuration for a Transolver++ model.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.transolver.Transolver" title="noether.modeling.models.transolver.Transolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transolver</span></code></a></p></td>
 <td><p>Implementation of the Transolver model.</p></td>
 </tr>
@@ -882,9 +891,74 @@
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.transolver.TransolverConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.transolver.</span></span><span class="sig-name descname"><span class="pre">TransolverConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.transolver.TransolverConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../transformer/index.html#noether.modeling.models.transformer.TransformerConfig" title="noether.modeling.models.transformer.TransformerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.transformer.TransformerConfig</span></code></a>, <a class="reference internal" href="../../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBaseConfig</span></code></a></p>
+<p>Configuration for a Transolver model.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.transolver.TransolverConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.modeling.models.transolver.TransolverConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.transolver.TransolverConfig.attention_arguments">
+<span class="sig-name descname"><span class="pre">attention_arguments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></em><a class="headerlink" href="#noether.modeling.models.transolver.TransolverConfig.attention_arguments" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.transolver.TransolverConfig.set_attention_constructor">
+<span class="sig-name descname"><span class="pre">set_attention_constructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.transolver.TransolverConfig.set_attention_constructor" title="Link to this definition">¶</a></dt>
+<dd><p>Set attention_constructor in transformer_block_config based on data_specs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.transolver.TransolverConfig" title="noether.modeling.models.transolver.TransolverConfig">TransolverConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.transolver.TransolverPlusPlusConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.transolver.</span></span><span class="sig-name descname"><span class="pre">TransolverPlusPlusConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.transolver.TransolverPlusPlusConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.modeling.models.transolver.TransolverConfig" title="noether.modeling.models.transolver.TransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverConfig</span></code></a></p>
+<p>Configuration for a Transolver++ model.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.transolver.TransolverPlusPlusConfig.set_attention_constructor">
+<span class="sig-name descname"><span class="pre">set_attention_constructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.transolver.TransolverPlusPlusConfig.set_attention_constructor" title="Link to this definition">¶</a></dt>
+<dd><p>Set attention_constructor in transformer_block_config based on data_specs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.transolver.TransolverPlusPlusConfig" title="noether.modeling.models.transolver.TransolverPlusPlusConfig">TransolverPlusPlusConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.transolver.Transolver">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.transolver.</span></span><span class="sig-name descname"><span class="pre">Transolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.transolver.Transolver" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../index.html#noether.modeling.models.Transformer" title="noether.modeling.models.Transformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.Transformer</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../transformer/index.html#noether.modeling.models.transformer.Transformer" title="noether.modeling.models.transformer.Transformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.transformer.Transformer</span></code></a></p>
 <p>Implementation of the Transolver model.
 Reference code: <a class="reference external" href="https://github.com/thuml/Transolver/">https://github.com/thuml/Transolver/</a>
 Paper: <a class="reference external" href="https://arxiv.org/abs/2402.02366">https://arxiv.org/abs/2402.02366</a>
@@ -892,7 +966,7 @@ Transolver is a Transformer with a special physics attention mechanism. Hence, w
 and configure it accordingly.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.TransolverConfig" title="noether.core.schemas.models.TransolverConfig"><em>noether.core.schemas.models.TransolverConfig</em></a>) – Configuration of the Transolver model.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.models.transolver.TransolverConfig" title="noether.modeling.models.transolver.TransolverConfig"><em>TransolverConfig</em></a>) – Configuration of the Transolver model.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -982,6 +1056,16 @@ and configure it accordingly.</p>
 <li><a class="reference internal" href="#">noether.modeling.models.transolver</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.transolver.TransolverConfig"><code class="docutils literal notranslate"><span class="pre">TransolverConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.transolver.TransolverConfig.model_config"><code class="docutils literal notranslate"><span class="pre">TransolverConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.transolver.TransolverConfig.attention_arguments"><code class="docutils literal notranslate"><span class="pre">TransolverConfig.attention_arguments</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.transolver.TransolverConfig.set_attention_constructor"><code class="docutils literal notranslate"><span class="pre">TransolverConfig.set_attention_constructor()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.models.transolver.TransolverPlusPlusConfig"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.transolver.TransolverPlusPlusConfig.set_attention_constructor"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusConfig.set_attention_constructor()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.models.transolver.Transolver"><code class="docutils literal notranslate"><span class="pre">Transolver</span></code></a></li>
 </ul>
 </li>

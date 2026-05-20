@@ -9,11 +9,44 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.callbacks.default.online_loss.OnlineLossCallbackConfig
    noether.core.callbacks.default.online_loss.OnlineLossCallback
 
 
 Module Contents
 ---------------
+
+.. py:class:: OnlineLossCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['OnlineLossCallback']
+      :value: None
+
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      Whether to also log to the (console) logger. If False, the loss will only logged to the experiment tracker.
+
 
 .. py:class:: OnlineLossCallback(callback_config, **kwargs)
 

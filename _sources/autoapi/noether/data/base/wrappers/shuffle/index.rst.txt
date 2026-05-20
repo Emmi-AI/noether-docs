@@ -9,15 +9,29 @@ Classes
 
 .. autoapisummary::
 
+   noether.data.base.wrappers.shuffle.ShuffleWrapperConfig
    noether.data.base.wrappers.shuffle.ShuffleWrapper
 
 
 Module Contents
 ---------------
 
+.. py:class:: ShuffleWrapperConfig(/, **data)
+
+   Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapperConfig`
+
+
+   .. py:attribute:: seed
+      :type:  int | None
+      :value: None
+
+
+      Random seed for shuffling. If None, a random seed is used.
+
+
 .. py:class:: ShuffleWrapper(config, dataset)
 
-   Bases: :py:obj:`noether.data.base.Subset`
+   Bases: :py:obj:`noether.data.base.subset.Subset`
 
 
    Shuffles the dataset, optionally with seed.

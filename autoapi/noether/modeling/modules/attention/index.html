@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -899,14 +902,26 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.DotProductAttention" title="noether.modeling.modules.attention.DotProductAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DotProductAttention</span></code></a></p></td>
 <td><p>Scaled dot-product attention module.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttention" title="noether.modeling.modules.attention.PerceiverAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PerceiverAttention</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.DotProductAttentionConfig" title="noether.modeling.modules.attention.DotProductAttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DotProductAttentionConfig</span></code></a></p></td>
+<td><p>Configuration for the Dot Product attention module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttention" title="noether.modeling.modules.attention.PerceiverAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PerceiverAttention</span></code></a></p></td>
 <td><p>Perceiver style attention module. This module is similar to a cross-attention module.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttentionConfig" title="noether.modeling.modules.attention.PerceiverAttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PerceiverAttentionConfig</span></code></a></p></td>
+<td><p>Configuration for the Perceiver attention module.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.TransolverAttention" title="noether.modeling.modules.attention.TransolverAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverAttention</span></code></a></p></td>
 <td><p>Adapted from <a class="reference external" href="https://github.com/thuml/Transolver/blob/main/Car-Design-ShapeNetCar/models/Transolver.py">https://github.com/thuml/Transolver/blob/main/Car-Design-ShapeNetCar/models/Transolver.py</a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttention" title="noether.modeling.modules.attention.TransolverPlusPlusAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverPlusPlusAttention</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.TransolverAttentionConfig" title="noether.modeling.modules.attention.TransolverAttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverAttentionConfig</span></code></a></p></td>
+<td><p>Configuration for the Transolver attention module.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttention" title="noether.modeling.modules.attention.TransolverPlusPlusAttention"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverPlusPlusAttention</span></code></a></p></td>
 <td><p>Transolver++ Attention module as implemented in <a class="reference external" href="https://github.com/thuml/Transolver_plus/blob/main/models/Transolver_plus.py">https://github.com/thuml/Transolver_plus/blob/main/models/Transolver_plus.py</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig" title="noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverPlusPlusAttentionConfig</span></code></a></p></td>
+<td><p>Configuration for the Transolver++ attention module.</p></td>
 </tr>
 </tbody>
 </table>
@@ -921,7 +936,7 @@
 <p>Scaled dot-product attention module.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig" title="noether.core.schemas.modules.AttentionConfig"><em>noether.core.schemas.modules.AttentionConfig</em></a>) – Configuration for the DotProductAttention module. See
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig" title="noether.core.schemas.modules.attention.AttentionConfig"><em>noether.core.schemas.modules.attention.AttentionConfig</em></a>) – Configuration for the DotProductAttention module. See
 <a class="reference internal" href="../../../core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig" title="noether.core.schemas.modules.AttentionConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AttentionConfig</span></code></a> for available options.</p>
 </dd>
 </dl>
@@ -999,6 +1014,22 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.DotProductAttentionConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.attention.</span></span><span class="sig-name descname"><span class="pre">DotProductAttentionConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.DotProductAttentionConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig" title="noether.core.schemas.modules.attention.AttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.modules.attention.AttentionConfig</span></code></a></p>
+<p>Configuration for the Dot Product attention module.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.attention.PerceiverAttention">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.attention.</span></span><span class="sig-name descname"><span class="pre">PerceiverAttention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.PerceiverAttention" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
@@ -1008,7 +1039,7 @@
 from <code class="docutils literal notranslate"><span class="pre">kv</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig" title="noether.core.schemas.modules.AttentionConfig"><em>noether.core.schemas.modules.AttentionConfig</em></a>) – Configuration for the PerceiverAttention module. See
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig" title="noether.core.schemas.modules.attention.AttentionConfig"><em>noether.core.schemas.modules.attention.AttentionConfig</em></a>) – Configuration for the PerceiverAttention module. See
 <a class="reference internal" href="../../../core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig" title="noether.core.schemas.modules.AttentionConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AttentionConfig</span></code></a> for available options.</p>
 </dd>
 </dl>
@@ -1093,6 +1124,33 @@ When provided, <code class="docutils literal notranslate"><span class="pre">kv</
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.PerceiverAttentionConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.attention.</span></span><span class="sig-name descname"><span class="pre">PerceiverAttentionConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.PerceiverAttentionConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig" title="noether.core.schemas.modules.attention.AttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.modules.attention.AttentionConfig</span></code></a></p>
+<p>Configuration for the Perceiver attention module.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.PerceiverAttentionConfig.kv_dim">
+<span class="sig-name descname"><span class="pre">kv_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.attention.PerceiverAttentionConfig.kv_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Dimensionality of the key/value features. If None, use hidden_dim.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.PerceiverAttentionConfig.set_kv_dim">
+<span class="sig-name descname"><span class="pre">set_kv_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.PerceiverAttentionConfig.set_kv_dim" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.attention.TransolverAttention">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.attention.</span></span><span class="sig-name descname"><span class="pre">TransolverAttention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.TransolverAttention" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
@@ -1103,7 +1161,7 @@ When provided, <code class="docutils literal notranslate"><span class="pre">kv</
 - Possibility to mask tokens (required to process variable sized inputs)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig" title="noether.core.schemas.modules.AttentionConfig"><em>noether.core.schemas.modules.AttentionConfig</em></a>) – Configuration for the Transolver attention module. See
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig" title="noether.core.schemas.modules.attention.AttentionConfig"><em>noether.core.schemas.modules.attention.AttentionConfig</em></a>) – Configuration for the Transolver attention module. See
 <a class="reference internal" href="../../../core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig" title="noether.core.schemas.modules.AttentionConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AttentionConfig</span></code></a> for available options.</p>
 </dd>
 </dl>
@@ -1200,13 +1258,35 @@ When provided, <code class="docutils literal notranslate"><span class="pre">kv</
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.TransolverAttentionConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.attention.</span></span><span class="sig-name descname"><span class="pre">TransolverAttentionConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.TransolverAttentionConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig" title="noether.core.schemas.modules.attention.AttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.modules.attention.AttentionConfig</span></code></a></p>
+<p>Configuration for the Transolver attention module.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.TransolverAttentionConfig.num_slices">
+<span class="sig-name descname"><span class="pre">num_slices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.attention.TransolverAttentionConfig.num_slices" title="Link to this definition">¶</a></dt>
+<dd><p>Number of slices to project the input tokens to.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.attention.TransolverPlusPlusAttention">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.attention.</span></span><span class="sig-name descname"><span class="pre">TransolverPlusPlusAttention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.TransolverPlusPlusAttention" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>Transolver++ Attention module as implemented in <a class="reference external" href="https://github.com/thuml/Transolver_plus/blob/main/models/Transolver_plus.py">https://github.com/thuml/Transolver_plus/blob/main/models/Transolver_plus.py</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig" title="noether.core.schemas.modules.AttentionConfig"><em>noether.core.schemas.modules.AttentionConfig</em></a>) – Configuration for the TransolverPlusPlusAttention module. See
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/attention/index.html#noether.core.schemas.modules.attention.AttentionConfig" title="noether.core.schemas.modules.attention.AttentionConfig"><em>noether.core.schemas.modules.attention.AttentionConfig</em></a>) – Configuration for the TransolverPlusPlusAttention module. See
 <a class="reference internal" href="../../../core/schemas/modules/index.html#noether.core.schemas.modules.AttentionConfig" title="noether.core.schemas.modules.AttentionConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AttentionConfig</span></code></a> for available options.</p>
 </dd>
 </dl>
@@ -1290,6 +1370,46 @@ When provided, <code class="docutils literal notranslate"><span class="pre">kv</
 <dd class="field-even"><p>Tensor after applying the transolver attention mechanism.</p>
 </dd>
 </dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.attention.</span></span><span class="sig-name descname"><span class="pre">TransolverPlusPlusAttentionConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.modeling.modules.attention.TransolverAttentionConfig" title="noether.modeling.modules.attention.TransolverAttentionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.modules.attention.TransolverAttentionConfig</span></code></a></p>
+<p>Configuration for the Transolver++ attention module.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.use_overparameterization">
+<span class="sig-name descname"><span class="pre">use_overparameterization</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.use_overparameterization" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to use overparameterization for the slice projection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.use_adaptive_temperature">
+<span class="sig-name descname"><span class="pre">use_adaptive_temperature</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.use_adaptive_temperature" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to use an adaptive temperature for the slice selection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.temperature_activation">
+<span class="sig-name descname"><span class="pre">temperature_activation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'sigmoid'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'softplus'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'exp'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.temperature_activation" title="Link to this definition">¶</a></dt>
+<dd><p>Activation function for the adaptive temperature.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.use_gumbel_softmax">
+<span class="sig-name descname"><span class="pre">use_gumbel_softmax</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.use_gumbel_softmax" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to use Gumbel-Softmax for the slice selection.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1400,6 +1520,7 @@ When provided, <code class="docutils literal notranslate"><span class="pre">kv</
 <li><a class="reference internal" href="#noether.modeling.modules.attention.DotProductAttention.forward"><code class="docutils literal notranslate"><span class="pre">DotProductAttention.forward()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.DotProductAttentionConfig"><code class="docutils literal notranslate"><span class="pre">DotProductAttentionConfig</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttention"><code class="docutils literal notranslate"><span class="pre">PerceiverAttention</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttention.num_heads"><code class="docutils literal notranslate"><span class="pre">PerceiverAttention.num_heads</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttention.head_dim"><code class="docutils literal notranslate"><span class="pre">PerceiverAttention.head_dim</span></code></a></li>
@@ -1412,6 +1533,11 @@ When provided, <code class="docutils literal notranslate"><span class="pre">kv</
 <li><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttention.dropout"><code class="docutils literal notranslate"><span class="pre">PerceiverAttention.dropout</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttention.proj_dropout"><code class="docutils literal notranslate"><span class="pre">PerceiverAttention.proj_dropout</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttention.forward"><code class="docutils literal notranslate"><span class="pre">PerceiverAttention.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttentionConfig"><code class="docutils literal notranslate"><span class="pre">PerceiverAttentionConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttentionConfig.kv_dim"><code class="docutils literal notranslate"><span class="pre">PerceiverAttentionConfig.kv_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.PerceiverAttentionConfig.set_kv_dim"><code class="docutils literal notranslate"><span class="pre">PerceiverAttentionConfig.set_kv_dim()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverAttention"><code class="docutils literal notranslate"><span class="pre">TransolverAttention</span></code></a><ul>
@@ -1430,6 +1556,10 @@ When provided, <code class="docutils literal notranslate"><span class="pre">kv</
 <li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverAttention.forward"><code class="docutils literal notranslate"><span class="pre">TransolverAttention.forward()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverAttentionConfig"><code class="docutils literal notranslate"><span class="pre">TransolverAttentionConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverAttentionConfig.num_slices"><code class="docutils literal notranslate"><span class="pre">TransolverAttentionConfig.num_slices</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttention"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttention</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttention.dim_head"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttention.dim_head</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttention.num_heads"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttention.num_heads</span></code></a></li>
@@ -1445,6 +1575,13 @@ When provided, <code class="docutils literal notranslate"><span class="pre">kv</
 <li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttention.v"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttention.v</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttention.to_out"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttention.to_out</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttention.forward"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttention.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttentionConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.use_overparameterization"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttentionConfig.use_overparameterization</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.use_adaptive_temperature"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttentionConfig.use_adaptive_temperature</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.temperature_activation"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttentionConfig.temperature_activation</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig.use_gumbel_softmax"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusAttentionConfig.use_gumbel_softmax</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.modeling.modules.attention.ATTENTION_REGISTRY"><code class="docutils literal notranslate"><span class="pre">ATTENTION_REGISTRY</span></code></a></li>

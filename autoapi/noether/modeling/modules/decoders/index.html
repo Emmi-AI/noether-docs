@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -883,6 +886,9 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoder" title="noether.modeling.modules.decoders.DeepPerceiverDecoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeepPerceiverDecoder</span></code></a></p></td>
 <td><p>A deep Perceiver decoder module. Can be configured with different number of layers and hidden dimensions.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig" title="noether.modeling.modules.decoders.DeepPerceiverDecoderConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DeepPerceiverDecoderConfig</span></code></a></p></td>
+<td><p>Configuration for the DeepPerceiverDecoder module.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -897,7 +903,7 @@
 However, it should be noted that this layer is not a full-fledged Perceiver, since it only has a cross-attention mechanism.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/modules/decoders/index.html#noether.core.schemas.modules.decoders.DeepPerceiverDecoderConfig" title="noether.core.schemas.modules.decoders.DeepPerceiverDecoderConfig"><em>noether.core.schemas.modules.decoders.DeepPerceiverDecoderConfig</em></a>) – Configuration for the DeepPerceiverDecoder module. See <a class="reference internal" href="../../../core/schemas/modules/decoders/index.html#noether.core.schemas.modules.decoders.DeepPerceiverDecoderConfig" title="noether.core.schemas.modules.decoders.DeepPerceiverDecoderConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeepPerceiverDecoderConfig</span></code></a> for available options.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig" title="noether.modeling.modules.decoders.DeepPerceiverDecoderConfig"><em>DeepPerceiverDecoderConfig</em></a>) – Configuration for the DeepPerceiverDecoder module. See <code class="xref py py-class docutils literal notranslate"><span class="pre">DeepPerceiverDecoderConfig</span></code> for available options.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -925,6 +931,40 @@ However, it should be noted that this layer is not a full-fledged Perceiver, sin
 <dd class="field-odd"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.decoders.DeepPerceiverDecoderConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.decoders.</span></span><span class="sig-name descname"><span class="pre">DeepPerceiverDecoderConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../core/schemas/mixins/index.html#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.mixins.InjectSharedFieldFromParentMixin</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Configuration for the DeepPerceiverDecoder module.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.decoders.DeepPerceiverDecoderConfig.perceiver_block_config">
+<span class="sig-name descname"><span class="pre">perceiver_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../blocks/index.html#noether.modeling.modules.blocks.PerceiverBlockConfig" title="noether.modeling.modules.blocks.PerceiverBlockConfig"><span class="pre">noether.modeling.modules.blocks.PerceiverBlockConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig.perceiver_block_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the Perceiver blocks used in the decoder.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.decoders.DeepPerceiverDecoderConfig.depth">
+<span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig.depth" title="Link to this definition">¶</a></dt>
+<dd><p>Number of deep perceiver decoder layers (i.e., depth of the network). Defaults to 1.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.decoders.DeepPerceiverDecoderConfig.input_dim">
+<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig.input_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Input dimension for the query positions.</p>
 </dd></dl>
 
 </dd></dl>
@@ -1018,6 +1058,12 @@ However, it should be noted that this layer is not a full-fledged Perceiver, sin
 <li><a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoder"><code class="docutils literal notranslate"><span class="pre">DeepPerceiverDecoder</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoder.blocks"><code class="docutils literal notranslate"><span class="pre">DeepPerceiverDecoder.blocks</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoder.forward"><code class="docutils literal notranslate"><span class="pre">DeepPerceiverDecoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig"><code class="docutils literal notranslate"><span class="pre">DeepPerceiverDecoderConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig.perceiver_block_config"><code class="docutils literal notranslate"><span class="pre">DeepPerceiverDecoderConfig.perceiver_block_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig.depth"><code class="docutils literal notranslate"><span class="pre">DeepPerceiverDecoderConfig.depth</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.decoders.DeepPerceiverDecoderConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">DeepPerceiverDecoderConfig.input_dim</span></code></a></li>
 </ul>
 </li>
 </ul>

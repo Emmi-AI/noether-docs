@@ -9,12 +9,27 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.schedules.cosine.CosineDecreasingScheduleConfig
    noether.core.schedules.cosine.CosineDecreasingSchedule
+   noether.core.schedules.cosine.CosineIncreasingScheduleConfig
    noether.core.schedules.cosine.CosineIncreasingSchedule
 
 
 Module Contents
 ---------------
+
+.. py:class:: CosineDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.base.DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.CosineDecreasingSchedule']
+      :value: 'noether.core.schedules.CosineDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
 
 .. py:class:: CosineDecreasingSchedule(config)
 
@@ -33,6 +48,19 @@ Module Contents
            end_value: 0.0
 
    Initialize the scheduler.
+
+
+.. py:class:: CosineIncreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.schemas.IncreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.CosineIncreasingSchedule']
+      :value: 'noether.core.schedules.CosineIncreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
 
 
 .. py:class:: CosineIncreasingSchedule(config)

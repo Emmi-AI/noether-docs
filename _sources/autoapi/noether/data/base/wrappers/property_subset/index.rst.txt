@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: PropertySubsetWrapper(dataset, properties)
 
-   Bases: :py:obj:`noether.data.base.DatasetWrapper`
+   Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapper`
 
 
    Wrapper around arbitrary noether.data.Dataset instances to make __getitem__ load the properties that are defined

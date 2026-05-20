@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -884,12 +887,12 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.models.model.Model">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.models.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_frozen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_container</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.models.model.Model" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.models.base.ModelBase" title="noether.core.models.base.ModelBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBase</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../index.html#noether.core.models.ModelBase" title="noether.core.models.ModelBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.ModelBase</span></code></a></p>
 <p>Model class that should be extended by all custom models.
 Each model has its own optimizer and learning rate scheduler, which are initialized in the <cite>initialize_optimizer</cite> method.</p>
 <p>Example code (dummy code):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.models.single</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.schemas.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBaseConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">noether.core.models.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelBaseConfig</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">MyModelConfig</span><span class="p">(</span><span class="n">ModelBaseConfig</span><span class="p">):</span>
     <span class="n">kind</span><span class="p">:</span> <span class="n">path</span><span class="o">.</span><span class="n">to</span><span class="o">.</span><span class="n">MyModel</span>
@@ -928,7 +931,7 @@ Each model has its own optimizer and learning rate scheduler, which are initiali
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="../../schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><em>noether.core.schemas.models.ModelBaseConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="../index.html#noether.core.models.ModelBaseConfig" title="noether.core.models.ModelBaseConfig"><em>noether.core.models.ModelBaseConfig</em></a>) – Model configuration. See <a class="reference internal" href="../base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> (<a class="reference internal" href="../../utils/training/index.html#noether.core.utils.training.UpdateCounter" title="noether.core.utils.training.UpdateCounter"><em>noether.core.utils.training.UpdateCounter</em></a><em> | </em><em>None</em>) – The <a class="reference internal" href="../../utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>
@@ -964,7 +967,7 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <dd><p>Returns a dict of {model_name: model}, e.g., to log all learning rates of all models/submodels.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="../base/index.html#noether.core.models.base.ModelBase" title="noether.core.models.base.ModelBase">noether.core.models.base.ModelBase</a>]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="../index.html#noether.core.models.ModelBase" title="noether.core.models.ModelBase">noether.core.models.ModelBase</a>]</p>
 </dd>
 </dl>
 </dd></dl>

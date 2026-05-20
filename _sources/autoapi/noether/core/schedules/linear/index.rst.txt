@@ -9,12 +9,27 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.schedules.linear.LinearDecreasingScheduleConfig
    noether.core.schedules.linear.LinearDecreasingSchedule
+   noether.core.schedules.linear.LinearIncreasingScheduleConfig
    noether.core.schedules.linear.LinearIncreasingSchedule
 
 
 Module Contents
 ---------------
+
+.. py:class:: LinearDecreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.base.DecreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.LinearDecreasingSchedule']
+      :value: 'noether.core.schedules.LinearDecreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
 
 .. py:class:: LinearDecreasingSchedule(config)
 
@@ -33,6 +48,19 @@ Module Contents
            end_value: 0.0
 
    Initialize the scheduler.
+
+
+.. py:class:: LinearIncreasingScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.base.IncreasingProgressScheduleConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.LinearIncreasingSchedule']
+      :value: 'noether.core.schedules.LinearIncreasingSchedule'
+
+
+      The fully qualified class name of the scheduler.
 
 
 .. py:class:: LinearIncreasingSchedule(config)

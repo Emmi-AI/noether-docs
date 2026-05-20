@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: AhmedMLDefaultSplitIDs(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+   Bases: :py:obj:`noether.data.base.dataset.DatasetSplitIDs`
 
 
    Default split IDs for AhmedML dataset with validation.

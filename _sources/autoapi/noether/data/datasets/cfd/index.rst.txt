@@ -59,13 +59,13 @@ Package Contents
 
 
    .. py:property:: get_dataset_splits
-      :type: noether.core.schemas.dataset.DatasetSplitIDs
+      :type: noether.data.base.dataset.DatasetSplitIDs
 
 
 
 .. py:class:: AhmedMLDefaultSplitIDs(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+   Bases: :py:obj:`noether.data.base.dataset.DatasetSplitIDs`
 
 
    Default split IDs for AhmedML dataset with validation.
@@ -145,13 +145,13 @@ Package Contents
 
 
    .. py:property:: get_dataset_splits
-      :type: noether.core.schemas.dataset.DatasetSplitIDs
+      :type: noether.data.base.dataset.DatasetSplitIDs
 
 
 
 .. py:class:: DrivAerMLDefaultSplitIDs(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+   Bases: :py:obj:`noether.data.base.dataset.DatasetSplitIDs`
 
 
    Default split IDs for DrivAerML dataset with validation.
@@ -281,7 +281,7 @@ Package Contents
 
 
    .. py:property:: get_dataset_splits
-      :type: noether.core.schemas.dataset.DatasetSplitIDs
+      :type: noether.data.base.dataset.DatasetSplitIDs
 
 
 
@@ -323,7 +323,7 @@ Package Contents
 
 
    .. py:property:: get_dataset_splits
-      :type: noether.core.schemas.dataset.DatasetSplitIDs
+      :type: noether.data.base.dataset.DatasetSplitIDs
 
 
 
@@ -404,7 +404,7 @@ Package Contents
 
 
    .. py:property:: get_dataset_splits
-      :type: noether.core.schemas.dataset.DatasetSplitIDs
+      :type: noether.data.base.dataset.DatasetSplitIDs
 
 
 
@@ -416,7 +416,7 @@ Package Contents
 
 .. py:class:: ShapeNetCarDefaultSplitIDs(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+   Bases: :py:obj:`noether.data.base.dataset.DatasetSplitIDs`
 
 
    Default split IDs for ShapeNet Car dataset with validation.

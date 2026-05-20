@@ -17,6 +17,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.trackers.wandb_tracker.WandBTrackerSchema
    noether.core.trackers.wandb_tracker.WandBTracker
 
 
@@ -27,9 +28,56 @@ Module Contents
    :value: None
 
 
+.. py:class:: WandBTrackerSchema(/, **data)
+
+   Bases: :py:obj:`noether.core.trackers.BaseTrackerConfig`
+
+
+   Base configuration for experiment trackers. All tracker configs should inherit from this class.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: entity
+      :type:  str | None
+      :value: None
+
+
+      The entity name for the W&B project.
+
+
+   .. py:attribute:: project
+      :type:  str | None
+      :value: None
+
+
+      The project name for the W&B project.
+
+
+   .. py:attribute:: mode
+      :type:  Literal['disabled', 'online', 'offline'] | None
+      :value: None
+
+
+      Tracking mode. Can be 'disabled', 'online', or 'offline'.
+
+
+   .. py:attribute:: tags
+      :type:  list[str] | None
+      :value: None
+
+
+      Optional tags for the W&B run.
+
+
 .. py:class:: WandBTracker(tracker_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+   Bases: :py:obj:`noether.core.trackers.BaseTracker`
 
 
    Weights and Biases tracker.

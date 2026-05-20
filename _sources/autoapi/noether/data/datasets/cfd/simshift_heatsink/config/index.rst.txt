@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: SimshiftHeatsinkConfig(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.dataset.DatasetBaseConfig`
+   Bases: :py:obj:`noether.data.base.dataset.DatasetBaseConfig`
 
 
    Configuration for the SIMSHIFT Heatsink dataset.

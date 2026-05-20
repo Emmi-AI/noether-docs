@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/data/preprocessors/normalizers/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Classes: Module Contents:" />
+<meta property="og:description" content="Attributes: Classes: Functions: Module Contents:" />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Classes: Module Contents:" />
+<meta name="description" content="Attributes: Classes: Functions: Module Contents:" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -867,22 +870,70 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.data.preprocessors.normalizers">
 <span id="noether-data-preprocessors-normalizers"></span><h1>noether.data.preprocessors.normalizers<a class="headerlink" href="#module-noether.data.preprocessors.normalizers" title="Link to this heading">¶</a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.TorchTensor" title="noether.data.preprocessors.normalizers.TorchTensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TorchTensor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.FloatOrArray" title="noether.data.preprocessors.normalizers.FloatOrArray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FloatOrArray</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.SequenceOrTensor" title="noether.data.preprocessors.normalizers.SequenceOrTensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SequenceOrTensor</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.AnyNormalizer" title="noether.data.preprocessors.normalizers.AnyNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnyNormalizer</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.NormalizerConfig" title="noether.data.preprocessors.normalizers.NormalizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NormalizerConfig</span></code></a></p></td>
+<td><p>Base configuration for normalizers. All normalizer configs should inherit from this class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig" title="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizerConfig</span></code></a></p></td>
+<td><p>Base configuration for normalizers. All normalizer configs should inherit from this class.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer" title="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizer</span></code></a></p></td>
 <td><p>Preprocessor that shifts and scales the input data, with (x + shift) * scale.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalization" title="noether.data.preprocessors.normalizers.MeanStdNormalization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MeanStdNormalization</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig" title="noether.data.preprocessors.normalizers.MeanStdNormalizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MeanStdNormalizerConfig</span></code></a></p></td>
+<td><p>Base configuration for normalizers. All normalizer configs should inherit from this class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalization" title="noether.data.preprocessors.normalizers.MeanStdNormalization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MeanStdNormalization</span></code></a></p></td>
 <td><p>Normalizes data using mean and standard deviation. It shifts the data by subtracting the mean and scales it by dividing by the standard deviation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig" title="noether.data.preprocessors.normalizers.PositionNormalizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PositionNormalizerConfig</span></code></a></p></td>
+<td><p>Base configuration for normalizers. All normalizer configs should inherit from this class.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer" title="noether.data.preprocessors.normalizers.PositionNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PositionNormalizer</span></code></a></p></td>
 <td><p>Normalizes position data to a range of [0, scale], or [-scale, scale] when <code class="docutils literal notranslate"><span class="pre">zero_center</span></code> is True. It inherits from ShiftAndScaleNormalizer and applies a shift and scale based on the provided raw position min and max values.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizer" title="noether.data.preprocessors.normalizers.FieldNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldNormalizer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig" title="noether.data.preprocessors.normalizers.FieldNormalizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldNormalizerConfig</span></code></a></p></td>
+<td><p>Declarative normalizer config that references dataset statistics by convention.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizer" title="noether.data.preprocessors.normalizers.FieldNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldNormalizer</span></code></a></p></td>
 <td><p>Preprocessor that normalizes a field based on a specified strategy and dataset statistics.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.data.preprocessors.normalizers.validate_tensor" title="noether.data.preprocessors.normalizers.validate_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_tensor</span></code></a>(v)</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -890,6 +941,114 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.validate_tensor">
+<span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">validate_tensor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.validate_tensor" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>Any</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v2.12)">torch.Tensor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.TorchTensor">
+<span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">TorchTensor</span></span><a class="headerlink" href="#noether.data.preprocessors.normalizers.TorchTensor" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.FloatOrArray">
+<span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">FloatOrArray</span></span><a class="headerlink" href="#noether.data.preprocessors.normalizers.FloatOrArray" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.SequenceOrTensor">
+<span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">SequenceOrTensor</span></span><a class="headerlink" href="#noether.data.preprocessors.normalizers.SequenceOrTensor" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.NormalizerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">NormalizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.NormalizerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.lib._RegistryBase</span></code></p>
+<p>Base configuration for normalizers. All normalizer configs should inherit from this class.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.NormalizerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.NormalizerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Kind of normalizer to use, i.e. class path</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.NormalizerConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.data.preprocessors.normalizers.NormalizerConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">ShiftAndScaleNormalizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.data.preprocessors.normalizers.NormalizerConfig" title="noether.data.preprocessors.normalizers.NormalizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NormalizerConfig</span></code></a></p>
+<p>Base configuration for normalizers. All normalizer configs should inherit from this class.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer'</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Kind of normalizer to use, i.e. class path</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.shift">
+<span class="sig-name descname"><span class="pre">shift</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TorchTensor</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.shift" title="Link to this definition">¶</a></dt>
+<dd><p>Value to subtract from the input data. Can be a single value or a Sequence if we want to apply a different shift per dimension.
+Assumed in log scale if logscale is True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TorchTensor</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.scale" title="Link to this definition">¶</a></dt>
+<dd><p>Value to divide the input data by. Can be a single value or a Sequence if we want to apply a different scale per dimension.
+Assumed in log scale if logscale is True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.logscale">
+<span class="sig-name descname"><span class="pre">logscale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.logscale" title="Link to this definition">¶</a></dt>
+<dd><p>If true, the input data is assumed to be in log scale.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.check_shift_scale">
+<span class="sig-name descname"><span class="pre">check_shift_scale</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.check_shift_scale" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">ShiftAndScaleNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalizer_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer" title="Link to this definition">¶</a></dt>
@@ -898,7 +1057,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.ShiftAndScaleNormalizerConfig" title="noether.core.schemas.normalizers.ShiftAndScaleNormalizerConfig"><em>noether.core.schemas.normalizers.ShiftAndScaleNormalizerConfig</em></a>) – Configuration containing shift and scale values. See <a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.ShiftAndScaleNormalizerConfig" title="noether.core.schemas.normalizers.ShiftAndScaleNormalizerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizerConfig</span></code></a> for details.</p></li>
+<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig" title="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig"><em>ShiftAndScaleNormalizerConfig</em></a>) – Configuration containing shift and scale values. See <code class="xref py py-class docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizerConfig</span></code> for details.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
 </dd>
@@ -945,6 +1104,46 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.MeanStdNormalizerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">MeanStdNormalizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.data.preprocessors.normalizers.NormalizerConfig" title="noether.data.preprocessors.normalizers.NormalizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NormalizerConfig</span></code></a></p>
+<p>Base configuration for normalizers. All normalizer configs should inherit from this class.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.data.preprocessors.normalizers.MeanStdNormalization'</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Kind of normalizer to use, i.e. class path</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TorchTensor</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.mean" title="Link to this definition">¶</a></dt>
+<dd><p>mean to subtract from the input data. Can be a single value or a Sequence if we want to apply a different mean per dimension.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.std">
+<span class="sig-name descname"><span class="pre">std</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TorchTensor</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.std" title="Link to this definition">¶</a></dt>
+<dd><p>standard deviation to divide the input data by. Can be a single value or a Sequence if we want to apply a different std per dimension.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.logscale">
+<span class="sig-name descname"><span class="pre">logscale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.logscale" title="Link to this definition">¶</a></dt>
+<dd><p>If true, the input data is assumed to be in log scale.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.MeanStdNormalization">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">MeanStdNormalization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalizer_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.MeanStdNormalization" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer" title="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizer</span></code></a></p>
@@ -952,7 +1151,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.MeanStdNormalizerConfig" title="noether.core.schemas.normalizers.MeanStdNormalizerConfig"><em>noether.core.schemas.normalizers.MeanStdNormalizerConfig</em></a>) – Configuration containing mean and std values. See <a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.MeanStdNormalizerConfig" title="noether.core.schemas.normalizers.MeanStdNormalizerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeanStdNormalizerConfig</span></code></a> for details.</p></li>
+<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig" title="noether.data.preprocessors.normalizers.MeanStdNormalizerConfig"><em>MeanStdNormalizerConfig</em></a>) – Configuration containing mean and std values. See <code class="xref py py-class docutils literal notranslate"><span class="pre">MeanStdNormalizerConfig</span></code> for details.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
 </dd>
@@ -982,6 +1181,62 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">PositionNormalizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.data.preprocessors.normalizers.NormalizerConfig" title="noether.data.preprocessors.normalizers.NormalizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NormalizerConfig</span></code></a></p>
+<p>Base configuration for normalizers. All normalizer configs should inherit from this class.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.data.preprocessors.normalizers.PositionNormalizer'</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Kind of normalizer to use, i.e. class path</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizerConfig.raw_pos_min">
+<span class="sig-name descname"><span class="pre">raw_pos_min</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TorchTensor</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.raw_pos_min" title="Link to this definition">¶</a></dt>
+<dd><p>Minimum raw position values of the entire simulation mesh. Can be a single value or a sequence of values.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizerConfig.raw_pos_max">
+<span class="sig-name descname"><span class="pre">raw_pos_max</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">TorchTensor</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.raw_pos_max" title="Link to this definition">¶</a></dt>
+<dd><p>Maximum raw position values of the entire simulation mesh. Can be a single value or a sequence of values.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizerConfig.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.scale" title="Link to this definition">¶</a></dt>
+<dd><p>Scaling factor, the coordinates will be scaled linearly between [0, scale] (or [-scale, scale] if <code class="docutils literal notranslate"><span class="pre">zero_center</span></code> is True). Defaults to 1000.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizerConfig.zero_center">
+<span class="sig-name descname"><span class="pre">zero_center</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.zero_center" title="Link to this definition">¶</a></dt>
+<dd><p>If True, coordinates are scaled to [-scale, scale] instead of [0, scale].</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizerConfig.check_min_max">
+<span class="sig-name descname"><span class="pre">check_min_max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.check_min_max" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.PositionNormalizer">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">PositionNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalizer_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.PositionNormalizer" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer" title="noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizer</span></code></a></p>
@@ -989,7 +1244,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.PositionNormalizerConfig" title="noether.core.schemas.normalizers.PositionNormalizerConfig"><em>noether.core.schemas.normalizers.PositionNormalizerConfig</em></a>) – Configuration containing raw position min, max, scale, and zero_center values. See <a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.PositionNormalizerConfig" title="noether.core.schemas.normalizers.PositionNormalizerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PositionNormalizerConfig</span></code></a> for details.</p></li>
+<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig" title="noether.data.preprocessors.normalizers.PositionNormalizerConfig"><em>PositionNormalizerConfig</em></a>) – Configuration containing raw position min, max, scale, and zero_center values. See <code class="xref py py-class docutils literal notranslate"><span class="pre">PositionNormalizerConfig</span></code> for details.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
 </dd>
@@ -1029,6 +1284,71 @@
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.FieldNormalizerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">FieldNormalizerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.data.preprocessors.normalizers.NormalizerConfig" title="noether.data.preprocessors.normalizers.NormalizerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NormalizerConfig</span></code></a></p>
+<p>Declarative normalizer config that references dataset statistics by convention.</p>
+<p>Instead of embedding numeric values (mean, std, etc.) directly, this config declares
+<em>how</em> to normalize a field. The actual statistics are resolved at runtime from the
+dataset’s statistics file.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">&quot;mean_std&quot;</span></code> normalization, the builder looks up <code class="docutils literal notranslate"><span class="pre">{field}_mean</span></code> and
+<code class="docutils literal notranslate"><span class="pre">{field}_std</span></code> in the dataset statistics (customizable via <code class="docutils literal notranslate"><span class="pre">stat_keys</span></code>).</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">&quot;min_max&quot;</span></code> normalization, the builder looks up <code class="docutils literal notranslate"><span class="pre">{field}_min</span></code> and
+<code class="docutils literal notranslate"><span class="pre">{field}_max</span></code> (customizable via <code class="docutils literal notranslate"><span class="pre">stat_keys</span></code>).</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.FieldNormalizerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.data.preprocessors.normalizers.FieldNormalizer'</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Kind of normalizer to use, i.e. class path</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.FieldNormalizerConfig.strategy">
+<span class="sig-name descname"><span class="pre">strategy</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'mean_std'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'position'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'min_max'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'mean_std'</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.strategy" title="Link to this definition">¶</a></dt>
+<dd><p>Normalization strategy. <code class="docutils literal notranslate"><span class="pre">&quot;mean_std&quot;</span></code> for mean/std normalization, <code class="docutils literal notranslate"><span class="pre">&quot;min_max&quot;</span></code> for min/max normalization.``”position”`` is an alias for min_max,</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.FieldNormalizerConfig.logscale">
+<span class="sig-name descname"><span class="pre">logscale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.logscale" title="Link to this definition">¶</a></dt>
+<dd><p>If true, the input data is converted to log scale before normalization. Only used for <code class="docutils literal notranslate"><span class="pre">&quot;mean_std&quot;</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.FieldNormalizerConfig.stat_keys">
+<span class="sig-name descname"><span class="pre">stat_keys</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.stat_keys" title="Link to this definition">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">{&quot;mean&quot;:</span> <span class="pre">&quot;custom_mean_key&quot;,</span> <span class="pre">&quot;std&quot;:</span> <span class="pre">&quot;custom_std_key&quot;}</span></code>.
+For <code class="docutils literal notranslate"><span class="pre">&quot;min_max/position&quot;</span></code>: <code class="docutils literal notranslate"><span class="pre">{&quot;min&quot;:</span> <span class="pre">&quot;custom_min_key&quot;,</span> <span class="pre">&quot;max&quot;:</span> <span class="pre">&quot;custom_max_key&quot;}</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional overrides for statistic key lookup. For <code class="docutils literal notranslate"><span class="pre">&quot;mean_std&quot;</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.FieldNormalizerConfig.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.scale" title="Link to this definition">¶</a></dt>
+<dd><p>Scaling factor for position normalization. Coordinates are scaled to [0, scale]. Only used for <code class="docutils literal notranslate"><span class="pre">&quot;position&quot;</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.FieldNormalizerConfig.zero_center">
+<span class="sig-name descname"><span class="pre">zero_center</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.zero_center" title="Link to this definition">¶</a></dt>
+<dd><p>If True, position normalization is zero-centered (scaled to [-scale, scale]) instead of [0, scale]. Only used for <code class="docutils literal notranslate"><span class="pre">&quot;position&quot;</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.FieldNormalizer">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">FieldNormalizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normalizer_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">statistics</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.data.preprocessors.normalizers.FieldNormalizer" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../index.html#noether.data.preprocessors.PreProcessor" title="noether.data.preprocessors.PreProcessor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.data.preprocessors.PreProcessor</span></code></a></p>
@@ -1036,7 +1356,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.FieldNormalizerConfig" title="noether.core.schemas.normalizers.FieldNormalizerConfig"><em>noether.core.schemas.normalizers.FieldNormalizerConfig</em></a>) – Configuration containing the normalization strategy and logscale flag. See <a class="reference internal" href="../../../core/schemas/normalizers/index.html#noether.core.schemas.normalizers.FieldNormalizerConfig" title="noether.core.schemas.normalizers.FieldNormalizerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">FieldNormalizerConfig</span></code></a> for details.</p></li>
+<li><p><strong>normalizer_config</strong> (<a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig" title="noether.data.preprocessors.normalizers.FieldNormalizerConfig"><em>FieldNormalizerConfig</em></a>) – Configuration containing the normalization strategy and logscale flag. See <code class="xref py py-class docutils literal notranslate"><span class="pre">FieldNormalizerConfig</span></code> for details.</p></li>
 <li><p><strong>statistics</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>] </em><em>| </em><em>None</em>) – A dictionary containing the dataset statistics needed for normalization (e.g., mean, std, raw_pos_min, raw_pos_max).</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
@@ -1069,6 +1389,11 @@ If denormalization is not supported, it raises NotImplementedError or decide to 
 </dd></dl>
 
 </dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="noether.data.preprocessors.normalizers.AnyNormalizer">
+<span class="sig-prename descclassname"><span class="pre">noether.data.preprocessors.normalizers.</span></span><span class="sig-name descname"><span class="pre">AnyNormalizer</span></span><a class="headerlink" href="#noether.data.preprocessors.normalizers.AnyNormalizer" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -1153,8 +1478,27 @@ If denormalization is not supported, it raises NotImplementedError or decide to 
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">noether.data.preprocessors.normalizers</a><ul>
+<li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.validate_tensor"><code class="docutils literal notranslate"><span class="pre">validate_tensor()</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.TorchTensor"><code class="docutils literal notranslate"><span class="pre">TorchTensor</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FloatOrArray"><code class="docutils literal notranslate"><span class="pre">FloatOrArray</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.SequenceOrTensor"><code class="docutils literal notranslate"><span class="pre">SequenceOrTensor</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.NormalizerConfig"><code class="docutils literal notranslate"><span class="pre">NormalizerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.NormalizerConfig.kind"><code class="docutils literal notranslate"><span class="pre">NormalizerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.NormalizerConfig.model_config"><code class="docutils literal notranslate"><span class="pre">NormalizerConfig.model_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.kind"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.shift"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizerConfig.shift</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.scale"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizerConfig.scale</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.logscale"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizerConfig.logscale</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizerConfig.check_shift_scale"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizerConfig.check_shift_scale()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizer</span></code></a><ul>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer.scale"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizer.scale</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer.shift"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizer.shift</span></code></a></li>
@@ -1162,10 +1506,26 @@ If denormalization is not supported, it raises NotImplementedError or decide to 
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.ShiftAndScaleNormalizer.denormalize"><code class="docutils literal notranslate"><span class="pre">ShiftAndScaleNormalizer.denormalize()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig"><code class="docutils literal notranslate"><span class="pre">MeanStdNormalizerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.kind"><code class="docutils literal notranslate"><span class="pre">MeanStdNormalizerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.mean"><code class="docutils literal notranslate"><span class="pre">MeanStdNormalizerConfig.mean</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.std"><code class="docutils literal notranslate"><span class="pre">MeanStdNormalizerConfig.std</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalizerConfig.logscale"><code class="docutils literal notranslate"><span class="pre">MeanStdNormalizerConfig.logscale</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalization"><code class="docutils literal notranslate"><span class="pre">MeanStdNormalization</span></code></a><ul>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalization.EPSILON"><code class="docutils literal notranslate"><span class="pre">MeanStdNormalization.EPSILON</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalization.mean"><code class="docutils literal notranslate"><span class="pre">MeanStdNormalization.mean</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.MeanStdNormalization.std"><code class="docutils literal notranslate"><span class="pre">MeanStdNormalization.std</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.kind"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.raw_pos_min"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.raw_pos_min</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.raw_pos_max"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.raw_pos_max</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.scale"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.scale</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.zero_center"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.zero_center</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizerConfig.check_min_max"><code class="docutils literal notranslate"><span class="pre">PositionNormalizerConfig.check_min_max()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer"><code class="docutils literal notranslate"><span class="pre">PositionNormalizer</span></code></a><ul>
@@ -1176,11 +1536,21 @@ If denormalization is not supported, it raises NotImplementedError or decide to 
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.PositionNormalizer.resizing_scale"><code class="docutils literal notranslate"><span class="pre">PositionNormalizer.resizing_scale</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.kind"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.strategy"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.strategy</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.logscale"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.logscale</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.stat_keys"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.stat_keys</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.scale"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.scale</span></code></a></li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizerConfig.zero_center"><code class="docutils literal notranslate"><span class="pre">FieldNormalizerConfig.zero_center</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizer"><code class="docutils literal notranslate"><span class="pre">FieldNormalizer</span></code></a><ul>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizer.normalizer"><code class="docutils literal notranslate"><span class="pre">FieldNormalizer.normalizer</span></code></a></li>
 <li><a class="reference internal" href="#noether.data.preprocessors.normalizers.FieldNormalizer.denormalize"><code class="docutils literal notranslate"><span class="pre">FieldNormalizer.denormalize()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.data.preprocessors.normalizers.AnyNormalizer"><code class="docutils literal notranslate"><span class="pre">AnyNormalizer</span></code></a></li>
 </ul>
 </li>
 </ul>

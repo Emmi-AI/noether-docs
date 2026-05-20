@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/core/schemas/modules/layers/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Submodules: noether.core.schemas.modules.layers.continuous_sincos_embedding, noether.core.schemas.modules.layers.drop_path, noether.core.schemas.modules.layers.layer_scale, noether.core.schemas.mod..." />
+<meta property="og:description" content="Back-compat re-exports for layer configs. Canonical homes are under noether.modeling.modules.layers. Submodules: noether.core.schemas.modules.layers.continuous_sincos_embedding, noether.core.schema..." />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Submodules: noether.core.schemas.modules.layers.continuous_sincos_embedding, noether.core.schemas.modules.layers.drop_path, noether.core.schemas.modules.layers.layer_scale, noether.core.schemas.mod..." />
+<meta name="description" content="Back-compat re-exports for layer configs. Canonical homes are under noether.modeling.modules.layers. Submodules: noether.core.schemas.modules.layers.continuous_sincos_embedding, noether.core.schema..." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -867,6 +870,8 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.core.schemas.modules.layers">
 <span id="noether-core-schemas-modules-layers"></span><h1>noether.core.schemas.modules.layers<a class="headerlink" href="#module-noether.core.schemas.modules.layers" title="Link to this heading">¶</a></h1>
+<p>Back-compat re-exports for layer configs.</p>
+<p>Canonical homes are under <a class="reference internal" href="../../../../modeling/modules/layers/index.html#module-noether.modeling.modules.layers" title="noether.modeling.modules.layers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">noether.modeling.modules.layers</span></code></a>.</p>
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
@@ -880,255 +885,6 @@
 <li class="toctree-l1"><a class="reference internal" href="vectors_conditioner/index.html">noether.core.schemas.modules.layers.vectors_conditioner</a></li>
 </ul>
 </div>
-</section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
-<div class="table-wrapper autosummary longtable docutils container">
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig" title="noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig</span></code></a></p></td>
-<td><p>Configuration for Continuous Sine-Cosine Embedding layer.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.modules.layers.UnquantizedDropPathConfig" title="noether.core.schemas.modules.layers.UnquantizedDropPathConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnquantizedDropPathConfig</span></code></a></p></td>
-<td><p>Configuration for the UnquantizedDropPath layer.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.modules.layers.LayerScaleConfig" title="noether.core.schemas.modules.layers.LayerScaleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LayerScaleConfig</span></code></a></p></td>
-<td><p>Configuration for Layer Scale module.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearProjectionConfig</span></code></a></p></td>
-<td><p>Configuration for a LinearProjection layer.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig" title="noether.core.schemas.modules.layers.RopeFrequencyConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RopeFrequencyConfig</span></code></a></p></td>
-<td><p>Configuration for RoPE frequency settings.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="package-contents">
-<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.modules.layers.</span></span><span class="sig-name descname"><span class="pre">ContinuousSincosEmbeddingConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Configuration for Continuous Sine-Cosine Embedding layer.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.hidden_dim">
-<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.hidden_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Dimensionality of the output embedding.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.input_dim">
-<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.input_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Dimensionality of the input coordinates.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.mode">
-<span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'wavelength'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'nerf'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.mode" title="Link to this definition">¶</a></dt>
-<dd><p>Frequency schedule.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;wavelength&quot;</span></code> (default): transformer-style geometric wavelengths from <code class="docutils literal notranslate"><span class="pre">1</span></code> to
-<code class="docutils literal notranslate"><span class="pre">max_wavelength</span></code>. Suitable for integer / unnormalized coordinates.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;nerf&quot;</span></code>: NeRF-style log-spaced frequencies from <code class="docutils literal notranslate"><span class="pre">π</span></code> to <code class="docutils literal notranslate"><span class="pre">π</span> <span class="pre">*</span> <span class="pre">max_frequency</span></code>.
-Suitable for coordinates normalized to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code>. The <code class="docutils literal notranslate"><span class="pre">L</span></code> available bands
-are distributed evenly in log-frequency across this range.</p></li>
-</ul>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.max_wavelength">
-<span class="sig-name descname"><span class="pre">max_wavelength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.max_wavelength" title="Link to this definition">¶</a></dt>
-<dd><p>Maximum wavelength. Only used when <code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">==</span> <span class="pre">&quot;wavelength&quot;</span></code>.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.max_frequency">
-<span class="sig-name descname"><span class="pre">max_frequency</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.max_frequency" title="Link to this definition">¶</a></dt>
-<dd><p>Highest frequency band for NeRF mode, in units of <code class="docutils literal notranslate"><span class="pre">π</span></code>. The <code class="docutils literal notranslate"><span class="pre">L</span></code> frequencies
-are log-spaced between <code class="docutils literal notranslate"><span class="pre">π</span></code> (wavelength 2, spans the <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> domain) and
-<code class="docutils literal notranslate"><span class="pre">π</span> <span class="pre">*</span> <span class="pre">max_frequency</span></code> (wavelength <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">/</span> <span class="pre">max_frequency</span></code>). Required when
-<code class="docutils literal notranslate"><span class="pre">mode</span> <span class="pre">==</span> <span class="pre">&quot;nerf&quot;</span></code>; pick based on the smallest spatial scale you need to resolve
-in normalized coordinates (rough heuristic: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">typical_point_spacing</span></code>).</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.UnquantizedDropPathConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.modules.layers.</span></span><span class="sig-name descname"><span class="pre">UnquantizedDropPathConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.layers.UnquantizedDropPathConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Configuration for the UnquantizedDropPath layer.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.UnquantizedDropPathConfig.drop_prob">
-<span class="sig-name descname"><span class="pre">drop_prob</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.UnquantizedDropPathConfig.drop_prob" title="Link to this definition">¶</a></dt>
-<dd><p>Probability of dropping a path during training.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.UnquantizedDropPathConfig.scale_by_keep">
-<span class="sig-name descname"><span class="pre">scale_by_keep</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.UnquantizedDropPathConfig.scale_by_keep" title="Link to this definition">¶</a></dt>
-<dd><p>Up-scales activations during training by 1 - drop_prob to avoid train-test mismatch. Defaults to True.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LayerScaleConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.modules.layers.</span></span><span class="sig-name descname"><span class="pre">LayerScaleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.layers.LayerScaleConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Configuration for Layer Scale module.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LayerScaleConfig.hidden_dim">
-<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.LayerScaleConfig.hidden_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Number of dimensions of the input tensor to be scaled.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LayerScaleConfig.init_values">
-<span class="sig-name descname"><span class="pre">init_values</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.LayerScaleConfig.init_values" title="Link to this definition">¶</a></dt>
-<dd><p>Initial gamme scale value. Defaults to 1e-5.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LinearProjectionConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.modules.layers.</span></span><span class="sig-name descname"><span class="pre">LinearProjectionConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.layers.LinearProjectionConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Configuration for a LinearProjection layer.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LinearProjectionConfig.input_dim">
-<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.input_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Input dimension of the linear projection.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LinearProjectionConfig.output_dim">
-<span class="sig-name descname"><span class="pre">output_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.output_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Output dimension of the linear projection.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LinearProjectionConfig.ndim">
-<span class="sig-name descname"><span class="pre">ndim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.ndim" title="Link to this definition">¶</a></dt>
-<dd><p>Number of dimensions of the input domain. Either None (Linear projection),  1D (sequence), 2D, or 3D. Defaults to None.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LinearProjectionConfig.bias">
-<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.bias" title="Link to this definition">¶</a></dt>
-<dd><p>If true, use bias term in the linear projection. Defaults to True.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LinearProjectionConfig.optional">
-<span class="sig-name descname"><span class="pre">optional</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.optional" title="Link to this definition">¶</a></dt>
-<dd><p>If true and input_dim==output_dim (i.e., there is no up/down projection), then the identity mapping is used. Defaults to False.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LinearProjectionConfig.init_weights">
-<span class="sig-name descname"><span class="pre">init_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.types.InitWeightsMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.init_weights" title="Link to this definition">¶</a></dt>
-<dd><p>Initialization method of the weights of the MLP. Options are ‘torch’ (i.e., similar to the module) or ‘truncnormal002’, or ‘zero’. Defaults to ‘torch’.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.LinearProjectionConfig.validate_ndim">
-<span class="sig-name descname"><span class="pre">validate_ndim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.validate_ndim" title="Link to this definition">¶</a></dt>
-<dd><p>Validate the ndim field to ensure it is either None, 1, 2, or 3.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Self</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.RopeFrequencyConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.modules.layers.</span></span><span class="sig-name descname"><span class="pre">RopeFrequencyConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Configuration for RoPE frequency settings.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.RopeFrequencyConfig.hidden_dim">
-<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig.hidden_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Dimensionality of frequencies (in transformers this should be the head dimension).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.RopeFrequencyConfig.input_dim">
-<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig.input_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Dimensionality of the coordinates (e.g., 2 for 2D coordinates, 3 for 3D coordinates).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.RopeFrequencyConfig.max_wavelength">
-<span class="sig-name descname"><span class="pre">max_wavelength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig.max_wavelength" title="Link to this definition">¶</a></dt>
-<dd><p>10000.0</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Theta parameter for the transformer sine/cosine embedding. Default</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.layers.RopeFrequencyConfig.implementation">
-<span class="sig-name descname"><span class="pre">implementation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'real'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'complex'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig.implementation" title="Link to this definition">¶</a></dt>
-<dd><p>“real” -&gt; basic implementation using real coordinates (this is slow and only here for backward compatibility).
-“complex” -&gt; fast implementation of rotation via complex multiplication. Default: “real”.</p>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 </section>
 
@@ -1213,45 +969,6 @@ validated to form a valid model.</p>
             <ul>
 <li><a class="reference internal" href="#">noether.core.schemas.modules.layers</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-<li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.hidden_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.input_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.mode"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.mode</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.max_wavelength"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.max_wavelength</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.ContinuousSincosEmbeddingConfig.max_frequency"><code class="docutils literal notranslate"><span class="pre">ContinuousSincosEmbeddingConfig.max_frequency</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.UnquantizedDropPathConfig"><code class="docutils literal notranslate"><span class="pre">UnquantizedDropPathConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.UnquantizedDropPathConfig.drop_prob"><code class="docutils literal notranslate"><span class="pre">UnquantizedDropPathConfig.drop_prob</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.UnquantizedDropPathConfig.scale_by_keep"><code class="docutils literal notranslate"><span class="pre">UnquantizedDropPathConfig.scale_by_keep</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LayerScaleConfig"><code class="docutils literal notranslate"><span class="pre">LayerScaleConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LayerScaleConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">LayerScaleConfig.hidden_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LayerScaleConfig.init_values"><code class="docutils literal notranslate"><span class="pre">LayerScaleConfig.init_values</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LinearProjectionConfig"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.input_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.output_dim"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.output_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.ndim"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.ndim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.bias"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.bias</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.optional"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.optional</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.init_weights</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.LinearProjectionConfig.validate_ndim"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.validate_ndim()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig"><code class="docutils literal notranslate"><span class="pre">RopeFrequencyConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">RopeFrequencyConfig.hidden_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">RopeFrequencyConfig.input_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig.max_wavelength"><code class="docutils literal notranslate"><span class="pre">RopeFrequencyConfig.max_wavelength</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.layers.RopeFrequencyConfig.implementation"><code class="docutils literal notranslate"><span class="pre">RopeFrequencyConfig.implementation</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>

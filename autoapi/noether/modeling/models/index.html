@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -885,35 +888,56 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.AnchoredBranchedUPT" title="noether.modeling.models.AnchoredBranchedUPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchoredBranchedUPT</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig" title="noether.modeling.models.AnchorBranchedUPTConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code></a></p></td>
+<td><p>Configuration for the Anchored Branched UPT (AB-UPT) model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.AnchoredBranchedUPT" title="noether.modeling.models.AnchoredBranchedUPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchoredBranchedUPT</span></code></a></p></td>
 <td><p>Implementation of the Anchored Branched UPT (AB-UPT) model.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.AeroABUPT" title="noether.modeling.models.AeroABUPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroABUPT</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.AeroABUPT" title="noether.modeling.models.AeroABUPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroABUPT</span></code></a></p></td>
 <td><p>Aerodynamic Anchored-Branched UPT wrapper.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.AeroTransformer" title="noether.modeling.models.AeroTransformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroTransformer</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.AeroTransformer" title="noether.modeling.models.AeroTransformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroTransformer</span></code></a></p></td>
 <td><p>Aerodynamic Transformer wrapper.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.AeroTransformerConfig" title="noether.modeling.models.AeroTransformerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroTransformerConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.AeroTransformerConfig" title="noether.modeling.models.AeroTransformerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroTransformerConfig</span></code></a></p></td>
 <td><p>Transformer config extended with aerodynamic data specifications.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.AeroTransolver" title="noether.modeling.models.AeroTransolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroTransolver</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.AeroTransolver" title="noether.modeling.models.AeroTransolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroTransolver</span></code></a></p></td>
 <td><p>Aerodynamic Transolver wrapper.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.AeroTransolverConfig" title="noether.modeling.models.AeroTransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroTransolverConfig</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.AeroTransolverConfig" title="noether.modeling.models.AeroTransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroTransolverConfig</span></code></a></p></td>
 <td><p>Transolver config extended with aerodynamic data specifications.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.AeroUPT" title="noether.modeling.models.AeroUPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroUPT</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.AeroUPT" title="noether.modeling.models.AeroUPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AeroUPT</span></code></a></p></td>
 <td><p>Aerodynamic UPT wrapper.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.Transformer" title="noether.modeling.models.Transformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transformer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.Transformer" title="noether.modeling.models.Transformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transformer</span></code></a></p></td>
 <td><p>Implementation of a Transformer model.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.UPT" title="noether.modeling.models.UPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UPT</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.TransformerConfig" title="noether.modeling.models.TransformerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerConfig</span></code></a></p></td>
+<td><p>Configuration for a Transformer model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.Transolver" title="noether.modeling.models.Transolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Transolver</span></code></a></p></td>
+<td><p>Implementation of the Transolver model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.TransolverConfig" title="noether.modeling.models.TransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverConfig</span></code></a></p></td>
+<td><p>Configuration for a Transolver model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.TransolverPlusPlusConfig" title="noether.modeling.models.TransolverPlusPlusConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverPlusPlusConfig</span></code></a></p></td>
+<td><p>Configuration for a Transolver++ model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.UPT" title="noether.modeling.models.UPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UPT</span></code></a></p></td>
 <td><p>Implementation of the UPT (Universal Physics Transformer) model.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.UPTConfig" title="noether.modeling.models.UPTConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UPTConfig</span></code></a></p></td>
+<td><p>Configuration for a UPT model.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.ViT" title="noether.modeling.models.ViT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViT</span></code></a></p></td>
 <td><p>Vision Transformer for spatial regression on continuous-coordinate grids.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.ViTConfig" title="noether.modeling.models.ViTConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ViTConfig</span></code></a></p></td>
+<td><p>Configuration for ViT model</p></td>
 </tr>
 </tbody>
 </table>
@@ -921,6 +945,265 @@
 </section>
 <section id="package-contents">
 <h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">AnchorBranchedUPTConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBaseConfig</span></code></a>, <a class="reference internal" href="../../core/schemas/mixins/index.html#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.mixins.InjectSharedFieldFromParentMixin</span></code></a></p>
+<p>Configuration for the Anchored Branched UPT (AB-UPT) model.</p>
+<p>AB-UPT is built from three configurable stages:</p>
+<ol class="arabic simple">
+<li><p><strong>Geometry encoder</strong> (optional): a <code class="xref py py-class docutils literal notranslate"><span class="pre">SupernodePooling</span></code> encoder followed by
+<code class="docutils literal notranslate"><span class="pre">geometry_depth</span></code> standard transformer blocks. Only instantiated when at least
+one <code class="docutils literal notranslate"><span class="pre">perceiver</span></code> / <code class="docutils literal notranslate"><span class="pre">perceiver_untied</span></code> block is present in <code class="docutils literal notranslate"><span class="pre">physics_blocks</span></code>
+and <code class="docutils literal notranslate"><span class="pre">supernode_pooling_config</span></code> is provided.</p></li>
+<li><p><strong>Physics trunk</strong>: a stack of blocks listed in <code class="docutils literal notranslate"><span class="pre">physics_blocks</span></code> operating on
+per-domain anchor (and optionally query) tokens. The block string controls the
+attention pattern and weight sharing — see <code class="docutils literal notranslate"><span class="pre">physics_blocks</span></code> below.</p></li>
+<li><p><strong>Per-domain decoder</strong> (optional): <code class="docutils literal notranslate"><span class="pre">num_domain_decoder_blocks[name]</span></code>
+self-attention blocks with <strong>untied weights per domain</strong>, followed by a linear
+projection to that domain’s output fields.</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">hidden_dim</span></code> is a shared field — it is auto-injected into
+<code class="docutils literal notranslate"><span class="pre">transformer_block_config</span></code> and <code class="docutils literal notranslate"><span class="pre">supernode_pooling_config</span></code> via
+<code class="xref py py-class docutils literal notranslate"><span class="pre">InjectSharedFieldFromParentMixin</span></code>, so it only needs to be set once at the top
+level. See <a class="reference internal" href="../../../../reference/config_inheritance.html"><span class="doc">Configuration Inheritance</span></a>.</p>
+<section id="configuration-guide">
+<h3>Configuration guide<a class="headerlink" href="#configuration-guide" title="Link to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../../../../guides/training/configuring_ab_upt.html"><span class="doc">Configuring AB-UPT</span></a> for a step-by-step walkthrough of how
+to compose physics blocks, choose between tied and <code class="docutils literal notranslate"><span class="pre">_untied</span></code> variants, and wire up
+the per-domain decoder.</p>
+<p>Concrete examples (YAML):</p>
+<ul class="simple">
+<li><p>Aerodynamics (multi-domain, surface + volume):
+<a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/recipes/aero_cfd/configs/model/ab_upt.yaml">recipes/aero_cfd/configs/model/ab_upt.yaml</a></p></li>
+<li><p>Heat transfer (single-domain, volume only with parameter conditioning):
+<a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/recipes/heat_transfer/configs/model/ab_upt.yaml">recipes/heat_transfer/configs/model/ab_upt.yaml</a></p></li>
+</ul>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schemas.models.AnchorBranchedUPTConfig'</span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Kind of model to use, i.e. class path</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.supernode_pooling_config">
+<span class="sig-name descname"><span class="pre">supernode_pooling_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/encoders/supernode_pooling/index.html#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig" title="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig"><span class="pre">noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../core/schemas/mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.supernode_pooling_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.transformer_block_config">
+<span class="sig-name descname"><span class="pre">transformer_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlockConfig" title="noether.modeling.modules.blocks.transformer.TransformerBlockConfig"><span class="pre">noether.modeling.modules.blocks.transformer.TransformerBlockConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../core/schemas/mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.transformer_block_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.geometry_depth">
+<span class="sig-name descname"><span class="pre">geometry_depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.geometry_depth" title="Link to this definition">¶</a></dt>
+<dd><p>Number of transformer blocks in the geometry encoder.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Hidden dimension of the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.condition_dim">
+<span class="sig-name descname"><span class="pre">condition_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.condition_dim" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.physics_blocks">
+<span class="sig-name descname"><span class="pre">physics_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'self'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'shared'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'self_untied'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross_untied'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint_untied'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver_untied'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.physics_blocks" title="Link to this definition">¶</a></dt>
+<dd><p>Types of physics blocks to use in the model.</p>
+<p>self/shared: Self-attention within a branch/domain. Weights are shared between all domains.
+cross: Cross-attention between domains. Each domain attends to all other domains’ anchors, weights are shared.
+joint: Joint attention over all domain points. Full self-attention over all points, weights are shared.
+perceiver: Perceiver-style cross-attention to geometry encoding.
+self_untied: Self-attention within a branch with untied weights for each domain.
+cross_untied: Cross-attention between domains with untied weights for each domain.
+joint_untied: Joint attention over all domain points with untied weights for each domain.
+perceiver_untied: Perceiver cross-attention with geometry encoding and untied weights per domain.</p>
+<p>Note: “shared” is a deprecated alias for “self” and will be removed in a future release.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.num_domain_decoder_blocks">
+<span class="sig-name descname"><span class="pre">num_domain_decoder_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.num_domain_decoder_blocks" title="Link to this definition">¶</a></dt>
+<dd><p>2, “volume”: 2}.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number of final domain-specific decoder blocks with self attention and no weight sharing, e.g. {“surface”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.init_weights">
+<span class="sig-name descname"><span class="pre">init_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.types.InitWeightsMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.init_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Weight initialization of linear layers. Defaults to “truncnormal002”.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.drop_path_rate">
+<span class="sig-name descname"><span class="pre">drop_path_rate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.drop_path_rate" title="Link to this definition">¶</a></dt>
+<dd><p>Drop path rate for stochastic depth. Defaults to 0.0 (no drop path).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.geometry_conditioning_dims">
+<span class="sig-name descname"><span class="pre">geometry_conditioning_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../data/schemas/index.html#noether.data.schemas.FieldDimSpec" title="noether.data.schemas.FieldDimSpec"><span class="pre">noether.data.schemas.FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.geometry_conditioning_dims" title="Link to this definition">¶</a></dt>
+<dd><p>Per-named-field conditioning spec for geometry transformer blocks. When
+left unset, defaults to <code class="docutils literal notranslate"><span class="pre">data_specs.conditioning_dims</span></code> so the geometry
+branch sees the same conditioning as the rest of the model. An explicit
+empty <code class="xref py py-class docutils literal notranslate"><span class="pre">FieldDimSpec</span></code> (<code class="docutils literal notranslate"><span class="pre">total_dim</span> <span class="pre">==</span> <span class="pre">0</span></code>) opts out — useful for
+diffusion, where timestep modulation should touch physics + per-domain
+decoders but not the geometry branch (geometry is invariant to noise level).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.data_specs">
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../data/schemas/index.html#noether.data.schemas.ModelDataSpecs" title="noether.data.schemas.ModelDataSpecs"><span class="pre">noether.data.schemas.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.data_specs" title="Link to this definition">¶</a></dt>
+<dd><p>Data specifications for the model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.migrate_shared_to_self">
+<span class="sig-name descname"><span class="pre">migrate_shared_to_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.migrate_shared_to_self" title="Link to this definition">¶</a></dt>
+<dd><p>Migrate deprecated ‘shared’ block type to ‘self’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig" title="noether.modeling.models.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.rope_frequency_config">
+<span class="sig-name descname"><span class="pre">rope_frequency_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.rope_frequency_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/layers/rope_frequency/index.html#noether.modeling.modules.layers.rope_frequency.RopeFrequencyConfig" title="noether.modeling.modules.layers.rope_frequency.RopeFrequencyConfig">noether.modeling.modules.layers.rope_frequency.RopeFrequencyConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.pos_embed_config">
+<span class="sig-name descname"><span class="pre">pos_embed_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.pos_embed_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/layers/continuous_sincos_embed/index.html#noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig" title="noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig">noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.bias_mlp_config">
+<span class="sig-name descname"><span class="pre">bias_mlp_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.bias_mlp_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/mlp/index.html#noether.modeling.modules.mlp.MLPConfig" title="noether.modeling.modules.mlp.MLPConfig">noether.modeling.modules.mlp.MLPConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.perceiver_block_config">
+<span class="sig-name descname"><span class="pre">perceiver_block_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.perceiver_block_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/blocks/perceiver/index.html#noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig" title="noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig">noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.domain_decoder_configs">
+<span class="sig-name descname"><span class="pre">domain_decoder_configs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.domain_decoder_configs" title="Link to this definition">¶</a></dt>
+<dd><p>Per-domain decoder projection configs, keyed by domain name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="../modules/layers/linear_projection/index.html#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig" title="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig">noether.modeling.modules.layers.linear_projection.LinearProjectionConfig</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.conditioner_config">
+<span class="sig-name descname"><span class="pre">conditioner_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.conditioner_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the scalar conditioner module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/layers/vectors_conditioner/index.html#noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig" title="noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig">noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.set_condition_dim">
+<span class="sig-name descname"><span class="pre">set_condition_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.set_condition_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Set condition_dim in transformer_block_config based on data_specs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig" title="noether.modeling.models.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.geometry_transformer_block_config">
+<span class="sig-name descname"><span class="pre">geometry_transformer_block_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.geometry_transformer_block_config" title="Link to this definition">¶</a></dt>
+<dd><p>Transformer block config for geometry encoder, with condition_dim set to geometry_conditioning_dims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlockConfig" title="noether.modeling.modules.blocks.transformer.TransformerBlockConfig">noether.modeling.modules.blocks.transformer.TransformerBlockConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.geometry_conditioner_config">
+<span class="sig-name descname"><span class="pre">geometry_conditioner_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.geometry_conditioner_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the scalar conditioner module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/layers/vectors_conditioner/index.html#noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig" title="noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig">noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.AnchorBranchedUPTConfig.validate_parameters">
+<span class="sig-name descname"><span class="pre">validate_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchorBranchedUPTConfig.validate_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Validate validity of parameters across the model and its submodules.</p>
+<p>Ensures that hidden_dim is consistent across parent and all submodules.
+Note: transformer_block_config validates hidden_dim % num_heads == 0 in its own validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig" title="noether.modeling.models.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.AnchoredBranchedUPT">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">AnchoredBranchedUPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AnchoredBranchedUPT" title="Link to this definition">¶</a></dt>
@@ -930,14 +1213,14 @@
 so it can be used directly by providing the appropriate input tensors. See
 <a class="reference internal" href="#noether.modeling.models.AnchoredBranchedUPT.forward" title="noether.modeling.models.AnchoredBranchedUPT.forward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">forward()</span></code></a> for the expected inputs.</p>
 <p>The architecture is fully driven by
-<a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig" title="noether.core.schemas.models.AnchorBranchedUPTConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code></a>: the geometry encoder
+<code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code>: the geometry encoder
 depth, the ordering and type of physics blocks, and the per-domain decoder depths
 are all configured there. For a walkthrough of how to assemble a config (and
 concrete YAML examples from the <code class="docutils literal notranslate"><span class="pre">aero_cfd</span></code> and <code class="docutils literal notranslate"><span class="pre">heat_transfer</span></code> recipes), see
 <a class="reference internal" href="../../../../guides/training/configuring_ab_upt.html"><span class="doc">Configuring AB-UPT</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig" title="noether.core.schemas.models.AnchorBranchedUPTConfig"><em>noether.core.schemas.models.AnchorBranchedUPTConfig</em></a>) – Configuration for the AB-UPT model. See <a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig" title="noether.core.schemas.models.AnchorBranchedUPTConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code></a> for details.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig" title="noether.modeling.models.AnchorBranchedUPTConfig"><em>AnchorBranchedUPTConfig</em></a>) – Configuration for the AB-UPT model. See <code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code> for details.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1175,7 +1458,7 @@ or leave it <code class="docutils literal notranslate"><span class="pre">None</s
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.AeroABUPT">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">AeroABUPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AeroABUPT" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../core/models/model/index.html#noether.core.models.model.Model" title="noether.core.models.model.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.model.Model</span></code></a></p>
 <p>Aerodynamic Anchored-Branched UPT wrapper.</p>
 <p>Bridges the factory’s <code class="docutils literal notranslate"><span class="pre">(config,</span> <span class="pre">**kwargs)</span></code> instantiation pattern to the core model.
 Converts flat kwargs (<code class="docutils literal notranslate"><span class="pre">surface_anchor_position</span></code>, <code class="docutils literal notranslate"><span class="pre">volume_anchor_position</span></code>, …)
@@ -1184,7 +1467,7 @@ into the domain-dict format expected by <a class="reference internal" href="#noe
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig" title="noether.core.schemas.models.AnchorBranchedUPTConfig"><em>noether.core.schemas.models.AnchorBranchedUPTConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="ab_upt/index.html#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig" title="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig"><em>noether.modeling.models.ab_upt.AnchorBranchedUPTConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> – The <a class="reference internal" href="../../core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>
@@ -1214,7 +1497,7 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.AeroTransformer">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">AeroTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AeroTransformer" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../core/models/model/index.html#noether.core.models.model.Model" title="noether.core.models.model.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.model.Model</span></code></a></p>
 <p>Aerodynamic Transformer wrapper.</p>
 <p>End-to-end forward for aero CFD: positional encoding, optional RoPE, optional physics features,
 surface/volume bias, Transformer backbone, output projection, and output gathering.</p>
@@ -1222,7 +1505,7 @@ surface/volume bias, Transformer backbone, output projection, and output gatheri
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.modeling.models.AeroTransformerConfig" title="noether.modeling.models.AeroTransformerConfig"><em>AeroTransformerConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.modeling.models.AeroTransformerConfig" title="noether.modeling.models.AeroTransformerConfig"><em>AeroTransformerConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> – The <a class="reference internal" href="../../core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>
@@ -1300,7 +1583,7 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.AeroTransformerConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">AeroTransformerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AeroTransformerConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.TransformerConfig" title="noether.core.schemas.models.TransformerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.TransformerConfig</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="transformer/index.html#noether.modeling.models.transformer.TransformerConfig" title="noether.modeling.models.transformer.TransformerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.transformer.TransformerConfig</span></code></a></p>
 <p>Transformer config extended with aerodynamic data specifications.</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
@@ -1313,7 +1596,7 @@ validated to form a valid model.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.models.AeroTransformerConfig.data_specs">
-<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><span class="pre">noether.core.schemas.dataset.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.AeroTransformerConfig.data_specs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../data/schemas/index.html#noether.data.schemas.ModelDataSpecs" title="noether.data.schemas.ModelDataSpecs"><span class="pre">noether.data.schemas.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.AeroTransformerConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1321,14 +1604,14 @@ validated to form a valid model.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.AeroTransolver">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">AeroTransolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AeroTransolver" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../core/models/model/index.html#noether.core.models.model.Model" title="noether.core.models.model.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.model.Model</span></code></a></p>
 <p>Aerodynamic Transolver wrapper.</p>
 <p>Like <code class="docutils literal notranslate"><span class="pre">AeroTransformer</span></code> but adds the Transolver-specific learnable placeholder parameter.</p>
 <p>Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.modeling.models.AeroTransolverConfig" title="noether.modeling.models.AeroTransolverConfig"><em>AeroTransolverConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="#noether.modeling.models.AeroTransolverConfig" title="noether.modeling.models.AeroTransolverConfig"><em>AeroTransolverConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> – The <a class="reference internal" href="../../core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>
@@ -1406,7 +1689,7 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.AeroTransolverConfig">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">AeroTransolverConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AeroTransolverConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.TransolverConfig" title="noether.core.schemas.models.TransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.models.TransolverConfig</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="transolver/index.html#noether.modeling.models.transolver.TransolverConfig" title="noether.modeling.models.transolver.TransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.transolver.TransolverConfig</span></code></a></p>
 <p>Transolver config extended with aerodynamic data specifications.</p>
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
@@ -1419,7 +1702,7 @@ validated to form a valid model.</p>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="noether.modeling.models.AeroTransolverConfig.data_specs">
-<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../core/schemas/dataset/index.html#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><span class="pre">noether.core.schemas.dataset.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.AeroTransolverConfig.data_specs" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../data/schemas/index.html#noether.data.schemas.ModelDataSpecs" title="noether.data.schemas.ModelDataSpecs"><span class="pre">noether.data.schemas.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.AeroTransolverConfig.data_specs" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1427,7 +1710,7 @@ validated to form a valid model.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.AeroUPT">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">AeroUPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.AeroUPT" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../../core/models/index.html#noether.core.models.Model" title="noether.core.models.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../../core/models/model/index.html#noether.core.models.model.Model" title="noether.core.models.model.Model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.model.Model</span></code></a></p>
 <p>Aerodynamic UPT wrapper.</p>
 <p>Combines separate surface/volume query positions into the single <code class="docutils literal notranslate"><span class="pre">query_position</span></code>
 that the core UPT expects, and splits outputs using <code class="docutils literal notranslate"><span class="pre">ModelDataSpecs</span></code>.
@@ -1436,7 +1719,7 @@ Supports optional surface/volume bias layers and physics feature projection on q
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model_config</strong> (<a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.UPTConfig" title="noether.core.schemas.models.UPTConfig"><em>noether.core.schemas.models.UPTConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.ModelBaseConfig" title="noether.core.schemas.models.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
+<li><p><strong>model_config</strong> (<a class="reference internal" href="upt/index.html#noether.modeling.models.upt.UPTConfig" title="noether.modeling.models.upt.UPTConfig"><em>noether.modeling.models.upt.UPTConfig</em></a>) – Model configuration. See <a class="reference internal" href="../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code></a> for available options.</p></li>
 <li><p><strong>update_counter</strong> – The <a class="reference internal" href="../../core/utils/training/counter/index.html#noether.core.utils.training.counter.UpdateCounter" title="noether.core.utils.training.counter.UpdateCounter"><code class="xref py py-class docutils literal notranslate"><span class="pre">UpdateCounter</span></code></a> provided to the optimizer.</p></li>
 <li><p><strong>is_frozen</strong> – If true, will set <cite>requires_grad</cite> of all parameters to false. Will also put the model into eval
 mode (e.g., to put Dropout or BatchNorm into eval mode).</p></li>
@@ -1496,7 +1779,7 @@ This is currently unused but helpful for quick prototyping only, evaluating forw
 <p>Implementation of a Transformer model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.TransformerConfig" title="noether.core.schemas.models.TransformerConfig"><em>noether.core.schemas.models.TransformerConfig</em></a>) – Configuration of the Transformer model.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.models.TransformerConfig" title="noether.modeling.models.TransformerConfig"><em>TransformerConfig</em></a>) – Configuration of the Transformer model.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1529,13 +1812,133 @@ by each block’s AdaLN-Zero modulation. <code class="docutils literal notransla
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.TransformerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">TransformerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.TransformerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBaseConfig</span></code></a>, <a class="reference internal" href="../../core/schemas/mixins/index.html#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.mixins.InjectSharedFieldFromParentMixin</span></code></a></p>
+<p>Configuration for a Transformer model.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.TransformerConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.modeling.models.TransformerConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.TransformerConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.TransformerConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Hidden dimension of the model. Used for all transformer blocks.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.TransformerConfig.depth">
+<span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.TransformerConfig.depth" title="Link to this definition">¶</a></dt>
+<dd><p>Number of transformer blocks in the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.TransformerConfig.transformer_block_config">
+<span class="sig-name descname"><span class="pre">transformer_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlockConfig" title="noether.modeling.modules.blocks.transformer.TransformerBlockConfig"><span class="pre">noether.modeling.modules.blocks.transformer.TransformerBlockConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../core/schemas/mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.modeling.models.TransformerConfig.transformer_block_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.Transolver">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">Transolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.Transolver" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="transformer/index.html#noether.modeling.models.transformer.Transformer" title="noether.modeling.models.transformer.Transformer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.transformer.Transformer</span></code></a></p>
+<p>Implementation of the Transolver model.
+Reference code: <a class="reference external" href="https://github.com/thuml/Transolver/">https://github.com/thuml/Transolver/</a>
+Paper: <a class="reference external" href="https://arxiv.org/abs/2402.02366">https://arxiv.org/abs/2402.02366</a>
+Transolver is a Transformer with a special physics attention mechanism. Hence, we extend the Transformer class,
+and configure it accordingly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.models.TransolverConfig" title="noether.modeling.models.TransolverConfig"><em>TransolverConfig</em></a>) – Configuration of the Transolver model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.TransolverConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">TransolverConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.TransolverConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="transformer/index.html#noether.modeling.models.transformer.TransformerConfig" title="noether.modeling.models.transformer.TransformerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.modeling.models.transformer.TransformerConfig</span></code></a>, <a class="reference internal" href="../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBaseConfig</span></code></a></p>
+<p>Configuration for a Transolver model.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.TransolverConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.modeling.models.TransolverConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.TransolverConfig.attention_arguments">
+<span class="sig-name descname"><span class="pre">attention_arguments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></em><a class="headerlink" href="#noether.modeling.models.TransolverConfig.attention_arguments" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.TransolverConfig.set_attention_constructor">
+<span class="sig-name descname"><span class="pre">set_attention_constructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.TransolverConfig.set_attention_constructor" title="Link to this definition">¶</a></dt>
+<dd><p>Set attention_constructor in transformer_block_config based on data_specs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.TransolverConfig" title="noether.modeling.models.TransolverConfig">TransolverConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.TransolverPlusPlusConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">TransolverPlusPlusConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.TransolverPlusPlusConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#noether.modeling.models.TransolverConfig" title="noether.modeling.models.TransolverConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransolverConfig</span></code></a></p>
+<p>Configuration for a Transolver++ model.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.TransolverPlusPlusConfig.set_attention_constructor">
+<span class="sig-name descname"><span class="pre">set_attention_constructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.TransolverPlusPlusConfig.set_attention_constructor" title="Link to this definition">¶</a></dt>
+<dd><p>Set attention_constructor in transformer_block_config based on data_specs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.TransolverPlusPlusConfig" title="noether.modeling.models.TransolverPlusPlusConfig">TransolverPlusPlusConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.UPT">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">UPT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.UPT" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>Implementation of the UPT (Universal Physics Transformer) model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.UPTConfig" title="noether.core.schemas.models.UPTConfig"><em>noether.core.schemas.models.UPTConfig</em></a>) – Configuration for the UPT model. See <a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.UPTConfig" title="noether.core.schemas.models.UPTConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">UPTConfig</span></code></a> for details.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.models.UPTConfig" title="noether.modeling.models.UPTConfig"><em>UPTConfig</em></a>) – Configuration for the UPT model. See <code class="xref py py-class docutils literal notranslate"><span class="pre">UPTConfig</span></code> for details.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1618,6 +2021,143 @@ If RoPE is not used, return empty dicts.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">UPTConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.UPTConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBaseConfig</span></code></a>, <a class="reference internal" href="../../core/schemas/mixins/index.html#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.mixins.InjectSharedFieldFromParentMixin</span></code></a></p>
+<p>Configuration for a UPT model.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.modeling.models.UPTConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.num_heads">
+<span class="sig-name descname"><span class="pre">num_heads</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.num_heads" title="Link to this definition">¶</a></dt>
+<dd><p>Number of attention heads in the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Hidden dimension of the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.mlp_expansion_factor">
+<span class="sig-name descname"><span class="pre">mlp_expansion_factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.mlp_expansion_factor" title="Link to this definition">¶</a></dt>
+<dd><p>Expansion factor for the MLP of the FF layers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.approximator_depth">
+<span class="sig-name descname"><span class="pre">approximator_depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.approximator_depth" title="Link to this definition">¶</a></dt>
+<dd><p>Number of approximator layers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.use_rope">
+<span class="sig-name descname"><span class="pre">use_rope</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.use_rope" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.bias" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to use bias terms in the model’s linear layers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.supernode_pooling_config">
+<span class="sig-name descname"><span class="pre">supernode_pooling_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/encoders/supernode_pooling/index.html#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig" title="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig"><span class="pre">noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../core/schemas/mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.supernode_pooling_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.approximator_config">
+<span class="sig-name descname"><span class="pre">approximator_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlockConfig" title="noether.modeling.modules.blocks.transformer.TransformerBlockConfig"><span class="pre">noether.modeling.modules.blocks.transformer.TransformerBlockConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../core/schemas/mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.approximator_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.decoder_config">
+<span class="sig-name descname"><span class="pre">decoder_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../modules/decoders/deep_perceiver/index.html#noether.modeling.modules.decoders.deep_perceiver.DeepPerceiverDecoderConfig" title="noether.modeling.modules.decoders.deep_perceiver.DeepPerceiverDecoderConfig"><span class="pre">noether.modeling.modules.decoders.deep_perceiver.DeepPerceiverDecoderConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../core/schemas/mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.decoder_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.bias_layers">
+<span class="sig-name descname"><span class="pre">bias_layers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.bias_layers" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.data_specs">
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../data/schemas/index.html#noether.data.schemas.ModelDataSpecs" title="noether.data.schemas.ModelDataSpecs"><span class="pre">noether.data.schemas.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.UPTConfig.data_specs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.linear_output_projection_config">
+<span class="sig-name descname"><span class="pre">linear_output_projection_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.UPTConfig.linear_output_projection_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/layers/linear_projection/index.html#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig" title="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig">noether.modeling.modules.layers.linear_projection.LinearProjectionConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.rope_frequency_config">
+<span class="sig-name descname"><span class="pre">rope_frequency_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.UPTConfig.rope_frequency_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/layers/rope_frequency/index.html#noether.modeling.modules.layers.rope_frequency.RopeFrequencyConfig" title="noether.modeling.modules.layers.rope_frequency.RopeFrequencyConfig">noether.modeling.modules.layers.rope_frequency.RopeFrequencyConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.validate_rope_usage">
+<span class="sig-name descname"><span class="pre">validate_rope_usage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.UPTConfig.validate_rope_usage" title="Link to this definition">¶</a></dt>
+<dd><p>Ensure that if use_rope is True in the main config, it is also True in the approximator_config.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.UPTConfig" title="noether.modeling.models.UPTConfig">UPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.pos_embedding_config">
+<span class="sig-name descname"><span class="pre">pos_embedding_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.UPTConfig.pos_embedding_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/layers/continuous_sincos_embed/index.html#noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig" title="noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig">noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.UPTConfig.validate_parameters">
+<span class="sig-name descname"><span class="pre">validate_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.UPTConfig.validate_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Validate validity of parameters across the model and its submodules.</p>
+<p>Ensures that:
+1. hidden_dim is divisible by num_heads in parent and all submodules with num_heads
+2. hidden_dim is consistent across parent and all submodules</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.UPTConfig" title="noether.modeling.models.UPTConfig">UPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.models.ViT">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">ViT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ViT" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
@@ -1630,8 +2170,8 @@ If RoPE is not used, return empty dicts.</p>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.ViTConfig" title="noether.core.schemas.models.ViTConfig"><em>noether.core.schemas.models.ViTConfig</em></a>) – Configuration for the ViT model. See
-<a class="reference internal" href="../../core/schemas/models/index.html#noether.core.schemas.models.ViTConfig" title="noether.core.schemas.models.ViTConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViTConfig</span></code></a> for available options.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.models.ViTConfig" title="noether.modeling.models.ViTConfig"><em>ViTConfig</em></a>) – Configuration for the ViT model. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ViTConfig</span></code> for available options.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1757,6 +2297,104 @@ instead of the decoded spatial output.</p></li>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.</span></span><span class="sig-name descname"><span class="pre">ViTConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ViTConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBaseConfig</span></code></a></p>
+<p>Configuration for ViT model</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.modeling.models.ViTConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.coord_dim">
+<span class="sig-name descname"><span class="pre">coord_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.coord_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Coordinate dimensionality of the input grid (2 for 2D, 3 for 3D).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.out_channels">
+<span class="sig-name descname"><span class="pre">out_channels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.out_channels" title="Link to this definition">¶</a></dt>
+<dd><p>Number of output channels emitted per spatial cell.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.patch_size">
+<span class="sig-name descname"><span class="pre">patch_size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.patch_size" title="Link to this definition">¶</a></dt>
+<dd><p>Patch side length in cells. The grid resolution must be divisible by this value.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Token hidden dimension throughout the transformer stack.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.num_heads">
+<span class="sig-name descname"><span class="pre">num_heads</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.num_heads" title="Link to this definition">¶</a></dt>
+<dd><p>Number of attention heads in each transformer block.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.depth">
+<span class="sig-name descname"><span class="pre">depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.depth" title="Link to this definition">¶</a></dt>
+<dd><p>Number of stacked transformer blocks.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.mlp_ratio">
+<span class="sig-name descname"><span class="pre">mlp_ratio</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.mlp_ratio" title="Link to this definition">¶</a></dt>
+<dd><p>FFN expansion factor inside each transformer block.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.use_conditioning">
+<span class="sig-name descname"><span class="pre">use_conditioning</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.use_conditioning" title="Link to this definition">¶</a></dt>
+<dd><p>If True, enable AdaLN-Zero conditioning (forward requires <code class="docutils literal notranslate"><span class="pre">cond</span></code>); if False, plain ViT (<code class="docutils literal notranslate"><span class="pre">cond</span></code> must be <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.token_dropout">
+<span class="sig-name descname"><span class="pre">token_dropout</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.token_dropout" title="Link to this definition">¶</a></dt>
+<dd><p>Per-patch token dropout probability used during training.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.attn_drop">
+<span class="sig-name descname"><span class="pre">attn_drop</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.attn_drop" title="Link to this definition">¶</a></dt>
+<dd><p>Dropout probability inside attention.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.use_conv_output_head">
+<span class="sig-name descname"><span class="pre">use_conv_output_head</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.use_conv_output_head" title="Link to this definition">¶</a></dt>
+<dd><p>If True, decode via a cascaded PixelShuffle conv head; if False, decode via a linear unpatchify.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="noether.modeling.models.ViTConfig.transformer_block_config">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">transformer_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlockConfig" title="noether.modeling.modules.blocks.transformer.TransformerBlockConfig"><span class="pre">noether.modeling.modules.blocks.transformer.TransformerBlockConfig</span></a></em><a class="headerlink" href="#noether.modeling.models.ViTConfig.transformer_block_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlockConfig" title="noether.modeling.modules.blocks.transformer.TransformerBlockConfig">noether.modeling.modules.blocks.transformer.TransformerBlockConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -1843,6 +2481,33 @@ instead of the decoded spatial output.</p></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.kind"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.model_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.supernode_pooling_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.supernode_pooling_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.transformer_block_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.transformer_block_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.geometry_depth"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.geometry_depth</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.condition_dim"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.condition_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.physics_blocks"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.physics_blocks</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.num_domain_decoder_blocks"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.num_domain_decoder_blocks</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.init_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.drop_path_rate"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.drop_path_rate</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.geometry_conditioning_dims"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.geometry_conditioning_dims</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.data_specs"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.data_specs</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.migrate_shared_to_self"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.migrate_shared_to_self()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.rope_frequency_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.rope_frequency_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.pos_embed_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.pos_embed_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.bias_mlp_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.bias_mlp_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.perceiver_block_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.perceiver_block_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.domain_decoder_configs"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.domain_decoder_configs()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.conditioner_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.conditioner_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.set_condition_dim"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.set_condition_dim()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.geometry_transformer_block_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.geometry_transformer_block_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.geometry_conditioner_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.geometry_conditioner_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.AnchorBranchedUPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.validate_parameters()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.models.AnchoredBranchedUPT"><code class="docutils literal notranslate"><span class="pre">AnchoredBranchedUPT</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.models.AnchoredBranchedUPT.data_specs"><code class="docutils literal notranslate"><span class="pre">AnchoredBranchedUPT.data_specs</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.AnchoredBranchedUPT.rope"><code class="docutils literal notranslate"><span class="pre">AnchoredBranchedUPT.rope</span></code></a></li>
@@ -1915,6 +2580,24 @@ instead of the decoded spatial output.</p></li>
 <li><a class="reference internal" href="#noether.modeling.models.Transformer.forward"><code class="docutils literal notranslate"><span class="pre">Transformer.forward()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.modeling.models.TransformerConfig"><code class="docutils literal notranslate"><span class="pre">TransformerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.TransformerConfig.model_config"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.TransformerConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.TransformerConfig.depth"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.depth</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.TransformerConfig.transformer_block_config"><code class="docutils literal notranslate"><span class="pre">TransformerConfig.transformer_block_config</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.models.Transolver"><code class="docutils literal notranslate"><span class="pre">Transolver</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.TransolverConfig"><code class="docutils literal notranslate"><span class="pre">TransolverConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.TransolverConfig.model_config"><code class="docutils literal notranslate"><span class="pre">TransolverConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.TransolverConfig.attention_arguments"><code class="docutils literal notranslate"><span class="pre">TransolverConfig.attention_arguments</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.TransolverConfig.set_attention_constructor"><code class="docutils literal notranslate"><span class="pre">TransolverConfig.set_attention_constructor()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.models.TransolverPlusPlusConfig"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.TransolverPlusPlusConfig.set_attention_constructor"><code class="docutils literal notranslate"><span class="pre">TransolverPlusPlusConfig.set_attention_constructor()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.models.UPT"><code class="docutils literal notranslate"><span class="pre">UPT</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.models.UPT.use_rope"><code class="docutils literal notranslate"><span class="pre">UPT.use_rope</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.UPT.encoder"><code class="docutils literal notranslate"><span class="pre">UPT.encoder</span></code></a></li>
@@ -1925,6 +2608,26 @@ instead of the decoded spatial output.</p></li>
 <li><a class="reference internal" href="#noether.modeling.models.UPT.prediction_layer"><code class="docutils literal notranslate"><span class="pre">UPT.prediction_layer</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.UPT.compute_rope_args"><code class="docutils literal notranslate"><span class="pre">UPT.compute_rope_args()</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.UPT.forward"><code class="docutils literal notranslate"><span class="pre">UPT.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig"><code class="docutils literal notranslate"><span class="pre">UPTConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.model_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.num_heads"><code class="docutils literal notranslate"><span class="pre">UPTConfig.num_heads</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">UPTConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.mlp_expansion_factor"><code class="docutils literal notranslate"><span class="pre">UPTConfig.mlp_expansion_factor</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.approximator_depth"><code class="docutils literal notranslate"><span class="pre">UPTConfig.approximator_depth</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.use_rope"><code class="docutils literal notranslate"><span class="pre">UPTConfig.use_rope</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.bias"><code class="docutils literal notranslate"><span class="pre">UPTConfig.bias</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.supernode_pooling_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.supernode_pooling_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.approximator_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.approximator_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.decoder_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.decoder_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.bias_layers"><code class="docutils literal notranslate"><span class="pre">UPTConfig.bias_layers</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.data_specs"><code class="docutils literal notranslate"><span class="pre">UPTConfig.data_specs</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.linear_output_projection_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.linear_output_projection_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.rope_frequency_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.rope_frequency_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.validate_rope_usage"><code class="docutils literal notranslate"><span class="pre">UPTConfig.validate_rope_usage()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.pos_embedding_config"><code class="docutils literal notranslate"><span class="pre">UPTConfig.pos_embedding_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.UPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">UPTConfig.validate_parameters()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.modeling.models.ViT"><code class="docutils literal notranslate"><span class="pre">ViT</span></code></a><ul>
@@ -1944,6 +2647,22 @@ instead of the decoded spatial output.</p></li>
 <li><a class="reference internal" href="#noether.modeling.models.ViT.initialize_weights"><code class="docutils literal notranslate"><span class="pre">ViT.initialize_weights()</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.ViT.unpatchify"><code class="docutils literal notranslate"><span class="pre">ViT.unpatchify()</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.ViT.forward"><code class="docutils literal notranslate"><span class="pre">ViT.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig"><code class="docutils literal notranslate"><span class="pre">ViTConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.model_config"><code class="docutils literal notranslate"><span class="pre">ViTConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.coord_dim"><code class="docutils literal notranslate"><span class="pre">ViTConfig.coord_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.out_channels"><code class="docutils literal notranslate"><span class="pre">ViTConfig.out_channels</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.patch_size"><code class="docutils literal notranslate"><span class="pre">ViTConfig.patch_size</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">ViTConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.num_heads"><code class="docutils literal notranslate"><span class="pre">ViTConfig.num_heads</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.depth"><code class="docutils literal notranslate"><span class="pre">ViTConfig.depth</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.mlp_ratio"><code class="docutils literal notranslate"><span class="pre">ViTConfig.mlp_ratio</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.use_conditioning"><code class="docutils literal notranslate"><span class="pre">ViTConfig.use_conditioning</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.token_dropout"><code class="docutils literal notranslate"><span class="pre">ViTConfig.token_dropout</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.attn_drop"><code class="docutils literal notranslate"><span class="pre">ViTConfig.attn_drop</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.use_conv_output_head"><code class="docutils literal notranslate"><span class="pre">ViTConfig.use_conv_output_head</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ViTConfig.transformer_block_config"><code class="docutils literal notranslate"><span class="pre">ViTConfig.transformer_block_config</span></code></a></li>
 </ul>
 </li>
 </ul>

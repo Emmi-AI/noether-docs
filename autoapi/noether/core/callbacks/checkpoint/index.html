@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -885,11 +888,20 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallback" title="noether.core.callbacks.checkpoint.BestCheckpointCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestCheckpointCallback</span></code></a></p></td>
 <td><p>Callback to save the best model based on a metric.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallback" title="noether.core.callbacks.checkpoint.CheckpointCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CheckpointCallback</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig" title="noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig</span></code></a></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallback" title="noether.core.callbacks.checkpoint.CheckpointCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CheckpointCallback</span></code></a></p></td>
 <td><p>Callback to save the model and optimizer state periodically.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig" title="noether.core.callbacks.checkpoint.CheckpointCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CheckpointCallbackConfig</span></code></a></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallback" title="noether.core.callbacks.checkpoint.EmaCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmaCallback</span></code></a></p></td>
 <td><p>Callback for exponential moving average (EMA) of model weights.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig" title="noether.core.callbacks.checkpoint.EmaCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EmaCallbackConfig</span></code></a></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 </tbody>
 </table>
@@ -917,8 +929,8 @@ a new best value is achieved. It supports storing different model components whe
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="noether.core.schemas.callbacks.BestCheckpointCallbackConfig"><em>noether.core.schemas.callbacks.BestCheckpointCallbackConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.BestCheckpointCallbackConfig" title="noether.core.schemas.callbacks.BestCheckpointCallbackConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig" title="noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig"><em>BestCheckpointCallbackConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig</span></code>
 for available options including metric key, model names, and tolerance settings.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
@@ -1051,6 +1063,53 @@ and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.<
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.checkpoint.</span></span><span class="sig-name descname"><span class="pre">BestCheckpointCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.base.CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'BestCheckpointCallback'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.metric_key">
+<span class="sig-name descname"><span class="pre">metric_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.metric_key" title="Link to this definition">¶</a></dt>
+<dd><p>“The key of the metric to be used for checking the best model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.save_frozen_weights">
+<span class="sig-name descname"><span class="pre">save_frozen_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.save_frozen_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to also save the frozen weights of the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.tolerances">
+<span class="sig-name descname"><span class="pre">tolerances</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.tolerances" title="Link to this definition">¶</a></dt>
+<dd><p>“If provided, this callback will produce multiple best models which differ in the amount of intervals they allow the metric to not improve. For example, tolerance=[5] with every_n_epochs=1 will store a checkpoint where at most 5 epochs have passed until the metric improved. Additionally, the best checkpoint over the whole training will always be stored (i.e., tolerance=infinite). When setting different tolerances, one can evaluate different early stopping configurations with one training run.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.model_names">
+<span class="sig-name descname"><span class="pre">model_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.model_names" title="Link to this definition">¶</a></dt>
+<dd><p>Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name=’encoder’ here). This only applies when training a CompositeModel. If None, all models are saved.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.CheckpointCallback">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.checkpoint.</span></span><span class="sig-name descname"><span class="pre">CheckpointCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.CheckpointCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a></p>
@@ -1066,8 +1125,8 @@ and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.<
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CheckpointCallbackConfig" title="noether.core.schemas.callbacks.CheckpointCallbackConfig"><em>noether.core.schemas.callbacks.CheckpointCallbackConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CheckpointCallbackConfig" title="noether.core.schemas.callbacks.CheckpointCallbackConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CheckpointCallbackConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig" title="noether.core.callbacks.checkpoint.CheckpointCallbackConfig"><em>CheckpointCallbackConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CheckpointCallbackConfig</span></code>
 for available options.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
@@ -1187,6 +1246,59 @@ final reporting tasks after training is complete. Common use cases include:</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.CheckpointCallbackConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.checkpoint.</span></span><span class="sig-name descname"><span class="pre">CheckpointCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.base.CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.CheckpointCallbackConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'CheckpointCallback'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_weights">
+<span class="sig-name descname"><span class="pre">save_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to save the weights of the model every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_optim">
+<span class="sig-name descname"><span class="pre">save_optim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_optim" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to save the optimizer state every time this callback is invoked. The checkpoint name will contain the training iteration (e.g., epoch/update/sample) at which the checkpoint was saved.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_latest_weights">
+<span class="sig-name descname"><span class="pre">save_latest_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_latest_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to save the latest weights of the model every time this callback is invoked. Note that the latest weights are always overwritten on the next invocation of this callback.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_latest_optim">
+<span class="sig-name descname"><span class="pre">save_latest_optim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_latest_optim" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to save the latest optimizer state every time this callback is invoked. Note that the latest optimizer state is always overwritten on the next invocation of this callback</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.CheckpointCallbackConfig.model_names">
+<span class="sig-name descname"><span class="pre">model_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.model_names" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the model to save. If None, all models are saved.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.EmaCallback">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.checkpoint.</span></span><span class="sig-name descname"><span class="pre">EmaCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.EmaCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a></p>
@@ -1215,8 +1327,8 @@ metrics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.EmaCallbackConfig" title="noether.core.schemas.callbacks.EmaCallbackConfig"><em>noether.core.schemas.callbacks.EmaCallbackConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.EmaCallbackConfig" title="noether.core.schemas.callbacks.EmaCallbackConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">EmaCallbackConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig" title="noether.core.callbacks.checkpoint.EmaCallbackConfig"><em>EmaCallbackConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">EmaCallbackConfig</span></code>
 for available options.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments passed to the parent class.</p></li>
 </ul>
@@ -1472,6 +1584,71 @@ final reporting tasks after training is complete. Common use cases include:</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.EmaCallbackConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.checkpoint.</span></span><span class="sig-name descname"><span class="pre">EmaCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.base.CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.EmaCallbackConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'EmaCallback'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.EmaCallbackConfig.target_factors">
+<span class="sig-name descname"><span class="pre">target_factors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.target_factors" title="Link to this definition">¶</a></dt>
+<dd><p>The factors for the EMA.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.EmaCallbackConfig.model_paths">
+<span class="sig-name descname"><span class="pre">model_paths</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.model_paths" title="Link to this definition">¶</a></dt>
+<dd><p>The paths to the models to apply the EMA to (i.e., composite_model.encoder/composite_model.decoder, path of the PyTorch nn.Modules in the checkpoint). If None, the EMA is applied to the whole model. When training with a CompositeModel, the paths on the submodules (i.e., ‘encoder’, ‘decoder’, etc.) should be provided via this field, otherwise the EMA will be applied to the CompositeModel as a whole which is not possible to restore later on.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.EmaCallbackConfig.save_weights">
+<span class="sig-name descname"><span class="pre">save_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.save_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Whether to save the EMA weights.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.EmaCallbackConfig.save_last_weights">
+<span class="sig-name descname"><span class="pre">save_last_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.save_last_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Save the weights of the model when training is over (i.e., at the end of training, save the EMA weights).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.EmaCallbackConfig.save_latest_weights">
+<span class="sig-name descname"><span class="pre">save_latest_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.save_latest_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Save the latest EMA weights. Note that the latest weights are always overwritten on the next invocation of this callback.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.EmaCallbackConfig.eval_callbacks">
+<span class="sig-name descname"><span class="pre">eval_callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><span class="pre">CallBackBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.eval_callbacks" title="Link to this definition">¶</a></dt>
+<dd><p>Optional nested periodic callbacks to run against EMA weights. Each child retains its own schedule
+(<code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code> etc.); the EMA callback swaps its stored EMA parameters into the live model around
+eval-time hooks (<code class="docutils literal notranslate"><span class="pre">after_epoch</span></code>, <code class="docutils literal notranslate"><span class="pre">after_update</span></code>, <code class="docutils literal notranslate"><span class="pre">at_eval</span></code>) and restores the live weights on exit.
+Children are dispatched once per <code class="docutils literal notranslate"><span class="pre">target_factor</span></code> and their metric keys are automatically prefixed with
+<code class="docutils literal notranslate"><span class="pre">ema=&lt;factor&gt;/</span></code> to avoid collisions with live-model metrics. Note: <code class="docutils literal notranslate"><span class="pre">before_training</span></code> and
+<code class="docutils literal notranslate"><span class="pre">after_training</span></code> are forwarded without swapping, so EMA initialization and the final save see live
+weights.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 </section>
 
@@ -1574,6 +1751,14 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallback.after_training"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback.after_training()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.metric_key"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.metric_key</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.save_frozen_weights"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.save_frozen_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.tolerances"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.tolerances</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.BestCheckpointCallbackConfig.model_names"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.model_names</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallback"><code class="docutils literal notranslate"><span class="pre">CheckpointCallback</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallback.save_weights"><code class="docutils literal notranslate"><span class="pre">CheckpointCallback.save_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallback.save_optim"><code class="docutils literal notranslate"><span class="pre">CheckpointCallback.save_optim</span></code></a></li>
@@ -1583,6 +1768,15 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallback.before_training"><code class="docutils literal notranslate"><span class="pre">CheckpointCallback.before_training()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallback.periodic_callback"><code class="docutils literal notranslate"><span class="pre">CheckpointCallback.periodic_callback()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallback.after_training"><code class="docutils literal notranslate"><span class="pre">CheckpointCallback.after_training()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig"><code class="docutils literal notranslate"><span class="pre">CheckpointCallbackConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">CheckpointCallbackConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_weights"><code class="docutils literal notranslate"><span class="pre">CheckpointCallbackConfig.save_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_optim"><code class="docutils literal notranslate"><span class="pre">CheckpointCallbackConfig.save_optim</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_latest_weights"><code class="docutils literal notranslate"><span class="pre">CheckpointCallbackConfig.save_latest_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.save_latest_optim"><code class="docutils literal notranslate"><span class="pre">CheckpointCallbackConfig.save_latest_optim</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.CheckpointCallbackConfig.model_names"><code class="docutils literal notranslate"><span class="pre">CheckpointCallbackConfig.model_names</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallback"><code class="docutils literal notranslate"><span class="pre">EmaCallback</span></code></a><ul>
@@ -1604,6 +1798,16 @@ final reporting tasks after training is complete. Common use cases include:</p>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallback.at_eval"><code class="docutils literal notranslate"><span class="pre">EmaCallback.at_eval()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallback.periodic_callback"><code class="docutils literal notranslate"><span class="pre">EmaCallback.periodic_callback()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallback.after_training"><code class="docutils literal notranslate"><span class="pre">EmaCallback.after_training()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig"><code class="docutils literal notranslate"><span class="pre">EmaCallbackConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">EmaCallbackConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.target_factors"><code class="docutils literal notranslate"><span class="pre">EmaCallbackConfig.target_factors</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.model_paths"><code class="docutils literal notranslate"><span class="pre">EmaCallbackConfig.model_paths</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.save_weights"><code class="docutils literal notranslate"><span class="pre">EmaCallbackConfig.save_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.save_last_weights"><code class="docutils literal notranslate"><span class="pre">EmaCallbackConfig.save_last_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.save_latest_weights"><code class="docutils literal notranslate"><span class="pre">EmaCallbackConfig.save_latest_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.EmaCallbackConfig.eval_callbacks"><code class="docutils literal notranslate"><span class="pre">EmaCallbackConfig.eval_callbacks</span></code></a></li>
 </ul>
 </li>
 </ul>

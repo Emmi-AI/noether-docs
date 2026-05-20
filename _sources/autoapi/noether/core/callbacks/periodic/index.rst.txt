@@ -17,6 +17,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.callbacks.periodic.PeriodicDataIteratorCallbackConfig
    noether.core.callbacks.periodic.PeriodicCallback
    noether.core.callbacks.periodic.PeriodicDataIteratorCallback
 
@@ -34,6 +35,36 @@ Module Contents
    * "update": Callback is triggered based on optimizer update steps
    * "sample": Callback is triggered based on number of samples processed
    * "eval": Callback is triggered independent of schedule for post-training evaluation
+
+.. py:class:: PeriodicDataIteratorCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`, :py:obj:`abc.ABC`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  str
+
+
+   .. py:attribute:: dataset_key
+      :type:  str
+      :value: None
+
+
+      The key of the dataset to be used for the loss calculation. Can be any key that is registered in the `DataContainer`.
+
 
 .. py:class:: PeriodicCallback(callback_config, trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None)
 

@@ -9,11 +9,21 @@ Classes
 
 .. autoapisummary::
 
+   noether.data.base.wrapper.DatasetWrapperConfig
    noether.data.base.wrapper.DatasetWrapper
 
 
 Module Contents
 ---------------
+
+.. py:class:: DatasetWrapperConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+
 
 .. py:class:: DatasetWrapper(dataset)
 

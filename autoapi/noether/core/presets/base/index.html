@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 current has-children"><a class="reference internal" href="../index.html">noether.core.presets</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -1036,12 +1039,12 @@ needed.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="noether.core.presets.base.DomainPreset.normalizer_spec">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">normalizer_spec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../schemas/normalizers/index.html#noether.core.schemas.normalizers.FieldNormalizerConfig" title="noether.core.schemas.normalizers.FieldNormalizerConfig"><span class="pre">noether.core.schemas.normalizers.FieldNormalizerConfig</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.presets.base.DomainPreset.normalizer_spec" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">normalizer_spec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../data/preprocessors/normalizers/index.html#noether.data.preprocessors.normalizers.FieldNormalizerConfig" title="noether.data.preprocessors.normalizers.FieldNormalizerConfig"><span class="pre">noether.data.preprocessors.normalizers.FieldNormalizerConfig</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.presets.base.DomainPreset.normalizer_spec" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Abstractmethod<span class="colon">:</span></dt>
 <dd class="field-odd"><p></p></dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="../../schemas/normalizers/index.html#noether.core.schemas.normalizers.FieldNormalizerConfig" title="noether.core.schemas.normalizers.FieldNormalizerConfig">noether.core.schemas.normalizers.FieldNormalizerConfig</a>]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="../../../data/preprocessors/normalizers/index.html#noether.data.preprocessors.normalizers.FieldNormalizerConfig" title="noether.data.preprocessors.normalizers.FieldNormalizerConfig">noether.data.preprocessors.normalizers.FieldNormalizerConfig</a>]</p>
 </dd>
 </dl>
 <p>Declarative normalizer mapping.</p>
@@ -1132,12 +1135,12 @@ Subclasses should call <code class="docutils literal notranslate"><span class="p
 <li><p><strong>split</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
 <li><p><strong>model_kind</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p></li>
-<li><p><strong>wrappers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><em>noether.core.schemas.dataset.DatasetWrappers</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>wrappers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><em>noether.data.base.wrappers.DatasetWrappers</em><em>] </em><em>| </em><em>None</em>)</p></li>
 <li><p><strong>overrides</strong> (<em>Any</em>)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="../../schemas/dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig">noether.core.schemas.dataset.DatasetBaseConfig</a></p>
+<dd class="field-even"><p><a class="reference internal" href="../../../data/base/dataset/index.html#noether.data.base.dataset.DatasetBaseConfig" title="noether.data.base.dataset.DatasetBaseConfig">noether.data.base.dataset.DatasetBaseConfig</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1153,7 +1156,7 @@ matching the format expected by <code class="docutils literal notranslate"><span
 <dd class="field-odd"><p>Dict mapping data source names to lists of normalizer configs.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[noether.core.schemas.normalizers.AnyNormalizer]]</p>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[noether.data.preprocessors.normalizers.AnyNormalizer]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1205,7 +1208,7 @@ matching the format expected by <code class="docutils literal notranslate"><span
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="../../schemas/optimizers/index.html#noether.core.schemas.optimizers.OptimizerConfig" title="noether.core.schemas.optimizers.OptimizerConfig">noether.core.schemas.optimizers.OptimizerConfig</a></p>
+<dd class="field-even"><p><a class="reference internal" href="../../optimizer/schemas/index.html#noether.core.optimizer.schemas.OptimizerConfig" title="noether.core.optimizer.schemas.OptimizerConfig">noether.core.optimizer.schemas.OptimizerConfig</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -1222,7 +1225,7 @@ the config (e.g., AB-UPT sub-configs).</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model_kind</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – fully qualified class path of the model.</p></li>
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="../../schemas/optimizers/index.html#noether.core.schemas.optimizers.OptimizerConfig" title="noether.core.schemas.optimizers.OptimizerConfig"><em>noether.core.schemas.optimizers.OptimizerConfig</em></a><em> | </em><em>None</em>) – optimizer config. Uses <code class="docutils literal notranslate"><span class="pre">build_optimizer()</span></code> defaults if None.</p></li>
+<li><p><strong>optimizer</strong> (<a class="reference internal" href="../../optimizer/schemas/index.html#noether.core.optimizer.schemas.OptimizerConfig" title="noether.core.optimizer.schemas.OptimizerConfig"><em>noether.core.optimizer.schemas.OptimizerConfig</em></a><em> | </em><em>None</em>) – optimizer config. Uses <code class="docutils literal notranslate"><span class="pre">build_optimizer()</span></code> defaults if None.</p></li>
 <li><p><strong>**model_params</strong> (<em>Any</em>) – model-specific parameters (e.g., <code class="docutils literal notranslate"><span class="pre">hidden_dim</span></code>, <code class="docutils literal notranslate"><span class="pre">num_heads</span></code>).</p></li>
 </ul>
 </dd>
@@ -1247,7 +1250,7 @@ the config (e.g., AB-UPT sub-configs).</p>
 <li><p><strong>model_kind</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – fully qualified class path of the model.</p></li>
 <li><p><strong>model_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – model architecture parameters (used with <code class="docutils literal notranslate"><span class="pre">build_model</span></code>).</p></li>
 <li><p><strong>model_config</strong> (<em>Any</em><em> | </em><em>None</em>) – pre-built model config object. Mutually exclusive with <code class="docutils literal notranslate"><span class="pre">model_params</span></code>.</p></li>
-<li><p><strong>optimizer</strong> (<a class="reference internal" href="../../schemas/optimizers/index.html#noether.core.schemas.optimizers.OptimizerConfig" title="noether.core.schemas.optimizers.OptimizerConfig"><em>noether.core.schemas.optimizers.OptimizerConfig</em></a><em> | </em><em>None</em>) – optimizer config. Defaults to Lion with cosine decay via <code class="docutils literal notranslate"><span class="pre">build_optimizer()</span></code>.</p></li>
+<li><p><strong>optimizer</strong> (<a class="reference internal" href="../../optimizer/schemas/index.html#noether.core.optimizer.schemas.OptimizerConfig" title="noether.core.optimizer.schemas.OptimizerConfig"><em>noether.core.optimizer.schemas.OptimizerConfig</em></a><em> | </em><em>None</em>) – optimizer config. Defaults to Lion with cosine decay via <code class="docutils literal notranslate"><span class="pre">build_optimizer()</span></code>.</p></li>
 <li><p><strong>trainer_kind</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – fully qualified class path of the trainer.</p></li>
 <li><p><strong>trainer_params</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>] </em><em>| </em><em>None</em>) – additional trainer-specific parameters (e.g., loss weights).</p></li>
 <li><p><strong>dataset_root</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – root directory of the dataset.</p></li>
@@ -1255,7 +1258,7 @@ the config (e.g., AB-UPT sub-configs).</p>
 <li><p><strong>datasets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>] </em><em>| </em><em>None</em>) – splits to create. Either a list of split names (e.g., <code class="docutils literal notranslate"><span class="pre">[&quot;train&quot;,</span> <span class="pre">&quot;test&quot;]</span></code>)
 where keys equal splits, or a dict mapping keys to splits for custom naming
 (e.g., <code class="docutils literal notranslate"><span class="pre">{&quot;my_train&quot;:</span> <span class="pre">&quot;train&quot;}</span></code>). Defaults to <code class="docutils literal notranslate"><span class="pre">[&quot;train&quot;,</span> <span class="pre">&quot;test&quot;]</span></code>.</p></li>
-<li><p><strong>extra_datasets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference internal" href="../../schemas/dataset/index.html#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><em>noether.core.schemas.dataset.DatasetBaseConfig</em></a><em>] </em><em>| </em><em>None</em>) – additional pre-built dataset configs to merge in (e.g., repeated test sets).</p></li>
+<li><p><strong>extra_datasets</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><a class="reference internal" href="../../../data/base/dataset/index.html#noether.data.base.dataset.DatasetBaseConfig" title="noether.data.base.dataset.DatasetBaseConfig"><em>noether.data.base.dataset.DatasetBaseConfig</em></a><em>] </em><em>| </em><em>None</em>) – additional pre-built dataset configs to merge in (e.g., repeated test sets).</p></li>
 <li><p><strong>callbacks_override</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> | </em><em>None</em>) – replace the default callback list entirely. Defaults to <code class="docutils literal notranslate"><span class="pre">standard_callbacks()</span></code>.</p></li>
 <li><p><strong>extra_callbacks</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> | </em><em>None</em>) – additional callbacks appended to the default (or overridden) list.</p></li>
 <li><p><strong>accelerator</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> | </em><em>None</em>) – “cpu”, “gpu”, or “mps”. Auto-detected if None.</p></li>
@@ -1269,7 +1272,7 @@ where keys equal splits, or a dict mapping keys to splits for custom naming
 <dd class="field-even"><p>A fully populated ConfigSchema ready for <code class="docutils literal notranslate"><span class="pre">HydraRunner().main()</span></code>.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../../schemas/schema/index.html#noether.core.schemas.schema.ConfigSchema" title="noether.core.schemas.schema.ConfigSchema">noether.core.schemas.schema.ConfigSchema</a></p>
+<dd class="field-odd"><p>noether.core.schemas.ConfigSchema</p>
 </dd>
 </dl>
 </dd></dl>

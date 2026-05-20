@@ -9,11 +9,59 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttentionConfig
    noether.modeling.modules.attention.transolver_plusplus.TransolverPlusPlusAttention
 
 
 Module Contents
 ---------------
+
+.. py:class:: TransolverPlusPlusAttentionConfig(/, **data)
+
+   Bases: :py:obj:`noether.modeling.modules.attention.TransolverAttentionConfig`
+
+
+   Configuration for the Transolver++ attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: use_overparameterization
+      :type:  bool
+      :value: None
+
+
+      Whether to use overparameterization for the slice projection.
+
+
+   .. py:attribute:: use_adaptive_temperature
+      :type:  bool
+      :value: None
+
+
+      Whether to use an adaptive temperature for the slice selection.
+
+
+   .. py:attribute:: temperature_activation
+      :type:  Literal['sigmoid', 'softplus', 'exp'] | None
+      :value: None
+
+
+      Activation function for the adaptive temperature.
+
+
+   .. py:attribute:: use_gumbel_softmax
+      :type:  bool
+      :value: None
+
+
+      Whether to use Gumbel-Softmax for the slice selection.
+
 
 .. py:class:: TransolverPlusPlusAttention(config)
 

@@ -9,11 +9,73 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.mlp.mlp.MLPConfig
    noether.modeling.modules.mlp.mlp.MLP
 
 
 Module Contents
 ---------------
+
+.. py:class:: MLPConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the MLP.
+
+
+   .. py:attribute:: output_dim
+      :type:  int
+      :value: None
+
+
+      Output dimension of the MLP.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension for each layer.
+
+
+   .. py:attribute:: num_layers
+      :type:  int
+      :value: None
+
+
+      Number of hidden layers in the MLP. If 0, the MLP is a two linear layer MLP from input_dim, hidden_dim, activation to output_dim.
+
+
+   .. py:attribute:: activation
+      :type:  Literal['RELU', 'GELU', 'SIGMOID', 'TANH', 'LEAKY_RELU', 'SOFTPLUS', 'ELU', 'SILU']
+      :value: 'GELU'
+
+
+      Activation function to use between layers.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: 'truncnormal002'
+
+
+      Weight initialization method.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias in the linear layers.
+
 
 .. py:class:: MLP(config)
 

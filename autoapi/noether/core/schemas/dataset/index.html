@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/core/schemas/dataset/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Attributes: Classes: Module Contents:" />
+<meta property="og:description" content="Dataset-related shared types and back-compat re-exports. The dataset, wrapper, and pipeline config classes have moved next to the classes they configure under noether.data. They are re-exported her..." />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Attributes: Classes: Module Contents:" />
+<meta name="description" content="Dataset-related shared types and back-compat re-exports. The dataset, wrapper, and pipeline config classes have moved next to the classes they configure under noether.data. They are re-exported her..." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -250,7 +250,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -859,7 +862,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -867,515 +870,14 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.core.schemas.dataset">
 <span id="noether-core-schemas-dataset"></span><h1>noether.core.schemas.dataset<a class="headerlink" href="#module-noether.core.schemas.dataset" title="Link to this heading">¶</a></h1>
-<section id="attributes">
-<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
-<div class="table-wrapper autosummary longtable docutils container">
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.DatasetWrappers" title="noether.core.schemas.dataset.DatasetWrappers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetWrappers</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.TPipelineConfig" title="noether.core.schemas.dataset.TPipelineConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TPipelineConfig</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
-<div class="table-wrapper autosummary longtable docutils container">
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.DatasetWrapperConfig" title="noether.core.schemas.dataset.DatasetWrapperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetWrapperConfig</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.RepeatWrapperConfig" title="noether.core.schemas.dataset.RepeatWrapperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RepeatWrapperConfig</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.ShuffleWrapperConfig" title="noether.core.schemas.dataset.ShuffleWrapperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShuffleWrapperConfig</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.SubsetWrapperConfig" title="noether.core.schemas.dataset.SubsetWrapperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SubsetWrapperConfig</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.PipelineConfig" title="noether.core.schemas.dataset.PipelineConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipelineConfig</span></code></a></p></td>
-<td><p>Internal base class for all registry-based configs.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a></p></td>
-<td><p>Internal base class for all registry-based configs.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.StandardDatasetConfig" title="noether.core.schemas.dataset.StandardDatasetConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">StandardDatasetConfig</span></code></a></p></td>
-<td><p>Base config for datasets with fixed splits.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs" title="noether.core.schemas.dataset.DatasetSplitIDs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetSplitIDs</span></code></a></p></td>
-<td><p>Base class for dataset split ID validation with overlap checking.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FieldDimSpec</span></code></a></p></td>
-<td><p>A specification for a group of named data fields and their dimensions.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec" title="noether.core.schemas.dataset.DomainDataSpec"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DomainDataSpec</span></code></a></p></td>
-<td><p>Data specification for a single domain (e.g., surface, volume, wake).</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs" title="noether.core.schemas.dataset.ModelDataSpecs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelDataSpecs</span></code></a></p></td>
-<td><p>Base data specification for models that operate on arbitrary named domains.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetWrapperConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">DatasetWrapperConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.DatasetWrapperConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetWrapperConfig.kind">
-<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetWrapperConfig.kind" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.RepeatWrapperConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">RepeatWrapperConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.RepeatWrapperConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.dataset.DatasetWrapperConfig" title="noether.core.schemas.dataset.DatasetWrapperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetWrapperConfig</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.RepeatWrapperConfig.repetitions">
-<span class="sig-name descname"><span class="pre">repetitions</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.RepeatWrapperConfig.repetitions" title="Link to this definition">¶</a></dt>
-<dd><p>The number of times to repeat the dataset.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ShuffleWrapperConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">ShuffleWrapperConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.ShuffleWrapperConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.dataset.DatasetWrapperConfig" title="noether.core.schemas.dataset.DatasetWrapperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetWrapperConfig</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ShuffleWrapperConfig.seed">
-<span class="sig-name descname"><span class="pre">seed</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.ShuffleWrapperConfig.seed" title="Link to this definition">¶</a></dt>
-<dd><p>Random seed for shuffling. If None, a random seed is used.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.SubsetWrapperConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">SubsetWrapperConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.SubsetWrapperConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.dataset.DatasetWrapperConfig" title="noether.core.schemas.dataset.DatasetWrapperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetWrapperConfig</span></code></a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.SubsetWrapperConfig.indices">
-<span class="sig-name descname"><span class="pre">indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(in Python v3.14)"><span class="pre">collections.abc.Sequence</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.SubsetWrapperConfig.indices" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.SubsetWrapperConfig.start_index">
-<span class="sig-name descname"><span class="pre">start_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.SubsetWrapperConfig.start_index" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.SubsetWrapperConfig.end_index">
-<span class="sig-name descname"><span class="pre">end_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.SubsetWrapperConfig.end_index" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.SubsetWrapperConfig.start_percent">
-<span class="sig-name descname"><span class="pre">start_percent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.SubsetWrapperConfig.start_percent" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.SubsetWrapperConfig.end_percent">
-<span class="sig-name descname"><span class="pre">end_percent</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.SubsetWrapperConfig.end_percent" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.PipelineConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">PipelineConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.PipelineConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.lib._RegistryBase</span></code></p>
-<p>Internal base class for all registry-based configs.</p>
-<p>Provides auto-registration via __init_subclass__.
-Not meant to be used directly - use specific config base classes instead.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.PipelineConfig.kind">
-<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.PipelineConfig.kind" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetWrappers">
-<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">DatasetWrappers</span></span><a class="headerlink" href="#noether.core.schemas.dataset.DatasetWrappers" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.TPipelineConfig">
-<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">TPipelineConfig</span></span><a class="headerlink" href="#noether.core.schemas.dataset.TPipelineConfig" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">DatasetBaseConfig</span></span><span class="sig-paren">[</span><em class="sig-param"><span class="n"><span class="pre">TPipelineConfig</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#noether.core.schemas.dataset.PipelineConfig" title="noether.core.schemas.dataset.PipelineConfig"><span class="pre">PipelineConfig</span></a></span></em><span class="sig-paren">]</span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.lib._RegistryBase</span></code></p>
-<p>Internal base class for all registry-based configs.</p>
-<p>Provides auto-registration via __init_subclass__.
-Not meant to be used directly - use specific config base classes instead.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.kind">
-<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.kind" title="Link to this definition">¶</a></dt>
-<dd><p>Kind of dataset to use.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.pipeline">
-<span class="sig-name descname"><span class="pre">pipeline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">TPipelineConfig</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#noether.core.schemas.dataset.PipelineConfig" title="noether.core.schemas.dataset.PipelineConfig"><span class="pre">PipelineConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.pipeline" title="Link to this definition">¶</a></dt>
-<dd><p>Config of the pipeline to use for the dataset.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.dataset_normalizers">
-<span class="sig-name descname"><span class="pre">dataset_normalizers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../normalizers/index.html#noether.core.schemas.normalizers.NormalizerConfig" title="noether.core.schemas.normalizers.NormalizerConfig"><span class="pre">NormalizerConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../normalizers/index.html#noether.core.schemas.normalizers.NormalizerConfig" title="noether.core.schemas.normalizers.NormalizerConfig"><span class="pre">NormalizerConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.dataset_normalizers" title="Link to this definition">¶</a></dt>
-<dd><p>List of normalizers to apply to the dataset. The key is the data source name.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.dataset_wrappers">
-<span class="sig-name descname"><span class="pre">dataset_wrappers</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">DatasetWrappers</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.dataset_wrappers" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.included_properties">
-<span class="sig-name descname"><span class="pre">included_properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.included_properties" title="Link to this definition">¶</a></dt>
-<dd><p>Set of properties (i.e., getitem_* methods that are called) of this dataset that will be loaded, if not set all properties are loaded</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.excluded_properties">
-<span class="sig-name descname"><span class="pre">excluded_properties</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.excluded_properties" title="Link to this definition">¶</a></dt>
-<dd><p>Set of properties of this dataset that will NOT be loaded, even if they are present in the included list</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetBaseConfig.model_config">
-<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.core.schemas.dataset.DatasetBaseConfig.model_config" title="Link to this definition">¶</a></dt>
-<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.StandardDatasetConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">StandardDatasetConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.StandardDatasetConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig" title="noether.core.schemas.dataset.DatasetBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
-<p>Base config for datasets with fixed splits.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.StandardDatasetConfig.root">
-<span class="sig-name descname"><span class="pre">root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.StandardDatasetConfig.root" title="Link to this definition">¶</a></dt>
-<dd><p>Root directory of the dataset.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.StandardDatasetConfig.split">
-<span class="sig-name descname"><span class="pre">split</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'train'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'val'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'test'</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.StandardDatasetConfig.split" title="Link to this definition">¶</a></dt>
-<dd><p>Which split of the dataset to use. Must be one of “train”, “val”, or “test”.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">DatasetSplitIDs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
-<p>Base class for dataset split ID validation with overlap checking.</p>
-<p>This base class provides:
-1. Automatic validation that train/val/test splits don’t have overlapping IDs
-2. Optional size validation for datasets that have expected split sizes</p>
-<p>Subclasses can optionally define class variables for size validation:
-- EXPECTED_TRAIN_SIZE: Expected number of training samples
-- EXPECTED_VAL_SIZE: Expected number of validation samples
-- EXPECTED_TEST_SIZE: Expected number of test samples
-- DATASET_NAME: Name of the dataset for error messages</p>
-<p>If these are not defined, only overlap checking will be performed.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_TRAIN_SIZE">
-<span class="sig-name descname"><span class="pre">EXPECTED_TRAIN_SIZE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_TRAIN_SIZE" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_VAL_SIZE">
-<span class="sig-name descname"><span class="pre">EXPECTED_VAL_SIZE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_VAL_SIZE" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_TEST_SIZE">
-<span class="sig-name descname"><span class="pre">EXPECTED_TEST_SIZE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_TEST_SIZE" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_HIDDEN_TEST_SIZE">
-<span class="sig-name descname"><span class="pre">EXPECTED_HIDDEN_TEST_SIZE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_HIDDEN_TEST_SIZE" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.DATASET_NAME">
-<span class="sig-name descname"><span class="pre">DATASET_NAME</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.DATASET_NAME" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.train">
-<span class="sig-name descname"><span class="pre">train</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.train" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.val">
-<span class="sig-name descname"><span class="pre">val</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.val" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.test">
-<span class="sig-name descname"><span class="pre">test</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.test" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.extrap">
-<span class="sig-name descname"><span class="pre">extrap</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.extrap" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.interp">
-<span class="sig-name descname"><span class="pre">interp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.interp" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.train_subset">
-<span class="sig-name descname"><span class="pre">train_subset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.train_subset" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DatasetSplitIDs.validate_splits">
-<span class="sig-name descname"><span class="pre">validate_splits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.DatasetSplitIDs.validate_splits" title="Link to this definition">¶</a></dt>
-<dd><p>Validate splits and check for overlaps.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.FieldDimSpec">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">FieldDimSpec</span></span><a class="headerlink" href="#noether.core.schemas.dataset.FieldDimSpec" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.RootModel</span></code>[<a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collections.OrderedDict</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code></a>]]</p>
-<p>A specification for a group of named data fields and their dimensions.</p>
-<dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.FieldDimSpec.field_slices">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">field_slices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.14)"><span class="pre">slice</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.FieldDimSpec.field_slices" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates slice indices for each field in concatenation order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.14)">slice</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.FieldDimSpec.total_dim">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">total_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.FieldDimSpec.total_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates the total dimension of all fields combined.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.FieldDimSpec.keys">
-<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.FieldDimSpec.keys" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.FieldDimSpec.values">
-<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.FieldDimSpec.values" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.FieldDimSpec.items">
-<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.FieldDimSpec.items" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DomainDataSpec">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">DomainDataSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.DomainDataSpec" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Data specification for a single domain (e.g., surface, volume, wake).</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DomainDataSpec.output_dims">
-<span class="sig-name descname"><span class="pre">output_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.DomainDataSpec.output_dims" title="Link to this definition">¶</a></dt>
-<dd><p>1, “velocity”: 3}.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Output fields and their dimensions for this domain, e.g. {“pressure”</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.DomainDataSpec.feature_dim">
-<span class="sig-name descname"><span class="pre">feature_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.DomainDataSpec.feature_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Input feature fields and their dimensions for this domain.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.dataset.</span></span><span class="sig-name descname"><span class="pre">ModelDataSpecs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Base data specification for models that operate on arbitrary named domains.</p>
-<p>This is the minimal interface that model configs need from data specifications:
-position dimensions, available conditioning, and per-domain data descriptions.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.position_dim">
-<span class="sig-name descname"><span class="pre">position_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.position_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Dimension of the input position vectors.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.conditioning_dims">
-<span class="sig-name descname"><span class="pre">conditioning_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec" title="noether.core.schemas.dataset.FieldDimSpec"><span class="pre">FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.conditioning_dims" title="Link to this definition">¶</a></dt>
-<dd><p>Available conditioning features and their dimensions.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.domains">
-<span class="sig-name descname"><span class="pre">domains</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec" title="noether.core.schemas.dataset.DomainDataSpec"><span class="pre">DomainDataSpec</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.domains" title="Link to this definition">¶</a></dt>
-<dd><p>Per-domain data specifications keyed by domain name.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.use_physics_features">
-<span class="sig-name descname"><span class="pre">use_physics_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.use_physics_features" title="Link to this definition">¶</a></dt>
-<dd><p>Whether physics features are used as input.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.total_output_dim">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">total_output_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.total_output_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Calculates the total output dimension across all domains.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.all_targets">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all_targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.all_targets" title="Link to this definition">¶</a></dt>
-<dd><p>Returns all target field names across all domains, prefixed by domain name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)">set</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.all_features">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all_features</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.all_features" title="Link to this definition">¶</a></dt>
-<dd><p>Returns all feature field names across all domains.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)">set</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.dataset.ModelDataSpecs.remove_feature_fields">
-<span class="sig-name descname"><span class="pre">remove_feature_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.dataset.ModelDataSpecs.remove_feature_fields" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</section>
+<p>Dataset-related shared types and back-compat re-exports.</p>
+<p>The dataset, wrapper, and pipeline config classes have moved next to the
+classes they configure under <a class="reference internal" href="../../../data/index.html#module-noether.data" title="noether.data"><code class="xref py py-mod docutils literal notranslate"><span class="pre">noether.data</span></code></a>. They are re-exported here
+lazily to keep the old <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">noether.core.schemas.dataset</span> <span class="pre">import</span> <span class="pre">X</span></code> paths
+working without eagerly triggering the heavy <code class="docutils literal notranslate"><span class="pre">noether.data</span></code> imports.</p>
+<p>The model-data specification types (<code class="xref py py-class docutils literal notranslate"><span class="pre">FieldDimSpec</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">DomainDataSpec</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelDataSpecs</span></code>) remain here because they
+have no single implementation home and are consumed across model configs.</p>
 </section>
 
         </article>
@@ -1445,111 +947,8 @@ validated to form a valid model.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">noether.core.schemas.dataset</a><ul>
-<li><a class="reference internal" href="#attributes">Attributes</a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetWrapperConfig"><code class="docutils literal notranslate"><span class="pre">DatasetWrapperConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetWrapperConfig.kind"><code class="docutils literal notranslate"><span class="pre">DatasetWrapperConfig.kind</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.RepeatWrapperConfig"><code class="docutils literal notranslate"><span class="pre">RepeatWrapperConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.RepeatWrapperConfig.repetitions"><code class="docutils literal notranslate"><span class="pre">RepeatWrapperConfig.repetitions</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ShuffleWrapperConfig"><code class="docutils literal notranslate"><span class="pre">ShuffleWrapperConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ShuffleWrapperConfig.seed"><code class="docutils literal notranslate"><span class="pre">ShuffleWrapperConfig.seed</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.SubsetWrapperConfig"><code class="docutils literal notranslate"><span class="pre">SubsetWrapperConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.SubsetWrapperConfig.indices"><code class="docutils literal notranslate"><span class="pre">SubsetWrapperConfig.indices</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.SubsetWrapperConfig.start_index"><code class="docutils literal notranslate"><span class="pre">SubsetWrapperConfig.start_index</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.SubsetWrapperConfig.end_index"><code class="docutils literal notranslate"><span class="pre">SubsetWrapperConfig.end_index</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.SubsetWrapperConfig.start_percent"><code class="docutils literal notranslate"><span class="pre">SubsetWrapperConfig.start_percent</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.SubsetWrapperConfig.end_percent"><code class="docutils literal notranslate"><span class="pre">SubsetWrapperConfig.end_percent</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.PipelineConfig"><code class="docutils literal notranslate"><span class="pre">PipelineConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.PipelineConfig.kind"><code class="docutils literal notranslate"><span class="pre">PipelineConfig.kind</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetWrappers"><code class="docutils literal notranslate"><span class="pre">DatasetWrappers</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.TPipelineConfig"><code class="docutils literal notranslate"><span class="pre">TPipelineConfig</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.kind"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.kind</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.pipeline"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.pipeline</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.dataset_normalizers"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.dataset_normalizers</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.dataset_wrappers"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.dataset_wrappers</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.included_properties"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.included_properties</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.excluded_properties"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.excluded_properties</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetBaseConfig.model_config"><code class="docutils literal notranslate"><span class="pre">DatasetBaseConfig.model_config</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.StandardDatasetConfig"><code class="docutils literal notranslate"><span class="pre">StandardDatasetConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.StandardDatasetConfig.root"><code class="docutils literal notranslate"><span class="pre">StandardDatasetConfig.root</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.StandardDatasetConfig.split"><code class="docutils literal notranslate"><span class="pre">StandardDatasetConfig.split</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_TRAIN_SIZE"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.EXPECTED_TRAIN_SIZE</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_VAL_SIZE"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.EXPECTED_VAL_SIZE</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_TEST_SIZE"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.EXPECTED_TEST_SIZE</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.EXPECTED_HIDDEN_TEST_SIZE"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.EXPECTED_HIDDEN_TEST_SIZE</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.DATASET_NAME"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.DATASET_NAME</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.train"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.train</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.val"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.val</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.test"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.test</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.extrap"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.extrap</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.interp"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.interp</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.train_subset"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.train_subset</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DatasetSplitIDs.validate_splits"><code class="docutils literal notranslate"><span class="pre">DatasetSplitIDs.validate_splits()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec"><code class="docutils literal notranslate"><span class="pre">FieldDimSpec</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec.field_slices"><code class="docutils literal notranslate"><span class="pre">FieldDimSpec.field_slices</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec.total_dim"><code class="docutils literal notranslate"><span class="pre">FieldDimSpec.total_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec.keys"><code class="docutils literal notranslate"><span class="pre">FieldDimSpec.keys()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec.values"><code class="docutils literal notranslate"><span class="pre">FieldDimSpec.values()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.FieldDimSpec.items"><code class="docutils literal notranslate"><span class="pre">FieldDimSpec.items()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec"><code class="docutils literal notranslate"><span class="pre">DomainDataSpec</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec.output_dims"><code class="docutils literal notranslate"><span class="pre">DomainDataSpec.output_dims</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.DomainDataSpec.feature_dim"><code class="docutils literal notranslate"><span class="pre">DomainDataSpec.feature_dim</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.position_dim"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.position_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.conditioning_dims"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.conditioning_dims</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.domains"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.domains</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.use_physics_features"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.use_physics_features</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.total_output_dim"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.total_output_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.all_targets"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.all_targets</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.all_features"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.all_features</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.dataset.ModelDataSpecs.remove_feature_fields"><code class="docutils literal notranslate"><span class="pre">ModelDataSpecs.remove_feature_fields()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

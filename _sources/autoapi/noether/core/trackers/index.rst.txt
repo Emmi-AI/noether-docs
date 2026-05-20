@@ -23,10 +23,14 @@ Classes
 .. autoapisummary::
 
    noether.core.trackers.BaseTracker
+   noether.core.trackers.BaseTrackerConfig
    noether.core.trackers.NoopTracker
    noether.core.trackers.TensorboardTracker
+   noether.core.trackers.TensorboardTrackerSchema
    noether.core.trackers.TrackioTracker
+   noether.core.trackers.TrackioTrackerSchema
    noether.core.trackers.WandBTracker
+   noether.core.trackers.WandBTrackerSchema
 
 
 Package Contents
@@ -107,9 +111,30 @@ Package Contents
 
 
 
+.. py:class:: BaseTrackerConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Base configuration for experiment trackers. All tracker configs should inherit from this class.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
 .. py:class:: NoopTracker(metric_property_provider, path_provider)
 
-   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+   Bases: :py:obj:`noether.core.trackers.BaseTracker`
 
 
    Dummy tracker that does nothing.
@@ -123,7 +148,7 @@ Package Contents
 
 .. py:class:: TensorboardTracker(tracker_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+   Bases: :py:obj:`noether.core.trackers.BaseTracker`
 
 
    TensorBoard tracker for logging metrics and configuration.
@@ -144,9 +169,40 @@ Package Contents
 
 
 
+.. py:class:: TensorboardTrackerSchema(/, **data)
+
+   Bases: :py:obj:`noether.core.trackers.BaseTrackerConfig`
+
+
+   Schema for TensorboardTracker configuration.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: log_dir
+      :type:  str
+      :value: None
+
+
+      The base directory where TensorBoard event files will be stored.
+
+
+   .. py:attribute:: flush_secs
+      :type:  int
+      :value: None
+
+
+      How often, in seconds, to flush the pending events to disk.
+
+
 .. py:class:: TrackioTracker(tracker_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+   Bases: :py:obj:`noether.core.trackers.BaseTracker`
 
 
    HuggingFace Trackio tracker.
@@ -162,9 +218,38 @@ Package Contents
    .. py:attribute:: config
 
 
+.. py:class:: TrackioTrackerSchema(/, **data)
+
+   Bases: :py:obj:`noether.core.trackers.BaseTrackerConfig`
+
+
+   Schema for TrackioTracker configuration.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: project
+      :type:  str
+
+      The project name for the Trackio project.
+
+
+   .. py:attribute:: space_id
+      :type:  str | None
+      :value: None
+
+
+      The HuggingFace space ID where to store the Trackio data.
+
+
 .. py:class:: WandBTracker(tracker_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.trackers.base.BaseTracker`
+   Bases: :py:obj:`noether.core.trackers.BaseTracker`
 
 
    Weights and Biases tracker.
@@ -198,5 +283,52 @@ Package Contents
 
 
    .. py:attribute:: tags
+
+
+.. py:class:: WandBTrackerSchema(/, **data)
+
+   Bases: :py:obj:`noether.core.trackers.BaseTrackerConfig`
+
+
+   Base configuration for experiment trackers. All tracker configs should inherit from this class.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: entity
+      :type:  str | None
+      :value: None
+
+
+      The entity name for the W&B project.
+
+
+   .. py:attribute:: project
+      :type:  str | None
+      :value: None
+
+
+      The project name for the W&B project.
+
+
+   .. py:attribute:: mode
+      :type:  Literal['disabled', 'online', 'offline'] | None
+      :value: None
+
+
+      Tracking mode. Can be 'disabled', 'online', or 'offline'.
+
+
+   .. py:attribute:: tags
+      :type:  list[str] | None
+      :value: None
+
+
+      Optional tags for the W&B run.
 
 

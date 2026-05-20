@@ -18,6 +18,7 @@ Classes
 
 .. autoapisummary::
 
+   noether.data.pipeline.multistage.PipelineConfig
    noether.data.pipeline.multistage.MultiStagePipeline
 
 
@@ -27,6 +28,28 @@ Module Contents
 .. py:data:: SampleProcessorType
 
 .. py:data:: BatchProcessorType
+
+.. py:class:: PipelineConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str
+
 
 .. py:class:: MultiStagePipeline(collators = None, sample_processors = None, batch_processors = None)
 

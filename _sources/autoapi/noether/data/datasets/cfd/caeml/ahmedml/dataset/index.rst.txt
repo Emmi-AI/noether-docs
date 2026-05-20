@@ -46,7 +46,7 @@ Module Contents
 
 
    .. py:property:: get_dataset_splits
-      :type: noether.core.schemas.dataset.DatasetSplitIDs
+      :type: noether.data.base.dataset.DatasetSplitIDs
 
 
 

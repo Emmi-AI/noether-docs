@@ -9,11 +9,43 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.layers.drop_path.UnquantizedDropPathConfig
    noether.modeling.modules.layers.drop_path.UnquantizedDropPath
 
 
 Module Contents
 ---------------
+
+.. py:class:: UnquantizedDropPathConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for the UnquantizedDropPath layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: drop_prob
+      :type:  float
+      :value: None
+
+
+      Probability of dropping a path during training.
+
+
+   .. py:attribute:: scale_by_keep
+      :type:  bool
+      :value: None
+
+
+      Up-scales activations during training by 1 - drop_prob to avoid train-test mismatch. Defaults to True.
+
 
 .. py:class:: UnquantizedDropPath(config)
 

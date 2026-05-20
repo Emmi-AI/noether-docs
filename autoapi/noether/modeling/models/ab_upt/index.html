@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -887,13 +890,16 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.ab_upt.ModelKVCache" title="noether.modeling.models.ab_upt.ModelKVCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelKVCache</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig" title="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code></a></p></td>
+<td><p>Configuration for the Anchored Branched UPT (AB-UPT) model.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.ab_upt.ModelKVCache" title="noether.modeling.models.ab_upt.ModelKVCache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ModelKVCache</span></code></a></p></td>
 <td><p>Caches that let a forward call skip work it has already done.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.ab_upt.ReadoutLayer" title="noether.modeling.models.ab_upt.ReadoutLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReadoutLayer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.ab_upt.ReadoutLayer" title="noether.modeling.models.ab_upt.ReadoutLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReadoutLayer</span></code></a></p></td>
 <td><p>The final readout layer for AB-UPT, which applies an AdaLN-style modulation followed by a linear projection to the desired output dimension.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchoredBranchedUPT" title="noether.modeling.models.ab_upt.AnchoredBranchedUPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchoredBranchedUPT</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchoredBranchedUPT" title="noether.modeling.models.ab_upt.AnchoredBranchedUPT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnchoredBranchedUPT</span></code></a></p></td>
 <td><p>Implementation of the Anchored Branched UPT (AB-UPT) model.</p></td>
 </tr>
 </tbody>
@@ -902,6 +908,265 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.models.ab_upt.</span></span><span class="sig-name descname"><span class="pre">AnchorBranchedUPTConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../core/models/base/index.html#noether.core.models.base.ModelBaseConfig" title="noether.core.models.base.ModelBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.models.base.ModelBaseConfig</span></code></a>, <a class="reference internal" href="../../../core/schemas/mixins/index.html#noether.core.schemas.mixins.InjectSharedFieldFromParentMixin" title="noether.core.schemas.mixins.InjectSharedFieldFromParentMixin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.mixins.InjectSharedFieldFromParentMixin</span></code></a></p>
+<p>Configuration for the Anchored Branched UPT (AB-UPT) model.</p>
+<p>AB-UPT is built from three configurable stages:</p>
+<ol class="arabic simple">
+<li><p><strong>Geometry encoder</strong> (optional): a <code class="xref py py-class docutils literal notranslate"><span class="pre">SupernodePooling</span></code> encoder followed by
+<code class="docutils literal notranslate"><span class="pre">geometry_depth</span></code> standard transformer blocks. Only instantiated when at least
+one <code class="docutils literal notranslate"><span class="pre">perceiver</span></code> / <code class="docutils literal notranslate"><span class="pre">perceiver_untied</span></code> block is present in <code class="docutils literal notranslate"><span class="pre">physics_blocks</span></code>
+and <code class="docutils literal notranslate"><span class="pre">supernode_pooling_config</span></code> is provided.</p></li>
+<li><p><strong>Physics trunk</strong>: a stack of blocks listed in <code class="docutils literal notranslate"><span class="pre">physics_blocks</span></code> operating on
+per-domain anchor (and optionally query) tokens. The block string controls the
+attention pattern and weight sharing — see <code class="docutils literal notranslate"><span class="pre">physics_blocks</span></code> below.</p></li>
+<li><p><strong>Per-domain decoder</strong> (optional): <code class="docutils literal notranslate"><span class="pre">num_domain_decoder_blocks[name]</span></code>
+self-attention blocks with <strong>untied weights per domain</strong>, followed by a linear
+projection to that domain’s output fields.</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">hidden_dim</span></code> is a shared field — it is auto-injected into
+<code class="docutils literal notranslate"><span class="pre">transformer_block_config</span></code> and <code class="docutils literal notranslate"><span class="pre">supernode_pooling_config</span></code> via
+<code class="xref py py-class docutils literal notranslate"><span class="pre">InjectSharedFieldFromParentMixin</span></code>, so it only needs to be set once at the top
+level. See <a class="reference internal" href="../../../../../reference/config_inheritance.html"><span class="doc">Configuration Inheritance</span></a>.</p>
+<section id="configuration-guide">
+<h3>Configuration guide<a class="headerlink" href="#configuration-guide" title="Link to this heading">¶</a></h3>
+<p>See <a class="reference internal" href="../../../../../guides/training/configuring_ab_upt.html"><span class="doc">Configuring AB-UPT</span></a> for a step-by-step walkthrough of how
+to compose physics blocks, choose between tied and <code class="docutils literal notranslate"><span class="pre">_untied</span></code> variants, and wire up
+the per-domain decoder.</p>
+<p>Concrete examples (YAML):</p>
+<ul class="simple">
+<li><p>Aerodynamics (multi-domain, surface + volume):
+<a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/recipes/aero_cfd/configs/model/ab_upt.yaml">recipes/aero_cfd/configs/model/ab_upt.yaml</a></p></li>
+<li><p>Heat transfer (single-domain, volume only with parameter conditioning):
+<a class="reference external" href="https://github.com/Emmi-AI/noether/blob/main/recipes/heat_transfer/configs/model/ab_upt.yaml">recipes/heat_transfer/configs/model/ab_upt.yaml</a></p></li>
+</ul>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schemas.models.AnchorBranchedUPTConfig'</span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>Kind of model to use, i.e. class path</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.supernode_pooling_config">
+<span class="sig-name descname"><span class="pre">supernode_pooling_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../modules/encoders/supernode_pooling/index.html#noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig" title="noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig"><span class="pre">noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.supernode_pooling_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.transformer_block_config">
+<span class="sig-name descname"><span class="pre">transformer_block_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlockConfig" title="noether.modeling.modules.blocks.transformer.TransformerBlockConfig"><span class="pre">noether.modeling.modules.blocks.transformer.TransformerBlockConfig</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../../core/schemas/mixins/index.html#noether.core.schemas.mixins.Shared" title="noether.core.schemas.mixins.Shared"><span class="pre">noether.core.schemas.mixins.Shared</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.transformer_block_config" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_depth">
+<span class="sig-name descname"><span class="pre">geometry_depth</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_depth" title="Link to this definition">¶</a></dt>
+<dd><p>Number of transformer blocks in the geometry encoder.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.hidden_dim">
+<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.hidden_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Hidden dimension of the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.condition_dim">
+<span class="sig-name descname"><span class="pre">condition_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.condition_dim" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.physics_blocks">
+<span class="sig-name descname"><span class="pre">physics_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'self'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'shared'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'self_untied'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'cross_untied'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'joint_untied'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver_untied'</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.physics_blocks" title="Link to this definition">¶</a></dt>
+<dd><p>Types of physics blocks to use in the model.</p>
+<p>self/shared: Self-attention within a branch/domain. Weights are shared between all domains.
+cross: Cross-attention between domains. Each domain attends to all other domains’ anchors, weights are shared.
+joint: Joint attention over all domain points. Full self-attention over all points, weights are shared.
+perceiver: Perceiver-style cross-attention to geometry encoding.
+self_untied: Self-attention within a branch with untied weights for each domain.
+cross_untied: Cross-attention between domains with untied weights for each domain.
+joint_untied: Joint attention over all domain points with untied weights for each domain.
+perceiver_untied: Perceiver cross-attention with geometry encoding and untied weights per domain.</p>
+<p>Note: “shared” is a deprecated alias for “self” and will be removed in a future release.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.num_domain_decoder_blocks">
+<span class="sig-name descname"><span class="pre">num_domain_decoder_blocks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.num_domain_decoder_blocks" title="Link to this definition">¶</a></dt>
+<dd><p>2, “volume”: 2}.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number of final domain-specific decoder blocks with self attention and no weight sharing, e.g. {“surface”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.init_weights">
+<span class="sig-name descname"><span class="pre">init_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.types.InitWeightsMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.init_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Weight initialization of linear layers. Defaults to “truncnormal002”.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.drop_path_rate">
+<span class="sig-name descname"><span class="pre">drop_path_rate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.drop_path_rate" title="Link to this definition">¶</a></dt>
+<dd><p>Drop path rate for stochastic depth. Defaults to 0.0 (no drop path).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_conditioning_dims">
+<span class="sig-name descname"><span class="pre">geometry_conditioning_dims</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../data/schemas/index.html#noether.data.schemas.FieldDimSpec" title="noether.data.schemas.FieldDimSpec"><span class="pre">noether.data.schemas.FieldDimSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_conditioning_dims" title="Link to this definition">¶</a></dt>
+<dd><p>Per-named-field conditioning spec for geometry transformer blocks. When
+left unset, defaults to <code class="docutils literal notranslate"><span class="pre">data_specs.conditioning_dims</span></code> so the geometry
+branch sees the same conditioning as the rest of the model. An explicit
+empty <code class="xref py py-class docutils literal notranslate"><span class="pre">FieldDimSpec</span></code> (<code class="docutils literal notranslate"><span class="pre">total_dim</span> <span class="pre">==</span> <span class="pre">0</span></code>) opts out — useful for
+diffusion, where timestep modulation should touch physics + per-domain
+decoders but not the geometry branch (geometry is invariant to noise level).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.data_specs">
+<span class="sig-name descname"><span class="pre">data_specs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../../../data/schemas/index.html#noether.data.schemas.ModelDataSpecs" title="noether.data.schemas.ModelDataSpecs"><span class="pre">noether.data.schemas.ModelDataSpecs</span></a></em><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.data_specs" title="Link to this definition">¶</a></dt>
+<dd><p>Data specifications for the model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.migrate_shared_to_self">
+<span class="sig-name descname"><span class="pre">migrate_shared_to_self</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.migrate_shared_to_self" title="Link to this definition">¶</a></dt>
+<dd><p>Migrate deprecated ‘shared’ block type to ‘self’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig" title="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.rope_frequency_config">
+<span class="sig-name descname"><span class="pre">rope_frequency_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.rope_frequency_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/rope_frequency/index.html#noether.modeling.modules.layers.rope_frequency.RopeFrequencyConfig" title="noether.modeling.modules.layers.rope_frequency.RopeFrequencyConfig">noether.modeling.modules.layers.rope_frequency.RopeFrequencyConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.pos_embed_config">
+<span class="sig-name descname"><span class="pre">pos_embed_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.pos_embed_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/continuous_sincos_embed/index.html#noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig" title="noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig">noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.bias_mlp_config">
+<span class="sig-name descname"><span class="pre">bias_mlp_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.bias_mlp_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/mlp/index.html#noether.modeling.modules.mlp.MLPConfig" title="noether.modeling.modules.mlp.MLPConfig">noether.modeling.modules.mlp.MLPConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.perceiver_block_config">
+<span class="sig-name descname"><span class="pre">perceiver_block_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.perceiver_block_config" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/blocks/perceiver/index.html#noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig" title="noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig">noether.modeling.modules.blocks.perceiver.PerceiverBlockConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.domain_decoder_configs">
+<span class="sig-name descname"><span class="pre">domain_decoder_configs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.domain_decoder_configs" title="Link to this definition">¶</a></dt>
+<dd><p>Per-domain decoder projection configs, keyed by domain name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference internal" href="../../modules/layers/linear_projection/index.html#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig" title="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig">noether.modeling.modules.layers.linear_projection.LinearProjectionConfig</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.conditioner_config">
+<span class="sig-name descname"><span class="pre">conditioner_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.conditioner_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the scalar conditioner module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/vectors_conditioner/index.html#noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig" title="noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig">noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.set_condition_dim">
+<span class="sig-name descname"><span class="pre">set_condition_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.set_condition_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Set condition_dim in transformer_block_config based on data_specs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig" title="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_transformer_block_config">
+<span class="sig-name descname"><span class="pre">geometry_transformer_block_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_transformer_block_config" title="Link to this definition">¶</a></dt>
+<dd><p>Transformer block config for geometry encoder, with condition_dim set to geometry_conditioning_dims.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/blocks/transformer/index.html#noether.modeling.modules.blocks.transformer.TransformerBlockConfig" title="noether.modeling.modules.blocks.transformer.TransformerBlockConfig">noether.modeling.modules.blocks.transformer.TransformerBlockConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_conditioner_config">
+<span class="sig-name descname"><span class="pre">geometry_conditioner_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_conditioner_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the scalar conditioner module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../modules/layers/vectors_conditioner/index.html#noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig" title="noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig">noether.modeling.modules.layers.vectors_conditioner.VectorsConditionerConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.validate_parameters">
+<span class="sig-name descname"><span class="pre">validate_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.validate_parameters" title="Link to this definition">¶</a></dt>
+<dd><p>Validate validity of parameters across the model and its submodules.</p>
+<p>Ensures that hidden_dim is consistent across parent and all submodules.
+Note: transformer_block_config validates hidden_dim % num_heads == 0 in its own validator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig" title="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig">AnchorBranchedUPTConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="noether.modeling.models.ab_upt.KVPair">
 <span class="sig-prename descclassname"><span class="pre">noether.modeling.models.ab_upt.</span></span><span class="sig-name descname"><span class="pre">KVPair</span></span><a class="headerlink" href="#noether.modeling.models.ab_upt.KVPair" title="Link to this definition">¶</a></dt>
@@ -963,7 +1228,7 @@ with <code class="docutils literal notranslate"><span class="pre">physics_blocks
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>decoder_config</strong> (<a class="reference internal" href="../../../core/schemas/modules/layers/linear_projection/index.html#noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig" title="noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig"><em>noether.core.schemas.modules.layers.linear_projection.LinearProjectionConfig</em></a>)</p></li>
+<li><p><strong>decoder_config</strong> (<a class="reference internal" href="../../modules/layers/linear_projection/index.html#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig" title="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig"><em>noether.modeling.modules.layers.linear_projection.LinearProjectionConfig</em></a>)</p></li>
 <li><p><strong>hidden_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p></li>
 <li><p><strong>condition_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><em>None</em>)</p></li>
 </ul>
@@ -1011,14 +1276,14 @@ with <code class="docutils literal notranslate"><span class="pre">physics_blocks
 so it can be used directly by providing the appropriate input tensors. See
 <a class="reference internal" href="#noether.modeling.models.ab_upt.AnchoredBranchedUPT.forward" title="noether.modeling.models.ab_upt.AnchoredBranchedUPT.forward"><code class="xref py py-meth docutils literal notranslate"><span class="pre">forward()</span></code></a> for the expected inputs.</p>
 <p>The architecture is fully driven by
-<a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig" title="noether.core.schemas.models.AnchorBranchedUPTConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code></a>: the geometry encoder
+<code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code>: the geometry encoder
 depth, the ordering and type of physics blocks, and the per-domain decoder depths
 are all configured there. For a walkthrough of how to assemble a config (and
 concrete YAML examples from the <code class="docutils literal notranslate"><span class="pre">aero_cfd</span></code> and <code class="docutils literal notranslate"><span class="pre">heat_transfer</span></code> recipes), see
 <a class="reference internal" href="../../../../../guides/training/configuring_ab_upt.html"><span class="doc">Configuring AB-UPT</span></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig" title="noether.core.schemas.models.AnchorBranchedUPTConfig"><em>noether.core.schemas.models.AnchorBranchedUPTConfig</em></a>) – Configuration for the AB-UPT model. See <a class="reference internal" href="../../../core/schemas/models/index.html#noether.core.schemas.models.AnchorBranchedUPTConfig" title="noether.core.schemas.models.AnchorBranchedUPTConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code></a> for details.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig" title="noether.modeling.models.ab_upt.AnchorBranchedUPTConfig"><em>AnchorBranchedUPTConfig</em></a>) – Configuration for the AB-UPT model. See <code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code> for details.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1339,6 +1604,33 @@ or leave it <code class="docutils literal notranslate"><span class="pre">None</s
 <li><a class="reference internal" href="#attributes">Attributes</a></li>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.kind"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.model_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.model_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.supernode_pooling_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.supernode_pooling_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.transformer_block_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.transformer_block_config</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_depth"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.geometry_depth</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.hidden_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.condition_dim"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.condition_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.physics_blocks"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.physics_blocks</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.num_domain_decoder_blocks"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.num_domain_decoder_blocks</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.init_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.drop_path_rate"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.drop_path_rate</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_conditioning_dims"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.geometry_conditioning_dims</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.data_specs"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.data_specs</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.migrate_shared_to_self"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.migrate_shared_to_self()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.rope_frequency_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.rope_frequency_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.pos_embed_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.pos_embed_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.bias_mlp_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.bias_mlp_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.perceiver_block_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.perceiver_block_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.domain_decoder_configs"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.domain_decoder_configs()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.conditioner_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.conditioner_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.set_condition_dim"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.set_condition_dim()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_transformer_block_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.geometry_transformer_block_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.geometry_conditioner_config"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.geometry_conditioner_config()</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.models.ab_upt.AnchorBranchedUPTConfig.validate_parameters"><code class="docutils literal notranslate"><span class="pre">AnchorBranchedUPTConfig.validate_parameters()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.models.ab_upt.KVPair"><code class="docutils literal notranslate"><span class="pre">KVPair</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.ab_upt.LayerCache"><code class="docutils literal notranslate"><span class="pre">LayerCache</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.models.ab_upt.ModelKVCache"><code class="docutils literal notranslate"><span class="pre">ModelKVCache</span></code></a><ul>

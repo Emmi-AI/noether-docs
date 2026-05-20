@@ -17,7 +17,7 @@ Module Contents
 
 .. py:class:: WingHFSplitIDs(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.dataset.DatasetSplitIDs`
+   Bases: :py:obj:`noether.data.base.dataset.DatasetSplitIDs`
 
 
    Emmi-Wing HuggingFace subset splits (248 cases: 200 train / 24 val / 24 test).

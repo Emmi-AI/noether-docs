@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -900,8 +903,14 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopper" title="noether.core.callbacks.early_stoppers.FixedEarlyStopper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedEarlyStopper</span></code></a></p></td>
 <td><p>Early stopper (training) based on a fixed number of epochs, updates, or samples.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper" title="noether.core.callbacks.early_stoppers.MetricEarlyStopper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricEarlyStopper</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig" title="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper" title="noether.core.callbacks.early_stoppers.MetricEarlyStopper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricEarlyStopper</span></code></a></p></td>
 <td><p>Early stopper (training) based on a metric value to be monitored.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig" title="noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig</span></code></a></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
 </tr>
 </tbody>
 </table>
@@ -925,8 +934,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><em>noether.core.schemas.callbacks.CallBackBaseConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.CallBackBaseConfig" title="noether.core.schemas.callbacks.CallBackBaseConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><em>noether.core.callbacks.base.CallBackBaseConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">CallBackBaseConfig</span></code>
 for available options.</p></li>
 <li><p><strong>trainer</strong> – Trainer of the current run.</p></li>
 <li><p><strong>model</strong> (<a class="reference internal" href="../../models/index.html#noether.core.models.ModelBase" title="noether.core.models.ModelBase"><em>noether.core.models.ModelBase</em></a>) – Model of the current run.</p></li>
@@ -987,8 +996,8 @@ for available options.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.FixedEarlyStopperConfig" title="noether.core.schemas.callbacks.FixedEarlyStopperConfig"><em>noether.core.schemas.callbacks.FixedEarlyStopperConfig</em></a>) – The configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.FixedEarlyStopperConfig" title="noether.core.schemas.callbacks.FixedEarlyStopperConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig" title="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig"><em>FixedEarlyStopperConfig</em></a>) – The configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig</span></code>
 for available options.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments to pass to the parent class.</p></li>
 </ul>
@@ -1012,6 +1021,53 @@ for available options.</p></li>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.early_stoppers.</span></span><span class="sig-name descname"><span class="pre">FixedEarlyStopperConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.kind" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'FixedEarlyStopper'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.stop_at_sample">
+<span class="sig-name descname"><span class="pre">stop_at_sample</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.stop_at_sample" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.stop_at_update">
+<span class="sig-name descname"><span class="pre">stop_at_update</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.stop_at_update" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.stop_at_epoch">
+<span class="sig-name descname"><span class="pre">stop_at_epoch</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.stop_at_epoch" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.validate_callback_frequency">
+<span class="sig-name descname"><span class="pre">validate_callback_frequency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.validate_callback_frequency" title="Link to this definition">¶</a></dt>
+<dd><p>Ensures that exactly one stop (‘stop_at_*’) is specified</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig" title="noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig">FixedEarlyStopperConfig</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.MetricEarlyStopper">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.early_stoppers.</span></span><span class="sig-name descname"><span class="pre">MetricEarlyStopper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="base/index.html#noether.core.callbacks.early_stoppers.base.EarlyStopperBase" title="noether.core.callbacks.early_stoppers.base.EarlyStopperBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.early_stoppers.base.EarlyStopperBase</span></code></a></p>
@@ -1027,8 +1083,8 @@ for available options.</p></li>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>callback_config</strong> (<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.MetricEarlyStopperConfig" title="noether.core.schemas.callbacks.MetricEarlyStopperConfig"><em>noether.core.schemas.callbacks.MetricEarlyStopperConfig</em></a>) – Configuration for the callback. See
-<a class="reference internal" href="../../schemas/callbacks/index.html#noether.core.schemas.callbacks.MetricEarlyStopperConfig" title="noether.core.schemas.callbacks.MetricEarlyStopperConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig</span></code></a>
+<li><p><strong>callback_config</strong> (<a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig" title="noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig"><em>MetricEarlyStopperConfig</em></a>) – Configuration for the callback. See
+<code class="xref py py-class docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig</span></code>
 for available options including metric key and tolerance.</p></li>
 <li><p><strong>**kwargs</strong> – Additional arguments to pass to the parent class.</p></li>
 </ul>
@@ -1058,6 +1114,55 @@ for available options including metric key and tolerance.</p></li>
 <dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.MetricEarlyStopper.best_metric">
 <span class="sig-name descname"><span class="pre">best_metric</span></span><a class="headerlink" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper.best_metric" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.early_stoppers.</span></span><span class="sig-name descname"><span class="pre">MetricEarlyStopperConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.base.CallBackBaseConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'MetricEarlyStopper'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.metric_key">
+<span class="sig-name descname"><span class="pre">metric_key</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.metric_key" title="Link to this definition">¶</a></dt>
+<dd><p>The key of the metric to monitor</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.tolerance">
+<span class="sig-name descname"><span class="pre">tolerance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><a class="headerlink" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.tolerance" title="Link to this definition">¶</a></dt>
+<dd><p>The number of times the metric can stagnate before stopping training</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.check_tolerance_positive">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">check_tolerance_positive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.check_tolerance_positive" title="Link to this definition">¶</a></dt>
+<dd><p>Ensures that tolerance is at least 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -1160,12 +1265,28 @@ for available options including metric key and tolerance.</p></li>
 <li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopper.stop_at_epoch"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopper.stop_at_epoch</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.kind"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.name"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.stop_at_sample"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig.stop_at_sample</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.stop_at_update"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig.stop_at_update</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.stop_at_epoch"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig.stop_at_epoch</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.FixedEarlyStopperConfig.validate_callback_frequency"><code class="docutils literal notranslate"><span class="pre">FixedEarlyStopperConfig.validate_callback_frequency()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopper</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper.metric_key"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopper.metric_key</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper.higher_is_better"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopper.higher_is_better</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper.tolerance"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopper.tolerance</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper.tolerance_counter"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopper.tolerance_counter</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopper.best_metric"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopper.best_metric</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.name"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.metric_key"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig.metric_key</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.tolerance"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig.tolerance</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.early_stoppers.MetricEarlyStopperConfig.check_tolerance_positive"><code class="docutils literal notranslate"><span class="pre">MetricEarlyStopperConfig.check_tolerance_positive()</span></code></a></li>
 </ul>
 </li>
 </ul>

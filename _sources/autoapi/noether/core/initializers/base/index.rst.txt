@@ -9,11 +9,75 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.initializers.base.InitializerConfig
    noether.core.initializers.base.InitializerBase
 
 
 Module Contents
 ---------------
+
+.. py:class:: InitializerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str
+      :value: None
+
+
+
+   .. py:attribute:: kwargs
+      :type:  dict[str, Any] | None
+      :value: None
+
+
+      Additional keyword arguments to pass to the initializer.
+
+
+   .. py:attribute:: run_id
+      :type:  str
+
+      A unique identifier for the training stage. This is used to find the correct checkpoint.
+
+
+   .. py:attribute:: stage_name
+      :type:  str | None
+      :value: None
+
+
+      The name of the stage training stage if defined. When training, the stage name is usually "train".
+
+
+   .. py:attribute:: model_name
+      :type:  str | None
+      :value: None
+
+
+      The name of the model to load. This is the model_name used in CheckpointCallback.
+
+
+   .. py:attribute:: checkpoint_tag
+      :type:  str | None | dict
+      :value: None
+
+
+      Which checkpoint to load.
+      Checkpoint is usually "latest" or "best_loss", or "E*_U*_S*", depending on which checkpoint you want to load.
+
+
+   .. py:attribute:: model_info
+      :type:  str | None
+      :value: None
+
+
+      Optional string to provide additional info about the model weights in the checkpoint filename. E.g., the stored weights are the EMA, or in a different precision.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
 
 .. py:class:: InitializerBase(path_provider)
 

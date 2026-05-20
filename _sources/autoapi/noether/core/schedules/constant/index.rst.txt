@@ -9,11 +9,31 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.schedules.constant.ConstantScheduleConfig
    noether.core.schedules.constant.ConstantSchedule
 
 
 Module Contents
 ---------------
+
+.. py:class:: ConstantScheduleConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schedules.schemas.ScheduleBaseConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.schedules.ConstantSchedule']
+      :value: 'noether.core.schedules.ConstantSchedule'
+
+
+      The fully qualified class name of the scheduler.
+
+
+   .. py:attribute:: value
+      :type:  float
+
+      The constant value that will be returned for all steps. Value should be equal to the learning rate defined in the optimizer.
+
 
 .. py:class:: ConstantSchedule(config)
 

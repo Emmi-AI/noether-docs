@@ -14,11 +14,51 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.decoders.deep_perceiver.DeepPerceiverDecoderConfig
    noether.modeling.modules.decoders.deep_perceiver.DeepPerceiverDecoder
 
 
 Module Contents
 ---------------
+
+.. py:class:: DeepPerceiverDecoderConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.mixins.InjectSharedFieldFromParentMixin`, :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for the DeepPerceiverDecoder module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: perceiver_block_config
+      :type:  Annotated[noether.modeling.modules.blocks.PerceiverBlockConfig, noether.core.schemas.mixins.Shared]
+      :value: None
+
+
+      Configuration for the Perceiver blocks used in the decoder.
+
+
+   .. py:attribute:: depth
+      :type:  int
+      :value: None
+
+
+      Number of deep perceiver decoder layers (i.e., depth of the network). Defaults to 1.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension for the query positions.
+
 
 .. py:class:: DeepPerceiverDecoder(config)
 

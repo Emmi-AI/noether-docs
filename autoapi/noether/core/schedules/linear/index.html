@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4 current current-page"><a class="current reference internal" href="#">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,8 +875,14 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.linear.LinearDecreasingSchedule" title="noether.core.schedules.linear.LinearDecreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearDecreasingSchedule</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.linear.LinearDecreasingScheduleConfig" title="noether.core.schedules.linear.LinearDecreasingScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearDecreasingScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.linear.LinearDecreasingSchedule" title="noether.core.schedules.linear.LinearDecreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearDecreasingSchedule</span></code></a></p></td>
 <td><p>A scheduler that decreases linearly from the maximum to minimum value over the total number of steps.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schedules.linear.LinearIncreasingScheduleConfig" title="noether.core.schedules.linear.LinearIncreasingScheduleConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearIncreasingScheduleConfig</span></code></a></p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schedules.linear.LinearIncreasingSchedule" title="noether.core.schedules.linear.LinearIncreasingSchedule"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearIncreasingSchedule</span></code></a></p></td>
 <td><p>A scheduler that increases linearly from the minimum to maximum value over the total number of steps.</p></td>
@@ -884,6 +893,23 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.linear.LinearDecreasingScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.linear.</span></span><span class="sig-name descname"><span class="pre">LinearDecreasingScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.linear.LinearDecreasingScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.DecreasingProgressScheduleConfig</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.linear.LinearDecreasingScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.LinearDecreasingSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.LinearDecreasingSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.linear.LinearDecreasingScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schedules.linear.LinearDecreasingSchedule">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.linear.</span></span><span class="sig-name descname"><span class="pre">LinearDecreasingSchedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.linear.LinearDecreasingSchedule" title="Link to this definition">¶</a></dt>
@@ -899,9 +925,26 @@
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../schemas/schedules/index.html#noether.core.schemas.schedules.DecreasingProgressScheduleConfig" title="noether.core.schemas.schedules.DecreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.DecreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/index.html#noether.core.schedules.schemas.DecreasingProgressScheduleConfig" title="noether.core.schedules.schemas.DecreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.DecreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.schedules.linear.LinearIncreasingScheduleConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schedules.linear.</span></span><span class="sig-name descname"><span class="pre">LinearIncreasingScheduleConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schedules.linear.LinearIncreasingScheduleConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schedules.base.IncreasingProgressScheduleConfig</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schedules.linear.LinearIncreasingScheduleConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.schedules.LinearIncreasingSchedule'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'noether.core.schedules.LinearIncreasingSchedule'</span></em><a class="headerlink" href="#noether.core.schedules.linear.LinearIncreasingScheduleConfig.kind" title="Link to this definition">¶</a></dt>
+<dd><p>The fully qualified class name of the scheduler.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -919,7 +962,7 @@
 <p>Initialize the scheduler.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../schemas/schedules/index.html#noether.core.schemas.schedules.IncreasingProgressScheduleConfig" title="noether.core.schemas.schedules.IncreasingProgressScheduleConfig"><em>noether.core.schemas.schedules.IncreasingProgressScheduleConfig</em></a>)</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../schemas/index.html#noether.core.schedules.schemas.IncreasingProgressScheduleConfig" title="noether.core.schedules.schemas.IncreasingProgressScheduleConfig"><em>noether.core.schedules.schemas.IncreasingProgressScheduleConfig</em></a>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1009,7 +1052,15 @@
 <li><a class="reference internal" href="#">noether.core.schedules.linear</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.linear.LinearDecreasingScheduleConfig"><code class="docutils literal notranslate"><span class="pre">LinearDecreasingScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.linear.LinearDecreasingScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">LinearDecreasingScheduleConfig.kind</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schedules.linear.LinearDecreasingSchedule"><code class="docutils literal notranslate"><span class="pre">LinearDecreasingSchedule</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schedules.linear.LinearIncreasingScheduleConfig"><code class="docutils literal notranslate"><span class="pre">LinearIncreasingScheduleConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schedules.linear.LinearIncreasingScheduleConfig.kind"><code class="docutils literal notranslate"><span class="pre">LinearIncreasingScheduleConfig.kind</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schedules.linear.LinearIncreasingSchedule"><code class="docutils literal notranslate"><span class="pre">LinearIncreasingSchedule</span></code></a></li>
 </ul>
 </li>

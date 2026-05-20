@@ -9,11 +9,53 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.callbacks.early_stoppers.fixed.FixedEarlyStopperConfig
    noether.core.callbacks.early_stoppers.fixed.FixedEarlyStopper
 
 
 Module Contents
 ---------------
+
+.. py:class:: FixedEarlyStopperConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
+
+   .. py:attribute:: name
+      :type:  Literal['FixedEarlyStopper']
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_sample
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_update
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:attribute:: stop_at_epoch
+      :type:  int | None
+      :value: None
+
+
+
+   .. py:method:: validate_callback_frequency()
+
+      Ensures that exactly one stop ('stop_at_*') is specified
+
+
 
 .. py:class:: FixedEarlyStopper(callback_config, **kwargs)
 

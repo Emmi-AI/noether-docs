@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,7 +875,10 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializer" title="noether.core.initializers.previous_run.PreviousRunInitializer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig" title="noether.core.initializers.previous_run.PreviousRunInitializerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializer" title="noether.core.initializers.previous_run.PreviousRunInitializer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code></a></p></td>
 <td><p>Initializes a model from a checkpoint of a previous run (specified by the run_id), this initializers hence only loads model weights.</p></td>
 </tr>
 </tbody>
@@ -882,9 +888,55 @@
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.core.initializers.previous_run.PreviousRunInitializerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.initializers.previous_run.</span></span><span class="sig-name descname"><span class="pre">PreviousRunInitializerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../checkpoint/index.html#noether.core.initializers.checkpoint.CheckpointInitializerConfig" title="noether.core.initializers.checkpoint.CheckpointInitializerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.initializers.checkpoint.CheckpointInitializerConfig</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.previous_run.PreviousRunInitializerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'noether.core.initializers.PreviousRunInitializer'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.previous_run.PreviousRunInitializerConfig.load_optim">
+<span class="sig-name descname"><span class="pre">load_optim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.load_optim" title="Link to this definition">¶</a></dt>
+<dd><p>Whether or not to load the optimizer state from the checkpoint. Default is True, as this is usually used to resume a training run</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.previous_run.PreviousRunInitializerConfig.keys_to_remove">
+<span class="sig-name descname"><span class="pre">keys_to_remove</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.keys_to_remove" title="Link to this definition">¶</a></dt>
+<dd><p>List of keys to remove from the checkpoint.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.previous_run.PreviousRunInitializerConfig.patterns_to_remove">
+<span class="sig-name descname"><span class="pre">patterns_to_remove</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.patterns_to_remove" title="Link to this definition">¶</a></dt>
+<dd><p>List of patterns to remove from the checkpoint.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.previous_run.PreviousRunInitializerConfig.patterns_to_rename">
+<span class="sig-name descname"><span class="pre">patterns_to_rename</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.patterns_to_rename" title="Link to this definition">¶</a></dt>
+<dd><p>List of patterns to rename in the checkpoint.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.previous_run.PreviousRunInitializerConfig.patterns_to_instantiate">
+<span class="sig-name descname"><span class="pre">patterns_to_instantiate</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.patterns_to_instantiate" title="Link to this definition">¶</a></dt>
+<dd><p>List of patterns to instantiate in the checkpoint.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.initializers.previous_run.PreviousRunInitializer">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.initializers.previous_run.</span></span><span class="sig-name descname"><span class="pre">PreviousRunInitializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initializer_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.initializers.previous_run.PreviousRunInitializer" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="../index.html#noether.core.initializers.CheckpointInitializer" title="noether.core.initializers.CheckpointInitializer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.initializers.CheckpointInitializer</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="../checkpoint/index.html#noether.core.initializers.checkpoint.CheckpointInitializer" title="noether.core.initializers.checkpoint.CheckpointInitializer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.initializers.checkpoint.CheckpointInitializer</span></code></a></p>
 <p>Initializes a model from a checkpoint of a previous run (specified by the run_id), this initializers hence only loads model weights.
 When a previous run should be resumed for further training, use ResumeInitializer instead.
 This initializer needs to be initialized as part of a model config.
@@ -907,7 +959,7 @@ It is possible to remove certain keys or patterns from the checkpoint before loa
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>initializer_config</strong> (<a class="reference internal" href="../../schemas/initializers/index.html#noether.core.schemas.initializers.PreviousRunInitializerConfig" title="noether.core.schemas.initializers.PreviousRunInitializerConfig"><em>noether.core.schemas.initializers.PreviousRunInitializerConfig</em></a>) – Configuration for the initializer. See <a class="reference internal" href="../../schemas/initializers/index.html#noether.core.schemas.initializers.PreviousRunInitializerConfig" title="noether.core.schemas.initializers.PreviousRunInitializerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig</span></code></a> for available options.</p></li>
+<li><p><strong>initializer_config</strong> (<a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig" title="noether.core.initializers.previous_run.PreviousRunInitializerConfig"><em>PreviousRunInitializerConfig</em></a>) – Configuration for the initializer. See <a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig" title="noether.core.initializers.previous_run.PreviousRunInitializerConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig</span></code></a> for available options.</p></li>
 <li><p><strong>**kwargs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) – additional arguments to pass to the parent class.</p></li>
 </ul>
 </dd>
@@ -1053,6 +1105,15 @@ It is possible to remove certain keys or patterns from the checkpoint before loa
 <li><a class="reference internal" href="#">noether.core.initializers.previous_run</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.kind"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.load_optim"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig.load_optim</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.keys_to_remove"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig.keys_to_remove</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.patterns_to_remove"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig.patterns_to_remove</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.patterns_to_rename"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig.patterns_to_rename</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializerConfig.patterns_to_instantiate"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializerConfig.patterns_to_instantiate</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializer"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializer</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializer.keys_to_remove"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializer.keys_to_remove</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.initializers.previous_run.PreviousRunInitializer.patterns_to_remove"><code class="docutils literal notranslate"><span class="pre">PreviousRunInitializer.patterns_to_remove</span></code></a></li>

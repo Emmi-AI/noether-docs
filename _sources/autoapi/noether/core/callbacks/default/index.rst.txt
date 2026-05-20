@@ -30,6 +30,7 @@ Classes
    noether.core.callbacks.default.EtaCallback
    noether.core.callbacks.default.LrCallback
    noether.core.callbacks.default.OnlineLossCallback
+   noether.core.callbacks.default.OnlineLossCallbackConfig
    noether.core.callbacks.default.ParamCountCallback
    noether.core.callbacks.default.PeakMemoryCallback
    noether.core.callbacks.default.ProgressCallback
@@ -353,6 +354,38 @@ Package Contents
       :param \*\*kwargs: Additional keyword arguments passed from the triggering hook
                          (e.g., from :meth:`after_epoch` or :meth:`after_update`).
 
+
+
+.. py:class:: OnlineLossCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['OnlineLossCallback']
+      :value: None
+
+
+
+   .. py:attribute:: verbose
+      :type:  bool
+      :value: None
+
+
+      Whether to also log to the (console) logger. If False, the loss will only logged to the experiment tracker.
 
 
 .. py:class:: ParamCountCallback(trainer, model, data_container, tracker, log_writer, checkpoint_writer, metric_property_provider, name = None)

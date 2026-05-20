@@ -3,46 +3,11 @@ noether.core.schemas.modules.layers.layer_scale
 
 .. py:module:: noether.core.schemas.modules.layers.layer_scale
 
+.. autoapi-nested-parse::
 
-Classes
--------
+   Back-compat re-export for ``LayerScaleConfig``.
 
-.. autoapisummary::
+   The canonical home is :mod:`noether.modeling.modules.layers.layer_scale`.
 
-   noether.core.schemas.modules.layers.layer_scale.LayerScaleConfig
-
-
-Module Contents
----------------
-
-.. py:class:: LayerScaleConfig(/, **data)
-
-   Bases: :py:obj:`pydantic.BaseModel`
-
-
-   Configuration for Layer Scale module.
-
-   Create a new model by parsing and validating input data from keyword arguments.
-
-   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
-   validated to form a valid model.
-
-   `self` is explicitly positional-only to allow `self` as a field name.
-
-
-   .. py:attribute:: hidden_dim
-      :type:  int
-      :value: None
-
-
-      Number of dimensions of the input tensor to be scaled.
-
-
-   .. py:attribute:: init_values
-      :type:  float | None
-      :value: None
-
-
-      Initial gamme scale value. Defaults to 1e-5.
 
 

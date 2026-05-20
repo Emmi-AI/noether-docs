@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../autoapi/noether/core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/noether/core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../autoapi/noether/data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../autoapi/noether/data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../autoapi/noether/data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../autoapi/noether/data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -1104,27 +1107,6 @@ validates configuration: checks types, ranges, and constraints before training b
 <p><strong>Schema hierarchy:</strong></p>
 <p>All schemas in the Noether Framework follow an inheritance pattern. For example, model schemas
 inherit from <code class="docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ModelBaseConfig</span><span class="p">(</span><span class="n">_RegistryBase</span><span class="p">):</span>
-    <span class="n">_registry</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">_type_field</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;kind&quot;</span>
-
-    <span class="n">kind</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kind of model to use, i.e. class path&quot;&quot;&quot;</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name of the model. Needs to be unique&quot;&quot;&quot;</span>
-    <span class="n">optimizer_config</span><span class="p">:</span> <span class="n">AnyOptimizerConfig</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">discriminator</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;The optimizer configuration to use for training the model. When a model is used for inference only, this can be left as None.&quot;&quot;&quot;</span>
-    <span class="n">initializers</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Annotated</span><span class="p">[</span><span class="n">AnyInitializer</span><span class="p">,</span> <span class="n">Field</span><span class="p">(</span><span class="n">discriminator</span><span class="o">=</span><span class="s2">&quot;kind&quot;</span><span class="p">)]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;List of initializers configs to use for the model.&quot;&quot;&quot;</span>
-    <span class="n">is_frozen</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to freeze the model parameters (i.e., not trainable).&quot;&quot;&quot;</span>
-    <span class="n">forward_properties</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;List of properties to be used as inputs for the forward pass of the model. Only relevant when the train_step of the BaseTrainer is used. When overridden in a class method, this property is ignored.&quot;&quot;&quot;</span>
-
-    <span class="n">model_config</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;extra&quot;</span><span class="p">:</span> <span class="s2">&quot;forbid&quot;</span><span class="p">}</span>
-
-</pre></div>
-</div>
 <p>The <code class="docutils literal notranslate"><span class="pre">extra:</span> <span class="pre">&quot;forbid&quot;</span></code> setting ensures that typos in YAML files are caught immediately,
 preventing silent configuration errors.</p>
 </section>
@@ -1138,129 +1120,7 @@ Transformer models looks like:</p>
 </pre></div>
 </div>
 <p><strong>TransformerBlockConfig</strong> defines individual block parameters:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TransformerBlockConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for a transformer block.&quot;&quot;&quot;</span>
-
-    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hidden Dimension of the transformer block.&quot;&quot;&quot;</span>
-
-    <span class="n">num_heads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of attention heads.&quot;&quot;&quot;</span>
-
-    <span class="n">mlp_hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hidden dimension of the MLP layer. If set to None, the mlp_hidden dim is set to hidden_dim * mlp_expansion_factor in the TransformerConfig. If both are None, an error is raised.&quot;&quot;&quot;</span>
-
-    <span class="n">mlp_expansion_factor</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Expansion factor for the MLP hidden dimension relative to the hidden dimension. If &#39;mlp_hidden_dim&#39; is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.&quot;&quot;&quot;</span>
-
-    <span class="n">drop_path</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Probability to drop the attention or MLP module. Defaults to 0.0.&quot;&quot;&quot;</span>
-
-    <span class="n">attention_constructor</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span>
-        <span class="s2">&quot;dot_product&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;perceiver&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;transolver&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;transolver_plusplus&quot;</span><span class="p">,</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;dot_product&quot;</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Constructor of the attention module. Defaults to &#39;dot_product&#39;.&quot;&quot;&quot;</span>
-
-    <span class="n">layerscale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Init scale value to scale layer activations. Defaults to None.&quot;&quot;&quot;</span>
-
-    <span class="n">condition_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dimension of the conditioning vector. If none, no conditioning is applied. If provided, the transformer block will turn into a Diffusion Transformer (DiT) block.&quot;&quot;&quot;</span>
-
-    <span class="n">bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to use biases in norm/projections. Defaults to True.&quot;&quot;&quot;</span>
-
-    <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">gt</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Epsilon Value for the layer nornalization. Defaults to 1e-6.&quot;&quot;&quot;</span>
-
-    <span class="n">init_weights</span><span class="p">:</span> <span class="n">InitWeightsMode</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;truncnormal002&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialization method for the weight matrices of the network. Defaults to &quot;truncnormal002&quot;&quot;&quot;</span>
-
-    <span class="n">use_rope</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether to use Rotary Positional Embeddings (RoPE).&quot;&quot;&quot;</span>
-
-    <span class="n">max_wavelength</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Theta parameter for the transformer sine/cosine embedding. Default: 10_000&quot;&quot;&quot;</span>
-
-    <span class="n">attention_arguments</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Additional arguments for the attention module that are only needed for a specific attention implementation.&quot;&quot;&quot;</span>
-
-    <span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_mlp_hidden_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># Validate hidden_dim is divisible by num_heads</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hidden_dim (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="si">}</span><span class="s2">) must be divisible by num_heads (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_heads</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_hidden_dim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_expansion_factor</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Either &#39;mlp_hidden_dim&#39; or &#39;mlp_expansion_factor&#39; must be provided.&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mlp_hidden_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_expansion_factor</span>
-        <span class="k">return</span> <span class="bp">self</span>
-
-    <span class="nd">@model_validator</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s2">&quot;after&quot;</span><span class="p">)</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">set_wavelength_for_rope</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_rope</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_wavelength</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;max_wavelength must be provided when use_rope is True.&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span>
-
-    <span class="nd">@computed_field</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">linear_projection_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;LinearProjectionConfig&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">LinearProjectionConfig</span><span class="p">(</span>
-            <span class="n">input_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span>
-            <span class="n">output_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span>
-            <span class="n">bias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span>
-            <span class="n">init_weights</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init_weights</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="nd">@computed_field</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">layerscale_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;LayerScaleConfig&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">LayerScaleConfig</span><span class="p">(</span>
-            <span class="n">hidden_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span>
-            <span class="n">init_values</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">layerscale</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="nd">@computed_field</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">drop_path_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;UnquantizedDropPathConfig&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">UnquantizedDropPathConfig</span><span class="p">(</span><span class="n">drop_prob</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">drop_path</span><span class="p">)</span>
-
-    <span class="nd">@computed_field</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">modulation_linear_projection_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;LinearProjectionConfig | None&quot;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">condition_dim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">LinearProjectionConfig</span><span class="p">(</span>
-                <span class="n">input_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">condition_dim</span><span class="p">,</span>
-                <span class="n">output_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span> <span class="o">*</span> <span class="mi">6</span><span class="p">,</span>
-                <span class="n">init_weights</span><span class="o">=</span><span class="s2">&quot;zeros&quot;</span><span class="p">,</span>
-            <span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span>
-
-    <span class="nd">@computed_field</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">up_act_down_mlp_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;UpActDownMLPConfig&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">UpActDownMLPConfig</span><span class="p">(</span>
-            <span class="n">input_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_dim</span><span class="p">,</span>
-            <span class="n">hidden_dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mlp_hidden_dim</span><span class="p">,</span>
-            <span class="n">bias</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span>
-            <span class="n">init_weights</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init_weights</span><span class="p">,</span>
-        <span class="p">)</span>
-</pre></div>
-</div>
 <p><strong>TransformerConfig</strong> extends the block config:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TransformerConfig</span><span class="p">(</span><span class="n">ModelBaseConfig</span><span class="p">,</span> <span class="n">InjectSharedFieldFromParentMixin</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for a Transformer model.&quot;&quot;&quot;</span>
-
-    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">extra</span><span class="o">=</span><span class="s2">&quot;forbid&quot;</span><span class="p">)</span>
-
-    <span class="n">hidden_dim</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hidden dimension of the model. Used for all transformer blocks.&quot;&quot;&quot;</span>
-
-    <span class="n">depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Number of transformer blocks in the model.&quot;&quot;&quot;</span>
-
-    <span class="n">transformer_block_config</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">TransformerBlockConfig</span><span class="p">,</span> <span class="n">Shared</span><span class="p">]</span>
-</pre></div>
-</div>
 <p><strong>Multiple inheritance</strong> means <code class="docutils literal notranslate"><span class="pre">TransformerConfig</span></code> inherits:</p>
 <ul class="simple">
 <li><p>Model management from <code class="docutils literal notranslate"><span class="pre">ModelBaseConfig</span></code> (optimizer, freezing, etc.)</p></li>

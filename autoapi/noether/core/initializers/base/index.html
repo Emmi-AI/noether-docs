@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,7 +875,10 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.initializers.base.InitializerBase" title="noether.core.initializers.base.InitializerBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InitializerBase</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig" title="noether.core.initializers.base.InitializerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InitializerConfig</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.initializers.base.InitializerBase" title="noether.core.initializers.base.InitializerBase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InitializerBase</span></code></a></p></td>
 <td><p>Helper class that provides a standard way to create an ABC using</p></td>
 </tr>
 </tbody>
@@ -881,6 +887,65 @@
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="noether.core.initializers.base.InitializerConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.initializers.base.</span></span><span class="sig-name descname"><span class="pre">InitializerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.initializers.base.InitializerConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.base.InitializerConfig.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.base.InitializerConfig.kind" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.base.InitializerConfig.kwargs">
+<span class="sig-name descname"><span class="pre">kwargs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.base.InitializerConfig.kwargs" title="Link to this definition">¶</a></dt>
+<dd><p>Additional keyword arguments to pass to the initializer.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.base.InitializerConfig.run_id">
+<span class="sig-name descname"><span class="pre">run_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.initializers.base.InitializerConfig.run_id" title="Link to this definition">¶</a></dt>
+<dd><p>A unique identifier for the training stage. This is used to find the correct checkpoint.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.base.InitializerConfig.stage_name">
+<span class="sig-name descname"><span class="pre">stage_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.base.InitializerConfig.stage_name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the stage training stage if defined. When training, the stage name is usually “train”.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.base.InitializerConfig.model_name">
+<span class="sig-name descname"><span class="pre">model_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.base.InitializerConfig.model_name" title="Link to this definition">¶</a></dt>
+<dd><p>The name of the model to load. This is the model_name used in CheckpointCallback.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.base.InitializerConfig.checkpoint_tag">
+<span class="sig-name descname"><span class="pre">checkpoint_tag</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.base.InitializerConfig.checkpoint_tag" title="Link to this definition">¶</a></dt>
+<dd><p>Which checkpoint to load.
+Checkpoint is usually “latest” or “best_loss”, or “E*_U*_S*”, depending on which checkpoint you want to load.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.base.InitializerConfig.model_info">
+<span class="sig-name descname"><span class="pre">model_info</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.initializers.base.InitializerConfig.model_info" title="Link to this definition">¶</a></dt>
+<dd><p>Optional string to provide additional info about the model weights in the checkpoint filename. E.g., the stored weights are the EMA, or in a different precision.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.initializers.base.InitializerConfig.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><a class="headerlink" href="#noether.core.initializers.base.InitializerConfig.model_config" title="Link to this definition">¶</a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="noether.core.initializers.base.InitializerBase">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.initializers.base.</span></span><span class="sig-name descname"><span class="pre">InitializerBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_provider</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.initializers.base.InitializerBase" title="Link to this definition">¶</a></dt>
@@ -1066,6 +1131,17 @@ inheritance.</p>
 <li><a class="reference internal" href="#">noether.core.initializers.base</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig"><code class="docutils literal notranslate"><span class="pre">InitializerConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig.kind"><code class="docutils literal notranslate"><span class="pre">InitializerConfig.kind</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig.kwargs"><code class="docutils literal notranslate"><span class="pre">InitializerConfig.kwargs</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig.run_id"><code class="docutils literal notranslate"><span class="pre">InitializerConfig.run_id</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig.stage_name"><code class="docutils literal notranslate"><span class="pre">InitializerConfig.stage_name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig.model_name"><code class="docutils literal notranslate"><span class="pre">InitializerConfig.model_name</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig.checkpoint_tag"><code class="docutils literal notranslate"><span class="pre">InitializerConfig.checkpoint_tag</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig.model_info"><code class="docutils literal notranslate"><span class="pre">InitializerConfig.model_info</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.initializers.base.InitializerConfig.model_config"><code class="docutils literal notranslate"><span class="pre">InitializerConfig.model_config</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.initializers.base.InitializerBase"><code class="docutils literal notranslate"><span class="pre">InitializerBase</span></code></a><ul>
 <li><a class="reference internal" href="#noether.core.initializers.base.InitializerBase.logger"><code class="docutils literal notranslate"><span class="pre">InitializerBase.logger</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.initializers.base.InitializerBase.path_provider"><code class="docutils literal notranslate"><span class="pre">InitializerBase.path_provider</span></code></a></li>

@@ -9,11 +9,118 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig
    noether.modeling.modules.encoders.supernode_pooling.SupernodePooling
 
 
 Module Contents
 ---------------
+
+.. py:class:: SupernodePoolingConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension for positional embeddings, messages and the resulting output vector.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Number of positional dimension (e.g., input_dim=2 for a 2D position, input_dim=3 for a 3D position)
+
+
+   .. py:attribute:: radius
+      :type:  float | None
+      :value: None
+
+
+      Radius around each supernode. From points within this radius, messages are passed to the supernode.
+
+
+   .. py:attribute:: k
+      :type:  int | None
+      :value: None
+
+
+      Number of neighbors for each supernode. From the k-NN points, messages are passed to the supernode.
+
+
+   .. py:attribute:: max_degree
+      :type:  int
+      :value: None
+
+
+      Maximum degree of the radius graph. Defaults to 32.
+
+
+   .. py:attribute:: spool_pos_mode
+      :type:  Literal['abspos', 'relpos', 'absrelpos']
+      :value: None
+
+
+      absolute space ("abspos"), relative space ("relpos") or both ("absrelpos").
+
+      :type: Type of position embedding
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Weight initialization of linear layers. Defaults to "truncnormal002".
+
+
+   .. py:attribute:: readd_supernode_pos
+      :type:  bool
+      :value: None
+
+
+      If true, the absolute positional encoding of the supernode is concatenated to the supernode vector after message passing and linearly projected back to hidden_dim. Defaults to True.
+
+
+   .. py:attribute:: aggregation
+      :type:  Literal['mean', 'sum']
+      :value: None
+
+
+      Aggregation for message passing ("mean" or "sum").
+
+
+   .. py:attribute:: message_mode
+      :type:  Literal['mlp', 'linear', 'identity']
+      :value: None
+
+
+      How messages are created. "mlp" (2 layer MLP), "linear" (nn.Linear), "identity" (nn.Identity). Defaults to "mlp".
+
+
+   .. py:attribute:: input_features_dim
+      :type:  int | None
+      :value: None
+
+
+      Number of input features per point. None will fall back to a version without features. Defaults to None, which means no input features.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias in the linear layers. Defaults to True.
+
+
+   .. py:method:: validate_radius_and_k()
+
 
 .. py:class:: SupernodePooling(config)
 

@@ -9,15 +9,67 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.initializers.previous_run.PreviousRunInitializerConfig
    noether.core.initializers.previous_run.PreviousRunInitializer
 
 
 Module Contents
 ---------------
 
+.. py:class:: PreviousRunInitializerConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.initializers.checkpoint.CheckpointInitializerConfig`
+
+
+   .. py:attribute:: kind
+      :type:  Literal['noether.core.initializers.PreviousRunInitializer']
+      :value: None
+
+
+
+   .. py:attribute:: load_optim
+      :type:  bool
+      :value: None
+
+
+      Whether or not to load the optimizer state from the checkpoint. Default is True, as this is usually used to resume a training run
+
+
+   .. py:attribute:: keys_to_remove
+      :type:  list[str] | None
+      :value: None
+
+
+      List of keys to remove from the checkpoint.
+
+
+   .. py:attribute:: patterns_to_remove
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to remove from the checkpoint.
+
+
+   .. py:attribute:: patterns_to_rename
+      :type:  list[dict] | None
+      :value: None
+
+
+      List of patterns to rename in the checkpoint.
+
+
+   .. py:attribute:: patterns_to_instantiate
+      :type:  list[str] | None
+      :value: None
+
+
+      List of patterns to instantiate in the checkpoint.
+
+
 .. py:class:: PreviousRunInitializer(initializer_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.initializers.CheckpointInitializer`
+   Bases: :py:obj:`noether.core.initializers.checkpoint.CheckpointInitializer`
 
 
    Initializes a model from a checkpoint of a previous run (specified by the run_id), this initializers hence only loads model weights.
@@ -42,7 +94,7 @@ Module Contents
            keys_to_remove:
                - encoder.block1.weight
 
-   :param initializer_config: Configuration for the initializer. See :class:`~noether.core.schemas.initializers.PreviousRunInitializerConfig` for available options.
+   :param initializer_config: Configuration for the initializer. See :class:`~noether.core.initializers.previous_run.PreviousRunInitializerConfig` for available options.
    :param \*\*kwargs: additional arguments to pass to the parent class.
 
 

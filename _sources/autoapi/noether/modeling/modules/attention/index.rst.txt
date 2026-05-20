@@ -31,9 +31,13 @@ Classes
 .. autoapisummary::
 
    noether.modeling.modules.attention.DotProductAttention
+   noether.modeling.modules.attention.DotProductAttentionConfig
    noether.modeling.modules.attention.PerceiverAttention
+   noether.modeling.modules.attention.PerceiverAttentionConfig
    noether.modeling.modules.attention.TransolverAttention
+   noether.modeling.modules.attention.TransolverAttentionConfig
    noether.modeling.modules.attention.TransolverPlusPlusAttention
+   noether.modeling.modules.attention.TransolverPlusPlusAttentionConfig
 
 
 Package Contents
@@ -98,6 +102,21 @@ Package Contents
 
       :returns: Returns the output of the attention module.
 
+
+
+.. py:class:: DotProductAttentionConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.modules.attention.AttentionConfig`
+
+
+   Configuration for the Dot Product attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
 
 
 .. py:class:: PerceiverAttention(config)
@@ -170,6 +189,32 @@ Package Contents
 
       :returns: Tuple of (output, new_kv_cache).
 
+
+
+.. py:class:: PerceiverAttentionConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.modules.attention.AttentionConfig`
+
+
+   Configuration for the Perceiver attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kv_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimensionality of the key/value features. If None, use hidden_dim.
+
+
+   .. py:method:: set_kv_dim()
 
 
 .. py:class:: TransolverAttention(config)
@@ -247,6 +292,29 @@ Package Contents
 
 
 
+.. py:class:: TransolverAttentionConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.modules.attention.AttentionConfig`
+
+
+   Configuration for the Transolver attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: num_slices
+      :type:  int
+      :value: None
+
+
+      Number of slices to project the input tokens to.
+
+
 .. py:class:: TransolverPlusPlusAttention(config)
 
    Bases: :py:obj:`torch.nn.Module`
@@ -310,6 +378,53 @@ Package Contents
 
       :returns: Tensor after applying the transolver attention mechanism.
 
+
+
+.. py:class:: TransolverPlusPlusAttentionConfig(/, **data)
+
+   Bases: :py:obj:`noether.modeling.modules.attention.TransolverAttentionConfig`
+
+
+   Configuration for the Transolver++ attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: use_overparameterization
+      :type:  bool
+      :value: None
+
+
+      Whether to use overparameterization for the slice projection.
+
+
+   .. py:attribute:: use_adaptive_temperature
+      :type:  bool
+      :value: None
+
+
+      Whether to use an adaptive temperature for the slice selection.
+
+
+   .. py:attribute:: temperature_activation
+      :type:  Literal['sigmoid', 'softplus', 'exp'] | None
+      :value: None
+
+
+      Activation function for the adaptive temperature.
+
+
+   .. py:attribute:: use_gumbel_softmax
+      :type:  bool
+      :value: None
+
+
+      Whether to use Gumbel-Softmax for the slice selection.
 
 
 .. py:data:: ATTENTION_REGISTRY

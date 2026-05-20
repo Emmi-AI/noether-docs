@@ -107,7 +107,7 @@ Package Contents
 
 
    .. py:property:: normalizer_spec
-      :type: dict[str, noether.core.schemas.normalizers.FieldNormalizerConfig]
+      :type: dict[str, noether.data.preprocessors.normalizers.FieldNormalizerConfig]
 
       :abstractmethod:
 

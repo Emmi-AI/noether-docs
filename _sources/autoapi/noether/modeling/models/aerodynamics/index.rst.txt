@@ -22,7 +22,7 @@ Module Contents
 
 .. py:class:: AeroTransformerConfig(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.models.TransformerConfig`
+   Bases: :py:obj:`noether.modeling.models.transformer.TransformerConfig`
 
 
    Transformer config extended with aerodynamic data specifications.
@@ -36,12 +36,12 @@ Module Contents
 
 
    .. py:attribute:: data_specs
-      :type:  noether.core.schemas.dataset.ModelDataSpecs
+      :type:  noether.data.schemas.ModelDataSpecs
 
 
 .. py:class:: AeroTransolverConfig(/, **data)
 
-   Bases: :py:obj:`noether.core.schemas.models.TransolverConfig`
+   Bases: :py:obj:`noether.modeling.models.transolver.TransolverConfig`
 
 
    Transolver config extended with aerodynamic data specifications.
@@ -55,12 +55,12 @@ Module Contents
 
 
    .. py:attribute:: data_specs
-      :type:  noether.core.schemas.dataset.ModelDataSpecs
+      :type:  noether.data.schemas.ModelDataSpecs
 
 
 .. py:class:: AeroTransformer(model_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.models.Model`
+   Bases: :py:obj:`noether.core.models.model.Model`
 
 
    Aerodynamic Transformer wrapper.
@@ -70,7 +70,7 @@ Module Contents
 
    Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
 
-   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param model_config: Model configuration. See :class:`~noether.core.models.base.ModelBaseConfig` for available options.
    :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
    :param is_frozen: If true, will set `requires_grad` of all parameters to false. Will also put the model into eval
                      mode (e.g., to put Dropout or BatchNorm into eval mode).
@@ -111,7 +111,7 @@ Module Contents
 
 .. py:class:: AeroTransolver(model_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.models.Model`
+   Bases: :py:obj:`noether.core.models.model.Model`
 
 
    Aerodynamic Transolver wrapper.
@@ -120,7 +120,7 @@ Module Contents
 
    Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
 
-   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param model_config: Model configuration. See :class:`~noether.core.models.base.ModelBaseConfig` for available options.
    :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
    :param is_frozen: If true, will set `requires_grad` of all parameters to false. Will also put the model into eval
                      mode (e.g., to put Dropout or BatchNorm into eval mode).
@@ -161,7 +161,7 @@ Module Contents
 
 .. py:class:: AeroUPT(model_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.models.Model`
+   Bases: :py:obj:`noether.core.models.model.Model`
 
 
    Aerodynamic UPT wrapper.
@@ -172,7 +172,7 @@ Module Contents
 
    Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
 
-   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param model_config: Model configuration. See :class:`~noether.core.models.base.ModelBaseConfig` for available options.
    :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
    :param is_frozen: If true, will set `requires_grad` of all parameters to false. Will also put the model into eval
                      mode (e.g., to put Dropout or BatchNorm into eval mode).
@@ -198,7 +198,7 @@ Module Contents
 
 .. py:class:: AeroABUPT(model_config, **kwargs)
 
-   Bases: :py:obj:`noether.core.models.Model`
+   Bases: :py:obj:`noether.core.models.model.Model`
 
 
    Aerodynamic Anchored-Branched UPT wrapper.
@@ -209,7 +209,7 @@ Module Contents
 
    Base class for single models, i.e. one model with one optimizer as opposed to CompositeModel.
 
-   :param model_config: Model configuration. See :class:`~noether.core.schemas.models.ModelBaseConfig` for available options.
+   :param model_config: Model configuration. See :class:`~noether.core.models.base.ModelBaseConfig` for available options.
    :param update_counter: The :class:`~noether.core.utils.training.counter.UpdateCounter` provided to the optimizer.
    :param is_frozen: If true, will set `requires_grad` of all parameters to false. Will also put the model into eval
                      mode (e.g., to put Dropout or BatchNorm into eval mode).

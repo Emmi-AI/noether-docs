@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,7 +875,10 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallback" title="noether.training.callbacks.offline_loss.OfflineLossCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OfflineLossCallback</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallbackConfig" title="noether.training.callbacks.offline_loss.OfflineLossCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code></a></p></td>
+<td><p>Internal base class for all registry-based configs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallback" title="noether.training.callbacks.offline_loss.OfflineLossCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OfflineLossCallback</span></code></a></p></td>
 <td><p>A periodic Callback that is invoked at the end of each epoch to calculate and track the loss and a dataset.</p></td>
 </tr>
 </tbody>
@@ -882,13 +888,47 @@
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.training.callbacks.offline_loss.OfflineLossCallbackConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.training.callbacks.offline_loss.</span></span><span class="sig-name descname"><span class="pre">OfflineLossCallbackConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.callbacks.offline_loss.OfflineLossCallbackConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../../../core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallbackConfig" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallbackConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicDataIteratorCallbackConfig</span></code></a></p>
+<p>Internal base class for all registry-based configs.</p>
+<p>Provides auto-registration via __init_subclass__.
+Not meant to be used directly - use specific config base classes instead.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.callbacks.offline_loss.OfflineLossCallbackConfig.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'OfflineLossCallback'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.callbacks.offline_loss.OfflineLossCallbackConfig.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.callbacks.offline_loss.OfflineLossCallbackConfig.output_patterns_to_log">
+<span class="sig-name descname"><span class="pre">output_patterns_to_log</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.callbacks.offline_loss.OfflineLossCallbackConfig.output_patterns_to_log" title="Link to this definition">¶</a></dt>
+<dd><p>additional arguments passed to the parent class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>For instance, if the output key is ‘some_loss’ and the pattern is [‘loss’].  <a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.training.callbacks.offline_loss.OfflineLossCallback">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.training.callbacks.offline_loss.</span></span><span class="sig-name descname"><span class="pre">OfflineLossCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback_config</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.callbacks.offline_loss.OfflineLossCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../../core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicDataIteratorCallback</span></code></a></p>
 <p>A periodic Callback that is invoked at the end of each epoch to calculate and track the loss and a dataset.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>callback_config</strong> (<a class="reference internal" href="../../../core/schemas/callbacks/index.html#noether.core.schemas.callbacks.OfflineLossCallbackConfig" title="noether.core.schemas.callbacks.OfflineLossCallbackConfig"><em>noether.core.schemas.callbacks.OfflineLossCallbackConfig</em></a>) – configuration of the OfflineLossCallback. See <a class="reference internal" href="../../../core/schemas/callbacks/index.html#noether.core.schemas.callbacks.OfflineLossCallbackConfig" title="noether.core.schemas.callbacks.OfflineLossCallbackConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code></a> for the available options.</p>
+<dd class="field-odd"><p><strong>callback_config</strong> (<a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallbackConfig" title="noether.training.callbacks.offline_loss.OfflineLossCallbackConfig"><em>OfflineLossCallbackConfig</em></a>) – configuration of the OfflineLossCallback. See <code class="xref py py-class docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code> for the available options.</p>
 </dd>
 </dl>
 <dl class="py attribute">
@@ -1027,6 +1067,11 @@
 <li><a class="reference internal" href="#">noether.training.callbacks.offline_loss</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallbackConfig"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallbackConfig.name"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig.name</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallbackConfig.output_patterns_to_log"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallbackConfig.output_patterns_to_log</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallback"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallback</span></code></a><ul>
 <li><a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallback.dataset_key"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallback.dataset_key</span></code></a></li>
 <li><a class="reference internal" href="#noether.training.callbacks.offline_loss.OfflineLossCallback.output_patterns_to_log"><code class="docutils literal notranslate"><span class="pre">OfflineLossCallback.output_patterns_to_log</span></code></a></li>

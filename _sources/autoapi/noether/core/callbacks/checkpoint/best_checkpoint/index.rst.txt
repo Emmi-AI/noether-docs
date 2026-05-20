@@ -9,11 +9,68 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallbackConfig
    noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback
 
 
 Module Contents
 ---------------
+
+.. py:class:: BestCheckpointCallbackConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.callbacks.base.CallBackBaseConfig`
+
+
+   Internal base class for all registry-based configs.
+
+   Provides auto-registration via __init_subclass__.
+   Not meant to be used directly - use specific config base classes instead.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: name
+      :type:  Literal['BestCheckpointCallback']
+      :value: None
+
+
+
+   .. py:attribute:: metric_key
+      :type:  str
+      :value: None
+
+
+      "The key of the metric to be used for checking the best model.
+
+
+   .. py:attribute:: save_frozen_weights
+      :type:  bool
+      :value: None
+
+
+      Whether to also save the frozen weights of the model.
+
+
+   .. py:attribute:: tolerances
+      :type:  list[int] | None
+      :value: None
+
+
+      "If provided, this callback will produce multiple best models which differ in the amount of intervals they allow the metric to not improve. For example, tolerance=[5] with every_n_epochs=1 will store a checkpoint where at most 5 epochs have passed until the metric improved. Additionally, the best checkpoint over the whole training will always be stored (i.e., tolerance=infinite). When setting different tolerances, one can evaluate different early stopping configurations with one training run.
+
+
+   .. py:attribute:: model_names
+      :type:  list[str] | None
+      :value: None
+
+
+      Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name='encoder' here). This only applies when training a CompositeModel. If None, all models are saved.
+
 
 .. py:class:: BestCheckpointCallback(callback_config, **kwargs)
 

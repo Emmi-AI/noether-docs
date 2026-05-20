@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/core/schemas/trackers/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Attributes: Classes: Module Contents:" />
+<meta property="og:description" content="Back-compat re-exports for tracker schemas. The canonical home is noether.core.trackers." />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Attributes: Classes: Module Contents:" />
+<meta name="description" content="Back-compat re-exports for tracker schemas. The canonical home is noether.core.trackers." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -250,7 +250,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -859,7 +862,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -867,164 +870,8 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.core.schemas.trackers">
 <span id="noether-core-schemas-trackers"></span><h1>noether.core.schemas.trackers<a class="headerlink" href="#module-noether.core.schemas.trackers" title="Link to this heading">¶</a></h1>
-<section id="attributes">
-<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
-<div class="table-wrapper autosummary longtable docutils container">
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.trackers.AnyTracker" title="noether.core.schemas.trackers.AnyTracker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnyTracker</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
-<div class="table-wrapper autosummary longtable docutils container">
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.trackers.BaseTrackerConfig" title="noether.core.schemas.trackers.BaseTrackerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTrackerConfig</span></code></a></p></td>
-<td><p>Base configuration for experiment trackers. All tracker configs should inherit from this class.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.trackers.WandBTrackerSchema" title="noether.core.schemas.trackers.WandBTrackerSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WandBTrackerSchema</span></code></a></p></td>
-<td><p>Base configuration for experiment trackers. All tracker configs should inherit from this class.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.trackers.TrackioTrackerSchema" title="noether.core.schemas.trackers.TrackioTrackerSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrackioTrackerSchema</span></code></a></p></td>
-<td><p>Schema for TrackioTracker configuration.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.trackers.TensorboardTrackerSchema" title="noether.core.schemas.trackers.TensorboardTrackerSchema"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TensorboardTrackerSchema</span></code></a></p></td>
-<td><p>Schema for TensorboardTracker configuration.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.BaseTrackerConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.trackers.</span></span><span class="sig-name descname"><span class="pre">BaseTrackerConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.trackers.BaseTrackerConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.schemas.lib._RegistryBase</span></code></p>
-<p>Base configuration for experiment trackers. All tracker configs should inherit from this class.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.BaseTrackerConfig.kind">
-<span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.BaseTrackerConfig.kind" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.WandBTrackerSchema">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.trackers.</span></span><span class="sig-name descname"><span class="pre">WandBTrackerSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.trackers.WandBTrackerSchema" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.trackers.BaseTrackerConfig" title="noether.core.schemas.trackers.BaseTrackerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTrackerConfig</span></code></a></p>
-<p>Base configuration for experiment trackers. All tracker configs should inherit from this class.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.WandBTrackerSchema.entity">
-<span class="sig-name descname"><span class="pre">entity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.WandBTrackerSchema.entity" title="Link to this definition">¶</a></dt>
-<dd><p>The entity name for the W&amp;B project.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.WandBTrackerSchema.project">
-<span class="sig-name descname"><span class="pre">project</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.WandBTrackerSchema.project" title="Link to this definition">¶</a></dt>
-<dd><p>The project name for the W&amp;B project.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.WandBTrackerSchema.mode">
-<span class="sig-name descname"><span class="pre">mode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'disabled'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'online'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'offline'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.WandBTrackerSchema.mode" title="Link to this definition">¶</a></dt>
-<dd><p>Tracking mode. Can be ‘disabled’, ‘online’, or ‘offline’.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.WandBTrackerSchema.tags">
-<span class="sig-name descname"><span class="pre">tags</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.WandBTrackerSchema.tags" title="Link to this definition">¶</a></dt>
-<dd><p>Optional tags for the W&amp;B run.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.TrackioTrackerSchema">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.trackers.</span></span><span class="sig-name descname"><span class="pre">TrackioTrackerSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.trackers.TrackioTrackerSchema" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.trackers.BaseTrackerConfig" title="noether.core.schemas.trackers.BaseTrackerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTrackerConfig</span></code></a></p>
-<p>Schema for TrackioTracker configuration.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.TrackioTrackerSchema.project">
-<span class="sig-name descname"><span class="pre">project</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#noether.core.schemas.trackers.TrackioTrackerSchema.project" title="Link to this definition">¶</a></dt>
-<dd><p>The project name for the Trackio project.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.TrackioTrackerSchema.space_id">
-<span class="sig-name descname"><span class="pre">space_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.TrackioTrackerSchema.space_id" title="Link to this definition">¶</a></dt>
-<dd><p>The HuggingFace space ID where to store the Trackio data.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.TensorboardTrackerSchema">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.trackers.</span></span><span class="sig-name descname"><span class="pre">TensorboardTrackerSchema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.trackers.TensorboardTrackerSchema" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.trackers.BaseTrackerConfig" title="noether.core.schemas.trackers.BaseTrackerConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseTrackerConfig</span></code></a></p>
-<p>Schema for TensorboardTracker configuration.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.TensorboardTrackerSchema.log_dir">
-<span class="sig-name descname"><span class="pre">log_dir</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.log_dir" title="Link to this definition">¶</a></dt>
-<dd><p>The base directory where TensorBoard event files will be stored.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.TensorboardTrackerSchema.flush_secs">
-<span class="sig-name descname"><span class="pre">flush_secs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.flush_secs" title="Link to this definition">¶</a></dt>
-<dd><p>How often, in seconds, to flush the pending events to disk.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="noether.core.schemas.trackers.AnyTracker">
-<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.trackers.</span></span><span class="sig-name descname"><span class="pre">AnyTracker</span></span><a class="headerlink" href="#noether.core.schemas.trackers.AnyTracker" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</section>
+<p>Back-compat re-exports for tracker schemas.</p>
+<p>The canonical home is <a class="reference internal" href="../../trackers/index.html#module-noether.core.trackers" title="noether.core.trackers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">noether.core.trackers</span></code></a>.</p>
 </section>
 
         </article>
@@ -1094,53 +941,8 @@ validated to form a valid model.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">noether.core.schemas.trackers</a><ul>
-<li><a class="reference internal" href="#attributes">Attributes</a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.BaseTrackerConfig"><code class="docutils literal notranslate"><span class="pre">BaseTrackerConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.BaseTrackerConfig.kind"><code class="docutils literal notranslate"><span class="pre">BaseTrackerConfig.kind</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.WandBTrackerSchema"><code class="docutils literal notranslate"><span class="pre">WandBTrackerSchema</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.WandBTrackerSchema.entity"><code class="docutils literal notranslate"><span class="pre">WandBTrackerSchema.entity</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.WandBTrackerSchema.project"><code class="docutils literal notranslate"><span class="pre">WandBTrackerSchema.project</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.WandBTrackerSchema.mode"><code class="docutils literal notranslate"><span class="pre">WandBTrackerSchema.mode</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.WandBTrackerSchema.tags"><code class="docutils literal notranslate"><span class="pre">WandBTrackerSchema.tags</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.TrackioTrackerSchema"><code class="docutils literal notranslate"><span class="pre">TrackioTrackerSchema</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.TrackioTrackerSchema.project"><code class="docutils literal notranslate"><span class="pre">TrackioTrackerSchema.project</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.TrackioTrackerSchema.space_id"><code class="docutils literal notranslate"><span class="pre">TrackioTrackerSchema.space_id</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.TensorboardTrackerSchema"><code class="docutils literal notranslate"><span class="pre">TensorboardTrackerSchema</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.log_dir"><code class="docutils literal notranslate"><span class="pre">TensorboardTrackerSchema.log_dir</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.TensorboardTrackerSchema.flush_secs"><code class="docutils literal notranslate"><span class="pre">TensorboardTrackerSchema.flush_secs</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.trackers.AnyTracker"><code class="docutils literal notranslate"><span class="pre">AnyTracker</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

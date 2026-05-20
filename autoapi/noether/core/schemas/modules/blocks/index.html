@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/core/schemas/modules/blocks/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Classes: Module Contents:" />
+<meta property="og:description" content="Back-compat re-exports for block configs. Canonical homes are under noether.modeling.modules.blocks." />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Classes: Module Contents:" />
+<meta name="description" content="Back-compat re-exports for block configs. Canonical homes are under noether.modeling.modules.blocks." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -250,7 +250,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -859,7 +862,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -867,242 +870,8 @@
         <article role="main" id="furo-main-content">
           <section id="module-noether.core.schemas.modules.blocks">
 <span id="noether-core-schemas-modules-blocks"></span><h1>noether.core.schemas.modules.blocks<a class="headerlink" href="#module-noether.core.schemas.modules.blocks" title="Link to this heading">¶</a></h1>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
-<div class="table-wrapper autosummary longtable docutils container">
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerBlockConfig</span></code></a></p></td>
-<td><p>Configuration for a transformer block.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig" title="noether.core.schemas.modules.blocks.PerceiverBlockConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PerceiverBlockConfig</span></code></a></p></td>
-<td><p>Configuration for the PerceiverBlock module.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="module-contents">
-<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.modules.blocks.</span></span><span class="sig-name descname"><span class="pre">TransformerBlockConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
-<p>Configuration for a transformer block.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.hidden_dim">
-<span class="sig-name descname"><span class="pre">hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.hidden_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Hidden Dimension of the transformer block.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.num_heads">
-<span class="sig-name descname"><span class="pre">num_heads</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.num_heads" title="Link to this definition">¶</a></dt>
-<dd><p>Number of attention heads.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.mlp_hidden_dim">
-<span class="sig-name descname"><span class="pre">mlp_hidden_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.mlp_hidden_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Hidden dimension of the MLP layer. If set to None, the mlp_hidden dim is set to hidden_dim * mlp_expansion_factor in the TransformerConfig. If both are None, an error is raised.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.mlp_expansion_factor">
-<span class="sig-name descname"><span class="pre">mlp_expansion_factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.mlp_expansion_factor" title="Link to this definition">¶</a></dt>
-<dd><p>Expansion factor for the MLP hidden dimension relative to the hidden dimension. If ‘mlp_hidden_dim’ is not set, this factor is used to compute it as hidden_dim * mlp_expansion_factor.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.drop_path">
-<span class="sig-name descname"><span class="pre">drop_path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.drop_path" title="Link to this definition">¶</a></dt>
-<dd><p>Probability to drop the attention or MLP module. Defaults to 0.0.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.attention_constructor">
-<span class="sig-name descname"><span class="pre">attention_constructor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'dot_product'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'perceiver'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'transolver'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'transolver_plusplus'</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'dot_product'</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.attention_constructor" title="Link to this definition">¶</a></dt>
-<dd><p>Constructor of the attention module. Defaults to ‘dot_product’.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.layerscale">
-<span class="sig-name descname"><span class="pre">layerscale</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.layerscale" title="Link to this definition">¶</a></dt>
-<dd><p>Init scale value to scale layer activations. Defaults to None.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.condition_dim">
-<span class="sig-name descname"><span class="pre">condition_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.condition_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Dimension of the conditioning vector. If none, no conditioning is applied. If provided, the transformer block will turn into a Diffusion Transformer (DiT) block.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.bias">
-<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.bias" title="Link to this definition">¶</a></dt>
-<dd><p>Whether to use biases in norm/projections. Defaults to True.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.eps">
-<span class="sig-name descname"><span class="pre">eps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.eps" title="Link to this definition">¶</a></dt>
-<dd><p>Epsilon Value for the layer nornalization. Defaults to 1e-6.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.init_weights">
-<span class="sig-name descname"><span class="pre">init_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.types.InitWeightsMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.init_weights" title="Link to this definition">¶</a></dt>
-<dd><p>Initialization method for the weight matrices of the network. Defaults to “truncnormal002</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.use_rope">
-<span class="sig-name descname"><span class="pre">use_rope</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.use_rope" title="Link to this definition">¶</a></dt>
-<dd><p>Whether to use Rotary Positional Embeddings (RoPE).</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.max_wavelength">
-<span class="sig-name descname"><span class="pre">max_wavelength</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.max_wavelength" title="Link to this definition">¶</a></dt>
-<dd><p>10_000</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Theta parameter for the transformer sine/cosine embedding. Default</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.attention_arguments">
-<span class="sig-name descname"><span class="pre">attention_arguments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.attention_arguments" title="Link to this definition">¶</a></dt>
-<dd><p>Additional arguments for the attention module that are only needed for a specific attention implementation.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.set_mlp_hidden_dim">
-<span class="sig-name descname"><span class="pre">set_mlp_hidden_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.set_mlp_hidden_dim" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.set_wavelength_for_rope">
-<span class="sig-name descname"><span class="pre">set_wavelength_for_rope</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.set_wavelength_for_rope" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.linear_projection_config">
-<span class="sig-name descname"><span class="pre">linear_projection_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.linear_projection_config" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig">noether.core.schemas.modules.layers.LinearProjectionConfig</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.layerscale_config">
-<span class="sig-name descname"><span class="pre">layerscale_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.layerscale_config" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../layers/index.html#noether.core.schemas.modules.layers.LayerScaleConfig" title="noether.core.schemas.modules.layers.LayerScaleConfig">noether.core.schemas.modules.layers.LayerScaleConfig</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.drop_path_config">
-<span class="sig-name descname"><span class="pre">drop_path_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.drop_path_config" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../layers/index.html#noether.core.schemas.modules.layers.UnquantizedDropPathConfig" title="noether.core.schemas.modules.layers.UnquantizedDropPathConfig">noether.core.schemas.modules.layers.UnquantizedDropPathConfig</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.modulation_linear_projection_config">
-<span class="sig-name descname"><span class="pre">modulation_linear_projection_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.modulation_linear_projection_config" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../index.html#noether.core.schemas.modules.LinearProjectionConfig" title="noether.core.schemas.modules.LinearProjectionConfig">LinearProjectionConfig</a> | None</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.TransformerBlockConfig.up_act_down_mlp_config">
-<span class="sig-name descname"><span class="pre">up_act_down_mlp_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.up_act_down_mlp_config" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../mlp/index.html#noether.core.schemas.modules.mlp.UpActDownMLPConfig" title="noether.core.schemas.modules.mlp.UpActDownMLPConfig">noether.core.schemas.modules.mlp.UpActDownMLPConfig</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.PerceiverBlockConfig">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.modules.blocks.</span></span><span class="sig-name descname"><span class="pre">PerceiverBlockConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig" title="noether.core.schemas.modules.blocks.TransformerBlockConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransformerBlockConfig</span></code></a></p>
-<p>Configuration for the PerceiverBlock module.</p>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
-validated to form a valid model.</p>
-<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.PerceiverBlockConfig.kv_dim">
-<span class="sig-name descname"><span class="pre">kv_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig.kv_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Dimensionality of the key and value representations. Defaults to None. If None, hidden_dim is used.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.PerceiverBlockConfig.set_kv_dim">
-<span class="sig-name descname"><span class="pre">set_kv_dim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig.set_kv_dim" title="Link to this definition">¶</a></dt>
-<dd><p>Set kv_dim to hidden_dim if not provided.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig" title="noether.core.schemas.modules.blocks.PerceiverBlockConfig">PerceiverBlockConfig</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.PerceiverBlockConfig.perceiver_attention_config">
-<span class="sig-name descname"><span class="pre">perceiver_attention_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig.perceiver_attention_config" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../attention/index.html#noether.core.schemas.modules.attention.PerceiverAttentionConfig" title="noether.core.schemas.modules.attention.PerceiverAttentionConfig">noether.core.schemas.modules.attention.PerceiverAttentionConfig</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="noether.core.schemas.modules.blocks.PerceiverBlockConfig.modulation_linear_projection_config">
-<span class="sig-name descname"><span class="pre">modulation_linear_projection_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig.modulation_linear_projection_config" title="Link to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><a class="reference internal" href="../layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig">noether.core.schemas.modules.layers.LinearProjectionConfig</a> | None</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
+<p>Back-compat re-exports for block configs.</p>
+<p>Canonical homes are under <a class="reference internal" href="../../../../modeling/modules/blocks/index.html#module-noether.modeling.modules.blocks" title="noether.modeling.modules.blocks"><code class="xref py py-mod docutils literal notranslate"><span class="pre">noether.modeling.modules.blocks</span></code></a>.</p>
 </section>
 
         </article>
@@ -1172,61 +941,8 @@ validated to form a valid model.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">noether.core.schemas.modules.blocks</a><ul>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.hidden_dim"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.hidden_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.num_heads"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.num_heads</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.mlp_hidden_dim"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.mlp_hidden_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.mlp_expansion_factor"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.mlp_expansion_factor</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.drop_path"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.drop_path</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.attention_constructor"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.attention_constructor</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.layerscale"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.layerscale</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.condition_dim"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.condition_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.bias"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.bias</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.eps"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.eps</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.init_weights</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.use_rope"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.use_rope</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.max_wavelength"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.max_wavelength</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.attention_arguments"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.attention_arguments</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.set_mlp_hidden_dim"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.set_mlp_hidden_dim()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.set_wavelength_for_rope"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.set_wavelength_for_rope()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.linear_projection_config"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.linear_projection_config()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.layerscale_config"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.layerscale_config()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.drop_path_config"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.drop_path_config()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.modulation_linear_projection_config"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.modulation_linear_projection_config()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.TransformerBlockConfig.up_act_down_mlp_config"><code class="docutils literal notranslate"><span class="pre">TransformerBlockConfig.up_act_down_mlp_config()</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig"><code class="docutils literal notranslate"><span class="pre">PerceiverBlockConfig</span></code></a><ul>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig.kv_dim"><code class="docutils literal notranslate"><span class="pre">PerceiverBlockConfig.kv_dim</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig.set_kv_dim"><code class="docutils literal notranslate"><span class="pre">PerceiverBlockConfig.set_kv_dim()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig.perceiver_attention_config"><code class="docutils literal notranslate"><span class="pre">PerceiverBlockConfig.perceiver_attention_config()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.modules.blocks.PerceiverBlockConfig.modulation_linear_projection_config"><code class="docutils literal notranslate"><span class="pre">PerceiverBlockConfig.modulation_linear_projection_config()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

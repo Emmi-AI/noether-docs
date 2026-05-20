@@ -27,12 +27,20 @@ Classes
 .. autoapisummary::
 
    noether.modeling.modules.layers.ContinuousSincosEmbed
+   noether.modeling.modules.layers.ContinuousSincosEmbeddingConfig
    noether.modeling.modules.layers.UnquantizedDropPath
+   noether.modeling.modules.layers.UnquantizedDropPathConfig
    noether.modeling.modules.layers.LayerScale
+   noether.modeling.modules.layers.LayerScaleConfig
    noether.modeling.modules.layers.LinearProjection
+   noether.modeling.modules.layers.LinearProjectionConfig
    noether.modeling.modules.layers.RopeFrequency
+   noether.modeling.modules.layers.RopeFrequencyConfig
    noether.modeling.modules.layers.ScalarsConditioner
+   noether.modeling.modules.layers.ScalarsConditionerConfig
    noether.modeling.modules.layers.TransformerBatchNorm
+   noether.modeling.modules.layers.VectorsConditioner
+   noether.modeling.modules.layers.VectorsConditionerConfig
    noether.modeling.modules.layers.AvgPool2DPatchify
    noether.modeling.modules.layers.ConvOutputHead
    noether.modeling.modules.layers.FinalLayer
@@ -106,6 +114,71 @@ Package Contents
 
 
 
+.. py:class:: ContinuousSincosEmbeddingConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for Continuous Sine-Cosine Embedding layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the output embedding.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the input coordinates.
+
+
+   .. py:attribute:: mode
+      :type:  Literal['wavelength', 'nerf']
+      :value: None
+
+
+      Frequency schedule.
+
+      - ``"wavelength"`` (default): transformer-style geometric wavelengths from ``1`` to
+        ``max_wavelength``. Suitable for integer / unnormalized coordinates.
+      - ``"nerf"``: NeRF-style log-spaced frequencies from ``π`` to ``π * max_frequency``.
+        Suitable for coordinates normalized to ``[-1, 1]``. The ``L`` available bands
+        are distributed evenly in log-frequency across this range.
+
+
+   .. py:attribute:: max_wavelength
+      :type:  int
+      :value: None
+
+
+      Maximum wavelength. Only used when ``mode == "wavelength"``.
+
+
+   .. py:attribute:: max_frequency
+      :type:  float | None
+      :value: None
+
+
+      Highest frequency band for NeRF mode, in units of ``π``. The ``L`` frequencies
+      are log-spaced between ``π`` (wavelength 2, spans the ``[-1, 1]`` domain) and
+      ``π * max_frequency`` (wavelength ``2 / max_frequency``). Required when
+      ``mode == "nerf"``; pick based on the smallest spatial scale you need to resolve
+      in normalized coordinates (rough heuristic: ``1 / typical_point_spacing``).
+
+
 .. py:class:: UnquantizedDropPath(config)
 
    Bases: :py:obj:`torch.nn.Module`
@@ -157,6 +230,37 @@ Package Contents
 
 
 
+.. py:class:: UnquantizedDropPathConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for the UnquantizedDropPath layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: drop_prob
+      :type:  float
+      :value: None
+
+
+      Probability of dropping a path during training.
+
+
+   .. py:attribute:: scale_by_keep
+      :type:  bool
+      :value: None
+
+
+      Up-scales activations during training by 1 - drop_prob to avoid train-test mismatch. Defaults to True.
+
+
 .. py:class:: LayerScale(config)
 
    Bases: :py:obj:`torch.nn.Module`
@@ -176,6 +280,37 @@ Package Contents
 
       :returns: Tensor scaled by the gamma parameter.
 
+
+
+.. py:class:: LayerScaleConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for Layer Scale module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Number of dimensions of the input tensor to be scaled.
+
+
+   .. py:attribute:: init_values
+      :type:  float | None
+      :value: None
+
+
+      Initial gamme scale value. Defaults to 1e-5.
 
 
 .. py:class:: LinearProjection(config)
@@ -213,6 +348,75 @@ Package Contents
       :param x: Input tensor to the LinearProjection.
 
       :returns: Output tensor from the LinearProjection.
+
+
+
+.. py:class:: LinearProjectionConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for a LinearProjection layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Input dimension of the linear projection.
+
+
+   .. py:attribute:: output_dim
+      :type:  int
+      :value: None
+
+
+      Output dimension of the linear projection.
+
+
+   .. py:attribute:: ndim
+      :type:  None | int
+      :value: None
+
+
+      Number of dimensions of the input domain. Either None (Linear projection),  1D (sequence), 2D, or 3D. Defaults to None.
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      If true, use bias term in the linear projection. Defaults to True.
+
+
+   .. py:attribute:: optional
+      :type:  bool
+      :value: None
+
+
+      If true and input_dim==output_dim (i.e., there is no up/down projection), then the identity mapping is used. Defaults to False.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: None
+
+
+      Initialization method of the weights of the MLP. Options are 'torch' (i.e., similar to the module) or 'truncnormal002', or 'zero'. Defaults to 'torch'.
+
+
+   .. py:method:: validate_ndim()
+
+      Validate the ndim field to ensure it is either None, 1, 2, or 3.
 
 
 
@@ -255,6 +459,56 @@ Package Contents
 
       :param coords: coordinates to create RoPE frequencies for. Expected shape is (..., input_dim).
 
+
+
+.. py:class:: RopeFrequencyConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for RoPE frequency settings.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of frequencies (in transformers this should be the head dimension).
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the coordinates (e.g., 2 for 2D coordinates, 3 for 3D coordinates).
+
+
+   .. py:attribute:: max_wavelength
+      :type:  int
+      :value: None
+
+
+      10000.0
+
+      :type: Theta parameter for the transformer sine/cosine embedding. Default
+
+
+   .. py:attribute:: implementation
+      :type:  Literal['real', 'complex']
+      :value: None
+
+
+      "real" -> basic implementation using real coordinates (this is slow and only here for backward compatibility).
+      "complex" -> fast implementation of rotation via complex multiplication. Default: "real".
 
 
 .. py:class:: ScalarsConditioner(config)
@@ -317,6 +571,43 @@ Package Contents
 
 
 
+.. py:class:: ScalarsConditionerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimension for embedding the scalars and the per-scalar MLP.
+
+
+   .. py:attribute:: num_scalars
+      :type:  int
+      :value: None
+
+
+      How many scalars are embedded.
+
+
+   .. py:attribute:: condition_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimension of the final conditioning vector. Defaults to 4 * dim if condition_dim is None.
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: 'truncnormal002'
+
+
+      Weight initialization for MLPs.
+
+
 .. py:class:: TransformerBatchNorm(num_features, eps = 1e-05, elementwise_affine = True, bias = True)
 
    Bases: :py:obj:`torch.nn.Module`
@@ -348,6 +639,140 @@ Package Contents
 
       :returns: Normalized x of shape (batch_size, seqlen, dim).
 
+
+
+.. py:class:: VectorsConditioner(config)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   
+   Embeds a set of named vectors into a single conditioning vector.
+
+   Each input vector named in ``config.conditioning_spec`` is encoded with a
+   NeRF-mode :class:`ContinuousSincosEmbed` followed by a per-vector MLP. The
+   resulting per-vector embeddings are concatenated and projected to
+   ``condition_dim`` by a shared MLP.
+
+   .. note::
+
+       All input vectors must be normalized to ``[-1, 1]``. The underlying
+       sine-cosine embedding uses NeRF-style frequencies tuned for that range;
+       values outside it will alias and produce uninformative embeddings.
+
+   :param config: configuration for the VectorsConditioner. See :class:`~noether.core.schemas.modules.layers.vectors_conditioner.VectorsConditionerConfig` for available options.
+
+
+   .. py:attribute:: hidden_dim
+
+
+   .. py:attribute:: condition_dim
+
+
+   .. py:attribute:: conditioning_spec
+
+
+   .. py:attribute:: embedder
+
+
+   .. py:attribute:: shared_mlp
+
+
+   .. py:method:: forward(**conditioning_inputs)
+
+      Embed a set of named vectors into a single conditioning vector.
+
+      All vectors declared in ``config.conditioning_spec`` must be supplied as
+      keyword arguments matching the spec names. Inputs must be normalized to
+      ``[-1, 1]``.
+
+      :param \*\*conditioning_inputs: Vectors with shape ``(batch_size, num_features)``,
+                                      keyed by the names declared in ``config.conditioning_spec``. The
+                                      ``num_features`` of each vector must match the dimension declared in
+                                      the spec. All inputs must share the same ``batch_size``.
+
+      :returns: Conditioning vector with shape ``(batch_size, condition_dim)``.
+
+      :raises ValueError: If the supplied inputs don't match the spec (wrong number of
+          vectors, missing key, wrong rank, or wrong feature dimension).
+
+      .. rubric:: Example
+
+      .. code-block:: python
+
+          conditioner = VectorsConditioner(
+              VectorsConditionerConfig(
+                  hidden_dim=64,
+                  conditioning_spec={"angle": 1, "shape_params": 3},
+                  condition_dim=128,
+                  max_frequency=1024,
+              )
+          )
+          # Inputs normalized to [-1, 1].
+          angle = torch.tensor([[0.5], [-0.2]])  # shape (batch_size, 1)
+          shape_params = torch.tensor([[0.1, -0.3, 0.7], [-0.5, 0.2, -0.8]])  # shape (batch_size, 3)
+          condition = conditioner(angle=angle, shape_params=shape_params)
+          # condition.shape == (2, 128)
+
+
+
+.. py:class:: VectorsConditionerConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for :class:`VectorsConditioner`.
+
+   All conditioning inputs are expected to be normalized to ``[-1, 1]``; the
+   underlying sine-cosine embedding runs in NeRF mode.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimension of the per-vector embedding and per-vector MLP.
+
+
+   .. py:attribute:: conditioning_spec
+      :type:  noether.data.schemas.FieldDimSpec
+
+      Mapping from input vector name to its feature dimension, e.g.
+      ``{"angle": 1, "shape_params": 3}``.
+
+
+   .. py:attribute:: condition_dim
+      :type:  int | None
+      :value: None
+
+
+      Dimension of the final conditioning vector. Defaults to ``hidden_dim`` if ``None``.
+
+
+   .. py:attribute:: max_frequency
+      :type:  float
+      :value: None
+
+
+      Highest frequency band, in units of ``π``, for the NeRF-mode sine-cosine
+      embedding. Pick based on the smallest spatial scale you need to resolve in
+      normalized coordinates (rough heuristic: ``1 / typical_input_spacing``).
+
+
+   .. py:attribute:: init_weights
+      :type:  noether.core.types.InitWeightsMode
+      :value: 'truncnormal002'
+
+
+      Weight initialization for MLPs.
 
 
 .. py:class:: AvgPool2DPatchify(patch_size = 16)

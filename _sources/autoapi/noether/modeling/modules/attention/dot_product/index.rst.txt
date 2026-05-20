@@ -9,11 +9,27 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.attention.dot_product.DotProductAttentionConfig
    noether.modeling.modules.attention.dot_product.DotProductAttention
 
 
 Module Contents
 ---------------
+
+.. py:class:: DotProductAttentionConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.modules.attention.AttentionConfig`
+
+
+   Configuration for the Dot Product attention module.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
 
 .. py:class:: DotProductAttention(config)
 

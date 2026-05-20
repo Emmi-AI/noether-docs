@@ -9,11 +9,33 @@ Classes
 
 .. autoapisummary::
 
+   noether.core.trackers.base.BaseTrackerConfig
    noether.core.trackers.base.BaseTracker
 
 
 Module Contents
 ---------------
+
+.. py:class:: BaseTrackerConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.schemas.lib._RegistryBase`
+
+
+   Base configuration for experiment trackers. All tracker configs should inherit from this class.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: None
+
+
 
 .. py:class:: BaseTracker(metric_property_provider, path_provider)
 

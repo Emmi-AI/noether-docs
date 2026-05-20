@@ -14,6 +14,7 @@ Submodules
    /autoapi/noether/core/optimizer/muon_composite/index
    /autoapi/noether/core/optimizer/optimizer_wrapper/index
    /autoapi/noether/core/optimizer/param_group_modifiers/index
+   /autoapi/noether/core/optimizer/schemas/index
 
 
 Classes

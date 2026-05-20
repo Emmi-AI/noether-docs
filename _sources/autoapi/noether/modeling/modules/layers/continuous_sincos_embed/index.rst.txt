@@ -9,11 +9,77 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbeddingConfig
    noether.modeling.modules.layers.continuous_sincos_embed.ContinuousSincosEmbed
 
 
 Module Contents
 ---------------
+
+.. py:class:: ContinuousSincosEmbeddingConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Configuration for Continuous Sine-Cosine Embedding layer.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the output embedding.
+
+
+   .. py:attribute:: input_dim
+      :type:  int
+      :value: None
+
+
+      Dimensionality of the input coordinates.
+
+
+   .. py:attribute:: mode
+      :type:  Literal['wavelength', 'nerf']
+      :value: None
+
+
+      Frequency schedule.
+
+      - ``"wavelength"`` (default): transformer-style geometric wavelengths from ``1`` to
+        ``max_wavelength``. Suitable for integer / unnormalized coordinates.
+      - ``"nerf"``: NeRF-style log-spaced frequencies from ``π`` to ``π * max_frequency``.
+        Suitable for coordinates normalized to ``[-1, 1]``. The ``L`` available bands
+        are distributed evenly in log-frequency across this range.
+
+
+   .. py:attribute:: max_wavelength
+      :type:  int
+      :value: None
+
+
+      Maximum wavelength. Only used when ``mode == "wavelength"``.
+
+
+   .. py:attribute:: max_frequency
+      :type:  float | None
+      :value: None
+
+
+      Highest frequency band for NeRF mode, in units of ``π``. The ``L`` frequencies
+      are log-spaced between ``π`` (wavelength 2, spans the ``[-1, 1]`` domain) and
+      ``π * max_frequency`` (wavelength ``2 / max_frequency``). Required when
+      ``mode == "nerf"``; pick based on the smallest spatial scale you need to resolve
+      in normalized coordinates (rough heuristic: ``1 / typical_point_spacing``).
+
 
 .. py:class:: ContinuousSincosEmbed(config)
 

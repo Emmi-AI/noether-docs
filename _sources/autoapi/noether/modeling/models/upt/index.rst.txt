@@ -9,11 +9,125 @@ Classes
 
 .. autoapisummary::
 
+   noether.modeling.models.upt.UPTConfig
    noether.modeling.models.upt.UPT
 
 
 Module Contents
 ---------------
+
+.. py:class:: UPTConfig(/, **data)
+
+   Bases: :py:obj:`noether.core.models.base.ModelBaseConfig`, :py:obj:`noether.core.schemas.mixins.InjectSharedFieldFromParentMixin`
+
+
+   Configuration for a UPT model.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: num_heads
+      :type:  int
+      :value: None
+
+
+      Number of attention heads in the model.
+
+
+   .. py:attribute:: hidden_dim
+      :type:  int
+      :value: None
+
+
+      Hidden dimension of the model.
+
+
+   .. py:attribute:: mlp_expansion_factor
+      :type:  int
+      :value: None
+
+
+      Expansion factor for the MLP of the FF layers.
+
+
+   .. py:attribute:: approximator_depth
+      :type:  int
+      :value: None
+
+
+      Number of approximator layers.
+
+
+   .. py:attribute:: use_rope
+      :type:  bool
+      :value: None
+
+
+
+   .. py:attribute:: bias
+      :type:  bool
+      :value: None
+
+
+      Whether to use bias terms in the model's linear layers.
+
+
+   .. py:attribute:: supernode_pooling_config
+      :type:  Annotated[noether.modeling.modules.encoders.supernode_pooling.SupernodePoolingConfig, noether.core.schemas.mixins.Shared]
+
+
+   .. py:attribute:: approximator_config
+      :type:  Annotated[noether.modeling.modules.blocks.transformer.TransformerBlockConfig, noether.core.schemas.mixins.Shared]
+
+
+   .. py:attribute:: decoder_config
+      :type:  Annotated[noether.modeling.modules.decoders.deep_perceiver.DeepPerceiverDecoderConfig, noether.core.schemas.mixins.Shared]
+
+
+   .. py:attribute:: bias_layers
+      :type:  bool
+      :value: None
+
+
+
+   .. py:attribute:: data_specs
+      :type:  noether.data.schemas.ModelDataSpecs
+
+
+   .. py:method:: linear_output_projection_config()
+
+
+   .. py:method:: rope_frequency_config()
+
+
+   .. py:method:: validate_rope_usage()
+
+      Ensure that if use_rope is True in the main config, it is also True in the approximator_config.
+
+
+
+   .. py:method:: pos_embedding_config()
+
+
+   .. py:method:: validate_parameters()
+
+      Validate validity of parameters across the model and its submodules.
+
+      Ensures that:
+      1. hidden_dim is divisible by num_heads in parent and all submodules with num_heads
+      2. hidden_dim is consistent across parent and all submodules
+
+
 
 .. py:class:: UPT(config)
 

@@ -418,6 +418,7 @@
 <li class="toctree-l5"><a class="reference internal" href="../../../../core/optimizer/param_group_modifiers/weight_decay_by_name/index.html">noether.core.optimizer.param_group_modifiers.weight_decay_by_name</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core/optimizer/schemas/index.html">noether.core.optimizer.schemas</a></li>
 </ul>
 </li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../core/presets/index.html">noether.core.presets</a><input class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><div class="visually-hidden">Toggle navigation of noether.core.presets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -439,6 +440,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/linear/index.html">noether.core.schedules.linear</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/linear_warmup_cosine_decay/index.html">noether.core.schedules.linear_warmup_cosine_decay</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/polynomial/index.html">noether.core.schedules.polynomial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/schemas/index.html">noether.core.schedules.schemas</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../../core/schedules/step/index.html">noether.core.schedules.step</a></li>
 </ul>
 </li>
@@ -655,6 +657,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/samplers/internals/index.html">noether.data.samplers.internals</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../data/schemas/index.html">noether.data.schemas</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../data/stats/index.html">noether.data.stats</a></li>
 <li class="toctree-l3 has-children"><a class="reference internal" href="../../../../data/tools/index.html">noether.data.tools</a><input class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><div class="visually-hidden">Toggle navigation of noether.data.tools</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../../data/tools/calculate_statistics/index.html">noether.data.tools.calculate_statistics</a></li>
@@ -872,7 +875,10 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjection" title="noether.modeling.modules.layers.linear_projection.LinearProjection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearProjection</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig" title="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearProjectionConfig</span></code></a></p></td>
+<td><p>Configuration for a LinearProjection layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjection" title="noether.modeling.modules.layers.linear_projection.LinearProjection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinearProjection</span></code></a></p></td>
 <td><p>LinearProjection is a linear projection layer that can be used for 1D, 2D, and 3D data.</p></td>
 </tr>
 </tbody>
@@ -882,13 +888,76 @@
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
 <dl class="py class">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.linear_projection.</span></span><span class="sig-name descname"><span class="pre">LinearProjectionConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<p>Configuration for a LinearProjection layer.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.input_dim">
+<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.input_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Input dimension of the linear projection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.output_dim">
+<span class="sig-name descname"><span class="pre">output_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.output_dim" title="Link to this definition">¶</a></dt>
+<dd><p>Output dimension of the linear projection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.ndim">
+<span class="sig-name descname"><span class="pre">ndim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.ndim" title="Link to this definition">¶</a></dt>
+<dd><p>Number of dimensions of the input domain. Either None (Linear projection),  1D (sequence), 2D, or 3D. Defaults to None.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.bias">
+<span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.bias" title="Link to this definition">¶</a></dt>
+<dd><p>If true, use bias term in the linear projection. Defaults to True.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.optional">
+<span class="sig-name descname"><span class="pre">optional</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.optional" title="Link to this definition">¶</a></dt>
+<dd><p>If true and input_dim==output_dim (i.e., there is no up/down projection), then the identity mapping is used. Defaults to False.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.init_weights">
+<span class="sig-name descname"><span class="pre">init_weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">noether.core.types.InitWeightsMode</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.init_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Initialization method of the weights of the MLP. Options are ‘torch’ (i.e., similar to the module) or ‘truncnormal002’, or ‘zero’. Defaults to ‘torch’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.validate_ndim">
+<span class="sig-name descname"><span class="pre">validate_ndim</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.validate_ndim" title="Link to this definition">¶</a></dt>
+<dd><p>Validate the ndim field to ensure it is either None, 1, 2, or 3.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.modeling.modules.layers.linear_projection.LinearProjection">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.modeling.modules.layers.linear_projection.</span></span><span class="sig-name descname"><span class="pre">LinearProjection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.modeling.modules.layers.linear_projection.LinearProjection" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v2.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">torch.nn.Module</span></code></a></p>
 <p>LinearProjection is a linear projection layer that can be used for 1D, 2D, and 3D data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="../../../../core/schemas/modules/layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig"><em>noether.core.schemas.modules.layers.LinearProjectionConfig</em></a>) – The configuration of the LinearProjection. See <a class="reference internal" href="../../../../core/schemas/modules/layers/index.html#noether.core.schemas.modules.layers.LinearProjectionConfig" title="noether.core.schemas.modules.layers.LinearProjectionConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinearProjectionConfig</span></code></a> for available options.</p>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig" title="noether.modeling.modules.layers.linear_projection.LinearProjectionConfig"><em>LinearProjectionConfig</em></a>) – The configuration of the LinearProjection. See <code class="xref py py-class docutils literal notranslate"><span class="pre">LinearProjectionConfig</span></code> for available options.</p>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.14)"><strong>NotImplementedError</strong></a> – raises not implemented error if the number of dimensions of the input domain is bigger than 4.</p>
@@ -1025,6 +1094,16 @@
 <li><a class="reference internal" href="#">noether.modeling.modules.layers.linear_projection</a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig</span></code></a><ul>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.input_dim"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.input_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.output_dim"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.output_dim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.ndim"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.ndim</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.bias"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.bias</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.optional"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.optional</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.init_weights"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.init_weights</span></code></a></li>
+<li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjectionConfig.validate_ndim"><code class="docutils literal notranslate"><span class="pre">LinearProjectionConfig.validate_ndim()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjection"><code class="docutils literal notranslate"><span class="pre">LinearProjection</span></code></a><ul>
 <li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjection.project"><code class="docutils literal notranslate"><span class="pre">LinearProjection.project</span></code></a></li>
 <li><a class="reference internal" href="#noether.modeling.modules.layers.linear_projection.LinearProjection.init_weights"><code class="docutils literal notranslate"><span class="pre">LinearProjection.init_weights</span></code></a></li>

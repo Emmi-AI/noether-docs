@@ -3,67 +3,11 @@ noether.core.schemas.models.transolver
 
 .. py:module:: noether.core.schemas.models.transolver
 
+.. autoapi-nested-parse::
 
-Classes
--------
+   Back-compat re-exports for Transolver configs.
 
-.. autoapisummary::
-
-   noether.core.schemas.models.transolver.TransolverConfig
-   noether.core.schemas.models.transolver.TransolverPlusPlusConfig
-
-
-Module Contents
----------------
-
-.. py:class:: TransolverConfig(/, **data)
-
-   Bases: :py:obj:`noether.core.schemas.models.transformer.TransformerConfig`, :py:obj:`noether.core.schemas.models.base.ModelBaseConfig`
-
-
-   Configuration for a Transolver model.
-
-   Create a new model by parsing and validating input data from keyword arguments.
-
-   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
-   validated to form a valid model.
-
-   `self` is explicitly positional-only to allow `self` as a field name.
-
-
-   .. py:attribute:: model_config
-
-      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
-
-
-   .. py:attribute:: attention_arguments
-      :type:  dict
-
-
-   .. py:method:: set_attention_constructor()
-
-      Set attention_constructor in transformer_block_config based on data_specs.
-
-
-
-.. py:class:: TransolverPlusPlusConfig(/, **data)
-
-   Bases: :py:obj:`TransolverConfig`
-
-
-   Configuration for a Transolver++ model.
-
-   Create a new model by parsing and validating input data from keyword arguments.
-
-   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
-   validated to form a valid model.
-
-   `self` is explicitly positional-only to allow `self` as a field name.
-
-
-   .. py:method:: set_attention_constructor()
-
-      Set attention_constructor in transformer_block_config based on data_specs.
+   The canonical home is :mod:`noether.modeling.models.transolver`.
 
 
 
