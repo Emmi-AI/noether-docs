@@ -52,6 +52,10 @@ Package Contents
            metric_key: loss/val/total
            model_names:  # only applies when training a CompositeModel
              - encoder
+           eval_callbacks:
+             - kind: noether.training.callbacks.OfflineLossCallback
+               every_n_epochs: 1  # ignored; the parent triggers on new-best
+               dataset_key: test
 
    :param callback_config: Configuration for the callback. See
                            :class:`~noether.core.schemas.callbacks.BestCheckpointCallbackConfig`
@@ -86,6 +90,22 @@ Package Contents
       :type:  dict[float, float]
 
 
+   .. py:attribute:: eval_callbacks
+      :type:  list[noether.core.callbacks.periodic.PeriodicCallback]
+      :value: []
+
+
+
+   .. py:method:: get_children()
+
+      Non-iterator children only — iterator children are owned end-to-end here and must not be
+      registered on the shared :class:`~noether.data.samplers.InterleavedSampler` (we build their
+      loaders on dispatch instead). The trainer always passes ``batch_size`` to every
+      :class:`~noether.core.callbacks.periodic.PeriodicCallback` hook, so we can build child loaders
+      without needing the trainer's iterator-args bundle.
+
+
+
    .. py:method:: state_dict()
 
       Return the state of the callback for checkpointing.
@@ -105,23 +125,33 @@ Package Contents
 
 
 
-   .. py:method:: before_training(*, update_counter)
+   .. py:method:: before_training(*, update_counter, **kwargs)
 
       Validate callback configuration before training starts.
 
       :param update_counter: The training update counter.
+      :param \*\*kwargs: Additional keyword arguments forwarded to child eval callbacks.
 
       :raises NotImplementedError: If resuming training with tolerances is attempted.
 
 
 
-   .. py:method:: periodic_callback(*, interval_type, **_)
+   .. py:method:: periodic_callback(*, interval_type, **kwargs)
 
       Execute the periodic callback to check and save best model.
 
       This method is called at the configured frequency (e.g., every N epochs).
       It checks if the current metric value is better than the previous best,
       and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.
+
+      When a new best is detected, child eval callbacks (if configured) are dispatched against the live
+      (newly-best) model. Iterator children iterate their own :class:`~torch.utils.data.DataLoader`
+      (built on first use) — they do **not** consume from the trainer's shared ``data_iter``.
+
+      On ``interval_type="eval"`` (post-training eval, where the trainer loads the saved best checkpoint
+      into the live model and calls every callback's ``at_eval``), children are dispatched
+      unconditionally so they evaluate the loaded best model. No checkpoint save / tolerance bookkeeping
+      runs in eval mode (the in-memory ``best_metric_value`` starts at ±inf in a fresh eval process).
 
       :raises KeyError: If the log cache is empty or the metric key is not found.
 
@@ -131,7 +161,7 @@ Package Contents
 
       Log the best metric values at different tolerance thresholds after training completes.
 
-      :param \*\*kwargs: Additional keyword arguments (unused).
+      :param \*\*kwargs: Additional keyword arguments forwarded to child eval callbacks.
 
 
 
@@ -189,6 +219,25 @@ Package Contents
 
 
       Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name='encoder' here). This only applies when training a CompositeModel. If None, all models are saved.
+
+
+   .. py:attribute:: eval_callbacks
+      :type:  list[Annotated[Any, Discriminated(CallBackBaseConfig)]] | None
+      :value: None
+
+
+      Optional nested callbacks to dispatch whenever a new best model is detected. Each child's metric keys
+      are automatically prefixed with ``best=<metric_key>/`` (slashes in the metric key are replaced with dots)
+      so they don't collide with the live-model metrics. Children are invoked via their ``at_eval`` hook, which
+      bypasses their own schedule — the trigger is the new-best event, not the child's ``every_n_*``. Tolerance-
+      exceeded saves do not trigger children. ``before_training`` and ``after_training`` are forwarded
+      unconditionally so children can initialize and finalize cleanly.
+
+      ``PeriodicDataIteratorCallback`` children get a dedicated ``DataLoader`` built from their
+      ``sampler_config``; they are *not* registered on the shared
+      :class:`~noether.data.samplers.InterleavedSampler`. This means a child's ``every_n_*`` is irrelevant
+      here (only the ``dataset_key`` / ``batch_size`` / ``pipeline`` matter) and the child's schedule does
+      not need to match this callback's.
 
 
 .. py:class:: CheckpointCallback(callback_config, **kwargs)

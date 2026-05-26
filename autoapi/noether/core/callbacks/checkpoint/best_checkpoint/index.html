@@ -932,6 +932,22 @@ validated to form a valid model.</p>
 <dd><p>Which model name to save (e.g., if only the encoder of an autoencoder should be stored, one could pass model_name=’encoder’ here). This only applies when training a CompositeModel. If None, all models are saved.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallbackConfig.eval_callbacks">
+<span class="sig-name descname"><span class="pre">eval_callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Annotated</span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Discriminated</span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../../base/index.html#noether.core.callbacks.base.CallBackBaseConfig" title="noether.core.callbacks.base.CallBackBaseConfig"><span class="pre">CallBackBaseConfig</span></a><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallbackConfig.eval_callbacks" title="Link to this definition">¶</a></dt>
+<dd><p>Optional nested callbacks to dispatch whenever a new best model is detected. Each child’s metric keys
+are automatically prefixed with <code class="docutils literal notranslate"><span class="pre">best=&lt;metric_key&gt;/</span></code> (slashes in the metric key are replaced with dots)
+so they don’t collide with the live-model metrics. Children are invoked via their <code class="docutils literal notranslate"><span class="pre">at_eval</span></code> hook, which
+bypasses their own schedule — the trigger is the new-best event, not the child’s <code class="docutils literal notranslate"><span class="pre">every_n_*</span></code>. Tolerance-
+exceeded saves do not trigger children. <code class="docutils literal notranslate"><span class="pre">before_training</span></code> and <code class="docutils literal notranslate"><span class="pre">after_training</span></code> are forwarded
+unconditionally so children can initialize and finalize cleanly.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback</span></code> children get a dedicated <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> built from their
+<code class="docutils literal notranslate"><span class="pre">sampler_config</span></code>; they are <em>not</em> registered on the shared
+<a class="reference internal" href="../../../../data/samplers/index.html#noether.data.samplers.InterleavedSampler" title="noether.data.samplers.InterleavedSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">InterleavedSampler</span></code></a>. This means a child’s <code class="docutils literal notranslate"><span class="pre">every_n_*</span></code> is irrelevant
+here (only the <code class="docutils literal notranslate"><span class="pre">dataset_key</span></code> / <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> / <code class="docutils literal notranslate"><span class="pre">pipeline</span></code> matter) and the child’s schedule does
+not need to match this callback’s.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -949,6 +965,10 @@ a new best value is achieved. It supports storing different model components whe
 <span class="w">    </span><span class="nt">metric_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loss/val/total</span>
 <span class="w">    </span><span class="nt">model_names</span><span class="p">:</span><span class="w">  </span><span class="c1"># only applies when training a CompositeModel</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">encoder</span>
+<span class="w">    </span><span class="nt">eval_callbacks</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">noether.training.callbacks.OfflineLossCallback</span>
+<span class="w">        </span><span class="nt">every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w">  </span><span class="c1"># ignored; the parent triggers on new-best</span>
+<span class="w">        </span><span class="nt">dataset_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -1001,6 +1021,26 @@ for available options including metric key, model names, and tolerance settings.
 <span class="sig-name descname"><span class="pre">metric_at_exceeded_tolerance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.metric_at_exceeded_tolerance" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.eval_callbacks">
+<span class="sig-name descname"><span class="pre">eval_callbacks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></a><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.eval_callbacks" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.get_children">
+<span class="sig-name descname"><span class="pre">get_children</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.get_children" title="Link to this definition">¶</a></dt>
+<dd><p>Non-iterator children only — iterator children are owned end-to-end here and must not be
+registered on the shared <a class="reference internal" href="../../../../data/samplers/index.html#noether.data.samplers.InterleavedSampler" title="noether.data.samplers.InterleavedSampler"><code class="xref py py-class docutils literal notranslate"><span class="pre">InterleavedSampler</span></code></a> (we build their
+loaders on dispatch instead). The trainer always passes <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> to every
+<a class="reference internal" href="../../periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicCallback</span></code></a> hook, so we can build child loaders
+without needing the trainer’s iterator-args bundle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference internal" href="../../base/index.html#noether.core.callbacks.base.CallbackBase" title="noether.core.callbacks.base.CallbackBase">noether.core.callbacks.base.CallbackBase</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.state_dict">
 <span class="sig-name descname"><span class="pre">state_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.state_dict" title="Link to this definition">¶</a></dt>
@@ -1036,11 +1076,14 @@ and counter information.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.before_training">
-<span class="sig-name descname"><span class="pre">before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.before_training" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">before_training</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">update_counter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.before_training" title="Link to this definition">¶</a></dt>
 <dd><p>Validate callback configuration before training starts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>update_counter</strong> – The training update counter.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>update_counter</strong> – The training update counter.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments forwarded to child eval callbacks.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#NotImplementedError" title="(in Python v3.14)"><strong>NotImplementedError</strong></a> – If resuming training with tolerances is attempted.</p>
@@ -1053,11 +1096,18 @@ and counter information.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.periodic_callback">
-<span class="sig-name descname"><span class="pre">periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.periodic_callback" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">periodic_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">interval_type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.periodic_callback" title="Link to this definition">¶</a></dt>
 <dd><p>Execute the periodic callback to check and save best model.</p>
 <p>This method is called at the configured frequency (e.g., every N epochs).
 It checks if the current metric value is better than the previous best,
 and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.</p>
+<p>When a new best is detected, child eval callbacks (if configured) are dispatched against the live
+(newly-best) model. Iterator children iterate their own <a class="reference external" href="https://docs.pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader" title="(in PyTorch v2.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code></a>
+(built on first use) — they do <strong>not</strong> consume from the trainer’s shared <code class="docutils literal notranslate"><span class="pre">data_iter</span></code>.</p>
+<p>On <code class="docutils literal notranslate"><span class="pre">interval_type=&quot;eval&quot;</span></code> (post-training eval, where the trainer loads the saved best checkpoint
+into the live model and calls every callback’s <code class="docutils literal notranslate"><span class="pre">at_eval</span></code>), children are dispatched
+unconditionally so they evaluate the loaded best model. No checkpoint save / tolerance bookkeeping
+runs in eval mode (the in-memory <code class="docutils literal notranslate"><span class="pre">best_metric_value</span></code> starts at ±inf in a fresh eval process).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> – If the log cache is empty or the metric key is not found.</p>
@@ -1077,7 +1127,7 @@ and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.<
 <dd><p>Log the best metric values at different tolerance thresholds after training completes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>**kwargs</strong> – Additional keyword arguments (unused).</p>
+<dd class="field-odd"><p><strong>**kwargs</strong> – Additional keyword arguments forwarded to child eval callbacks.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -1178,6 +1228,7 @@ and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.<
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallbackConfig.save_frozen_weights"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.save_frozen_weights</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallbackConfig.tolerances"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.tolerances</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallbackConfig.model_names"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.model_names</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallbackConfig.eval_callbacks"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallbackConfig.eval_callbacks</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback</span></code></a><ul>
@@ -1189,6 +1240,8 @@ and if so, saves the model checkpoint. Also tracks tolerance-based checkpoints.<
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.tolerances_is_exceeded"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback.tolerances_is_exceeded</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.tolerance_counter"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback.tolerance_counter</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.metric_at_exceeded_tolerance"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback.metric_at_exceeded_tolerance</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.eval_callbacks"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback.eval_callbacks</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.get_children"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback.get_children()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.state_dict"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback.state_dict()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.load_state_dict"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback.load_state_dict()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.callbacks.checkpoint.best_checkpoint.BestCheckpointCallback.before_training"><code class="docutils literal notranslate"><span class="pre">BestCheckpointCallback.before_training()</span></code></a></li>
