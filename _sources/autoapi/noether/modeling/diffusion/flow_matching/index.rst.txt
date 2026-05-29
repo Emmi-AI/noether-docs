@@ -1,0 +1,136 @@
+noether.modeling.diffusion.flow_matching
+========================================
+
+.. py:module:: noether.modeling.diffusion.flow_matching
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.diffusion.flow_matching.FlowMatchingConfig
+   noether.modeling.diffusion.flow_matching.FlowMatchingSchedule
+
+
+Module Contents
+---------------
+
+.. py:class:: FlowMatchingConfig(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Rectified flow matching with optional minibatch optimal transport.
+
+   Discriminator: ``kind = "flow_matching"``. Linear interpolation path
+   ``xt = t * x1 + (1-t) * x0``; the network predicts the velocity
+   ``v = x1 - x0``.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: model_config
+
+      Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].
+
+
+   .. py:attribute:: kind
+      :type:  Literal['flow_matching']
+      :value: 'flow_matching'
+
+
+
+   .. py:attribute:: continuous_time
+      :type:  bool
+      :value: True
+
+
+      If True, sample t with logit-normal; otherwise uniform on [0, 1].
+
+
+   .. py:attribute:: minibatch_ot
+      :type:  bool
+      :value: False
+
+
+      If True, reorder the noise samples within a minibatch via optimal
+      transport against the data (Pooladian et al. 2023). Requires SciPy.
+
+
+.. py:class:: FlowMatchingSchedule(config)
+
+   Bases: :py:obj:`noether.modeling.diffusion.base.DiffusionSchedule`
+
+
+   Rectified flow matching with optional minibatch optimal transport.
+
+   Linear interpolation path ``xt = t * x1 + (1-t) * x0``; the network
+   predicts the velocity ``v = x1 - x0``. Logit-normal time sampling for
+   training when ``continuous_time=True``.
+
+
+   .. py:attribute:: config
+
+
+   .. py:method:: noise_pair(x1, t)
+
+      Noise clean data ``x1`` at time ``t``.
+
+      :returns: Tuple ``(xt, target_velocity)``.
+
+
+
+   .. py:method:: training_losses(x0, model_fn, condition=None)
+
+      Compute scalar training loss given clean samples ``x0``.
+
+      :param x0: Clean training samples.
+      :param model_fn: Callable with signature
+                       ``(noisy_input, timestep_or_sigma, condition) -> prediction``.
+      :param condition: Optional conditioning tensor passed through to ``model_fn``.
+
+      :returns: Scalar training loss.
+
+
+
+   .. py:method:: sample(shape, model_fn, condition=None, steps=10)
+
+      Generate samples from noise.
+
+      :param shape: Output tensor shape.
+      :param model_fn: Callable with signature
+                       ``(noisy_input, timestep_or_sigma, condition) -> prediction``.
+      :param condition: Optional conditioning tensor.
+      :param steps: Number of solver steps.
+
+      :returns: Clean samples ``x0`` of shape ``shape``.
+
+
+
+   .. py:method:: training_losses_joint(x0_list, model_fn, condition=None)
+
+      Joint flow-matching loss over multiple clean tensors sharing batch dim.
+
+      All tensors are noised to the SAME ``t`` per example. ``model_fn``
+      receives ``(xt_list, t, condition)`` and must return a list of
+      velocity predictions aligned with ``x0_list``. Returns mean MSE
+      across tensors.
+
+
+
+   .. py:method:: sample_joint(shapes, model_fn, condition=None, steps=10)
+
+      Joint Euler sampling over multiple tensors sharing batch dim.
+
+      ``model_fn`` receives ``(xt_list, t, condition)`` and must return a
+      list of velocities aligned with ``shapes``. Returns the list of
+      clean samples.
+
+
+

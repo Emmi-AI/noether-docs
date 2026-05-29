@@ -36,7 +36,7 @@ Functions
 Package Contents
 ----------------
 
-.. py:function:: evaluate(run_dir, *, resume_checkpoint = 'latest', stage_name = None, callbacks = None, device = 'cuda', disable_tracker = False)
+.. py:function:: evaluate(run_dir, *, resume_checkpoint = 'latest', stage_name = None, callbacks = None, config_overrides = None, device = 'cuda', disable_tracker = False)
 
    Run evaluation against a training run directory.
 
@@ -62,6 +62,10 @@ Package Contents
                      eval run. Pass the exact callbacks that should execute (e.g. a
                      single sampling/rollout callback) — nothing from the training
                      config's callback list is kept.
+   :param config_overrides: Optional callable invoked on the loaded
+                            :class:`ConfigSchema` after resume / callbacks wiring and before
+                            dispatch. Use it to toggle dataset settings that the training
+                            config baked out.
    :param device: Device string passed to the trainer (default ``"cuda"``).
                   For multi-GPU eval use the ``noether-eval`` CLI; this function
                   is single-process.

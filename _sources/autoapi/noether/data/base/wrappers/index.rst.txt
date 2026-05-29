@@ -154,6 +154,12 @@ Package Contents
    Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapperConfig`
 
 
+   .. py:attribute:: kind
+      :type:  str
+      :value: 'noether.data.base.wrappers.RepeatWrapper'
+
+
+
    .. py:attribute:: repetitions
       :type:  int
       :value: None
@@ -192,6 +198,12 @@ Package Contents
    Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapperConfig`
 
 
+   .. py:attribute:: kind
+      :type:  str
+      :value: 'noether.data.base.wrappers.ShuffleWrapper'
+
+
+
    .. py:attribute:: seed
       :type:  int | None
       :value: None
@@ -227,6 +239,12 @@ Package Contents
 .. py:class:: SubsetWrapperConfig(/, **data)
 
    Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapperConfig`
+
+
+   .. py:attribute:: kind
+      :type:  str
+      :value: 'noether.data.base.wrappers.SubsetWrapper'
+
 
 
    .. py:attribute:: indices

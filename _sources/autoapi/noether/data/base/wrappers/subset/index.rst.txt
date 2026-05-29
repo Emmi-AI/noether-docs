@@ -21,6 +21,12 @@ Module Contents
    Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapperConfig`
 
 
+   .. py:attribute:: kind
+      :type:  str
+      :value: 'noether.data.base.wrappers.SubsetWrapper'
+
+
+
    .. py:attribute:: indices
       :type:  collections.abc.Sequence | None
       :value: None

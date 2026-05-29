@@ -21,6 +21,12 @@ Module Contents
    Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapperConfig`
 
 
+   .. py:attribute:: kind
+      :type:  str
+      :value: 'noether.data.base.wrappers.RepeatWrapper'
+
+
+
    .. py:attribute:: repetitions
       :type:  int
       :value: None

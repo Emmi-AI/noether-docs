@@ -1,0 +1,71 @@
+noether.modeling.diffusion.base
+===============================
+
+.. py:module:: noether.modeling.diffusion.base
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.modeling.diffusion.base.DiffusionSchedule
+
+
+Module Contents
+---------------
+
+.. py:class:: DiffusionSchedule
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   Abstract base for diffusion paradigms.
+
+   All schedule state (alphas, sigmas, etc.) is stored as plain tensors.
+   Call :meth:`to` before use to move the buffers to the target device.
+
+
+   .. py:attribute:: device
+      :type:  torch.device
+
+
+   .. py:method:: to(device)
+
+      Move every :class:`~torch.Tensor` attribute to ``device`` in place.
+
+      Returns ``self`` for chainability.
+
+
+
+   .. py:method:: training_losses(x0, model_fn, condition = None)
+      :abstractmethod:
+
+
+      Compute scalar training loss given clean samples ``x0``.
+
+      :param x0: Clean training samples.
+      :param model_fn: Callable with signature
+                       ``(noisy_input, timestep_or_sigma, condition) -> prediction``.
+      :param condition: Optional conditioning tensor passed through to ``model_fn``.
+
+      :returns: Scalar training loss.
+
+
+
+   .. py:method:: sample(shape, model_fn, condition = None, steps = 50)
+      :abstractmethod:
+
+
+      Generate samples from noise.
+
+      :param shape: Output tensor shape.
+      :param model_fn: Callable with signature
+                       ``(noisy_input, timestep_or_sigma, condition) -> prediction``.
+      :param condition: Optional conditioning tensor.
+      :param steps: Number of solver steps.
+
+      :returns: Clean samples ``x0`` of shape ``shape``.
+
+
+

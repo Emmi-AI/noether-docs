@@ -21,6 +21,12 @@ Module Contents
    Bases: :py:obj:`noether.data.base.wrapper.DatasetWrapperConfig`
 
 
+   .. py:attribute:: kind
+      :type:  str
+      :value: 'noether.data.base.wrappers.ShuffleWrapper'
+
+
+
    .. py:attribute:: seed
       :type:  int | None
       :value: None

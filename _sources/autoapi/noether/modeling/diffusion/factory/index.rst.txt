@@ -1,0 +1,44 @@
+noether.modeling.diffusion.factory
+==================================
+
+.. py:module:: noether.modeling.diffusion.factory
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.modeling.diffusion.factory.AnyDiffusionScheduleConfig
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.modeling.diffusion.factory.build_schedule
+
+
+Module Contents
+---------------
+
+.. py:data:: AnyDiffusionScheduleConfig
+
+   Discriminated union of all built-in diffusion schedule configurations.
+
+   Pydantic resolves the right variant by inspecting the ``kind`` field. Pair
+   with :func:`build_schedule` to materialize the schedule object.
+
+.. py:function:: build_schedule(config)
+
+   Instantiate the right :class:`DiffusionSchedule` for ``config``.
+
+   :param config: Any variant of
+                  :data:`~noether.core.schemas.diffusion.AnyDiffusionScheduleConfig`.
+
+   :returns: A :class:`DiffusionSchedule` matching the variant's ``kind``.
+
+   :raises ValueError: If ``config`` is not a recognised schedule config.
+
+
