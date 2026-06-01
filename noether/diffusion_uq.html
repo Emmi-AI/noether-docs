@@ -1048,15 +1048,10 @@ regression baseline.</p>
 <td class="text-right"><p>-0.6977</p></td>
 <td class="text-right"><p>-62.6%</p></td>
 </tr>
-<tr class="row-odd"><td><p><img alt="Diffusion vs regression baseline" src="../_images/fm_vs_regression.png" /></p></td>
-<td class="text-right"><p></p></td>
-<td class="text-right"><p></p></td>
-<td class="text-right"><p></p></td>
-<td class="text-right"><p></p></td>
-</tr>
 </tbody>
 </table>
 </div>
+<p><img alt="Diffusion vs regression baseline" src="../_images/fm_vs_regression.png" /></p>
 <p>The evaluation was on the whole-mesh of the test split of our subsampled DrivAerML testset using only anchors for inference.
 The difference between baseline and flow-matching models on all primary metrics is marginal.
 The exception is volume_vorticity, where the diffusion does significantly better. This can mostly attributed to non-ideal hyperparamters of the baseline and high variance of this property.</p>
@@ -1202,8 +1197,7 @@ hard confidence intervals.</p>
 │   ├── eval_uq.py
 │   └── report.py                        # comparison + step-sweep + UQ tables &amp; Plotly bars
 ├── run_abupt_diffusion.sbatch
-├── run_abupt_regression.sbatch
-└── viz.py
+└── run_abupt_regression.sbatch
 </pre></div>
 </div>
 </section>
