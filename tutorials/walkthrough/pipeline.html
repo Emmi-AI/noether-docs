@@ -964,10 +964,11 @@ of all the <code class="docutils literal notranslate"><span class="pre">getitem_
 of processing on one or more tensors of the sample. Note that the order is important, as the
 sample processors are called sequentially.</p>
 <p>When the multi-stage pipeline runs, the sample processors are called as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;&quot;&quot;Applies a multi-stage collation pipeline to the loaded samples.</span>
-
-<span class="s2">Args:</span>
-<span class="s2">    samples (list[dict[str, Any]]): List of individual samples retrieved from the dataset.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pre-process on a sample level</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="p">[</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">]</span>  <span class="c1"># copy to avoid changing method input</span>
+<span class="k">for</span> <span class="n">sample_processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_processors</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+        <span class="n">samples</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_processor</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -983,15 +984,16 @@ dictionary.</p>
 <section id="collators">
 <h2>Collators<a class="headerlink" href="#collators" title="Link to this heading">¶</a></h2>
 <p>The code for calling the collators in the multi-stage pipeline looks as follows:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">Collated</span> <span class="n">batch</span><span class="o">.</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="s2"># pre-process on a sample level</span>
-<span class="s2">samples = [deepcopy(sample) for sample in samples]  # copy to avoid changing method input</span>
-<span class="s2">for sample_processor in self.sample_processors:</span>
-<span class="s2">    for idx, sample in enumerate(samples):</span>
-<span class="s2">        samples[idx] = sample_processor(sample)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create batch out of the samples</span>
+<span class="n">batch</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">batch_collator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">collators</span><span class="p">:</span>
+    <span class="n">sub_batch</span> <span class="o">=</span> <span class="n">batch_collator</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="c1"># make sure that there is no overlap between collators</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sub_batch</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">batch</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Key &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; already exists in batch. Collators must not overlap in keys.&quot;</span><span class="p">)</span>
+        <span class="n">batch</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
-<span class="s2"># create batch out of the samples</span>
 </pre></div>
 </div>
 <p>Each collator defines how to merge certain keys from each sample into a batch. In most cases,
@@ -1007,9 +1009,11 @@ UPT).</p>
 <p>In this project, we do not use any batch processors. Nevertheless, they work in the same way as
 sample processors. However, instead of processing individual samples, they process the collated
 batch. Below is the code showing how batch processors are called:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">batch_collator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">collators</span><span class="p">:</span>
-    <span class="n">sub_batch</span> <span class="o">=</span> <span class="n">batch_collator</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
-    <span class="c1"># make sure that there is no overlap between collators</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># process the batch</span>
+<span class="k">for</span> <span class="n">batch_processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_processors</span><span class="p">:</span>
+    <span class="n">batch</span> <span class="o">=</span> <span class="n">batch_processor</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+
+<span class="k">return</span> <span class="n">batch</span>
 </pre></div>
 </div>
 </section>

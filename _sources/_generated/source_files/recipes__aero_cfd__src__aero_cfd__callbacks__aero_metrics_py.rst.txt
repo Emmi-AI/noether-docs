@@ -1,0 +1,8 @@
+aero_metrics.py
+===============
+
+``recipes/aero_cfd/src/aero_cfd/callbacks/aero_metrics.py``
+
+.. literalinclude:: ../../../../recipes/aero_cfd/src/aero_cfd/callbacks/aero_metrics.py
+   :language: python
+   :linenos:

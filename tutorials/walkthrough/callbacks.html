@@ -886,7 +886,7 @@ most complex objects in the Noether Framework.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
 <p>The
-<code class="docutils literal notranslate"><span class="pre">AeroMetricsCallback</span></code> (in <code class="docutils literal notranslate"><span class="pre">callbacks/aero_metrics.py</span></code>)
+<code class="docutils literal notranslate"><span class="pre">AeroMetricsCallback</span></code> (in <code class="docutils literal notranslate"><span class="pre">src/aero_cfd/callbacks/aero_metrics.py</span></code>)
 is a specific callback that runs the current model on a separate validation or test set,
 computes error metrics, and logs them. This class inherits from
 <a class="reference internal" href="../../autoapi/noether/core/callbacks/periodic/index.html#noether.core.callbacks.periodic.PeriodicDataIteratorCallback" title="noether.core.callbacks.periodic.PeriodicDataIteratorCallback"><code class="xref py py-class docutils literal notranslate"><span class="pre">PeriodicDataIteratorCallback</span></code></a>,
@@ -920,9 +920,42 @@ and processed by this method.</p></li>
 Weights &amp; Biases.</p>
 <p><strong>process_data implementation:</strong></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">process_data</span></code> method of the <code class="docutils literal notranslate"><span class="pre">AeroMetricsCallback</span></code> simply looks like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="o">**</span><span class="n">_</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Execute forward pass and compute metrics.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        batch: Input batch dictionary</span>
+<span class="sd">        **_: Additional unused arguments</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dictionary mapping metric names to computed values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure_inference_time</span><span class="p">:</span>
+        <span class="n">model_outputs</span><span class="p">,</span> <span class="n">elapsed_ms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timed_model_inference</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">model_outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_model_inference</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">elapsed_ms</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">metrics</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">mode</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluation_modes</span><span class="p">:</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_compute_mode_metrics</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_forces</span><span class="p">:</span>
+        <span class="n">metrics</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_compute_force_metrics</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">elapsed_ms</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">metrics</span><span class="p">[</span><span class="s2">&quot;inference_time_ms&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">elapsed_ms</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_save_predictions</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_collect_predictions</span><span class="p">(</span><span class="n">batch</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">metrics</span>
+</pre></div>
+</div>
 <p>First, it computes the model outputs, and next, it adds the desired metrics to an output
 dictionary. All the substeps are implemented by individual methods in the callback itself.
-See the full implementation in <span>callbacks/aero_metrics.py</span> for details.</p>
+See the full implementation in <a class="reference internal" href="../../_generated/source_files/recipes__aero_cfd__src__aero_cfd__callbacks__aero_metrics_py.html"><span class="doc">callbacks/aero_metrics.py</span></a> for details.</p>
 </section>
 <section id="configuring-callbacks">
 <h2>Configuring callbacks<a class="headerlink" href="#configuring-callbacks" title="Link to this heading">¶</a></h2>
@@ -991,8 +1024,42 @@ the <code class="docutils literal notranslate"><span class="pre">batch_size</spa
 executed by the dataset, we retrieve the data normalizers via the <code class="docutils literal notranslate"><span class="pre">DataContainer</span></code>. In the
 <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of the callback we implement, we use the available <code class="docutils literal notranslate"><span class="pre">self.data_container</span></code>
 to get the correct dataset used for this callback and retrieve the normalizers:</p>
-<p>To denormalize predictions, the <code class="docutils literal notranslate"><span class="pre">_denormalize</span></code> method looks up the normalizer by key and
-calls <code class="docutils literal notranslate"><span class="pre">inverse</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_normalizers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_container</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_key</span><span class="p">)</span><span class="o">.</span><span class="n">normalizers</span>
+</pre></div>
+</div>
+<p>To denormalize predictions before computing metrics, <code class="docutils literal notranslate"><span class="pre">_compute_mode_metrics</span></code> retrieves the
+dataset and calls its <code class="docutils literal notranslate"><span class="pre">denormalize</span></code> method for both the prediction and the target:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_compute_mode_metrics</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">model_outputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute metrics for a specific evaluation mode.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        batch: Input batch containing targets</span>
+<span class="sd">        model_outputs: Model predictions</span>
+<span class="sd">        mode: Evaluation mode (field name)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Dictionary of computed metrics for this mode</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">batch</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mode</span><span class="si">}{</span><span class="n">METRIC_SUFFIX_TARGET</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">model_outputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">prediction</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">target</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_container</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dataset_key</span><span class="p">)</span>
+    <span class="n">denorm_pred</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">denormalize</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">prediction</span><span class="p">)</span>
+    <span class="n">denorm_target</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">denormalize</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+    <span class="c1"># Align sizes if needed</span>
+    <span class="n">denorm_pred</span><span class="p">,</span> <span class="n">denorm_target</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_align_chunk_sizes</span><span class="p">(</span><span class="n">denorm_pred</span><span class="p">,</span> <span class="n">denorm_target</span><span class="p">)</span>
+
+    <span class="c1"># Compute metrics</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_metrics</span><span class="p">(</span><span class="n">denorm_pred</span><span class="p">,</span> <span class="n">denorm_target</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="computed-metrics">
 <h2>Computed metrics<a class="headerlink" href="#computed-metrics" title="Link to this heading">¶</a></h2>

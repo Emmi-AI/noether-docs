@@ -3,23 +3,23 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:title" content="The Trainer" />
+<meta property="og:title" content="aerodynamics_cfd.py" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://noether-docs.emmi.ai/tutorials/walkthrough/trainer.html" />
+<meta property="og:url" content="https://noether-docs.emmi.ai/_generated/source_files/recipes__aero_cfd__src__aero_cfd__trainers__aerodynamics_cfd_py.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="The AerodynamicsCFDTrainer(in trainers/aerodynamics_cfd.py) is a specialized trainer designed for aerodynamics Computational Fluid Dynamics (CFD) tasks, specifically for the AhmedML, DrivAerML, Dri..." />
+<meta property="og:description" content="recipes/aero_cfd/src/aero_cfd/trainers/aerodynamics_cfd.py" />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="The AerodynamicsCFDTrainer(in trainers/aerodynamics_cfd.py) is a specialized trainer designed for aerodynamics Computational Fluid Dynamics (CFD) tasks, specifically for the AhmedML, DrivAerML, Dri..." />
+<meta name="description" content="recipes/aero_cfd/src/aero_cfd/trainers/aerodynamics_cfd.py" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Models" href="models.html" /><link rel="prev" title="The Multi-Stage Pipeline" href="pipeline.html" />
-        <link rel="canonical" href="https://noether-docs.emmi.ai/tutorials/walkthrough/trainer.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+        <link rel="canonical" href="https://noether-docs.emmi.ai/_generated/source_files/recipes__aero_cfd__src__aero_cfd__trainers__aerodynamics_cfd_py.html" />
         <link rel="prefetch" href="../../_static/Emmi_AI_logo_black.svg" as="image" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
-        <title>The Trainer - Noether Framework Documentation</title>
+        <title>aerodynamics_cfd.py - Noether Framework Documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d75fae25" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=25af2a20" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -250,7 +250,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -288,23 +288,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../noether/understanding_the_data_pipeline.html">Understanding the Data Pipeline</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started_install_and_verify.html">Getting Started: Install &amp; Verify</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../training_first_model_with_configs.html">Training First Model (with Configs)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../training_first_model_with_code.html">Training First Model (with Code)</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Walkthrough: Aerodynamic CFD with Noether</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Walkthrough: Aerodynamic CFD with Noether</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dataset.html">Datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline.html">The Multi-Stage Pipeline</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">The Trainer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
-<li class="toctree-l2"><a class="reference internal" href="callbacks.html">Callbacks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running_experiments.html">Running the Experiments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="showcase.html">AB-UPT Showcase</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/getting_started_install_and_verify.html">Getting Started: Install &amp; Verify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/training_first_model_with_configs.html">Training First Model (with Configs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/training_first_model_with_code.html">Training First Model (with Code)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../tutorials/walkthrough/index.html">Walkthrough: Aerodynamic CFD with Noether</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Walkthrough: Aerodynamic CFD with Noether</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/walkthrough/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/walkthrough/configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/walkthrough/dataset.html">Datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/walkthrough/pipeline.html">The Multi-Stage Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/walkthrough/trainer.html">The Trainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/walkthrough/models.html">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/walkthrough/callbacks.html">Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/walkthrough/running_experiments.html">Running the Experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/walkthrough/showcase.html">AB-UPT Showcase</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../scaffolding_a_new_project.html">Scaffolding a New Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/scaffolding_a_new_project.html">Scaffolding a New Project</a></li>
 </ul>
 <ul>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../guides/index.html">How-to Guides</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of How-to Guides</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
@@ -852,12 +852,12 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/tutorials/walkthrough/trainer.rst?plain=true" title="View this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/blob/main/docs/source/_generated/source_files/recipes__aero_cfd__src__aero_cfd__trainers__aerodynamics_cfd_py.rst?plain=true" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
 </div><div class="edit-this-page">
-  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/tutorials/walkthrough/trainer.rst" rel="edit" title="Edit this page">
+  <a class="muted-link" href="https://github.com/Emmi-AI/noether/edit/main/docs/source/_generated/source_files/recipes__aero_cfd__src__aero_cfd__trainers__aerodynamics_cfd_py.rst" rel="edit" title="Edit this page">
     <svg><use href="#svg-pencil"></use></svg>
     <span class="visually-hidden">Edit this page</span>
   </a>
@@ -870,198 +870,120 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="the-trainer">
-<h1>The Trainer<a class="headerlink" href="#the-trainer" title="Link to this heading">¶</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">AerodynamicsCFDTrainer</span></code> (in <code class="docutils literal notranslate"><span class="pre">trainers/aerodynamics_cfd.py</span></code>)
-is a specialized trainer designed for aerodynamics Computational Fluid Dynamics (CFD) tasks,
-specifically for the AhmedML, DrivAerML, DrivAerNet++, ShapeNet-Car, and Emmi-Wing datasets.
-Its primary role is to manage the training step by processing model outputs, computing a flexible
-weighted loss, and returning the results.</p>
-<p>For a step-by-step guide on implementing custom trainers, see
-<a class="reference internal" href="../../guides/training/implement_a_custom_trainer.html"><span class="doc">How to Implement a Custom Trainer</span></a>.</p>
-<section id="basetrainer-implementation">
-<h2>BaseTrainer implementation<a class="headerlink" href="#basetrainer-implementation" title="Link to this heading">¶</a></h2>
-<p>To implement a custom <code class="docutils literal notranslate"><span class="pre">Trainer</span></code> for a downstream project, you must extend the
-<a class="reference internal" href="../../autoapi/noether/training/trainers/index.html#noether.training.trainers.BaseTrainer" title="noether.training.trainers.BaseTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrainer</span></code></a> class. The <code class="docutils literal notranslate"><span class="pre">BaseTrainer</span></code> handles the full training
-loop and provides two key methods:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">loss_compute</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">forward_output</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">targets</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">LossResult</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">LossResult</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Each trainer that extends this class needs to implement a custom loss computation using the targets and the model output.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        forward_output: Output of the model after the forward pass.</span>
-<span class="sd">        targets: Dict with target tensors needed to compute the loss for this trainer.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        A dict with the (weighted) sub-losses to log. Or a tuple of (losses, additional_outputs) where additional_outputs is</span>
-<span class="sd">        a dict with additional information about the model forward pass that is passed to the track_after_accumulation_step method of the callbacks, e.g., the logits and targets to calculate a training accuracy in a callback).</span>
-
-<span class="sd">    Note: If a tuple is returned, the second element will be passed as additional_outputs in the TrainerResult returned by the train_step method.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Subclasses must implement loss_compute.&quot;</span><span class="p">)</span>
+          <section id="aerodynamics-cfd-py">
+<h1>aerodynamics_cfd.py<a class="headerlink" href="#aerodynamics-cfd-py" title="Link to this heading">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">recipes/aero_cfd/src/aero_cfd/trainers/aerodynamics_cfd.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">#  Copyright © 2025 Emmi AI GmbH. All rights reserved.</span>
+<span class="linenos">  2</span>
+<span class="linenos">  3</span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="linenos">  4</span>
+<span class="linenos">  5</span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="linenos">  6</span><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="linenos">  7</span>
+<span class="linenos">  8</span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.training.trainers</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseTrainer</span>
+<span class="linenos">  9</span><span class="kn">from</span><span class="w"> </span><span class="nn">noether.training.trainers.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseTrainerConfig</span>
+<span class="linenos"> 10</span>
+<span class="linenos"> 11</span>
+<span class="linenos"> 12</span><span class="k">class</span><span class="w"> </span><span class="nc">AerodynamicsCfdTrainerConfig</span><span class="p">(</span><span class="n">BaseTrainerConfig</span><span class="p">):</span>
+<span class="linenos"> 13</span>    <span class="n">surface_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="linenos"> 14</span><span class="w">    </span><span class="sd">&quot;&quot;&quot; Weight of the predicted values on the surface mesh. Defaults to 1.0..&quot;&quot;&quot;</span>
+<span class="linenos"> 15</span>    <span class="n">volume_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="linenos"> 16</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values in the volume. Defaults to 1.0.&quot;&quot;&quot;</span>
+<span class="linenos"> 17</span>    <span class="n">surface_pressure_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="linenos"> 18</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the surface pressure. Defaults to 1.0.&quot;&quot;&quot;</span>
+<span class="linenos"> 19</span>    <span class="n">surface_friction_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos"> 20</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the surface wall shear stress. Defaults to 0.0.&quot;&quot;&quot;</span>
+<span class="linenos"> 21</span>    <span class="n">volume_velocity_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="linenos"> 22</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the volume velocity. Defaults to 1.0.&quot;&quot;&quot;</span>
+<span class="linenos"> 23</span>    <span class="n">volume_pressure_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos"> 24</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the volume total pressure coefficient. Defaults to 0.0.&quot;&quot;&quot;</span>
+<span class="linenos"> 25</span>    <span class="n">volume_vorticity_weight</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="linenos"> 26</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Weight of the predicted values for the volume vorticity. Defaults to 0.0.&quot;&quot;&quot;</span>
+<span class="linenos"> 27</span>    <span class="n">use_physics_features</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos"> 28</span>
+<span class="linenos"> 29</span>
+<span class="linenos"> 30</span><span class="k">class</span><span class="w"> </span><span class="nc">AerodynamicsCFDTrainer</span><span class="p">(</span><span class="n">BaseTrainer</span><span class="p">):</span>
+<span class="linenos"> 31</span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Trainer class for to train automative aerodynaimcs CFD for the: AhmedML, DrivaerML and Shapenet-Car Car dataset.&quot;&quot;&quot;</span>
+<span class="linenos"> 32</span>
+<span class="linenos"> 33</span>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trainer_config</span><span class="p">:</span> <span class="n">AerodynamicsCfdTrainerConfig</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="linenos"> 34</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Trainer class for to train automative aerodynaimcs CFD for the: AhmedML, DrivaerML and Shapenet-Car Car dataset.</span>
+<span class="linenos"> 35</span>
+<span class="linenos"> 36</span><span class="sd">        Args:</span>
+<span class="linenos"> 37</span><span class="sd">            trainer_config: Configuration for the trainer.</span>
+<span class="linenos"> 38</span><span class="sd">            **kwargs: Additional keyword arguments for the SgdTrainer.</span>
+<span class="linenos"> 39</span>
+<span class="linenos"> 40</span><span class="sd">        Raises:</span>
+<span class="linenos"> 41</span><span class="sd">            ValueError: When an output mode is not defined in the loss items.</span>
+<span class="linenos"> 42</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 43</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+<span class="linenos"> 44</span>            <span class="n">config</span><span class="o">=</span><span class="n">trainer_config</span><span class="p">,</span>
+<span class="linenos"> 45</span>            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="linenos"> 46</span>        <span class="p">)</span>
+<span class="linenos"> 47</span>
+<span class="linenos"> 48</span>        <span class="bp">self</span><span class="o">.</span><span class="n">surface_pressure_weight</span> <span class="o">=</span> <span class="n">trainer_config</span><span class="o">.</span><span class="n">surface_pressure_weight</span>
+<span class="linenos"> 49</span>        <span class="bp">self</span><span class="o">.</span><span class="n">surface_friction_weight</span> <span class="o">=</span> <span class="n">trainer_config</span><span class="o">.</span><span class="n">surface_friction_weight</span>
+<span class="linenos"> 50</span>        <span class="bp">self</span><span class="o">.</span><span class="n">volume_velocity_weight</span> <span class="o">=</span> <span class="n">trainer_config</span><span class="o">.</span><span class="n">volume_velocity_weight</span>
+<span class="linenos"> 51</span>        <span class="bp">self</span><span class="o">.</span><span class="n">volume_pressure_weight</span> <span class="o">=</span> <span class="n">trainer_config</span><span class="o">.</span><span class="n">volume_pressure_weight</span>
+<span class="linenos"> 52</span>        <span class="bp">self</span><span class="o">.</span><span class="n">volume_vorticity_weight</span> <span class="o">=</span> <span class="n">trainer_config</span><span class="o">.</span><span class="n">volume_vorticity_weight</span>
+<span class="linenos"> 53</span>
+<span class="linenos"> 54</span>        <span class="bp">self</span><span class="o">.</span><span class="n">surface_weight</span> <span class="o">=</span> <span class="n">trainer_config</span><span class="o">.</span><span class="n">surface_weight</span>
+<span class="linenos"> 55</span>        <span class="bp">self</span><span class="o">.</span><span class="n">volume_weight</span> <span class="o">=</span> <span class="n">trainer_config</span><span class="o">.</span><span class="n">volume_weight</span>
+<span class="linenos"> 56</span>
+<span class="linenos"> 57</span>        <span class="n">loss_items</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 58</span>            <span class="s2">&quot;surface_pressure&quot;</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">surface_pressure_weight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">surface_weight</span><span class="p">),</span>
+<span class="linenos"> 59</span>            <span class="s2">&quot;surface_friction&quot;</span><span class="p">:</span> <span class="p">(</span>
+<span class="linenos"> 60</span>                <span class="bp">self</span><span class="o">.</span><span class="n">surface_friction_weight</span><span class="p">,</span>
+<span class="linenos"> 61</span>                <span class="bp">self</span><span class="o">.</span><span class="n">surface_weight</span><span class="p">,</span>
+<span class="linenos"> 62</span>            <span class="p">),</span>  <span class="c1"># not used for ShapeNet-Car</span>
+<span class="linenos"> 63</span>            <span class="s2">&quot;volume_velocity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume_velocity_weight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_weight</span><span class="p">),</span>
+<span class="linenos"> 64</span>            <span class="s2">&quot;volume_pressure&quot;</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume_pressure_weight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_weight</span><span class="p">),</span>  <span class="c1"># not used for ShapeNet-Car</span>
+<span class="linenos"> 65</span>            <span class="s2">&quot;volume_vorticity&quot;</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">volume_vorticity_weight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">volume_weight</span><span class="p">),</span>  <span class="c1"># not used for ShapeNet-Car</span>
+<span class="linenos"> 66</span>        <span class="p">}</span>
+<span class="linenos"> 67</span>
+<span class="linenos"> 68</span>        <span class="bp">self</span><span class="o">.</span><span class="n">loss_items</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos"> 69</span>        <span class="k">for</span> <span class="n">target_property</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">target_properties</span><span class="p">:</span>
+<span class="linenos"> 70</span>            <span class="k">if</span> <span class="n">target_property</span><span class="p">[:</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;_target&quot;</span><span class="p">)]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">loss_items</span><span class="p">:</span>
+<span class="linenos"> 71</span>                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output mode &#39;</span><span class="si">{</span><span class="n">target_property</span><span class="si">}</span><span class="s2">&#39; is not defined in loss items.&quot;</span><span class="p">)</span>
+<span class="linenos"> 72</span>            <span class="bp">self</span><span class="o">.</span><span class="n">loss_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+<span class="linenos"> 73</span>                <span class="p">(</span>
+<span class="linenos"> 74</span>                    <span class="n">target_property</span><span class="p">[:</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;_target&quot;</span><span class="p">)],</span>
+<span class="linenos"> 75</span>                    <span class="n">loss_items</span><span class="p">[</span><span class="n">target_property</span><span class="p">[:</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;_target&quot;</span><span class="p">)]][</span><span class="mi">0</span><span class="p">],</span>
+<span class="linenos"> 76</span>                    <span class="n">loss_items</span><span class="p">[</span><span class="n">target_property</span><span class="p">[:</span> <span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;_target&quot;</span><span class="p">)]][</span><span class="mi">1</span><span class="p">],</span>
+<span class="linenos"> 77</span>                <span class="p">)</span>
+<span class="linenos"> 78</span>            <span class="p">)</span>
+<span class="linenos"> 79</span>
+<span class="linenos"> 80</span>    <span class="k">def</span><span class="w"> </span><span class="nf">loss_compute</span><span class="p">(</span>
+<span class="linenos"> 81</span>        <span class="bp">self</span><span class="p">,</span> <span class="n">forward_output</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">targets</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
+<span class="linenos"> 82</span>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+<span class="linenos"> 83</span><span class="w">        </span><span class="sd">&quot;&quot;&quot;Given the output of the model and the targets, compute the losses.</span>
+<span class="linenos"> 84</span><span class="sd">        Args:</span>
+<span class="linenos"> 85</span><span class="sd">            forward_output The output of the model, containing the predictions for each output mode.</span>
+<span class="linenos"> 86</span><span class="sd">            targets: Dict containing all target values to compute the loss.</span>
+<span class="linenos"> 87</span>
+<span class="linenos"> 88</span><span class="sd">        Returns:</span>
+<span class="linenos"> 89</span><span class="sd">            A dictionary containing the computed losses for each output mode.</span>
+<span class="linenos"> 90</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 91</span>        <span class="n">losses</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos"> 92</span>        <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">group_weight</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_items</span><span class="p">:</span>
+<span class="linenos"> 93</span>            <span class="k">if</span> <span class="n">weight</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">group_weight</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">forward_output</span><span class="p">:</span>
+<span class="linenos"> 94</span>                <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">_target&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
+<span class="linenos"> 95</span>                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="linenos"> 96</span>                        <span class="sa">f</span><span class="s2">&quot;Target for &#39;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">&#39; not found in targets. Ensure the targets contain the correct keys.&quot;</span>
+<span class="linenos"> 97</span>                    <span class="p">)</span>
+<span class="linenos"> 98</span>                <span class="n">losses</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">_loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+<span class="linenos"> 99</span>                    <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">_target&quot;</span><span class="p">],</span> <span class="n">forward_output</span><span class="p">[</span><span class="n">item</span><span class="p">])</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">group_weight</span>
+<span class="linenos">100</span>                <span class="p">)</span>
+<span class="linenos">101</span>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">102</span>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No losses computed, check your output keys and loss function.&quot;</span><span class="p">)</span>
+<span class="linenos">103</span>        <span class="k">return</span> <span class="n">losses</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">],</span> <span class="n">model</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TrainerResult</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Overriding this function is optional. By default, the `train_step` of the model will be called and is</span>
-<span class="sd">    expected to return a TrainerResult. Trainers can override this method to implement custom training logic.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        batch: Batch of data from which the loss is calculated.</span>
-<span class="sd">        model: Model to use for processing the data.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        TrainerResult dataclass with the loss for backpropagation, (optionally) individual losses if multiple</span>
-<span class="sd">        losses are used, and (optionally) additional information about the model forward pass that is passed</span>
-<span class="sd">        to the callbacks (e.g., the logits and targets to calculate a training accuracy in a callback).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">forward_batch</span><span class="p">,</span> <span class="n">targets_batch</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_split_batch</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
-    <span class="n">forward_output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="o">**</span><span class="n">forward_batch</span><span class="p">)</span>
-    <span class="n">additional_outputs</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">losses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_compute</span><span class="p">(</span><span class="n">forward_output</span><span class="o">=</span><span class="n">forward_output</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="n">targets_batch</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">losses</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">losses</span><span class="p">,</span> <span class="n">additional_outputs</span> <span class="o">=</span> <span class="n">losses</span>
-
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">losses</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">TrainerResult</span><span class="p">(</span>
-            <span class="n">total_loss</span><span class="o">=</span><span class="n">losses</span><span class="p">,</span> <span class="n">additional_outputs</span><span class="o">=</span><span class="n">additional_outputs</span><span class="p">,</span> <span class="n">losses_to_log</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;loss&quot;</span><span class="p">:</span> <span class="n">losses</span><span class="p">}</span>
-        <span class="p">)</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">losses</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-        <span class="n">losses</span> <span class="o">=</span> <span class="p">{</span><span class="sa">f</span><span class="s2">&quot;loss_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">loss</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">loss</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">losses</span><span class="p">)}</span>
-
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No losses computed, check your output keys and loss function.&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">TrainerResult</span><span class="p">(</span>
-        <span class="n">total_loss</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">losses</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">start</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">losses</span><span class="o">.</span><span class="n">values</span><span class="p">())))),</span>
-        <span class="n">losses_to_log</span><span class="o">=</span><span class="n">losses</span><span class="p">,</span>
-        <span class="n">additional_outputs</span><span class="o">=</span><span class="n">additional_outputs</span><span class="p">,</span>
-    <span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Understanding the two key methods:</strong></p>
-<p>As an end-user, you need to implement <strong>loss_compute</strong> and sometimes <strong>train_step</strong>.</p>
-<p>The <strong>train_step</strong> method receives the batch from the multi-stage pipeline and the <strong>model</strong>
-being trained (which can be a <code class="docutils literal notranslate"><span class="pre">DistributedDataParallel</span></code> model when training on multiple GPUs).</p>
-<p>In the base implementation, the batch is split into two sub-batches:</p>
-<ol class="arabic simple">
-<li><p><strong>Forward batch</strong>: Contains all tensors needed for the forward pass. The model receives the
-<code class="docutils literal notranslate"><span class="pre">forward_batch</span></code> as named keyword arguments, and the forward pass is computed.</p></li>
-<li><p><strong>Targets batch</strong>: Contains tensors needed for loss computation. The <strong>loss_compute</strong> method
-computes the custom loss for your task.</p></li>
-</ol>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>A warning is emitted if there are keys in the batch that do not end in either the forward
-batch or the target batch. This means that the collator returns tensors that are not used
-during the forward pass.</p>
-</div>
-<p><strong>Return value requirements:</strong></p>
-<p>The <strong>train_step</strong> method must always return the <a class="reference internal" href="../../autoapi/noether/training/trainers/index.html#noether.training.trainers.TrainerResult" title="noether.training.trainers.TrainerResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrainerResult</span></code></a> dataclass, which should
-contain:</p>
-<ul class="simple">
-<li><p>A scalar value of the total loss used to compute gradients (can be a weighted sum of multiple losses)</p></li>
-<li><p>A dictionary with the losses you want to log</p></li>
-<li><p>Optionally, a dictionary with additional output for logging</p></li>
-</ul>
-<p><strong>When to override train_step:</strong></p>
-<p>The <strong>train_step</strong> method defined in the <a class="reference internal" href="../../autoapi/noether/training/trainers/index.html#noether.training.trainers.BaseTrainer" title="noether.training.trainers.BaseTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseTrainer</span></code></a>
-class fits most general deep learning forward passes. However, you can decide whether this
-implementation is sufficient for your downstream training task. If not, you can always implement
-a custom <strong>train_step</strong> method in the child trainer class (as has been done in the scaffold
-template at <code class="docutils literal notranslate"><span class="pre">src/noether/scaffold/template_files/trainer/base.py</span></code>).</p>
-</section>
-<section id="basetrainer-configuration">
-<h2>BaseTrainer configuration<a class="headerlink" href="#basetrainer-configuration" title="Link to this heading">¶</a></h2>
-<p>When using the default <strong>train_step</strong> method, you must define both the <strong>forward_properties</strong>
-and the <strong>target_properties</strong> to define which tensors are part of the <code class="docutils literal notranslate"><span class="pre">forward_batch</span></code> and
-which tensors are part of the <code class="docutils literal notranslate"><span class="pre">target_batch</span></code>.</p>
-<p>In this walkthrough, the target properties are fixed per dataset, while the
-<strong>forward_properties</strong> depend on the model. Therefore, we define them as follows:</p>
-<p><strong>Full trainer configuration:</strong></p>
-<p>The complete trainer config for ShapeNet-Car is defined in <a class="reference internal" href="../../_generated/source_files/recipes__aero_cfd__configs__trainer__shapenet_trainer_yaml.html"><span class="doc">configs/trainer/shapenet_trainer.yaml</span></a>:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">#BaseTrainerConfig</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aero_cfd.trainers.AerodynamicsCFDTrainer</span>
-<span class="nt">precision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bfloat16</span>
-<span class="nt">max_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500</span>
-<span class="nt">effective_batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="nt">log_every_n_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="nt">callbacks</span><span class="p">:</span><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">${callbacks}</span><span class="w"> </span>
-<span class="nt">forward_properties</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${model.forward_properties}</span>
-<span class="nt">target_properties</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">surface_pressure_target</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">volume_velocity_target</span>
-<span class="c1"># AerodynamicsCFDTrainerConfig</span>
-<span class="nt">surface_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span>
-<span class="nt">volume_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"> </span>
-<span class="nt">surface_pressure_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"> </span>
-<span class="nt">volume_velocity_weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0</span><span class="w"> </span>
-<span class="nt">use_physics_features</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># whether to use the physics features (e.g., surface normals, volume normals, SDF) as input to the model</span>
-</pre></div>
-</div>
-</section>
-<section id="aerodynamicscfdtrainer-implementation">
-<h2>AerodynamicsCFDTrainer implementation<a class="headerlink" href="#aerodynamicscfdtrainer-implementation" title="Link to this heading">¶</a></h2>
-<p>The most important variables in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method are the loss weights, which give you
-fine-grained control over the training objective.</p>
-<p><strong>Loss weight hierarchy:</strong></p>
-<p>The loss has two levels of weights:</p>
-<ul class="simple">
-<li><p><strong>Individual weights</strong>: Parameters like <code class="docutils literal notranslate"><span class="pre">surface_pressure_weight</span></code> and
-<code class="docutils literal notranslate"><span class="pre">volume_velocity_weight</span></code> control the importance of a specific physical quantity in the
-total loss.</p></li>
-<li><p><strong>Group weights</strong>: The <code class="docutils literal notranslate"><span class="pre">surface_weight</span></code> and <code class="docutils literal notranslate"><span class="pre">volume_weight</span></code> parameters apply an additional
-weight to all surface-related or volume-related losses, respectively.</p></li>
-</ul>
-<p>During initialization, the trainer uses these weights to build an internal <code class="docutils literal notranslate"><span class="pre">loss_items</span></code> list.
-The <code class="docutils literal notranslate"><span class="pre">output_modes</span></code> parameter (e.g., <code class="docutils literal notranslate"><span class="pre">['surface_pressure',</span> <span class="pre">'volume_velocity']</span></code>) specifies
-which of these potential losses should be computed during training.</p>
-<p><strong>Custom loss calculation (loss_compute):</strong></p>
-<p>This method contains the core logic of the trainer for computing the loss:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">loss_compute</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">forward_output</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">targets</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Given the output of the model and the targets, compute the losses.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        forward_output The output of the model, containing the predictions for each output mode.</span>
-<span class="sd">        targets: Dict containing all target values to compute the loss.</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        A dictionary containing the computed losses for each output mode.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">losses</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">item</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">group_weight</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_items</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">weight</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">group_weight</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">forward_output</span><span class="p">:</span>
-            <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">_target&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Target for &#39;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">&#39; not found in targets. Ensure the targets contain the correct keys.&quot;</span>
-                <span class="p">)</span>
-            <span class="n">losses</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">_loss&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">F</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">targets</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">_target&quot;</span><span class="p">],</span> <span class="n">forward_output</span><span class="p">[</span><span class="n">item</span><span class="p">])</span> <span class="o">*</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">group_weight</span>
-            <span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No losses computed, check your output keys and loss function.&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">losses</span>
-</pre></div>
-</div>
-<p>It iterates through the <code class="docutils literal notranslate"><span class="pre">loss_items</span></code> configured during initialization. For each
-item (like <code class="docutils literal notranslate"><span class="pre">surface_pressure</span></code>), it checks that its weight is non-zero and that the model
-produced a corresponding output key.</p>
-<p>This flexible system allows you to easily experiment with different combinations of output
-objectives without changing the underlying code.</p>
-<p>When using only a single loss value, the <code class="docutils literal notranslate"><span class="pre">loss_compute</span></code> method is not needed and can be
-implemented directly inside the forward function (by overriding the base <code class="docutils literal notranslate"><span class="pre">train_step</span></code> method,
-as done in the
-scaffold template at <code class="docutils literal notranslate"><span class="pre">src/noether/scaffold/template_files/trainer/base.py</span></code>).</p>
-</section>
 </section>
 
         </article>
@@ -1069,26 +991,8 @@ scaffold template at <code class="docutils literal notranslate"><span class="pre
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="models.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Models</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="pipeline.html">
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">The Multi-Stage Pipeline</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -1131,29 +1035,8 @@ scaffold template at <code class="docutils literal notranslate"><span class="pre
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            On this page
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">The Trainer</a><ul>
-<li><a class="reference internal" href="#basetrainer-implementation">BaseTrainer implementation</a></li>
-<li><a class="reference internal" href="#basetrainer-configuration">BaseTrainer configuration</a></li>
-<li><a class="reference internal" href="#aerodynamicscfdtrainer-implementation">AerodynamicsCFDTrainer implementation</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>
