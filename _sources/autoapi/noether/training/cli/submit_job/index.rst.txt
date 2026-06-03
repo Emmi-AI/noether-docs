@@ -171,6 +171,19 @@ Module Contents
       ``--key=value`` to ``sbatch``.
 
 
+   .. py:attribute:: slurm_srun_args
+      :type:  list[str] | None
+      :value: None
+
+
+      Extra arguments for the inner ``srun`` launched by submitit. When left unset it
+      defaults to :data:`_DEFAULT_SRUN_ARGS` (``['--cpu-bind=none']``) to avoid SLURM
+      ``Unable to satisfy cpu bind request`` failures on clusters whose GPU-partition CPU
+      masks are non-contiguous — there ``srun``'s default per-task CPU binding cannot be
+      satisfied and the job step aborts before the program starts. Set to ``[]`` to restore
+      ``srun``'s default binding, or provide your own args.
+
+
    .. py:method:: to_executor_kwargs()
 
       Return ``(folder, update_parameters_kwargs)`` for :class:`submitit.AutoExecutor`.

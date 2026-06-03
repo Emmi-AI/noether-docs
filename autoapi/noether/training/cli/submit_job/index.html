@@ -1026,6 +1026,17 @@ submission.</p>
 <code class="docutils literal notranslate"><span class="pre">--key=value</span></code> to <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
 </dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.slurm_srun_args">
+<span class="sig-name descname"><span class="pre">slurm_srun_args</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.slurm_srun_args" title="Link to this definition">¶</a></dt>
+<dd><p>Extra arguments for the inner <code class="docutils literal notranslate"><span class="pre">srun</span></code> launched by submitit. When left unset it
+defaults to <code class="xref py py-data docutils literal notranslate"><span class="pre">_DEFAULT_SRUN_ARGS</span></code> (<code class="docutils literal notranslate"><span class="pre">['--cpu-bind=none']</span></code>) to avoid SLURM
+<code class="docutils literal notranslate"><span class="pre">Unable</span> <span class="pre">to</span> <span class="pre">satisfy</span> <span class="pre">cpu</span> <span class="pre">bind</span> <span class="pre">request</span></code> failures on clusters whose GPU-partition CPU
+masks are non-contiguous — there <code class="docutils literal notranslate"><span class="pre">srun</span></code>’s default per-task CPU binding cannot be
+satisfied and the job step aborts before the program starts. Set to <code class="docutils literal notranslate"><span class="pre">[]</span></code> to restore
+<code class="docutils literal notranslate"><span class="pre">srun</span></code>’s default binding, or provide your own args.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="noether.training.cli.submit_job.SlurmConfig.to_executor_kwargs">
 <span class="sig-name descname"><span class="pre">to_executor_kwargs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#noether.training.cli.submit_job.SlurmConfig.to_executor_kwargs" title="Link to this definition">¶</a></dt>
@@ -1182,6 +1193,7 @@ a training job — or a SLURM array job — via <code class="xref py py-mod docu
 <li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.slurm_array_parallelism"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_array_parallelism</span></code></a></li>
 <li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.slurm_setup"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_setup</span></code></a></li>
 <li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.slurm_additional_parameters"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_additional_parameters</span></code></a></li>
+<li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.slurm_srun_args"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.slurm_srun_args</span></code></a></li>
 <li><a class="reference internal" href="#noether.training.cli.submit_job.SlurmConfig.to_executor_kwargs"><code class="docutils literal notranslate"><span class="pre">SlurmConfig.to_executor_kwargs()</span></code></a></li>
 </ul>
 </li>
