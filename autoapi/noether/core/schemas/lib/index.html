@@ -7,10 +7,10 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://noether-docs.emmi.ai/autoapi/noether/core/schemas/lib/index.html" />
 <meta property="og:site_name" content="Noether Framework Documentation" />
-<meta property="og:description" content="Attributes: Functions: Module Contents:" />
+<meta property="og:description" content="Attributes: Classes: Functions: Module Contents:" />
 <meta property="og:image" content="https://noether-docs.emmi.ai/_static/Emmi_AI_logo_black.svg" />
 <meta property="og:image:alt" content="Noether: A PyTorch-based Framework for Engineering AI" />
-<meta name="description" content="Attributes: Functions: Module Contents:" />
+<meta name="description" content="Attributes: Classes: Functions: Module Contents:" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@emmi_ai" />
 <meta name="robots" content="index, follow" />
@@ -890,6 +890,18 @@
 </table>
 </div>
 </section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.lib.Discriminated" title="noether.core.schemas.lib.Discriminated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Discriminated</span></code></a></p></td>
+<td><p>Annotated-metadata marker for polymorphic registry config fields.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
@@ -898,10 +910,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.lib.resolve_config_class" title="noether.core.schemas.lib.resolve_config_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolve_config_class</span></code></a>(kind, base_cls)</p></td>
 <td><p>Resolve a config class from a dotted kind string.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.lib.Discriminated" title="noether.core.schemas.lib.Discriminated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Discriminated</span></code></a>(registry_cls)</p></td>
-<td><p>Returns a BeforeValidator that instantiates components based on their registry keys.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.schemas.lib.ConfiguredBy" title="noether.core.schemas.lib.ConfiguredBy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConfiguredBy</span></code></a>(config_class)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.schemas.lib.ConfiguredBy" title="noether.core.schemas.lib.ConfiguredBy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ConfiguredBy</span></code></a>(config_class)</p></td>
 <td><p>Decorator to mark a class as being configured by a specific config class.</p></td>
 </tr>
 </tbody>
@@ -943,16 +952,33 @@
 </dl>
 </dd></dl>
 
-<dl class="py function">
+<dl class="py class">
 <dt class="sig sig-object py" id="noether.core.schemas.lib.Discriminated">
-<span class="sig-prename descclassname"><span class="pre">noether.core.schemas.lib.</span></span><span class="sig-name descname"><span class="pre">Discriminated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">registry_cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.lib.Discriminated" title="Link to this definition">¶</a></dt>
-<dd><p>Returns a BeforeValidator that instantiates components based on their registry keys.
-Usage: field: Annotated[Any, Discriminated(MyComponent)]</p>
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.schemas.lib.</span></span><span class="sig-name descname"><span class="pre">Discriminated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">registry_cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.schemas.lib.Discriminated" title="Link to this definition">¶</a></dt>
+<dd><p>Annotated-metadata marker for polymorphic registry config fields.</p>
+<p>Usage: <code class="docutils literal notranslate"><span class="pre">field:</span> <span class="pre">Annotated[Any,</span> <span class="pre">Discriminated(MyComponent)]</span></code></p>
+<p>Contributes two behaviors to the annotated field:</p>
+<ul class="simple">
+<li><p><strong>Validation</strong> — dicts are instantiated to the concrete config class
+resolved from their registry key (<code class="docutils literal notranslate"><span class="pre">kind</span></code>/type field), like a
+<code class="docutils literal notranslate"><span class="pre">BeforeValidator</span></code> around <code class="xref py py-func docutils literal notranslate"><span class="pre">_discriminated_validator()</span></code>.</p></li>
+<li><p><strong>Serialization</strong> — the value is serialized by its <em>runtime</em> class
+(equivalent to <code class="docutils literal notranslate"><span class="pre">pydantic.SerializeAsAny</span></code>), so subclass-only fields
+survive <code class="docutils literal notranslate"><span class="pre">model_dump</span></code> even when the field is annotated with the base
+class. Unlike a global <code class="docutils literal notranslate"><span class="pre">model_dump(serialize_as_any=True)</span></code>, this
+duck-types only the model boundary and still respects field-level
+serializers nested inside the concrete config (e.g. <code class="docutils literal notranslate"><span class="pre">TorchTensor</span></code>).</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>registry_cls</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.14)"><em>type</em></a><em>[</em><em>_RegistryBase</em><em>]</em>)</p>
 </dd>
 </dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="noether.core.schemas.lib.Discriminated.registry_cls">
+<span class="sig-name descname"><span class="pre">registry_cls</span></span><a class="headerlink" href="#noether.core.schemas.lib.Discriminated.registry_cls" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
@@ -1058,11 +1084,15 @@ class MyClass:</p>
             <ul>
 <li><a class="reference internal" href="#">noether.core.schemas.lib</a><ul>
 <li><a class="reference internal" href="#attributes">Attributes</a></li>
+<li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.schemas.lib.T"><code class="docutils literal notranslate"><span class="pre">T</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.schemas.lib.resolve_config_class"><code class="docutils literal notranslate"><span class="pre">resolve_config_class()</span></code></a></li>
-<li><a class="reference internal" href="#noether.core.schemas.lib.Discriminated"><code class="docutils literal notranslate"><span class="pre">Discriminated()</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.schemas.lib.Discriminated"><code class="docutils literal notranslate"><span class="pre">Discriminated</span></code></a><ul>
+<li><a class="reference internal" href="#noether.core.schemas.lib.Discriminated.registry_cls"><code class="docutils literal notranslate"><span class="pre">Discriminated.registry_cls</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#noether.core.schemas.lib.ConfiguredBy"><code class="docutils literal notranslate"><span class="pre">ConfiguredBy()</span></code></a></li>
 </ul>
 </li>
