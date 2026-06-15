@@ -1,0 +1,133 @@
+noether.data.zarr_store.layout
+==============================
+
+.. py:module:: noether.data.zarr_store.layout
+
+.. autoapi-nested-parse::
+
+   Mapping between Noether ``FileMap`` fields and the per-field Zarr array layout.
+
+   Every CFD field is assigned to a domain (``surface`` / ``volume``), a canonical
+   name (``f"{domain}_{name}"`` — matching the dataset's ``getitem_*`` / normalizer
+   keys), a channel width, and a *kind*:
+
+   * ``coord`` — point positions, stored float32;
+   * ``value`` — physical quantities, stored float16.
+
+   Each field becomes its own Zarr array (``<domain>/<name>``), so fields are read
+   independently; all arrays of a domain share the shuffle permutation and chunk grid.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.layout.EXCLUDED_FILEMAP_FIELDS
+   noether.data.zarr_store.layout.FIELD_SPECS
+   noether.data.zarr_store.layout.CANONICAL_TO_SPEC
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.layout.FieldSpec
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.layout.present_specs
+   noether.data.zarr_store.layout.build_domain_layouts
+   noether.data.zarr_store.layout.filename_to_canonical
+
+
+Module Contents
+---------------
+
+.. py:class:: FieldSpec
+
+   Static description of one CFD field.
+
+
+   .. py:attribute:: filemap_attr
+      :type:  str
+
+      Attribute name on :class:`~noether.data.schemas.FileMap`.
+
+
+   .. py:attribute:: domain
+      :type:  str
+
+
+   .. py:attribute:: name
+      :type:  str
+
+      Short name within the domain; combined as ``f"{domain}_{name}"``.
+
+
+   .. py:attribute:: dim
+      :type:  int
+
+      Channel width (1 for scalars, 3 for vectors).
+
+
+   .. py:attribute:: kind
+      :type:  str
+
+      ``"coord"`` or ``"value"``.
+
+
+   .. py:property:: canonical
+      :type: str
+
+
+      Canonical field key, e.g. ``"volume_velocity"``.
+
+
+.. py:data:: EXCLUDED_FILEMAP_FIELDS
+   :type:  frozenset[str]
+
+.. py:data:: FIELD_SPECS
+   :type:  list[FieldSpec]
+   :value: []
+
+
+.. py:data:: CANONICAL_TO_SPEC
+   :type:  dict[str, FieldSpec]
+
+.. py:function:: present_specs(filemap)
+
+   Return the :data:`FIELD_SPECS` whose ``filemap_attr`` is set on *filemap*.
+
+
+.. py:function:: build_domain_layouts(filemap, coords_dtype = 'float32', values_dtype = 'float16', field_dtypes = None)
+
+   Build the per-domain :class:`DomainLayout` (one array per field) present in *filemap*.
+
+   :param filemap: Field-to-filename mapping for the dataset being converted.
+   :param coords_dtype: Dtype string for position arrays.
+   :param values_dtype: Dtype string for physical field arrays.
+   :param field_dtypes: Per-field dtype overrides keyed by canonical name, e.g.
+                        ``{"volume_vorticity": "float32"}`` for fields whose dynamic range exceeds
+                        ``values_dtype`` (float16 caps at ~6.6e4).
+
+   :returns: Mapping ``domain -> DomainLayout``.
+
+   :raises ValueError: If a domain has no (or more than one) coordinate field.
+
+
+.. py:function:: filename_to_canonical(filemap)
+
+   Reverse map ``stored_filename -> canonical_field`` for the present fields.
+
+   Lets a Zarr-backed dataset translate the ``.pt`` filename referenced by an
+   ``AeroDataset.getitem_*`` method back to the canonical field key used in the
+   Zarr store.
+
+

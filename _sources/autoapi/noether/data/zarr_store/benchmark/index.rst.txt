@@ -1,0 +1,62 @@
+noether.data.zarr_store.benchmark
+=================================
+
+.. py:module:: noether.data.zarr_store.benchmark
+
+.. autoapi-nested-parse::
+
+   Validate and benchmark a converted ShapeNet-Car Zarr store against the ``.pt`` source.
+
+   Checks, for the ``test`` split:
+
+   1. **Equivalence** — normalized per-field output of :class:`ZarrShapeNetCarDataset`
+      (full read) matches the original :class:`ShapeNetCarDataset` within float16 error.
+   2. **Read amplification** — bytes fetched for a chunk-subsampled read vs a full read,
+      measured by instrumenting the Zarr store.
+
+   Run::
+
+       uv run python -m noether.data.zarr_store.benchmark         --pt-root /nfs-gpu/research/datasets/shapenet_car         --zarr-root /nfs-gpu/research/datasets/shapenet_car/zarr_store
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.benchmark.FIELDS
+   noether.data.zarr_store.benchmark.NORMALIZERS
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.benchmark.check_equivalence
+   noether.data.zarr_store.benchmark.check_read_amplification
+   noether.data.zarr_store.benchmark.main
+
+
+Module Contents
+---------------
+
+.. py:data:: FIELDS
+   :value: ['surface_position', 'surface_pressure', 'surface_normals', 'volume_position',...
+
+
+.. py:data:: NORMALIZERS
+
+.. py:function:: check_equivalence(pt_root, zarr_root, num_samples)
+
+   Compare normalized fields of the original and Zarr datasets (full read).
+
+
+.. py:function:: check_read_amplification(zarr_root, num_volume_points)
+
+   Measure bytes fetched for a chunk-subsampled read vs a full read.
+
+
+.. py:function:: main()
+

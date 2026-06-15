@@ -12,5 +12,6 @@ Submodules
 
    /autoapi/noether/data/datasets/cfd/drivaernet/dataset/index
    /autoapi/noether/data/datasets/cfd/drivaernet/preprocessing/index
+   /autoapi/noether/data/datasets/cfd/drivaernet/zarr_dataset/index
 
 

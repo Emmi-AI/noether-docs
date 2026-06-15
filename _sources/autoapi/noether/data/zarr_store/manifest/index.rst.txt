@@ -1,0 +1,262 @@
+noether.data.zarr_store.manifest
+================================
+
+.. py:module:: noether.data.zarr_store.manifest
+
+.. autoapi-nested-parse::
+
+   Manifest schema for the chunked/sharded Zarr CFD store.
+
+   The manifest is a small JSON sidecar written next to the per-sample Zarr groups.
+   It records the *global* column layout (which field lives in which array and at
+   which column offset) once, plus the *per-sample* chunk grid (point count, chunk
+   size, shard size, number of chunks) for every domain.
+
+   The dataloader uses the manifest to:
+
+   * pick random chunk indices per (sample, domain) without opening every array's
+     metadata first, and
+   * map the fused value array columns back onto individual named fields.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.manifest.ArrayLayout
+   noether.data.zarr_store.manifest.DomainLayout
+   noether.data.zarr_store.manifest.DomainSample
+   noether.data.zarr_store.manifest.SampleEntry
+   noether.data.zarr_store.manifest.StoreManifest
+
+
+Module Contents
+---------------
+
+.. py:class:: ArrayLayout(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Layout of a single per-field Zarr array.
+
+   Every field is its own array (``<domain>/<name>``) so fields can be read
+   independently. The channel axis is never chunked, and each array is packed into a
+   single whole-array shard, so the per-sample object count stays at one object per
+   field while chunks remain individually range-readable.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: array_name
+      :type:  str
+
+      Zarr path of the array within the per-sample group, e.g. ``"volume/velocity"``.
+
+
+   .. py:attribute:: field
+      :type:  str
+
+      Canonical field name served by this array, e.g. ``"volume_velocity"``.
+
+
+   .. py:attribute:: dtype
+      :type:  str
+
+      On-disk dtype of the array, e.g. ``"float32"`` or ``"float16"``.
+
+
+   .. py:attribute:: dim
+      :type:  int
+
+      Channel width (1 for scalars, 3 for vectors).
+
+
+.. py:class:: DomainLayout(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Per-field arrays of one domain.
+
+   All arrays of a domain share the point axis, the shuffle permutation and the chunk
+   grid, so chunk ``c`` addresses the same physical points in every field.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: position
+      :type:  str
+
+      Canonical name of the domain's coordinate field (e.g. ``"volume_position"``).
+
+
+   .. py:attribute:: arrays
+      :type:  dict[str, ArrayLayout]
+
+      Mapping ``canonical_field -> array layout`` (includes the position array).
+
+
+.. py:class:: DomainSample(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Per-sample chunk grid for one domain.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: n_points
+      :type:  int
+
+      Number of points (rows) for this sample/domain.
+
+
+   .. py:attribute:: chunk_points
+      :type:  int
+
+      Chunk size along the point axis.
+
+
+   .. py:attribute:: shard_points
+      :type:  int
+
+      Shard size along the point axis — a whole number of chunks; the full array
+      (``n_chunks * chunk_points``) unless the writer's ``shard_points`` cap split the
+      arrays into multiple shards.
+
+
+   .. py:attribute:: n_chunks
+      :type:  int
+
+      Number of chunks along the point axis (``ceil(n_points / chunk_points)``).
+
+
+.. py:class:: SampleEntry(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Manifest entry for a single sample.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: relpath
+      :type:  str
+
+      Path of the sample's Zarr group relative to the store root.
+
+
+   .. py:attribute:: domains
+      :type:  dict[str, DomainSample]
+
+      Per-domain chunk grids.
+
+
+.. py:class:: StoreManifest(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Top-level manifest for a converted Zarr store.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: dataset_name
+      :type:  str
+
+
+   .. py:attribute:: format_version
+      :type:  int
+      :value: 1
+
+
+
+   .. py:attribute:: shuffle_seed
+      :type:  int
+
+      Base seed used to derive the per-sample point shuffle permutations.
+
+
+   .. py:attribute:: coords_dtype
+      :type:  str
+      :value: 'float32'
+
+
+
+   .. py:attribute:: values_dtype
+      :type:  str
+      :value: 'float16'
+
+
+
+   .. py:attribute:: compressor
+      :type:  str
+      :value: 'blosc-zstd'
+
+
+
+   .. py:attribute:: domains
+      :type:  dict[str, DomainLayout]
+
+      Global column layout, shared by every sample.
+
+
+   .. py:attribute:: samples
+      :type:  dict[str, SampleEntry]
+      :value: None
+
+
+      Per-sample chunk grids keyed by sample id.
+
+
+   .. py:attribute:: MANIFEST_NAME
+      :type:  ClassVar[str]
+      :value: 'manifest.json'
+
+
+
+   .. py:method:: save(store_root)
+
+      Write the manifest to ``<store_root>/manifest.json`` (local path or fsspec URL).
+
+
+
+   .. py:method:: load(store_root)
+      :classmethod:
+
+
+      Load the manifest from ``<store_root>/manifest.json`` (local path or fsspec URL).
+
+
+

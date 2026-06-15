@@ -19,6 +19,7 @@ Submodules
    /autoapi/noether/data/schemas/index
    /autoapi/noether/data/stats/index
    /autoapi/noether/data/tools/index
+   /autoapi/noether/data/zarr_store/index
 
 
 Attributes

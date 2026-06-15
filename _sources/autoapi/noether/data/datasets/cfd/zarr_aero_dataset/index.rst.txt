@@ -1,0 +1,167 @@
+noether.data.datasets.cfd.zarr_aero_dataset
+===========================================
+
+.. py:module:: noether.data.datasets.cfd.zarr_aero_dataset
+
+.. autoapi-nested-parse::
+
+   Zarr-backed :class:`AeroDataset` that subsamples by reading chunks.
+
+   This is the read side of the chunked/sharded Zarr format. Instead of loading every
+   field of a sample and discarding most points (the ``.pt`` + ``PointSamplingSampleProcessor``
+   path), the dataset reads only the random chunks it needs:
+
+   * :meth:`pre_getitem` selects random chunks per domain and fetches just those rows
+     (byte-range reads against the sharded arrays), splitting the fused arrays back into
+     per-field tensors.
+   * the inherited ``getitem_*`` / ``with_normalizers`` machinery then serves those
+     pre-read tensors, so normalization, key names and downstream collation are unchanged.
+
+   Set ``num_points`` to ``None`` per domain (the default) to read full samples — e.g. for
+   evaluation — or to an integer to chunk-subsample at read time.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.zarr_aero_dataset.ZarrAeroDatasetConfig
+   noether.data.datasets.cfd.zarr_aero_dataset.ZarrAeroDataset
+
+
+Module Contents
+---------------
+
+.. py:class:: ZarrAeroDatasetConfig(/, **data)
+
+   Bases: :py:obj:`noether.data.base.dataset.StandardDatasetConfig`
+
+
+   Config for Zarr-backed aerodynamic datasets with chunk-based subsampling.
+
+   ``root`` points at the converted Zarr store. Leave the ``num_*`` fields ``None`` to
+   read full samples (e.g. evaluation); set them to chunk-subsample at read time, in
+   which case the pipeline's ``PointSamplingSampleProcessor`` becomes a no-op.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: num_surface_points
+      :type:  int | None
+      :value: None
+
+
+      Surface points to chunk-sample per item (``None`` = full surface).
+
+
+   .. py:attribute:: num_volume_points
+      :type:  int | None
+      :value: None
+
+
+      Volume points to chunk-sample per item (``None`` = full volume).
+
+
+   .. py:attribute:: num_geometry_points
+      :type:  int | None
+      :value: None
+
+
+      If set, also emit ``geometry_position`` — an independent draw of this many surface points (AB-UPT).
+
+
+   .. py:attribute:: sampling_seed
+      :type:  int | None
+      :value: None
+
+
+      Seed for deterministic chunk selection (``None`` = fresh subset each call).
+
+
+   .. py:attribute:: read_concurrency
+      :type:  int
+      :value: 1
+
+
+      Threads used to fetch a sample's chunks in parallel (``1`` = serial; raise for S3).
+
+
+.. py:class:: ZarrAeroDataset(dataset_config, filemap, num_points = None, sampling_seed = None, read_concurrency = 1, num_geometry_points = None)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.dataset.AeroDataset`
+
+
+   AeroDataset reading from a converted Zarr store with chunk-based subsampling.
+
+   :param dataset_config: Standard dataset config; ``root`` points at the Zarr store root.
+   :param filemap: Field-to-filename mapping (same one used for conversion).
+   :param num_points: Per-domain target counts (``{"surface": 3586, "volume": 4096}``).
+                      A ``None`` value reads the whole domain. Defaults to full reads.
+   :param sampling_seed: If set, chunk selection is deterministic per sample
+                         (seed ``sampling_seed + idx``); otherwise a fresh subset is drawn each call.
+   :param read_concurrency: Threads used to fetch a sample's chunks in parallel. Keep at
+                            ``1`` for local stores; raise it to hide per-request latency on S3.
+   :param num_geometry_points: If set, also emit ``geometry_position`` — an independent
+                               random draw of this many surface points (the AB-UPT shape-encoder input,
+                               distinct from the surface anchor points). ``None`` disables it.
+
+
+   .. py:attribute:: store_root
+      :type:  str | pathlib.Path
+      :value: ''
+
+
+
+   .. py:attribute:: manifest
+
+
+   .. py:attribute:: reader
+
+
+   .. py:attribute:: num_points
+
+
+   .. py:attribute:: sampling_seed
+      :value: None
+
+
+
+   .. py:attribute:: num_geometry_points
+      :value: None
+
+
+
+   .. py:method:: get_all_getitem_names()
+
+      Restrict to ``getitem_*`` for stored fields (+ computed/derived ones that apply).
+
+
+
+   .. py:method:: pre_getitem(idx)
+
+      Pre-read the sample so all getitem_* share one chunk read (used by ``__getitem__``).
+
+
+
+   .. py:method:: getitem_geometry_position(idx)
+
+      Random draw of surface positions used as the AB-UPT geometry/shape-encoder input.
+
+      Independent of the surface anchor points; only emitted when ``num_geometry_points``
+      is set. Normalized with the surface position normalizer.
+
+
+
+   .. py:method:: post_getitem(idx, pre)
+
+      Drop the cached tensors for *idx* (used by ``__getitem__``).
+
+
+

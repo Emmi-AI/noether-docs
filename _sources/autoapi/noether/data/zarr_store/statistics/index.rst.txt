@@ -1,0 +1,95 @@
+noether.data.zarr_store.statistics
+==================================
+
+.. py:module:: noether.data.zarr_store.statistics
+
+.. autoapi-nested-parse::
+
+   Calculate per-field statistics of a converted Zarr store.
+
+   The Zarr-store counterpart of :mod:`noether.data.tools.calculate_statistics`: instead of
+   going through a dataset class, it streams every sample's fields straight from the store
+   (local path or fsspec URL such as ``oci://bucket@namespace/zarr_store``) and accumulates
+   running moments in a single pass. Linear and logscale moments are computed together via
+   :class:`~noether.data.stats.RunningStats`, so one run yields everything a ``stats.yaml``
+   needs (``{field}_mean/std/min/max`` plus ``{field}_logscale_mean/std`` and the global
+   ``raw_pos_min``/``raw_pos_max`` position bounds).
+
+   Usage::
+
+       OCIFS_IAM_TYPE=api_key uv run python -m noether.data.zarr_store.statistics \
+           --store oci://emmi-drivaernet@frwnorq7ern2/zarr_store \
+           --split-file train_design_ids.txt \
+           --workers 8 --read-concurrency 4 --output-json drivaernet_stats.json
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.statistics.read_split_ids
+   noether.data.zarr_store.statistics.calculate_store_statistics
+   noether.data.zarr_store.statistics.statistics_to_dict
+   noether.data.zarr_store.statistics.print_statistics
+   noether.data.zarr_store.statistics.save_statistics_to_json
+   noether.data.zarr_store.statistics.main
+
+
+Module Contents
+---------------
+
+.. py:function:: read_split_ids(store_root, split_file)
+
+   Read sample ids (one per line) from a split file.
+
+   ``split_file`` may be an absolute path/URL or a name relative to the store root
+   (e.g. ``train_design_ids.txt`` next to ``manifest.json``).
+
+
+.. py:function:: calculate_store_statistics(store_root, *, fields = None, exclude_fields = None, sample_ids = None, limit = None, max_workers = 1, read_concurrency = 1, progress = False)
+
+   Stream all samples of a Zarr store and accumulate per-field running statistics.
+
+   :param store_root: Store root (local path or fsspec URL).
+   :param fields: Restrict to these canonical field names (default: every stored field).
+   :param exclude_fields: Field names to skip.
+   :param sample_ids: Restrict to these manifest sample ids (default: all samples).
+   :param limit: Process at most this many samples (after ``sample_ids`` filtering).
+   :param max_workers: Samples read concurrently (threads); accumulation stays single-threaded.
+   :param read_concurrency: Per-sample chunk-read threads (see :class:`ZarrChunkReader`).
+   :param progress: Show a tqdm progress bar.
+
+   :returns: Mapping from canonical field name to its :class:`~noether.data.stats.RunningStats`
+             (per-component mean/std/min/max and logscale moments, accumulated in float64).
+
+   :raises ValueError: If a requested field is not present in the store, or no samples remain
+       to process. Sample ids missing from the store are skipped with a warning
+       (split files may list samples that were skipped at conversion).
+
+
+.. py:function:: statistics_to_dict(running_stats)
+
+   Flatten running statistics into ``stats.yaml``-style keys.
+
+   Emits ``{field}_mean/std/min/max/count`` and ``{field}_logscale_mean/std`` per field,
+   plus global ``raw_pos_min``/``raw_pos_max`` scalars over all ``*_position`` fields
+   (the bounds used by position normalization).
+
+
+.. py:function:: print_statistics(running_stats)
+
+   Print the accumulated statistics per field, plus the global position bounds.
+
+
+.. py:function:: save_statistics_to_json(running_stats, output_path)
+
+   Save the flattened statistics (see :func:`statistics_to_dict`) as JSON.
+
+
+.. py:function:: main()
+
+   CLI entry point for calculating Zarr store statistics.
+
+

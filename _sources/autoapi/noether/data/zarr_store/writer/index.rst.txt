@@ -1,0 +1,141 @@
+noether.data.zarr_store.writer
+==============================
+
+.. py:module:: noether.data.zarr_store.writer
+
+.. autoapi-nested-parse::
+
+   Writer that converts per-sample CFD tensors into a sharded, pre-shuffled Zarr store.
+
+   Each sample becomes an independent Zarr *group* (``<store_root>/<sample_id>.zarr``)
+   holding **one array per field** (``surface/position``, ``volume/velocity``, …), so
+   fields can be read independently. Points are shuffled once at write time with a
+   deterministic, per-sample seed so that any contiguous chunk is already a uniform-random
+   subset of the sample — this lets the dataloader turn "sample N random points" into
+   "read a random chunk". All arrays of a domain share the permutation and chunk grid, so
+   chunk ``c`` is point-aligned across fields.
+
+   Arrays are chunked along the point axis (``chunk_points``) with the channel axis left
+   unchunked, and packed into a single whole-array shard compressed per-chunk with
+   blosc+zstd — the per-sample object count therefore stays at one object per field.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.writer.ZarrStoreWriter
+
+
+Module Contents
+---------------
+
+.. py:class:: ZarrStoreWriter(store_root, filemap, dataset_name, shuffle_seed = 0, chunk_points = 4096, shard_points = None, coords_dtype = 'float32', values_dtype = 'float16', field_dtypes = None, compression_level = 5)
+
+   Convert CFD samples into the chunked/sharded Zarr format and track the manifest.
+
+   :param store_root: Output location for the Zarr store. A local path or an fsspec URL
+                      (``s3://``, ``gs://``, ``memory://``, …) for object storage.
+   :param filemap: Field-to-filename mapping describing which fields exist.
+   :param dataset_name: Human-readable dataset name recorded in the manifest.
+   :param shuffle_seed: Base seed for the per-sample point shuffle.
+   :param chunk_points: Chunk size along the point axis. Pick close to the training
+                        subsample size to minimise read amplification.
+   :param shard_points: Cap on the shard size along the point axis (rounded down to a
+                        whole number of chunks, minimum one chunk). ``None`` (default) packs each
+                        array into a single whole-array shard. Set this when per-field arrays grow
+                        large: shard bytes ≈ ``shard_points × dim × dtype_size``, so e.g. a
+                        ~128 MB cap on a float32×3 position array is ``shard_points ≈ 11_000_000``.
+                        Smaller shards bound the writer's per-shard RAM and the blast radius of a
+                        corrupt object, at the cost of more objects per array.
+   :param coords_dtype: Dtype for the positions array (keep float32).
+   :param values_dtype: Dtype for the physical fields array (float16 halves bytes).
+   :param field_dtypes: Per-field dtype overrides keyed by canonical name, e.g.
+                        ``{"volume_vorticity": "float32"}`` for fields whose values exceed the
+                        ``values_dtype`` range (float16 caps at ~6.6e4); overflowing casts are
+                        rejected at write time rather than silently stored as ``inf``.
+   :param compression_level: blosc/zstd compression level.
+
+
+   .. py:attribute:: store_root
+      :value: ''
+
+
+
+   .. py:attribute:: filemap
+
+
+   .. py:attribute:: chunk_points
+      :value: 4096
+
+
+
+   .. py:attribute:: shard_points
+      :value: None
+
+
+
+   .. py:attribute:: coords_dtype
+      :value: 'float32'
+
+
+
+   .. py:attribute:: values_dtype
+      :value: 'float16'
+
+
+
+   .. py:attribute:: field_dtypes
+      :value: None
+
+
+
+   .. py:attribute:: compression_level
+      :value: 5
+
+
+
+   .. py:attribute:: layouts
+
+
+   .. py:attribute:: manifest
+
+
+   .. py:method:: write_group(sample_id, field_arrays)
+
+      Write one sample's Zarr group and return its manifest entry (no manifest mutation).
+
+      Independent per sample (its own store), so this is safe to call concurrently from
+      multiple threads; the caller records the returned entry in the manifest.
+
+      :param sample_id: Stable id used for the relative path and shuffle seed
+                        (e.g. ``"param1/<hash>"``).
+      :param field_arrays: Mapping ``canonical_field -> numpy array``. Positions must be
+                           ``(N, 3)``; scalar fields may be ``(N,)`` or ``(N, 1)``.
+
+      :returns: The :class:`SampleEntry` describing the written group.
+
+      :raises ValueError: If a domain's fields disagree on point count.
+
+
+
+   .. py:method:: write_sample(sample_id, field_arrays)
+
+      Write one sample and record it in the manifest (sequential convenience).
+
+
+
+   .. py:method:: to_init_kwargs()
+
+      Constructor kwargs to rebuild an identical writer (e.g. in a worker process).
+
+
+
+   .. py:method:: save_manifest()
+
+      Persist the manifest to the store root (local path or fsspec URL).
+
+
+

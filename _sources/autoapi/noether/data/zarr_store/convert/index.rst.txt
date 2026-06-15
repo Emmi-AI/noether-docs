@@ -1,0 +1,149 @@
+noether.data.zarr_store.convert
+===============================
+
+.. py:module:: noether.data.zarr_store.convert
+
+.. autoapi-nested-parse::
+
+   Convert a per-field ``.pt`` CFD dataset into the chunked/sharded Zarr store.
+
+   Works for any FileMap-based :class:`~noether.data.datasets.cfd.dataset.AeroDataset`
+   (ShapeNet-Car, DrivAerML, AhmedML, DrivAerNet, …) from two kinds of sources:
+
+   * ``--root`` — a local/NFS dataset root: the dataset class itself supplies the
+     ``FileMap``, the per-split sample lists and the directory layout (via ``_load``).
+   * ``--source-url`` — any fsspec location (``oci://bucket@namespace/prefix``,
+     ``s3://bucket/prefix``, a plain directory, …): samples are discovered by listing the
+     prefix and grouping ``.pt`` files by directory, then streamed without a local copy.
+
+   Samples are converted in a :class:`~concurrent.futures.ProcessPoolExecutor` so the
+   GIL-bound parts (``torch.load`` deserialization, numpy shuffles) parallelize fully;
+   each worker process builds its own source handle and writer, and the manifest is
+   assembled in the parent from the returned entries (bit-identical to a sequential run —
+   per-sample shuffles are seeded by sample id).
+
+   Usage::
+
+       uv run python -m noether.data.zarr_store.convert         --dataset-kind noether.data.datasets.cfd.DrivAerNetDataset         --source-url oci://emmi-drivaernet@<namespace>/subsampled_volume10x         --output /data/drivaernet/zarr_store         --chunk-points 16384 --workers 16
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.convert.logger
+   noether.data.zarr_store.convert.FsspecTask
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.convert.build_dataset
+   noether.data.zarr_store.convert.filemap_for_dataset_kind
+   noether.data.zarr_store.convert.discover_fsspec_samples
+   noether.data.zarr_store.convert.convert_aero_dataset
+   noether.data.zarr_store.convert.convert_fsspec_source
+   noether.data.zarr_store.convert.convert
+   noether.data.zarr_store.convert.main
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:data:: FsspecTask
+
+.. py:function:: build_dataset(kind, root, split)
+
+   Instantiate a dataset ``kind`` for one split (raw: no normalizers/wrappers).
+
+
+.. py:function:: filemap_for_dataset_kind(kind)
+
+   Resolve a dataset kind's ``FileMap`` without instantiating the dataset.
+
+   Looks for, in order: a ``FILEMAP`` class attribute, a ``filemap`` ``__init__``
+   default anywhere in the MRO, and finally a ``FileMap`` instance in the dataset's
+   module globals.
+
+
+.. py:function:: discover_fsspec_samples(source_url, filemap, limit = None)
+
+   List *source_url* and group its ``.pt`` files into per-sample conversion tasks.
+
+   A sample is any directory (prefix) containing every field of *filemap*; incomplete
+   samples are skipped with a warning. Sample ids are the directory paths relative to
+   the prefix (e.g. ``"E_S_WWC_WM_005"`` or ``"param1/<hash>"``), matching the ids the
+   dataset-driven path produces.
+
+
+.. py:function:: convert_aero_dataset(dataset, writer, *, max_workers = 1, limit = None)
+
+   Write every sample of a FileMap-based dataset into *writer* (does not save the manifest).
+
+   :param dataset: A FileMap-based ``AeroDataset`` instance (one split).
+   :param writer: Target store writer; reused across splits to build one store.
+   :param max_workers: Worker *processes* converting samples concurrently; the dataset and
+                       a writer clone are set up once per process.
+   :param limit: If set, convert at most this many samples (debugging).
+
+   :returns: The same ``writer`` (call :meth:`ZarrStoreWriter.save_manifest` once when done).
+
+   :raises ValueError: If the dataset does not expose a ``filemap``.
+
+
+.. py:function:: convert_fsspec_source(source_url, filemap, writer, *, max_workers = 1, limit = None)
+
+   Stream-convert a remote (or local) ``.pt`` tree reachable through fsspec.
+
+   Samples are discovered once in the parent by listing *source_url*; each worker
+   process opens its own filesystem handle and reads sample files directly from the
+   source (no local staging copy).
+
+   :param source_url: fsspec location of the ``.pt`` tree (``oci://``, ``s3://``, a path, …).
+   :param filemap: Field-to-filename mapping of the dataset (see :func:`filemap_for_dataset_kind`).
+   :param writer: Target store writer.
+   :param max_workers: Worker processes converting samples concurrently.
+   :param limit: If set, convert at most this many samples (debugging/benchmarks).
+
+   :returns: The same ``writer`` (call :meth:`ZarrStoreWriter.save_manifest` once when done).
+
+   :raises RuntimeError: If no complete samples are found under *source_url*.
+
+
+.. py:function:: convert(dataset_kind, store_root, *, root = None, source_url = None, splits = None, dataset_name = None, chunk_points = 4096, shard_points = None, shuffle_seed = 0, values_dtype = 'float16', field_dtypes = None, limit = None, max_workers = 1)
+
+   Convert a FileMap dataset into a single Zarr store.
+
+   Exactly one of *root* (local dataset-driven, per split) or *source_url* (fsspec
+   streaming, all samples under the prefix) must be given.
+
+   :param dataset_kind: Fully-qualified dataset class path (supplies the ``FileMap``).
+   :param store_root: Output Zarr store — a local path or fsspec URL (``s3://``, ``gs://``, …).
+   :param root: Local dataset root (dataset-driven source).
+   :param source_url: fsspec source prefix (streaming source; ``splits`` is ignored).
+   :param splits: Splits to convert for the dataset-driven source (default train/test/val);
+                  unsupported/empty ones are skipped with a warning.
+   :param dataset_name: Manifest name (defaults to the dataset class name).
+   :param chunk_points: Chunk size along the point axis (pick close to the train subsample size).
+   :param shard_points: Cap on the shard size along the point axis (``None`` = one shard per array).
+   :param shuffle_seed: Base seed for the per-sample point shuffle.
+   :param values_dtype: Dtype for the physical field arrays.
+   :param field_dtypes: Per-field dtype overrides, e.g. ``{"volume_vorticity": "float32"}``
+                        for fields whose values exceed the float16 range.
+   :param limit: If set, convert at most this many samples per split / source.
+   :param max_workers: Worker processes converting samples concurrently.
+
+   :returns: The writer with the saved manifest.
+
+   :raises ValueError: If not exactly one of *root* / *source_url* is given.
+   :raises RuntimeError: If nothing could be converted.
+
+
+.. py:function:: main()
+

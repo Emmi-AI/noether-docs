@@ -14,6 +14,7 @@ Submodules
    /autoapi/noether/data/datasets/cfd/shapenet_car/filemap/index
    /autoapi/noether/data/datasets/cfd/shapenet_car/preprocessing/index
    /autoapi/noether/data/datasets/cfd/shapenet_car/split/index
+   /autoapi/noether/data/datasets/cfd/shapenet_car/zarr_dataset/index
 
 
 Classes
@@ -23,6 +24,8 @@ Classes
 
    noether.data.datasets.cfd.shapenet_car.ShapeNetCarDataset
    noether.data.datasets.cfd.shapenet_car.ShapeNetCarDefaultSplitIDs
+   noether.data.datasets.cfd.shapenet_car.ZarrShapeNetCarDataset
+   noether.data.datasets.cfd.shapenet_car.ZarrShapeNetCarDatasetConfig
 
 
 Package Contents
@@ -151,5 +154,63 @@ Package Contents
       :type:  list[str]
       :value: ['param0/100715345ee54d7ae38b52b4ee9d36a3', 'param0/10247b51a42b41603ffe0e5069bf1eb5',...
 
+
+
+.. py:class:: ZarrShapeNetCarDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.zarr_aero_dataset.ZarrAeroDataset`
+
+
+   ShapeNet-Car dataset that reads from a converted Zarr store.
+
+   Config-driven analogue of :class:`~noether.data.datasets.cfd.shapenet_car.dataset.ShapeNetCarDataset`
+   where ``dataset_config.root`` points at the converted Zarr store. When the config's
+   ``num_surface_points`` / ``num_volume_points`` are given, the dataset chunk-subsamples
+   at read time and returns exactly that many points per domain, so the pipeline's
+   ``PointSamplingSampleProcessor`` becomes a no-op.
+
+   :param dataset_config: ShapeNet-Car Zarr config; ``root`` is the Zarr store root and the
+                          ``num_*`` / ``sampling_seed`` / ``read_concurrency`` fields drive subsampling.
+
+
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
+
+
+   .. py:attribute:: split
+
+
+   .. py:attribute:: design_ids
+
+
+   .. py:method:: sample_info(idx)
+
+      Get information about a sample such as its store path and run name.
+
+
+
+.. py:class:: ZarrShapeNetCarDatasetConfig(/, **data)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.zarr_aero_dataset.ZarrAeroDatasetConfig`
+
+
+   Config for the Zarr-backed ShapeNet-Car dataset (``root`` = converted Zarr store).
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: 'noether.data.datasets.cfd.ZarrShapeNetCarDataset'
+
+
+      Kind of dataset to use.
 
 

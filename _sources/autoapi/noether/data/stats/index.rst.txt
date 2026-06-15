@@ -127,6 +127,13 @@ Module Contents
 
 
 
+   .. py:property:: count
+      :type: int
+
+
+      Number of points pushed so far.
+
+
    .. py:property:: min
       :type: torch.Tensor
 

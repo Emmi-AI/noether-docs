@@ -1,0 +1,101 @@
+noether.data.zarr_store.reader
+==============================
+
+.. py:module:: noether.data.zarr_store.reader
+
+.. autoapi-nested-parse::
+
+   Chunk-sampling reader for the Zarr CFD store.
+
+   The reader turns "draw ``T`` random points from a sample" into "read a few random
+   chunks". Because points were shuffled once at write time, any chunk is already a
+   uniform-random subset, so the reader only fetches ``ceil(T / chunk_points)`` chunks
+   per array instead of the whole sample. Reading a chunk from a sharded array is a
+   byte-range request, so the bytes transferred scale with ``T`` and not with the
+   sample size.
+
+   The per-sample chunk reads are independent, so they can be issued concurrently. Set
+   ``read_concurrency > 1`` to fetch a sample's chunks (across both arrays and both
+   domains) in a thread pool — this hides per-request latency on high-latency stores
+   (e.g. S3) and is a no-op cost on fast local stores, where the default of ``1`` keeps
+   reads serial.
+
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.reader.ZarrChunkReader
+
+
+Module Contents
+---------------
+
+.. py:class:: ZarrChunkReader(store_root, manifest = None, store_factory = _default_store_factory, read_concurrency = 1)
+
+   Reads chunk-subsampled (or full) per-field tensors from a converted store.
+
+   :param store_root: Root of the converted Zarr store — a local path or an fsspec URL
+                      (``s3://``, ``gs://``, ``memory://``, …) for object storage.
+   :param manifest: Pre-loaded manifest; loaded from ``store_root`` if omitted.
+   :param store_factory: Builds a Zarr store from a sample-group path/URL. Defaults to a
+                         read-only LocalStore/FsspecStore by path; override to wrap the store (e.g.
+                         for byte-accounting in benchmarks).
+   :param read_concurrency: Max threads used to fetch a sample's chunks in parallel.
+                            ``1`` (default) reads serially — best for fast local stores. Use a value
+                            around the number of chunks per sample to hide latency on S3.
+
+
+   .. py:attribute:: store_root
+      :value: ''
+
+
+
+   .. py:attribute:: manifest
+
+
+   .. py:attribute:: read_concurrency
+
+
+   .. py:method:: read_sample(sample_id, num_points = None, generator = None, fields = None)
+
+      Read (optionally chunk-subsampled) fields for one sample.
+
+      With ``read_concurrency == 1`` each array is read with a single orthogonal
+      selection (lowest overhead, best on local stores). With ``read_concurrency > 1``
+      all chunk reads of the sample are issued concurrently in a thread pool (best
+      latency hiding on S3). Both paths return identical results.
+
+      :param sample_id: Sample id present in the manifest.
+      :param num_points: Per-domain target counts, e.g. ``{"surface": 3586, "volume": 4096}``.
+                         A ``None`` value (or missing domain) reads the full domain.
+      :param generator: Torch RNG for chunk selection. Pass a seeded generator for
+                        deterministic evaluation; ``None`` draws a fresh subset each call.
+      :param fields: Optional subset of canonical fields to read. Because every field is
+                     its own array, unrequested fields cost no I/O. ``None`` reads all fields.
+
+      :returns: Mapping ``canonical_field -> tensor`` with scalar fields shaped ``(T,)`` and
+                vector fields shaped ``(T, dim)``, all float32 and point-aligned per domain.
+
+
+
+   .. py:method:: read_coords(sample_id, domain, num_points, generator = None)
+
+      Read an independent chunk-subsample of a domain's point positions only.
+
+      This is a separate random draw from :meth:`read_sample` (it consumes the same
+      generator, so it is uncorrelated with the field draw), reading just the domain's
+      position array. It backs the AB-UPT ``geometry_position`` input — a random draw
+      of the surface points distinct from the surface anchor points.
+
+      :param sample_id: Sample id present in the manifest.
+      :param domain: Domain whose positions to read (e.g. ``"surface"``).
+      :param num_points: Number of points to sample (``None`` reads all positions).
+      :param generator: Torch RNG for chunk selection.
+
+      :returns: ``(num_points, position_dim)`` float32 positions tensor.
+
+
+

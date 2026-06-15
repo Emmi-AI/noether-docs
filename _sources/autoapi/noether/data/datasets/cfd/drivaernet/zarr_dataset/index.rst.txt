@@ -1,0 +1,102 @@
+noether.data.datasets.cfd.drivaernet.zarr_dataset
+=================================================
+
+.. py:module:: noether.data.datasets.cfd.drivaernet.zarr_dataset
+
+.. autoapi-nested-parse::
+
+   Zarr-backed DrivAerNet(++) dataset with chunk-based subsampling.
+
+   Reads from a converted Zarr store (local path or fsspec URL such as
+   ``oci://bucket@namespace/zarr_store``). The store is self-contained: the split files
+   (``{train,test,val}_design_ids.txt``) and blacklists (``blacklist.txt``,
+   ``blacklist2.txt``) live next to ``manifest.json`` and are read through fsspec, so the
+   same split/blacklist semantics as :class:`DrivAerNetDataset` apply.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.drivaernet.zarr_dataset.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.drivaernet.zarr_dataset.ZarrDrivAerNetDatasetConfig
+   noether.data.datasets.cfd.drivaernet.zarr_dataset.ZarrDrivAerNetDataset
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: ZarrDrivAerNetDatasetConfig(/, **data)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.zarr_aero_dataset.ZarrAeroDatasetConfig`
+
+
+   Config for the Zarr-backed DrivAerNet dataset (``root`` = converted Zarr store).
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: kind
+      :type:  str | None
+      :value: 'noether.data.datasets.cfd.ZarrDrivAerNetDataset'
+
+
+      Kind of dataset to use.
+
+
+   .. py:attribute:: filter_categories
+      :type:  list[str] | None
+      :value: None
+
+
+      Optional design-category filter (e.g. ``["E_S_WWC_WM"]``), as in the ``.pt`` dataset.
+
+
+.. py:class:: ZarrDrivAerNetDataset(dataset_config)
+
+   Bases: :py:obj:`noether.data.datasets.cfd.zarr_aero_dataset.ZarrAeroDataset`
+
+
+   DrivAerNet(++) dataset reading from a converted Zarr store.
+
+   Mirrors :class:`DrivAerNetDataset`'s split handling (split id files, blacklists,
+   category filtering and ``"train[0:100]"`` subset notation) while subsampling via
+   chunked Zarr reads. When the config's ``num_*`` counts are set, the pipeline's
+   anchor/geometry sampling becomes inert (see ``geometry_position_from_dataset``).
+
+   :param dataset_config: DrivAerNet Zarr config; ``root`` is the Zarr store root (local
+                          or fsspec URL) and the ``num_*`` / ``sampling_seed`` / ``read_concurrency``
+                          fields drive subsampling.
+
+
+   .. py:attribute:: STATS_FILE
+      :type:  str
+      :value: ''
+
+
+
+   .. py:attribute:: design_ids
+
+
+   .. py:method:: sample_info(idx)
+
+      Get information about a sample such as its store path and design id.
+
+
+

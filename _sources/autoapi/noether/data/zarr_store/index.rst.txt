@@ -1,0 +1,584 @@
+noether.data.zarr_store
+=======================
+
+.. py:module:: noether.data.zarr_store
+
+.. autoapi-nested-parse::
+
+   Chunked, sharded, pre-shuffled Zarr store for CFD datasets.
+
+   This package provides a blob-storage-friendly alternative to the per-field ``.pt``
+   layout: each sample is a Zarr group with fused float32 ``coords`` and float16
+   ``fields`` arrays per domain, chunked along the point axis and packed into shards.
+   Pre-shuffling points at write time lets the dataloader subsample by reading a few
+   random chunks (byte-range reads) instead of loading the whole sample.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/noether/data/zarr_store/benchmark/index
+   /autoapi/noether/data/zarr_store/convert/index
+   /autoapi/noether/data/zarr_store/layout/index
+   /autoapi/noether/data/zarr_store/manifest/index
+   /autoapi/noether/data/zarr_store/reader/index
+   /autoapi/noether/data/zarr_store/statistics/index
+   /autoapi/noether/data/zarr_store/stores/index
+   /autoapi/noether/data/zarr_store/writer/index
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.CANONICAL_TO_SPEC
+   noether.data.zarr_store.FIELD_SPECS
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.FieldSpec
+   noether.data.zarr_store.ArrayLayout
+   noether.data.zarr_store.DomainLayout
+   noether.data.zarr_store.DomainSample
+   noether.data.zarr_store.SampleEntry
+   noether.data.zarr_store.StoreManifest
+   noether.data.zarr_store.ZarrChunkReader
+   noether.data.zarr_store.ZarrStoreWriter
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.build_domain_layouts
+   noether.data.zarr_store.filename_to_canonical
+   noether.data.zarr_store.present_specs
+   noether.data.zarr_store.calculate_store_statistics
+   noether.data.zarr_store.is_remote
+   noether.data.zarr_store.make_store
+
+
+Package Contents
+----------------
+
+.. py:data:: CANONICAL_TO_SPEC
+   :type:  dict[str, FieldSpec]
+
+.. py:data:: FIELD_SPECS
+   :type:  list[FieldSpec]
+   :value: []
+
+
+.. py:class:: FieldSpec
+
+   Static description of one CFD field.
+
+
+   .. py:attribute:: filemap_attr
+      :type:  str
+
+      Attribute name on :class:`~noether.data.schemas.FileMap`.
+
+
+   .. py:attribute:: domain
+      :type:  str
+
+
+   .. py:attribute:: name
+      :type:  str
+
+      Short name within the domain; combined as ``f"{domain}_{name}"``.
+
+
+   .. py:attribute:: dim
+      :type:  int
+
+      Channel width (1 for scalars, 3 for vectors).
+
+
+   .. py:attribute:: kind
+      :type:  str
+
+      ``"coord"`` or ``"value"``.
+
+
+   .. py:property:: canonical
+      :type: str
+
+
+      Canonical field key, e.g. ``"volume_velocity"``.
+
+
+.. py:function:: build_domain_layouts(filemap, coords_dtype = 'float32', values_dtype = 'float16', field_dtypes = None)
+
+   Build the per-domain :class:`DomainLayout` (one array per field) present in *filemap*.
+
+   :param filemap: Field-to-filename mapping for the dataset being converted.
+   :param coords_dtype: Dtype string for position arrays.
+   :param values_dtype: Dtype string for physical field arrays.
+   :param field_dtypes: Per-field dtype overrides keyed by canonical name, e.g.
+                        ``{"volume_vorticity": "float32"}`` for fields whose dynamic range exceeds
+                        ``values_dtype`` (float16 caps at ~6.6e4).
+
+   :returns: Mapping ``domain -> DomainLayout``.
+
+   :raises ValueError: If a domain has no (or more than one) coordinate field.
+
+
+.. py:function:: filename_to_canonical(filemap)
+
+   Reverse map ``stored_filename -> canonical_field`` for the present fields.
+
+   Lets a Zarr-backed dataset translate the ``.pt`` filename referenced by an
+   ``AeroDataset.getitem_*`` method back to the canonical field key used in the
+   Zarr store.
+
+
+.. py:function:: present_specs(filemap)
+
+   Return the :data:`FIELD_SPECS` whose ``filemap_attr`` is set on *filemap*.
+
+
+.. py:class:: ArrayLayout(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Layout of a single per-field Zarr array.
+
+   Every field is its own array (``<domain>/<name>``) so fields can be read
+   independently. The channel axis is never chunked, and each array is packed into a
+   single whole-array shard, so the per-sample object count stays at one object per
+   field while chunks remain individually range-readable.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: array_name
+      :type:  str
+
+      Zarr path of the array within the per-sample group, e.g. ``"volume/velocity"``.
+
+
+   .. py:attribute:: field
+      :type:  str
+
+      Canonical field name served by this array, e.g. ``"volume_velocity"``.
+
+
+   .. py:attribute:: dtype
+      :type:  str
+
+      On-disk dtype of the array, e.g. ``"float32"`` or ``"float16"``.
+
+
+   .. py:attribute:: dim
+      :type:  int
+
+      Channel width (1 for scalars, 3 for vectors).
+
+
+.. py:class:: DomainLayout(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Per-field arrays of one domain.
+
+   All arrays of a domain share the point axis, the shuffle permutation and the chunk
+   grid, so chunk ``c`` addresses the same physical points in every field.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: position
+      :type:  str
+
+      Canonical name of the domain's coordinate field (e.g. ``"volume_position"``).
+
+
+   .. py:attribute:: arrays
+      :type:  dict[str, ArrayLayout]
+
+      Mapping ``canonical_field -> array layout`` (includes the position array).
+
+
+.. py:class:: DomainSample(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Per-sample chunk grid for one domain.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: n_points
+      :type:  int
+
+      Number of points (rows) for this sample/domain.
+
+
+   .. py:attribute:: chunk_points
+      :type:  int
+
+      Chunk size along the point axis.
+
+
+   .. py:attribute:: shard_points
+      :type:  int
+
+      Shard size along the point axis — a whole number of chunks; the full array
+      (``n_chunks * chunk_points``) unless the writer's ``shard_points`` cap split the
+      arrays into multiple shards.
+
+
+   .. py:attribute:: n_chunks
+      :type:  int
+
+      Number of chunks along the point axis (``ceil(n_points / chunk_points)``).
+
+
+.. py:class:: SampleEntry(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Manifest entry for a single sample.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: relpath
+      :type:  str
+
+      Path of the sample's Zarr group relative to the store root.
+
+
+   .. py:attribute:: domains
+      :type:  dict[str, DomainSample]
+
+      Per-domain chunk grids.
+
+
+.. py:class:: StoreManifest(/, **data)
+
+   Bases: :py:obj:`pydantic.BaseModel`
+
+
+   Top-level manifest for a converted Zarr store.
+
+   Create a new model by parsing and validating input data from keyword arguments.
+
+   Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be
+   validated to form a valid model.
+
+   `self` is explicitly positional-only to allow `self` as a field name.
+
+
+   .. py:attribute:: dataset_name
+      :type:  str
+
+
+   .. py:attribute:: format_version
+      :type:  int
+      :value: 1
+
+
+
+   .. py:attribute:: shuffle_seed
+      :type:  int
+
+      Base seed used to derive the per-sample point shuffle permutations.
+
+
+   .. py:attribute:: coords_dtype
+      :type:  str
+      :value: 'float32'
+
+
+
+   .. py:attribute:: values_dtype
+      :type:  str
+      :value: 'float16'
+
+
+
+   .. py:attribute:: compressor
+      :type:  str
+      :value: 'blosc-zstd'
+
+
+
+   .. py:attribute:: domains
+      :type:  dict[str, DomainLayout]
+
+      Global column layout, shared by every sample.
+
+
+   .. py:attribute:: samples
+      :type:  dict[str, SampleEntry]
+      :value: None
+
+
+      Per-sample chunk grids keyed by sample id.
+
+
+   .. py:attribute:: MANIFEST_NAME
+      :type:  ClassVar[str]
+      :value: 'manifest.json'
+
+
+
+   .. py:method:: save(store_root)
+
+      Write the manifest to ``<store_root>/manifest.json`` (local path or fsspec URL).
+
+
+
+   .. py:method:: load(store_root)
+      :classmethod:
+
+
+      Load the manifest from ``<store_root>/manifest.json`` (local path or fsspec URL).
+
+
+
+.. py:class:: ZarrChunkReader(store_root, manifest = None, store_factory = _default_store_factory, read_concurrency = 1)
+
+   Reads chunk-subsampled (or full) per-field tensors from a converted store.
+
+   :param store_root: Root of the converted Zarr store — a local path or an fsspec URL
+                      (``s3://``, ``gs://``, ``memory://``, …) for object storage.
+   :param manifest: Pre-loaded manifest; loaded from ``store_root`` if omitted.
+   :param store_factory: Builds a Zarr store from a sample-group path/URL. Defaults to a
+                         read-only LocalStore/FsspecStore by path; override to wrap the store (e.g.
+                         for byte-accounting in benchmarks).
+   :param read_concurrency: Max threads used to fetch a sample's chunks in parallel.
+                            ``1`` (default) reads serially — best for fast local stores. Use a value
+                            around the number of chunks per sample to hide latency on S3.
+
+
+   .. py:attribute:: store_root
+      :value: ''
+
+
+
+   .. py:attribute:: manifest
+
+
+   .. py:attribute:: read_concurrency
+
+
+   .. py:method:: read_sample(sample_id, num_points = None, generator = None, fields = None)
+
+      Read (optionally chunk-subsampled) fields for one sample.
+
+      With ``read_concurrency == 1`` each array is read with a single orthogonal
+      selection (lowest overhead, best on local stores). With ``read_concurrency > 1``
+      all chunk reads of the sample are issued concurrently in a thread pool (best
+      latency hiding on S3). Both paths return identical results.
+
+      :param sample_id: Sample id present in the manifest.
+      :param num_points: Per-domain target counts, e.g. ``{"surface": 3586, "volume": 4096}``.
+                         A ``None`` value (or missing domain) reads the full domain.
+      :param generator: Torch RNG for chunk selection. Pass a seeded generator for
+                        deterministic evaluation; ``None`` draws a fresh subset each call.
+      :param fields: Optional subset of canonical fields to read. Because every field is
+                     its own array, unrequested fields cost no I/O. ``None`` reads all fields.
+
+      :returns: Mapping ``canonical_field -> tensor`` with scalar fields shaped ``(T,)`` and
+                vector fields shaped ``(T, dim)``, all float32 and point-aligned per domain.
+
+
+
+   .. py:method:: read_coords(sample_id, domain, num_points, generator = None)
+
+      Read an independent chunk-subsample of a domain's point positions only.
+
+      This is a separate random draw from :meth:`read_sample` (it consumes the same
+      generator, so it is uncorrelated with the field draw), reading just the domain's
+      position array. It backs the AB-UPT ``geometry_position`` input — a random draw
+      of the surface points distinct from the surface anchor points.
+
+      :param sample_id: Sample id present in the manifest.
+      :param domain: Domain whose positions to read (e.g. ``"surface"``).
+      :param num_points: Number of points to sample (``None`` reads all positions).
+      :param generator: Torch RNG for chunk selection.
+
+      :returns: ``(num_points, position_dim)`` float32 positions tensor.
+
+
+
+.. py:function:: calculate_store_statistics(store_root, *, fields = None, exclude_fields = None, sample_ids = None, limit = None, max_workers = 1, read_concurrency = 1, progress = False)
+
+   Stream all samples of a Zarr store and accumulate per-field running statistics.
+
+   :param store_root: Store root (local path or fsspec URL).
+   :param fields: Restrict to these canonical field names (default: every stored field).
+   :param exclude_fields: Field names to skip.
+   :param sample_ids: Restrict to these manifest sample ids (default: all samples).
+   :param limit: Process at most this many samples (after ``sample_ids`` filtering).
+   :param max_workers: Samples read concurrently (threads); accumulation stays single-threaded.
+   :param read_concurrency: Per-sample chunk-read threads (see :class:`ZarrChunkReader`).
+   :param progress: Show a tqdm progress bar.
+
+   :returns: Mapping from canonical field name to its :class:`~noether.data.stats.RunningStats`
+             (per-component mean/std/min/max and logscale moments, accumulated in float64).
+
+   :raises ValueError: If a requested field is not present in the store, or no samples remain
+       to process. Sample ids missing from the store are skipped with a warning
+       (split files may list samples that were skipped at conversion).
+
+
+.. py:function:: is_remote(store_root)
+
+   Return True if *store_root* is an fsspec URL backed by a non-local filesystem.
+
+
+.. py:function:: make_store(path, *, read_only = False)
+
+   Build a Zarr store for *path*.
+
+   Uses the Rust-backed :class:`~zarr.storage.ObjectStore` for ``s3://`` URLs when the
+   optional ``obstore`` package is installed, :class:`FsspecStore` for any other URL (or
+   for S3 without obstore), and :class:`LocalStore` for local paths.
+
+
+.. py:class:: ZarrStoreWriter(store_root, filemap, dataset_name, shuffle_seed = 0, chunk_points = 4096, shard_points = None, coords_dtype = 'float32', values_dtype = 'float16', field_dtypes = None, compression_level = 5)
+
+   Convert CFD samples into the chunked/sharded Zarr format and track the manifest.
+
+   :param store_root: Output location for the Zarr store. A local path or an fsspec URL
+                      (``s3://``, ``gs://``, ``memory://``, …) for object storage.
+   :param filemap: Field-to-filename mapping describing which fields exist.
+   :param dataset_name: Human-readable dataset name recorded in the manifest.
+   :param shuffle_seed: Base seed for the per-sample point shuffle.
+   :param chunk_points: Chunk size along the point axis. Pick close to the training
+                        subsample size to minimise read amplification.
+   :param shard_points: Cap on the shard size along the point axis (rounded down to a
+                        whole number of chunks, minimum one chunk). ``None`` (default) packs each
+                        array into a single whole-array shard. Set this when per-field arrays grow
+                        large: shard bytes ≈ ``shard_points × dim × dtype_size``, so e.g. a
+                        ~128 MB cap on a float32×3 position array is ``shard_points ≈ 11_000_000``.
+                        Smaller shards bound the writer's per-shard RAM and the blast radius of a
+                        corrupt object, at the cost of more objects per array.
+   :param coords_dtype: Dtype for the positions array (keep float32).
+   :param values_dtype: Dtype for the physical fields array (float16 halves bytes).
+   :param field_dtypes: Per-field dtype overrides keyed by canonical name, e.g.
+                        ``{"volume_vorticity": "float32"}`` for fields whose values exceed the
+                        ``values_dtype`` range (float16 caps at ~6.6e4); overflowing casts are
+                        rejected at write time rather than silently stored as ``inf``.
+   :param compression_level: blosc/zstd compression level.
+
+
+   .. py:attribute:: store_root
+      :value: ''
+
+
+
+   .. py:attribute:: filemap
+
+
+   .. py:attribute:: chunk_points
+      :value: 4096
+
+
+
+   .. py:attribute:: shard_points
+      :value: None
+
+
+
+   .. py:attribute:: coords_dtype
+      :value: 'float32'
+
+
+
+   .. py:attribute:: values_dtype
+      :value: 'float16'
+
+
+
+   .. py:attribute:: field_dtypes
+      :value: None
+
+
+
+   .. py:attribute:: compression_level
+      :value: 5
+
+
+
+   .. py:attribute:: layouts
+
+
+   .. py:attribute:: manifest
+
+
+   .. py:method:: write_group(sample_id, field_arrays)
+
+      Write one sample's Zarr group and return its manifest entry (no manifest mutation).
+
+      Independent per sample (its own store), so this is safe to call concurrently from
+      multiple threads; the caller records the returned entry in the manifest.
+
+      :param sample_id: Stable id used for the relative path and shuffle seed
+                        (e.g. ``"param1/<hash>"``).
+      :param field_arrays: Mapping ``canonical_field -> numpy array``. Positions must be
+                           ``(N, 3)``; scalar fields may be ``(N,)`` or ``(N, 1)``.
+
+      :returns: The :class:`SampleEntry` describing the written group.
+
+      :raises ValueError: If a domain's fields disagree on point count.
+
+
+
+   .. py:method:: write_sample(sample_id, field_arrays)
+
+      Write one sample and record it in the manifest (sequential convenience).
+
+
+
+   .. py:method:: to_init_kwargs()
+
+      Constructor kwargs to rebuild an identical writer (e.g. in a worker process).
+
+
+
+   .. py:method:: save_manifest()
+
+      Persist the manifest to the store root (local path or fsspec URL).
+
+
+

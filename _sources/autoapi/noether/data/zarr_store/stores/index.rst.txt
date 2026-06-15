@@ -1,0 +1,54 @@
+noether.data.zarr_store.stores
+==============================
+
+.. py:module:: noether.data.zarr_store.stores
+
+.. autoapi-nested-parse::
+
+   Storage helpers so the Zarr store can live locally or on object storage.
+
+   A ``store_root`` may be a local path or an fsspec URL (``s3://``, ``gs://``, ``az://``,
+   ``memory://``, …). Local roots use the fast :class:`~zarr.storage.LocalStore`; URLs use
+   :class:`~zarr.storage.FsspecStore`. Path joining is done as plain ``/``-joins so it works
+   for both local paths and URLs (``pathlib`` would mangle ``s3://`` into ``s3:/``).
+
+   For ``s3://`` URLs, if the optional `obstore <https://developmentseed.org/obstore/>`_
+   package is installed, the faster Rust-backed :class:`~zarr.storage.ObjectStore` is used
+   instead of :class:`~zarr.storage.FsspecStore` (it reads credentials/region/endpoint from
+   the standard ``AWS_*`` environment variables). Without obstore, or for any non-S3 URL,
+   the fsspec backend is used — so this is a transparent, opt-in speedup.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.zarr_store.stores.is_remote
+   noether.data.zarr_store.stores.join
+   noether.data.zarr_store.stores.make_store
+
+
+Module Contents
+---------------
+
+.. py:function:: is_remote(store_root)
+
+   Return True if *store_root* is an fsspec URL backed by a non-local filesystem.
+
+
+.. py:function:: join(store_root, relpath)
+
+   Join *relpath* onto a local path or URL store root (URL-safe, unlike ``Path``).
+
+
+.. py:function:: make_store(path, *, read_only = False)
+
+   Build a Zarr store for *path*.
+
+   Uses the Rust-backed :class:`~zarr.storage.ObjectStore` for ``s3://`` URLs when the
+   optional ``obstore`` package is installed, :class:`FsspecStore` for any other URL (or
+   for S3 without obstore), and :class:`LocalStore` for local paths.
+
+
