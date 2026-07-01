@@ -20,9 +20,18 @@ Module Contents
    Bases: :py:obj:`noether.core.callbacks.periodic.PeriodicCallback`
 
 
-   A callback that logs the norm of the gradients, the grad scaler scale and the model norm, additionally all the losses after the accumulation step are logged. This can be useful for monitoring
-   training and diagnosing issues with exploding or vanishing gradients.
-   This callback is not added is added by default to the trainer
+   Logs gradient norms, the grad-scaler scale and the model norm, plus all losses after
+   each accumulation step.
+
+   Useful for monitoring training and diagnosing exploding or vanishing gradients
+   (i.e. convergence speed / training dynamics).
+
+   This callback is *not* added by default. Enable it via the ``callbacks`` config with::
+
+       - kind: noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback
+         every_n_updates: 50
+
+   using exactly one of ``every_n_updates`` / ``every_n_epochs`` / ``every_n_samples``.
 
    :param callback_config: Configuration for the callback. See
                            :class:`~noether.core.schemas.callbacks.CallBackBaseConfig`

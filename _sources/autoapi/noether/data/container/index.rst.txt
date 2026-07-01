@@ -27,7 +27,7 @@ Module Contents
    :value: '__meta_time_collate'
 
 
-.. py:class:: DataContainer(datasets, num_workers = None, pin_memory = True, seed = None)
+.. py:class:: DataContainer(datasets, num_workers = None, pin_memory = True, seed = None, multiprocessing_context = None, persistent_workers = False)
 
    Container that holds datasets and provides utilities for datasets and data loading.
 
@@ -39,6 +39,13 @@ Module Contents
                 to reseed ``random``/``numpy`` inside each worker via ``worker_init_fn``. When None,
                 no generator is attached and workers are not explicitly reseeded (matches legacy behavior).
                 Typically the training seed (already rank-offset) should be passed here.
+   :param multiprocessing_context: Start method for worker processes (``"spawn"``, ``"forkserver"``
+                                   or ``"fork"``), forwarded to ``torch.utils.data.DataLoader``. When None, PyTorch's
+                                   platform default (``fork`` on Linux) is used. ``"spawn"`` avoids deadlocks from forking
+                                   a CUDA-initialized process, at the cost of pickling the dataset/collator to each worker.
+                                   Only applied when ``num_workers > 0``. Defaults to None.
+   :param persistent_workers: Keep workers alive across iterations instead of respawning them each
+                              epoch. Only applied when ``num_workers > 0``. Defaults to False.
 
 
    .. py:attribute:: logger
@@ -59,6 +66,16 @@ Module Contents
 
    .. py:attribute:: seed
       :value: None
+
+
+
+   .. py:attribute:: multiprocessing_context
+      :value: None
+
+
+
+   .. py:attribute:: persistent_workers
+      :value: False
 
 
 

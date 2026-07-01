@@ -910,7 +910,10 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.run.managed.run_managed" title="noether.core.distributed.run.managed.run_managed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_managed</span></code></a>(main[, accelerator, devices])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.distributed.run.managed.first_hostname_from_nodelist" title="noether.core.distributed.run.managed.first_hostname_from_nodelist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">first_hostname_from_nodelist</span></code></a>(nodelist)</p></td>
+<td><p>Return the first concrete hostname from a (possibly compressed) SLURM nodelist.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#noether.core.distributed.run.managed.run_managed" title="noether.core.distributed.run.managed.run_managed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_managed</span></code></a>(main[, accelerator, devices])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -923,6 +926,32 @@
 <dt class="sig sig-object py" id="noether.core.distributed.run.managed.logger">
 <span class="sig-prename descclassname"><span class="pre">noether.core.distributed.run.managed.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#noether.core.distributed.run.managed.logger" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="noether.core.distributed.run.managed.first_hostname_from_nodelist">
+<span class="sig-prename descclassname"><span class="pre">noether.core.distributed.run.managed.</span></span><span class="sig-name descname"><span class="pre">first_hostname_from_nodelist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodelist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.distributed.run.managed.first_hostname_from_nodelist" title="Link to this definition">¶</a></dt>
+<dd><p>Return the first concrete hostname from a (possibly compressed) SLURM nodelist.</p>
+<p><code class="docutils literal notranslate"><span class="pre">SLURM_JOB_NODELIST</span></code> uses SLURM’s <em>compressed</em> notation for multi-node jobs, e.g.
+<code class="docutils literal notranslate"><span class="pre">node-[079,081]</span></code> or <code class="docutils literal notranslate"><span class="pre">node[01-04]</span></code>. A naive <code class="docutils literal notranslate"><span class="pre">nodelist.split(&quot;,&quot;)[0]</span></code> therefore
+yields a broken hostname such as <code class="docutils literal notranslate"><span class="pre">node-[079</span></code> that does not resolve, which makes the
+<code class="docutils literal notranslate"><span class="pre">torch.distributed</span></code> rendezvous time out. <code class="docutils literal notranslate"><span class="pre">scontrol</span> <span class="pre">show</span> <span class="pre">hostnames</span></code> expands the list
+to one real hostname per line; the first is used as the rendezvous master.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nodelist</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – The value of <code class="docutils literal notranslate"><span class="pre">SLURM_JOB_NODELIST</span></code> (compressed or plain).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The first hostname in the (expanded) nodelist.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><strong>RuntimeError</strong></a> – If the nodelist is compressed but <code class="docutils literal notranslate"><span class="pre">scontrol</span></code> is unavailable, so no
+concrete hostname can be derived.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="noether.core.distributed.run.managed.run_managed">
@@ -1016,6 +1045,7 @@
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
 <li><a class="reference internal" href="#noether.core.distributed.run.managed.logger"><code class="docutils literal notranslate"><span class="pre">logger</span></code></a></li>
+<li><a class="reference internal" href="#noether.core.distributed.run.managed.first_hostname_from_nodelist"><code class="docutils literal notranslate"><span class="pre">first_hostname_from_nodelist()</span></code></a></li>
 <li><a class="reference internal" href="#noether.core.distributed.run.managed.run_managed"><code class="docutils literal notranslate"><span class="pre">run_managed()</span></code></a></li>
 </ul>
 </li>

@@ -17,6 +17,7 @@ Functions
 
 .. autoapisummary::
 
+   noether.core.distributed.run.managed.first_hostname_from_nodelist
    noether.core.distributed.run.managed.run_managed
 
 
@@ -24,6 +25,24 @@ Module Contents
 ---------------
 
 .. py:data:: logger
+
+.. py:function:: first_hostname_from_nodelist(nodelist)
+
+   Return the first concrete hostname from a (possibly compressed) SLURM nodelist.
+
+   ``SLURM_JOB_NODELIST`` uses SLURM's *compressed* notation for multi-node jobs, e.g.
+   ``node-[079,081]`` or ``node[01-04]``. A naive ``nodelist.split(",")[0]`` therefore
+   yields a broken hostname such as ``node-[079`` that does not resolve, which makes the
+   ``torch.distributed`` rendezvous time out. ``scontrol show hostnames`` expands the list
+   to one real hostname per line; the first is used as the rendezvous master.
+
+   :param nodelist: The value of ``SLURM_JOB_NODELIST`` (compressed or plain).
+
+   :returns: The first hostname in the (expanded) nodelist.
+
+   :raises RuntimeError: If the nodelist is compressed but ``scontrol`` is unavailable, so no
+       concrete hostname can be derived.
+
 
 .. py:function:: run_managed(main, accelerator='gpu', devices=None)
 

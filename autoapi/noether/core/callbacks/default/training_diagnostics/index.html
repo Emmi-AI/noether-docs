@@ -899,7 +899,7 @@
 <table class="autosummary longtable docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback" title="noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrainingDiagnosticsCallback</span></code></a></p></td>
-<td><p>A callback that logs the norm of the gradients, the grad scaler scale and the model norm, additionally all the losses after the accumulation step are logged. This can be useful for monitoring</p></td>
+<td><p>Logs gradient norms, the grad-scaler scale and the model norm, plus all losses after</p></td>
 </tr>
 </tbody>
 </table>
@@ -911,9 +911,16 @@
 <dt class="sig sig-object py" id="noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">noether.core.callbacks.default.training_diagnostics.</span></span><span class="sig-name descname"><span class="pre">TrainingDiagnosticsCallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noether.core.callbacks.default.training_diagnostics.TrainingDiagnosticsCallback" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="../../periodic/index.html#noether.core.callbacks.periodic.PeriodicCallback" title="noether.core.callbacks.periodic.PeriodicCallback"><code class="xref py py-obj docutils literal notranslate"><span class="pre">noether.core.callbacks.periodic.PeriodicCallback</span></code></a></p>
-<p>A callback that logs the norm of the gradients, the grad scaler scale and the model norm, additionally all the losses after the accumulation step are logged. This can be useful for monitoring
-training and diagnosing issues with exploding or vanishing gradients.
-This callback is not added is added by default to the trainer</p>
+<p>Logs gradient norms, the grad-scaler scale and the model norm, plus all losses after
+each accumulation step.</p>
+<p>Useful for monitoring training and diagnosing exploding or vanishing gradients
+(i.e. convergence speed / training dynamics).</p>
+<p>This callback is <em>not</em> added by default. Enable it via the <code class="docutils literal notranslate"><span class="pre">callbacks</span></code> config with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">kind</span><span class="p">:</span> <span class="n">noether</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">default</span><span class="o">.</span><span class="n">training_diagnostics</span><span class="o">.</span><span class="n">TrainingDiagnosticsCallback</span>
+  <span class="n">every_n_updates</span><span class="p">:</span> <span class="mi">50</span>
+</pre></div>
+</div>
+<p>using exactly one of <code class="docutils literal notranslate"><span class="pre">every_n_updates</span></code> / <code class="docutils literal notranslate"><span class="pre">every_n_epochs</span></code> / <code class="docutils literal notranslate"><span class="pre">every_n_samples</span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
