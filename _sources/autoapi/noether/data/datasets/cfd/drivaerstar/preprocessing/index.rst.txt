@@ -1,0 +1,165 @@
+noether.data.datasets.cfd.drivaerstar.preprocessing
+===================================================
+
+.. py:module:: noether.data.datasets.cfd.drivaerstar.preprocessing
+
+.. autoapi-nested-parse::
+
+   Process raw DrivAerStar EnSight cases and convert them into a chunked Zarr store.
+
+   DrivAerStar ships each simulation as an EnSight Gold case (``<T>_<id>.case`` + ``.geo`` +
+   per-cell ``Pressure`` / ``Velocity`` / ``WallShearStress`` files) under
+   ``case_<T>/<id>/case/``. This is the DrivAerStar analogue of
+   :mod:`noether.data.datasets.cfd.caeml.preprocessing`, but instead of writing per-field
+   ``.pt`` files it writes directly into the blob-storage-friendly chunked/sharded Zarr store
+   (:class:`~noether.data.zarr_store.writer.ZarrStoreWriter`), so the result is consumable by
+   :class:`~noether.data.datasets.cfd.ZarrAeroDataset` and friends.
+
+   Surface / volume split follows the convention used in ``Emmi-AI/proprioceptive``'s
+   ``match_experiment_probes.py``:
+
+   * **volume** — the ``domain`` block (Pressure + Velocity per cell);
+   * **surface** — every ``WallShearStress``-bearing block that is *not* the volume and *not*
+     a wind-tunnel wall (``Block.*``, including the ground plane ``Block.bottom``); i.e. the
+     car / wheel shell. Combined and surface-extracted, fields taken at cell centres.
+
+   For each case the script stores (canonical field → array):
+
+   * ``surface_position`` / ``surface_pressure`` / ``surface_friction`` (WallShearStress) /
+     ``surface_normals``;
+   * ``volume_position`` / ``volume_pressure`` / ``volume_velocity``;
+   * ``volume_sdf`` (distance from each volume cell centre to the car surface) — **only when
+     ``--sdf`` is passed**; off by default since it needs scipy and a KD-tree query over all
+     volume points.
+
+   Robustness: some DrivAerStar binaries crash VTK's EnSight reader at the C level
+   (uncatchable from Python), so each case is read/extracted in a *child process*; a crashing
+   case yields a non-zero exit and is skipped with a warning rather than killing the run.
+
+   Source may be local or any fsspec URL (the bucket lives at
+   ``oci://emmi-drivaer-star``; ``ocifs`` needs ``OCIFS_IAM_TYPE=api_key``)::
+
+       OCIFS_IAM_TYPE=api_key uv run python -m noether.data.datasets.cfd.drivaerstar.preprocessing \
+           --source oci://emmi-drivaer-star@frwnorq7ern2 \
+           --output oci://emmi-drivaer-star@frwnorq7ern2/zarr_store \
+           --case-types E --workers 16
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.drivaerstar.preprocessing.DRIVAERSTAR_FILEMAP
+   noether.data.datasets.cfd.drivaerstar.preprocessing.VARIANT_BY_TYPE
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   noether.data.datasets.cfd.drivaerstar.preprocessing.build_filemap
+   noether.data.datasets.cfd.drivaerstar.preprocessing.extract_case_fields
+   noether.data.datasets.cfd.drivaerstar.preprocessing.discover_cases
+   noether.data.datasets.cfd.drivaerstar.preprocessing.convert_case
+   noether.data.datasets.cfd.drivaerstar.preprocessing.convert
+   noether.data.datasets.cfd.drivaerstar.preprocessing.main
+
+
+Module Contents
+---------------
+
+.. py:function:: build_filemap(compute_sdf = False)
+
+   Return the DrivAerStar FileMap, optionally including the volume SDF field.
+
+   :param compute_sdf: If ``True``, include ``volume_distance_to_surface`` (canonical
+                       ``volume_sdf``); when ``False`` it is omitted so the writer does not expect it.
+
+
+.. py:data:: DRIVAERSTAR_FILEMAP
+
+.. py:data:: VARIANT_BY_TYPE
+
+.. py:function:: extract_case_fields(case_path, *, subsample_factor = 1, compute_sdf = False)
+
+   Read one EnSight case and return canonical field arrays for surface and volume.
+
+   :param case_path: Path to a local ``<T>_<id>.case`` file (siblings ``.geo`` / ``.Pressure`` /
+                     ``.Velocity`` / ``.WallShearStress`` must be next to it).
+   :param subsample_factor: Keep ``1 / subsample_factor`` of the volume cells via a seeded
+                            permutation (``1`` keeps all). Surface cells are always kept in full.
+   :param compute_sdf: If ``True``, also compute ``volume_sdf`` (distance from each volume cell
+                       centre to the nearest car-surface vertex). Off by default — it needs scipy and
+                       adds a KD-tree query over all volume points.
+
+   :returns: Mapping ``canonical_field -> np.ndarray`` (positions ``float32 (N, 3)``, scalar
+             fields ``(N,)``, vector fields ``(N, 3)``), ready for
+             :meth:`~noether.data.zarr_store.writer.ZarrStoreWriter.write_group`.
+
+   :raises RuntimeError: If the case has no ``domain`` block or no WallShearStress surface.
+
+
+.. py:function:: discover_cases(source, case_types, limit = None)
+
+   Find DrivAerStar cases under ``source`` for the requested case types.
+
+   :param source: Dataset root (local path or fsspec URL) holding ``case_<T>/<id>/case/...``.
+   :param case_types: Case-type prefixes to include (subset of ``E`` / ``F`` / ``N``).
+   :param limit: If set, keep at most this many cases (after sorting) across all types.
+
+   :returns: Sorted list of ``(sample_id, case_type, case_url)`` where ``sample_id`` is
+             ``"<T>_<id>"`` and ``case_url`` points at the ``.case`` file (local path or URL).
+
+
+.. py:function:: convert_case(sample_id, case_url, writer, *, subsample_factor = 1, compute_sdf = False, timeout_s = 1800)
+
+   Extract one case (in a child process) and write its Zarr group; ``None`` on failure.
+
+   The EnSight read + field extraction run in a separate interpreter so a C-level crash in
+   VTK's reader fails just this case (non-zero exit) instead of the whole run.
+
+   :param sample_id: Stable id (``"<T>_<id>"``) used for the store path and shuffle seed.
+   :param case_url: Local path or fsspec URL of the ``.case`` file.
+   :param writer: Target store writer (its FileMap defines which fields are stored).
+   :param subsample_factor: Volume subsampling factor passed to the child (``1`` keeps all).
+   :param compute_sdf: Whether the child should also compute the ``volume_sdf`` field.
+   :param timeout_s: Per-case wall-clock budget for the extraction child.
+
+   :returns: The :class:`SampleEntry` for the written group, or ``None`` if the case was skipped.
+
+
+.. py:function:: convert(source, output, *, case_types, workers = 1, subsample_factor = 1, compute_sdf = False, chunk_points = 4096, shard_points = None, shuffle_seed = 0, values_dtype = 'float16', field_dtypes = None, limit = None, timeout_s = 1800)
+
+   Convert raw DrivAerStar EnSight cases into a chunked Zarr store.
+
+   Cases are extracted concurrently in up to ``workers`` child processes (crash-isolated);
+   completed cases are written into the store and recorded in the manifest as they finish.
+   Failed cases are skipped with a warning. The manifest is saved once at the end.
+
+   :param source: Dataset root (local path or fsspec URL) with ``case_<T>/<id>/case/...``.
+   :param output: Zarr store root (local path or fsspec URL).
+   :param case_types: Case-type prefixes to convert (subset of ``E`` / ``F`` / ``N``).
+   :param workers: Maximum number of concurrent extraction child processes.
+   :param subsample_factor: Volume subsampling factor (``1`` keeps all ~10M cells).
+   :param compute_sdf: Whether to also compute and store the ``volume_sdf`` field (off by default).
+   :param chunk_points: Points per chunk along the point axis.
+   :param shard_points: Optional shard-size cap (point-multiple of ``chunk_points``).
+   :param shuffle_seed: Base seed for the per-sample point shuffle.
+   :param values_dtype: Default dtype for value fields (positions are always float32).
+   :param field_dtypes: Per-canonical-field dtype overrides, e.g. ``{"volume_pressure": "float32"}``.
+   :param limit: Convert at most this many cases.
+   :param timeout_s: Per-case extraction timeout.
+
+   :returns: The :class:`ZarrStoreWriter` after all cases are written and the manifest saved.
+
+   :raises RuntimeError: If no cases are found, or every discovered case failed to convert.
+
+
+.. py:function:: main()
+
+   CLI entry point for DrivAerStar EnSight -> Zarr conversion.
+
+
